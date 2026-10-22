@@ -175,7 +175,9 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** Private Endpoint Connection Name */
   privateEndpointConnectionName: string;
 }
-export interface DeletePrivateEndpointConnectionResponse {}
+export interface DeletePrivateEndpointConnectionResponse {
+  location?: string;
+}
 export interface GetNamespaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1467,7 +1469,7 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(704, __c44, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(352, __c22, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  output: __S(705, __c44, 1) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2913,6 +2915,12 @@ function __c44(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeletePrivateEndpointConnectionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "DeletePrivateEndpointConnectionResponse" });
   }
 }
 function __c45(j: number): any {

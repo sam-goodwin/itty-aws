@@ -19,7 +19,12 @@ export interface DeleteManufacturingDataServiceRequest {
   /** Name. */
   mdsResourceName: string;
 }
-export interface DeleteManufacturingDataServiceResponse {}
+export interface DeleteManufacturingDataServiceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetManufacturingDataServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -531,6 +536,10 @@ export interface ManufacturingDataServicesCreateOrUpdateResponse {
   identity?: GetManufacturingDataServiceResponseIdentity;
   /** The resource model definition representing SKU */
   sku?: GetManufacturingDataServiceResponseSku;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputType =
@@ -654,6 +663,10 @@ export interface UpdateManufacturingDataServiceResponse {
   identity?: GetManufacturingDataServiceResponseIdentity;
   /** The resource model definition representing SKU */
   sku?: GetManufacturingDataServiceResponseSku;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type DeleteManufacturingDataServiceError = AzureOpError;
 /** Delete a MdsResource */
@@ -664,7 +677,7 @@ export const DeleteManufacturingDataService: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteManufacturingDataServiceRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteManufacturingDataServiceResponse>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteManufacturingDataServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -678,8 +691,8 @@ export const GetManufacturingDataService: API.OperationMethod<
   GetManufacturingDataServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c2, 0) as any as S.Schema<GetManufacturingDataServiceRequest>,
-  output: __S(117, __c3, 21) as any as S.Schema<GetManufacturingDataServiceResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetManufacturingDataServiceRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GetManufacturingDataServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -754,7 +767,7 @@ export const ManufacturingDataServicesCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(292, __c9, 4) as any as S.Schema<ManufacturingDataServicesCreateOrUpdateRequest>,
-  output: __S(117, __c3, 21) as any as S.Schema<ManufacturingDataServicesCreateOrUpdateResponse>,
+  output: __S(293, __c9, 5) as any as S.Schema<ManufacturingDataServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -769,7 +782,7 @@ export const UpdateManufacturingDataService: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(358, __c11, 6) as any as S.Schema<UpdateManufacturingDataServiceRequest>,
-  output: __S(117, __c3, 21) as any as S.Schema<UpdateManufacturingDataServiceResponse>,
+  output: __S(359, __c11, 7) as any as S.Schema<UpdateManufacturingDataServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -793,17 +806,16 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteManufacturingDataServiceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteManufacturingDataServiceResponse" });
   }
 }
 function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteManufacturingDataServiceResponse",
-      });
-  }
-}
-function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -820,6 +832,24 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetManufacturingDataServiceRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(97, __c3, 1)),
+          location: S.String,
+          properties: S.optional(__S(112, __c3, 16)),
+          identity: S.optional(__S(115, __c3, 19)),
+          sku: S.optional(__S(116, __c3, 20)),
+        }),
+      ).annotate({ identifier: "GetManufacturingDataServiceResponse" });
   }
 }
 function __c3(j: number): any {
@@ -988,20 +1018,6 @@ function __c3(j: number): any {
           capacity: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetManufacturingDataServiceResponseSku" });
-    case 21:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(96, __c3, 0)),
-          tags: S.optional(__S(97, __c3, 1)),
-          location: S.String,
-          properties: S.optional(__S(112, __c3, 16)),
-          identity: S.optional(__S(115, __c3, 19)),
-          sku: S.optional(__S(116, __c3, 20)),
-        }),
-      ).annotate({ identifier: "GetManufacturingDataServiceResponse" });
   }
 }
 function __c4(j: number): any {
@@ -1061,7 +1077,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(117, __c3, 21));
+      return S.Array(__S(64, __c2, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1159,7 +1175,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "MdsResourcePropertiesInput" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(32, __c1, 0)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(321, __c10, 1)));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1187,6 +1203,22 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ManufacturingDataServicesCreateOrUpdateRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(97, __c3, 1)),
+          location: S.String,
+          properties: S.optional(__S(112, __c3, 16)),
+          identity: S.optional(__S(115, __c3, 19)),
+          sku: S.optional(__S(116, __c3, 20)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ManufacturingDataServicesCreateOrUpdateResponse" });
   }
 }
 function __c10(j: number): any {
@@ -1204,12 +1236,14 @@ function __c10(j: number): any {
           embeddingModelCapacity: S.optional(S.Number),
         }),
       ).annotate({ identifier: "OpenAIProfileInput" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "UserAssignedIdentityInput" });
   }
 }
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(32, __c1, 0));
+      return S.Record(S.String, __S(321, __c10, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1277,6 +1311,22 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateManufacturingDataServiceRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(97, __c3, 1)),
+          location: S.String,
+          properties: S.optional(__S(112, __c3, 16)),
+          identity: S.optional(__S(115, __c3, 19)),
+          sku: S.optional(__S(116, __c3, 20)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateManufacturingDataServiceResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

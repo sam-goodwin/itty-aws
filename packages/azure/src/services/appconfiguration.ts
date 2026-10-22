@@ -449,7 +449,14 @@ export interface DeleteConfigurationStoreRequest {
   /** The name of the configuration store. */
   configStoreName: string;
 }
-export interface DeleteConfigurationStoreResponse {}
+export interface DeleteConfigurationStoreResponse {
+  /** URL to query for status of the operation. */
+  azureAsyncOperation?: string;
+  /** URL to query for the operation result */
+  location?: string;
+  /** Indicates how long the client should wait before polling the URL in the Location or Azure-AsyncOperation header. */
+  retryAfter?: number;
+}
 export interface DeleteKeyValueRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
@@ -482,7 +489,10 @@ export interface DeleteReplicasRequest {
   /** The name of the replica. */
   replicaName: string;
 }
-export interface DeleteReplicasResponse {}
+export interface DeleteReplicasResponse {
+  /** URL to query for status of the operation. */
+  azureAsyncOperation?: string;
+}
 export interface GetConfigurationStoreRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
@@ -1202,7 +1212,7 @@ export const DeleteConfigurationStore: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(592, __c37, 0) as any as S.Schema<DeleteConfigurationStoreRequest>,
-  output: __S(96, __c6, 0) as any as S.Schema<DeleteConfigurationStoreResponse>,
+  output: __S(593, __c37, 1) as any as S.Schema<DeleteConfigurationStoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1247,7 +1257,7 @@ export const DeleteReplicas: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(640, __c40, 0) as any as S.Schema<DeleteReplicasRequest>,
-  output: __S(96, __c6, 0) as any as S.Schema<DeleteReplicasResponse>,
+  output: __S(641, __c40, 1) as any as S.Schema<DeleteReplicasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2531,6 +2541,14 @@ function __c37(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteConfigurationStoreRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteConfigurationStoreResponse" });
   }
 }
 function __c38(j: number): any {
@@ -2591,6 +2609,12 @@ function __c40(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteReplicasRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+        }),
+      ).annotate({ identifier: "DeleteReplicasResponse" });
   }
 }
 function __c41(j: number): any {

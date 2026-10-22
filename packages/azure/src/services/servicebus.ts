@@ -87,7 +87,10 @@ export interface DeleteNamespaceRequest {
   /** The namespace name */
   namespaceName: string;
 }
-export interface DeleteNamespaceResponse {}
+export interface DeleteNamespaceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteNamespaceAuthorizationRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -109,7 +112,12 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The PrivateEndpointConnection name */
   privateEndpointConnectionName: string;
 }
-export interface DeletePrivateEndpointConnectionResponse {}
+export interface DeletePrivateEndpointConnectionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteQueueRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1804,6 +1812,10 @@ export interface MigrationConfigsCreateAndStartMigrationResponse {
   properties?: MigrationConfigPropertiesProperties;
   /** The geo-location where the resource lives */
   location?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type MigrationConfigsRevertRequestConfigName = "$default";
 export interface MigrationConfigsRevertRequest {
@@ -1908,6 +1920,8 @@ export interface NamespacesCreateOrUpdateResponse {
   sku?: SBSku;
   /** Properties of BYOK Identity description */
   identity?: Identity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 export interface NamespacesCreateOrUpdateAuthorizationRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1974,7 +1988,14 @@ export interface NamespacesFailoverRequest {
   namespaceName: string;
   properties?: FailOverProperties;
 }
-export interface NamespacesFailoverResponse {}
+export interface NamespacesFailoverResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface NetworkSecurityPerimeterConfigurationsReconcileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2417,8 +2438,8 @@ export const CompleteMigrationConfigMigration: API.OperationMethod<
   CompleteMigrationConfigMigrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<CompleteMigrationConfigMigrationRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<CompleteMigrationConfigMigrationResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<CompleteMigrationConfigMigrationRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<CompleteMigrationConfigMigrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2432,8 +2453,8 @@ export const DeleteDisasterRecoveryConfig: API.OperationMethod<
   DeleteDisasterRecoveryConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<DeleteDisasterRecoveryConfigRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DeleteDisasterRecoveryConfigResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<DeleteDisasterRecoveryConfigRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<DeleteDisasterRecoveryConfigResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2447,8 +2468,8 @@ export const DeleteMigrationConfig: API.OperationMethod<
   DeleteMigrationConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c56, 0) as any as S.Schema<DeleteMigrationConfigRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DeleteMigrationConfigResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<DeleteMigrationConfigRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<DeleteMigrationConfigResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2462,8 +2483,8 @@ export const DeleteNamespace: API.OperationMethod<
   DeleteNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1072, __c67, 0) as any as S.Schema<DeleteNamespaceRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DeleteNamespaceResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<DeleteNamespaceRequest>,
+  output: __S(1105, __c69, 1) as any as S.Schema<DeleteNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2477,8 +2498,8 @@ export const DeleteNamespaceAuthorizationRule: API.OperationMethod<
   DeleteNamespaceAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1264, __c79, 0) as any as S.Schema<DeleteNamespaceAuthorizationRuleRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DeleteNamespaceAuthorizationRuleResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<DeleteNamespaceAuthorizationRuleRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<DeleteNamespaceAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2492,8 +2513,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c90, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(1472, __c92, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(1473, __c92, 1) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2507,8 +2528,8 @@ export const DeleteQueue: API.OperationMethod<
   DeleteQueueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1456, __c91, 0) as any as S.Schema<DeleteQueueRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DeleteQueueResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<DeleteQueueRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<DeleteQueueResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2522,8 +2543,8 @@ export const DeleteQueueAuthorizationRule: API.OperationMethod<
   DeleteQueueAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c92, 0) as any as S.Schema<DeleteQueueAuthorizationRuleRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DeleteQueueAuthorizationRuleResponse>,
+  input: __S(1504, __c94, 0) as any as S.Schema<DeleteQueueAuthorizationRuleRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<DeleteQueueAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2538,7 +2559,7 @@ export const DeleteRule: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(48, __c3, 0) as any as S.Schema<DeleteRuleRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DeleteRuleResponse>,
+  output: __S(304, __c19, 0) as any as S.Schema<DeleteRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2553,7 +2574,7 @@ export const DeleteSubscription: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c4, 0) as any as S.Schema<DeleteSubscriptionRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DeleteSubscriptionResponse>,
+  output: __S(304, __c19, 0) as any as S.Schema<DeleteSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2568,7 +2589,7 @@ export const DeleteTopic: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(80, __c5, 0) as any as S.Schema<DeleteTopicRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DeleteTopicResponse>,
+  output: __S(304, __c19, 0) as any as S.Schema<DeleteTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2583,7 +2604,7 @@ export const DeleteTopicAuthorizationRule: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c6, 0) as any as S.Schema<DeleteTopicAuthorizationRuleRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DeleteTopicAuthorizationRuleResponse>,
+  output: __S(304, __c19, 0) as any as S.Schema<DeleteTopicAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2598,7 +2619,7 @@ export const DisasterRecoveryConfigsBreakPairing: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(112, __c7, 0) as any as S.Schema<DisasterRecoveryConfigsBreakPairingRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DisasterRecoveryConfigsBreakPairingResponse>,
+  output: __S(304, __c19, 0) as any as S.Schema<DisasterRecoveryConfigsBreakPairingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2628,7 +2649,7 @@ export const DisasterRecoveryConfigsFailOver: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(177, __c11, 1) as any as S.Schema<DisasterRecoveryConfigsFailOverRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DisasterRecoveryConfigsFailOverResponse>,
+  output: __S(304, __c19, 0) as any as S.Schema<DisasterRecoveryConfigsFailOverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2673,7 +2694,7 @@ export const GetMigrationConfig: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(240, __c15, 0) as any as S.Schema<GetMigrationConfigRequest>,
-  output: __S(257, __c16, 1) as any as S.Schema<GetMigrationConfigResponse>,
+  output: __S(256, __c16, 0) as any as S.Schema<GetMigrationConfigResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2687,8 +2708,8 @@ export const GetNamespace: API.OperationMethod<
   GetNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<GetNamespaceRequest>,
-  output: __S(398, __c24, 14) as any as S.Schema<GetNamespaceResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetNamespaceRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<GetNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2702,7 +2723,7 @@ export const GetNamespaceAuthorizationRule: API.OperationMethod<
   GetNamespaceAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<GetNamespaceAuthorizationRuleRequest>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetNamespaceAuthorizationRuleRequest>,
   output: __S(226, __c14, 2) as any as S.Schema<GetNamespaceAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2717,8 +2738,8 @@ export const GetNamespaceNetworkRuleSet: API.OperationMethod<
   GetNamespaceNetworkRuleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<GetNamespaceNetworkRuleSetRequest>,
-  output: __S(438, __c27, 6) as any as S.Schema<GetNamespaceNetworkRuleSetResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetNamespaceNetworkRuleSetRequest>,
+  output: __S(470, __c29, 6) as any as S.Schema<GetNamespaceNetworkRuleSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2733,13 +2754,13 @@ export const GetNetworkSecurityPerimeterConfigurationResourceAssociationName: AP
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    448,
-    __c28,
+    480,
+    __c30,
     0,
   ) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationResourceAssociationNameRequest>,
   output: __S(
-    492,
-    __c30,
+    524,
+    __c32,
     12,
   ) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationResourceAssociationNameResponse>,
   errors: [UnknownAzureError],
@@ -2755,8 +2776,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(338, __c21, 2) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(354, __c22, 2) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2770,8 +2791,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(516, __c32, 4) as any as S.Schema<PrivateLinkResourcesListResult>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(548, __c34, 4) as any as S.Schema<PrivateLinkResourcesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2785,8 +2806,8 @@ export const GetQueue: API.OperationMethod<
   GetQueueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<GetQueueRequest>,
-  output: __S(561, __c35, 1) as any as S.Schema<GetQueueResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<GetQueueRequest>,
+  output: __S(593, __c37, 1) as any as S.Schema<GetQueueResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2800,7 +2821,7 @@ export const GetQueueAuthorizationRule: API.OperationMethod<
   GetQueueAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<GetQueueAuthorizationRuleRequest>,
+  input: __S(608, __c38, 0) as any as S.Schema<GetQueueAuthorizationRuleRequest>,
   output: __S(226, __c14, 2) as any as S.Schema<GetQueueAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2815,8 +2836,8 @@ export const GetRule: API.OperationMethod<
   GetRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<GetRuleRequest>,
-  output: __S(611, __c38, 3) as any as S.Schema<GetRuleResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<GetRuleRequest>,
+  output: __S(643, __c40, 3) as any as S.Schema<GetRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2830,8 +2851,8 @@ export const GetSubscription: API.OperationMethod<
   GetSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<GetSubscriptionRequest>,
-  output: __S(642, __c40, 2) as any as S.Schema<GetSubscriptionResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<GetSubscriptionRequest>,
+  output: __S(674, __c42, 2) as any as S.Schema<GetSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2845,8 +2866,8 @@ export const GetTopic: API.OperationMethod<
   GetTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<GetTopicRequest>,
-  output: __S(689, __c43, 1) as any as S.Schema<GetTopicResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<GetTopicRequest>,
+  output: __S(721, __c45, 1) as any as S.Schema<GetTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2860,7 +2881,7 @@ export const GetTopicAuthorizationRule: API.OperationMethod<
   GetTopicAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c44, 0) as any as S.Schema<GetTopicAuthorizationRuleRequest>,
+  input: __S(736, __c46, 0) as any as S.Schema<GetTopicAuthorizationRuleRequest>,
   output: __S(226, __c14, 2) as any as S.Schema<GetTopicAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2875,8 +2896,8 @@ export const ListDisasterRecoveryConfigAuthorizationRules: API.OperationMethod<
   ListDisasterRecoveryConfigAuthorizationRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<ListDisasterRecoveryConfigAuthorizationRulesRequest>,
-  output: __S(737, __c46, 1) as any as S.Schema<SBAuthorizationRuleListResult>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListDisasterRecoveryConfigAuthorizationRulesRequest>,
+  output: __S(769, __c48, 1) as any as S.Schema<SBAuthorizationRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2890,8 +2911,8 @@ export const ListDisasterRecoveryConfigKeys: API.OperationMethod<
   ListDisasterRecoveryConfigKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c47, 0) as any as S.Schema<ListDisasterRecoveryConfigKeysRequest>,
-  output: __S(768, __c48, 0) as any as S.Schema<AccessKeys>,
+  input: __S(784, __c49, 0) as any as S.Schema<ListDisasterRecoveryConfigKeysRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<AccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2905,8 +2926,8 @@ export const ListDisasterRecoveryConfigs: API.OperationMethod<
   ListDisasterRecoveryConfigsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c49, 0) as any as S.Schema<ListDisasterRecoveryConfigsRequest>,
-  output: __S(786, __c49, 2) as any as S.Schema<ArmDisasterRecoveryListResult>,
+  input: __S(816, __c51, 0) as any as S.Schema<ListDisasterRecoveryConfigsRequest>,
+  output: __S(818, __c51, 2) as any as S.Schema<ArmDisasterRecoveryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2920,8 +2941,8 @@ export const ListMigrationConfigs: API.OperationMethod<
   ListMigrationConfigsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c50, 0) as any as S.Schema<ListMigrationConfigsRequest>,
-  output: __S(802, __c50, 2) as any as S.Schema<MigrationConfigListResult>,
+  input: __S(832, __c52, 0) as any as S.Schema<ListMigrationConfigsRequest>,
+  output: __S(834, __c52, 2) as any as S.Schema<MigrationConfigListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2935,8 +2956,8 @@ export const ListNamespaceAuthorizationRules: API.OperationMethod<
   ListNamespaceAuthorizationRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(816, __c51, 0) as any as S.Schema<ListNamespaceAuthorizationRulesRequest>,
-  output: __S(737, __c46, 1) as any as S.Schema<SBAuthorizationRuleListResult>,
+  input: __S(848, __c53, 0) as any as S.Schema<ListNamespaceAuthorizationRulesRequest>,
+  output: __S(769, __c48, 1) as any as S.Schema<SBAuthorizationRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2950,8 +2971,8 @@ export const ListNamespaceByResourceGroup: API.OperationMethod<
   ListNamespaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c52, 0) as any as S.Schema<ListNamespaceByResourceGroupRequest>,
-  output: __S(849, __c53, 1) as any as S.Schema<SBNamespaceListResult>,
+  input: __S(864, __c54, 0) as any as S.Schema<ListNamespaceByResourceGroupRequest>,
+  output: __S(881, __c55, 1) as any as S.Schema<SBNamespaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2965,8 +2986,8 @@ export const ListNamespaceKeys: API.OperationMethod<
   ListNamespaceKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c54, 0) as any as S.Schema<ListNamespaceKeysRequest>,
-  output: __S(768, __c48, 0) as any as S.Schema<AccessKeys>,
+  input: __S(896, __c56, 0) as any as S.Schema<ListNamespaceKeysRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<AccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2980,8 +3001,8 @@ export const ListNamespaceNetworkRuleSets: API.OperationMethod<
   ListNamespaceNetworkRuleSetsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(880, __c55, 0) as any as S.Schema<ListNamespaceNetworkRuleSetsRequest>,
-  output: __S(882, __c55, 2) as any as S.Schema<NetworkRuleSetListResult>,
+  input: __S(912, __c57, 0) as any as S.Schema<ListNamespaceNetworkRuleSetsRequest>,
+  output: __S(914, __c57, 2) as any as S.Schema<NetworkRuleSetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2995,8 +3016,8 @@ export const ListNamespaces: API.OperationMethod<
   ListNamespacesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(912, __c57, 0) as any as S.Schema<ListNamespacesRequest>,
-  output: __S(849, __c53, 1) as any as S.Schema<SBNamespaceListResult>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListNamespacesRequest>,
+  output: __S(881, __c55, 1) as any as S.Schema<SBNamespaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3010,8 +3031,8 @@ export const ListNetworkSecurityPerimeterConfiguration: API.OperationMethod<
   ListNetworkSecurityPerimeterConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c58, 0) as any as S.Schema<ListNetworkSecurityPerimeterConfigurationRequest>,
-  output: __S(930, __c58, 2) as any as S.Schema<NetworkSecurityPerimeterConfigurationList>,
+  input: __S(960, __c60, 0) as any as S.Schema<ListNetworkSecurityPerimeterConfigurationRequest>,
+  output: __S(962, __c60, 2) as any as S.Schema<NetworkSecurityPerimeterConfigurationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3025,8 +3046,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(944, __c59, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(948, __c59, 4) as any as S.Schema<OperationListResult>,
+  input: __S(976, __c61, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(980, __c61, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3040,8 +3061,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c60, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(961, __c60, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: __S(992, __c62, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(993, __c62, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3055,8 +3076,8 @@ export const ListQueueAuthorizationRules: API.OperationMethod<
   ListQueueAuthorizationRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(976, __c61, 0) as any as S.Schema<ListQueueAuthorizationRulesRequest>,
-  output: __S(737, __c46, 1) as any as S.Schema<SBAuthorizationRuleListResult>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListQueueAuthorizationRulesRequest>,
+  output: __S(769, __c48, 1) as any as S.Schema<SBAuthorizationRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3070,8 +3091,8 @@ export const ListQueueByNamespace: API.OperationMethod<
   ListQueueByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c62, 0) as any as S.Schema<ListQueueByNamespaceRequest>,
-  output: __S(994, __c62, 2) as any as S.Schema<SBQueueListResult>,
+  input: __S(1024, __c64, 0) as any as S.Schema<ListQueueByNamespaceRequest>,
+  output: __S(1026, __c64, 2) as any as S.Schema<SBQueueListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3085,8 +3106,8 @@ export const ListQueueKeys: API.OperationMethod<
   ListQueueKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1008, __c63, 0) as any as S.Schema<ListQueueKeysRequest>,
-  output: __S(768, __c48, 0) as any as S.Schema<AccessKeys>,
+  input: __S(1040, __c65, 0) as any as S.Schema<ListQueueKeysRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<AccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3100,8 +3121,8 @@ export const ListRuleBySubscriptions: API.OperationMethod<
   ListRuleBySubscriptionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c64, 0) as any as S.Schema<ListRuleBySubscriptionsRequest>,
-  output: __S(1026, __c64, 2) as any as S.Schema<RuleListResult>,
+  input: __S(1056, __c66, 0) as any as S.Schema<ListRuleBySubscriptionsRequest>,
+  output: __S(1058, __c66, 2) as any as S.Schema<RuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3115,8 +3136,8 @@ export const ListSubscriptionByTopic: API.OperationMethod<
   ListSubscriptionByTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1040, __c65, 0) as any as S.Schema<ListSubscriptionByTopicRequest>,
-  output: __S(1042, __c65, 2) as any as S.Schema<SBSubscriptionListResult>,
+  input: __S(1072, __c67, 0) as any as S.Schema<ListSubscriptionByTopicRequest>,
+  output: __S(1074, __c67, 2) as any as S.Schema<SBSubscriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3130,8 +3151,8 @@ export const ListTopicAuthorizationRules: API.OperationMethod<
   ListTopicAuthorizationRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c66, 0) as any as S.Schema<ListTopicAuthorizationRulesRequest>,
-  output: __S(737, __c46, 1) as any as S.Schema<SBAuthorizationRuleListResult>,
+  input: __S(1088, __c68, 0) as any as S.Schema<ListTopicAuthorizationRulesRequest>,
+  output: __S(769, __c48, 1) as any as S.Schema<SBAuthorizationRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3145,8 +3166,8 @@ export const ListTopicByNamespace: API.OperationMethod<
   ListTopicByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c68, 0) as any as S.Schema<ListTopicByNamespaceRequest>,
-  output: __S(1090, __c68, 2) as any as S.Schema<SBTopicListResult>,
+  input: __S(1120, __c70, 0) as any as S.Schema<ListTopicByNamespaceRequest>,
+  output: __S(1122, __c70, 2) as any as S.Schema<SBTopicListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3160,8 +3181,8 @@ export const ListTopicKeys: API.OperationMethod<
   ListTopicKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1104, __c69, 0) as any as S.Schema<ListTopicKeysRequest>,
-  output: __S(768, __c48, 0) as any as S.Schema<AccessKeys>,
+  input: __S(1136, __c71, 0) as any as S.Schema<ListTopicKeysRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<AccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3175,8 +3196,8 @@ export const MigrationConfigsCreateAndStartMigration: API.OperationMethod<
   MigrationConfigsCreateAndStartMigrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1121, __c70, 1) as any as S.Schema<MigrationConfigsCreateAndStartMigrationRequest>,
-  output: __S(257, __c16, 1) as any as S.Schema<MigrationConfigsCreateAndStartMigrationResponse>,
+  input: __S(1153, __c72, 1) as any as S.Schema<MigrationConfigsCreateAndStartMigrationRequest>,
+  output: __S(1154, __c72, 2) as any as S.Schema<MigrationConfigsCreateAndStartMigrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3190,8 +3211,8 @@ export const MigrationConfigsRevert: API.OperationMethod<
   MigrationConfigsRevertError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1136, __c71, 0) as any as S.Schema<MigrationConfigsRevertRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<MigrationConfigsRevertResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<MigrationConfigsRevertRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<MigrationConfigsRevertResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3205,8 +3226,8 @@ export const NamespacesCreateOrUpdate: API.OperationMethod<
   NamespacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1153, __c72, 1) as any as S.Schema<NamespacesCreateOrUpdateRequest>,
-  output: __S(398, __c24, 14) as any as S.Schema<NamespacesCreateOrUpdateResponse>,
+  input: __S(1185, __c74, 1) as any as S.Schema<NamespacesCreateOrUpdateRequest>,
+  output: __S(1186, __c74, 2) as any as S.Schema<NamespacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3220,7 +3241,7 @@ export const NamespacesCreateOrUpdateAuthorizationRule: API.OperationMethod<
   NamespacesCreateOrUpdateAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c74, 0) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleRequest>,
+  input: __S(1216, __c76, 0) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleRequest>,
   output: __S(226, __c14, 2) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3235,8 +3256,8 @@ export const NamespacesCreateOrUpdateNetworkRuleSet: API.OperationMethod<
   NamespacesCreateOrUpdateNetworkRuleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1200, __c75, 0) as any as S.Schema<NamespacesCreateOrUpdateNetworkRuleSetRequest>,
-  output: __S(438, __c27, 6) as any as S.Schema<NamespacesCreateOrUpdateNetworkRuleSetResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<NamespacesCreateOrUpdateNetworkRuleSetRequest>,
+  output: __S(470, __c29, 6) as any as S.Schema<NamespacesCreateOrUpdateNetworkRuleSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3250,8 +3271,8 @@ export const NamespacesFailover: API.OperationMethod<
   NamespacesFailoverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1217, __c76, 1) as any as S.Schema<NamespacesFailoverRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<NamespacesFailoverResponse>,
+  input: __S(1249, __c78, 1) as any as S.Schema<NamespacesFailoverRequest>,
+  output: __S(1250, __c78, 2) as any as S.Schema<NamespacesFailoverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3266,13 +3287,13 @@ export const NetworkSecurityPerimeterConfigurationsReconcile: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1232,
-    __c77,
+    1264,
+    __c79,
     0,
   ) as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileRequest>,
   output: __S(
-    288,
-    __c18,
+    304,
+    __c19,
     0,
   ) as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileResponse>,
   errors: [UnknownAzureError],
@@ -3288,8 +3309,8 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c78, 0) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
-  output: __S(338, __c21, 2) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
+  output: __S(354, __c22, 2) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3303,8 +3324,8 @@ export const QueuesCreateOrUpdate: API.OperationMethod<
   QueuesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1281, __c80, 1) as any as S.Schema<QueuesCreateOrUpdateRequest>,
-  output: __S(561, __c35, 1) as any as S.Schema<QueuesCreateOrUpdateResponse>,
+  input: __S(1313, __c82, 1) as any as S.Schema<QueuesCreateOrUpdateRequest>,
+  output: __S(593, __c37, 1) as any as S.Schema<QueuesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3318,7 +3339,7 @@ export const QueuesCreateOrUpdateAuthorizationRule: API.OperationMethod<
   QueuesCreateOrUpdateAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1296, __c81, 0) as any as S.Schema<QueuesCreateOrUpdateAuthorizationRuleRequest>,
+  input: __S(1328, __c83, 0) as any as S.Schema<QueuesCreateOrUpdateAuthorizationRuleRequest>,
   output: __S(226, __c14, 2) as any as S.Schema<QueuesCreateOrUpdateAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3333,8 +3354,8 @@ export const RegenerateNamespaceKeys: API.OperationMethod<
   RegenerateNamespaceKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c82, 0) as any as S.Schema<RegenerateNamespaceKeysRequest>,
-  output: __S(768, __c48, 0) as any as S.Schema<AccessKeys>,
+  input: __S(1344, __c84, 0) as any as S.Schema<RegenerateNamespaceKeysRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<AccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3348,8 +3369,8 @@ export const RegenerateQueueKeys: API.OperationMethod<
   RegenerateQueueKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1328, __c83, 0) as any as S.Schema<RegenerateQueueKeysRequest>,
-  output: __S(768, __c48, 0) as any as S.Schema<AccessKeys>,
+  input: __S(1360, __c85, 0) as any as S.Schema<RegenerateQueueKeysRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<AccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3363,8 +3384,8 @@ export const RegenerateTopicKeys: API.OperationMethod<
   RegenerateTopicKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c84, 0) as any as S.Schema<RegenerateTopicKeysRequest>,
-  output: __S(768, __c48, 0) as any as S.Schema<AccessKeys>,
+  input: __S(1376, __c86, 0) as any as S.Schema<RegenerateTopicKeysRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<AccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3378,8 +3399,8 @@ export const RulesCreateOrUpdate: API.OperationMethod<
   RulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1360, __c85, 0) as any as S.Schema<RulesCreateOrUpdateRequest>,
-  output: __S(611, __c38, 3) as any as S.Schema<RulesCreateOrUpdateResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<RulesCreateOrUpdateRequest>,
+  output: __S(643, __c40, 3) as any as S.Schema<RulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3393,8 +3414,8 @@ export const SubscriptionsCreateOrUpdate: API.OperationMethod<
   SubscriptionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1377, __c86, 1) as any as S.Schema<SubscriptionsCreateOrUpdateRequest>,
-  output: __S(642, __c40, 2) as any as S.Schema<SubscriptionsCreateOrUpdateResponse>,
+  input: __S(1409, __c88, 1) as any as S.Schema<SubscriptionsCreateOrUpdateRequest>,
+  output: __S(674, __c42, 2) as any as S.Schema<SubscriptionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3408,8 +3429,8 @@ export const TopicsCreateOrUpdate: API.OperationMethod<
   TopicsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1393, __c87, 1) as any as S.Schema<TopicsCreateOrUpdateRequest>,
-  output: __S(689, __c43, 1) as any as S.Schema<TopicsCreateOrUpdateResponse>,
+  input: __S(1425, __c89, 1) as any as S.Schema<TopicsCreateOrUpdateRequest>,
+  output: __S(721, __c45, 1) as any as S.Schema<TopicsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3423,7 +3444,7 @@ export const TopicsCreateOrUpdateAuthorizationRule: API.OperationMethod<
   TopicsCreateOrUpdateAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c88, 0) as any as S.Schema<TopicsCreateOrUpdateAuthorizationRuleRequest>,
+  input: __S(1440, __c90, 0) as any as S.Schema<TopicsCreateOrUpdateAuthorizationRuleRequest>,
   output: __S(226, __c14, 2) as any as S.Schema<TopicsCreateOrUpdateAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3438,8 +3459,8 @@ export const UpdateNamespace: API.OperationMethod<
   UpdateNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1425, __c89, 1) as any as S.Schema<UpdateNamespaceRequest>,
-  output: __S(398, __c24, 14) as any as S.Schema<UpdateNamespaceResponse>,
+  input: __S(1457, __c91, 1) as any as S.Schema<UpdateNamespaceRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<UpdateNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3784,6 +3805,21 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(144, __c9, 0)),
+          properties: S.optional(__S(272, __c17, 0)),
+          location: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetMigrationConfigResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           provisioningState: S.optional(S.String),
           pendingReplicationOperationsCount: S.optional(S.Number),
           targetNamespace: S.String,
@@ -3791,20 +3827,9 @@ function __c16(j: number): any {
           migrationState: S.optional(S.String),
         }),
       ).annotate({ identifier: "MigrationConfigPropertiesProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(144, __c9, 0)),
-          properties: S.optional(__S(256, __c16, 0)),
-          location: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetMigrationConfigResponse" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3824,7 +3849,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "CompleteMigrationConfigMigrationRequest" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
@@ -3832,7 +3857,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3851,7 +3876,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "GetNamespaceRequest" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3861,7 +3886,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "PrivateEndpoint" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3873,8 +3898,8 @@ function __c21(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(320, __c20, 0)),
-          privateLinkServiceConnectionState: S.optional(__S(336, __c21, 0)),
+          privateEndpoint: S.optional(__S(336, __c21, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(352, __c22, 0)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionProperties" });
@@ -3885,25 +3910,25 @@ function __c21(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(144, __c9, 0)),
-          properties: S.optional(__S(337, __c21, 1)),
+          properties: S.optional(__S(353, __c22, 1)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnection" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(338, __c21, 2));
+      return S.Array(__S(354, __c22, 2));
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3917,15 +3942,15 @@ function __c24(j: number): any {
           keyName: S.optional(S.String),
           keyVaultUri: S.optional(S.String),
           keyVersion: S.optional(S.String),
-          identity: S.optional(__S(384, __c24, 0)),
+          identity: S.optional(__S(400, __c25, 0)),
         }),
       ).annotate({ identifier: "KeyVaultProperties" });
     case 2:
-      return S.Array(__S(385, __c24, 1));
+      return S.Array(__S(401, __c25, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          keyVaultProperties: S.optional(__S(386, __c24, 2)),
+          keyVaultProperties: S.optional(__S(402, __c25, 2)),
           keySource: S.optional(S.String),
           requireInfrastructureEncryption: S.optional(S.Boolean),
         }),
@@ -3939,7 +3964,7 @@ function __c24(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          confidentialCompute: S.optional(__S(388, __c24, 4)),
+          confidentialCompute: S.optional(__S(404, __c25, 4)),
         }),
       ).annotate({ identifier: "PlatformCapabilities" });
     case 6:
@@ -3950,12 +3975,12 @@ function __c24(j: number): any {
         }),
       ).annotate({ identifier: "NamespaceReplicaLocation" });
     case 7:
-      return S.Array(__S(390, __c24, 6));
+      return S.Array(__S(406, __c25, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
           maxReplicationLagDurationInSeconds: S.optional(S.Number),
-          locations: S.optional(__S(391, __c24, 7)),
+          locations: S.optional(__S(407, __c25, 7)),
         }),
       ).annotate({ identifier: "GeoDataReplicationProperties" });
     case 9:
@@ -3969,14 +3994,14 @@ function __c24(j: number): any {
           serviceBusEndpoint: S.optional(S.String),
           metricId: S.optional(S.String),
           zoneRedundant: S.optional(S.Boolean),
-          encryption: S.optional(__S(387, __c24, 3)),
-          privateEndpointConnections: S.optional(__S(368, __c23, 0)),
+          encryption: S.optional(__S(403, __c25, 3)),
+          privateEndpointConnections: S.optional(__S(384, __c24, 0)),
           disableLocalAuth: S.optional(S.Boolean),
           alternateName: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
           premiumMessagingPartitions: S.optional(S.Number),
-          platformCapabilities: S.optional(__S(389, __c24, 5)),
-          geoDataReplication: S.optional(__S(392, __c24, 8)),
+          platformCapabilities: S.optional(__S(405, __c25, 5)),
+          geoDataReplication: S.optional(__S(408, __c25, 8)),
           ipAddressType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SBNamespaceProperties" });
@@ -3996,33 +4021,37 @@ function __c24(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 12:
-      return S.Record(S.String, __S(395, __c24, 11));
+      return S.Record(S.String, __S(411, __c25, 11));
     case 13:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(396, __c24, 12)),
+          userAssignedIdentities: S.optional(__S(412, __c25, 12)),
         }),
       ).annotate({ identifier: "Identity" });
-    case 14:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(144, __c9, 0)),
-          tags: S.optional(__S(352, __c22, 0)),
+          tags: S.optional(__S(368, __c23, 0)),
           location: S.String,
-          properties: S.optional(__S(393, __c24, 9)),
-          sku: S.optional(__S(394, __c24, 10)),
-          identity: S.optional(__S(397, __c24, 13)),
+          properties: S.optional(__S(409, __c25, 9)),
+          sku: S.optional(__S(410, __c25, 10)),
+          identity: S.optional(__S(413, __c25, 13)),
         }),
       ).annotate({ identifier: "GetNamespaceResponse" });
   }
 }
-function __c25(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4042,7 +4071,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "GetNamespaceAuthorizationRuleRequest" });
   }
 }
-function __c26(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4061,7 +4090,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "GetNamespaceNetworkRuleSetRequest" });
   }
 }
-function __c27(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4072,12 +4101,12 @@ function __c27(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          subnet: S.optional(__S(432, __c27, 0)),
+          subnet: S.optional(__S(464, __c29, 0)),
           ignoreMissingVnetServiceEndpoint: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "NWRuleSetVirtualNetworkRules" });
     case 2:
-      return S.Array(__S(433, __c27, 1));
+      return S.Array(__S(465, __c29, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4086,14 +4115,14 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "NWRuleSetIpRules" });
     case 4:
-      return S.Array(__S(435, __c27, 3));
+      return S.Array(__S(467, __c29, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           trustedServiceAccessEnabled: S.optional(S.Boolean),
           defaultAction: S.optional(S.String),
-          virtualNetworkRules: S.optional(__S(434, __c27, 2)),
-          ipRules: S.optional(__S(436, __c27, 4)),
+          virtualNetworkRules: S.optional(__S(466, __c29, 2)),
+          ipRules: S.optional(__S(468, __c29, 4)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkRuleSetProperties" });
@@ -4104,13 +4133,13 @@ function __c27(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(144, __c9, 0)),
-          properties: S.optional(__S(437, __c27, 5)),
+          properties: S.optional(__S(469, __c29, 5)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetNamespaceNetworkRuleSetResponse" });
   }
 }
-function __c28(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4132,13 +4161,13 @@ function __c28(j: number): any {
       });
   }
 }
-function __c29(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c30(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4151,11 +4180,11 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(__S(480, __c30, 0)),
+          properties: S.optional(__S(512, __c32, 0)),
         }),
       ).annotate({ identifier: "ProvisioningIssue" });
     case 2:
-      return S.Array(__S(481, __c30, 1));
+      return S.Array(__S(513, __c32, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4174,17 +4203,17 @@ function __c30(j: number): any {
         identifier: "NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation",
       });
     case 5:
-      return S.Array(__S(320, __c20, 0));
+      return S.Array(__S(336, __c21, 0));
     case 6:
-      return S.Array(__S(483, __c30, 3));
+      return S.Array(__S(515, __c32, 3));
     case 7:
       return S.suspend(() =>
         S.Struct({
           direction: S.optional(S.String),
-          addressPrefixes: S.optional(__S(464, __c29, 0)),
-          subscriptions: S.optional(__S(485, __c30, 5)),
-          networkSecurityPerimeters: S.optional(__S(486, __c30, 6)),
-          fullyQualifiedDomainNames: S.optional(__S(464, __c29, 0)),
+          addressPrefixes: S.optional(__S(496, __c31, 0)),
+          subscriptions: S.optional(__S(517, __c32, 5)),
+          networkSecurityPerimeters: S.optional(__S(518, __c32, 6)),
+          fullyQualifiedDomainNames: S.optional(__S(496, __c31, 0)),
         }),
       ).annotate({ identifier: "NspAccessRuleProperties" });
     case 8:
@@ -4193,29 +4222,29 @@ function __c30(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(487, __c30, 7)),
+          properties: S.optional(__S(519, __c32, 7)),
         }),
       ).annotate({ identifier: "NspAccessRule" });
     case 9:
-      return S.Array(__S(488, __c30, 8));
+      return S.Array(__S(520, __c32, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           accessRulesVersion: S.optional(S.String),
-          accessRules: S.optional(__S(489, __c30, 9)),
+          accessRules: S.optional(__S(521, __c32, 9)),
         }),
       ).annotate({ identifier: "NetworkSecurityPerimeterConfigurationPropertiesProfile" });
     case 11:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          provisioningIssues: S.optional(__S(482, __c30, 2)),
-          networkSecurityPerimeter: S.optional(__S(483, __c30, 3)),
-          resourceAssociation: S.optional(__S(484, __c30, 4)),
-          profile: S.optional(__S(490, __c30, 10)),
+          provisioningIssues: S.optional(__S(514, __c32, 2)),
+          networkSecurityPerimeter: S.optional(__S(515, __c32, 3)),
+          resourceAssociation: S.optional(__S(516, __c32, 4)),
+          profile: S.optional(__S(522, __c32, 10)),
           isBackingResource: S.optional(S.Boolean),
-          applicableFeatures: S.optional(__S(464, __c29, 0)),
+          applicableFeatures: S.optional(__S(496, __c31, 0)),
           parentAssociationName: S.optional(S.String),
           sourceResourceId: S.optional(S.String),
         }),
@@ -4227,7 +4256,7 @@ function __c30(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(144, __c9, 0)),
-          properties: S.optional(__S(491, __c30, 11)),
+          properties: S.optional(__S(523, __c32, 11)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -4235,7 +4264,7 @@ function __c30(j: number): any {
       });
   }
 }
-function __c31(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4255,7 +4284,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "GetPrivateEndpointConnectionRequest" });
   }
 }
-function __c32(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4276,31 +4305,31 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(464, __c29, 0)),
-          requiredZoneNames: S.optional(__S(464, __c29, 0)),
+          requiredMembers: S.optional(__S(496, __c31, 0)),
+          requiredZoneNames: S.optional(__S(496, __c31, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResourceProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(513, __c32, 1)),
+          properties: S.optional(__S(545, __c34, 1)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 3:
-      return S.Array(__S(514, __c32, 2));
+      return S.Array(__S(546, __c34, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(515, __c32, 3),
+          value: __S(547, __c34, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResourcesListResult" });
   }
 }
-function __c33(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4320,7 +4349,7 @@ function __c33(j: number): any {
       ).annotate({ identifier: "GetQueueRequest" });
   }
 }
-function __c34(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4334,12 +4363,12 @@ function __c34(j: number): any {
       ).annotate({ identifier: "MessageCountDetails" });
   }
 }
-function __c35(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          countDetails: S.optional(__S(544, __c34, 0)),
+          countDetails: S.optional(__S(576, __c36, 0)),
           createdAt: S.optional(S.String),
           updatedAt: S.optional(S.String),
           accessedAt: S.optional(S.String),
@@ -4371,13 +4400,13 @@ function __c35(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(144, __c9, 0)),
-          properties: S.optional(__S(560, __c35, 0)),
+          properties: S.optional(__S(592, __c37, 0)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetQueueResponse" });
   }
 }
-function __c36(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4398,7 +4427,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "GetQueueAuthorizationRuleRequest" });
   }
 }
-function __c37(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4420,7 +4449,7 @@ function __c37(j: number): any {
       ).annotate({ identifier: "GetRuleRequest" });
   }
 }
-function __c38(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4433,7 +4462,7 @@ function __c38(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(352, __c22, 0)),
+          properties: S.optional(__S(368, __c23, 0)),
           correlationId: S.optional(S.String),
           messageId: S.optional(S.String),
           to: S.optional(S.String),
@@ -4448,10 +4477,10 @@ function __c38(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(__S(608, __c38, 0)),
+          action: S.optional(__S(640, __c40, 0)),
           filterType: S.optional(S.String),
-          sqlFilter: S.optional(__S(608, __c38, 0)),
-          correlationFilter: S.optional(__S(609, __c38, 1)),
+          sqlFilter: S.optional(__S(640, __c40, 0)),
+          correlationFilter: S.optional(__S(641, __c40, 1)),
         }),
       ).annotate({ identifier: "Ruleproperties" });
     case 3:
@@ -4461,13 +4490,13 @@ function __c38(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(144, __c9, 0)),
-          properties: S.optional(__S(610, __c38, 2)),
+          properties: S.optional(__S(642, __c40, 2)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetRuleResponse" });
   }
 }
-function __c39(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4488,7 +4517,7 @@ function __c39(j: number): any {
       ).annotate({ identifier: "GetSubscriptionRequest" });
   }
 }
-function __c40(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4505,7 +4534,7 @@ function __c40(j: number): any {
           createdAt: S.optional(S.String),
           accessedAt: S.optional(S.String),
           updatedAt: S.optional(S.String),
-          countDetails: S.optional(__S(544, __c34, 0)),
+          countDetails: S.optional(__S(576, __c36, 0)),
           lockDuration: S.optional(S.String),
           requiresSession: S.optional(S.Boolean),
           defaultMessageTimeToLive: S.optional(S.String),
@@ -4520,7 +4549,7 @@ function __c40(j: number): any {
           forwardDeadLetteredMessagesTo: S.optional(S.String),
           isClientAffine: S.optional(S.Boolean),
           userMetadata: S.optional(S.String),
-          clientAffineProperties: S.optional(__S(640, __c40, 0)),
+          clientAffineProperties: S.optional(__S(672, __c42, 0)),
         }),
       ).annotate({ identifier: "SBSubscriptionProperties" });
     case 2:
@@ -4530,13 +4559,13 @@ function __c40(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(144, __c9, 0)),
-          properties: S.optional(__S(641, __c40, 1)),
+          properties: S.optional(__S(673, __c42, 1)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetSubscriptionResponse" });
   }
 }
-function __c41(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4556,7 +4585,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "DeleteDisasterRecoveryConfigRequest" });
   }
 }
-function __c42(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4576,7 +4605,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "GetTopicRequest" });
   }
 }
-function __c43(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4586,7 +4615,7 @@ function __c43(j: number): any {
           updatedAt: S.optional(S.String),
           accessedAt: S.optional(S.String),
           subscriptionCount: S.optional(S.Number),
-          countDetails: S.optional(__S(544, __c34, 0)),
+          countDetails: S.optional(__S(576, __c36, 0)),
           defaultMessageTimeToLive: S.optional(S.String),
           maxSizeInMegabytes: S.optional(S.Number),
           maxMessageSizeInKilobytes: S.optional(S.Number),
@@ -4608,13 +4637,13 @@ function __c43(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(144, __c9, 0)),
-          properties: S.optional(__S(688, __c43, 0)),
+          properties: S.optional(__S(720, __c45, 0)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetTopicResponse" });
   }
 }
-function __c44(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4635,7 +4664,7 @@ function __c44(j: number): any {
       ).annotate({ identifier: "GetTopicAuthorizationRuleRequest" });
   }
 }
-function __c45(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4655,20 +4684,20 @@ function __c45(j: number): any {
       ).annotate({ identifier: "ListDisasterRecoveryConfigAuthorizationRulesRequest" });
   }
 }
-function __c46(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(226, __c14, 2));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(736, __c46, 0),
+          value: __S(768, __c48, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SBAuthorizationRuleListResult" });
   }
 }
-function __c47(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4689,7 +4718,7 @@ function __c47(j: number): any {
       ).annotate({ identifier: "ListDisasterRecoveryConfigKeysRequest" });
   }
 }
-function __c48(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4705,7 +4734,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "AccessKeys" });
   }
 }
-function __c49(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4727,13 +4756,13 @@ function __c49(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(785, __c49, 1),
+          value: __S(817, __c51, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArmDisasterRecoveryListResult" });
   }
 }
-function __c50(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4751,17 +4780,17 @@ function __c50(j: number): any {
         ),
       ).annotate({ identifier: "ListMigrationConfigsRequest" });
     case 1:
-      return S.Array(__S(257, __c16, 1));
+      return S.Array(__S(256, __c16, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(801, __c50, 1),
+          value: __S(833, __c52, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MigrationConfigListResult" });
   }
 }
-function __c51(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4780,7 +4809,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "ListNamespaceAuthorizationRulesRequest" });
   }
 }
-function __c52(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4798,20 +4827,20 @@ function __c52(j: number): any {
       ).annotate({ identifier: "ListNamespaceByResourceGroupRequest" });
   }
 }
-function __c53(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(398, __c24, 14));
+      return S.Array(__S(416, __c26, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(848, __c53, 0),
+          value: __S(880, __c55, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SBNamespaceListResult" });
   }
 }
-function __c54(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4831,7 +4860,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "ListNamespaceKeysRequest" });
   }
 }
-function __c55(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4849,17 +4878,17 @@ function __c55(j: number): any {
         ),
       ).annotate({ identifier: "ListNamespaceNetworkRuleSetsRequest" });
     case 1:
-      return S.Array(__S(438, __c27, 6));
+      return S.Array(__S(470, __c29, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(881, __c55, 1),
+          value: __S(913, __c57, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkRuleSetListResult" });
   }
 }
-function __c56(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4879,7 +4908,7 @@ function __c56(j: number): any {
       ).annotate({ identifier: "DeleteMigrationConfigRequest" });
   }
 }
-function __c57(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4896,7 +4925,7 @@ function __c57(j: number): any {
       ).annotate({ identifier: "ListNamespacesRequest" });
   }
 }
-function __c58(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4914,17 +4943,17 @@ function __c58(j: number): any {
         ),
       ).annotate({ identifier: "ListNetworkSecurityPerimeterConfigurationRequest" });
     case 1:
-      return S.Array(__S(492, __c30, 12));
+      return S.Array(__S(524, __c32, 12));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(929, __c58, 1),
+          value: __S(961, __c60, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkSecurityPerimeterConfigurationList" });
   }
 }
-function __c59(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4951,23 +4980,23 @@ function __c59(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(945, __c59, 1)),
+          display: S.optional(__S(977, __c61, 1)),
           origin: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(946, __c59, 2));
+      return S.Array(__S(978, __c61, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(947, __c59, 3),
+          value: __S(979, __c61, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
   }
 }
-function __c60(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4987,13 +5016,13 @@ function __c60(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(368, __c23, 0),
+          value: __S(384, __c24, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
   }
 }
-function __c61(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5013,7 +5042,7 @@ function __c61(j: number): any {
       ).annotate({ identifier: "ListQueueAuthorizationRulesRequest" });
   }
 }
-function __c62(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5033,17 +5062,17 @@ function __c62(j: number): any {
         ),
       ).annotate({ identifier: "ListQueueByNamespaceRequest" });
     case 1:
-      return S.Array(__S(561, __c35, 1));
+      return S.Array(__S(593, __c37, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(993, __c62, 1),
+          value: __S(1025, __c64, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SBQueueListResult" });
   }
 }
-function __c63(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5064,7 +5093,7 @@ function __c63(j: number): any {
       ).annotate({ identifier: "ListQueueKeysRequest" });
   }
 }
-function __c64(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5086,17 +5115,17 @@ function __c64(j: number): any {
         ),
       ).annotate({ identifier: "ListRuleBySubscriptionsRequest" });
     case 1:
-      return S.Array(__S(611, __c38, 3));
+      return S.Array(__S(643, __c40, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1025, __c64, 1),
+          value: __S(1057, __c66, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RuleListResult" });
   }
 }
-function __c65(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5117,17 +5146,17 @@ function __c65(j: number): any {
         ),
       ).annotate({ identifier: "ListSubscriptionByTopicRequest" });
     case 1:
-      return S.Array(__S(642, __c40, 2));
+      return S.Array(__S(674, __c42, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1041, __c65, 1),
+          value: __S(1073, __c67, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SBSubscriptionListResult" });
   }
 }
-function __c66(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5147,7 +5176,7 @@ function __c66(j: number): any {
       ).annotate({ identifier: "ListTopicAuthorizationRulesRequest" });
   }
 }
-function __c67(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5164,9 +5193,15 @@ function __c67(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteNamespaceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "DeleteNamespaceResponse" });
   }
 }
-function __c68(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5186,17 +5221,17 @@ function __c68(j: number): any {
         ),
       ).annotate({ identifier: "ListTopicByNamespaceRequest" });
     case 1:
-      return S.Array(__S(689, __c43, 1));
+      return S.Array(__S(721, __c45, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1089, __c68, 1),
+          value: __S(1121, __c70, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SBTopicListResult" });
   }
 }
-function __c69(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5217,7 +5252,7 @@ function __c69(j: number): any {
       ).annotate({ identifier: "ListTopicKeysRequest" });
   }
 }
-function __c70(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5233,7 +5268,7 @@ function __c70(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           configName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1120, __c70, 0)),
+          properties: S.optional(__S(1152, __c72, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5243,9 +5278,22 @@ function __c70(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MigrationConfigsCreateAndStartMigrationRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(144, __c9, 0)),
+          properties: S.optional(__S(272, __c17, 0)),
+          location: S.optional(S.String),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "MigrationConfigsCreateAndStartMigrationResponse" });
   }
 }
-function __c71(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5265,21 +5313,21 @@ function __c71(j: number): any {
       ).annotate({ identifier: "MigrationConfigsRevertRequest" });
   }
 }
-function __c72(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           minimumTlsVersion: S.optional(S.String),
           zoneRedundant: S.optional(S.Boolean),
-          encryption: S.optional(__S(387, __c24, 3)),
-          privateEndpointConnections: S.optional(__S(1169, __c73, 1)),
+          encryption: S.optional(__S(403, __c25, 3)),
+          privateEndpointConnections: S.optional(__S(1201, __c75, 1)),
           disableLocalAuth: S.optional(S.Boolean),
           alternateName: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
           premiumMessagingPartitions: S.optional(S.Number),
-          platformCapabilities: S.optional(__S(389, __c24, 5)),
-          geoDataReplication: S.optional(__S(392, __c24, 8)),
+          platformCapabilities: S.optional(__S(405, __c25, 5)),
+          geoDataReplication: S.optional(__S(408, __c25, 8)),
           ipAddressType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SBNamespacePropertiesInput" });
@@ -5289,11 +5337,11 @@ function __c72(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(352, __c22, 0)),
+          tags: S.optional(__S(368, __c23, 0)),
           location: S.String,
-          properties: S.optional(__S(1152, __c72, 0)),
-          sku: S.optional(__S(394, __c24, 10)),
-          identity: S.optional(__S(1171, __c73, 3)),
+          properties: S.optional(__S(1184, __c74, 0)),
+          sku: S.optional(__S(410, __c25, 10)),
+          identity: S.optional(__S(1203, __c75, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5303,30 +5351,45 @@ function __c72(j: number): any {
           }),
         ),
       ).annotate({ identifier: "NamespacesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(144, __c9, 0)),
+          tags: S.optional(__S(368, __c23, 0)),
+          location: S.String,
+          properties: S.optional(__S(409, __c25, 9)),
+          sku: S.optional(__S(410, __c25, 10)),
+          identity: S.optional(__S(413, __c25, 13)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "NamespacesCreateOrUpdateResponse" });
   }
 }
-function __c73(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(337, __c21, 1)),
+          properties: S.optional(__S(353, __c22, 1)),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionInput" });
     case 1:
-      return S.Array(__S(1168, __c73, 0));
+      return S.Array(__S(1200, __c75, 0));
     case 2:
-      return S.Record(S.String, __S(288, __c18, 0));
+      return S.Record(S.String, __S(304, __c19, 0));
     case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(1170, __c73, 2)),
+          userAssignedIdentities: S.optional(__S(1202, __c75, 2)),
         }),
       ).annotate({ identifier: "IdentityInput" });
   }
 }
-function __c74(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5347,7 +5410,7 @@ function __c74(j: number): any {
       ).annotate({ identifier: "NamespacesCreateOrUpdateAuthorizationRuleRequest" });
   }
 }
-function __c75(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5355,7 +5418,7 @@ function __c75(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(437, __c27, 5)),
+          properties: S.optional(__S(469, __c29, 5)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5367,7 +5430,7 @@ function __c75(j: number): any {
       ).annotate({ identifier: "NamespacesCreateOrUpdateNetworkRuleSetRequest" });
   }
 }
-function __c76(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5382,7 +5445,7 @@ function __c76(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1216, __c76, 0)),
+          properties: S.optional(__S(1248, __c78, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5392,9 +5455,17 @@ function __c76(j: number): any {
           }),
         ),
       ).annotate({ identifier: "NamespacesFailoverRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "NamespacesFailoverResponse" });
   }
 }
-function __c77(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5414,7 +5485,7 @@ function __c77(j: number): any {
       ).annotate({ identifier: "NetworkSecurityPerimeterConfigurationsReconcileRequest" });
   }
 }
-function __c78(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5423,7 +5494,7 @@ function __c78(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(337, __c21, 1)),
+          properties: S.optional(__S(353, __c22, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5435,7 +5506,7 @@ function __c78(j: number): any {
       ).annotate({ identifier: "PrivateEndpointConnectionsCreateOrUpdateRequest" });
   }
 }
-function __c79(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5455,7 +5526,7 @@ function __c79(j: number): any {
       ).annotate({ identifier: "DeleteNamespaceAuthorizationRuleRequest" });
   }
 }
-function __c80(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5486,7 +5557,7 @@ function __c80(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           queueName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1280, __c80, 0)),
+          properties: S.optional(__S(1312, __c82, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5498,7 +5569,7 @@ function __c80(j: number): any {
       ).annotate({ identifier: "QueuesCreateOrUpdateRequest" });
   }
 }
-function __c81(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5520,7 +5591,7 @@ function __c81(j: number): any {
       ).annotate({ identifier: "QueuesCreateOrUpdateAuthorizationRuleRequest" });
   }
 }
-function __c82(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5542,7 +5613,7 @@ function __c82(j: number): any {
       ).annotate({ identifier: "RegenerateNamespaceKeysRequest" });
   }
 }
-function __c83(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5565,7 +5636,7 @@ function __c83(j: number): any {
       ).annotate({ identifier: "RegenerateQueueKeysRequest" });
   }
 }
-function __c84(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5588,7 +5659,7 @@ function __c84(j: number): any {
       ).annotate({ identifier: "RegenerateTopicKeysRequest" });
   }
 }
-function __c85(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5599,7 +5670,7 @@ function __c85(j: number): any {
           topicName: S.String.pipe(T.Label()),
           subscriptionName: S.String.pipe(T.Label()),
           ruleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(610, __c38, 2)),
+          properties: S.optional(__S(642, __c40, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5611,7 +5682,7 @@ function __c85(j: number): any {
       ).annotate({ identifier: "RulesCreateOrUpdateRequest" });
   }
 }
-function __c86(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5630,7 +5701,7 @@ function __c86(j: number): any {
           forwardDeadLetteredMessagesTo: S.optional(S.String),
           isClientAffine: S.optional(S.Boolean),
           userMetadata: S.optional(S.String),
-          clientAffineProperties: S.optional(__S(640, __c40, 0)),
+          clientAffineProperties: S.optional(__S(672, __c42, 0)),
         }),
       ).annotate({ identifier: "SBSubscriptionPropertiesInput" });
     case 1:
@@ -5641,7 +5712,7 @@ function __c86(j: number): any {
           namespaceName: S.String.pipe(T.Label()),
           topicName: S.String.pipe(T.Label()),
           subscriptionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1376, __c86, 0)),
+          properties: S.optional(__S(1408, __c88, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5653,7 +5724,7 @@ function __c86(j: number): any {
       ).annotate({ identifier: "SubscriptionsCreateOrUpdateRequest" });
   }
 }
-function __c87(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5679,7 +5750,7 @@ function __c87(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           topicName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1392, __c87, 0)),
+          properties: S.optional(__S(1424, __c89, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5691,7 +5762,7 @@ function __c87(j: number): any {
       ).annotate({ identifier: "TopicsCreateOrUpdateRequest" });
   }
 }
-function __c88(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5713,13 +5784,13 @@ function __c88(j: number): any {
       ).annotate({ identifier: "TopicsCreateOrUpdateAuthorizationRuleRequest" });
   }
 }
-function __c89(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          encryption: S.optional(__S(387, __c24, 3)),
-          privateEndpointConnections: S.optional(__S(1169, __c73, 1)),
+          encryption: S.optional(__S(403, __c25, 3)),
+          privateEndpointConnections: S.optional(__S(1201, __c75, 1)),
           disableLocalAuth: S.optional(S.Boolean),
           alternateName: S.optional(S.String),
         }),
@@ -5731,10 +5802,10 @@ function __c89(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(352, __c22, 0)),
-          sku: S.optional(__S(394, __c24, 10)),
-          properties: S.optional(__S(1424, __c89, 0)),
-          identity: S.optional(__S(1171, __c73, 3)),
+          tags: S.optional(__S(368, __c23, 0)),
+          sku: S.optional(__S(410, __c25, 10)),
+          properties: S.optional(__S(1456, __c91, 0)),
+          identity: S.optional(__S(1203, __c75, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5746,7 +5817,7 @@ function __c89(j: number): any {
       ).annotate({ identifier: "UpdateNamespaceRequest" });
   }
 }
-function __c90(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5764,9 +5835,16 @@ function __c90(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeletePrivateEndpointConnectionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeletePrivateEndpointConnectionResponse" });
   }
 }
-function __c91(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5786,7 +5864,7 @@ function __c91(j: number): any {
       ).annotate({ identifier: "DeleteQueueRequest" });
   }
 }
-function __c92(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

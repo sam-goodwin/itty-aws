@@ -178,22 +178,30 @@ export interface DeleteAgentPoolRequest {
   /** Parameter for the name of the agent pool in the provisioned cluster. */
   agentPoolName: string;
 }
-export interface DeleteAgentPoolResponse {}
+export interface DeleteAgentPoolResponse {
+  location?: string;
+}
 export interface DeleteHybridIdentityMetadataRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
-export interface DeleteHybridIdentityMetadataResponse {}
+export interface DeleteHybridIdentityMetadataResponse {
+  location?: string;
+}
 export interface DeleteKubernetesVersionsRequest {
   /** The fully qualified Azure Resource Manager identifier of the custom location resource. */
   customLocationResourceUri: string;
 }
-export interface DeleteKubernetesVersionsResponse {}
+export interface DeleteKubernetesVersionsResponse {
+  location?: string;
+}
 export interface DeleteProvisionedClusterInstanceRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
-export interface DeleteProvisionedClusterInstanceResponse {}
+export interface DeleteProvisionedClusterInstanceResponse {
+  location?: string;
+}
 export interface DeleteVirtualNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -202,12 +210,16 @@ export interface DeleteVirtualNetworkRequest {
   /** Parameter for the name of the virtual network */
   virtualNetworkName: string;
 }
-export interface DeleteVirtualNetworkResponse {}
+export interface DeleteVirtualNetworkResponse {
+  location?: string;
+}
 export interface DeleteVMSkusRequest {
   /** The fully qualified Azure Resource Manager identifier of the custom location resource. */
   customLocationResourceUri: string;
 }
-export interface DeleteVMSkusResponse {}
+export interface DeleteVMSkusResponse {
+  location?: string;
+}
 export interface GetAgentPoolRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
@@ -898,6 +910,7 @@ export interface ListCredentialResponse {
   status?: ProvisioningState;
   error?: ListCredentialResponseError;
   properties?: ListCredentialResponseProperties;
+  location?: string;
 }
 export interface ListProvisionedClusterInstancesRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
@@ -1934,7 +1947,11 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteAgentPoolResponse" });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "DeleteAgentPoolResponse" });
   }
 }
 function __c8(j: number): any {
@@ -2517,6 +2534,7 @@ function __c22(j: number): any {
           status: S.optional(S.String),
           error: S.optional(__S(384, __c12, 0)),
           properties: S.optional(__S(704, __c22, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "ListCredentialResponse" });
   }

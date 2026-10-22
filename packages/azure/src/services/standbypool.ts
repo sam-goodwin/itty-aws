@@ -19,7 +19,12 @@ export interface DeleteStandbyContainerGroupPoolRequest {
   /** Name of the standby container group pool */
   standbyContainerGroupPoolName: string;
 }
-export interface DeleteStandbyContainerGroupPoolResponse {}
+export interface DeleteStandbyContainerGroupPoolResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteStandbyVirtualMachinePoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -28,7 +33,12 @@ export interface DeleteStandbyVirtualMachinePoolRequest {
   /** Name of the standby virtual machine pool */
   standbyVirtualMachinePoolName: string;
 }
-export interface DeleteStandbyVirtualMachinePoolResponse {}
+export interface DeleteStandbyVirtualMachinePoolResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetStandbyContainerGroupPoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -630,6 +640,8 @@ export interface StandbyContainerGroupPoolsCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: StandbyContainerGroupPoolResourceProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type StandbyVirtualMachinePoolsCreateOrUpdateRequestTagsMap = {
@@ -679,6 +691,8 @@ export interface StandbyVirtualMachinePoolsCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: StandbyVirtualMachinePoolResourceProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateStandbyContainerGroupPoolRequestTagsMap = { [key: string]: string | undefined };
@@ -805,7 +819,7 @@ export const GetStandbyContainerGroupPool: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(224, __c14, 0) as any as S.Schema<GetStandbyContainerGroupPoolRequest>,
-  output: __S(279, __c17, 7) as any as S.Schema<GetStandbyContainerGroupPoolResponse>,
+  output: __S(288, __c18, 0) as any as S.Schema<GetStandbyContainerGroupPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -819,8 +833,8 @@ export const GetStandbyContainerGroupPoolRuntimeView: API.OperationMethod<
   GetStandbyContainerGroupPoolRuntimeViewError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<GetStandbyContainerGroupPoolRuntimeViewRequest>,
-  output: __S(313, __c19, 9) as any as S.Schema<GetStandbyContainerGroupPoolRuntimeViewResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetStandbyContainerGroupPoolRuntimeViewRequest>,
+  output: __S(329, __c20, 9) as any as S.Schema<GetStandbyContainerGroupPoolRuntimeViewResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -834,8 +848,8 @@ export const GetStandbyVirtualMachine: API.OperationMethod<
   GetStandbyVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<GetStandbyVirtualMachineRequest>,
-  output: __S(337, __c21, 1) as any as S.Schema<GetStandbyVirtualMachineResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetStandbyVirtualMachineRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<GetStandbyVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -849,8 +863,8 @@ export const GetStandbyVirtualMachinePool: API.OperationMethod<
   GetStandbyVirtualMachinePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<GetStandbyVirtualMachinePoolRequest>,
-  output: __S(371, __c23, 3) as any as S.Schema<GetStandbyVirtualMachinePoolResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetStandbyVirtualMachinePoolRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<GetStandbyVirtualMachinePoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -864,8 +878,8 @@ export const GetStandbyVirtualMachinePoolRuntimeView: API.OperationMethod<
   GetStandbyVirtualMachinePoolRuntimeViewError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<GetStandbyVirtualMachinePoolRuntimeViewRequest>,
-  output: __S(313, __c19, 9) as any as S.Schema<GetStandbyVirtualMachinePoolRuntimeViewResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetStandbyVirtualMachinePoolRuntimeViewRequest>,
+  output: __S(329, __c20, 9) as any as S.Schema<GetStandbyVirtualMachinePoolRuntimeViewResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -879,8 +893,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(404, __c25, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(436, __c27, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -894,8 +908,8 @@ export const ListStandbyContainerGroupPoolByResourceGroup: API.OperationMethod<
   ListStandbyContainerGroupPoolByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<ListStandbyContainerGroupPoolByResourceGroupRequest>,
-  output: __S(433, __c27, 1) as any as S.Schema<StandbyContainerGroupPoolResourceListResult>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListStandbyContainerGroupPoolByResourceGroupRequest>,
+  output: __S(465, __c29, 1) as any as S.Schema<StandbyContainerGroupPoolResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -909,8 +923,8 @@ export const ListStandbyContainerGroupPoolBySubscription: API.OperationMethod<
   ListStandbyContainerGroupPoolBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<ListStandbyContainerGroupPoolBySubscriptionRequest>,
-  output: __S(433, __c27, 1) as any as S.Schema<StandbyContainerGroupPoolResourceListResult>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListStandbyContainerGroupPoolBySubscriptionRequest>,
+  output: __S(465, __c29, 1) as any as S.Schema<StandbyContainerGroupPoolResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1020,7 +1034,7 @@ export const StandbyContainerGroupPoolsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(161, __c10, 1) as any as S.Schema<StandbyContainerGroupPoolsCreateOrUpdateRequest>,
-  output: __S(279, __c17, 7) as any as S.Schema<StandbyContainerGroupPoolsCreateOrUpdateResponse>,
+  output: __S(162, __c10, 2) as any as S.Schema<StandbyContainerGroupPoolsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1035,7 +1049,7 @@ export const StandbyVirtualMachinePoolsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(177, __c11, 1) as any as S.Schema<StandbyVirtualMachinePoolsCreateOrUpdateRequest>,
-  output: __S(371, __c23, 3) as any as S.Schema<StandbyVirtualMachinePoolsCreateOrUpdateResponse>,
+  output: __S(178, __c11, 2) as any as S.Schema<StandbyVirtualMachinePoolsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1050,7 +1064,7 @@ export const UpdateStandbyContainerGroupPool: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(193, __c12, 1) as any as S.Schema<UpdateStandbyContainerGroupPoolRequest>,
-  output: __S(279, __c17, 7) as any as S.Schema<UpdateStandbyContainerGroupPoolResponse>,
+  output: __S(288, __c18, 0) as any as S.Schema<UpdateStandbyContainerGroupPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1065,7 +1079,7 @@ export const UpdateStandbyVirtualMachinePool: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(209, __c13, 1) as any as S.Schema<UpdateStandbyVirtualMachinePoolRequest>,
-  output: __S(371, __c23, 3) as any as S.Schema<UpdateStandbyVirtualMachinePoolResponse>,
+  output: __S(400, __c25, 0) as any as S.Schema<UpdateStandbyVirtualMachinePoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1094,9 +1108,12 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteStandbyContainerGroupPoolResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteStandbyContainerGroupPoolResponse" });
   }
 }
 function __c2(j: number): any {
@@ -1140,7 +1157,7 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(313, __c19, 9));
+      return S.Array(__S(329, __c20, 9));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1170,7 +1187,7 @@ function __c5(j: number): any {
         identifier: "ListStandbyVirtualMachineByStandbyVirtualMachinePoolResourceRequest",
       });
     case 1:
-      return S.Array(__S(337, __c21, 1));
+      return S.Array(__S(353, __c22, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1201,7 +1218,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(371, __c23, 3));
+      return S.Array(__S(400, __c25, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1275,6 +1292,19 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StandbyContainerGroupPoolsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(240, __c15, 0)),
+          tags: S.optional(__S(256, __c16, 0)),
+          location: S.String,
+          properties: S.optional(__S(278, __c17, 6)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "StandbyContainerGroupPoolsCreateOrUpdateResponse" });
   }
 }
 function __c11(j: number): any {
@@ -1282,9 +1312,9 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          elasticityProfile: S.optional(__S(368, __c23, 0)),
+          elasticityProfile: S.optional(__S(384, __c24, 0)),
           virtualMachineState: S.String,
-          vmStateDistribution: S.optional(__S(369, __c23, 1)),
+          vmStateDistribution: S.optional(__S(385, __c24, 1)),
           attachedVirtualMachineScaleSetId: S.optional(S.String),
         }),
       ).annotate({ identifier: "StandbyVirtualMachinePoolResourcePropertiesInput" });
@@ -1306,6 +1336,19 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StandbyVirtualMachinePoolsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(240, __c15, 0)),
+          tags: S.optional(__S(256, __c16, 0)),
+          location: S.String,
+          properties: S.optional(__S(386, __c24, 2)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "StandbyVirtualMachinePoolsCreateOrUpdateResponse" });
   }
 }
 function __c12(j: number): any {
@@ -1342,9 +1385,9 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          elasticityProfile: S.optional(__S(368, __c23, 0)),
+          elasticityProfile: S.optional(__S(384, __c24, 0)),
           virtualMachineState: S.optional(S.String),
-          vmStateDistribution: S.optional(__S(369, __c23, 1)),
+          vmStateDistribution: S.optional(__S(385, __c24, 1)),
           attachedVirtualMachineScaleSetId: S.optional(S.String),
         }),
       ).annotate({ identifier: "StandbyVirtualMachinePoolResourceUpdateProperties" });
@@ -1456,7 +1499,11 @@ function __c17(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "StandbyContainerGroupPoolResourceProperties" });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1470,7 +1517,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "GetStandbyContainerGroupPoolResponse" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1490,7 +1537,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "GetStandbyContainerGroupPoolRuntimeViewRequest" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1500,16 +1547,16 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "PoolContainerGroupStateCount" });
     case 1:
-      return S.Array(__S(304, __c19, 0));
+      return S.Array(__S(320, __c20, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           zone: S.optional(S.Number),
-          instanceCountsByState: __S(305, __c19, 1),
+          instanceCountsByState: __S(321, __c20, 1),
         }),
       ).annotate({ identifier: "ContainerGroupInstanceCountSummary" });
     case 3:
-      return S.Array(__S(306, __c19, 2));
+      return S.Array(__S(322, __c20, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1522,13 +1569,13 @@ function __c19(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          instancesRequestedCount: __S(309, __c19, 5),
+          instancesRequestedCount: __S(325, __c20, 5),
         }),
       ).annotate({ identifier: "StandbyContainerGroupPoolForecastValues" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          forecastValues: __S(310, __c19, 6),
+          forecastValues: __S(326, __c20, 6),
           forecastStartTime: S.String,
           forecastInfo: S.String,
         }),
@@ -1536,10 +1583,10 @@ function __c19(j: number): any {
     case 8:
       return S.suspend(() =>
         S.Struct({
-          instanceCountSummary: __S(307, __c19, 3),
-          status: S.optional(__S(308, __c19, 4)),
+          instanceCountSummary: __S(323, __c20, 3),
+          status: S.optional(__S(324, __c20, 4)),
           provisioningState: S.optional(S.String),
-          prediction: S.optional(__S(311, __c19, 7)),
+          prediction: S.optional(__S(327, __c20, 7)),
         }),
       ).annotate({ identifier: "StandbyContainerGroupPoolRuntimeViewResourceProperties" });
     case 9:
@@ -1549,12 +1596,12 @@ function __c19(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(240, __c15, 0)),
-          properties: S.optional(__S(312, __c19, 8)),
+          properties: S.optional(__S(328, __c20, 8)),
         }),
       ).annotate({ identifier: "GetStandbyContainerGroupPoolRuntimeViewResponse" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1574,7 +1621,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "GetStandbyVirtualMachineRequest" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1590,12 +1637,12 @@ function __c21(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(240, __c15, 0)),
-          properties: S.optional(__S(336, __c21, 0)),
+          properties: S.optional(__S(352, __c22, 0)),
         }),
       ).annotate({ identifier: "GetStandbyVirtualMachineResponse" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1614,7 +1661,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "GetStandbyVirtualMachinePoolRequest" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1636,14 +1683,18 @@ function __c23(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          elasticityProfile: S.optional(__S(368, __c23, 0)),
+          elasticityProfile: S.optional(__S(384, __c24, 0)),
           virtualMachineState: S.String,
-          vmStateDistribution: S.optional(__S(369, __c23, 1)),
+          vmStateDistribution: S.optional(__S(385, __c24, 1)),
           attachedVirtualMachineScaleSetId: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "StandbyVirtualMachinePoolResourceProperties" });
-    case 3:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1652,12 +1703,12 @@ function __c23(j: number): any {
           systemData: S.optional(__S(240, __c15, 0)),
           tags: S.optional(__S(256, __c16, 0)),
           location: S.String,
-          properties: S.optional(__S(370, __c23, 2)),
+          properties: S.optional(__S(386, __c24, 2)),
         }),
       ).annotate({ identifier: "GetStandbyVirtualMachinePoolResponse" });
   }
 }
-function __c24(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1677,7 +1728,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "GetStandbyVirtualMachinePoolRuntimeViewRequest" });
   }
 }
-function __c25(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1704,23 +1755,23 @@ function __c25(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(401, __c25, 1)),
+          display: S.optional(__S(433, __c27, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(402, __c25, 2));
+      return S.Array(__S(434, __c27, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(403, __c25, 3)),
+          value: S.optional(__S(435, __c27, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c26(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1738,20 +1789,20 @@ function __c26(j: number): any {
       ).annotate({ identifier: "ListStandbyContainerGroupPoolByResourceGroupRequest" });
   }
 }
-function __c27(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(279, __c17, 7));
+      return S.Array(__S(288, __c18, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(432, __c27, 0),
+          value: __S(464, __c29, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StandbyContainerGroupPoolResourceListResult" });
   }
 }
-function __c28(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

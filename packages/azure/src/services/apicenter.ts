@@ -459,6 +459,10 @@ export interface ApiSpecExportResult {
   format?: ApiSpecExportResultFormat;
   /** The result of the export operation. */
   value?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Assignment entity for Metadata */
 export type MetadataAssignmentEntity = "api" | "environment" | "deployment";
@@ -480,6 +484,10 @@ export interface MetadataSchemaExportResult {
   format?: MetadataSchemaExportFormat;
   /** The result of the export operation. */
   value?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetApiDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -763,7 +771,12 @@ export interface ImportApiDefinitionSpecificationRequest {
   /** API specification details. */
   specification?: ApiDefinitionPropertiesSpecification;
 }
-export interface ImportApiDefinitionSpecificationResponse {}
+export interface ImportApiDefinitionSpecificationResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface ListApiDefinitionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1578,7 +1591,7 @@ export const ImportApiDefinitionSpecification: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(224, __c28, 0) as any as S.Schema<ImportApiDefinitionSpecificationRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<ImportApiDefinitionSpecificationResponse>,
+  output: __S(225, __c28, 1) as any as S.Schema<ImportApiDefinitionSpecificationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2124,6 +2137,8 @@ function __c13(j: number): any {
         S.Struct({
           format: S.optional(S.String),
           value: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "ApiSpecExportResult" });
   }
@@ -2479,6 +2494,13 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ImportApiDefinitionSpecificationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ImportApiDefinitionSpecificationResponse" });
   }
 }
 function __c29(j: number): any {

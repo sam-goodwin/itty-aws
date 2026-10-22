@@ -381,7 +381,12 @@ export interface DeleteAzureMonitorWorkspaceRequest {
   /** The name of the Azure Monitor Workspace. The name is case insensitive */
   azureMonitorWorkspaceName: string;
 }
-export interface DeleteAzureMonitorWorkspaceResponse {}
+export interface DeleteAzureMonitorWorkspaceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteIssueRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -401,7 +406,12 @@ export interface DeletePipelineGroupRequest {
   /** The name of pipeline group. The name is case insensitive. */
   pipelineGroupName: string;
 }
-export interface DeletePipelineGroupResponse {}
+export interface DeletePipelineGroupResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface FetchIssueBackgroundVisualizationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1250,6 +1260,10 @@ export interface PipelineGroupsCreateOrUpdateResponse {
   properties?: PipelineGroupProperties;
   /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface SetIssueBackgroundVisualizationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1437,6 +1451,10 @@ export interface UpdatePipelineGroupResponse {
   properties?: PipelineGroupProperties;
   /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type AddIssueInvestigationResultError = AzureOpError;
 /** Adds investigation result */
@@ -1476,8 +1494,8 @@ export const CreateIssue: API.OperationMethod<
   CreateIssueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(833, __c26, 1) as any as S.Schema<CreateIssueRequest>,
-  output: __S(873, __c27, 9) as any as S.Schema<CreateIssueResponse>,
+  input: __S(865, __c27, 1) as any as S.Schema<CreateIssueRequest>,
+  output: __S(905, __c28, 9) as any as S.Schema<CreateIssueResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1491,8 +1509,8 @@ export const DeleteAzureMonitorWorkspace: API.OperationMethod<
   DeleteAzureMonitorWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c38, 0) as any as S.Schema<DeleteAzureMonitorWorkspaceRequest>,
-  output: __S(224, __c7, 0) as any as S.Schema<DeleteAzureMonitorWorkspaceResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<DeleteAzureMonitorWorkspaceRequest>,
+  output: __S(1280, __c40, 0) as any as S.Schema<DeleteAzureMonitorWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1506,7 +1524,7 @@ export const DeleteIssue: API.OperationMethod<
   DeleteIssueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c39, 0) as any as S.Schema<DeleteIssueRequest>,
+  input: __S(1312, __c41, 0) as any as S.Schema<DeleteIssueRequest>,
   output: __S(224, __c7, 0) as any as S.Schema<DeleteIssueResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1521,8 +1539,8 @@ export const DeletePipelineGroup: API.OperationMethod<
   DeletePipelineGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c40, 0) as any as S.Schema<DeletePipelineGroupRequest>,
-  output: __S(224, __c7, 0) as any as S.Schema<DeletePipelineGroupResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<DeletePipelineGroupRequest>,
+  output: __S(1280, __c40, 0) as any as S.Schema<DeletePipelineGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1536,8 +1554,8 @@ export const FetchIssueBackgroundVisualization: API.OperationMethod<
   FetchIssueBackgroundVisualizationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c41, 0) as any as S.Schema<FetchIssueBackgroundVisualizationRequest>,
-  output: __S(1313, __c41, 1) as any as S.Schema<BackgroundVisualization>,
+  input: __S(1376, __c43, 0) as any as S.Schema<FetchIssueBackgroundVisualizationRequest>,
+  output: __S(1377, __c43, 1) as any as S.Schema<BackgroundVisualization>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1551,7 +1569,7 @@ export const FetchIssueInvestigationResult: API.OperationMethod<
   FetchIssueInvestigationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c42, 0) as any as S.Schema<FetchIssueInvestigationResultRequest>,
+  input: __S(1408, __c44, 0) as any as S.Schema<FetchIssueInvestigationResultRequest>,
   output: __S(64, __c2, 0) as any as S.Schema<InvestigationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1566,7 +1584,7 @@ export const GetAzureMonitorWorkspace: API.OperationMethod<
   GetAzureMonitorWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c43, 0) as any as S.Schema<GetAzureMonitorWorkspaceRequest>,
+  input: __S(1440, __c45, 0) as any as S.Schema<GetAzureMonitorWorkspaceRequest>,
   output: __S(300, __c9, 12) as any as S.Schema<GetAzureMonitorWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1581,8 +1599,8 @@ export const GetIssue: API.OperationMethod<
   GetIssueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c44, 0) as any as S.Schema<GetIssueRequest>,
-  output: __S(873, __c27, 9) as any as S.Schema<GetIssueResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<GetIssueRequest>,
+  output: __S(905, __c28, 9) as any as S.Schema<GetIssueResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1612,7 +1630,7 @@ export const GetPipelineGroup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(384, __c12, 0) as any as S.Schema<GetPipelineGroupRequest>,
-  output: __S(447, __c13, 31) as any as S.Schema<GetPipelineGroupResponse>,
+  output: __S(416, __c13, 0) as any as S.Schema<GetPipelineGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1626,8 +1644,8 @@ export const IssueAddOrUpdateAlerts: API.OperationMethod<
   IssueAddOrUpdateAlertsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c14, 0) as any as S.Schema<IssueAddOrUpdateAlertsRequest>,
-  output: __S(482, __c15, 2) as any as S.Schema<RelatedAlerts>,
+  input: __S(480, __c15, 0) as any as S.Schema<IssueAddOrUpdateAlertsRequest>,
+  output: __S(514, __c16, 2) as any as S.Schema<RelatedAlerts>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1641,8 +1659,8 @@ export const IssueAddOrUpdateResources: API.OperationMethod<
   IssueAddOrUpdateResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<IssueAddOrUpdateResourcesRequest>,
-  output: __S(482, __c15, 2) as any as S.Schema<RelatedResources>,
+  input: __S(576, __c18, 0) as any as S.Schema<IssueAddOrUpdateResourcesRequest>,
+  output: __S(514, __c16, 2) as any as S.Schema<RelatedResources>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1656,8 +1674,8 @@ export const ListAzureMonitorWorkspaceByResourceGroup: API.OperationMethod<
   ListAzureMonitorWorkspaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c18, 0) as any as S.Schema<ListAzureMonitorWorkspaceByResourceGroupRequest>,
-  output: __S(609, __c19, 1) as any as S.Schema<AzureMonitorWorkspaceResourceListResult>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListAzureMonitorWorkspaceByResourceGroupRequest>,
+  output: __S(641, __c20, 1) as any as S.Schema<AzureMonitorWorkspaceResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1671,8 +1689,8 @@ export const ListAzureMonitorWorkspaceBySubscription: API.OperationMethod<
   ListAzureMonitorWorkspaceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c20, 0) as any as S.Schema<ListAzureMonitorWorkspaceBySubscriptionRequest>,
-  output: __S(609, __c19, 1) as any as S.Schema<AzureMonitorWorkspaceResourceListResult>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListAzureMonitorWorkspaceBySubscriptionRequest>,
+  output: __S(641, __c20, 1) as any as S.Schema<AzureMonitorWorkspaceResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1686,8 +1704,8 @@ export const ListIssue: API.OperationMethod<
   ListIssueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<ListIssueRequest>,
-  output: __S(674, __c21, 2) as any as S.Schema<IssueResourceListResult>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListIssueRequest>,
+  output: __S(706, __c22, 2) as any as S.Schema<IssueResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1701,8 +1719,8 @@ export const ListIssueAlerts: API.OperationMethod<
   ListIssueAlertsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c22, 0) as any as S.Schema<ListIssueAlertsRequest>,
-  output: __S(736, __c23, 0) as any as S.Schema<PagedRelatedAlert>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListIssueAlertsRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<PagedRelatedAlert>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1716,8 +1734,8 @@ export const ListIssueResources: API.OperationMethod<
   ListIssueResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c24, 0) as any as S.Schema<ListIssueResourcesRequest>,
-  output: __S(736, __c23, 0) as any as S.Schema<PagedRelatedResource>,
+  input: __S(800, __c25, 0) as any as S.Schema<ListIssueResourcesRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<PagedRelatedResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1731,8 +1749,8 @@ export const ListMetricsContainerByAzureMonitorWorkspace: API.OperationMethod<
   ListMetricsContainerByAzureMonitorWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c25, 0) as any as S.Schema<ListMetricsContainerByAzureMonitorWorkspaceRequest>,
-  output: __S(802, __c25, 2) as any as S.Schema<MetricsContainerResourceListResult>,
+  input: __S(832, __c26, 0) as any as S.Schema<ListMetricsContainerByAzureMonitorWorkspaceRequest>,
+  output: __S(834, __c26, 2) as any as S.Schema<MetricsContainerResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1746,8 +1764,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(900, __c28, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(932, __c29, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1761,8 +1779,8 @@ export const ListPipelineGroupByResourceGroup: API.OperationMethod<
   ListPipelineGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<ListPipelineGroupByResourceGroupRequest>,
-  output: __S(961, __c30, 1) as any as S.Schema<PipelineGroupListResult>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListPipelineGroupByResourceGroupRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<PipelineGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1776,8 +1794,8 @@ export const ListPipelineGroupBySubscription: API.OperationMethod<
   ListPipelineGroupBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<ListPipelineGroupBySubscriptionRequest>,
-  output: __S(961, __c30, 1) as any as S.Schema<PipelineGroupListResult>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListPipelineGroupBySubscriptionRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<PipelineGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1791,7 +1809,7 @@ export const MetricsContainersCreateOrUpdate: API.OperationMethod<
   MetricsContainersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1025, __c32, 1) as any as S.Schema<MetricsContainersCreateOrUpdateRequest>,
+  input: __S(1057, __c33, 1) as any as S.Schema<MetricsContainersCreateOrUpdateRequest>,
   output: __S(353, __c11, 1) as any as S.Schema<MetricsContainersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1806,8 +1824,8 @@ export const PipelineGroupsCreateOrUpdate: API.OperationMethod<
   PipelineGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1057, __c33, 1) as any as S.Schema<PipelineGroupsCreateOrUpdateRequest>,
-  output: __S(447, __c13, 31) as any as S.Schema<PipelineGroupsCreateOrUpdateResponse>,
+  input: __S(1089, __c34, 1) as any as S.Schema<PipelineGroupsCreateOrUpdateRequest>,
+  output: __S(1090, __c34, 2) as any as S.Schema<PipelineGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1821,7 +1839,7 @@ export const SetIssueBackgroundVisualization: API.OperationMethod<
   SetIssueBackgroundVisualizationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c34, 0) as any as S.Schema<SetIssueBackgroundVisualizationRequest>,
+  input: __S(1120, __c35, 0) as any as S.Schema<SetIssueBackgroundVisualizationRequest>,
   output: __S(224, __c7, 0) as any as S.Schema<SetIssueBackgroundVisualizationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1836,7 +1854,7 @@ export const UpdateAzureMonitorWorkspace: API.OperationMethod<
   UpdateAzureMonitorWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c35, 0) as any as S.Schema<UpdateAzureMonitorWorkspaceRequest>,
+  input: __S(1152, __c36, 0) as any as S.Schema<UpdateAzureMonitorWorkspaceRequest>,
   output: __S(300, __c9, 12) as any as S.Schema<UpdateAzureMonitorWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1851,8 +1869,8 @@ export const UpdateIssue: API.OperationMethod<
   UpdateIssueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1153, __c36, 1) as any as S.Schema<UpdateIssueRequest>,
-  output: __S(873, __c27, 9) as any as S.Schema<UpdateIssueResponse>,
+  input: __S(1185, __c37, 1) as any as S.Schema<UpdateIssueRequest>,
+  output: __S(905, __c28, 9) as any as S.Schema<UpdateIssueResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1866,8 +1884,8 @@ export const UpdatePipelineGroup: API.OperationMethod<
   UpdatePipelineGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1187, __c37, 3) as any as S.Schema<UpdatePipelineGroupRequest>,
-  output: __S(447, __c13, 31) as any as S.Schema<UpdatePipelineGroupResponse>,
+  input: __S(1219, __c38, 3) as any as S.Schema<UpdatePipelineGroupRequest>,
+  output: __S(1220, __c38, 4) as any as S.Schema<UpdatePipelineGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2174,12 +2192,29 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(477, __c14, 29)),
+          extendedLocation: S.optional(__S(478, __c14, 30)),
+        }),
+      ).annotate({ identifier: "GetPipelineGroupResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
           endpoint: S.String,
-          allowedFormats: S.optional(__S(416, __c13, 0)),
+          allowedFormats: S.optional(__S(448, __c14, 0)),
           transportProtocol: S.optional(S.String),
           allowSkipPriHeader: S.optional(S.Boolean),
         }),
@@ -2196,12 +2231,12 @@ function __c13(j: number): any {
           type: S.String,
           name: S.String,
           tlsConfiguration: S.optional(S.String),
-          syslog: S.optional(__S(417, __c13, 1)),
-          otlp: S.optional(__S(418, __c13, 2)),
+          syslog: S.optional(__S(449, __c14, 1)),
+          otlp: S.optional(__S(450, __c14, 2)),
         }),
       ).annotate({ identifier: "Receiver" });
     case 4:
-      return S.Array(__S(419, __c13, 3));
+      return S.Array(__S(451, __c14, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2220,12 +2255,12 @@ function __c13(j: number): any {
         S.Struct({
           type: S.String,
           name: S.String,
-          batch: S.optional(__S(421, __c13, 5)),
-          transformLanguage: S.optional(__S(422, __c13, 6)),
+          batch: S.optional(__S(453, __c14, 5)),
+          transformLanguage: S.optional(__S(454, __c14, 6)),
         }),
       ).annotate({ identifier: "Processor" });
     case 8:
-      return S.Array(__S(423, __c13, 7));
+      return S.Array(__S(455, __c14, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
@@ -2234,13 +2269,13 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "RecordMap" });
     case 10:
-      return S.Array(__S(425, __c13, 9));
+      return S.Array(__S(457, __c14, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
-          recordMap: __S(426, __c13, 10),
-          resourceMap: S.optional(__S(426, __c13, 10)),
-          scopeMap: S.optional(__S(426, __c13, 10)),
+          recordMap: __S(458, __c14, 10),
+          resourceMap: S.optional(__S(458, __c14, 10)),
+          scopeMap: S.optional(__S(458, __c14, 10)),
         }),
       ).annotate({ identifier: "SchemaMap" });
     case 12:
@@ -2249,7 +2284,7 @@ function __c13(j: number): any {
           dataCollectionEndpointUrl: S.String,
           stream: S.String,
           dataCollectionRule: S.String,
-          schema: __S(427, __c13, 11),
+          schema: __S(459, __c14, 11),
         }),
       ).annotate({ identifier: "AzureMonitorWorkspaceLogsApiConfig" });
     case 13:
@@ -2262,8 +2297,8 @@ function __c13(j: number): any {
     case 14:
       return S.suspend(() =>
         S.Struct({
-          api: __S(428, __c13, 12),
-          persistence: S.optional(__S(429, __c13, 13)),
+          api: __S(460, __c14, 12),
+          persistence: S.optional(__S(461, __c14, 13)),
         }),
       ).annotate({ identifier: "AzureMonitorWorkspaceLogsExporter" });
     case 15:
@@ -2271,11 +2306,11 @@ function __c13(j: number): any {
         S.Struct({
           type: S.String,
           name: S.String,
-          azureMonitorWorkspaceLogs: S.optional(__S(430, __c13, 14)),
+          azureMonitorWorkspaceLogs: S.optional(__S(462, __c14, 14)),
         }),
       ).annotate({ identifier: "Exporter" });
     case 16:
-      return S.Array(__S(431, __c13, 15));
+      return S.Array(__S(463, __c14, 15));
     case 17:
       return S.suspend(() =>
         S.Struct({
@@ -2287,7 +2322,7 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "Pipeline" });
     case 18:
-      return S.Array(__S(433, __c13, 17));
+      return S.Array(__S(465, __c14, 17));
     case 19:
       return S.suspend(() =>
         S.Struct({
@@ -2297,8 +2332,8 @@ function __c13(j: number): any {
     case 20:
       return S.suspend(() =>
         S.Struct({
-          pipelines: __S(434, __c13, 18),
-          persistence: S.optional(__S(435, __c13, 19)),
+          pipelines: __S(466, __c14, 18),
+          persistence: S.optional(__S(467, __c14, 19)),
         }),
       ).annotate({ identifier: "Service" });
     case 21:
@@ -2310,7 +2345,7 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "PlacementConstraint" });
     case 22:
-      return S.Array(__S(437, __c13, 21));
+      return S.Array(__S(469, __c14, 21));
     case 23:
       return S.suspend(() =>
         S.Struct({
@@ -2320,8 +2355,8 @@ function __c13(j: number): any {
     case 24:
       return S.suspend(() =>
         S.Struct({
-          constraints: S.optional(__S(438, __c13, 22)),
-          distribution: S.optional(__S(439, __c13, 23)),
+          constraints: S.optional(__S(470, __c14, 22)),
+          distribution: S.optional(__S(471, __c14, 23)),
         }),
       ).annotate({ identifier: "ExecutionPlacement" });
     case 25:
@@ -2335,8 +2370,8 @@ function __c13(j: number): any {
     case 26:
       return S.suspend(() =>
         S.Struct({
-          certificate: __S(441, __c13, 25),
-          privateKey: __S(441, __c13, 25),
+          certificate: __S(473, __c14, 25),
+          privateKey: __S(473, __c14, 25),
         }),
       ).annotate({ identifier: "CertificateWithKey" });
     case 27:
@@ -2344,22 +2379,22 @@ function __c13(j: number): any {
         S.Struct({
           name: S.String,
           mode: S.optional(S.String),
-          tlsCertificate: S.optional(__S(442, __c13, 26)),
-          clientCa: S.optional(__S(441, __c13, 25)),
+          tlsCertificate: S.optional(__S(474, __c14, 26)),
+          clientCa: S.optional(__S(473, __c14, 25)),
         }),
       ).annotate({ identifier: "TlsConfiguration" });
     case 28:
-      return S.Array(__S(443, __c13, 27));
+      return S.Array(__S(475, __c14, 27));
     case 29:
       return S.suspend(() =>
         S.Struct({
           replicas: S.optional(S.Number),
-          receivers: __S(420, __c13, 4),
-          processors: __S(424, __c13, 8),
-          exporters: __S(432, __c13, 16),
-          service: __S(436, __c13, 20),
-          executionPlacement: S.optional(__S(440, __c13, 24)),
-          tlsConfigurations: S.optional(__S(444, __c13, 28)),
+          receivers: __S(452, __c14, 4),
+          processors: __S(456, __c14, 8),
+          exporters: __S(464, __c14, 16),
+          service: __S(468, __c14, 20),
+          executionPlacement: S.optional(__S(472, __c14, 24)),
+          tlsConfigurations: S.optional(__S(476, __c14, 28)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "PipelineGroupProperties" });
@@ -2370,22 +2405,9 @@ function __c13(j: number): any {
           type: S.String,
         }),
       ).annotate({ identifier: "AzureResourceManagerCommonTypesExtendedLocation" });
-    case 31:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(128, __c4, 0)),
-          tags: S.optional(__S(256, __c8, 0)),
-          location: S.String,
-          properties: S.optional(__S(445, __c13, 29)),
-          extendedLocation: S.optional(__S(446, __c13, 30)),
-        }),
-      ).annotate({ identifier: "GetPipelineGroupResponse" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2394,7 +2416,7 @@ function __c14(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           azureMonitorWorkspaceName: S.String.pipe(T.Label()),
           issueName: S.String.pipe(T.Label()),
-          value: __S(481, __c15, 1),
+          value: __S(513, __c16, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2406,7 +2428,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "IssueAddOrUpdateAlertsRequest" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2416,16 +2438,16 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "RelatedAlertInput" });
     case 1:
-      return S.Array(__S(480, __c15, 0));
+      return S.Array(__S(512, __c16, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(513, __c16, 1),
+          value: __S(545, __c17, 1),
         }),
       ).annotate({ identifier: "RelatedAlerts" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2438,10 +2460,10 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "RelatedAlert" });
     case 1:
-      return S.Array(__S(512, __c16, 0));
+      return S.Array(__S(544, __c17, 0));
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2450,7 +2472,7 @@ function __c17(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           azureMonitorWorkspaceName: S.String.pipe(T.Label()),
           issueName: S.String.pipe(T.Label()),
-          value: __S(481, __c15, 1),
+          value: __S(513, __c16, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2462,7 +2484,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "IssueAddOrUpdateResourcesRequest" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2480,20 +2502,20 @@ function __c18(j: number): any {
       ).annotate({ identifier: "ListAzureMonitorWorkspaceByResourceGroupRequest" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(300, __c9, 12));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(608, __c19, 0),
+          value: __S(640, __c20, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AzureMonitorWorkspaceResourceListResult" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2510,7 +2532,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "ListAzureMonitorWorkspaceBySubscriptionRequest" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2528,17 +2550,17 @@ function __c21(j: number): any {
         ),
       ).annotate({ identifier: "ListIssueRequest" });
     case 1:
-      return S.Array(__S(873, __c27, 9));
+      return S.Array(__S(905, __c28, 9));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(673, __c21, 1),
+          value: __S(705, __c22, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IssueResourceListResult" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2559,18 +2581,18 @@ function __c22(j: number): any {
       ).annotate({ identifier: "ListIssueAlertsRequest" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(513, __c16, 1),
+          value: __S(545, __c17, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagedRelatedAlert" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2591,7 +2613,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "ListIssueResourcesRequest" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2613,13 +2635,13 @@ function __c25(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(801, __c25, 1),
+          value: __S(833, __c26, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricsContainerResourceListResult" });
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2628,8 +2650,8 @@ function __c26(j: number): any {
           status: S.String,
           severity: S.String,
           impactTime: S.String,
-          background: S.optional(__S(866, __c27, 2)),
-          notifications: S.optional(__S(869, __c27, 5)),
+          background: S.optional(__S(898, __c28, 2)),
+          notifications: S.optional(__S(901, __c28, 5)),
         }),
       ).annotate({ identifier: "IssuePropertiesInput" });
     case 1:
@@ -2640,7 +2662,7 @@ function __c26(j: number): any {
           azureMonitorWorkspaceName: S.String.pipe(T.Label()),
           issueName: S.String.pipe(T.Label()),
           related: S.optional(S.String.pipe(T.Query())),
-          properties: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(864, __c27, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2652,7 +2674,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "CreateIssueRequest" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2662,13 +2684,13 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "BackgroundDetails" });
     case 1:
-      return S.Array(__S(864, __c27, 0));
+      return S.Array(__S(896, __c28, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           text: S.optional(S.String),
-          details: S.optional(__S(865, __c27, 1)),
+          details: S.optional(__S(897, __c28, 1)),
         }),
       ).annotate({ identifier: "Background" });
     case 3:
@@ -2678,11 +2700,11 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "IssueNotificationType" });
     case 4:
-      return S.Array(__S(867, __c27, 3));
+      return S.Array(__S(899, __c28, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          updateTypes: S.optional(__S(868, __c27, 4)),
+          updateTypes: S.optional(__S(900, __c28, 4)),
           actionGroupIds: S.optional(__S(160, __c5, 0)),
           excludeDefaultActionGroups: S.optional(S.Boolean),
         }),
@@ -2695,18 +2717,18 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "InvestigationMetadata" });
     case 7:
-      return S.Array(__S(870, __c27, 6));
+      return S.Array(__S(902, __c28, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
           title: S.String,
           status: S.String,
           severity: S.String,
-          investigations: __S(871, __c27, 7),
+          investigations: __S(903, __c28, 7),
           impactTime: S.String,
           investigationsCount: S.Number,
-          background: S.optional(__S(866, __c27, 2)),
-          notifications: S.optional(__S(869, __c27, 5)),
+          background: S.optional(__S(898, __c28, 2)),
+          notifications: S.optional(__S(901, __c28, 5)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "IssueProperties" });
@@ -2717,12 +2739,12 @@ function __c27(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(128, __c4, 0)),
-          properties: S.optional(__S(872, __c27, 8)),
+          properties: S.optional(__S(904, __c28, 8)),
         }),
       ).annotate({ identifier: "CreateIssueResponse" });
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2749,23 +2771,23 @@ function __c28(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(897, __c28, 1)),
+          display: S.optional(__S(929, __c29, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(898, __c28, 2));
+      return S.Array(__S(930, __c29, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(899, __c28, 3)),
+          value: S.optional(__S(931, __c29, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2783,20 +2805,20 @@ function __c29(j: number): any {
       ).annotate({ identifier: "ListPipelineGroupByResourceGroupRequest" });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(447, __c13, 31));
+      return S.Array(__S(416, __c13, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(960, __c30, 0),
+          value: __S(992, __c31, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PipelineGroupListResult" });
   }
 }
-function __c31(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2813,7 +2835,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "ListPipelineGroupBySubscriptionRequest" });
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2828,7 +2850,7 @@ function __c32(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           azureMonitorWorkspaceName: S.String.pipe(T.Label()),
           metricsContainerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1024, __c32, 0)),
+          properties: S.optional(__S(1056, __c33, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2840,18 +2862,18 @@ function __c32(j: number): any {
       ).annotate({ identifier: "MetricsContainersCreateOrUpdateRequest" });
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           replicas: S.optional(S.Number),
-          receivers: __S(420, __c13, 4),
-          processors: __S(424, __c13, 8),
-          exporters: __S(432, __c13, 16),
-          service: __S(436, __c13, 20),
-          executionPlacement: S.optional(__S(440, __c13, 24)),
-          tlsConfigurations: S.optional(__S(444, __c13, 28)),
+          receivers: __S(452, __c14, 4),
+          processors: __S(456, __c14, 8),
+          exporters: __S(464, __c14, 16),
+          service: __S(468, __c14, 20),
+          executionPlacement: S.optional(__S(472, __c14, 24)),
+          tlsConfigurations: S.optional(__S(476, __c14, 28)),
         }),
       ).annotate({ identifier: "PipelineGroupPropertiesInput" });
     case 1:
@@ -2862,8 +2884,8 @@ function __c33(j: number): any {
           pipelineGroupName: S.String.pipe(T.Label()),
           tags: S.optional(__S(256, __c8, 0)),
           location: S.String,
-          properties: S.optional(__S(1056, __c33, 0)),
-          extendedLocation: S.optional(__S(446, __c13, 30)),
+          properties: S.optional(__S(1088, __c34, 0)),
+          extendedLocation: S.optional(__S(478, __c14, 30)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2873,9 +2895,24 @@ function __c33(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PipelineGroupsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(477, __c14, 29)),
+          extendedLocation: S.optional(__S(478, __c14, 30)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "PipelineGroupsCreateOrUpdateResponse" });
   }
 }
-function __c34(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2896,7 +2933,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "SetIssueBackgroundVisualizationRequest" });
   }
 }
-function __c35(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2918,7 +2955,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "UpdateAzureMonitorWorkspaceRequest" });
   }
 }
-function __c36(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2927,8 +2964,8 @@ function __c36(j: number): any {
           status: S.optional(S.String),
           severity: S.optional(S.String),
           impactTime: S.optional(S.String),
-          background: S.optional(__S(866, __c27, 2)),
-          notifications: S.optional(__S(869, __c27, 5)),
+          background: S.optional(__S(898, __c28, 2)),
+          notifications: S.optional(__S(901, __c28, 5)),
         }),
       ).annotate({ identifier: "IssuePropertiesUpdate" });
     case 1:
@@ -2938,7 +2975,7 @@ function __c36(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           azureMonitorWorkspaceName: S.String.pipe(T.Label()),
           issueName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1152, __c36, 0)),
+          properties: S.optional(__S(1184, __c37, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2950,7 +2987,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "UpdateIssueRequest" });
   }
 }
-function __c37(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2961,20 +2998,20 @@ function __c37(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          pipelines: S.optional(__S(434, __c13, 18)),
-          persistence: S.optional(__S(1184, __c37, 0)),
+          pipelines: S.optional(__S(466, __c14, 18)),
+          persistence: S.optional(__S(1216, __c38, 0)),
         }),
       ).annotate({ identifier: "ServiceUpdate" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           replicas: S.optional(S.Number),
-          receivers: S.optional(__S(420, __c13, 4)),
-          processors: S.optional(__S(424, __c13, 8)),
-          exporters: S.optional(__S(432, __c13, 16)),
-          service: S.optional(__S(1185, __c37, 1)),
-          executionPlacement: S.optional(__S(440, __c13, 24)),
-          tlsConfigurations: S.optional(__S(444, __c13, 28)),
+          receivers: S.optional(__S(452, __c14, 4)),
+          processors: S.optional(__S(456, __c14, 8)),
+          exporters: S.optional(__S(464, __c14, 16)),
+          service: S.optional(__S(1217, __c38, 1)),
+          executionPlacement: S.optional(__S(472, __c14, 24)),
+          tlsConfigurations: S.optional(__S(476, __c14, 28)),
         }),
       ).annotate({ identifier: "PipelineGroupPropertiesUpdate" });
     case 3:
@@ -2984,7 +3021,7 @@ function __c37(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           pipelineGroupName: S.String.pipe(T.Label()),
           tags: S.optional(__S(256, __c8, 0)),
-          properties: S.optional(__S(1186, __c37, 2)),
+          properties: S.optional(__S(1218, __c38, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2994,9 +3031,24 @@ function __c37(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdatePipelineGroupRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(477, __c14, 29)),
+          extendedLocation: S.optional(__S(478, __c14, 30)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdatePipelineGroupResponse" });
   }
 }
-function __c38(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3015,7 +3067,18 @@ function __c38(j: number): any {
       ).annotate({ identifier: "DeleteAzureMonitorWorkspaceRequest" });
   }
 }
-function __c39(j: number): any {
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteAzureMonitorWorkspaceResponse" });
+  }
+}
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3035,7 +3098,7 @@ function __c39(j: number): any {
       ).annotate({ identifier: "DeleteIssueRequest" });
   }
 }
-function __c40(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3054,7 +3117,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "DeletePipelineGroupRequest" });
   }
 }
-function __c41(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3081,7 +3144,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "BackgroundVisualization" });
   }
 }
-function __c42(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3102,7 +3165,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "FetchIssueInvestigationResultRequest" });
   }
 }
-function __c43(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3121,7 +3184,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "GetAzureMonitorWorkspaceRequest" });
   }
 }
-function __c44(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

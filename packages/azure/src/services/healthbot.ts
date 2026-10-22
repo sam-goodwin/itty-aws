@@ -144,6 +144,10 @@ export interface CreateBotResponse {
   sku: Sku;
   /** The identity of the Azure Health Bot. */
   identity?: Identity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteBotRequest {
   /** The ID of the target subscription. */
@@ -153,7 +157,10 @@ export interface DeleteBotRequest {
   /** The name of the Bot resource. */
   botName: string;
 }
-export interface DeleteBotResponse {}
+export interface DeleteBotResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface GetBotRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -330,6 +337,10 @@ export interface UpdateBotResponse {
   sku: Sku;
   /** The identity of the Azure Health Bot. */
   identity?: Identity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type CreateBotError = AzureOpError;
 /** Create a new Azure Health Bot. */
@@ -340,7 +351,7 @@ export const CreateBot: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateBotRequest>,
-  output: __S(40, __c2, 8) as any as S.Schema<CreateBotResponse>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateBotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -354,8 +365,8 @@ export const DeleteBot: API.OperationMethod<
   DeleteBotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c4, 0) as any as S.Schema<DeleteBotRequest>,
-  output: __S(16, __c1, 0) as any as S.Schema<DeleteBotResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteBotRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<DeleteBotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -369,8 +380,8 @@ export const GetBot: API.OperationMethod<
   GetBotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c5, 0) as any as S.Schema<GetBotRequest>,
-  output: __S(40, __c2, 8) as any as S.Schema<GetBotResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetBotRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<GetBotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -384,8 +395,8 @@ export const ListBotByResourceGroup: API.OperationMethod<
   ListBotByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c6, 0) as any as S.Schema<ListBotByResourceGroupRequest>,
-  output: __S(113, __c7, 1) as any as S.Schema<BotResponseList>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListBotByResourceGroupRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<BotResponseList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -399,8 +410,8 @@ export const ListBots: API.OperationMethod<
   ListBotsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c8, 0) as any as S.Schema<ListBotsRequest>,
-  output: __S(113, __c7, 1) as any as S.Schema<BotResponseList>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListBotsRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<BotResponseList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -414,8 +425,8 @@ export const ListBotSecrets: API.OperationMethod<
   ListBotSecretsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c9, 0) as any as S.Schema<ListBotSecretsRequest>,
-  output: __S(146, __c9, 2) as any as S.Schema<HealthBotKeysResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListBotSecretsRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<HealthBotKeysResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -429,8 +440,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c11, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(180, __c11, 4) as any as S.Schema<AvailableOperations>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<AvailableOperations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -444,8 +455,8 @@ export const RegenerateBotApiJwtSecret: API.OperationMethod<
   RegenerateBotApiJwtSecretError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c12, 0) as any as S.Schema<RegenerateBotApiJwtSecretRequest>,
-  output: __S(160, __c10, 0) as any as S.Schema<HealthBotKey>,
+  input: __S(96, __c12, 0) as any as S.Schema<RegenerateBotApiJwtSecretRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<HealthBotKey>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -459,8 +470,8 @@ export const UpdateBot: API.OperationMethod<
   UpdateBotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<UpdateBotRequest>,
-  output: __S(40, __c2, 8) as any as S.Schema<UpdateBotResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<UpdateBotRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<UpdateBotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -475,11 +486,11 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           botName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(48, __c3, 0)),
-          sku: __S(34, __c2, 2),
-          identity: S.optional(__S(50, __c3, 2)),
+          properties: S.optional(__S(16, __c2, 0)),
+          sku: __S(10, __c1, 2),
+          identity: S.optional(__S(19, __c2, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -489,15 +500,25 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateBotRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(11, __c1, 3)),
+          tags: S.optional(__S(8, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(12, __c1, 4)),
+          sku: __S(10, __c1, 2),
+          identity: S.optional(__S(15, __c1, 7)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateBotResponse" });
   }
 }
 function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "UserAssignedIdentityInput" });
-  }
-}
-function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
@@ -532,7 +553,7 @@ function __c2(j: number): any {
         S.Struct({
           provisioningState: S.optional(S.String),
           botManagementPortalLink: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(33, __c2, 1)),
+          keyVaultProperties: S.optional(__S(9, __c1, 1)),
           accessControlMethod: S.optional(S.String),
         }),
       ).annotate({ identifier: "HealthBotProperties" });
@@ -544,52 +565,40 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 6:
-      return S.Record(S.String, __S(37, __c2, 5));
+      return S.Record(S.String, __S(13, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(38, __c2, 6)),
+          userAssignedIdentities: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "Identity" });
-    case 8:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(35, __c2, 3)),
-          tags: S.optional(__S(32, __c2, 0)),
-          location: S.String,
-          properties: S.optional(__S(36, __c2, 4)),
-          sku: __S(34, __c2, 2),
-          identity: S.optional(__S(39, __c2, 7)),
-        }),
-      ).annotate({ identifier: "CreateBotResponse" });
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          keyVaultProperties: S.optional(__S(33, __c2, 1)),
+          keyVaultProperties: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "HealthBotPropertiesInput" });
     case 1:
-      return S.Record(S.String, __S(16, __c1, 0));
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "UserAssignedIdentityInput" });
     case 2:
+      return S.Record(S.String, __S(17, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(49, __c3, 1)),
+          userAssignedIdentities: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "IdentityInput" });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -606,9 +615,15 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteBotRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "DeleteBotResponse" });
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -625,6 +640,24 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBotRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(11, __c1, 3)),
+          tags: S.optional(__S(8, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(12, __c1, 4)),
+          sku: __S(10, __c1, 2),
+          identity: S.optional(__S(15, __c1, 7)),
+        }),
+      ).annotate({ identifier: "GetBotResponse" });
   }
 }
 function __c6(j: number): any {
@@ -648,11 +681,11 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(40, __c2, 8));
+      return S.Array(__S(40, __c5, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(112, __c7, 0),
+          value: __S(56, __c7, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BotResponseList" });
@@ -693,11 +726,11 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "ListBotSecretsRequest" });
     case 1:
-      return S.Array(__S(160, __c10, 0));
+      return S.Array(__S(80, __c10, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          secrets: S.optional(__S(145, __c9, 1)),
+          secrets: S.optional(__S(73, __c9, 1)),
         }),
       ).annotate({ identifier: "HealthBotKeysResponse" });
   }
@@ -740,17 +773,17 @@ function __c11(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(177, __c11, 1)),
+          display: S.optional(__S(89, __c11, 1)),
           origin: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "OperationDetail" });
     case 3:
-      return S.Array(__S(178, __c11, 2));
+      return S.Array(__S(90, __c11, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(179, __c11, 3),
+          value: __S(91, __c11, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AvailableOperations" });
@@ -783,10 +816,10 @@ function __c13(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           botName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(48, __c3, 0)),
-          tags: S.optional(__S(32, __c2, 0)),
-          sku: S.optional(__S(34, __c2, 2)),
-          identity: S.optional(__S(50, __c3, 2)),
+          properties: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
+          sku: S.optional(__S(10, __c1, 2)),
+          identity: S.optional(__S(19, __c2, 3)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -797,6 +830,22 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateBotRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(11, __c1, 3)),
+          tags: S.optional(__S(8, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(12, __c1, 4)),
+          sku: __S(10, __c1, 2),
+          identity: S.optional(__S(15, __c1, 7)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateBotResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

@@ -79,6 +79,8 @@ export interface BgpPeersCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: BgpPeerProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteBgpPeerRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -107,7 +109,12 @@ export interface DeleteStorageClassRequest {
   /** The name of the the storage class */
   storageClassName: string;
 }
-export interface DeleteStorageClassResponse {}
+export interface DeleteStorageClassResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetBgpPeerRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -463,6 +470,8 @@ export interface LoadBalancersCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: LoadBalancerProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Properties for the service resource */
 export interface ServicePropertiesInput {}
@@ -536,6 +545,8 @@ export interface StorageClassCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: StorageClassProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Additional mount options */
 export type StorageClassPropertiesUpdateMountOptionsList = Array<string>;
@@ -610,6 +621,10 @@ export interface UpdateStorageClassResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: StorageClassProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type BgpPeersCreateOrUpdateError = AzureOpError;
 /** Create a BgpPeer */
@@ -620,7 +635,7 @@ export const BgpPeersCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<BgpPeersCreateOrUpdateRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<BgpPeersCreateOrUpdateResponse>,
+  output: __S(2, __c0, 2) as any as S.Schema<BgpPeersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -680,7 +695,7 @@ export const DeleteStorageClass: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(120, __c15, 0) as any as S.Schema<DeleteStorageClassRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteStorageClassResponse>,
+  output: __S(121, __c15, 1) as any as S.Schema<DeleteStorageClassResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -695,7 +710,7 @@ export const GetBgpPeer: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(128, __c16, 0) as any as S.Schema<GetBgpPeerRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetBgpPeerResponse>,
+  output: __S(136, __c17, 0) as any as S.Schema<GetBgpPeerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -709,8 +724,8 @@ export const GetLoadBalancer: API.OperationMethod<
   GetLoadBalancerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetLoadBalancerRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<GetLoadBalancerResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetLoadBalancerRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<GetLoadBalancerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -724,8 +739,8 @@ export const GetService: API.OperationMethod<
   GetServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<GetServiceRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<GetServiceResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<GetServiceRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<GetServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -739,8 +754,8 @@ export const GetStorageClass: API.OperationMethod<
   GetStorageClassError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<GetStorageClassRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<GetStorageClassResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetStorageClassRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<GetStorageClassResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -754,8 +769,8 @@ export const ListBgpPeers: API.OperationMethod<
   ListBgpPeersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<ListBgpPeersRequest>,
-  output: __S(194, __c24, 2) as any as S.Schema<BgpPeerListResult>,
+  input: __S(216, __c27, 0) as any as S.Schema<ListBgpPeersRequest>,
+  output: __S(218, __c27, 2) as any as S.Schema<BgpPeerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -830,7 +845,7 @@ export const LoadBalancersCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(73, __c9, 1) as any as S.Schema<LoadBalancersCreateOrUpdateRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<LoadBalancersCreateOrUpdateResponse>,
+  output: __S(74, __c9, 2) as any as S.Schema<LoadBalancersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -845,7 +860,7 @@ export const ServicesCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(80, __c10, 0) as any as S.Schema<ServicesCreateOrUpdateRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<ServicesCreateOrUpdateResponse>,
+  output: __S(185, __c23, 1) as any as S.Schema<ServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -860,7 +875,7 @@ export const StorageClassCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(89, __c11, 1) as any as S.Schema<StorageClassCreateOrUpdateRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<StorageClassCreateOrUpdateResponse>,
+  output: __S(90, __c11, 2) as any as S.Schema<StorageClassCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -875,7 +890,7 @@ export const UpdateStorageClass: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(98, __c12, 2) as any as S.Schema<UpdateStorageClassRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<UpdateStorageClassResponse>,
+  output: __S(99, __c12, 3) as any as S.Schema<UpdateStorageClassResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -907,6 +922,17 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "BgpPeersCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(16, __c2, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "BgpPeersCreateOrUpdateResponse" });
   }
 }
 function __c1(j: number): any {
@@ -935,16 +961,6 @@ function __c2(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "BgpPeerProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          properties: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "BgpPeersCreateOrUpdateResponse" });
   }
 }
 function __c3(j: number): any {
@@ -987,7 +1003,7 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListLoadBalancersRequest" });
     case 1:
-      return S.Array(__S(146, __c18, 2));
+      return S.Array(__S(152, __c19, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1056,7 +1072,7 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "ListServicesRequest" });
     case 1:
-      return S.Array(__S(169, __c21, 1));
+      return S.Array(__S(185, __c23, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1082,7 +1098,7 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "ListStorageClassRequest" });
     case 1:
-      return S.Array(__S(187, __c23, 3));
+      return S.Array(__S(200, __c25, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1097,10 +1113,10 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          addresses: __S(152, __c19, 0),
-          serviceSelector: S.optional(__S(144, __c18, 0)),
+          addresses: __S(168, __c21, 0),
+          serviceSelector: S.optional(__S(160, __c20, 0)),
           advertiseMode: S.String,
-          bgpPeers: S.optional(__S(152, __c19, 0)),
+          bgpPeers: S.optional(__S(168, __c21, 0)),
         }),
       ).annotate({ identifier: "LoadBalancerPropertiesInput" });
     case 1:
@@ -1118,6 +1134,17 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "LoadBalancersCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(161, __c20, 1)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "LoadBalancersCreateOrUpdateResponse" });
   }
 }
 function __c10(j: number): any {
@@ -1145,16 +1172,16 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           allowVolumeExpansion: S.optional(S.String),
-          mountOptions: S.optional(__S(152, __c19, 0)),
+          mountOptions: S.optional(__S(168, __c21, 0)),
           provisioner: S.optional(S.String),
           volumeBindingMode: S.optional(S.String),
-          accessModes: S.optional(__S(184, __c23, 0)),
+          accessModes: S.optional(__S(208, __c26, 0)),
           dataResilience: S.optional(S.String),
           failoverSpeed: S.optional(S.String),
-          limitations: S.optional(__S(152, __c19, 0)),
+          limitations: S.optional(__S(168, __c21, 0)),
           performance: S.optional(S.String),
           priority: S.optional(S.Number),
-          typeProperties: __S(185, __c23, 1),
+          typeProperties: __S(209, __c26, 1),
         }),
       ).annotate({ identifier: "StorageClassPropertiesInput" });
     case 1:
@@ -1172,6 +1199,17 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StorageClassCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(210, __c26, 2)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "StorageClassCreateOrUpdateResponse" });
   }
 }
 function __c12(j: number): any {
@@ -1197,11 +1235,11 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           allowVolumeExpansion: S.optional(S.String),
-          mountOptions: S.optional(__S(152, __c19, 0)),
-          accessModes: S.optional(__S(184, __c23, 0)),
+          mountOptions: S.optional(__S(168, __c21, 0)),
+          accessModes: S.optional(__S(208, __c26, 0)),
           dataResilience: S.optional(S.String),
           failoverSpeed: S.optional(S.String),
-          limitations: S.optional(__S(152, __c19, 0)),
+          limitations: S.optional(__S(168, __c21, 0)),
           performance: S.optional(S.String),
           priority: S.optional(S.Number),
           typeProperties: S.optional(__S(96, __c12, 0)),
@@ -1222,6 +1260,18 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateStorageClassRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(210, __c26, 2)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateStorageClassResponse" });
   }
 }
 function __c13(j: number): any {
@@ -1276,6 +1326,13 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteStorageClassRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteStorageClassResponse" });
   }
 }
 function __c16(j: number): any {
@@ -1301,6 +1358,20 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(16, __c2, 0)),
+        }),
+      ).annotate({ identifier: "GetBgpPeerResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           loadBalancerName: S.String.pipe(T.Label()),
         }).pipe(
@@ -1314,39 +1385,43 @@ function __c17(j: number): any {
       ).annotate({ identifier: "GetLoadBalancerRequest" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          addresses: __S(152, __c19, 0),
-          serviceSelector: S.optional(__S(144, __c18, 0)),
-          advertiseMode: S.String,
-          bgpPeers: S.optional(__S(152, __c19, 0)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LoadBalancerProperties" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(8, __c1, 0)),
-          properties: S.optional(__S(145, __c18, 1)),
+          properties: S.optional(__S(161, __c20, 1)),
         }),
       ).annotate({ identifier: "GetLoadBalancerResponse" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          addresses: __S(168, __c21, 0),
+          serviceSelector: S.optional(__S(160, __c20, 0)),
+          advertiseMode: S.String,
+          bgpPeers: S.optional(__S(168, __c21, 0)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LoadBalancerProperties" });
+  }
+}
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c20(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1364,7 +1439,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "GetServiceRequest" });
   }
 }
-function __c21(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1380,12 +1455,12 @@ function __c21(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(8, __c1, 0)),
-          properties: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(184, __c23, 0)),
         }),
       ).annotate({ identifier: "GetServiceResponse" });
   }
 }
-function __c22(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1403,7 +1478,21 @@ function __c22(j: number): any {
       ).annotate({ identifier: "GetStorageClassRequest" });
   }
 }
-function __c23(j: number): any {
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(210, __c26, 2)),
+        }),
+      ).annotate({ identifier: "GetStorageClassResponse" });
+  }
+}
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -1429,32 +1518,22 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           allowVolumeExpansion: S.optional(S.String),
-          mountOptions: S.optional(__S(152, __c19, 0)),
+          mountOptions: S.optional(__S(168, __c21, 0)),
           provisioner: S.optional(S.String),
           volumeBindingMode: S.optional(S.String),
-          accessModes: S.optional(__S(184, __c23, 0)),
+          accessModes: S.optional(__S(208, __c26, 0)),
           dataResilience: S.optional(S.String),
           failoverSpeed: S.optional(S.String),
-          limitations: S.optional(__S(152, __c19, 0)),
+          limitations: S.optional(__S(168, __c21, 0)),
           performance: S.optional(S.String),
           priority: S.optional(S.Number),
-          typeProperties: __S(185, __c23, 1),
+          typeProperties: __S(209, __c26, 1),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageClassProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          properties: S.optional(__S(186, __c23, 2)),
-        }),
-      ).annotate({ identifier: "GetStorageClassResponse" });
   }
 }
-function __c24(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1470,11 +1549,11 @@ function __c24(j: number): any {
         ),
       ).annotate({ identifier: "ListBgpPeersRequest" });
     case 1:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(136, __c17, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(193, __c24, 1),
+          value: __S(217, __c27, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BgpPeerListResult" });

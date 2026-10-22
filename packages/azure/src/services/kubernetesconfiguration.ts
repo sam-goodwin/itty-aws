@@ -337,6 +337,10 @@ export interface CreateExtensionResponse {
   managedBy?: string;
   /** Plan for the resource. */
   plan?: CreateExtensionRequestPlan;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteExtensionRequest {
   /** The ID of the target subscription. */
@@ -354,7 +358,12 @@ export interface DeleteExtensionRequest {
   /** Delete the extension resource in Azure - not the normal asynchronous delete. */
   forceDelete?: boolean;
 }
-export interface DeleteExtensionResponse {}
+export interface DeleteExtensionResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteFluxConfigurationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -371,7 +380,12 @@ export interface DeleteFluxConfigurationRequest {
   /** Delete the extension resource in Azure - not the normal asynchronous delete. */
   forceDelete?: boolean;
 }
-export interface DeleteFluxConfigurationResponse {}
+export interface DeleteFluxConfigurationResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSourceControlConfigurationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -816,6 +830,10 @@ export interface FluxConfigurationsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** Properties to create a Flux Configuration resource */
   properties?: FluxConfigurationProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetExtensionRequest {
   /** The ID of the target subscription. */
@@ -1505,6 +1523,10 @@ export interface UpdateExtensionResponse {
   managedBy?: string;
   /** Plan for the resource. */
   plan?: CreateExtensionRequestPlan;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Source Kind to pull the configuration data from. */
 export type SourceKindType = "GitRepository" | "Bucket" | "AzureBlob" | "OCIRepository";
@@ -1701,6 +1723,10 @@ export interface UpdateFluxConfigurationResponse {
   systemData?: SystemData;
   /** Properties to create a Flux Configuration resource */
   properties?: FluxConfigurationProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type CreateExtensionError = AzureOpError;
 /** Create a new Kubernetes Cluster Extension. */
@@ -1711,7 +1737,7 @@ export const CreateExtension: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(3, __c0, 3) as any as S.Schema<CreateExtensionRequest>,
-  output: __S(173, __c5, 13) as any as S.Schema<CreateExtensionResponse>,
+  output: __S(32, __c1, 0) as any as S.Schema<CreateExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1725,8 +1751,8 @@ export const DeleteExtension: API.OperationMethod<
   DeleteExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c7, 0) as any as S.Schema<DeleteExtensionRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteExtensionResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeleteExtensionRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1740,8 +1766,8 @@ export const DeleteFluxConfiguration: API.OperationMethod<
   DeleteFluxConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c16, 0) as any as S.Schema<DeleteFluxConfigurationRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteFluxConfigurationResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<DeleteFluxConfigurationRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteFluxConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1755,8 +1781,8 @@ export const DeleteSourceControlConfiguration: API.OperationMethod<
   DeleteSourceControlConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<DeleteSourceControlConfigurationRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteSourceControlConfigurationResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<DeleteSourceControlConfigurationRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeleteSourceControlConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1770,8 +1796,8 @@ export const FluxConfigurationsCreateOrUpdate: API.OperationMethod<
   FluxConfigurationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(579, __c18, 3) as any as S.Schema<FluxConfigurationsCreateOrUpdateRequest>,
-  output: __S(633, __c19, 25) as any as S.Schema<FluxConfigurationsCreateOrUpdateResponse>,
+  input: __S(643, __c20, 3) as any as S.Schema<FluxConfigurationsCreateOrUpdateRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<FluxConfigurationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1785,8 +1811,8 @@ export const GetExtension: API.OperationMethod<
   GetExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c20, 0) as any as S.Schema<GetExtensionRequest>,
-  output: __S(173, __c5, 13) as any as S.Schema<GetExtensionResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetExtensionRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<GetExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1800,8 +1826,8 @@ export const GetFluxConfigOperationStatus: API.OperationMethod<
   GetFluxConfigOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<GetFluxConfigOperationStatusRequest>,
-  output: __S(673, __c21, 1) as any as S.Schema<OperationStatusResult_2>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetFluxConfigOperationStatusRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<OperationStatusResult_2>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1815,8 +1841,8 @@ export const GetFluxConfiguration: API.OperationMethod<
   GetFluxConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c22, 0) as any as S.Schema<GetFluxConfigurationRequest>,
-  output: __S(633, __c19, 25) as any as S.Schema<GetFluxConfigurationResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetFluxConfigurationRequest>,
+  output: __S(864, __c27, 0) as any as S.Schema<GetFluxConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1830,8 +1856,8 @@ export const GetOperationStatus: API.OperationMethod<
   GetOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c23, 0) as any as S.Schema<GetOperationStatusRequest>,
-  output: __S(768, __c24, 0) as any as S.Schema<OperationStatusResult>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetOperationStatusRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<OperationStatusResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1845,8 +1871,8 @@ export const GetSourceControlConfiguration: API.OperationMethod<
   GetSourceControlConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c25, 0) as any as S.Schema<GetSourceControlConfigurationRequest>,
-  output: __S(835, __c26, 3) as any as S.Schema<GetSourceControlConfigurationResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<GetSourceControlConfigurationRequest>,
+  output: __S(995, __c31, 3) as any as S.Schema<GetSourceControlConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1860,8 +1886,8 @@ export const ListExtensions: API.OperationMethod<
   ListExtensionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c8, 0) as any as S.Schema<ListExtensionsRequest>,
-  output: __S(258, __c8, 2) as any as S.Schema<ExtensionsList>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListExtensionsRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<ExtensionsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1875,8 +1901,8 @@ export const ListFluxConfigurations: API.OperationMethod<
   ListFluxConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c9, 0) as any as S.Schema<ListFluxConfigurationsRequest>,
-  output: __S(290, __c9, 2) as any as S.Schema<FluxConfigurationsList>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListFluxConfigurationsRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<FluxConfigurationsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1890,8 +1916,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c10, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(324, __c10, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(388, __c12, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1905,8 +1931,8 @@ export const ListOperationStatus: API.OperationMethod<
   ListOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c11, 0) as any as S.Schema<ListOperationStatusRequest>,
-  output: __S(354, __c11, 2) as any as S.Schema<ListOperationStatusResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListOperationStatusRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<ListOperationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1920,8 +1946,8 @@ export const ListSourceControlConfigurations: API.OperationMethod<
   ListSourceControlConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c12, 0) as any as S.Schema<ListSourceControlConfigurationsRequest>,
-  output: __S(386, __c12, 2) as any as S.Schema<SourceControlConfigurationList>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListSourceControlConfigurationsRequest>,
+  output: __S(450, __c14, 2) as any as S.Schema<SourceControlConfigurationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1935,8 +1961,8 @@ export const SourceControlConfigurationsCreateOrUpdate: API.OperationMethod<
   SourceControlConfigurationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(417, __c13, 1) as any as S.Schema<SourceControlConfigurationsCreateOrUpdateRequest>,
-  output: __S(835, __c26, 3) as any as S.Schema<SourceControlConfigurationsCreateOrUpdateResponse>,
+  input: __S(481, __c15, 1) as any as S.Schema<SourceControlConfigurationsCreateOrUpdateRequest>,
+  output: __S(995, __c31, 3) as any as S.Schema<SourceControlConfigurationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1950,8 +1976,8 @@ export const UpdateExtension: API.OperationMethod<
   UpdateExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449, __c14, 1) as any as S.Schema<UpdateExtensionRequest>,
-  output: __S(173, __c5, 13) as any as S.Schema<UpdateExtensionResponse>,
+  input: __S(513, __c16, 1) as any as S.Schema<UpdateExtensionRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<UpdateExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1965,8 +1991,8 @@ export const UpdateFluxConfiguration: API.OperationMethod<
   UpdateFluxConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(487, __c15, 7) as any as S.Schema<UpdateFluxConfigurationRequest>,
-  output: __S(633, __c19, 25) as any as S.Schema<UpdateFluxConfigurationResponse>,
+  input: __S(551, __c17, 7) as any as S.Schema<UpdateFluxConfigurationRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<UpdateFluxConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1991,15 +2017,15 @@ function __c0(j: number): any {
           autoUpgradeMinorVersion: S.optional(S.Boolean),
           releaseTrain: S.optional(S.String),
           version: S.optional(S.NullOr(S.String)),
-          scope: S.optional(__S(162, __c5, 2)),
-          configurationSettings: S.optional(S.NullOr(__S(64, __c2, 0))),
-          configurationProtectedSettings: S.optional(S.NullOr(__S(64, __c2, 0))),
-          statuses: S.optional(S.NullOr(__S(164, __c5, 4))),
-          errorInfo: S.optional(__S(32, __c1, 0)),
+          scope: S.optional(__S(194, __c6, 2)),
+          configurationSettings: S.optional(S.NullOr(__S(96, __c3, 0))),
+          configurationProtectedSettings: S.optional(S.NullOr(__S(96, __c3, 0))),
+          statuses: S.optional(S.NullOr(__S(196, __c6, 4))),
+          errorInfo: S.optional(__S(64, __c2, 0)),
           aksAssignedIdentity: S.optional(S.NullOr(__S(0, __c0, 0))),
           autoUpgradeMode: S.optional(S.String),
-          managementDetails: S.optional(__S(167, __c5, 7)),
-          additionalDetails: S.optional(__S(168, __c5, 8)),
+          managementDetails: S.optional(__S(199, __c6, 7)),
+          additionalDetails: S.optional(__S(200, __c6, 8)),
         }),
       ).annotate({ identifier: "ExtensionPropertiesInput" });
     case 2:
@@ -2020,7 +2046,7 @@ function __c0(j: number): any {
           properties: S.optional(__S(1, __c0, 1)),
           identity: S.optional(__S(2, __c0, 2)),
           managedBy: S.optional(S.String),
-          plan: S.optional(__S(169, __c5, 9)),
+          plan: S.optional(__S(201, __c6, 9)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2035,24 +2061,43 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ExtensionPropertiesInputErrorInfo",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(203, __c6, 11)),
+          identity: S.optional(__S(204, __c6, 12)),
+          managedBy: S.optional(S.String),
+          plan: S.optional(__S(201, __c6, 9)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateExtensionResponse" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ExtensionPropertiesInputErrorInfo",
+      });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Record(S.String, S.String);
   }
 }
 function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2067,7 +2112,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c5(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2084,8 +2129,8 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cluster: S.optional(S.NullOr(__S(160, __c5, 0))),
-          namespace: S.optional(S.NullOr(__S(161, __c5, 1))),
+          cluster: S.optional(S.NullOr(__S(192, __c6, 0))),
+          namespace: S.optional(S.NullOr(__S(193, __c6, 1))),
         }),
       ).annotate({ identifier: "Scope" });
     case 3:
@@ -2099,22 +2144,22 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "ExtensionStatus" });
     case 4:
-      return S.Array(__S(163, __c5, 3));
+      return S.Array(__S(195, __c6, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           entity: S.optional(S.String),
-          allowedActions: S.optional(__S(96, __c3, 0)),
+          allowedActions: S.optional(__S(128, __c4, 0)),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccessDetail" });
     case 6:
-      return S.Array(__S(165, __c5, 5));
+      return S.Array(__S(197, __c6, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.String),
-          accessDetails: S.optional(__S(166, __c5, 6)),
+          accessDetails: S.optional(__S(198, __c6, 6)),
         }),
       ).annotate({ identifier: "ManagementDetails" });
     case 8:
@@ -2153,20 +2198,20 @@ function __c5(j: number): any {
           autoUpgradeMinorVersion: S.optional(S.Boolean),
           releaseTrain: S.optional(S.String),
           version: S.optional(S.NullOr(S.String)),
-          scope: S.optional(__S(162, __c5, 2)),
-          configurationSettings: S.optional(S.NullOr(__S(64, __c2, 0))),
-          configurationProtectedSettings: S.optional(S.NullOr(__S(64, __c2, 0))),
+          scope: S.optional(__S(194, __c6, 2)),
+          configurationSettings: S.optional(S.NullOr(__S(96, __c3, 0))),
+          configurationProtectedSettings: S.optional(S.NullOr(__S(96, __c3, 0))),
           currentVersion: S.optional(S.NullOr(S.String)),
           provisioningState: S.optional(S.String),
-          statuses: S.optional(S.NullOr(__S(164, __c5, 4))),
-          errorInfo: S.optional(__S(197, __c6, 5)),
-          customLocationSettings: S.optional(S.NullOr(__S(64, __c2, 0))),
+          statuses: S.optional(S.NullOr(__S(196, __c6, 4))),
+          errorInfo: S.optional(__S(229, __c7, 5)),
+          customLocationSettings: S.optional(S.NullOr(__S(96, __c3, 0))),
           packageUri: S.optional(S.NullOr(S.String)),
-          aksAssignedIdentity: S.optional(S.NullOr(__S(170, __c5, 10))),
+          aksAssignedIdentity: S.optional(S.NullOr(__S(202, __c6, 10))),
           isSystemExtension: S.optional(S.Boolean),
           autoUpgradeMode: S.optional(S.String),
-          managementDetails: S.optional(__S(167, __c5, 7)),
-          additionalDetails: S.optional(__S(168, __c5, 8)),
+          managementDetails: S.optional(__S(199, __c6, 7)),
+          additionalDetails: S.optional(__S(200, __c6, 8)),
           extensionState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExtensionProperties" });
@@ -2178,25 +2223,12 @@ function __c5(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateExtensionResponseIdentity" });
-    case 13:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(128, __c4, 0)),
-          properties: S.optional(__S(171, __c5, 11)),
-          identity: S.optional(__S(172, __c5, 12)),
-          managedBy: S.optional(S.String),
-          plan: S.optional(__S(169, __c5, 9)),
-        }),
-      ).annotate({ identifier: "CreateExtensionResponse" });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(195, __c6, 3)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(227, __c7, 3)));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2205,32 +2237,32 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
     case 2:
-      return S.Array(__S(193, __c6, 1));
+      return S.Array(__S(225, __c7, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(192, __c6, 0)),
-          additionalInfo: S.optional(__S(194, __c6, 2)),
+          details: S.optional(__S(224, __c7, 0)),
+          additionalInfo: S.optional(__S(226, __c7, 2)),
         }),
       ).annotate({ identifier: "ErrorDetail" });
     case 4:
-      return S.Array(__S(195, __c6, 3));
+      return S.Array(__S(227, __c7, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(196, __c6, 4)),
-          additionalInfo: S.optional(__S(194, __c6, 2)),
+          details: S.optional(__S(228, __c7, 4)),
+          additionalInfo: S.optional(__S(226, __c7, 2)),
         }),
       ).annotate({ identifier: "ExtensionPropertiesErrorInfo" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2253,7 +2285,18 @@ function __c7(j: number): any {
       ).annotate({ identifier: "DeleteExtensionRequest" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteExtensionResponse" });
+  }
+}
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2273,17 +2316,17 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "ListExtensionsRequest" });
     case 1:
-      return S.Array(__S(173, __c5, 13));
+      return S.Array(__S(768, __c24, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(257, __c8, 1),
+          value: __S(321, __c10, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExtensionsList" });
   }
 }
-function __c9(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2303,17 +2346,17 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "ListFluxConfigurationsRequest" });
     case 1:
-      return S.Array(__S(633, __c19, 25));
+      return S.Array(__S(864, __c27, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(289, __c9, 1),
+          value: __S(353, __c11, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FluxConfigurationsList" });
   }
 }
-function __c10(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2339,23 +2382,23 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(321, __c10, 1)),
+          display: S.optional(__S(385, __c12, 1)),
           isDataAction: S.optional(S.Boolean),
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceProviderOperation" });
     case 3:
-      return S.Array(__S(322, __c10, 2));
+      return S.Array(__S(386, __c12, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(323, __c10, 3)),
+          value: S.optional(__S(387, __c12, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c11(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2375,17 +2418,17 @@ function __c11(j: number): any {
         ),
       ).annotate({ identifier: "ListOperationStatusRequest" });
     case 1:
-      return S.Array(__S(768, __c24, 0));
+      return S.Array(__S(928, __c29, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(353, __c11, 1)),
+          value: S.optional(__S(417, __c13, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationStatusResponse" });
   }
 }
-function __c12(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2405,17 +2448,17 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "ListSourceControlConfigurationsRequest" });
     case 1:
-      return S.Array(__S(835, __c26, 3));
+      return S.Array(__S(995, __c31, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(385, __c12, 1)),
+          value: S.optional(__S(449, __c14, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SourceControlConfigurationList" });
   }
 }
-function __c13(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2425,11 +2468,11 @@ function __c13(j: number): any {
           operatorInstanceName: S.optional(S.String),
           operatorType: S.optional(S.String),
           operatorParams: S.optional(S.String),
-          configurationProtectedSettings: S.optional(__S(64, __c2, 0)),
+          configurationProtectedSettings: S.optional(__S(96, __c3, 0)),
           operatorScope: S.optional(S.String),
           sshKnownHostsContents: S.optional(S.String),
           enableHelmOperator: S.optional(S.Boolean),
-          helmOperatorProperties: S.optional(__S(832, __c26, 0)),
+          helmOperatorProperties: S.optional(__S(992, __c31, 0)),
         }),
       ).annotate({ identifier: "SourceControlConfigurationsCreateOrUpdateRequestProperties" });
     case 1:
@@ -2441,7 +2484,7 @@ function __c13(j: number): any {
           clusterResourceName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           sourceControlConfigurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(416, __c13, 0)),
+          properties: S.optional(__S(480, __c15, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2453,7 +2496,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "SourceControlConfigurationsCreateOrUpdateRequest" });
   }
 }
-function __c14(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2462,8 +2505,8 @@ function __c14(j: number): any {
           autoUpgradeMode: S.optional(S.String),
           releaseTrain: S.optional(S.String),
           version: S.optional(S.NullOr(S.String)),
-          configurationSettings: S.optional(S.NullOr(__S(64, __c2, 0))),
-          configurationProtectedSettings: S.optional(S.NullOr(__S(64, __c2, 0))),
+          configurationSettings: S.optional(S.NullOr(__S(96, __c3, 0))),
+          configurationProtectedSettings: S.optional(S.NullOr(__S(96, __c3, 0))),
         }),
       ).annotate({ identifier: "PatchExtensionProperties" });
     case 1:
@@ -2475,7 +2518,7 @@ function __c14(j: number): any {
           clusterResourceName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           extensionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(448, __c14, 0)),
+          properties: S.optional(__S(512, __c16, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2487,7 +2530,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "UpdateExtensionRequest" });
   }
 }
-function __c15(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2519,47 +2562,47 @@ function __c15(j: number): any {
           containerName: S.optional(S.NullOr(S.String)),
           timeoutInSeconds: S.optional(S.NullOr(S.Number)),
           syncIntervalInSeconds: S.optional(S.NullOr(S.Number)),
-          servicePrincipal: S.optional(__S(481, __c15, 1)),
+          servicePrincipal: S.optional(__S(545, __c17, 1)),
           accountKey: S.optional(S.NullOr(S.String)),
           sasToken: S.optional(S.NullOr(S.String)),
-          managedIdentity: S.optional(__S(612, __c19, 4)),
+          managedIdentity: S.optional(__S(708, __c22, 4)),
           localAuthRef: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "AzureBlobPatchDefinition" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          substitute: S.optional(S.NullOr(__S(64, __c2, 0))),
-          substituteFrom: S.optional(S.NullOr(__S(622, __c19, 14))),
+          substitute: S.optional(S.NullOr(__S(96, __c3, 0))),
+          substituteFrom: S.optional(S.NullOr(__S(718, __c22, 14))),
         }),
       ).annotate({ identifier: "PostBuildPatchDefinition" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.NullOr(S.String)),
-          dependsOn: S.optional(S.NullOr(__S(96, __c3, 0))),
+          dependsOn: S.optional(S.NullOr(__S(128, __c4, 0))),
           timeoutInSeconds: S.optional(S.NullOr(S.Number)),
           syncIntervalInSeconds: S.optional(S.NullOr(S.Number)),
           retryIntervalInSeconds: S.optional(S.NullOr(S.Number)),
           prune: S.optional(S.NullOr(S.Boolean)),
           force: S.optional(S.NullOr(S.Boolean)),
           wait: S.optional(S.NullOr(S.Boolean)),
-          postBuild: S.optional(S.NullOr(__S(483, __c15, 3))),
+          postBuild: S.optional(S.NullOr(__S(547, __c17, 3))),
         }),
       ).annotate({ identifier: "KustomizationPatchDefinition" });
     case 5:
-      return S.Record(S.String, __S(484, __c15, 4));
+      return S.Record(S.String, __S(548, __c17, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           sourceKind: S.optional(S.String),
           suspend: S.optional(S.Boolean),
-          gitRepository: S.optional(__S(609, __c19, 1)),
-          bucket: S.optional(__S(480, __c15, 0)),
-          azureBlob: S.optional(__S(482, __c15, 2)),
-          ociRepository: S.optional(__S(620, __c19, 12)),
-          kustomizations: S.optional(__S(485, __c15, 5)),
-          configurationProtectedSettings: S.optional(__S(64, __c2, 0)),
+          gitRepository: S.optional(__S(705, __c22, 1)),
+          bucket: S.optional(__S(544, __c17, 0)),
+          azureBlob: S.optional(__S(546, __c17, 2)),
+          ociRepository: S.optional(__S(716, __c22, 12)),
+          kustomizations: S.optional(__S(549, __c17, 5)),
+          configurationProtectedSettings: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({ identifier: "FluxConfigurationPatchProperties" });
     case 7:
@@ -2571,7 +2614,7 @@ function __c15(j: number): any {
           clusterResourceName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           fluxConfigurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(486, __c15, 6)),
+          properties: S.optional(__S(550, __c17, 6)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2583,7 +2626,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "UpdateFluxConfigurationRequest" });
   }
 }
-function __c16(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2606,7 +2649,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "DeleteFluxConfigurationRequest" });
   }
 }
-function __c17(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2628,24 +2671,24 @@ function __c17(j: number): any {
       ).annotate({ identifier: "DeleteSourceControlConfigurationRequest" });
   }
 }
-function __c18(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
-          dependsOn: S.optional(S.NullOr(__S(96, __c3, 0))),
+          dependsOn: S.optional(S.NullOr(__S(128, __c4, 0))),
           timeoutInSeconds: S.optional(S.NullOr(S.Number)),
           syncIntervalInSeconds: S.optional(S.NullOr(S.Number)),
           retryIntervalInSeconds: S.optional(S.NullOr(S.Number)),
           prune: S.optional(S.Boolean),
           force: S.optional(S.Boolean),
           wait: S.optional(S.Boolean),
-          postBuild: S.optional(S.NullOr(__S(623, __c19, 15))),
+          postBuild: S.optional(S.NullOr(__S(719, __c22, 15))),
         }),
       ).annotate({ identifier: "KustomizationDefinitionInput" });
     case 1:
-      return S.Record(S.String, __S(576, __c18, 0));
+      return S.Record(S.String, __S(640, __c20, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2653,12 +2696,12 @@ function __c18(j: number): any {
           namespace: S.optional(S.String),
           sourceKind: S.optional(S.String),
           suspend: S.optional(S.Boolean),
-          gitRepository: S.optional(__S(609, __c19, 1)),
-          bucket: S.optional(__S(610, __c19, 2)),
-          azureBlob: S.optional(__S(613, __c19, 5)),
-          ociRepository: S.optional(__S(620, __c19, 12)),
-          kustomizations: S.optional(S.NullOr(__S(577, __c18, 1))),
-          configurationProtectedSettings: S.optional(S.NullOr(__S(64, __c2, 0))),
+          gitRepository: S.optional(__S(705, __c22, 1)),
+          bucket: S.optional(__S(706, __c22, 2)),
+          azureBlob: S.optional(__S(709, __c22, 5)),
+          ociRepository: S.optional(__S(716, __c22, 12)),
+          kustomizations: S.optional(S.NullOr(__S(641, __c20, 1))),
+          configurationProtectedSettings: S.optional(S.NullOr(__S(96, __c3, 0))),
           waitForReconciliation: S.optional(S.NullOr(S.Boolean)),
           reconciliationWaitDuration: S.optional(S.NullOr(S.String)),
         }),
@@ -2672,7 +2715,7 @@ function __c18(j: number): any {
           clusterResourceName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           fluxConfigurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(578, __c18, 2)),
+          properties: S.optional(__S(642, __c20, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2684,7 +2727,23 @@ function __c18(j: number): any {
       ).annotate({ identifier: "FluxConfigurationsCreateOrUpdateRequest" });
   }
 }
-function __c19(j: number): any {
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(728, __c22, 24)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "FluxConfigurationsCreateOrUpdateResponse" });
+  }
+}
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2701,7 +2760,7 @@ function __c19(j: number): any {
           url: S.optional(S.NullOr(S.String)),
           timeoutInSeconds: S.optional(S.NullOr(S.Number)),
           syncIntervalInSeconds: S.optional(S.NullOr(S.Number)),
-          repositoryRef: S.optional(__S(608, __c19, 0)),
+          repositoryRef: S.optional(__S(704, __c22, 0)),
           sshKnownHosts: S.optional(S.NullOr(S.String)),
           httpsUser: S.optional(S.NullOr(S.String)),
           httpsCACert: S.optional(S.NullOr(S.String)),
@@ -2745,10 +2804,10 @@ function __c19(j: number): any {
           containerName: S.optional(S.NullOr(S.String)),
           timeoutInSeconds: S.optional(S.NullOr(S.Number)),
           syncIntervalInSeconds: S.optional(S.NullOr(S.Number)),
-          servicePrincipal: S.optional(__S(611, __c19, 3)),
+          servicePrincipal: S.optional(__S(707, __c22, 3)),
           accountKey: S.optional(S.NullOr(S.String)),
           sasToken: S.optional(S.NullOr(S.String)),
-          managedIdentity: S.optional(__S(612, __c19, 4)),
+          managedIdentity: S.optional(__S(708, __c22, 4)),
           localAuthRef: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "AzureBlobDefinition" });
@@ -2775,13 +2834,13 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "MatchOidcIdentityDefinition" });
     case 9:
-      return S.Array(__S(616, __c19, 8));
+      return S.Array(__S(712, __c22, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
-          verificationConfig: S.optional(S.NullOr(__S(64, __c2, 0))),
-          matchOidcIdentity: S.optional(S.NullOr(__S(617, __c19, 9))),
+          verificationConfig: S.optional(S.NullOr(__S(96, __c3, 0))),
+          matchOidcIdentity: S.optional(S.NullOr(__S(713, __c22, 9))),
         }),
       ).annotate({ identifier: "VerifyDefinition" });
     case 11:
@@ -2798,13 +2857,13 @@ function __c19(j: number): any {
           url: S.optional(S.NullOr(S.String)),
           timeoutInSeconds: S.optional(S.NullOr(S.Number)),
           syncIntervalInSeconds: S.optional(S.NullOr(S.Number)),
-          repositoryRef: S.optional(__S(614, __c19, 6)),
-          layerSelector: S.optional(__S(615, __c19, 7)),
-          verify: S.optional(__S(618, __c19, 10)),
+          repositoryRef: S.optional(__S(710, __c22, 6)),
+          layerSelector: S.optional(__S(711, __c22, 7)),
+          verify: S.optional(__S(714, __c22, 10)),
           insecure: S.optional(S.Boolean),
           useWorkloadIdentity: S.optional(S.Boolean),
           serviceAccountName: S.optional(S.NullOr(S.String)),
-          tlsConfig: S.optional(__S(619, __c19, 11)),
+          tlsConfig: S.optional(__S(715, __c22, 11)),
           localAuthRef: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "OCIRepositoryDefinition" });
@@ -2817,12 +2876,12 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "SubstituteFromDefinition" });
     case 14:
-      return S.Array(__S(621, __c19, 13));
+      return S.Array(__S(717, __c22, 13));
     case 15:
       return S.suspend(() =>
         S.Struct({
-          substitute: S.optional(S.NullOr(__S(64, __c2, 0))),
-          substituteFrom: S.optional(__S(622, __c19, 14)),
+          substitute: S.optional(S.NullOr(__S(96, __c3, 0))),
+          substituteFrom: S.optional(__S(718, __c22, 14)),
         }),
       ).annotate({ identifier: "PostBuildDefinition" });
     case 16:
@@ -2830,18 +2889,18 @@ function __c19(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           path: S.optional(S.String),
-          dependsOn: S.optional(S.NullOr(__S(96, __c3, 0))),
+          dependsOn: S.optional(S.NullOr(__S(128, __c4, 0))),
           timeoutInSeconds: S.optional(S.NullOr(S.Number)),
           syncIntervalInSeconds: S.optional(S.NullOr(S.Number)),
           retryIntervalInSeconds: S.optional(S.NullOr(S.Number)),
           prune: S.optional(S.Boolean),
           force: S.optional(S.Boolean),
           wait: S.optional(S.Boolean),
-          postBuild: S.optional(S.NullOr(__S(623, __c19, 15))),
+          postBuild: S.optional(S.NullOr(__S(719, __c22, 15))),
         }),
       ).annotate({ identifier: "KustomizationDefinition" });
     case 17:
-      return S.Record(S.String, __S(624, __c19, 16));
+      return S.Record(S.String, __S(720, __c22, 16));
     case 18:
       return S.suspend(() =>
         S.Struct({
@@ -2860,12 +2919,12 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "ObjectStatusConditionDefinition" });
     case 20:
-      return S.Array(__S(627, __c19, 19));
+      return S.Array(__S(723, __c22, 19));
     case 21:
       return S.suspend(() =>
         S.Struct({
           lastRevisionApplied: S.optional(S.NullOr(S.Number)),
-          helmChartRef: S.optional(__S(626, __c19, 18)),
+          helmChartRef: S.optional(__S(722, __c22, 18)),
           failureCount: S.optional(S.NullOr(S.Number)),
           installFailureCount: S.optional(S.NullOr(S.Number)),
           upgradeFailureCount: S.optional(S.NullOr(S.Number)),
@@ -2878,13 +2937,13 @@ function __c19(j: number): any {
           namespace: S.optional(S.String),
           kind: S.optional(S.String),
           complianceState: S.optional(S.String),
-          appliedBy: S.optional(S.NullOr(__S(626, __c19, 18))),
-          statusConditions: S.optional(S.NullOr(__S(628, __c19, 20))),
-          helmReleaseProperties: S.optional(__S(629, __c19, 21)),
+          appliedBy: S.optional(S.NullOr(__S(722, __c22, 18))),
+          statusConditions: S.optional(S.NullOr(__S(724, __c22, 20))),
+          helmReleaseProperties: S.optional(__S(725, __c22, 21)),
         }),
       ).annotate({ identifier: "ObjectStatusDefinition" });
     case 23:
-      return S.Array(__S(630, __c19, 22));
+      return S.Array(__S(726, __c22, 22));
     case 24:
       return S.suspend(() =>
         S.Struct({
@@ -2892,13 +2951,13 @@ function __c19(j: number): any {
           namespace: S.optional(S.String),
           sourceKind: S.optional(S.String),
           suspend: S.optional(S.Boolean),
-          gitRepository: S.optional(__S(609, __c19, 1)),
-          bucket: S.optional(__S(610, __c19, 2)),
-          azureBlob: S.optional(__S(613, __c19, 5)),
-          ociRepository: S.optional(__S(620, __c19, 12)),
-          kustomizations: S.optional(S.NullOr(__S(625, __c19, 17))),
-          configurationProtectedSettings: S.optional(S.NullOr(__S(64, __c2, 0))),
-          statuses: S.optional(S.NullOr(__S(631, __c19, 23))),
+          gitRepository: S.optional(__S(705, __c22, 1)),
+          bucket: S.optional(__S(706, __c22, 2)),
+          azureBlob: S.optional(__S(709, __c22, 5)),
+          ociRepository: S.optional(__S(716, __c22, 12)),
+          kustomizations: S.optional(S.NullOr(__S(721, __c22, 17))),
+          configurationProtectedSettings: S.optional(S.NullOr(__S(96, __c3, 0))),
+          statuses: S.optional(S.NullOr(__S(727, __c22, 23))),
           repositoryPublicKey: S.optional(S.NullOr(S.String)),
           sourceSyncedCommitId: S.optional(S.NullOr(S.String)),
           sourceUpdatedAt: S.optional(S.NullOr(S.String)),
@@ -2910,19 +2969,9 @@ function __c19(j: number): any {
           errorMessage: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "FluxConfigurationProperties" });
-    case 25:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(128, __c4, 0)),
-          properties: S.optional(__S(632, __c19, 24)),
-        }),
-      ).annotate({ identifier: "FluxConfigurationsCreateOrUpdateResponse" });
   }
 }
-function __c20(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2944,7 +2993,24 @@ function __c20(j: number): any {
       ).annotate({ identifier: "GetExtensionRequest" });
   }
 }
-function __c21(j: number): any {
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(203, __c6, 11)),
+          identity: S.optional(__S(204, __c6, 12)),
+          managedBy: S.optional(S.String),
+          plan: S.optional(__S(201, __c6, 9)),
+        }),
+      ).annotate({ identifier: "GetExtensionResponse" });
+  }
+}
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2971,13 +3037,13 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           status: S.String,
-          properties: S.optional(__S(64, __c2, 0)),
-          error: S.optional(__S(197, __c6, 5)),
+          properties: S.optional(__S(96, __c3, 0)),
+          error: S.optional(__S(229, __c7, 5)),
         }),
       ).annotate({ identifier: "OperationStatusResult_2" });
   }
 }
-function __c22(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2999,7 +3065,21 @@ function __c22(j: number): any {
       ).annotate({ identifier: "GetFluxConfigurationRequest" });
   }
 }
-function __c23(j: number): any {
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(728, __c22, 24)),
+        }),
+      ).annotate({ identifier: "GetFluxConfigurationResponse" });
+  }
+}
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3022,7 +3102,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "GetOperationStatusRequest" });
   }
 }
-function __c24(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3030,13 +3110,13 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           status: S.String,
-          properties: S.optional(S.NullOr(__S(64, __c2, 0))),
-          error: S.optional(__S(197, __c6, 5)),
+          properties: S.optional(S.NullOr(__S(96, __c3, 0))),
+          error: S.optional(__S(229, __c7, 5)),
         }),
       ).annotate({ identifier: "OperationStatusResult" });
   }
 }
-function __c25(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3058,7 +3138,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "GetSourceControlConfigurationRequest" });
   }
 }
-function __c26(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3084,14 +3164,14 @@ function __c26(j: number): any {
           operatorInstanceName: S.optional(S.String),
           operatorType: S.optional(S.String),
           operatorParams: S.optional(S.String),
-          configurationProtectedSettings: S.optional(__S(64, __c2, 0)),
+          configurationProtectedSettings: S.optional(__S(96, __c3, 0)),
           operatorScope: S.optional(S.String),
           repositoryPublicKey: S.optional(S.String),
           sshKnownHostsContents: S.optional(S.String),
           enableHelmOperator: S.optional(S.Boolean),
-          helmOperatorProperties: S.optional(__S(832, __c26, 0)),
+          helmOperatorProperties: S.optional(__S(992, __c31, 0)),
           provisioningState: S.optional(S.String),
-          complianceStatus: S.optional(__S(833, __c26, 1)),
+          complianceStatus: S.optional(__S(993, __c31, 1)),
         }),
       ).annotate({ identifier: "GetSourceControlConfigurationResponseProperties" });
     case 3:
@@ -3100,8 +3180,8 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(834, __c26, 2)),
-          systemData: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(994, __c31, 2)),
+          systemData: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({ identifier: "GetSourceControlConfigurationResponse" });
   }

@@ -26,7 +26,12 @@ export interface CancelDomainVerificationRequest {
   /** Type of verification. */
   verificationType: VerificationType | (string & {});
 }
-export interface CancelDomainVerificationResponse {}
+export interface CancelDomainVerificationResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface CheckCommunicationServiceNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -199,6 +204,10 @@ export interface CommunicationServicesCreateOrUpdateResponse {
   properties?: CommunicationServiceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunicationServicesCreateOrUpdateResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface CommunicationServicesLinkNotificationHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -225,7 +234,12 @@ export interface DeleteCommunicationServiceRequest {
   /** The name of the CommunicationService resource. */
   communicationServiceName: string;
 }
-export interface DeleteCommunicationServiceResponse {}
+export interface DeleteCommunicationServiceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -236,7 +250,12 @@ export interface DeleteDomainRequest {
   /** The name of the Domains resource. */
   domainName: string;
 }
-export interface DeleteDomainResponse {}
+export interface DeleteDomainResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteEmailServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -245,7 +264,12 @@ export interface DeleteEmailServiceRequest {
   /** The name of the EmailService resource. */
   emailServiceName: string;
 }
-export interface DeleteEmailServiceResponse {}
+export interface DeleteEmailServiceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSenderUsernameRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -429,6 +453,10 @@ export interface DomainsCreateOrUpdateResponse {
   location: string;
   /** The properties of a Domains resource. */
   properties?: DomainProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DomainsInitiateVerificationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -442,7 +470,12 @@ export interface DomainsInitiateVerificationRequest {
   /** Type of verification. */
   verificationType: VerificationType | (string & {});
 }
-export interface DomainsInitiateVerificationResponse {}
+export interface DomainsInitiateVerificationResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Resource tags. */
 export type EmailServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
 /** Provisioning state of the resource. */
@@ -494,6 +527,10 @@ export interface EmailServicesCreateOrUpdateResponse {
   location: string;
   /** The properties of the service. */
   properties?: EmailServiceProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetCommunicationServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1316,6 +1353,10 @@ export interface UpdateDomainResponse {
   location: string;
   /** The properties of a Domains resource. */
   properties?: DomainProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags of the service which is a list of key value pairs that describe the resource. */
 export type UpdateEmailServiceRequestTagsMap = { [key: string]: string | undefined };
@@ -1346,6 +1387,10 @@ export interface UpdateEmailServiceResponse {
   location: string;
   /** The properties of the service. */
   properties?: EmailServiceProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type CancelDomainVerificationError = AzureOpError;
 /** Cancel Verification Cancel verification of DNS record. */
@@ -1385,8 +1430,8 @@ export const CommunicationServicesCreateOrUpdate: API.OperationMethod<
   CommunicationServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<CommunicationServicesCreateOrUpdateRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<CommunicationServicesCreateOrUpdateResponse>,
+  input: __S(185, __c23, 1) as any as S.Schema<CommunicationServicesCreateOrUpdateRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<CommunicationServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1400,8 +1445,8 @@ export const CommunicationServicesLinkNotificationHub: API.OperationMethod<
   CommunicationServicesLinkNotificationHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<CommunicationServicesLinkNotificationHubRequest>,
-  output: __S(305, __c38, 1) as any as S.Schema<LinkedNotificationHub>,
+  input: __S(352, __c44, 0) as any as S.Schema<CommunicationServicesLinkNotificationHubRequest>,
+  output: __S(353, __c44, 1) as any as S.Schema<LinkedNotificationHub>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1415,7 +1460,7 @@ export const DeleteCommunicationService: API.OperationMethod<
   DeleteCommunicationServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<DeleteCommunicationServiceRequest>,
+  input: __S(440, __c55, 0) as any as S.Schema<DeleteCommunicationServiceRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<DeleteCommunicationServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1430,7 +1475,7 @@ export const DeleteDomain: API.OperationMethod<
   DeleteDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<DeleteDomainRequest>,
+  input: __S(456, __c57, 0) as any as S.Schema<DeleteDomainRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<DeleteDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1445,7 +1490,7 @@ export const DeleteEmailService: API.OperationMethod<
   DeleteEmailServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<DeleteEmailServiceRequest>,
+  input: __S(464, __c58, 0) as any as S.Schema<DeleteEmailServiceRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<DeleteEmailServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1460,8 +1505,8 @@ export const DeleteSenderUsername: API.OperationMethod<
   DeleteSenderUsernameError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<DeleteSenderUsernameRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteSenderUsernameResponse>,
+  input: __S(472, __c59, 0) as any as S.Schema<DeleteSenderUsernameRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<DeleteSenderUsernameResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1475,8 +1520,8 @@ export const DeleteSmtpUsername: API.OperationMethod<
   DeleteSmtpUsernameError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c54, 0) as any as S.Schema<DeleteSmtpUsernameRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteSmtpUsernameResponse>,
+  input: __S(480, __c60, 0) as any as S.Schema<DeleteSmtpUsernameRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<DeleteSmtpUsernameResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1490,8 +1535,8 @@ export const DeleteSuppressionList: API.OperationMethod<
   DeleteSuppressionListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(440, __c55, 0) as any as S.Schema<DeleteSuppressionListRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteSuppressionListResponse>,
+  input: __S(488, __c61, 0) as any as S.Schema<DeleteSuppressionListRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<DeleteSuppressionListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1506,7 +1551,7 @@ export const DeleteSuppressionListAddress: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(24, __c3, 0) as any as S.Schema<DeleteSuppressionListAddressRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteSuppressionListAddressResponse>,
+  output: __S(232, __c29, 0) as any as S.Schema<DeleteSuppressionListAddressResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1521,7 +1566,7 @@ export const DomainsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(33, __c4, 1) as any as S.Schema<DomainsCreateOrUpdateRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<DomainsCreateOrUpdateResponse>,
+  output: __S(48, __c6, 0) as any as S.Schema<DomainsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1535,7 +1580,7 @@ export const DomainsInitiateVerification: API.OperationMethod<
   DomainsInitiateVerificationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DomainsInitiateVerificationRequest>,
+  input: __S(56, __c7, 0) as any as S.Schema<DomainsInitiateVerificationRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<DomainsInitiateVerificationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1550,8 +1595,8 @@ export const EmailServicesCreateOrUpdate: API.OperationMethod<
   EmailServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<EmailServicesCreateOrUpdateRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<EmailServicesCreateOrUpdateResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<EmailServicesCreateOrUpdateRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<EmailServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1565,8 +1610,8 @@ export const GetCommunicationService: API.OperationMethod<
   GetCommunicationServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetCommunicationServiceRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<GetCommunicationServiceResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetCommunicationServiceRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<GetCommunicationServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1580,8 +1625,8 @@ export const GetDomain: API.OperationMethod<
   GetDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetDomainRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GetDomainResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetDomainRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<GetDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1595,8 +1640,8 @@ export const GetEmailService: API.OperationMethod<
   GetEmailServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetEmailServiceRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<GetEmailServiceResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetEmailServiceRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<GetEmailServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1610,8 +1655,8 @@ export const GetSenderUsername: API.OperationMethod<
   GetSenderUsernameError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<GetSenderUsernameRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<GetSenderUsernameResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetSenderUsernameRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<GetSenderUsernameResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1625,8 +1670,8 @@ export const GetSmtpUsername: API.OperationMethod<
   GetSmtpUsernameError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetSmtpUsernameRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<GetSmtpUsernameResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetSmtpUsernameRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<GetSmtpUsernameResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1640,8 +1685,8 @@ export const GetSuppressionList: API.OperationMethod<
   GetSuppressionListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetSuppressionListRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<GetSuppressionListResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<GetSuppressionListRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<GetSuppressionListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1655,8 +1700,8 @@ export const GetSuppressionListAddress: API.OperationMethod<
   GetSuppressionListAddressError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<GetSuppressionListAddressRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<GetSuppressionListAddressResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetSuppressionListAddressRequest>,
+  output: __S(249, __c31, 1) as any as S.Schema<GetSuppressionListAddressResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1670,8 +1715,8 @@ export const ListCommunicationServiceByResourceGroup: API.OperationMethod<
   ListCommunicationServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<ListCommunicationServiceByResourceGroupRequest>,
-  output: __S(217, __c27, 1) as any as S.Schema<CommunicationServiceResourceList>,
+  input: __S(256, __c32, 0) as any as S.Schema<ListCommunicationServiceByResourceGroupRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<CommunicationServiceResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1685,8 +1730,8 @@ export const ListCommunicationServiceBySubscription: API.OperationMethod<
   ListCommunicationServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<ListCommunicationServiceBySubscriptionRequest>,
-  output: __S(217, __c27, 1) as any as S.Schema<CommunicationServiceResourceList>,
+  input: __S(272, __c34, 0) as any as S.Schema<ListCommunicationServiceBySubscriptionRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<CommunicationServiceResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1700,8 +1745,8 @@ export const ListCommunicationServiceKeys: API.OperationMethod<
   ListCommunicationServiceKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<ListCommunicationServiceKeysRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<CommunicationServiceKeys>,
+  input: __S(280, __c35, 0) as any as S.Schema<ListCommunicationServiceKeysRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<CommunicationServiceKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1715,8 +1760,8 @@ export const ListDomainByEmailServiceResource: API.OperationMethod<
   ListDomainByEmailServiceResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<ListDomainByEmailServiceResourceRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<DomainResourceList>,
+  input: __S(296, __c37, 0) as any as S.Schema<ListDomainByEmailServiceResourceRequest>,
+  output: __S(298, __c37, 2) as any as S.Schema<DomainResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1730,8 +1775,8 @@ export const ListEmailServiceByResourceGroup: API.OperationMethod<
   ListEmailServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<ListEmailServiceByResourceGroupRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<EmailServiceResourceList>,
+  input: __S(304, __c38, 0) as any as S.Schema<ListEmailServiceByResourceGroupRequest>,
+  output: __S(313, __c39, 1) as any as S.Schema<EmailServiceResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1745,8 +1790,8 @@ export const ListEmailServiceBySubscription: API.OperationMethod<
   ListEmailServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<ListEmailServiceBySubscriptionRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<EmailServiceResourceList>,
+  input: __S(320, __c40, 0) as any as S.Schema<ListEmailServiceBySubscriptionRequest>,
+  output: __S(313, __c39, 1) as any as S.Schema<EmailServiceResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1761,13 +1806,13 @@ export const ListEmailServiceVerifiedExchangeOnlineDomains: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    280,
-    __c35,
+    328,
+    __c41,
     0,
   ) as any as S.Schema<ListEmailServiceVerifiedExchangeOnlineDomainsRequest>,
   output: __S(
-    281,
-    __c35,
+    329,
+    __c41,
     1,
   ) as any as S.Schema<ListEmailServiceVerifiedExchangeOnlineDomainsResponse>,
   errors: [UnknownAzureError],
@@ -1783,8 +1828,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(340, __c42, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1798,8 +1843,8 @@ export const ListSenderUsernameByDomains: API.OperationMethod<
   ListSenderUsernameByDomainsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<ListSenderUsernameByDomainsRequest>,
-  output: __S(298, __c37, 2) as any as S.Schema<SenderUsernameResourceCollection>,
+  input: __S(344, __c43, 0) as any as S.Schema<ListSenderUsernameByDomainsRequest>,
+  output: __S(346, __c43, 2) as any as S.Schema<SenderUsernameResourceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1813,8 +1858,8 @@ export const ListSmtpUsernames: API.OperationMethod<
   ListSmtpUsernamesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<ListSmtpUsernamesRequest>,
-  output: __S(314, __c39, 2) as any as S.Schema<SmtpUsernameResourceCollection>,
+  input: __S(360, __c45, 0) as any as S.Schema<ListSmtpUsernamesRequest>,
+  output: __S(362, __c45, 2) as any as S.Schema<SmtpUsernameResourceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1828,8 +1873,8 @@ export const ListSuppressionListAddresses: API.OperationMethod<
   ListSuppressionListAddressesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<ListSuppressionListAddressesRequest>,
-  output: __S(322, __c40, 2) as any as S.Schema<SuppressionListAddressResourceCollection>,
+  input: __S(368, __c46, 0) as any as S.Schema<ListSuppressionListAddressesRequest>,
+  output: __S(370, __c46, 2) as any as S.Schema<SuppressionListAddressResourceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1843,8 +1888,8 @@ export const ListSuppressionListByDomain: API.OperationMethod<
   ListSuppressionListByDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<ListSuppressionListByDomainRequest>,
-  output: __S(330, __c41, 2) as any as S.Schema<SuppressionListResourceCollection>,
+  input: __S(376, __c47, 0) as any as S.Schema<ListSuppressionListByDomainRequest>,
+  output: __S(378, __c47, 2) as any as S.Schema<SuppressionListResourceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1858,8 +1903,8 @@ export const RegenerateCommunicationServiceKey: API.OperationMethod<
   RegenerateCommunicationServiceKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<RegenerateCommunicationServiceKeyRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<CommunicationServiceKeys>,
+  input: __S(384, __c48, 0) as any as S.Schema<RegenerateCommunicationServiceKeyRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<CommunicationServiceKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1873,8 +1918,8 @@ export const SenderUsernamesCreateOrUpdate: API.OperationMethod<
   SenderUsernamesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345, __c43, 1) as any as S.Schema<SenderUsernamesCreateOrUpdateRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<SenderUsernamesCreateOrUpdateResponse>,
+  input: __S(393, __c49, 1) as any as S.Schema<SenderUsernamesCreateOrUpdateRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<SenderUsernamesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1888,8 +1933,8 @@ export const SmtpUsernamesCreateOrUpdate: API.OperationMethod<
   SmtpUsernamesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<SmtpUsernamesCreateOrUpdateRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<SmtpUsernamesCreateOrUpdateResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<SmtpUsernamesCreateOrUpdateRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<SmtpUsernamesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1903,8 +1948,8 @@ export const SuppressionListAddressesCreateOrUpdate: API.OperationMethod<
   SuppressionListAddressesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361, __c45, 1) as any as S.Schema<SuppressionListAddressesCreateOrUpdateRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<SuppressionListAddressesCreateOrUpdateResponse>,
+  input: __S(409, __c51, 1) as any as S.Schema<SuppressionListAddressesCreateOrUpdateRequest>,
+  output: __S(249, __c31, 1) as any as S.Schema<SuppressionListAddressesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1918,8 +1963,8 @@ export const SuppressionListsCreateOrUpdate: API.OperationMethod<
   SuppressionListsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(369, __c46, 1) as any as S.Schema<SuppressionListsCreateOrUpdateRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<SuppressionListsCreateOrUpdateResponse>,
+  input: __S(417, __c52, 1) as any as S.Schema<SuppressionListsCreateOrUpdateRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<SuppressionListsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1933,8 +1978,8 @@ export const UpdateCommunicationService: API.OperationMethod<
   UpdateCommunicationServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(377, __c47, 1) as any as S.Schema<UpdateCommunicationServiceRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<UpdateCommunicationServiceResponse>,
+  input: __S(425, __c53, 1) as any as S.Schema<UpdateCommunicationServiceRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<UpdateCommunicationServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1948,8 +1993,8 @@ export const UpdateDomain: API.OperationMethod<
   UpdateDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385, __c48, 1) as any as S.Schema<UpdateDomainRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<UpdateDomainResponse>,
+  input: __S(433, __c54, 1) as any as S.Schema<UpdateDomainRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<UpdateDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1963,8 +2008,8 @@ export const UpdateEmailService: API.OperationMethod<
   UpdateEmailServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c50, 0) as any as S.Schema<UpdateEmailServiceRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<UpdateEmailServiceResponse>,
+  input: __S(448, __c56, 0) as any as S.Schema<UpdateEmailServiceRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<UpdateEmailServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1995,9 +2040,12 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelDomainVerificationResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CancelDomainVerificationResponse" });
   }
 }
 function __c2(j: number): any {
@@ -2065,7 +2113,7 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           emailServiceName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(160, __c20, 0)),
+          tags: S.optional(__S(200, __c25, 0)),
           location: S.String,
           properties: S.optional(__S(32, __c4, 0)),
         }).pipe(
@@ -2130,21 +2178,27 @@ function __c5(j: number): any {
           userEngagementTracking: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainProperties" });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(152, __c19, 0)),
-          tags: S.optional(__S(160, __c20, 0)),
+          systemData: S.optional(__S(192, __c24, 0)),
+          tags: S.optional(__S(200, __c25, 0)),
           location: S.String,
           properties: S.optional(__S(44, __c5, 4)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "DomainsCreateOrUpdateResponse" });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2165,7 +2219,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "DomainsInitiateVerificationRequest" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2173,9 +2227,9 @@ function __c7(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           emailServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(160, __c20, 0)),
+          tags: S.optional(__S(200, __c25, 0)),
           location: S.String,
-          properties: S.optional(__S(64, __c8, 0)),
+          properties: S.optional(__S(72, __c9, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2187,7 +2241,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "EmailServicesCreateOrUpdateRequest" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2196,21 +2250,27 @@ function __c8(j: number): any {
           dataLocation: S.String,
         }),
       ).annotate({ identifier: "EmailServiceProperties" });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(152, __c19, 0)),
-          tags: S.optional(__S(160, __c20, 0)),
+          systemData: S.optional(__S(192, __c24, 0)),
+          tags: S.optional(__S(200, __c25, 0)),
           location: S.String,
-          properties: S.optional(__S(64, __c8, 0)),
+          properties: S.optional(__S(72, __c9, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "EmailServicesCreateOrUpdateResponse" });
   }
 }
-function __c9(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2229,7 +2289,24 @@ function __c9(j: number): any {
       ).annotate({ identifier: "GetCommunicationServiceRequest" });
   }
 }
-function __c10(j: number): any {
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          tags: S.optional(__S(200, __c25, 0)),
+          location: S.String,
+          properties: S.optional(__S(216, __c27, 0)),
+          identity: S.optional(__S(219, __c27, 3)),
+        }),
+      ).annotate({ identifier: "GetCommunicationServiceResponse" });
+  }
+}
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2249,7 +2326,23 @@ function __c10(j: number): any {
       ).annotate({ identifier: "GetDomainRequest" });
   }
 }
-function __c11(j: number): any {
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          tags: S.optional(__S(200, __c25, 0)),
+          location: S.String,
+          properties: S.optional(__S(44, __c5, 4)),
+        }),
+      ).annotate({ identifier: "GetDomainResponse" });
+  }
+}
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2268,7 +2361,23 @@ function __c11(j: number): any {
       ).annotate({ identifier: "GetEmailServiceRequest" });
   }
 }
-function __c12(j: number): any {
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          tags: S.optional(__S(200, __c25, 0)),
+          location: S.String,
+          properties: S.optional(__S(72, __c9, 0)),
+        }),
+      ).annotate({ identifier: "GetEmailServiceResponse" });
+  }
+}
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2289,7 +2398,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "GetSenderUsernameRequest" });
   }
 }
-function __c13(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2306,13 +2415,13 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(152, __c19, 0)),
-          properties: S.optional(__S(104, __c13, 0)),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(144, __c18, 0)),
         }),
       ).annotate({ identifier: "GetSenderUsernameResponse" });
   }
 }
-function __c14(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2332,7 +2441,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "GetSmtpUsernameRequest" });
   }
 }
-function __c15(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2348,13 +2457,13 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(152, __c19, 0)),
-          properties: S.optional(__S(120, __c15, 0)),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(160, __c20, 0)),
         }),
       ).annotate({ identifier: "GetSmtpUsernameResponse" });
   }
 }
-function __c16(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2375,7 +2484,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "GetSuppressionListRequest" });
   }
 }
-function __c17(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2392,19 +2501,19 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(152, __c19, 0)),
-          properties: S.optional(__S(136, __c17, 0)),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(176, __c22, 0)),
         }),
       ).annotate({ identifier: "GetSuppressionListResponse" });
   }
 }
-function __c18(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           dataLocation: S.String,
-          linkedDomains: S.optional(__S(168, __c21, 0)),
+          linkedDomains: S.optional(__S(208, __c26, 0)),
           publicNetworkAccess: S.optional(S.String),
           disableLocalAuth: S.optional(S.Boolean),
         }),
@@ -2415,10 +2524,10 @@ function __c18(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           communicationServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(160, __c20, 0)),
+          tags: S.optional(__S(200, __c25, 0)),
           location: S.String,
-          properties: S.optional(__S(144, __c18, 0)),
-          identity: S.optional(__S(185, __c23, 1)),
+          properties: S.optional(__S(184, __c23, 0)),
+          identity: S.optional(__S(225, __c28, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2428,9 +2537,24 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CommunicationServicesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          tags: S.optional(__S(200, __c25, 0)),
+          location: S.String,
+          properties: S.optional(__S(216, __c27, 0)),
+          identity: S.optional(__S(219, __c27, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CommunicationServicesCreateOrUpdateResponse" });
   }
 }
-function __c19(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2445,19 +2569,19 @@ function __c19(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c20(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
   }
 }
-function __c21(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c22(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2468,7 +2592,7 @@ function __c22(j: number): any {
           notificationHubId: S.optional(S.String),
           version: S.optional(S.String),
           immutableResourceId: S.optional(S.String),
-          linkedDomains: S.optional(__S(168, __c21, 0)),
+          linkedDomains: S.optional(__S(208, __c26, 0)),
           publicNetworkAccess: S.optional(S.String),
           disableLocalAuth: S.optional(S.Boolean),
         }),
@@ -2481,45 +2605,38 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(177, __c22, 1)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(217, __c27, 1)));
     case 3:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(178, __c22, 2)),
+          userAssignedIdentities: S.optional(__S(218, __c27, 2)),
         }),
       ).annotate({ identifier: "CommunicationServicesCreateOrUpdateResponseIdentity" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(152, __c19, 0)),
-          tags: S.optional(__S(160, __c20, 0)),
-          location: S.String,
-          properties: S.optional(__S(176, __c22, 0)),
-          identity: S.optional(__S(179, __c22, 3)),
-        }),
-      ).annotate({ identifier: "CommunicationServicesCreateOrUpdateResponse" });
   }
 }
-function __c23(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(8, __c1, 0)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(232, __c29, 0)));
     case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(184, __c23, 0)),
+          userAssignedIdentities: S.optional(__S(224, __c28, 0)),
         }),
       ).annotate({ identifier: "CommunicationServicesCreateOrUpdateRequestIdentity" });
   }
 }
-function __c24(j: number): any {
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "UserAssignedIdentityInput" });
+  }
+}
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2541,7 +2658,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "GetSuppressionListAddressRequest" });
   }
 }
-function __c25(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2560,13 +2677,13 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(152, __c19, 0)),
-          properties: S.optional(__S(200, __c25, 0)),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(248, __c31, 0)),
         }),
       ).annotate({ identifier: "GetSuppressionListAddressResponse" });
   }
 }
-function __c26(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2584,20 +2701,20 @@ function __c26(j: number): any {
       ).annotate({ identifier: "ListCommunicationServiceByResourceGroupRequest" });
   }
 }
-function __c27(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(180, __c22, 4));
+      return S.Array(__S(96, __c12, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(216, __c27, 0),
+          value: __S(264, __c33, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommunicationServiceResourceList" });
   }
 }
-function __c28(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2614,7 +2731,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "ListCommunicationServiceBySubscriptionRequest" });
   }
 }
-function __c29(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2633,7 +2750,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "ListCommunicationServiceKeysRequest" });
   }
 }
-function __c30(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2646,7 +2763,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "CommunicationServiceKeys" });
   }
 }
-function __c31(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2664,17 +2781,17 @@ function __c31(j: number): any {
         ),
       ).annotate({ identifier: "ListDomainByEmailServiceResourceRequest" });
     case 1:
-      return S.Array(__S(45, __c5, 5));
+      return S.Array(__S(112, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(249, __c31, 1),
+          value: __S(297, __c37, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainResourceList" });
   }
 }
-function __c32(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2692,20 +2809,20 @@ function __c32(j: number): any {
       ).annotate({ identifier: "ListEmailServiceByResourceGroupRequest" });
   }
 }
-function __c33(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(65, __c8, 1));
+      return S.Array(__S(128, __c16, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(264, __c33, 0),
+          value: __S(312, __c39, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailServiceResourceList" });
   }
 }
-function __c34(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2722,7 +2839,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "ListEmailServiceBySubscriptionRequest" });
   }
 }
-function __c35(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2738,12 +2855,12 @@ function __c35(j: number): any {
         ),
       ).annotate({ identifier: "ListEmailServiceVerifiedExchangeOnlineDomainsRequest" });
     case 1:
-      return S.suspend(() => __S(168, __c21, 0).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(208, __c26, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListEmailServiceVerifiedExchangeOnlineDomainsResponse",
       });
   }
 }
-function __c36(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2770,23 +2887,23 @@ function __c36(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(289, __c36, 1)),
+          display: S.optional(__S(337, __c42, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(290, __c36, 2));
+      return S.Array(__S(338, __c42, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(291, __c36, 3)),
+          value: S.optional(__S(339, __c42, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c37(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2805,17 +2922,17 @@ function __c37(j: number): any {
         ),
       ).annotate({ identifier: "ListSenderUsernameByDomainsRequest" });
     case 1:
-      return S.Array(__S(105, __c13, 1));
+      return S.Array(__S(145, __c18, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(297, __c37, 1),
+          value: __S(345, __c43, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SenderUsernameResourceCollection" });
   }
 }
-function __c38(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2842,7 +2959,7 @@ function __c38(j: number): any {
       ).annotate({ identifier: "LinkedNotificationHub" });
   }
 }
-function __c39(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2860,17 +2977,17 @@ function __c39(j: number): any {
         ),
       ).annotate({ identifier: "ListSmtpUsernamesRequest" });
     case 1:
-      return S.Array(__S(121, __c15, 1));
+      return S.Array(__S(161, __c20, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(313, __c39, 1),
+          value: __S(361, __c45, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SmtpUsernameResourceCollection" });
   }
 }
-function __c40(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2890,17 +3007,17 @@ function __c40(j: number): any {
         ),
       ).annotate({ identifier: "ListSuppressionListAddressesRequest" });
     case 1:
-      return S.Array(__S(201, __c25, 1));
+      return S.Array(__S(249, __c31, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(321, __c40, 1),
+          value: __S(369, __c46, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SuppressionListAddressResourceCollection" });
   }
 }
-function __c41(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2919,17 +3036,17 @@ function __c41(j: number): any {
         ),
       ).annotate({ identifier: "ListSuppressionListByDomainRequest" });
     case 1:
-      return S.Array(__S(137, __c17, 1));
+      return S.Array(__S(177, __c22, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(329, __c41, 1),
+          value: __S(377, __c47, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SuppressionListResourceCollection" });
   }
 }
-function __c42(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2949,7 +3066,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "RegenerateCommunicationServiceKeyRequest" });
   }
 }
-function __c43(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2966,7 +3083,7 @@ function __c43(j: number): any {
           emailServiceName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
           senderUsername: S.String.pipe(T.Label()),
-          properties: S.optional(__S(344, __c43, 0)),
+          properties: S.optional(__S(392, __c49, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2978,7 +3095,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "SenderUsernamesCreateOrUpdateRequest" });
   }
 }
-function __c44(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2987,7 +3104,7 @@ function __c44(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           communicationServiceName: S.String.pipe(T.Label()),
           smtpUsername: S.String.pipe(T.Label()),
-          properties: S.optional(__S(120, __c15, 0)),
+          properties: S.optional(__S(160, __c20, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2999,7 +3116,7 @@ function __c44(j: number): any {
       ).annotate({ identifier: "SmtpUsernamesCreateOrUpdateRequest" });
   }
 }
-function __c45(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3019,7 +3136,7 @@ function __c45(j: number): any {
           domainName: S.String.pipe(T.Label()),
           suppressionListName: S.String.pipe(T.Label()),
           addressId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(360, __c45, 0)),
+          properties: S.optional(__S(408, __c51, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3031,7 +3148,7 @@ function __c45(j: number): any {
       ).annotate({ identifier: "SuppressionListAddressesCreateOrUpdateRequest" });
   }
 }
-function __c46(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3047,7 +3164,7 @@ function __c46(j: number): any {
           emailServiceName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
           suppressionListName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(368, __c46, 0)),
+          properties: S.optional(__S(416, __c52, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3059,12 +3176,12 @@ function __c46(j: number): any {
       ).annotate({ identifier: "SuppressionListsCreateOrUpdateRequest" });
   }
 }
-function __c47(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          linkedDomains: S.optional(__S(168, __c21, 0)),
+          linkedDomains: S.optional(__S(208, __c26, 0)),
           publicNetworkAccess: S.optional(S.String),
           disableLocalAuth: S.optional(S.Boolean),
         }),
@@ -3075,9 +3192,9 @@ function __c47(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           communicationServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(160, __c20, 0)),
-          properties: S.optional(__S(376, __c47, 0)),
-          identity: S.optional(__S(185, __c23, 1)),
+          tags: S.optional(__S(200, __c25, 0)),
+          properties: S.optional(__S(424, __c53, 0)),
+          identity: S.optional(__S(225, __c28, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3089,7 +3206,7 @@ function __c47(j: number): any {
       ).annotate({ identifier: "UpdateCommunicationServiceRequest" });
   }
 }
-function __c48(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3104,8 +3221,8 @@ function __c48(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           emailServiceName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(160, __c20, 0)),
-          properties: S.optional(__S(384, __c48, 0)),
+          tags: S.optional(__S(200, __c25, 0)),
+          properties: S.optional(__S(432, __c54, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3117,7 +3234,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "UpdateDomainRequest" });
   }
 }
-function __c49(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3136,7 +3253,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "DeleteCommunicationServiceRequest" });
   }
 }
-function __c50(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3144,7 +3261,7 @@ function __c50(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           emailServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(160, __c20, 0)),
+          tags: S.optional(__S(200, __c25, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3156,7 +3273,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "UpdateEmailServiceRequest" });
   }
 }
-function __c51(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3176,7 +3293,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "DeleteDomainRequest" });
   }
 }
-function __c52(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3195,7 +3312,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "DeleteEmailServiceRequest" });
   }
 }
-function __c53(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3216,7 +3333,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "DeleteSenderUsernameRequest" });
   }
 }
-function __c54(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3236,7 +3353,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "DeleteSmtpUsernameRequest" });
   }
 }
-function __c55(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

@@ -28,7 +28,12 @@ export interface AcceptSubscriptionOwnershipRequest {
   /** Accept subscription ownership request properties. */
   properties?: AcceptOwnershipRequestProperties;
 }
-export interface AcceptSubscriptionOwnershipResponse {}
+export interface AcceptSubscriptionOwnershipResponse {
+  /** GET this URL to retrieve the status of the asynchronous operation. */
+  location?: string;
+  /** The amount of delay to use while the status of the operation is checked. The value is expressed in seconds. */
+  retryAfter?: number;
+}
 export interface AcceptSubscriptionOwnershipStatusRequest {
   /** Subscription Id. */
   subscriptionId: string;
@@ -255,6 +260,10 @@ export interface GetSubscriptionOperationRequest {
 export interface SubscriptionCreationResult {
   /** The link to the new subscription. Use this link to check the status of subscription creation operation. */
   subscriptionLink?: string;
+  /** The URL where the status of the asynchronous operation can be checked. */
+  location?: string;
+  /** The amount of delay to use while the status of the operation is checked. The value is expressed in seconds. */
+  retryAfter?: number;
 }
 export interface GetSubscriptionPolicyPolicyForTenantRequest {}
 /** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
@@ -390,7 +399,7 @@ export const AcceptSubscriptionOwnership: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<AcceptSubscriptionOwnershipRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<AcceptSubscriptionOwnershipResponse>,
+  output: __S(2, __c0, 2) as any as S.Schema<AcceptSubscriptionOwnershipResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -404,8 +413,8 @@ export const AcceptSubscriptionOwnershipStatus: API.OperationMethod<
   AcceptSubscriptionOwnershipStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<AcceptSubscriptionOwnershipStatusRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<AcceptOwnershipStatusResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<AcceptSubscriptionOwnershipStatusRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<AcceptOwnershipStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -419,8 +428,8 @@ export const CancelSubscription: API.OperationMethod<
   CancelSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<CancelSubscriptionRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<CanceledSubscriptionId>,
+  input: __S(64, __c8, 0) as any as S.Schema<CancelSubscriptionRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<CanceledSubscriptionId>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -434,8 +443,8 @@ export const CreateAlias: API.OperationMethod<
   CreateAliasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<CreateAliasRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<SubscriptionAliasResponse>,
+  input: __S(82, __c10, 2) as any as S.Schema<CreateAliasRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<SubscriptionAliasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -449,8 +458,8 @@ export const DeleteAlias: API.OperationMethod<
   DeleteAliasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<DeleteAliasRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteAliasResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<DeleteAliasRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<DeleteAliasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -464,8 +473,8 @@ export const EnableSubscription: API.OperationMethod<
   EnableSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<EnableSubscriptionRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<EnabledSubscriptionId>,
+  input: __S(112, __c14, 0) as any as S.Schema<EnableSubscriptionRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<EnabledSubscriptionId>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -479,8 +488,8 @@ export const GetAlias: API.OperationMethod<
   GetAliasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetAliasRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<SubscriptionAliasResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetAliasRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<SubscriptionAliasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -494,8 +503,8 @@ export const GetBillingAccountPolicy: API.OperationMethod<
   GetBillingAccountPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetBillingAccountPolicyRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<BillingAccountPoliciesResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetBillingAccountPolicyRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<BillingAccountPoliciesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -509,8 +518,8 @@ export const GetSubscriptionOperation: API.OperationMethod<
   GetSubscriptionOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<GetSubscriptionOperationRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<SubscriptionCreationResult>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetSubscriptionOperationRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<SubscriptionCreationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -524,8 +533,8 @@ export const GetSubscriptionPolicyPolicyForTenant: API.OperationMethod<
   GetSubscriptionPolicyPolicyForTenantError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetSubscriptionPolicyPolicyForTenantRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<GetTenantPolicyResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetSubscriptionPolicyPolicyForTenantRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<GetTenantPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -539,8 +548,8 @@ export const ListAlias: API.OperationMethod<
   ListAliasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListAliasRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<SubscriptionAliasListResult>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListAliasRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<SubscriptionAliasListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -554,8 +563,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<OperationListResult>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -569,8 +578,8 @@ export const ListSubscriptionPolicyPolicyForTenant: API.OperationMethod<
   ListSubscriptionPolicyPolicyForTenantError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListSubscriptionPolicyPolicyForTenantRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GetTenantPolicyListResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListSubscriptionPolicyPolicyForTenantRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<GetTenantPolicyListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -584,8 +593,8 @@ export const RenameSubscription: API.OperationMethod<
   RenameSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<RenameSubscriptionRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<RenamedSubscriptionId>,
+  input: __S(48, __c6, 0) as any as S.Schema<RenameSubscriptionRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<RenamedSubscriptionId>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -599,8 +608,8 @@ export const SubscriptionPolicyAddUpdatePolicyForTenant: API.OperationMethod<
   SubscriptionPolicyAddUpdatePolicyForTenantError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<SubscriptionPolicyAddUpdatePolicyForTenantRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<GetTenantPolicyResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<SubscriptionPolicyAddUpdatePolicyForTenantRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<GetTenantPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -631,6 +640,13 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AcceptSubscriptionOwnershipRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AcceptSubscriptionOwnershipResponse" });
   }
 }
 function __c1(j: number): any {
@@ -640,14 +656,6 @@ function __c1(j: number): any {
   }
 }
 function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AcceptSubscriptionOwnershipResponse",
-      });
-  }
-}
-function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -676,7 +684,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "AcceptOwnershipStatusResponse" });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -690,17 +698,17 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "ListAliasRequest" });
     case 1:
-      return S.Array(__S(97, __c12, 1));
+      return S.Array(__S(89, __c11, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(33, __c4, 1)),
+          value: S.optional(__S(25, __c3, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubscriptionAliasListResult" });
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -727,21 +735,21 @@ function __c5(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(41, __c5, 1)),
+          display: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(42, __c5, 2));
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(43, __c5, 3)),
+          value: S.optional(__S(35, __c4, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
   }
 }
-function __c6(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -755,17 +763,17 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "ListSubscriptionPolicyPolicyForTenantRequest" });
     case 1:
-      return S.Array(__S(162, __c20, 2));
+      return S.Array(__S(154, __c19, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(49, __c6, 1)),
+          value: S.optional(__S(41, __c5, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetTenantPolicyListResponse" });
   }
 }
-function __c7(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -783,14 +791,14 @@ function __c7(j: number): any {
       ).annotate({ identifier: "RenameSubscriptionRequest" });
   }
 }
-function __c8(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           blockSubscriptionsLeavingTenant: S.optional(S.Boolean),
           blockSubscriptionsIntoTenant: S.optional(S.Boolean),
-          exemptedPrincipals: S.optional(__S(160, __c20, 0)),
+          exemptedPrincipals: S.optional(__S(152, __c19, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -802,7 +810,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "SubscriptionPolicyAddUpdatePolicyForTenantRequest" });
   }
 }
-function __c9(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -819,7 +827,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "CancelSubscriptionRequest" });
   }
 }
-function __c10(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -829,7 +837,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "CanceledSubscriptionId" });
   }
 }
-function __c11(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -848,14 +856,14 @@ function __c11(j: number): any {
           billingScope: S.optional(S.String),
           subscriptionId: S.optional(S.String),
           resellerId: S.optional(S.String),
-          additionalProperties: S.optional(__S(88, __c11, 0)),
+          additionalProperties: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({ identifier: "PutAliasRequestProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           aliasName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(89, __c11, 1)),
+          properties: S.optional(__S(81, __c10, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -867,7 +875,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "CreateAliasRequest" });
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -892,13 +900,13 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(96, __c12, 0)),
-          systemData: S.optional(__S(104, __c13, 0)),
+          properties: S.optional(__S(88, __c11, 0)),
+          systemData: S.optional(__S(96, __c12, 0)),
         }),
       ).annotate({ identifier: "SubscriptionAliasResponse" });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -913,7 +921,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "SubscriptionAliasResponseSystemData" });
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -928,9 +936,11 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteAliasRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteAliasResponse" });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -947,7 +957,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "EnableSubscriptionRequest" });
   }
 }
-function __c16(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -964,7 +974,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "GetAliasRequest" });
   }
 }
-function __c17(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -987,11 +997,11 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "ServiceTenantResponse" });
     case 2:
-      return S.Array(__S(137, __c17, 1));
+      return S.Array(__S(129, __c16, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          serviceTenants: S.optional(__S(138, __c17, 2)),
+          serviceTenants: S.optional(__S(130, __c16, 2)),
           allowTransfers: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "BillingAccountPoliciesResponseProperties" });
@@ -1001,13 +1011,13 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(139, __c17, 3)),
-          systemData: S.optional(__S(104, __c13, 0)),
+          properties: S.optional(__S(131, __c16, 3)),
+          systemData: S.optional(__S(96, __c12, 0)),
         }),
       ).annotate({ identifier: "BillingAccountPoliciesResponse" });
   }
 }
-function __c18(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1026,11 +1036,13 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionLink: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "SubscriptionCreationResult" });
   }
 }
-function __c19(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1045,7 +1057,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "GetSubscriptionPolicyPolicyForTenantRequest" });
   }
 }
-function __c20(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -1055,7 +1067,7 @@ function __c20(j: number): any {
           policyId: S.optional(S.String),
           blockSubscriptionsLeavingTenant: S.optional(S.Boolean),
           blockSubscriptionsIntoTenant: S.optional(S.Boolean),
-          exemptedPrincipals: S.optional(__S(160, __c20, 0)),
+          exemptedPrincipals: S.optional(__S(152, __c19, 0)),
         }),
       ).annotate({ identifier: "TenantPolicy" });
     case 2:
@@ -1064,8 +1076,8 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(161, __c20, 1)),
-          systemData: S.optional(__S(104, __c13, 0)),
+          properties: S.optional(__S(153, __c19, 1)),
+          systemData: S.optional(__S(96, __c12, 0)),
         }),
       ).annotate({ identifier: "GetTenantPolicyResponse" });
   }

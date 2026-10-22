@@ -254,6 +254,10 @@ export interface CassandraClustersCreateUpdateResponse {
   tags?: CassandraClustersCreateUpdateResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedCassandraManagedServiceIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface CassandraClustersDeallocateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -263,7 +267,12 @@ export interface CassandraClustersDeallocateRequest {
   /** Managed Cassandra cluster name. */
   clusterName: string;
 }
-export interface CassandraClustersDeallocateResponse {}
+export interface CassandraClustersDeallocateResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface CassandraClustersStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -485,6 +494,10 @@ export interface CassandraDataCentersCreateUpdateResponse {
   systemData?: SystemData;
   /** Properties of a managed Cassandra data center. */
   properties?: DataCenterResourceProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type CassandraResourcesCreateUpdateCassandraKeyspaceRequestTagsMap = {
@@ -613,6 +626,12 @@ export interface CassandraResourcesCreateUpdateCassandraKeyspaceResponse {
   tags?: CassandraResourcesCreateUpdateCassandraKeyspaceResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Azure Cosmos DB Cassandra Role Assignment resource object. */
 export interface CassandraRoleAssignmentResourcePropertiesInput {
@@ -657,6 +676,12 @@ export interface CassandraResourcesCreateUpdateCassandraRoleAssignmentResponse {
   systemData?: SystemData;
   /** Properties to create and update an Azure Cosmos DB Cassandra Role Assignment. */
   properties?: CassandraRoleAssignmentResourceProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Indicates whether the Role Definition was built-in or user created. */
 export type RoleDefinitionType = "BuiltInRole" | "CustomRole";
@@ -713,6 +738,12 @@ export interface CassandraResourcesCreateUpdateCassandraRoleDefinitionResponse {
   systemData?: SystemData;
   /** Properties to create and update an Azure Cosmos DB Cassandra Role Definition. */
   properties?: CassandraRoleDefinitionResourceProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type CassandraResourcesCreateUpdateCassandraTableRequestTagsMap = {
@@ -832,6 +863,12 @@ export interface CassandraResourcesCreateUpdateCassandraTableResponse {
   tags?: CassandraResourcesCreateUpdateCassandraTableResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateFleetRequestTagsMap = { [key: string]: string | undefined };
@@ -937,6 +974,10 @@ export interface CreateFleetspaceResponse {
   systemData?: SystemData;
   /** Properties to update Azure Cosmos DB Fleetspace. */
   properties?: FleetspaceProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Configuration for fleetspace Account in the fleetspace. */
 export interface FleetspaceAccountPropertiesGlobalDatabaseAccountProperties {
@@ -977,6 +1018,10 @@ export interface CreateFleetspaceAccountResponse {
   systemData?: SystemData;
   /** An Azure Cosmos DB Global Database Account which is part of a Fleetspace Account. */
   properties?: FleetspaceAccountProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Instance type for the service. */
 export type ServiceSize = "Cosmos.D4s" | "Cosmos.D8s" | "Cosmos.D16s";
@@ -1021,6 +1066,7 @@ export interface ServiceResourceProperties {
   serviceType: ServiceType;
   /** Describes the status of a service. */
   status?: ServiceStatus;
+  [key: string]: unknown;
 }
 export interface CreateServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1033,6 +1079,10 @@ export interface CreateServiceResponse {
   systemData?: SystemData;
   /** Services response resource. */
   properties?: ServiceResourceProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type DatabaseAccountsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -1514,6 +1564,8 @@ export interface DatabaseAccountsCreateOrUpdateResponse {
   identity?: ManagedServiceIdentity;
   /** Indicates the type of database account. This can only be set at database account creation. */
   kind?: DatabaseAccountsCreateOrUpdateResponseKind;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 /** The failover policy for a given region of a database account. */
 export interface FailoverPolicyInput {
@@ -1535,7 +1587,14 @@ export interface DatabaseAccountsFailoverPriorityChangeRequest {
   /** List of failover policies. */
   failoverPolicies: DatabaseAccountsFailoverPriorityChangeRequestFailoverPoliciesList;
 }
-export interface DatabaseAccountsFailoverPriorityChangeResponse {}
+export interface DatabaseAccountsFailoverPriorityChangeResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DatabaseAccountsGetReadOnlyKeysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1569,7 +1628,14 @@ export interface DatabaseAccountsOfflineRegionRequest {
   /** Cosmos DB region, with spaces between words and each word capitalized. */
   region: string;
 }
-export interface DatabaseAccountsOfflineRegionResponse {}
+export interface DatabaseAccountsOfflineRegionResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DatabaseAccountsOnlineRegionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1580,7 +1646,14 @@ export interface DatabaseAccountsOnlineRegionRequest {
   /** Cosmos DB region, with spaces between words and each word capitalized. */
   region: string;
 }
-export interface DatabaseAccountsOnlineRegionResponse {}
+export interface DatabaseAccountsOnlineRegionResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteCassandraClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1589,7 +1662,12 @@ export interface DeleteCassandraClusterRequest {
   /** Managed Cassandra cluster name. */
   clusterName: string;
 }
-export interface DeleteCassandraClusterResponse {}
+export interface DeleteCassandraClusterResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteCassandraDataCenterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1600,7 +1678,12 @@ export interface DeleteCassandraDataCenterRequest {
   /** Data center name in a managed Cassandra cluster. */
   dataCenterName: string;
 }
-export interface DeleteCassandraDataCenterResponse {}
+export interface DeleteCassandraDataCenterResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteCassandraResourceCassandraKeyspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1611,7 +1694,12 @@ export interface DeleteCassandraResourceCassandraKeyspaceRequest {
   /** Cosmos DB keyspace name. */
   keyspaceName: string;
 }
-export interface DeleteCassandraResourceCassandraKeyspaceResponse {}
+export interface DeleteCassandraResourceCassandraKeyspaceResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteCassandraResourceCassandraRoleAssignmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1622,7 +1710,12 @@ export interface DeleteCassandraResourceCassandraRoleAssignmentRequest {
   /** The GUID for the Role Assignment. */
   roleAssignmentId: string;
 }
-export interface DeleteCassandraResourceCassandraRoleAssignmentResponse {}
+export interface DeleteCassandraResourceCassandraRoleAssignmentResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteCassandraResourceCassandraRoleDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1633,7 +1726,12 @@ export interface DeleteCassandraResourceCassandraRoleDefinitionRequest {
   /** The GUID for the Role Definition. */
   roleDefinitionId: string;
 }
-export interface DeleteCassandraResourceCassandraRoleDefinitionResponse {}
+export interface DeleteCassandraResourceCassandraRoleDefinitionResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteCassandraResourceCassandraTableRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1646,7 +1744,12 @@ export interface DeleteCassandraResourceCassandraTableRequest {
   /** Cosmos DB table name. */
   tableName: string;
 }
-export interface DeleteCassandraResourceCassandraTableResponse {}
+export interface DeleteCassandraResourceCassandraTableResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteDatabaseAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1655,7 +1758,12 @@ export interface DeleteDatabaseAccountRequest {
   /** Cosmos DB database account name. */
   accountName: string;
 }
-export interface DeleteDatabaseAccountResponse {}
+export interface DeleteDatabaseAccountResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteFleetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1664,7 +1772,14 @@ export interface DeleteFleetRequest {
   /** Cosmos DB fleet name. Needs to be unique under a subscription. */
   fleetName: string;
 }
-export interface DeleteFleetResponse {}
+export interface DeleteFleetResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteFleetspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1675,7 +1790,14 @@ export interface DeleteFleetspaceRequest {
   /** Cosmos DB fleetspace name. Needs to be unique under a fleet. */
   fleetspaceName: string;
 }
-export interface DeleteFleetspaceResponse {}
+export interface DeleteFleetspaceResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteFleetspaceAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1688,7 +1810,14 @@ export interface DeleteFleetspaceAccountRequest {
   /** Cosmos DB fleetspace account name. */
   fleetspaceAccountName: string;
 }
-export interface DeleteFleetspaceAccountResponse {}
+export interface DeleteFleetspaceAccountResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteGremlinResourceGremlinDatabaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1699,7 +1828,12 @@ export interface DeleteGremlinResourceGremlinDatabaseRequest {
   /** Cosmos DB database name. */
   databaseName: string;
 }
-export interface DeleteGremlinResourceGremlinDatabaseResponse {}
+export interface DeleteGremlinResourceGremlinDatabaseResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteGremlinResourceGremlinGraphRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1712,7 +1846,12 @@ export interface DeleteGremlinResourceGremlinGraphRequest {
   /** Cosmos DB graph name. */
   graphName: string;
 }
-export interface DeleteGremlinResourceGremlinGraphResponse {}
+export interface DeleteGremlinResourceGremlinGraphResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteGremlinResourceGremlinRoleAssignmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1723,7 +1862,12 @@ export interface DeleteGremlinResourceGremlinRoleAssignmentRequest {
   /** The GUID for the Role Assignment. */
   roleAssignmentId: string;
 }
-export interface DeleteGremlinResourceGremlinRoleAssignmentResponse {}
+export interface DeleteGremlinResourceGremlinRoleAssignmentResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteGremlinResourceGremlinRoleDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1734,7 +1878,12 @@ export interface DeleteGremlinResourceGremlinRoleDefinitionRequest {
   /** The GUID for the Role Definition. */
   roleDefinitionId: string;
 }
-export interface DeleteGremlinResourceGremlinRoleDefinitionResponse {}
+export interface DeleteGremlinResourceGremlinRoleDefinitionResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteMongoDBResourceMongoDBCollectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1747,7 +1896,12 @@ export interface DeleteMongoDBResourceMongoDBCollectionRequest {
   /** Cosmos DB collection name. */
   collectionName: string;
 }
-export interface DeleteMongoDBResourceMongoDBCollectionResponse {}
+export interface DeleteMongoDBResourceMongoDBCollectionResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteMongoDBResourceMongoDBDatabaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1758,7 +1912,12 @@ export interface DeleteMongoDBResourceMongoDBDatabaseRequest {
   /** Cosmos DB database name. */
   databaseName: string;
 }
-export interface DeleteMongoDBResourceMongoDBDatabaseResponse {}
+export interface DeleteMongoDBResourceMongoDBDatabaseResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteMongoDBResourceMongoRoleDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1769,7 +1928,12 @@ export interface DeleteMongoDBResourceMongoRoleDefinitionRequest {
   /** The ID for the Role Definition {dbName.roleName}. */
   mongoRoleDefinitionId: string;
 }
-export interface DeleteMongoDBResourceMongoRoleDefinitionResponse {}
+export interface DeleteMongoDBResourceMongoRoleDefinitionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteMongoDBResourceMongoUserDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1780,7 +1944,12 @@ export interface DeleteMongoDBResourceMongoUserDefinitionRequest {
   /** The ID for the User Definition {dbName.userName}. */
   mongoUserDefinitionId: string;
 }
-export interface DeleteMongoDBResourceMongoUserDefinitionResponse {}
+export interface DeleteMongoDBResourceMongoUserDefinitionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteMongoMIResourceMongoMIRoleAssignmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1791,7 +1960,12 @@ export interface DeleteMongoMIResourceMongoMIRoleAssignmentRequest {
   /** The GUID for the Role Assignment. */
   roleAssignmentId: string;
 }
-export interface DeleteMongoMIResourceMongoMIRoleAssignmentResponse {}
+export interface DeleteMongoMIResourceMongoMIRoleAssignmentResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteMongoMIResourceMongoMIRoleDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1802,7 +1976,12 @@ export interface DeleteMongoMIResourceMongoMIRoleDefinitionRequest {
   /** The GUID for the Role Definition. */
   roleDefinitionId: string;
 }
-export interface DeleteMongoMIResourceMongoMIRoleDefinitionResponse {}
+export interface DeleteMongoMIResourceMongoMIRoleDefinitionResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export type DeleteNotebookWorkspaceRequestNotebookWorkspaceName = "default";
 export interface DeleteNotebookWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1814,7 +1993,12 @@ export interface DeleteNotebookWorkspaceRequest {
   /** The name of the notebook workspace resource. */
   notebookWorkspaceName: DeleteNotebookWorkspaceRequestNotebookWorkspaceName | (string & {});
 }
-export interface DeleteNotebookWorkspaceResponse {}
+export interface DeleteNotebookWorkspaceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1825,7 +2009,12 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection. */
   privateEndpointConnectionName: string;
 }
-export interface DeletePrivateEndpointConnectionResponse {}
+export interface DeletePrivateEndpointConnectionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1836,7 +2025,12 @@ export interface DeleteServiceRequest {
   /** Cosmos DB service name. */
   serviceName: string;
 }
-export interface DeleteServiceResponse {}
+export interface DeleteServiceResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteSqlResourceSqlContainerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1849,7 +2043,12 @@ export interface DeleteSqlResourceSqlContainerRequest {
   /** Cosmos DB container name. */
   containerName: string;
 }
-export interface DeleteSqlResourceSqlContainerResponse {}
+export interface DeleteSqlResourceSqlContainerResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteSqlResourceSqlDatabaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1860,7 +2059,12 @@ export interface DeleteSqlResourceSqlDatabaseRequest {
   /** Cosmos DB database name. */
   databaseName: string;
 }
-export interface DeleteSqlResourceSqlDatabaseResponse {}
+export interface DeleteSqlResourceSqlDatabaseResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteSqlResourceSqlRoleAssignmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1871,7 +2075,12 @@ export interface DeleteSqlResourceSqlRoleAssignmentRequest {
   /** The GUID for the Role Assignment. */
   roleAssignmentId: string;
 }
-export interface DeleteSqlResourceSqlRoleAssignmentResponse {}
+export interface DeleteSqlResourceSqlRoleAssignmentResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSqlResourceSqlRoleDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1882,7 +2091,12 @@ export interface DeleteSqlResourceSqlRoleDefinitionRequest {
   /** The GUID for the Role Definition. */
   roleDefinitionId: string;
 }
-export interface DeleteSqlResourceSqlRoleDefinitionResponse {}
+export interface DeleteSqlResourceSqlRoleDefinitionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSqlResourceSqlStoredProcedureRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1897,7 +2111,12 @@ export interface DeleteSqlResourceSqlStoredProcedureRequest {
   /** Cosmos DB storedProcedure name. */
   storedProcedureName: string;
 }
-export interface DeleteSqlResourceSqlStoredProcedureResponse {}
+export interface DeleteSqlResourceSqlStoredProcedureResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteSqlResourceSqlUserDefinedFunctionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1912,7 +2131,12 @@ export interface DeleteSqlResourceSqlUserDefinedFunctionRequest {
   /** Cosmos DB userDefinedFunction name. */
   userDefinedFunctionName: string;
 }
-export interface DeleteSqlResourceSqlUserDefinedFunctionResponse {}
+export interface DeleteSqlResourceSqlUserDefinedFunctionResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteTableResourceTableRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1923,7 +2147,12 @@ export interface DeleteTableResourceTableRequest {
   /** Cosmos DB table name. */
   tableName: string;
 }
-export interface DeleteTableResourceTableResponse {}
+export interface DeleteTableResourceTableResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteTableResourceTableRoleAssignmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1934,7 +2163,12 @@ export interface DeleteTableResourceTableRoleAssignmentRequest {
   /** The GUID for the Role Assignment. */
   roleAssignmentId: string;
 }
-export interface DeleteTableResourceTableRoleAssignmentResponse {}
+export interface DeleteTableResourceTableRoleAssignmentResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteTableResourceTableRoleDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1945,7 +2179,12 @@ export interface DeleteTableResourceTableRoleDefinitionRequest {
   /** The GUID for the Role Definition. */
   roleDefinitionId: string;
 }
-export interface DeleteTableResourceTableRoleDefinitionResponse {}
+export interface DeleteTableResourceTableRoleDefinitionResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface GetCassandraClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2344,6 +2583,10 @@ export interface ContinuousBackupInformation {
 export interface BackupInformation {
   /** Information about the status of continuous backups. */
   continuousBackupInformation?: ContinuousBackupInformation;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetGremlinResourceGremlinDatabaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4076,6 +4319,12 @@ export interface GremlinResourcesCreateUpdateGremlinDatabaseResponse {
   tags?: GremlinResourcesCreateUpdateGremlinDatabaseResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type GremlinResourcesCreateUpdateGremlinGraphRequestTagsMap = {
@@ -4165,6 +4414,12 @@ export interface GremlinResourcesCreateUpdateGremlinGraphResponse {
   tags?: GremlinResourcesCreateUpdateGremlinGraphResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Azure Cosmos DB Gremlin Role Assignment resource object. */
 export interface GremlinRoleAssignmentResourcePropertiesInput {
@@ -4198,6 +4453,12 @@ export interface GremlinResourcesCreateUpdateGremlinRoleAssignmentResponse {
   systemData?: SystemData;
   /** Properties to create and update an Azure Cosmos DB Gremlin Role Assignment. */
   properties?: GremlinRoleAssignmentResourceProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GremlinResourcesCreateUpdateGremlinRoleDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4222,6 +4483,12 @@ export interface GremlinResourcesCreateUpdateGremlinRoleDefinitionResponse {
   systemData?: SystemData;
   /** Properties to create and update an Azure Cosmos DB Gremlin Role Definition. */
   properties?: GremlinRoleDefinitionResourceProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The arguments for the command to be run */
 export type InvokeCassandraClusterCommandRequestArgumentsMap = {
@@ -4245,7 +4512,12 @@ export interface InvokeCassandraClusterCommandRequest {
   /** If true, allows the command to *write* to the cassandra directory, otherwise read-only. */
   readwrite?: boolean;
 }
-export interface InvokeCassandraClusterCommandResponse {}
+export interface InvokeCassandraClusterCommandResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface ListCassandraClusterByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6667,6 +6939,12 @@ export interface MigrateCassandraResourceCassandraKeyspaceToAutoscaleResponse {
   tags?: MigrateCassandraResourceCassandraKeyspaceToAutoscaleResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MigrateCassandraResourceCassandraKeyspaceToManualThroughputRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6699,6 +6977,12 @@ export interface MigrateCassandraResourceCassandraKeyspaceToManualThroughputResp
   tags?: MigrateCassandraResourceCassandraKeyspaceToManualThroughputResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MigrateCassandraResourceCassandraTableToAutoscaleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6733,6 +7017,12 @@ export interface MigrateCassandraResourceCassandraTableToAutoscaleResponse {
   tags?: MigrateCassandraResourceCassandraTableToAutoscaleResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MigrateCassandraResourceCassandraTableToManualThroughputRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6767,6 +7057,12 @@ export interface MigrateCassandraResourceCassandraTableToManualThroughputRespons
   tags?: MigrateCassandraResourceCassandraTableToManualThroughputResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MigrateGremlinResourceGremlinDatabaseToAutoscaleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6799,6 +7095,12 @@ export interface MigrateGremlinResourceGremlinDatabaseToAutoscaleResponse {
   tags?: MigrateGremlinResourceGremlinDatabaseToAutoscaleResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MigrateGremlinResourceGremlinDatabaseToManualThroughputRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6831,6 +7133,12 @@ export interface MigrateGremlinResourceGremlinDatabaseToManualThroughputResponse
   tags?: MigrateGremlinResourceGremlinDatabaseToManualThroughputResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MigrateGremlinResourceGremlinGraphToAutoscaleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6865,6 +7173,12 @@ export interface MigrateGremlinResourceGremlinGraphToAutoscaleResponse {
   tags?: MigrateGremlinResourceGremlinGraphToAutoscaleResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MigrateGremlinResourceGremlinGraphToManualThroughputRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6899,6 +7213,12 @@ export interface MigrateGremlinResourceGremlinGraphToManualThroughputResponse {
   tags?: MigrateGremlinResourceGremlinGraphToManualThroughputResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MigrateMongoDBResourceMongoDBCollectionToAutoscaleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6933,6 +7253,12 @@ export interface MigrateMongoDBResourceMongoDBCollectionToAutoscaleResponse {
   tags?: MigrateMongoDBResourceMongoDBCollectionToAutoscaleResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MigrateMongoDBResourceMongoDBCollectionToManualThroughputRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6967,6 +7293,12 @@ export interface MigrateMongoDBResourceMongoDBCollectionToManualThroughputRespon
   tags?: MigrateMongoDBResourceMongoDBCollectionToManualThroughputResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MigrateMongoDBResourceMongoDBDatabaseToAutoscaleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6999,6 +7331,12 @@ export interface MigrateMongoDBResourceMongoDBDatabaseToAutoscaleResponse {
   tags?: MigrateMongoDBResourceMongoDBDatabaseToAutoscaleResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MigrateMongoDBResourceMongoDBDatabaseToManualThroughputRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7031,6 +7369,12 @@ export interface MigrateMongoDBResourceMongoDBDatabaseToManualThroughputResponse
   tags?: MigrateMongoDBResourceMongoDBDatabaseToManualThroughputResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MigrateSqlResourceSqlContainerToAutoscaleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7065,6 +7409,10 @@ export interface MigrateSqlResourceSqlContainerToAutoscaleResponse {
   tags?: MigrateSqlResourceSqlContainerToAutoscaleResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 export interface MigrateSqlResourceSqlContainerToManualThroughputRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7099,6 +7447,10 @@ export interface MigrateSqlResourceSqlContainerToManualThroughputResponse {
   tags?: MigrateSqlResourceSqlContainerToManualThroughputResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 export interface MigrateSqlResourceSqlDatabaseToAutoscaleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7131,6 +7483,12 @@ export interface MigrateSqlResourceSqlDatabaseToAutoscaleResponse {
   tags?: MigrateSqlResourceSqlDatabaseToAutoscaleResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MigrateSqlResourceSqlDatabaseToManualThroughputRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7163,6 +7521,12 @@ export interface MigrateSqlResourceSqlDatabaseToManualThroughputResponse {
   tags?: MigrateSqlResourceSqlDatabaseToManualThroughputResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MigrateTableResourceTableToAutoscaleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7195,6 +7559,12 @@ export interface MigrateTableResourceTableToAutoscaleResponse {
   tags?: MigrateTableResourceTableToAutoscaleResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MigrateTableResourceTableToManualThroughputRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7227,6 +7597,12 @@ export interface MigrateTableResourceTableToManualThroughputResponse {
   tags?: MigrateTableResourceTableToManualThroughputResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type MongoDBResourcesCreateUpdateMongoDBCollectionRequestTagsMap = {
@@ -7301,6 +7677,12 @@ export interface MongoDBResourcesCreateUpdateMongoDBCollectionResponse {
   tags?: MongoDBResourcesCreateUpdateMongoDBCollectionResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type MongoDBResourcesCreateUpdateMongoDBDatabaseRequestTagsMap = {
@@ -7363,6 +7745,12 @@ export interface MongoDBResourcesCreateUpdateMongoDBDatabaseResponse {
   tags?: MongoDBResourcesCreateUpdateMongoDBDatabaseResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MongoDBResourcesCreateUpdateMongoRoleDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7387,6 +7775,10 @@ export interface MongoDBResourcesCreateUpdateMongoRoleDefinitionResponse {
   systemData?: SystemData;
   /** Properties related to the Mongo Role Definition. */
   properties?: MongoRoleDefinitionResource;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MongoDBResourcesCreateUpdateMongoUserDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7411,6 +7803,10 @@ export interface MongoDBResourcesCreateUpdateMongoUserDefinitionResponse {
   systemData?: SystemData;
   /** Properties related to the User Definition. */
   properties?: MongoUserDefinitionResource;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Azure Cosmos DB MongoMI Role Assignment resource object. */
 export interface MongoMIRoleAssignmentResourcePropertiesInput {
@@ -7444,6 +7840,12 @@ export interface MongoMIResourcesCreateUpdateMongoMIRoleAssignmentResponse {
   systemData?: SystemData;
   /** Properties to create and update an Azure Cosmos DB MongoMI Role Assignment. */
   properties?: MongoMIRoleAssignmentResourceProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MongoMIResourcesCreateUpdateMongoMIRoleDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7468,6 +7870,12 @@ export interface MongoMIResourcesCreateUpdateMongoMIRoleDefinitionResponse {
   systemData?: SystemData;
   /** Properties to create and update an Azure Cosmos DB MongoMI Role Definition. */
   properties?: MongoMIRoleDefinitionResourceProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type NotebookWorkspacesCreateOrUpdateRequestNotebookWorkspaceName = "default";
 export interface NotebookWorkspacesCreateOrUpdateRequest {
@@ -7493,6 +7901,8 @@ export interface NotebookWorkspacesCreateOrUpdateResponse {
   systemData?: SystemData;
   /** Resource properties. */
   properties?: NotebookWorkspaceProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** Connection State of the Private Endpoint Connection. */
 export interface PrivateLinkServiceConnectionStatePropertyInput {
@@ -7535,6 +7945,10 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The access key to regenerate. */
 export type KeyKind = "primary" | "secondary" | "primaryReadonly" | "secondaryReadonly";
@@ -7548,7 +7962,14 @@ export interface RegenerateDatabaseAccountKeyRequest {
   /** The access key to regenerate. */
   keyKind: KeyKind | (string & {});
 }
-export interface RegenerateDatabaseAccountKeyResponse {}
+export interface RegenerateDatabaseAccountKeyResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export type RegenerateNotebookWorkspaceAuthTokenRequestNotebookWorkspaceName = "default";
 export interface RegenerateNotebookWorkspaceAuthTokenRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7562,7 +7983,12 @@ export interface RegenerateNotebookWorkspaceAuthTokenRequest {
     | RegenerateNotebookWorkspaceAuthTokenRequestNotebookWorkspaceName
     | (string & {});
 }
-export interface RegenerateNotebookWorkspaceAuthTokenResponse {}
+export interface RegenerateNotebookWorkspaceAuthTokenResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Cosmos DB client encryption key resource object. */
 export interface ClientEncryptionKeyResource {
   /** Name of the ClientEncryptionKey */
@@ -7604,6 +8030,12 @@ export interface SqlResourcesCreateUpdateClientEncryptionKeyResponse {
   systemData?: SystemData;
   /** The properties of a ClientEncryptionKey */
   properties?: ClientEncryptionKeyGetProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type SqlResourcesCreateUpdateSqlContainerRequestTagsMap = {
@@ -7690,6 +8122,12 @@ export interface SqlResourcesCreateUpdateSqlContainerResponse {
   tags?: SqlResourcesCreateUpdateSqlContainerResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type SqlResourcesCreateUpdateSqlDatabaseRequestTagsMap = {
@@ -7752,6 +8190,12 @@ export interface SqlResourcesCreateUpdateSqlDatabaseResponse {
   tags?: SqlResourcesCreateUpdateSqlDatabaseResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface SqlResourcesCreateUpdateSqlRoleAssignmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7776,6 +8220,10 @@ export interface SqlResourcesCreateUpdateSqlRoleAssignmentResponse {
   systemData?: SystemData;
   /** Properties related to the Role Assignment. */
   properties?: SqlRoleAssignmentResource;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface SqlResourcesCreateUpdateSqlRoleDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7800,6 +8248,10 @@ export interface SqlResourcesCreateUpdateSqlRoleDefinitionResponse {
   systemData?: SystemData;
   /** Properties related to the Role Definition. */
   properties?: SqlRoleDefinitionResource;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type SqlResourcesCreateUpdateSqlStoredProcedureRequestTagsMap = {
@@ -7862,6 +8314,12 @@ export interface SqlResourcesCreateUpdateSqlStoredProcedureResponse {
   tags?: SqlResourcesCreateUpdateSqlStoredProcedureResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type SqlResourcesCreateUpdateSqlTriggerRequestTagsMap = {
@@ -7928,6 +8386,12 @@ export interface SqlResourcesCreateUpdateSqlTriggerResponse {
   tags?: SqlResourcesCreateUpdateSqlTriggerResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type SqlResourcesCreateUpdateSqlUserDefinedFunctionRequestTagsMap = {
@@ -7990,6 +8454,12 @@ export interface SqlResourcesCreateUpdateSqlUserDefinedFunctionResponse {
   tags?: SqlResourcesCreateUpdateSqlUserDefinedFunctionResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface SqlResourcesDeleteSqlTriggerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8005,7 +8475,12 @@ export interface SqlResourcesDeleteSqlTriggerRequest {
   /** Cosmos DB trigger name. */
   triggerName: string;
 }
-export interface SqlResourcesDeleteSqlTriggerResponse {}
+export interface SqlResourcesDeleteSqlTriggerResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface SqlResourcesGetSqlTriggerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8048,7 +8523,12 @@ export interface StartCassandraClusterRequest {
   /** Managed Cassandra cluster name. */
   clusterName: string;
 }
-export interface StartCassandraClusterResponse {}
+export interface StartCassandraClusterResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export type StartNotebookWorkspaceRequestNotebookWorkspaceName = "default";
 export interface StartNotebookWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8060,7 +8540,12 @@ export interface StartNotebookWorkspaceRequest {
   /** The name of the notebook workspace resource. */
   notebookWorkspaceName: StartNotebookWorkspaceRequestNotebookWorkspaceName | (string & {});
 }
-export interface StartNotebookWorkspaceResponse {}
+export interface StartNotebookWorkspaceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type TableResourcesCreateUpdateTableRequestTagsMap = { [key: string]: string | undefined };
 /** Enum to indicate the mode of account creation. */
@@ -8118,6 +8603,12 @@ export interface TableResourcesCreateUpdateTableResponse {
   tags?: TableResourcesCreateUpdateTableResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Azure Cosmos DB Table Role Assignment resource object. */
 export interface TableRoleAssignmentResourcePropertiesInput {
@@ -8151,6 +8642,12 @@ export interface TableResourcesCreateUpdateTableRoleAssignmentResponse {
   systemData?: SystemData;
   /** Properties to create and update an Azure Cosmos DB Table Role Assignment. */
   properties?: TableRoleAssignmentResourceProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface TableResourcesCreateUpdateTableRoleDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8175,6 +8672,10 @@ export interface TableResourcesCreateUpdateTableRoleDefinitionResponse {
   systemData?: SystemData;
   /** Properties to create and update an Azure Cosmos DB Table Role Definition. */
   properties?: TableRoleDefinitionResourceProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\". */
 export type UpdateCassandraClusterRequestTagsMap = { [key: string]: string | undefined };
@@ -8213,6 +8714,10 @@ export interface UpdateCassandraClusterResponse {
   tags?: UpdateCassandraClusterResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedCassandraManagedServiceIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface UpdateCassandraDataCenterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8237,6 +8742,10 @@ export interface UpdateCassandraDataCenterResponse {
   systemData?: SystemData;
   /** Properties of a managed Cassandra data center. */
   properties?: DataCenterResourceProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type UpdateCassandraResourceCassandraKeyspaceThroughputRequestTagsMap = {
@@ -8300,6 +8809,12 @@ export interface UpdateCassandraResourceCassandraKeyspaceThroughputResponse {
   tags?: UpdateCassandraResourceCassandraKeyspaceThroughputResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type UpdateCassandraResourceCassandraTableThroughputRequestTagsMap = {
@@ -8346,6 +8861,12 @@ export interface UpdateCassandraResourceCassandraTableThroughputResponse {
   tags?: UpdateCassandraResourceCassandraTableThroughputResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type UpdateDatabaseAccountRequestTagsMap = { [key: string]: string | undefined };
@@ -8467,6 +8988,8 @@ export interface UpdateDatabaseAccountResponse {
   identity?: ManagedServiceIdentity;
   /** Indicates the type of database account. This can only be set at database account creation. */
   kind?: UpdateDatabaseAccountResponseKind;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 /** Resource tags. */
 export type UpdateFleetRequestTagsMap = { [key: string]: string | undefined };
@@ -8523,6 +9046,12 @@ export interface UpdateFleetspaceResponse {
   systemData?: SystemData;
   /** Properties to update Azure Cosmos DB Fleetspace. */
   properties?: FleetspaceProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type UpdateGremlinResourceGremlinDatabaseThroughputRequestTagsMap = {
@@ -8567,6 +9096,12 @@ export interface UpdateGremlinResourceGremlinDatabaseThroughputResponse {
   tags?: UpdateGremlinResourceGremlinDatabaseThroughputResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type UpdateGremlinResourceGremlinGraphThroughputRequestTagsMap = {
@@ -8613,6 +9148,12 @@ export interface UpdateGremlinResourceGremlinGraphThroughputResponse {
   tags?: UpdateGremlinResourceGremlinGraphThroughputResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type UpdateMongoDBResourceMongoDBCollectionThroughputRequestTagsMap = {
@@ -8659,6 +9200,12 @@ export interface UpdateMongoDBResourceMongoDBCollectionThroughputResponse {
   tags?: UpdateMongoDBResourceMongoDBCollectionThroughputResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type UpdateMongoDBResourceMongoDBDatabaseThroughputRequestTagsMap = {
@@ -8703,6 +9250,12 @@ export interface UpdateMongoDBResourceMongoDBDatabaseThroughputResponse {
   tags?: UpdateMongoDBResourceMongoDBDatabaseThroughputResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type UpdateSqlResourceSqlContainerThroughputRequestTagsMap = {
@@ -8749,6 +9302,12 @@ export interface UpdateSqlResourceSqlContainerThroughputResponse {
   tags?: UpdateSqlResourceSqlContainerThroughputResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type UpdateSqlResourceSqlDatabaseThroughputRequestTagsMap = {
@@ -8793,6 +9352,12 @@ export interface UpdateSqlResourceSqlDatabaseThroughputResponse {
   tags?: UpdateSqlResourceSqlDatabaseThroughputResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
 export type UpdateTableResourceTableThroughputRequestTagsMap = {
@@ -8837,6 +9402,12 @@ export interface UpdateTableResourceTableThroughputResponse {
   tags?: UpdateTableResourceTableThroughputResponseTagsMap;
   /** Identity for the resource. */
   identity?: ManagedServiceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type CassandraClustersCreateUpdateError = AzureOpError;
 /** Create or update a managed Cassandra cluster. When updating, you must specify all writable properties. To update only some properties, use PATCH. */
@@ -8847,7 +9418,7 @@ export const CassandraClustersCreateUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CassandraClustersCreateUpdateRequest>,
-  output: __S(228, __c7, 4) as any as S.Schema<CassandraClustersCreateUpdateResponse>,
+  output: __S(130, __c4, 2) as any as S.Schema<CassandraClustersCreateUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8876,8 +9447,8 @@ export const CassandraClustersStatus: API.OperationMethod<
   CassandraClustersStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4672, __c146, 0) as any as S.Schema<CassandraClustersStatusRequest>,
-  output: __S(4681, __c146, 9) as any as S.Schema<CassandraClusterPublicStatus>,
+  input: __S(4832, __c151, 0) as any as S.Schema<CassandraClustersStatusRequest>,
+  output: __S(4841, __c151, 9) as any as S.Schema<CassandraClusterPublicStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8891,8 +9462,8 @@ export const CassandraDataCentersCreateUpdate: API.OperationMethod<
   CassandraDataCentersCreateUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6240, __c195, 0) as any as S.Schema<CassandraDataCentersCreateUpdateRequest>,
-  output: __S(6306, __c197, 2) as any as S.Schema<CassandraDataCentersCreateUpdateResponse>,
+  input: __S(6432, __c201, 0) as any as S.Schema<CassandraDataCentersCreateUpdateRequest>,
+  output: __S(6465, __c202, 1) as any as S.Schema<CassandraDataCentersCreateUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8907,14 +9478,14 @@ export const CassandraResourcesCreateUpdateCassandraKeyspace: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    6658,
-    __c208,
+    6850,
+    __c214,
     2,
   ) as any as S.Schema<CassandraResourcesCreateUpdateCassandraKeyspaceRequest>,
   output: __S(
-    6690,
-    __c209,
-    2,
+    6851,
+    __c214,
+    3,
   ) as any as S.Schema<CassandraResourcesCreateUpdateCassandraKeyspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8930,14 +9501,14 @@ export const CassandraResourcesCreateUpdateCassandraRoleAssignment: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    7136,
-    __c223,
+    7328,
+    __c229,
     0,
   ) as any as S.Schema<CassandraResourcesCreateUpdateCassandraRoleAssignmentRequest>,
   output: __S(
-    7169,
-    __c224,
-    1,
+    7360,
+    __c230,
+    0,
   ) as any as S.Schema<CassandraResourcesCreateUpdateCassandraRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8953,14 +9524,14 @@ export const CassandraResourcesCreateUpdateCassandraRoleDefinition: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    7584,
-    __c237,
+    8064,
+    __c252,
     0,
   ) as any as S.Schema<CassandraResourcesCreateUpdateCassandraRoleDefinitionRequest>,
   output: __S(
-    7649,
-    __c239,
-    1,
+    8096,
+    __c253,
+    0,
   ) as any as S.Schema<CassandraResourcesCreateUpdateCassandraRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8976,14 +9547,14 @@ export const CassandraResourcesCreateUpdateCassandraTable: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    8226,
-    __c257,
+    8866,
+    __c277,
     2,
   ) as any as S.Schema<CassandraResourcesCreateUpdateCassandraTableRequest>,
   output: __S(
-    8295,
-    __c259,
-    7,
+    8867,
+    __c277,
+    3,
   ) as any as S.Schema<CassandraResourcesCreateUpdateCassandraTableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8998,8 +9569,8 @@ export const CreateFleet: API.OperationMethod<
   CreateFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8800, __c275, 0) as any as S.Schema<CreateFleetRequest>,
-  output: __S(8833, __c276, 1) as any as S.Schema<CreateFleetResponse>,
+  input: __S(9568, __c299, 0) as any as S.Schema<CreateFleetRequest>,
+  output: __S(9601, __c300, 1) as any as S.Schema<CreateFleetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9013,8 +9584,8 @@ export const CreateFleetspace: API.OperationMethod<
   CreateFleetspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9376, __c293, 0) as any as S.Schema<CreateFleetspaceRequest>,
-  output: __S(9410, __c294, 2) as any as S.Schema<CreateFleetspaceResponse>,
+  input: __S(10272, __c321, 0) as any as S.Schema<CreateFleetspaceRequest>,
+  output: __S(10273, __c321, 1) as any as S.Schema<CreateFleetspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9029,7 +9600,7 @@ export const CreateFleetspaceAccount: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(320, __c10, 0) as any as S.Schema<CreateFleetspaceAccountRequest>,
-  output: __S(354, __c11, 2) as any as S.Schema<CreateFleetspaceAccountResponse>,
+  output: __S(321, __c10, 1) as any as S.Schema<CreateFleetspaceAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9044,7 +9615,7 @@ export const CreateService: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(833, __c26, 1) as any as S.Schema<CreateServiceRequest>,
-  output: __S(865, __c27, 1) as any as S.Schema<CreateServiceResponse>,
+  output: __S(834, __c26, 2) as any as S.Schema<CreateServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9059,7 +9630,7 @@ export const DatabaseAccountsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1441, __c45, 1) as any as S.Schema<DatabaseAccountsCreateOrUpdateRequest>,
-  output: __S(1560, __c48, 24) as any as S.Schema<DatabaseAccountsCreateOrUpdateResponse>,
+  output: __S(1474, __c46, 2) as any as S.Schema<DatabaseAccountsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9073,8 +9644,8 @@ export const DatabaseAccountsFailoverPriorityChange: API.OperationMethod<
   DatabaseAccountsFailoverPriorityChangeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1954, __c61, 2) as any as S.Schema<DatabaseAccountsFailoverPriorityChangeRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DatabaseAccountsFailoverPriorityChangeResponse>,
+  input: __S(1986, __c62, 2) as any as S.Schema<DatabaseAccountsFailoverPriorityChangeRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<DatabaseAccountsFailoverPriorityChangeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9088,8 +9659,8 @@ export const DatabaseAccountsGetReadOnlyKeys: API.OperationMethod<
   DatabaseAccountsGetReadOnlyKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2336, __c73, 0) as any as S.Schema<DatabaseAccountsGetReadOnlyKeysRequest>,
-  output: __S(2368, __c74, 0) as any as S.Schema<DatabaseAccountListReadOnlyKeysResult>,
+  input: __S(2400, __c75, 0) as any as S.Schema<DatabaseAccountsGetReadOnlyKeysRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<DatabaseAccountListReadOnlyKeysResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9103,8 +9674,8 @@ export const DatabaseAccountsListReadOnlyKeys: API.OperationMethod<
   DatabaseAccountsListReadOnlyKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2752, __c86, 0) as any as S.Schema<DatabaseAccountsListReadOnlyKeysRequest>,
-  output: __S(2368, __c74, 0) as any as S.Schema<DatabaseAccountListReadOnlyKeysResult>,
+  input: __S(2816, __c88, 0) as any as S.Schema<DatabaseAccountsListReadOnlyKeysRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<DatabaseAccountListReadOnlyKeysResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9118,8 +9689,8 @@ export const DatabaseAccountsOfflineRegion: API.OperationMethod<
   DatabaseAccountsOfflineRegionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3168, __c99, 0) as any as S.Schema<DatabaseAccountsOfflineRegionRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DatabaseAccountsOfflineRegionResponse>,
+  input: __S(3232, __c101, 0) as any as S.Schema<DatabaseAccountsOfflineRegionRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<DatabaseAccountsOfflineRegionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9133,8 +9704,8 @@ export const DatabaseAccountsOnlineRegion: API.OperationMethod<
   DatabaseAccountsOnlineRegionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3552, __c111, 0) as any as S.Schema<DatabaseAccountsOnlineRegionRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DatabaseAccountsOnlineRegionResponse>,
+  input: __S(3616, __c113, 0) as any as S.Schema<DatabaseAccountsOnlineRegionRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<DatabaseAccountsOnlineRegionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9148,7 +9719,7 @@ export const DeleteCassandraCluster: API.OperationMethod<
   DeleteCassandraClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3968, __c124, 0) as any as S.Schema<DeleteCassandraClusterRequest>,
+  input: __S(4096, __c128, 0) as any as S.Schema<DeleteCassandraClusterRequest>,
   output: __S(288, __c9, 0) as any as S.Schema<DeleteCassandraClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9163,7 +9734,7 @@ export const DeleteCassandraDataCenter: API.OperationMethod<
   DeleteCassandraDataCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4320, __c135, 0) as any as S.Schema<DeleteCassandraDataCenterRequest>,
+  input: __S(4448, __c139, 0) as any as S.Schema<DeleteCassandraDataCenterRequest>,
   output: __S(288, __c9, 0) as any as S.Schema<DeleteCassandraDataCenterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9178,8 +9749,8 @@ export const DeleteCassandraResourceCassandraKeyspace: API.OperationMethod<
   DeleteCassandraResourceCassandraKeyspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4704, __c147, 0) as any as S.Schema<DeleteCassandraResourceCassandraKeyspaceRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteCassandraResourceCassandraKeyspaceResponse>,
+  input: __S(4864, __c152, 0) as any as S.Schema<DeleteCassandraResourceCassandraKeyspaceRequest>,
+  output: __S(4896, __c153, 0) as any as S.Schema<DeleteCassandraResourceCassandraKeyspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9194,13 +9765,13 @@ export const DeleteCassandraResourceCassandraRoleAssignment: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    5056,
-    __c158,
+    5248,
+    __c164,
     0,
   ) as any as S.Schema<DeleteCassandraResourceCassandraRoleAssignmentRequest>,
   output: __S(
-    288,
-    __c9,
+    4896,
+    __c153,
     0,
   ) as any as S.Schema<DeleteCassandraResourceCassandraRoleAssignmentResponse>,
   errors: [UnknownAzureError],
@@ -9217,13 +9788,13 @@ export const DeleteCassandraResourceCassandraRoleDefinition: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    5440,
-    __c170,
+    5632,
+    __c176,
     0,
   ) as any as S.Schema<DeleteCassandraResourceCassandraRoleDefinitionRequest>,
   output: __S(
-    288,
-    __c9,
+    4896,
+    __c153,
     0,
   ) as any as S.Schema<DeleteCassandraResourceCassandraRoleDefinitionResponse>,
   errors: [UnknownAzureError],
@@ -9239,8 +9810,8 @@ export const DeleteCassandraResourceCassandraTable: API.OperationMethod<
   DeleteCassandraResourceCassandraTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5824, __c182, 0) as any as S.Schema<DeleteCassandraResourceCassandraTableRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteCassandraResourceCassandraTableResponse>,
+  input: __S(6016, __c188, 0) as any as S.Schema<DeleteCassandraResourceCassandraTableRequest>,
+  output: __S(4896, __c153, 0) as any as S.Schema<DeleteCassandraResourceCassandraTableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9254,8 +9825,8 @@ export const DeleteDatabaseAccount: API.OperationMethod<
   DeleteDatabaseAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6048, __c189, 0) as any as S.Schema<DeleteDatabaseAccountRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteDatabaseAccountResponse>,
+  input: __S(6240, __c195, 0) as any as S.Schema<DeleteDatabaseAccountRequest>,
+  output: __S(4896, __c153, 0) as any as S.Schema<DeleteDatabaseAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9269,8 +9840,8 @@ export const DeleteFleet: API.OperationMethod<
   DeleteFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6080, __c190, 0) as any as S.Schema<DeleteFleetRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteFleetResponse>,
+  input: __S(6272, __c196, 0) as any as S.Schema<DeleteFleetRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<DeleteFleetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9284,8 +9855,8 @@ export const DeleteFleetspace: API.OperationMethod<
   DeleteFleetspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6112, __c191, 0) as any as S.Schema<DeleteFleetspaceRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteFleetspaceResponse>,
+  input: __S(6304, __c197, 0) as any as S.Schema<DeleteFleetspaceRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<DeleteFleetspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9299,8 +9870,8 @@ export const DeleteFleetspaceAccount: API.OperationMethod<
   DeleteFleetspaceAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6144, __c192, 0) as any as S.Schema<DeleteFleetspaceAccountRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteFleetspaceAccountResponse>,
+  input: __S(6336, __c198, 0) as any as S.Schema<DeleteFleetspaceAccountRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<DeleteFleetspaceAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9314,8 +9885,8 @@ export const DeleteGremlinResourceGremlinDatabase: API.OperationMethod<
   DeleteGremlinResourceGremlinDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6176, __c193, 0) as any as S.Schema<DeleteGremlinResourceGremlinDatabaseRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteGremlinResourceGremlinDatabaseResponse>,
+  input: __S(6368, __c199, 0) as any as S.Schema<DeleteGremlinResourceGremlinDatabaseRequest>,
+  output: __S(4896, __c153, 0) as any as S.Schema<DeleteGremlinResourceGremlinDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9329,8 +9900,8 @@ export const DeleteGremlinResourceGremlinGraph: API.OperationMethod<
   DeleteGremlinResourceGremlinGraphError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6208, __c194, 0) as any as S.Schema<DeleteGremlinResourceGremlinGraphRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteGremlinResourceGremlinGraphResponse>,
+  input: __S(6400, __c200, 0) as any as S.Schema<DeleteGremlinResourceGremlinGraphRequest>,
+  output: __S(4896, __c153, 0) as any as S.Schema<DeleteGremlinResourceGremlinGraphResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9344,8 +9915,12 @@ export const DeleteGremlinResourceGremlinRoleAssignment: API.OperationMethod<
   DeleteGremlinResourceGremlinRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6336, __c198, 0) as any as S.Schema<DeleteGremlinResourceGremlinRoleAssignmentRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteGremlinResourceGremlinRoleAssignmentResponse>,
+  input: __S(6528, __c204, 0) as any as S.Schema<DeleteGremlinResourceGremlinRoleAssignmentRequest>,
+  output: __S(
+    4896,
+    __c153,
+    0,
+  ) as any as S.Schema<DeleteGremlinResourceGremlinRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9359,8 +9934,12 @@ export const DeleteGremlinResourceGremlinRoleDefinition: API.OperationMethod<
   DeleteGremlinResourceGremlinRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6368, __c199, 0) as any as S.Schema<DeleteGremlinResourceGremlinRoleDefinitionRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteGremlinResourceGremlinRoleDefinitionResponse>,
+  input: __S(6560, __c205, 0) as any as S.Schema<DeleteGremlinResourceGremlinRoleDefinitionRequest>,
+  output: __S(
+    4896,
+    __c153,
+    0,
+  ) as any as S.Schema<DeleteGremlinResourceGremlinRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9374,8 +9953,8 @@ export const DeleteMongoDBResourceMongoDBCollection: API.OperationMethod<
   DeleteMongoDBResourceMongoDBCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6400, __c200, 0) as any as S.Schema<DeleteMongoDBResourceMongoDBCollectionRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteMongoDBResourceMongoDBCollectionResponse>,
+  input: __S(6592, __c206, 0) as any as S.Schema<DeleteMongoDBResourceMongoDBCollectionRequest>,
+  output: __S(4896, __c153, 0) as any as S.Schema<DeleteMongoDBResourceMongoDBCollectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9389,8 +9968,8 @@ export const DeleteMongoDBResourceMongoDBDatabase: API.OperationMethod<
   DeleteMongoDBResourceMongoDBDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6432, __c201, 0) as any as S.Schema<DeleteMongoDBResourceMongoDBDatabaseRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteMongoDBResourceMongoDBDatabaseResponse>,
+  input: __S(6624, __c207, 0) as any as S.Schema<DeleteMongoDBResourceMongoDBDatabaseRequest>,
+  output: __S(4896, __c153, 0) as any as S.Schema<DeleteMongoDBResourceMongoDBDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9404,7 +9983,7 @@ export const DeleteMongoDBResourceMongoRoleDefinition: API.OperationMethod<
   DeleteMongoDBResourceMongoRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6464, __c202, 0) as any as S.Schema<DeleteMongoDBResourceMongoRoleDefinitionRequest>,
+  input: __S(6656, __c208, 0) as any as S.Schema<DeleteMongoDBResourceMongoRoleDefinitionRequest>,
   output: __S(288, __c9, 0) as any as S.Schema<DeleteMongoDBResourceMongoRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9419,7 +9998,7 @@ export const DeleteMongoDBResourceMongoUserDefinition: API.OperationMethod<
   DeleteMongoDBResourceMongoUserDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6496, __c203, 0) as any as S.Schema<DeleteMongoDBResourceMongoUserDefinitionRequest>,
+  input: __S(6688, __c209, 0) as any as S.Schema<DeleteMongoDBResourceMongoUserDefinitionRequest>,
   output: __S(288, __c9, 0) as any as S.Schema<DeleteMongoDBResourceMongoUserDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9434,8 +10013,12 @@ export const DeleteMongoMIResourceMongoMIRoleAssignment: API.OperationMethod<
   DeleteMongoMIResourceMongoMIRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6528, __c204, 0) as any as S.Schema<DeleteMongoMIResourceMongoMIRoleAssignmentRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteMongoMIResourceMongoMIRoleAssignmentResponse>,
+  input: __S(6720, __c210, 0) as any as S.Schema<DeleteMongoMIResourceMongoMIRoleAssignmentRequest>,
+  output: __S(
+    4896,
+    __c153,
+    0,
+  ) as any as S.Schema<DeleteMongoMIResourceMongoMIRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9449,8 +10032,12 @@ export const DeleteMongoMIResourceMongoMIRoleDefinition: API.OperationMethod<
   DeleteMongoMIResourceMongoMIRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6560, __c205, 0) as any as S.Schema<DeleteMongoMIResourceMongoMIRoleDefinitionRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteMongoMIResourceMongoMIRoleDefinitionResponse>,
+  input: __S(6752, __c211, 0) as any as S.Schema<DeleteMongoMIResourceMongoMIRoleDefinitionRequest>,
+  output: __S(
+    4896,
+    __c153,
+    0,
+  ) as any as S.Schema<DeleteMongoMIResourceMongoMIRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9464,7 +10051,7 @@ export const DeleteNotebookWorkspace: API.OperationMethod<
   DeleteNotebookWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6592, __c206, 0) as any as S.Schema<DeleteNotebookWorkspaceRequest>,
+  input: __S(6784, __c212, 0) as any as S.Schema<DeleteNotebookWorkspaceRequest>,
   output: __S(288, __c9, 0) as any as S.Schema<DeleteNotebookWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9479,7 +10066,7 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6624, __c207, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  input: __S(6816, __c213, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
   output: __S(288, __c9, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9494,8 +10081,8 @@ export const DeleteService: API.OperationMethod<
   DeleteServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6816, __c213, 0) as any as S.Schema<DeleteServiceRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteServiceResponse>,
+  input: __S(7008, __c219, 0) as any as S.Schema<DeleteServiceRequest>,
+  output: __S(4896, __c153, 0) as any as S.Schema<DeleteServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9509,8 +10096,8 @@ export const DeleteSqlResourceSqlContainer: API.OperationMethod<
   DeleteSqlResourceSqlContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6848, __c214, 0) as any as S.Schema<DeleteSqlResourceSqlContainerRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteSqlResourceSqlContainerResponse>,
+  input: __S(7040, __c220, 0) as any as S.Schema<DeleteSqlResourceSqlContainerRequest>,
+  output: __S(4896, __c153, 0) as any as S.Schema<DeleteSqlResourceSqlContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9524,8 +10111,8 @@ export const DeleteSqlResourceSqlDatabase: API.OperationMethod<
   DeleteSqlResourceSqlDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6880, __c215, 0) as any as S.Schema<DeleteSqlResourceSqlDatabaseRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteSqlResourceSqlDatabaseResponse>,
+  input: __S(7072, __c221, 0) as any as S.Schema<DeleteSqlResourceSqlDatabaseRequest>,
+  output: __S(4896, __c153, 0) as any as S.Schema<DeleteSqlResourceSqlDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9539,7 +10126,7 @@ export const DeleteSqlResourceSqlRoleAssignment: API.OperationMethod<
   DeleteSqlResourceSqlRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6912, __c216, 0) as any as S.Schema<DeleteSqlResourceSqlRoleAssignmentRequest>,
+  input: __S(7104, __c222, 0) as any as S.Schema<DeleteSqlResourceSqlRoleAssignmentRequest>,
   output: __S(288, __c9, 0) as any as S.Schema<DeleteSqlResourceSqlRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9554,7 +10141,7 @@ export const DeleteSqlResourceSqlRoleDefinition: API.OperationMethod<
   DeleteSqlResourceSqlRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6944, __c217, 0) as any as S.Schema<DeleteSqlResourceSqlRoleDefinitionRequest>,
+  input: __S(7136, __c223, 0) as any as S.Schema<DeleteSqlResourceSqlRoleDefinitionRequest>,
   output: __S(288, __c9, 0) as any as S.Schema<DeleteSqlResourceSqlRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9569,8 +10156,8 @@ export const DeleteSqlResourceSqlStoredProcedure: API.OperationMethod<
   DeleteSqlResourceSqlStoredProcedureError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6976, __c218, 0) as any as S.Schema<DeleteSqlResourceSqlStoredProcedureRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteSqlResourceSqlStoredProcedureResponse>,
+  input: __S(7168, __c224, 0) as any as S.Schema<DeleteSqlResourceSqlStoredProcedureRequest>,
+  output: __S(4896, __c153, 0) as any as S.Schema<DeleteSqlResourceSqlStoredProcedureResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9584,8 +10171,8 @@ export const DeleteSqlResourceSqlUserDefinedFunction: API.OperationMethod<
   DeleteSqlResourceSqlUserDefinedFunctionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7008, __c219, 0) as any as S.Schema<DeleteSqlResourceSqlUserDefinedFunctionRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteSqlResourceSqlUserDefinedFunctionResponse>,
+  input: __S(7200, __c225, 0) as any as S.Schema<DeleteSqlResourceSqlUserDefinedFunctionRequest>,
+  output: __S(4896, __c153, 0) as any as S.Schema<DeleteSqlResourceSqlUserDefinedFunctionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9599,8 +10186,8 @@ export const DeleteTableResourceTable: API.OperationMethod<
   DeleteTableResourceTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7040, __c220, 0) as any as S.Schema<DeleteTableResourceTableRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteTableResourceTableResponse>,
+  input: __S(7232, __c226, 0) as any as S.Schema<DeleteTableResourceTableRequest>,
+  output: __S(4896, __c153, 0) as any as S.Schema<DeleteTableResourceTableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9614,8 +10201,8 @@ export const DeleteTableResourceTableRoleAssignment: API.OperationMethod<
   DeleteTableResourceTableRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7072, __c221, 0) as any as S.Schema<DeleteTableResourceTableRoleAssignmentRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteTableResourceTableRoleAssignmentResponse>,
+  input: __S(7264, __c227, 0) as any as S.Schema<DeleteTableResourceTableRoleAssignmentRequest>,
+  output: __S(4896, __c153, 0) as any as S.Schema<DeleteTableResourceTableRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9629,8 +10216,8 @@ export const DeleteTableResourceTableRoleDefinition: API.OperationMethod<
   DeleteTableResourceTableRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7104, __c222, 0) as any as S.Schema<DeleteTableResourceTableRoleDefinitionRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<DeleteTableResourceTableRoleDefinitionResponse>,
+  input: __S(7296, __c228, 0) as any as S.Schema<DeleteTableResourceTableRoleDefinitionRequest>,
+  output: __S(4896, __c153, 0) as any as S.Schema<DeleteTableResourceTableRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9644,8 +10231,8 @@ export const GetCassandraCluster: API.OperationMethod<
   GetCassandraClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7232, __c226, 0) as any as S.Schema<GetCassandraClusterRequest>,
-  output: __S(228, __c7, 4) as any as S.Schema<GetCassandraClusterResponse>,
+  input: __S(7456, __c233, 0) as any as S.Schema<GetCassandraClusterRequest>,
+  output: __S(7488, __c234, 0) as any as S.Schema<GetCassandraClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9659,8 +10246,8 @@ export const GetCassandraDataCenter: API.OperationMethod<
   GetCassandraDataCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7264, __c227, 0) as any as S.Schema<GetCassandraDataCenterRequest>,
-  output: __S(6306, __c197, 2) as any as S.Schema<GetCassandraDataCenterResponse>,
+  input: __S(7520, __c235, 0) as any as S.Schema<GetCassandraDataCenterRequest>,
+  output: __S(7552, __c236, 0) as any as S.Schema<GetCassandraDataCenterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9674,8 +10261,8 @@ export const GetCassandraResourceCassandraKeyspace: API.OperationMethod<
   GetCassandraResourceCassandraKeyspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7296, __c228, 0) as any as S.Schema<GetCassandraResourceCassandraKeyspaceRequest>,
-  output: __S(6690, __c209, 2) as any as S.Schema<GetCassandraResourceCassandraKeyspaceResponse>,
+  input: __S(7584, __c237, 0) as any as S.Schema<GetCassandraResourceCassandraKeyspaceRequest>,
+  output: __S(7616, __c238, 0) as any as S.Schema<GetCassandraResourceCassandraKeyspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9690,14 +10277,14 @@ export const GetCassandraResourceCassandraKeyspaceThroughput: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    7328,
-    __c229,
+    7648,
+    __c239,
     0,
   ) as any as S.Schema<GetCassandraResourceCassandraKeyspaceThroughputRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    7680,
+    __c240,
+    0,
   ) as any as S.Schema<GetCassandraResourceCassandraKeyspaceThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9713,14 +10300,14 @@ export const GetCassandraResourceCassandraRoleAssignment: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    7392,
-    __c231,
+    7744,
+    __c242,
     0,
   ) as any as S.Schema<GetCassandraResourceCassandraRoleAssignmentRequest>,
   output: __S(
-    7169,
-    __c224,
-    1,
+    7776,
+    __c243,
+    0,
   ) as any as S.Schema<GetCassandraResourceCassandraRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9736,14 +10323,14 @@ export const GetCassandraResourceCassandraRoleDefinition: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    7424,
-    __c232,
+    7808,
+    __c244,
     0,
   ) as any as S.Schema<GetCassandraResourceCassandraRoleDefinitionRequest>,
   output: __S(
-    7649,
-    __c239,
-    1,
+    7840,
+    __c245,
+    0,
   ) as any as S.Schema<GetCassandraResourceCassandraRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9758,8 +10345,8 @@ export const GetCassandraResourceCassandraTable: API.OperationMethod<
   GetCassandraResourceCassandraTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7456, __c233, 0) as any as S.Schema<GetCassandraResourceCassandraTableRequest>,
-  output: __S(8295, __c259, 7) as any as S.Schema<GetCassandraResourceCassandraTableResponse>,
+  input: __S(7872, __c246, 0) as any as S.Schema<GetCassandraResourceCassandraTableRequest>,
+  output: __S(7904, __c247, 0) as any as S.Schema<GetCassandraResourceCassandraTableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9774,14 +10361,14 @@ export const GetCassandraResourceCassandraTableThroughput: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    7488,
-    __c234,
+    7936,
+    __c248,
     0,
   ) as any as S.Schema<GetCassandraResourceCassandraTableThroughputRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    7680,
+    __c240,
+    0,
   ) as any as S.Schema<GetCassandraResourceCassandraTableThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9796,8 +10383,8 @@ export const GetDatabaseAccount: API.OperationMethod<
   GetDatabaseAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7520, __c235, 0) as any as S.Schema<GetDatabaseAccountRequest>,
-  output: __S(1560, __c48, 24) as any as S.Schema<GetDatabaseAccountResponse>,
+  input: __S(7968, __c249, 0) as any as S.Schema<GetDatabaseAccountRequest>,
+  output: __S(8000, __c250, 0) as any as S.Schema<GetDatabaseAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9811,8 +10398,8 @@ export const GetFleet: API.OperationMethod<
   GetFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7552, __c236, 0) as any as S.Schema<GetFleetRequest>,
-  output: __S(8833, __c276, 1) as any as S.Schema<GetFleetResponse>,
+  input: __S(8032, __c251, 0) as any as S.Schema<GetFleetRequest>,
+  output: __S(9601, __c300, 1) as any as S.Schema<GetFleetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9826,8 +10413,8 @@ export const GetFleetspace: API.OperationMethod<
   GetFleetspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7680, __c240, 0) as any as S.Schema<GetFleetspaceRequest>,
-  output: __S(9410, __c294, 2) as any as S.Schema<GetFleetspaceResponse>,
+  input: __S(8192, __c256, 0) as any as S.Schema<GetFleetspaceRequest>,
+  output: __S(8224, __c257, 0) as any as S.Schema<GetFleetspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9841,8 +10428,8 @@ export const GetFleetspaceAccount: API.OperationMethod<
   GetFleetspaceAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7712, __c241, 0) as any as S.Schema<GetFleetspaceAccountRequest>,
-  output: __S(354, __c11, 2) as any as S.Schema<GetFleetspaceAccountResponse>,
+  input: __S(8256, __c258, 0) as any as S.Schema<GetFleetspaceAccountRequest>,
+  output: __S(8288, __c259, 0) as any as S.Schema<GetFleetspaceAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9857,11 +10444,11 @@ export const GetGremlinResourceContinuousBackupInformation: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    7744,
-    __c242,
+    8320,
+    __c260,
     0,
   ) as any as S.Schema<GetGremlinResourceContinuousBackupInformationRequest>,
-  output: __S(7777, __c243, 1) as any as S.Schema<BackupInformation>,
+  output: __S(8353, __c261, 1) as any as S.Schema<BackupInformation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9875,8 +10462,8 @@ export const GetGremlinResourceGremlinDatabase: API.OperationMethod<
   GetGremlinResourceGremlinDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7808, __c244, 0) as any as S.Schema<GetGremlinResourceGremlinDatabaseRequest>,
-  output: __S(7874, __c246, 2) as any as S.Schema<GetGremlinResourceGremlinDatabaseResponse>,
+  input: __S(8384, __c262, 0) as any as S.Schema<GetGremlinResourceGremlinDatabaseRequest>,
+  output: __S(8448, __c264, 0) as any as S.Schema<GetGremlinResourceGremlinDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9891,14 +10478,14 @@ export const GetGremlinResourceGremlinDatabaseThroughput: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    7904,
-    __c247,
+    8512,
+    __c266,
     0,
   ) as any as S.Schema<GetGremlinResourceGremlinDatabaseThroughputRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    7680,
+    __c240,
+    0,
   ) as any as S.Schema<GetGremlinResourceGremlinDatabaseThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9913,8 +10500,8 @@ export const GetGremlinResourceGremlinGraph: API.OperationMethod<
   GetGremlinResourceGremlinGraphError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7936, __c248, 0) as any as S.Schema<GetGremlinResourceGremlinGraphRequest>,
-  output: __S(7970, __c249, 2) as any as S.Schema<GetGremlinResourceGremlinGraphResponse>,
+  input: __S(8544, __c267, 0) as any as S.Schema<GetGremlinResourceGremlinGraphRequest>,
+  output: __S(8608, __c269, 0) as any as S.Schema<GetGremlinResourceGremlinGraphResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9928,8 +10515,8 @@ export const GetGremlinResourceGremlinGraphThroughput: API.OperationMethod<
   GetGremlinResourceGremlinGraphThroughputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8064, __c252, 0) as any as S.Schema<GetGremlinResourceGremlinGraphThroughputRequest>,
-  output: __S(7365, __c230, 5) as any as S.Schema<GetGremlinResourceGremlinGraphThroughputResponse>,
+  input: __S(8704, __c272, 0) as any as S.Schema<GetGremlinResourceGremlinGraphThroughputRequest>,
+  output: __S(7680, __c240, 0) as any as S.Schema<GetGremlinResourceGremlinGraphThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9943,8 +10530,8 @@ export const GetGremlinResourceGremlinRoleAssignment: API.OperationMethod<
   GetGremlinResourceGremlinRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8096, __c253, 0) as any as S.Schema<GetGremlinResourceGremlinRoleAssignmentRequest>,
-  output: __S(7169, __c224, 1) as any as S.Schema<GetGremlinResourceGremlinRoleAssignmentResponse>,
+  input: __S(8736, __c273, 0) as any as S.Schema<GetGremlinResourceGremlinRoleAssignmentRequest>,
+  output: __S(7776, __c243, 0) as any as S.Schema<GetGremlinResourceGremlinRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9958,8 +10545,8 @@ export const GetGremlinResourceGremlinRoleDefinition: API.OperationMethod<
   GetGremlinResourceGremlinRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8128, __c254, 0) as any as S.Schema<GetGremlinResourceGremlinRoleDefinitionRequest>,
-  output: __S(7649, __c239, 1) as any as S.Schema<GetGremlinResourceGremlinRoleDefinitionResponse>,
+  input: __S(8768, __c274, 0) as any as S.Schema<GetGremlinResourceGremlinRoleDefinitionRequest>,
+  output: __S(7840, __c245, 0) as any as S.Schema<GetGremlinResourceGremlinRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9973,8 +10560,8 @@ export const GetLocation: API.OperationMethod<
   GetLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8160, __c255, 0) as any as S.Schema<GetLocationRequest>,
-  output: __S(8193, __c256, 1) as any as S.Schema<GetLocationResponse>,
+  input: __S(8800, __c275, 0) as any as S.Schema<GetLocationRequest>,
+  output: __S(8833, __c276, 1) as any as S.Schema<GetLocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9989,11 +10576,11 @@ export const GetMongoDBResourceContinuousBackupInformation: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    8320,
-    __c260,
+    8960,
+    __c280,
     0,
   ) as any as S.Schema<GetMongoDBResourceContinuousBackupInformationRequest>,
-  output: __S(7777, __c243, 1) as any as S.Schema<BackupInformation>,
+  output: __S(8353, __c261, 1) as any as S.Schema<BackupInformation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10007,8 +10594,8 @@ export const GetMongoDBResourceMongoDBCollection: API.OperationMethod<
   GetMongoDBResourceMongoDBCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8352, __c261, 0) as any as S.Schema<GetMongoDBResourceMongoDBCollectionRequest>,
-  output: __S(8390, __c262, 6) as any as S.Schema<GetMongoDBResourceMongoDBCollectionResponse>,
+  input: __S(8992, __c281, 0) as any as S.Schema<GetMongoDBResourceMongoDBCollectionRequest>,
+  output: __S(9024, __c282, 0) as any as S.Schema<GetMongoDBResourceMongoDBCollectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10023,14 +10610,14 @@ export const GetMongoDBResourceMongoDBCollectionThroughput: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    8416,
-    __c263,
+    9088,
+    __c284,
     0,
   ) as any as S.Schema<GetMongoDBResourceMongoDBCollectionThroughputRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    7680,
+    __c240,
+    0,
   ) as any as S.Schema<GetMongoDBResourceMongoDBCollectionThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10045,8 +10632,8 @@ export const GetMongoDBResourceMongoDBDatabase: API.OperationMethod<
   GetMongoDBResourceMongoDBDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8448, __c264, 0) as any as S.Schema<GetMongoDBResourceMongoDBDatabaseRequest>,
-  output: __S(7874, __c246, 2) as any as S.Schema<GetMongoDBResourceMongoDBDatabaseResponse>,
+  input: __S(9120, __c285, 0) as any as S.Schema<GetMongoDBResourceMongoDBDatabaseRequest>,
+  output: __S(8448, __c264, 0) as any as S.Schema<GetMongoDBResourceMongoDBDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10061,14 +10648,14 @@ export const GetMongoDBResourceMongoDBDatabaseThroughput: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    8480,
-    __c265,
+    9152,
+    __c286,
     0,
   ) as any as S.Schema<GetMongoDBResourceMongoDBDatabaseThroughputRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    7680,
+    __c240,
+    0,
   ) as any as S.Schema<GetMongoDBResourceMongoDBDatabaseThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10083,8 +10670,8 @@ export const GetMongoDBResourceMongoRoleDefinition: API.OperationMethod<
   GetMongoDBResourceMongoRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8512, __c266, 0) as any as S.Schema<GetMongoDBResourceMongoRoleDefinitionRequest>,
-  output: __S(8548, __c267, 4) as any as S.Schema<GetMongoDBResourceMongoRoleDefinitionResponse>,
+  input: __S(9184, __c287, 0) as any as S.Schema<GetMongoDBResourceMongoRoleDefinitionRequest>,
+  output: __S(9216, __c288, 0) as any as S.Schema<GetMongoDBResourceMongoRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10098,8 +10685,8 @@ export const GetMongoDBResourceMongoUserDefinition: API.OperationMethod<
   GetMongoDBResourceMongoUserDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8608, __c269, 0) as any as S.Schema<GetMongoDBResourceMongoUserDefinitionRequest>,
-  output: __S(8641, __c270, 1) as any as S.Schema<GetMongoDBResourceMongoUserDefinitionResponse>,
+  input: __S(9312, __c291, 0) as any as S.Schema<GetMongoDBResourceMongoUserDefinitionRequest>,
+  output: __S(9344, __c292, 0) as any as S.Schema<GetMongoDBResourceMongoUserDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10113,8 +10700,8 @@ export const GetMongoMIResourceMongoMIRoleAssignment: API.OperationMethod<
   GetMongoMIResourceMongoMIRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8672, __c271, 0) as any as S.Schema<GetMongoMIResourceMongoMIRoleAssignmentRequest>,
-  output: __S(7169, __c224, 1) as any as S.Schema<GetMongoMIResourceMongoMIRoleAssignmentResponse>,
+  input: __S(9408, __c294, 0) as any as S.Schema<GetMongoMIResourceMongoMIRoleAssignmentRequest>,
+  output: __S(7776, __c243, 0) as any as S.Schema<GetMongoMIResourceMongoMIRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10128,8 +10715,8 @@ export const GetMongoMIResourceMongoMIRoleDefinition: API.OperationMethod<
   GetMongoMIResourceMongoMIRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8704, __c272, 0) as any as S.Schema<GetMongoMIResourceMongoMIRoleDefinitionRequest>,
-  output: __S(7649, __c239, 1) as any as S.Schema<GetMongoMIResourceMongoMIRoleDefinitionResponse>,
+  input: __S(9440, __c295, 0) as any as S.Schema<GetMongoMIResourceMongoMIRoleDefinitionRequest>,
+  output: __S(7840, __c245, 0) as any as S.Schema<GetMongoMIResourceMongoMIRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10143,8 +10730,8 @@ export const GetNotebookWorkspace: API.OperationMethod<
   GetNotebookWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8736, __c273, 0) as any as S.Schema<GetNotebookWorkspaceRequest>,
-  output: __S(8769, __c274, 1) as any as S.Schema<GetNotebookWorkspaceResponse>,
+  input: __S(9472, __c296, 0) as any as S.Schema<GetNotebookWorkspaceRequest>,
+  output: __S(9504, __c297, 0) as any as S.Schema<GetNotebookWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10158,8 +10745,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8864, __c277, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(1571, __c49, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(9632, __c301, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10173,8 +10760,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8896, __c278, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(8929, __c279, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: __S(9664, __c302, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(9697, __c303, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10188,8 +10775,8 @@ export const GetRestorableDatabaseAccountByLocation: API.OperationMethod<
   GetRestorableDatabaseAccountByLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8960, __c280, 0) as any as S.Schema<GetRestorableDatabaseAccountByLocationRequest>,
-  output: __S(8995, __c281, 3) as any as S.Schema<GetRestorableDatabaseAccountByLocationResponse>,
+  input: __S(9728, __c304, 0) as any as S.Schema<GetRestorableDatabaseAccountByLocationRequest>,
+  output: __S(9763, __c305, 3) as any as S.Schema<GetRestorableDatabaseAccountByLocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10203,8 +10790,8 @@ export const GetService: API.OperationMethod<
   GetServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9024, __c282, 0) as any as S.Schema<GetServiceRequest>,
-  output: __S(865, __c27, 1) as any as S.Schema<GetServiceResponse>,
+  input: __S(9792, __c306, 0) as any as S.Schema<GetServiceRequest>,
+  output: __S(9824, __c307, 0) as any as S.Schema<GetServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10218,8 +10805,8 @@ export const GetSqlResourceClientEncryptionKey: API.OperationMethod<
   GetSqlResourceClientEncryptionKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9056, __c283, 0) as any as S.Schema<GetSqlResourceClientEncryptionKeyRequest>,
-  output: __S(9091, __c284, 3) as any as S.Schema<GetSqlResourceClientEncryptionKeyResponse>,
+  input: __S(9856, __c308, 0) as any as S.Schema<GetSqlResourceClientEncryptionKeyRequest>,
+  output: __S(9888, __c309, 0) as any as S.Schema<GetSqlResourceClientEncryptionKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10233,8 +10820,8 @@ export const GetSqlResourceContinuousBackupInformation: API.OperationMethod<
   GetSqlResourceContinuousBackupInformationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9120, __c285, 0) as any as S.Schema<GetSqlResourceContinuousBackupInformationRequest>,
-  output: __S(7777, __c243, 1) as any as S.Schema<BackupInformation>,
+  input: __S(9952, __c311, 0) as any as S.Schema<GetSqlResourceContinuousBackupInformationRequest>,
+  output: __S(8353, __c261, 1) as any as S.Schema<BackupInformation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10248,8 +10835,8 @@ export const GetSqlResourceSqlContainer: API.OperationMethod<
   GetSqlResourceSqlContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9152, __c286, 0) as any as S.Schema<GetSqlResourceSqlContainerRequest>,
-  output: __S(9218, __c288, 2) as any as S.Schema<GetSqlResourceSqlContainerResponse>,
+  input: __S(9984, __c312, 0) as any as S.Schema<GetSqlResourceSqlContainerRequest>,
+  output: __S(10048, __c314, 0) as any as S.Schema<GetSqlResourceSqlContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10263,8 +10850,8 @@ export const GetSqlResourceSqlContainerThroughput: API.OperationMethod<
   GetSqlResourceSqlContainerThroughputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9248, __c289, 0) as any as S.Schema<GetSqlResourceSqlContainerThroughputRequest>,
-  output: __S(7365, __c230, 5) as any as S.Schema<GetSqlResourceSqlContainerThroughputResponse>,
+  input: __S(10112, __c316, 0) as any as S.Schema<GetSqlResourceSqlContainerThroughputRequest>,
+  output: __S(7680, __c240, 0) as any as S.Schema<GetSqlResourceSqlContainerThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10278,8 +10865,8 @@ export const GetSqlResourceSqlDatabase: API.OperationMethod<
   GetSqlResourceSqlDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9280, __c290, 0) as any as S.Schema<GetSqlResourceSqlDatabaseRequest>,
-  output: __S(9314, __c291, 2) as any as S.Schema<GetSqlResourceSqlDatabaseResponse>,
+  input: __S(10144, __c317, 0) as any as S.Schema<GetSqlResourceSqlDatabaseRequest>,
+  output: __S(10176, __c318, 0) as any as S.Schema<GetSqlResourceSqlDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10293,8 +10880,8 @@ export const GetSqlResourceSqlDatabaseThroughput: API.OperationMethod<
   GetSqlResourceSqlDatabaseThroughputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9344, __c292, 0) as any as S.Schema<GetSqlResourceSqlDatabaseThroughputRequest>,
-  output: __S(7365, __c230, 5) as any as S.Schema<GetSqlResourceSqlDatabaseThroughputResponse>,
+  input: __S(10240, __c320, 0) as any as S.Schema<GetSqlResourceSqlDatabaseThroughputRequest>,
+  output: __S(7680, __c240, 0) as any as S.Schema<GetSqlResourceSqlDatabaseThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10308,8 +10895,8 @@ export const GetSqlResourceSqlRoleAssignment: API.OperationMethod<
   GetSqlResourceSqlRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9440, __c295, 0) as any as S.Schema<GetSqlResourceSqlRoleAssignmentRequest>,
-  output: __S(9472, __c296, 0) as any as S.Schema<GetSqlResourceSqlRoleAssignmentResponse>,
+  input: __S(10336, __c323, 0) as any as S.Schema<GetSqlResourceSqlRoleAssignmentRequest>,
+  output: __S(10368, __c324, 0) as any as S.Schema<GetSqlResourceSqlRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10323,8 +10910,8 @@ export const GetSqlResourceSqlRoleDefinition: API.OperationMethod<
   GetSqlResourceSqlRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9504, __c297, 0) as any as S.Schema<GetSqlResourceSqlRoleDefinitionRequest>,
-  output: __S(9537, __c298, 1) as any as S.Schema<GetSqlResourceSqlRoleDefinitionResponse>,
+  input: __S(10400, __c325, 0) as any as S.Schema<GetSqlResourceSqlRoleDefinitionRequest>,
+  output: __S(10432, __c326, 0) as any as S.Schema<GetSqlResourceSqlRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10338,8 +10925,8 @@ export const GetSqlResourceSqlStoredProcedure: API.OperationMethod<
   GetSqlResourceSqlStoredProcedureError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9568, __c299, 0) as any as S.Schema<GetSqlResourceSqlStoredProcedureRequest>,
-  output: __S(9602, __c300, 2) as any as S.Schema<GetSqlResourceSqlStoredProcedureResponse>,
+  input: __S(10496, __c328, 0) as any as S.Schema<GetSqlResourceSqlStoredProcedureRequest>,
+  output: __S(10528, __c329, 0) as any as S.Schema<GetSqlResourceSqlStoredProcedureResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10353,8 +10940,8 @@ export const GetSqlResourceSqlUserDefinedFunction: API.OperationMethod<
   GetSqlResourceSqlUserDefinedFunctionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9632, __c301, 0) as any as S.Schema<GetSqlResourceSqlUserDefinedFunctionRequest>,
-  output: __S(9602, __c300, 2) as any as S.Schema<GetSqlResourceSqlUserDefinedFunctionResponse>,
+  input: __S(10592, __c331, 0) as any as S.Schema<GetSqlResourceSqlUserDefinedFunctionRequest>,
+  output: __S(10528, __c329, 0) as any as S.Schema<GetSqlResourceSqlUserDefinedFunctionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10369,11 +10956,11 @@ export const GetTableResourceContinuousBackupInformation: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    9664,
-    __c302,
+    10624,
+    __c332,
     0,
   ) as any as S.Schema<GetTableResourceContinuousBackupInformationRequest>,
-  output: __S(7777, __c243, 1) as any as S.Schema<BackupInformation>,
+  output: __S(8353, __c261, 1) as any as S.Schema<BackupInformation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10387,8 +10974,8 @@ export const GetTableResourceTable: API.OperationMethod<
   GetTableResourceTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9696, __c303, 0) as any as S.Schema<GetTableResourceTableRequest>,
-  output: __S(7874, __c246, 2) as any as S.Schema<GetTableResourceTableResponse>,
+  input: __S(10656, __c333, 0) as any as S.Schema<GetTableResourceTableRequest>,
+  output: __S(8448, __c264, 0) as any as S.Schema<GetTableResourceTableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10402,8 +10989,8 @@ export const GetTableResourceTableRoleAssignment: API.OperationMethod<
   GetTableResourceTableRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9728, __c304, 0) as any as S.Schema<GetTableResourceTableRoleAssignmentRequest>,
-  output: __S(7169, __c224, 1) as any as S.Schema<GetTableResourceTableRoleAssignmentResponse>,
+  input: __S(10688, __c334, 0) as any as S.Schema<GetTableResourceTableRoleAssignmentRequest>,
+  output: __S(7776, __c243, 0) as any as S.Schema<GetTableResourceTableRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10417,8 +11004,8 @@ export const GetTableResourceTableRoleDefinition: API.OperationMethod<
   GetTableResourceTableRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9760, __c305, 0) as any as S.Schema<GetTableResourceTableRoleDefinitionRequest>,
-  output: __S(7649, __c239, 1) as any as S.Schema<GetTableResourceTableRoleDefinitionResponse>,
+  input: __S(10720, __c335, 0) as any as S.Schema<GetTableResourceTableRoleDefinitionRequest>,
+  output: __S(7840, __c245, 0) as any as S.Schema<GetTableResourceTableRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10432,8 +11019,8 @@ export const GetTableResourceTableThroughput: API.OperationMethod<
   GetTableResourceTableThroughputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9792, __c306, 0) as any as S.Schema<GetTableResourceTableThroughputRequest>,
-  output: __S(7365, __c230, 5) as any as S.Schema<GetTableResourceTableThroughputResponse>,
+  input: __S(10752, __c336, 0) as any as S.Schema<GetTableResourceTableThroughputRequest>,
+  output: __S(7680, __c240, 0) as any as S.Schema<GetTableResourceTableThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10448,14 +11035,14 @@ export const GremlinResourcesCreateUpdateGremlinDatabase: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    9824,
-    __c307,
+    10784,
+    __c337,
     0,
   ) as any as S.Schema<GremlinResourcesCreateUpdateGremlinDatabaseRequest>,
   output: __S(
-    7874,
-    __c246,
-    2,
+    10848,
+    __c339,
+    0,
   ) as any as S.Schema<GremlinResourcesCreateUpdateGremlinDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10471,7 +11058,7 @@ export const GremlinResourcesCreateUpdateGremlinGraph: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(386, __c12, 2) as any as S.Schema<GremlinResourcesCreateUpdateGremlinGraphRequest>,
-  output: __S(7970, __c249, 2) as any as S.Schema<GremlinResourcesCreateUpdateGremlinGraphResponse>,
+  output: __S(387, __c12, 3) as any as S.Schema<GremlinResourcesCreateUpdateGremlinGraphResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10491,9 +11078,9 @@ export const GremlinResourcesCreateUpdateGremlinRoleAssignment: API.OperationMet
     0,
   ) as any as S.Schema<GremlinResourcesCreateUpdateGremlinRoleAssignmentRequest>,
   output: __S(
-    7169,
-    __c224,
-    1,
+    7360,
+    __c230,
+    0,
   ) as any as S.Schema<GremlinResourcesCreateUpdateGremlinRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10514,9 +11101,9 @@ export const GremlinResourcesCreateUpdateGremlinRoleDefinition: API.OperationMet
     0,
   ) as any as S.Schema<GremlinResourcesCreateUpdateGremlinRoleDefinitionRequest>,
   output: __S(
-    7649,
-    __c239,
-    1,
+    8096,
+    __c253,
+    0,
   ) as any as S.Schema<GremlinResourcesCreateUpdateGremlinRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10794,8 +11381,8 @@ export const ListDatabaseAccountKeys: API.OperationMethod<
   ListDatabaseAccountKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1600, __c50, 0) as any as S.Schema<ListDatabaseAccountKeysRequest>,
-  output: __S(1601, __c50, 1) as any as S.Schema<ListDatabaseAccountKeysResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<ListDatabaseAccountKeysRequest>,
+  output: __S(1633, __c51, 1) as any as S.Schema<ListDatabaseAccountKeysResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10809,7 +11396,7 @@ export const ListDatabaseAccountMetricDefinitions: API.OperationMethod<
   ListDatabaseAccountMetricDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1632, __c51, 0) as any as S.Schema<ListDatabaseAccountMetricDefinitionsRequest>,
+  input: __S(1664, __c52, 0) as any as S.Schema<ListDatabaseAccountMetricDefinitionsRequest>,
   output: __S(996, __c31, 4) as any as S.Schema<MetricDefinitionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10824,7 +11411,7 @@ export const ListDatabaseAccountMetrics: API.OperationMethod<
   ListDatabaseAccountMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1664, __c52, 0) as any as S.Schema<ListDatabaseAccountMetricsRequest>,
+  input: __S(1696, __c53, 0) as any as S.Schema<ListDatabaseAccountMetricsRequest>,
   output: __S(1090, __c34, 2) as any as S.Schema<MetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10839,7 +11426,7 @@ export const ListDatabaseAccountRegionMetrics: API.OperationMethod<
   ListDatabaseAccountRegionMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<ListDatabaseAccountRegionMetricsRequest>,
+  input: __S(1728, __c54, 0) as any as S.Schema<ListDatabaseAccountRegionMetricsRequest>,
   output: __S(1090, __c34, 2) as any as S.Schema<MetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10854,7 +11441,7 @@ export const ListDatabaseAccounts: API.OperationMethod<
   ListDatabaseAccountsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c54, 0) as any as S.Schema<ListDatabaseAccountsRequest>,
+  input: __S(1760, __c55, 0) as any as S.Schema<ListDatabaseAccountsRequest>,
   output: __S(1377, __c43, 1) as any as S.Schema<DatabaseAccountsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10869,7 +11456,7 @@ export const ListDatabaseAccountUsages: API.OperationMethod<
   ListDatabaseAccountUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c55, 0) as any as S.Schema<ListDatabaseAccountUsagesRequest>,
+  input: __S(1792, __c56, 0) as any as S.Schema<ListDatabaseAccountUsagesRequest>,
   output: __S(1314, __c41, 2) as any as S.Schema<UsagesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10884,7 +11471,7 @@ export const ListDatabaseMetricDefinitions: API.OperationMethod<
   ListDatabaseMetricDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1792, __c56, 0) as any as S.Schema<ListDatabaseMetricDefinitionsRequest>,
+  input: __S(1824, __c57, 0) as any as S.Schema<ListDatabaseMetricDefinitionsRequest>,
   output: __S(996, __c31, 4) as any as S.Schema<MetricDefinitionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10899,7 +11486,7 @@ export const ListDatabaseMetrics: API.OperationMethod<
   ListDatabaseMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1824, __c57, 0) as any as S.Schema<ListDatabaseMetricsRequest>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListDatabaseMetricsRequest>,
   output: __S(1090, __c34, 2) as any as S.Schema<MetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10914,7 +11501,7 @@ export const ListDatabaseUsages: API.OperationMethod<
   ListDatabaseUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1856, __c58, 0) as any as S.Schema<ListDatabaseUsagesRequest>,
+  input: __S(1888, __c59, 0) as any as S.Schema<ListDatabaseUsagesRequest>,
   output: __S(1314, __c41, 2) as any as S.Schema<UsagesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10929,8 +11516,8 @@ export const ListFleet: API.OperationMethod<
   ListFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1888, __c59, 0) as any as S.Schema<ListFleetRequest>,
-  output: __S(1921, __c60, 1) as any as S.Schema<FleetListResult>,
+  input: __S(1920, __c60, 0) as any as S.Schema<ListFleetRequest>,
+  output: __S(1953, __c61, 1) as any as S.Schema<FleetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10944,8 +11531,8 @@ export const ListFleetByResourceGroup: API.OperationMethod<
   ListFleetByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1984, __c62, 0) as any as S.Schema<ListFleetByResourceGroupRequest>,
-  output: __S(1921, __c60, 1) as any as S.Schema<FleetListResult>,
+  input: __S(2048, __c64, 0) as any as S.Schema<ListFleetByResourceGroupRequest>,
+  output: __S(1953, __c61, 1) as any as S.Schema<FleetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10959,8 +11546,8 @@ export const ListFleetspace: API.OperationMethod<
   ListFleetspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2016, __c63, 0) as any as S.Schema<ListFleetspaceRequest>,
-  output: __S(2018, __c63, 2) as any as S.Schema<FleetspaceListResult>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ListFleetspaceRequest>,
+  output: __S(2082, __c65, 2) as any as S.Schema<FleetspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10974,8 +11561,8 @@ export const ListFleetspaceAccount: API.OperationMethod<
   ListFleetspaceAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2048, __c64, 0) as any as S.Schema<ListFleetspaceAccountRequest>,
-  output: __S(2050, __c64, 2) as any as S.Schema<FleetspaceAccountListResult>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListFleetspaceAccountRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<FleetspaceAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10989,8 +11576,8 @@ export const ListGremlinResourceGremlinDatabases: API.OperationMethod<
   ListGremlinResourceGremlinDatabasesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2080, __c65, 0) as any as S.Schema<ListGremlinResourceGremlinDatabasesRequest>,
-  output: __S(2113, __c66, 1) as any as S.Schema<GremlinDatabaseListResult>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListGremlinResourceGremlinDatabasesRequest>,
+  output: __S(2177, __c68, 1) as any as S.Schema<GremlinDatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11004,8 +11591,8 @@ export const ListGremlinResourceGremlinGraphs: API.OperationMethod<
   ListGremlinResourceGremlinGraphsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2144, __c67, 0) as any as S.Schema<ListGremlinResourceGremlinGraphsRequest>,
-  output: __S(2146, __c67, 2) as any as S.Schema<GremlinGraphListResult>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListGremlinResourceGremlinGraphsRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<GremlinGraphListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11019,7 +11606,7 @@ export const ListGremlinResourceGremlinRoleAssignments: API.OperationMethod<
   ListGremlinResourceGremlinRoleAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2176, __c68, 0) as any as S.Schema<ListGremlinResourceGremlinRoleAssignmentsRequest>,
+  input: __S(2240, __c70, 0) as any as S.Schema<ListGremlinResourceGremlinRoleAssignmentsRequest>,
   output: __S(737, __c23, 1) as any as S.Schema<GremlinRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11034,7 +11621,7 @@ export const ListGremlinResourceGremlinRoleDefinitions: API.OperationMethod<
   ListGremlinResourceGremlinRoleDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2208, __c69, 0) as any as S.Schema<ListGremlinResourceGremlinRoleDefinitionsRequest>,
+  input: __S(2272, __c71, 0) as any as S.Schema<ListGremlinResourceGremlinRoleDefinitionsRequest>,
   output: __S(801, __c25, 1) as any as S.Schema<GremlinRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11049,8 +11636,8 @@ export const ListLocations: API.OperationMethod<
   ListLocationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2240, __c70, 0) as any as S.Schema<ListLocationsRequest>,
-  output: __S(2242, __c70, 2) as any as S.Schema<LocationListResult>,
+  input: __S(2304, __c72, 0) as any as S.Schema<ListLocationsRequest>,
+  output: __S(2306, __c72, 2) as any as S.Schema<LocationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11064,8 +11651,8 @@ export const ListMongoDBResourceMongoDBCollections: API.OperationMethod<
   ListMongoDBResourceMongoDBCollectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2272, __c71, 0) as any as S.Schema<ListMongoDBResourceMongoDBCollectionsRequest>,
-  output: __S(2274, __c71, 2) as any as S.Schema<MongoDBCollectionListResult>,
+  input: __S(2336, __c73, 0) as any as S.Schema<ListMongoDBResourceMongoDBCollectionsRequest>,
+  output: __S(2338, __c73, 2) as any as S.Schema<MongoDBCollectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11079,8 +11666,8 @@ export const ListMongoDBResourceMongoDBDatabases: API.OperationMethod<
   ListMongoDBResourceMongoDBDatabasesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c72, 0) as any as S.Schema<ListMongoDBResourceMongoDBDatabasesRequest>,
-  output: __S(2113, __c66, 1) as any as S.Schema<MongoDBDatabaseListResult>,
+  input: __S(2368, __c74, 0) as any as S.Schema<ListMongoDBResourceMongoDBDatabasesRequest>,
+  output: __S(2177, __c68, 1) as any as S.Schema<MongoDBDatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11094,8 +11681,8 @@ export const ListMongoDBResourceMongoRoleDefinitions: API.OperationMethod<
   ListMongoDBResourceMongoRoleDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2400, __c75, 0) as any as S.Schema<ListMongoDBResourceMongoRoleDefinitionsRequest>,
-  output: __S(2402, __c75, 2) as any as S.Schema<MongoRoleDefinitionListResult>,
+  input: __S(2464, __c77, 0) as any as S.Schema<ListMongoDBResourceMongoRoleDefinitionsRequest>,
+  output: __S(2466, __c77, 2) as any as S.Schema<MongoRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11109,8 +11696,8 @@ export const ListMongoDBResourceMongoUserDefinitions: API.OperationMethod<
   ListMongoDBResourceMongoUserDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2432, __c76, 0) as any as S.Schema<ListMongoDBResourceMongoUserDefinitionsRequest>,
-  output: __S(2434, __c76, 2) as any as S.Schema<MongoUserDefinitionListResult>,
+  input: __S(2496, __c78, 0) as any as S.Schema<ListMongoDBResourceMongoUserDefinitionsRequest>,
+  output: __S(2498, __c78, 2) as any as S.Schema<MongoUserDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11124,7 +11711,7 @@ export const ListMongoMIResourceMongoMIRoleAssignments: API.OperationMethod<
   ListMongoMIResourceMongoMIRoleAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2464, __c77, 0) as any as S.Schema<ListMongoMIResourceMongoMIRoleAssignmentsRequest>,
+  input: __S(2528, __c79, 0) as any as S.Schema<ListMongoMIResourceMongoMIRoleAssignmentsRequest>,
   output: __S(737, __c23, 1) as any as S.Schema<MongoMIRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11139,7 +11726,7 @@ export const ListMongoMIResourceMongoMIRoleDefinitions: API.OperationMethod<
   ListMongoMIResourceMongoMIRoleDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2496, __c78, 0) as any as S.Schema<ListMongoMIResourceMongoMIRoleDefinitionsRequest>,
+  input: __S(2560, __c80, 0) as any as S.Schema<ListMongoMIResourceMongoMIRoleDefinitionsRequest>,
   output: __S(801, __c25, 1) as any as S.Schema<MongoMIRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11154,8 +11741,8 @@ export const ListNotebookWorkspaceByDatabaseAccount: API.OperationMethod<
   ListNotebookWorkspaceByDatabaseAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2528, __c79, 0) as any as S.Schema<ListNotebookWorkspaceByDatabaseAccountRequest>,
-  output: __S(2530, __c79, 2) as any as S.Schema<NotebookWorkspaceListResult>,
+  input: __S(2592, __c81, 0) as any as S.Schema<ListNotebookWorkspaceByDatabaseAccountRequest>,
+  output: __S(2594, __c81, 2) as any as S.Schema<NotebookWorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11169,8 +11756,8 @@ export const ListNotebookWorkspaceConnectionInfo: API.OperationMethod<
   ListNotebookWorkspaceConnectionInfoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2560, __c80, 0) as any as S.Schema<ListNotebookWorkspaceConnectionInfoRequest>,
-  output: __S(2561, __c80, 1) as any as S.Schema<NotebookWorkspaceConnectionInfoResult>,
+  input: __S(2624, __c82, 0) as any as S.Schema<ListNotebookWorkspaceConnectionInfoRequest>,
+  output: __S(2625, __c82, 1) as any as S.Schema<NotebookWorkspaceConnectionInfoResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11184,8 +11771,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2592, __c81, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(2596, __c81, 4) as any as S.Schema<OperationListResult>,
+  input: __S(2656, __c83, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(2660, __c83, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11199,7 +11786,7 @@ export const ListPartitionKeyRangeIdMetrics: API.OperationMethod<
   ListPartitionKeyRangeIdMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2624, __c82, 0) as any as S.Schema<ListPartitionKeyRangeIdMetricsRequest>,
+  input: __S(2688, __c84, 0) as any as S.Schema<ListPartitionKeyRangeIdMetricsRequest>,
   output: __S(1154, __c36, 2) as any as S.Schema<PartitionMetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11214,7 +11801,7 @@ export const ListPartitionKeyRangeIdRegionMetrics: API.OperationMethod<
   ListPartitionKeyRangeIdRegionMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2656, __c83, 0) as any as S.Schema<ListPartitionKeyRangeIdRegionMetricsRequest>,
+  input: __S(2720, __c85, 0) as any as S.Schema<ListPartitionKeyRangeIdRegionMetricsRequest>,
   output: __S(1154, __c36, 2) as any as S.Schema<PartitionMetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11229,8 +11816,8 @@ export const ListPercentileMetrics: API.OperationMethod<
   ListPercentileMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2688, __c84, 0) as any as S.Schema<ListPercentileMetricsRequest>,
-  output: __S(2724, __c85, 4) as any as S.Schema<PercentileMetricListResult>,
+  input: __S(2752, __c86, 0) as any as S.Schema<ListPercentileMetricsRequest>,
+  output: __S(2788, __c87, 4) as any as S.Schema<PercentileMetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11244,8 +11831,8 @@ export const ListPercentileSourceTargetMetrics: API.OperationMethod<
   ListPercentileSourceTargetMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2784, __c87, 0) as any as S.Schema<ListPercentileSourceTargetMetricsRequest>,
-  output: __S(2724, __c85, 4) as any as S.Schema<PercentileMetricListResult>,
+  input: __S(2848, __c89, 0) as any as S.Schema<ListPercentileSourceTargetMetricsRequest>,
+  output: __S(2788, __c87, 4) as any as S.Schema<PercentileMetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11259,8 +11846,8 @@ export const ListPercentileTargetMetrics: API.OperationMethod<
   ListPercentileTargetMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2816, __c88, 0) as any as S.Schema<ListPercentileTargetMetricsRequest>,
-  output: __S(2724, __c85, 4) as any as S.Schema<PercentileMetricListResult>,
+  input: __S(2880, __c90, 0) as any as S.Schema<ListPercentileTargetMetricsRequest>,
+  output: __S(2788, __c87, 4) as any as S.Schema<PercentileMetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11275,11 +11862,11 @@ export const ListPrivateEndpointConnectionByDatabaseAccount: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2848,
-    __c89,
+    2912,
+    __c91,
     0,
   ) as any as S.Schema<ListPrivateEndpointConnectionByDatabaseAccountRequest>,
-  output: __S(2849, __c89, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  output: __S(2913, __c91, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11293,8 +11880,8 @@ export const ListPrivateLinkResourceByDatabaseAccount: API.OperationMethod<
   ListPrivateLinkResourceByDatabaseAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2880, __c90, 0) as any as S.Schema<ListPrivateLinkResourceByDatabaseAccountRequest>,
-  output: __S(2882, __c90, 2) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(2944, __c92, 0) as any as S.Schema<ListPrivateLinkResourceByDatabaseAccountRequest>,
+  output: __S(2946, __c92, 2) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11308,8 +11895,8 @@ export const ListRestorableDatabaseAccountByLocation: API.OperationMethod<
   ListRestorableDatabaseAccountByLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2912, __c91, 0) as any as S.Schema<ListRestorableDatabaseAccountByLocationRequest>,
-  output: __S(2945, __c92, 1) as any as S.Schema<RestorableDatabaseAccountsListResult>,
+  input: __S(2976, __c93, 0) as any as S.Schema<ListRestorableDatabaseAccountByLocationRequest>,
+  output: __S(3009, __c94, 1) as any as S.Schema<RestorableDatabaseAccountsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11323,8 +11910,8 @@ export const ListRestorableDatabaseAccounts: API.OperationMethod<
   ListRestorableDatabaseAccountsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2976, __c93, 0) as any as S.Schema<ListRestorableDatabaseAccountsRequest>,
-  output: __S(2945, __c92, 1) as any as S.Schema<RestorableDatabaseAccountsListResult>,
+  input: __S(3040, __c95, 0) as any as S.Schema<ListRestorableDatabaseAccountsRequest>,
+  output: __S(3009, __c94, 1) as any as S.Schema<RestorableDatabaseAccountsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11338,8 +11925,8 @@ export const ListRestorableGremlinDatabases: API.OperationMethod<
   ListRestorableGremlinDatabasesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3008, __c94, 0) as any as S.Schema<ListRestorableGremlinDatabasesRequest>,
-  output: __S(3044, __c95, 4) as any as S.Schema<RestorableGremlinDatabasesListResult>,
+  input: __S(3072, __c96, 0) as any as S.Schema<ListRestorableGremlinDatabasesRequest>,
+  output: __S(3108, __c97, 4) as any as S.Schema<RestorableGremlinDatabasesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11353,8 +11940,8 @@ export const ListRestorableGremlinGraphs: API.OperationMethod<
   ListRestorableGremlinGraphsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3072, __c96, 0) as any as S.Schema<ListRestorableGremlinGraphsRequest>,
-  output: __S(3044, __c95, 4) as any as S.Schema<RestorableGremlinGraphsListResult>,
+  input: __S(3136, __c98, 0) as any as S.Schema<ListRestorableGremlinGraphsRequest>,
+  output: __S(3108, __c97, 4) as any as S.Schema<RestorableGremlinGraphsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11368,8 +11955,8 @@ export const ListRestorableGremlinResources: API.OperationMethod<
   ListRestorableGremlinResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3104, __c97, 0) as any as S.Schema<ListRestorableGremlinResourcesRequest>,
-  output: __S(3107, __c97, 3) as any as S.Schema<RestorableGremlinResourcesListResult>,
+  input: __S(3168, __c99, 0) as any as S.Schema<ListRestorableGremlinResourcesRequest>,
+  output: __S(3171, __c99, 3) as any as S.Schema<RestorableGremlinResourcesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11383,8 +11970,8 @@ export const ListRestorableMongodbCollections: API.OperationMethod<
   ListRestorableMongodbCollectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3136, __c98, 0) as any as S.Schema<ListRestorableMongodbCollectionsRequest>,
-  output: __S(3044, __c95, 4) as any as S.Schema<RestorableMongodbCollectionsListResult>,
+  input: __S(3200, __c100, 0) as any as S.Schema<ListRestorableMongodbCollectionsRequest>,
+  output: __S(3108, __c97, 4) as any as S.Schema<RestorableMongodbCollectionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11398,8 +11985,8 @@ export const ListRestorableMongodbDatabases: API.OperationMethod<
   ListRestorableMongodbDatabasesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3200, __c100, 0) as any as S.Schema<ListRestorableMongodbDatabasesRequest>,
-  output: __S(3044, __c95, 4) as any as S.Schema<RestorableMongodbDatabasesListResult>,
+  input: __S(3264, __c102, 0) as any as S.Schema<ListRestorableMongodbDatabasesRequest>,
+  output: __S(3108, __c97, 4) as any as S.Schema<RestorableMongodbDatabasesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11413,8 +12000,8 @@ export const ListRestorableMongodbResources: API.OperationMethod<
   ListRestorableMongodbResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3232, __c101, 0) as any as S.Schema<ListRestorableMongodbResourcesRequest>,
-  output: __S(3266, __c102, 2) as any as S.Schema<RestorableMongodbResourcesListResult>,
+  input: __S(3296, __c103, 0) as any as S.Schema<ListRestorableMongodbResourcesRequest>,
+  output: __S(3330, __c104, 2) as any as S.Schema<RestorableMongodbResourcesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11428,8 +12015,8 @@ export const ListRestorableSqlContainers: API.OperationMethod<
   ListRestorableSqlContainersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3296, __c103, 0) as any as S.Schema<ListRestorableSqlContainersRequest>,
-  output: __S(3302, __c103, 6) as any as S.Schema<RestorableSqlContainersListResult>,
+  input: __S(3360, __c105, 0) as any as S.Schema<ListRestorableSqlContainersRequest>,
+  output: __S(3366, __c105, 6) as any as S.Schema<RestorableSqlContainersListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11443,8 +12030,8 @@ export const ListRestorableSqlDatabases: API.OperationMethod<
   ListRestorableSqlDatabasesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3328, __c104, 0) as any as S.Schema<ListRestorableSqlDatabasesRequest>,
-  output: __S(3334, __c104, 6) as any as S.Schema<RestorableSqlDatabasesListResult>,
+  input: __S(3392, __c106, 0) as any as S.Schema<ListRestorableSqlDatabasesRequest>,
+  output: __S(3398, __c106, 6) as any as S.Schema<RestorableSqlDatabasesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11458,8 +12045,8 @@ export const ListRestorableSqlResources: API.OperationMethod<
   ListRestorableSqlResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3360, __c105, 0) as any as S.Schema<ListRestorableSqlResourcesRequest>,
-  output: __S(3266, __c102, 2) as any as S.Schema<RestorableSqlResourcesListResult>,
+  input: __S(3424, __c107, 0) as any as S.Schema<ListRestorableSqlResourcesRequest>,
+  output: __S(3330, __c104, 2) as any as S.Schema<RestorableSqlResourcesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11473,8 +12060,8 @@ export const ListRestorableTableResources: API.OperationMethod<
   ListRestorableTableResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3392, __c106, 0) as any as S.Schema<ListRestorableTableResourcesRequest>,
-  output: __S(3395, __c106, 3) as any as S.Schema<RestorableTableResourcesListResult>,
+  input: __S(3456, __c108, 0) as any as S.Schema<ListRestorableTableResourcesRequest>,
+  output: __S(3459, __c108, 3) as any as S.Schema<RestorableTableResourcesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11488,8 +12075,8 @@ export const ListRestorableTables: API.OperationMethod<
   ListRestorableTablesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3424, __c107, 0) as any as S.Schema<ListRestorableTablesRequest>,
-  output: __S(3044, __c95, 4) as any as S.Schema<RestorableTablesListResult>,
+  input: __S(3488, __c109, 0) as any as S.Schema<ListRestorableTablesRequest>,
+  output: __S(3108, __c97, 4) as any as S.Schema<RestorableTablesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11503,8 +12090,8 @@ export const ListService: API.OperationMethod<
   ListServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3456, __c108, 0) as any as S.Schema<ListServiceRequest>,
-  output: __S(3458, __c108, 2) as any as S.Schema<ServiceResourceListResult>,
+  input: __S(3520, __c110, 0) as any as S.Schema<ListServiceRequest>,
+  output: __S(3522, __c110, 2) as any as S.Schema<ServiceResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11518,8 +12105,8 @@ export const ListSqlResourceClientEncryptionKeys: API.OperationMethod<
   ListSqlResourceClientEncryptionKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3488, __c109, 0) as any as S.Schema<ListSqlResourceClientEncryptionKeysRequest>,
-  output: __S(3490, __c109, 2) as any as S.Schema<ClientEncryptionKeysListResult>,
+  input: __S(3552, __c111, 0) as any as S.Schema<ListSqlResourceClientEncryptionKeysRequest>,
+  output: __S(3554, __c111, 2) as any as S.Schema<ClientEncryptionKeysListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11533,8 +12120,8 @@ export const ListSqlResourceSqlContainers: API.OperationMethod<
   ListSqlResourceSqlContainersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3520, __c110, 0) as any as S.Schema<ListSqlResourceSqlContainersRequest>,
-  output: __S(3522, __c110, 2) as any as S.Schema<SqlContainerListResult>,
+  input: __S(3584, __c112, 0) as any as S.Schema<ListSqlResourceSqlContainersRequest>,
+  output: __S(3586, __c112, 2) as any as S.Schema<SqlContainerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11548,8 +12135,8 @@ export const ListSqlResourceSqlDatabases: API.OperationMethod<
   ListSqlResourceSqlDatabasesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3584, __c112, 0) as any as S.Schema<ListSqlResourceSqlDatabasesRequest>,
-  output: __S(3586, __c112, 2) as any as S.Schema<SqlDatabaseListResult>,
+  input: __S(3648, __c114, 0) as any as S.Schema<ListSqlResourceSqlDatabasesRequest>,
+  output: __S(3650, __c114, 2) as any as S.Schema<SqlDatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11563,8 +12150,8 @@ export const ListSqlResourceSqlRoleAssignments: API.OperationMethod<
   ListSqlResourceSqlRoleAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3616, __c113, 0) as any as S.Schema<ListSqlResourceSqlRoleAssignmentsRequest>,
-  output: __S(3618, __c113, 2) as any as S.Schema<SqlRoleAssignmentListResult>,
+  input: __S(3680, __c115, 0) as any as S.Schema<ListSqlResourceSqlRoleAssignmentsRequest>,
+  output: __S(3682, __c115, 2) as any as S.Schema<SqlRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11578,8 +12165,8 @@ export const ListSqlResourceSqlRoleDefinitions: API.OperationMethod<
   ListSqlResourceSqlRoleDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3648, __c114, 0) as any as S.Schema<ListSqlResourceSqlRoleDefinitionsRequest>,
-  output: __S(3650, __c114, 2) as any as S.Schema<SqlRoleDefinitionListResult>,
+  input: __S(3712, __c116, 0) as any as S.Schema<ListSqlResourceSqlRoleDefinitionsRequest>,
+  output: __S(3714, __c116, 2) as any as S.Schema<SqlRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11593,8 +12180,8 @@ export const ListSqlResourceSqlStoredProcedures: API.OperationMethod<
   ListSqlResourceSqlStoredProceduresError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3680, __c115, 0) as any as S.Schema<ListSqlResourceSqlStoredProceduresRequest>,
-  output: __S(3713, __c116, 1) as any as S.Schema<SqlStoredProcedureListResult>,
+  input: __S(3744, __c117, 0) as any as S.Schema<ListSqlResourceSqlStoredProceduresRequest>,
+  output: __S(3777, __c118, 1) as any as S.Schema<SqlStoredProcedureListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11608,8 +12195,8 @@ export const ListSqlResourceSqlTriggers: API.OperationMethod<
   ListSqlResourceSqlTriggersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3744, __c117, 0) as any as S.Schema<ListSqlResourceSqlTriggersRequest>,
-  output: __S(3746, __c117, 2) as any as S.Schema<SqlTriggerListResult>,
+  input: __S(3808, __c119, 0) as any as S.Schema<ListSqlResourceSqlTriggersRequest>,
+  output: __S(3810, __c119, 2) as any as S.Schema<SqlTriggerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11623,8 +12210,8 @@ export const ListSqlResourceSqlUserDefinedFunctions: API.OperationMethod<
   ListSqlResourceSqlUserDefinedFunctionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3808, __c119, 0) as any as S.Schema<ListSqlResourceSqlUserDefinedFunctionsRequest>,
-  output: __S(3713, __c116, 1) as any as S.Schema<SqlUserDefinedFunctionListResult>,
+  input: __S(3904, __c122, 0) as any as S.Schema<ListSqlResourceSqlUserDefinedFunctionsRequest>,
+  output: __S(3777, __c118, 1) as any as S.Schema<SqlUserDefinedFunctionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11638,7 +12225,7 @@ export const ListTableResourceTableRoleAssignments: API.OperationMethod<
   ListTableResourceTableRoleAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3840, __c120, 0) as any as S.Schema<ListTableResourceTableRoleAssignmentsRequest>,
+  input: __S(3936, __c123, 0) as any as S.Schema<ListTableResourceTableRoleAssignmentsRequest>,
   output: __S(737, __c23, 1) as any as S.Schema<TableRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11653,7 +12240,7 @@ export const ListTableResourceTableRoleDefinitions: API.OperationMethod<
   ListTableResourceTableRoleDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3872, __c121, 0) as any as S.Schema<ListTableResourceTableRoleDefinitionsRequest>,
+  input: __S(3968, __c124, 0) as any as S.Schema<ListTableResourceTableRoleDefinitionsRequest>,
   output: __S(801, __c25, 1) as any as S.Schema<TableRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11668,8 +12255,8 @@ export const ListTableResourceTables: API.OperationMethod<
   ListTableResourceTablesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3904, __c122, 0) as any as S.Schema<ListTableResourceTablesRequest>,
-  output: __S(2113, __c66, 1) as any as S.Schema<TableListResult>,
+  input: __S(4000, __c125, 0) as any as S.Schema<ListTableResourceTablesRequest>,
+  output: __S(2177, __c68, 1) as any as S.Schema<TableListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11684,14 +12271,14 @@ export const MigrateCassandraResourceCassandraKeyspaceToAutoscale: API.Operation
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3936,
-    __c123,
+    4032,
+    __c126,
     0,
   ) as any as S.Schema<MigrateCassandraResourceCassandraKeyspaceToAutoscaleRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<MigrateCassandraResourceCassandraKeyspaceToAutoscaleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11707,14 +12294,14 @@ export const MigrateCassandraResourceCassandraKeyspaceToManualThroughput: API.Op
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4000,
-    __c125,
+    4128,
+    __c129,
     0,
   ) as any as S.Schema<MigrateCassandraResourceCassandraKeyspaceToManualThroughputRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<MigrateCassandraResourceCassandraKeyspaceToManualThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11730,14 +12317,14 @@ export const MigrateCassandraResourceCassandraTableToAutoscale: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4032,
-    __c126,
+    4160,
+    __c130,
     0,
   ) as any as S.Schema<MigrateCassandraResourceCassandraTableToAutoscaleRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<MigrateCassandraResourceCassandraTableToAutoscaleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11753,14 +12340,14 @@ export const MigrateCassandraResourceCassandraTableToManualThroughput: API.Opera
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4064,
-    __c127,
+    4192,
+    __c131,
     0,
   ) as any as S.Schema<MigrateCassandraResourceCassandraTableToManualThroughputRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<MigrateCassandraResourceCassandraTableToManualThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11776,14 +12363,14 @@ export const MigrateGremlinResourceGremlinDatabaseToAutoscale: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4096,
-    __c128,
+    4224,
+    __c132,
     0,
   ) as any as S.Schema<MigrateGremlinResourceGremlinDatabaseToAutoscaleRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<MigrateGremlinResourceGremlinDatabaseToAutoscaleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11799,14 +12386,14 @@ export const MigrateGremlinResourceGremlinDatabaseToManualThroughput: API.Operat
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4128,
-    __c129,
+    4256,
+    __c133,
     0,
   ) as any as S.Schema<MigrateGremlinResourceGremlinDatabaseToManualThroughputRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<MigrateGremlinResourceGremlinDatabaseToManualThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11822,14 +12409,14 @@ export const MigrateGremlinResourceGremlinGraphToAutoscale: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4160,
-    __c130,
+    4288,
+    __c134,
     0,
   ) as any as S.Schema<MigrateGremlinResourceGremlinGraphToAutoscaleRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<MigrateGremlinResourceGremlinGraphToAutoscaleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11845,14 +12432,14 @@ export const MigrateGremlinResourceGremlinGraphToManualThroughput: API.Operation
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4192,
-    __c131,
+    4320,
+    __c135,
     0,
   ) as any as S.Schema<MigrateGremlinResourceGremlinGraphToManualThroughputRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<MigrateGremlinResourceGremlinGraphToManualThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11868,14 +12455,14 @@ export const MigrateMongoDBResourceMongoDBCollectionToAutoscale: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4224,
-    __c132,
+    4352,
+    __c136,
     0,
   ) as any as S.Schema<MigrateMongoDBResourceMongoDBCollectionToAutoscaleRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<MigrateMongoDBResourceMongoDBCollectionToAutoscaleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11891,14 +12478,14 @@ export const MigrateMongoDBResourceMongoDBCollectionToManualThroughput: API.Oper
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4256,
-    __c133,
+    4384,
+    __c137,
     0,
   ) as any as S.Schema<MigrateMongoDBResourceMongoDBCollectionToManualThroughputRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<MigrateMongoDBResourceMongoDBCollectionToManualThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11914,14 +12501,14 @@ export const MigrateMongoDBResourceMongoDBDatabaseToAutoscale: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4288,
-    __c134,
+    4416,
+    __c138,
     0,
   ) as any as S.Schema<MigrateMongoDBResourceMongoDBDatabaseToAutoscaleRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<MigrateMongoDBResourceMongoDBDatabaseToAutoscaleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11937,14 +12524,14 @@ export const MigrateMongoDBResourceMongoDBDatabaseToManualThroughput: API.Operat
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4352,
-    __c136,
+    4480,
+    __c140,
     0,
   ) as any as S.Schema<MigrateMongoDBResourceMongoDBDatabaseToManualThroughputRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<MigrateMongoDBResourceMongoDBDatabaseToManualThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11959,11 +12546,11 @@ export const MigrateSqlResourceSqlContainerToAutoscale: API.OperationMethod<
   MigrateSqlResourceSqlContainerToAutoscaleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4384, __c137, 0) as any as S.Schema<MigrateSqlResourceSqlContainerToAutoscaleRequest>,
+  input: __S(4512, __c141, 0) as any as S.Schema<MigrateSqlResourceSqlContainerToAutoscaleRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4544,
+    __c142,
+    0,
   ) as any as S.Schema<MigrateSqlResourceSqlContainerToAutoscaleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11979,14 +12566,14 @@ export const MigrateSqlResourceSqlContainerToManualThroughput: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4416,
-    __c138,
+    4576,
+    __c143,
     0,
   ) as any as S.Schema<MigrateSqlResourceSqlContainerToManualThroughputRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4544,
+    __c142,
+    0,
   ) as any as S.Schema<MigrateSqlResourceSqlContainerToManualThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12001,8 +12588,8 @@ export const MigrateSqlResourceSqlDatabaseToAutoscale: API.OperationMethod<
   MigrateSqlResourceSqlDatabaseToAutoscaleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4448, __c139, 0) as any as S.Schema<MigrateSqlResourceSqlDatabaseToAutoscaleRequest>,
-  output: __S(7365, __c230, 5) as any as S.Schema<MigrateSqlResourceSqlDatabaseToAutoscaleResponse>,
+  input: __S(4608, __c144, 0) as any as S.Schema<MigrateSqlResourceSqlDatabaseToAutoscaleRequest>,
+  output: __S(4064, __c127, 0) as any as S.Schema<MigrateSqlResourceSqlDatabaseToAutoscaleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12017,14 +12604,14 @@ export const MigrateSqlResourceSqlDatabaseToManualThroughput: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4480,
-    __c140,
+    4640,
+    __c145,
     0,
   ) as any as S.Schema<MigrateSqlResourceSqlDatabaseToManualThroughputRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<MigrateSqlResourceSqlDatabaseToManualThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12039,8 +12626,8 @@ export const MigrateTableResourceTableToAutoscale: API.OperationMethod<
   MigrateTableResourceTableToAutoscaleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4512, __c141, 0) as any as S.Schema<MigrateTableResourceTableToAutoscaleRequest>,
-  output: __S(7365, __c230, 5) as any as S.Schema<MigrateTableResourceTableToAutoscaleResponse>,
+  input: __S(4672, __c146, 0) as any as S.Schema<MigrateTableResourceTableToAutoscaleRequest>,
+  output: __S(4064, __c127, 0) as any as S.Schema<MigrateTableResourceTableToAutoscaleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12055,14 +12642,14 @@ export const MigrateTableResourceTableToManualThroughput: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4544,
-    __c142,
+    4704,
+    __c147,
     0,
   ) as any as S.Schema<MigrateTableResourceTableToManualThroughputRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<MigrateTableResourceTableToManualThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12078,14 +12665,14 @@ export const MongoDBResourcesCreateUpdateMongoDBCollection: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4578,
-    __c143,
+    4738,
+    __c148,
     2,
   ) as any as S.Schema<MongoDBResourcesCreateUpdateMongoDBCollectionRequest>,
   output: __S(
-    8390,
-    __c262,
-    6,
+    4739,
+    __c148,
+    3,
   ) as any as S.Schema<MongoDBResourcesCreateUpdateMongoDBCollectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12101,14 +12688,14 @@ export const MongoDBResourcesCreateUpdateMongoDBDatabase: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4608,
-    __c144,
+    4768,
+    __c149,
     0,
   ) as any as S.Schema<MongoDBResourcesCreateUpdateMongoDBDatabaseRequest>,
   output: __S(
-    7874,
-    __c246,
-    2,
+    10848,
+    __c339,
+    0,
   ) as any as S.Schema<MongoDBResourcesCreateUpdateMongoDBDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12124,14 +12711,14 @@ export const MongoDBResourcesCreateUpdateMongoRoleDefinition: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4640,
-    __c145,
+    4800,
+    __c150,
     0,
   ) as any as S.Schema<MongoDBResourcesCreateUpdateMongoRoleDefinitionRequest>,
   output: __S(
-    8548,
-    __c267,
-    4,
+    4801,
+    __c150,
+    1,
   ) as any as S.Schema<MongoDBResourcesCreateUpdateMongoRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12147,13 +12734,13 @@ export const MongoDBResourcesCreateUpdateMongoUserDefinition: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4736,
-    __c148,
+    4928,
+    __c154,
     0,
   ) as any as S.Schema<MongoDBResourcesCreateUpdateMongoUserDefinitionRequest>,
   output: __S(
-    8641,
-    __c270,
+    4929,
+    __c154,
     1,
   ) as any as S.Schema<MongoDBResourcesCreateUpdateMongoUserDefinitionResponse>,
   errors: [UnknownAzureError],
@@ -12170,14 +12757,14 @@ export const MongoMIResourcesCreateUpdateMongoMIRoleAssignment: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4768,
-    __c149,
+    4960,
+    __c155,
     0,
   ) as any as S.Schema<MongoMIResourcesCreateUpdateMongoMIRoleAssignmentRequest>,
   output: __S(
-    7169,
-    __c224,
-    1,
+    7360,
+    __c230,
+    0,
   ) as any as S.Schema<MongoMIResourcesCreateUpdateMongoMIRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12193,14 +12780,14 @@ export const MongoMIResourcesCreateUpdateMongoMIRoleDefinition: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4800,
-    __c150,
+    4992,
+    __c156,
     0,
   ) as any as S.Schema<MongoMIResourcesCreateUpdateMongoMIRoleDefinitionRequest>,
   output: __S(
-    7649,
-    __c239,
-    1,
+    8096,
+    __c253,
+    0,
   ) as any as S.Schema<MongoMIResourcesCreateUpdateMongoMIRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12215,8 +12802,8 @@ export const NotebookWorkspacesCreateOrUpdate: API.OperationMethod<
   NotebookWorkspacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4832, __c151, 0) as any as S.Schema<NotebookWorkspacesCreateOrUpdateRequest>,
-  output: __S(8769, __c274, 1) as any as S.Schema<NotebookWorkspacesCreateOrUpdateResponse>,
+  input: __S(5024, __c157, 0) as any as S.Schema<NotebookWorkspacesCreateOrUpdateRequest>,
+  output: __S(5025, __c157, 1) as any as S.Schema<NotebookWorkspacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12230,8 +12817,8 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4866, __c152, 2) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
-  output: __S(1571, __c49, 3) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
+  input: __S(5058, __c158, 2) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
+  output: __S(5059, __c158, 3) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12245,8 +12832,8 @@ export const RegenerateDatabaseAccountKey: API.OperationMethod<
   RegenerateDatabaseAccountKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4896, __c153, 0) as any as S.Schema<RegenerateDatabaseAccountKeyRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<RegenerateDatabaseAccountKeyResponse>,
+  input: __S(5088, __c159, 0) as any as S.Schema<RegenerateDatabaseAccountKeyRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<RegenerateDatabaseAccountKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12260,7 +12847,7 @@ export const RegenerateNotebookWorkspaceAuthToken: API.OperationMethod<
   RegenerateNotebookWorkspaceAuthTokenError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4928, __c154, 0) as any as S.Schema<RegenerateNotebookWorkspaceAuthTokenRequest>,
+  input: __S(5120, __c160, 0) as any as S.Schema<RegenerateNotebookWorkspaceAuthTokenRequest>,
   output: __S(288, __c9, 0) as any as S.Schema<RegenerateNotebookWorkspaceAuthTokenResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12276,13 +12863,13 @@ export const SqlResourcesCreateUpdateClientEncryptionKey: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4962,
-    __c155,
+    5154,
+    __c161,
     2,
   ) as any as S.Schema<SqlResourcesCreateUpdateClientEncryptionKeyRequest>,
   output: __S(
-    9091,
-    __c284,
+    5155,
+    __c161,
     3,
   ) as any as S.Schema<SqlResourcesCreateUpdateClientEncryptionKeyResponse>,
   errors: [UnknownAzureError],
@@ -12298,8 +12885,8 @@ export const SqlResourcesCreateUpdateSqlContainer: API.OperationMethod<
   SqlResourcesCreateUpdateSqlContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4994, __c156, 2) as any as S.Schema<SqlResourcesCreateUpdateSqlContainerRequest>,
-  output: __S(9218, __c288, 2) as any as S.Schema<SqlResourcesCreateUpdateSqlContainerResponse>,
+  input: __S(5186, __c162, 2) as any as S.Schema<SqlResourcesCreateUpdateSqlContainerRequest>,
+  output: __S(5187, __c162, 3) as any as S.Schema<SqlResourcesCreateUpdateSqlContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12313,8 +12900,8 @@ export const SqlResourcesCreateUpdateSqlDatabase: API.OperationMethod<
   SqlResourcesCreateUpdateSqlDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5024, __c157, 0) as any as S.Schema<SqlResourcesCreateUpdateSqlDatabaseRequest>,
-  output: __S(9314, __c291, 2) as any as S.Schema<SqlResourcesCreateUpdateSqlDatabaseResponse>,
+  input: __S(5216, __c163, 0) as any as S.Schema<SqlResourcesCreateUpdateSqlDatabaseRequest>,
+  output: __S(5217, __c163, 1) as any as S.Schema<SqlResourcesCreateUpdateSqlDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12328,11 +12915,11 @@ export const SqlResourcesCreateUpdateSqlRoleAssignment: API.OperationMethod<
   SqlResourcesCreateUpdateSqlRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5088, __c159, 0) as any as S.Schema<SqlResourcesCreateUpdateSqlRoleAssignmentRequest>,
+  input: __S(5280, __c165, 0) as any as S.Schema<SqlResourcesCreateUpdateSqlRoleAssignmentRequest>,
   output: __S(
-    9472,
-    __c296,
-    0,
+    5281,
+    __c165,
+    1,
   ) as any as S.Schema<SqlResourcesCreateUpdateSqlRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12347,10 +12934,10 @@ export const SqlResourcesCreateUpdateSqlRoleDefinition: API.OperationMethod<
   SqlResourcesCreateUpdateSqlRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5120, __c160, 0) as any as S.Schema<SqlResourcesCreateUpdateSqlRoleDefinitionRequest>,
+  input: __S(5312, __c166, 0) as any as S.Schema<SqlResourcesCreateUpdateSqlRoleDefinitionRequest>,
   output: __S(
-    9537,
-    __c298,
+    5313,
+    __c166,
     1,
   ) as any as S.Schema<SqlResourcesCreateUpdateSqlRoleDefinitionResponse>,
   errors: [UnknownAzureError],
@@ -12366,10 +12953,10 @@ export const SqlResourcesCreateUpdateSqlStoredProcedure: API.OperationMethod<
   SqlResourcesCreateUpdateSqlStoredProcedureError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5152, __c161, 0) as any as S.Schema<SqlResourcesCreateUpdateSqlStoredProcedureRequest>,
+  input: __S(5344, __c167, 0) as any as S.Schema<SqlResourcesCreateUpdateSqlStoredProcedureRequest>,
   output: __S(
-    9602,
-    __c300,
+    5378,
+    __c168,
     2,
   ) as any as S.Schema<SqlResourcesCreateUpdateSqlStoredProcedureResponse>,
   errors: [UnknownAzureError],
@@ -12385,8 +12972,8 @@ export const SqlResourcesCreateUpdateSqlTrigger: API.OperationMethod<
   SqlResourcesCreateUpdateSqlTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5218, __c163, 2) as any as S.Schema<SqlResourcesCreateUpdateSqlTriggerRequest>,
-  output: __S(3778, __c118, 2) as any as S.Schema<SqlResourcesCreateUpdateSqlTriggerResponse>,
+  input: __S(5410, __c169, 2) as any as S.Schema<SqlResourcesCreateUpdateSqlTriggerRequest>,
+  output: __S(5411, __c169, 3) as any as S.Schema<SqlResourcesCreateUpdateSqlTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12401,13 +12988,13 @@ export const SqlResourcesCreateUpdateSqlUserDefinedFunction: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    5248,
-    __c164,
+    5440,
+    __c170,
     0,
   ) as any as S.Schema<SqlResourcesCreateUpdateSqlUserDefinedFunctionRequest>,
   output: __S(
-    9602,
-    __c300,
+    5378,
+    __c168,
     2,
   ) as any as S.Schema<SqlResourcesCreateUpdateSqlUserDefinedFunctionResponse>,
   errors: [UnknownAzureError],
@@ -12423,8 +13010,8 @@ export const SqlResourcesDeleteSqlTrigger: API.OperationMethod<
   SqlResourcesDeleteSqlTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5280, __c165, 0) as any as S.Schema<SqlResourcesDeleteSqlTriggerRequest>,
-  output: __S(288, __c9, 0) as any as S.Schema<SqlResourcesDeleteSqlTriggerResponse>,
+  input: __S(5472, __c171, 0) as any as S.Schema<SqlResourcesDeleteSqlTriggerRequest>,
+  output: __S(4896, __c153, 0) as any as S.Schema<SqlResourcesDeleteSqlTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12438,8 +13025,8 @@ export const SqlResourcesGetSqlTrigger: API.OperationMethod<
   SqlResourcesGetSqlTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5312, __c166, 0) as any as S.Schema<SqlResourcesGetSqlTriggerRequest>,
-  output: __S(3778, __c118, 2) as any as S.Schema<SqlResourcesGetSqlTriggerResponse>,
+  input: __S(5504, __c172, 0) as any as S.Schema<SqlResourcesGetSqlTriggerRequest>,
+  output: __S(3872, __c121, 0) as any as S.Schema<SqlResourcesGetSqlTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12453,7 +13040,7 @@ export const StartCassandraCluster: API.OperationMethod<
   StartCassandraClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5344, __c167, 0) as any as S.Schema<StartCassandraClusterRequest>,
+  input: __S(5536, __c173, 0) as any as S.Schema<StartCassandraClusterRequest>,
   output: __S(288, __c9, 0) as any as S.Schema<StartCassandraClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12468,7 +13055,7 @@ export const StartNotebookWorkspace: API.OperationMethod<
   StartNotebookWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5376, __c168, 0) as any as S.Schema<StartNotebookWorkspaceRequest>,
+  input: __S(5568, __c174, 0) as any as S.Schema<StartNotebookWorkspaceRequest>,
   output: __S(288, __c9, 0) as any as S.Schema<StartNotebookWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12483,8 +13070,8 @@ export const TableResourcesCreateUpdateTable: API.OperationMethod<
   TableResourcesCreateUpdateTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5408, __c169, 0) as any as S.Schema<TableResourcesCreateUpdateTableRequest>,
-  output: __S(7874, __c246, 2) as any as S.Schema<TableResourcesCreateUpdateTableResponse>,
+  input: __S(5600, __c175, 0) as any as S.Schema<TableResourcesCreateUpdateTableRequest>,
+  output: __S(10848, __c339, 0) as any as S.Schema<TableResourcesCreateUpdateTableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12499,14 +13086,14 @@ export const TableResourcesCreateUpdateTableRoleAssignment: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    5472,
-    __c171,
+    5664,
+    __c177,
     0,
   ) as any as S.Schema<TableResourcesCreateUpdateTableRoleAssignmentRequest>,
   output: __S(
-    7169,
-    __c224,
-    1,
+    7360,
+    __c230,
+    0,
   ) as any as S.Schema<TableResourcesCreateUpdateTableRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12522,13 +13109,13 @@ export const TableResourcesCreateUpdateTableRoleDefinition: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    5504,
-    __c172,
+    5696,
+    __c178,
     0,
   ) as any as S.Schema<TableResourcesCreateUpdateTableRoleDefinitionRequest>,
   output: __S(
-    7649,
-    __c239,
+    5697,
+    __c178,
     1,
   ) as any as S.Schema<TableResourcesCreateUpdateTableRoleDefinitionResponse>,
   errors: [UnknownAzureError],
@@ -12544,8 +13131,8 @@ export const UpdateCassandraCluster: API.OperationMethod<
   UpdateCassandraClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5536, __c173, 0) as any as S.Schema<UpdateCassandraClusterRequest>,
-  output: __S(228, __c7, 4) as any as S.Schema<UpdateCassandraClusterResponse>,
+  input: __S(5728, __c179, 0) as any as S.Schema<UpdateCassandraClusterRequest>,
+  output: __S(130, __c4, 2) as any as S.Schema<UpdateCassandraClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12559,8 +13146,8 @@ export const UpdateCassandraDataCenter: API.OperationMethod<
   UpdateCassandraDataCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5568, __c174, 0) as any as S.Schema<UpdateCassandraDataCenterRequest>,
-  output: __S(6306, __c197, 2) as any as S.Schema<UpdateCassandraDataCenterResponse>,
+  input: __S(5760, __c180, 0) as any as S.Schema<UpdateCassandraDataCenterRequest>,
+  output: __S(6465, __c202, 1) as any as S.Schema<UpdateCassandraDataCenterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12575,14 +13162,14 @@ export const UpdateCassandraResourceCassandraKeyspaceThroughput: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    5600,
-    __c175,
+    5792,
+    __c181,
     0,
   ) as any as S.Schema<UpdateCassandraResourceCassandraKeyspaceThroughputRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<UpdateCassandraResourceCassandraKeyspaceThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12598,14 +13185,14 @@ export const UpdateCassandraResourceCassandraTableThroughput: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    5664,
-    __c177,
+    5856,
+    __c183,
     0,
   ) as any as S.Schema<UpdateCassandraResourceCassandraTableThroughputRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<UpdateCassandraResourceCassandraTableThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12620,8 +13207,8 @@ export const UpdateDatabaseAccount: API.OperationMethod<
   UpdateDatabaseAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5697, __c178, 1) as any as S.Schema<UpdateDatabaseAccountRequest>,
-  output: __S(1560, __c48, 24) as any as S.Schema<UpdateDatabaseAccountResponse>,
+  input: __S(5889, __c184, 1) as any as S.Schema<UpdateDatabaseAccountRequest>,
+  output: __S(1474, __c46, 2) as any as S.Schema<UpdateDatabaseAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12635,8 +13222,8 @@ export const UpdateFleet: API.OperationMethod<
   UpdateFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5728, __c179, 0) as any as S.Schema<UpdateFleetRequest>,
-  output: __S(8833, __c276, 1) as any as S.Schema<UpdateFleetResponse>,
+  input: __S(5920, __c185, 0) as any as S.Schema<UpdateFleetRequest>,
+  output: __S(9601, __c300, 1) as any as S.Schema<UpdateFleetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12650,8 +13237,8 @@ export const UpdateFleetspace: API.OperationMethod<
   UpdateFleetspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5760, __c180, 0) as any as S.Schema<UpdateFleetspaceRequest>,
-  output: __S(9410, __c294, 2) as any as S.Schema<UpdateFleetspaceResponse>,
+  input: __S(5952, __c186, 0) as any as S.Schema<UpdateFleetspaceRequest>,
+  output: __S(5953, __c186, 1) as any as S.Schema<UpdateFleetspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12666,14 +13253,14 @@ export const UpdateGremlinResourceGremlinDatabaseThroughput: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    5792,
-    __c181,
+    5984,
+    __c187,
     0,
   ) as any as S.Schema<UpdateGremlinResourceGremlinDatabaseThroughputRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<UpdateGremlinResourceGremlinDatabaseThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12689,14 +13276,14 @@ export const UpdateGremlinResourceGremlinGraphThroughput: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    5856,
-    __c183,
+    6048,
+    __c189,
     0,
   ) as any as S.Schema<UpdateGremlinResourceGremlinGraphThroughputRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<UpdateGremlinResourceGremlinGraphThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12712,14 +13299,14 @@ export const UpdateMongoDBResourceMongoDBCollectionThroughput: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    5888,
-    __c184,
+    6080,
+    __c190,
     0,
   ) as any as S.Schema<UpdateMongoDBResourceMongoDBCollectionThroughputRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<UpdateMongoDBResourceMongoDBCollectionThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12735,14 +13322,14 @@ export const UpdateMongoDBResourceMongoDBDatabaseThroughput: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    5920,
-    __c185,
+    6112,
+    __c191,
     0,
   ) as any as S.Schema<UpdateMongoDBResourceMongoDBDatabaseThroughputRequest>,
   output: __S(
-    7365,
-    __c230,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<UpdateMongoDBResourceMongoDBDatabaseThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12757,8 +13344,8 @@ export const UpdateSqlResourceSqlContainerThroughput: API.OperationMethod<
   UpdateSqlResourceSqlContainerThroughputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5952, __c186, 0) as any as S.Schema<UpdateSqlResourceSqlContainerThroughputRequest>,
-  output: __S(7365, __c230, 5) as any as S.Schema<UpdateSqlResourceSqlContainerThroughputResponse>,
+  input: __S(6144, __c192, 0) as any as S.Schema<UpdateSqlResourceSqlContainerThroughputRequest>,
+  output: __S(4064, __c127, 0) as any as S.Schema<UpdateSqlResourceSqlContainerThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12772,8 +13359,8 @@ export const UpdateSqlResourceSqlDatabaseThroughput: API.OperationMethod<
   UpdateSqlResourceSqlDatabaseThroughputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5984, __c187, 0) as any as S.Schema<UpdateSqlResourceSqlDatabaseThroughputRequest>,
-  output: __S(7365, __c230, 5) as any as S.Schema<UpdateSqlResourceSqlDatabaseThroughputResponse>,
+  input: __S(6176, __c193, 0) as any as S.Schema<UpdateSqlResourceSqlDatabaseThroughputRequest>,
+  output: __S(4064, __c127, 0) as any as S.Schema<UpdateSqlResourceSqlDatabaseThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12787,8 +13374,8 @@ export const UpdateTableResourceTableThroughput: API.OperationMethod<
   UpdateTableResourceTableThroughputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6016, __c188, 0) as any as S.Schema<UpdateTableResourceTableThroughputRequest>,
-  output: __S(7365, __c230, 5) as any as S.Schema<UpdateTableResourceTableThroughputResponse>,
+  input: __S(6208, __c194, 0) as any as S.Schema<UpdateTableResourceTableThroughputRequest>,
+  output: __S(4064, __c127, 0) as any as S.Schema<UpdateTableResourceTableThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12878,6 +13465,21 @@ function __c4(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedCassandraManagedServiceIdentityInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(226, __c7, 2)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(227, __c7, 3)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CassandraClustersCreateUpdateResponse" });
   }
 }
 function __c5(j: number): any {
@@ -12965,19 +13567,6 @@ function __c7(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedCassandraManagedServiceIdentity" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(226, __c7, 2)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(227, __c7, 3)),
-        }),
-      ).annotate({ identifier: "CassandraClustersCreateUpdateResponse" });
   }
 }
 function __c8(j: number): any {
@@ -13002,9 +13591,12 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CassandraClustersDeallocateResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CassandraClustersDeallocateResponse" });
   }
 }
 function __c10(j: number): any {
@@ -13027,6 +13619,18 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateFleetspaceAccountRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(353, __c11, 1)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateFleetspaceAccountResponse" });
   }
 }
 function __c11(j: number): any {
@@ -13045,16 +13649,6 @@ function __c11(j: number): any {
           globalDatabaseAccountProperties: S.optional(__S(352, __c11, 0)),
         }),
       ).annotate({ identifier: "FleetspaceAccountProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(353, __c11, 1)),
-        }),
-      ).annotate({ identifier: "CreateFleetspaceAccountResponse" });
   }
 }
 function __c12(j: number): any {
@@ -13063,13 +13657,13 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          indexingPolicy: S.optional(__S(8047, __c251, 15)),
+          indexingPolicy: S.optional(__S(8687, __c271, 15)),
           partitionKey: S.optional(__S(416, __c13, 0)),
           defaultTtl: S.optional(S.Number),
-          uniqueKeyPolicy: S.optional(__S(8051, __c251, 19)),
-          conflictResolutionPolicy: S.optional(__S(8052, __c251, 20)),
+          uniqueKeyPolicy: S.optional(__S(8691, __c271, 19)),
+          conflictResolutionPolicy: S.optional(__S(8692, __c271, 20)),
           analyticalStorageTtl: S.optional(S.Number),
-          restoreParameters: S.optional(__S(7840, __c245, 0)),
+          restoreParameters: S.optional(__S(8416, __c263, 0)),
           createMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "GremlinGraphResourceInput" });
@@ -13077,7 +13671,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: __S(384, __c12, 0),
-          options: S.optional(__S(6785, __c212, 1)),
+          options: S.optional(__S(6977, __c218, 1)),
         }),
       ).annotate({ identifier: "GremlinGraphCreateUpdatePropertiesInput" });
     case 2:
@@ -13090,7 +13684,7 @@ function __c12(j: number): any {
           graphName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
+          identity: S.optional(__S(6946, __c217, 2)),
           properties: __S(385, __c12, 1),
         }).pipe(
           T.Http({
@@ -13101,6 +13695,22 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GremlinResourcesCreateUpdateGremlinGraphRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(8577, __c268, 1)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(6914, __c216, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "GremlinResourcesCreateUpdateGremlinGraphResponse" });
   }
 }
 function __c13(j: number): any {
@@ -13124,7 +13734,7 @@ function __c14(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           roleAssignmentId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(7200, __c225, 0)),
+          properties: S.optional(__S(7424, __c232, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13145,7 +13755,7 @@ function __c15(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           roleDefinitionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(7648, __c239, 0)),
+          properties: S.optional(__S(8160, __c255, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13202,7 +13812,7 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(228, __c7, 4));
+      return S.Array(__S(7488, __c234, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13247,7 +13857,7 @@ function __c20(j: number): any {
         ),
       ).annotate({ identifier: "ListCassandraDataCentersRequest" });
     case 1:
-      return S.Array(__S(6306, __c197, 2));
+      return S.Array(__S(7552, __c236, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -13275,7 +13885,7 @@ function __c21(j: number): any {
         ),
       ).annotate({ identifier: "ListCassandraResourceCassandraKeyspacesRequest" });
     case 1:
-      return S.Array(__S(6690, __c209, 2));
+      return S.Array(__S(7616, __c238, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -13307,7 +13917,7 @@ function __c22(j: number): any {
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7169, __c224, 1));
+      return S.Array(__S(7776, __c243, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13339,7 +13949,7 @@ function __c24(j: number): any {
 function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7649, __c239, 1));
+      return S.Array(__S(7840, __c245, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13376,21 +13986,7 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateServiceRequest" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          creationTime: S.optional(S.String),
-          instanceSize: S.optional(S.String),
-          instanceCount: S.optional(S.Number),
-          serviceType: S.String,
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServiceResourceProperties" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -13398,8 +13994,27 @@ function __c27(j: number): any {
           type: S.optional(S.String),
           systemData: S.optional(__S(160, __c5, 0)),
           properties: S.optional(__S(864, __c27, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CreateServiceResponse" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.StructWithRest(
+          S.Struct({
+            creationTime: S.optional(S.String),
+            instanceSize: S.optional(S.String),
+            instanceCount: S.optional(S.Number),
+            serviceType: S.String,
+            status: S.optional(S.String),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
+      ).annotate({ identifier: "ServiceResourceProperties" });
   }
 }
 function __c28(j: number): any {
@@ -13421,7 +14036,7 @@ function __c28(j: number): any {
         ),
       ).annotate({ identifier: "ListCassandraResourceCassandraTablesRequest" });
     case 1:
-      return S.Array(__S(8295, __c259, 7));
+      return S.Array(__S(7904, __c247, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -13761,7 +14376,7 @@ function __c42(j: number): any {
 function __c43(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1560, __c48, 24));
+      return S.Array(__S(8000, __c250, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13818,7 +14433,7 @@ function __c45(j: number): any {
           ipRules: S.optional(__S(1538, __c48, 2)),
           isVirtualNetworkFilterEnabled: S.optional(S.Boolean),
           enableAutomaticFailover: S.optional(S.Boolean),
-          capabilities: S.optional(__S(8257, __c258, 1)),
+          capabilities: S.optional(__S(8897, __c278, 1)),
           virtualNetworkRules: S.optional(__S(1540, __c48, 4)),
           enableMultipleWriteLocations: S.optional(S.Boolean),
           enableCassandraConnector: S.optional(S.Boolean),
@@ -13857,7 +14472,7 @@ function __c45(j: number): any {
           accountName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
+          identity: S.optional(__S(6946, __c217, 2)),
           kind: S.optional(S.String),
           properties: __S(1440, __c45, 0),
         }).pipe(
@@ -13883,12 +14498,27 @@ function __c46(j: number): any {
       ).annotate({ identifier: "LocationInput" });
     case 1:
       return S.Array(__S(1472, __c46, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(1559, __c48, 23)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(6914, __c216, 2)),
+          kind: S.optional(S.String),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "DatabaseAccountsCreateOrUpdateResponse" });
   }
 }
 function __c47(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1571, __c49, 3));
+      return S.Array(__S(1600, __c50, 0));
   }
 }
 function __c48(j: number): any {
@@ -14042,7 +14672,7 @@ function __c48(j: number): any {
           isVirtualNetworkFilterEnabled: S.optional(S.Boolean),
           enableAutomaticFailover: S.optional(S.Boolean),
           consistencyPolicy: S.optional(__S(1536, __c48, 0)),
-          capabilities: S.optional(__S(8257, __c258, 1)),
+          capabilities: S.optional(__S(8897, __c278, 1)),
           writeLocations: S.optional(__S(1554, __c48, 18)),
           readLocations: S.optional(__S(1554, __c48, 18)),
           locations: S.optional(__S(1554, __c48, 18)),
@@ -14081,20 +14711,6 @@ function __c48(j: number): any {
           enforceHierarchicalPartitionKeyIdLastLevel: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DatabaseAccountGetProperties" });
-    case 24:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(1559, __c48, 23)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6722, __c210, 2)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DatabaseAccountsCreateOrUpdateResponse" });
   }
 }
 function __c49(j: number): any {
@@ -14122,7 +14738,11 @@ function __c49(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionProperties" });
-    case 3:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -14134,7 +14754,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "PrivateEndpointConnection" });
   }
 }
-function __c50(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14162,7 +14782,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "ListDatabaseAccountKeysResponse" });
   }
 }
-function __c51(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14181,7 +14801,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "ListDatabaseAccountMetricDefinitionsRequest" });
   }
 }
-function __c52(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14201,7 +14821,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "ListDatabaseAccountMetricsRequest" });
   }
 }
-function __c53(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14222,7 +14842,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "ListDatabaseAccountRegionMetricsRequest" });
   }
 }
-function __c54(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14239,7 +14859,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "ListDatabaseAccountsRequest" });
   }
 }
-function __c55(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14259,7 +14879,7 @@ function __c55(j: number): any {
       ).annotate({ identifier: "ListDatabaseAccountUsagesRequest" });
   }
 }
-function __c56(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14279,7 +14899,7 @@ function __c56(j: number): any {
       ).annotate({ identifier: "ListDatabaseMetricDefinitionsRequest" });
   }
 }
-function __c57(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14300,7 +14920,7 @@ function __c57(j: number): any {
       ).annotate({ identifier: "ListDatabaseMetricsRequest" });
   }
 }
-function __c58(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14321,7 +14941,7 @@ function __c58(j: number): any {
       ).annotate({ identifier: "ListDatabaseUsagesRequest" });
   }
 }
-function __c59(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14338,20 +14958,20 @@ function __c59(j: number): any {
       ).annotate({ identifier: "ListFleetRequest" });
   }
 }
-function __c60(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(8833, __c276, 1));
+      return S.Array(__S(9601, __c300, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1920, __c60, 0),
+          value: __S(1952, __c61, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FleetListResult" });
   }
 }
-function __c61(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14361,14 +14981,14 @@ function __c61(j: number): any {
         }),
       ).annotate({ identifier: "FailoverPolicyInput" });
     case 1:
-      return S.Array(__S(1952, __c61, 0));
+      return S.Array(__S(1984, __c62, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          failoverPolicies: __S(1953, __c61, 1),
+          failoverPolicies: __S(1985, __c62, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14380,7 +15000,19 @@ function __c61(j: number): any {
       ).annotate({ identifier: "DatabaseAccountsFailoverPriorityChangeRequest" });
   }
 }
-function __c62(j: number): any {
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DatabaseAccountsFailoverPriorityChangeResponse" });
+  }
+}
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14398,7 +15030,7 @@ function __c62(j: number): any {
       ).annotate({ identifier: "ListFleetByResourceGroupRequest" });
   }
 }
-function __c63(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14416,17 +15048,17 @@ function __c63(j: number): any {
         ),
       ).annotate({ identifier: "ListFleetspaceRequest" });
     case 1:
-      return S.Array(__S(9410, __c294, 2));
+      return S.Array(__S(8224, __c257, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2017, __c63, 1),
+          value: __S(2081, __c65, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FleetspaceListResult" });
   }
 }
-function __c64(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14445,17 +15077,17 @@ function __c64(j: number): any {
         ),
       ).annotate({ identifier: "ListFleetspaceAccountRequest" });
     case 1:
-      return S.Array(__S(354, __c11, 2));
+      return S.Array(__S(8288, __c259, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2049, __c64, 1),
+          value: __S(2113, __c66, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FleetspaceAccountListResult" });
   }
 }
-function __c65(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14474,20 +15106,20 @@ function __c65(j: number): any {
       ).annotate({ identifier: "ListGremlinResourceGremlinDatabasesRequest" });
   }
 }
-function __c66(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7874, __c246, 2));
+      return S.Array(__S(8448, __c264, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2112, __c66, 0)),
+          value: S.optional(__S(2176, __c68, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GremlinDatabaseListResult" });
   }
 }
-function __c67(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14506,17 +15138,17 @@ function __c67(j: number): any {
         ),
       ).annotate({ identifier: "ListGremlinResourceGremlinGraphsRequest" });
     case 1:
-      return S.Array(__S(7970, __c249, 2));
+      return S.Array(__S(8608, __c269, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2145, __c67, 1)),
+          value: S.optional(__S(2209, __c69, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GremlinGraphListResult" });
   }
 }
-function __c68(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14535,7 +15167,7 @@ function __c68(j: number): any {
       ).annotate({ identifier: "ListGremlinResourceGremlinRoleAssignmentsRequest" });
   }
 }
-function __c69(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14554,7 +15186,7 @@ function __c69(j: number): any {
       ).annotate({ identifier: "ListGremlinResourceGremlinRoleDefinitionsRequest" });
   }
 }
-function __c70(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14570,17 +15202,17 @@ function __c70(j: number): any {
         ),
       ).annotate({ identifier: "ListLocationsRequest" });
     case 1:
-      return S.Array(__S(8193, __c256, 1));
+      return S.Array(__S(8833, __c276, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2241, __c70, 1)),
+          value: S.optional(__S(2305, __c72, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "LocationListResult" });
   }
 }
-function __c71(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14599,17 +15231,17 @@ function __c71(j: number): any {
         ),
       ).annotate({ identifier: "ListMongoDBResourceMongoDBCollectionsRequest" });
     case 1:
-      return S.Array(__S(8390, __c262, 6));
+      return S.Array(__S(9024, __c282, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2273, __c71, 1)),
+          value: S.optional(__S(2337, __c73, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MongoDBCollectionListResult" });
   }
 }
-function __c72(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14628,7 +15260,7 @@ function __c72(j: number): any {
       ).annotate({ identifier: "ListMongoDBResourceMongoDBDatabasesRequest" });
   }
 }
-function __c73(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14647,7 +15279,7 @@ function __c73(j: number): any {
       ).annotate({ identifier: "DatabaseAccountsGetReadOnlyKeysRequest" });
   }
 }
-function __c74(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14658,7 +15290,7 @@ function __c74(j: number): any {
       ).annotate({ identifier: "DatabaseAccountListReadOnlyKeysResult" });
   }
 }
-function __c75(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14676,17 +15308,17 @@ function __c75(j: number): any {
         ),
       ).annotate({ identifier: "ListMongoDBResourceMongoRoleDefinitionsRequest" });
     case 1:
-      return S.Array(__S(8548, __c267, 4));
+      return S.Array(__S(9216, __c288, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2401, __c75, 1)),
+          value: S.optional(__S(2465, __c77, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MongoRoleDefinitionListResult" });
   }
 }
-function __c76(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14704,17 +15336,17 @@ function __c76(j: number): any {
         ),
       ).annotate({ identifier: "ListMongoDBResourceMongoUserDefinitionsRequest" });
     case 1:
-      return S.Array(__S(8641, __c270, 1));
+      return S.Array(__S(9344, __c292, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2433, __c76, 1)),
+          value: S.optional(__S(2497, __c78, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MongoUserDefinitionListResult" });
   }
 }
-function __c77(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14733,7 +15365,7 @@ function __c77(j: number): any {
       ).annotate({ identifier: "ListMongoMIResourceMongoMIRoleAssignmentsRequest" });
   }
 }
-function __c78(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14752,7 +15384,7 @@ function __c78(j: number): any {
       ).annotate({ identifier: "ListMongoMIResourceMongoMIRoleDefinitionsRequest" });
   }
 }
-function __c79(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14770,17 +15402,17 @@ function __c79(j: number): any {
         ),
       ).annotate({ identifier: "ListNotebookWorkspaceByDatabaseAccountRequest" });
     case 1:
-      return S.Array(__S(8769, __c274, 1));
+      return S.Array(__S(9504, __c297, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2529, __c79, 1)),
+          value: S.optional(__S(2593, __c81, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotebookWorkspaceListResult" });
   }
 }
-function __c80(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14807,7 +15439,7 @@ function __c80(j: number): any {
       ).annotate({ identifier: "NotebookWorkspaceConnectionInfoResult" });
   }
 }
-function __c81(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14833,21 +15465,21 @@ function __c81(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(2593, __c81, 1)),
+          display: S.optional(__S(2657, __c83, 1)),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(2594, __c81, 2));
+      return S.Array(__S(2658, __c83, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2595, __c81, 3),
+          value: __S(2659, __c83, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
   }
 }
-function __c82(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14870,7 +15502,7 @@ function __c82(j: number): any {
       ).annotate({ identifier: "ListPartitionKeyRangeIdMetricsRequest" });
   }
 }
-function __c83(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14894,7 +15526,7 @@ function __c83(j: number): any {
       ).annotate({ identifier: "ListPartitionKeyRangeIdRegionMetricsRequest" });
   }
 }
-function __c84(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14914,7 +15546,7 @@ function __c84(j: number): any {
       ).annotate({ identifier: "ListPercentileMetricsRequest" });
   }
 }
-function __c85(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14935,7 +15567,7 @@ function __c85(j: number): any {
         }),
       ).annotate({ identifier: "PercentileMetricValue" });
     case 1:
-      return S.Array(__S(2720, __c85, 0));
+      return S.Array(__S(2784, __c87, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -14944,21 +15576,21 @@ function __c85(j: number): any {
           timeGrain: S.optional(S.String),
           unit: S.optional(S.String),
           name: S.optional(__S(960, __c30, 0)),
-          metricValues: S.optional(__S(2721, __c85, 1)),
+          metricValues: S.optional(__S(2785, __c87, 1)),
         }),
       ).annotate({ identifier: "PercentileMetric" });
     case 3:
-      return S.Array(__S(2722, __c85, 2));
+      return S.Array(__S(2786, __c87, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2723, __c85, 3)),
+          value: S.optional(__S(2787, __c87, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PercentileMetricListResult" });
   }
 }
-function __c86(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14977,7 +15609,7 @@ function __c86(j: number): any {
       ).annotate({ identifier: "DatabaseAccountsListReadOnlyKeysRequest" });
   }
 }
-function __c87(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14999,7 +15631,7 @@ function __c87(j: number): any {
       ).annotate({ identifier: "ListPercentileSourceTargetMetricsRequest" });
   }
 }
-function __c88(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15020,7 +15652,7 @@ function __c88(j: number): any {
       ).annotate({ identifier: "ListPercentileTargetMetricsRequest" });
   }
 }
-function __c89(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15046,7 +15678,7 @@ function __c89(j: number): any {
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
   }
 }
-function __c90(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15064,17 +15696,17 @@ function __c90(j: number): any {
         ),
       ).annotate({ identifier: "ListPrivateLinkResourceByDatabaseAccountRequest" });
     case 1:
-      return S.Array(__S(8929, __c279, 1));
+      return S.Array(__S(9697, __c303, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2881, __c90, 1)),
+          value: S.optional(__S(2945, __c92, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResourceListResult" });
   }
 }
-function __c91(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15092,20 +15724,20 @@ function __c91(j: number): any {
       ).annotate({ identifier: "ListRestorableDatabaseAccountByLocationRequest" });
   }
 }
-function __c92(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(8995, __c281, 3));
+      return S.Array(__S(9763, __c305, 3));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2944, __c92, 0)),
+          value: S.optional(__S(3008, __c94, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestorableDatabaseAccountsListResult" });
   }
 }
-function __c93(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15122,7 +15754,7 @@ function __c93(j: number): any {
       ).annotate({ identifier: "ListRestorableDatabaseAccountsRequest" });
   }
 }
-function __c94(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15141,7 +15773,7 @@ function __c94(j: number): any {
       ).annotate({ identifier: "ListRestorableGremlinDatabasesRequest" });
   }
 }
-function __c95(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15158,30 +15790,30 @@ function __c95(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(3040, __c95, 0)),
+          resource: S.optional(__S(3104, __c97, 0)),
         }),
       ).annotate({ identifier: "RestorableGremlinDatabaseProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(3041, __c95, 1)),
+          properties: S.optional(__S(3105, __c97, 1)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestorableGremlinDatabaseGetResult" });
     case 3:
-      return S.Array(__S(3042, __c95, 2));
+      return S.Array(__S(3106, __c97, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3043, __c95, 3)),
+          value: S.optional(__S(3107, __c97, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestorableGremlinDatabasesListResult" });
   }
 }
-function __c96(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15203,7 +15835,7 @@ function __c96(j: number): any {
       ).annotate({ identifier: "ListRestorableGremlinGraphsRequest" });
   }
 }
-function __c97(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15233,17 +15865,17 @@ function __c97(j: number): any {
         }),
       ).annotate({ identifier: "RestorableGremlinResourcesGetResult" });
     case 2:
-      return S.Array(__S(3105, __c97, 1));
+      return S.Array(__S(3169, __c99, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3106, __c97, 2)),
+          value: S.optional(__S(3170, __c99, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestorableGremlinResourcesListResult" });
   }
 }
-function __c98(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15265,7 +15897,7 @@ function __c98(j: number): any {
       ).annotate({ identifier: "ListRestorableMongodbCollectionsRequest" });
   }
 }
-function __c99(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15285,7 +15917,7 @@ function __c99(j: number): any {
       ).annotate({ identifier: "DatabaseAccountsOfflineRegionRequest" });
   }
 }
-function __c100(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15304,7 +15936,7 @@ function __c100(j: number): any {
       ).annotate({ identifier: "ListRestorableMongodbDatabasesRequest" });
   }
 }
-function __c101(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15325,7 +15957,7 @@ function __c101(j: number): any {
       ).annotate({ identifier: "ListRestorableMongodbResourcesRequest" });
   }
 }
-function __c102(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15338,17 +15970,17 @@ function __c102(j: number): any {
         }),
       ).annotate({ identifier: "RestorableMongodbResourcesGetResult" });
     case 1:
-      return S.Array(__S(3264, __c102, 0));
+      return S.Array(__S(3328, __c104, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3265, __c102, 1)),
+          value: S.optional(__S(3329, __c104, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestorableMongodbResourcesListResult" });
   }
 }
-function __c103(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15372,18 +16004,18 @@ function __c103(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          indexingPolicy: S.optional(__S(8047, __c251, 15)),
-          partitionKey: S.optional(__S(8048, __c251, 16)),
+          indexingPolicy: S.optional(__S(8687, __c271, 15)),
+          partitionKey: S.optional(__S(8688, __c271, 16)),
           defaultTtl: S.optional(S.Number),
-          uniqueKeyPolicy: S.optional(__S(8051, __c251, 19)),
-          conflictResolutionPolicy: S.optional(__S(8052, __c251, 20)),
-          clientEncryptionPolicy: S.optional(__S(9186, __c287, 2)),
+          uniqueKeyPolicy: S.optional(__S(8691, __c271, 19)),
+          conflictResolutionPolicy: S.optional(__S(8692, __c271, 20)),
+          clientEncryptionPolicy: S.optional(__S(10018, __c313, 2)),
           analyticalStorageTtl: S.optional(S.Number),
-          restoreParameters: S.optional(__S(7840, __c245, 0)),
+          restoreParameters: S.optional(__S(8416, __c263, 0)),
           createMode: S.optional(S.String),
-          computedProperties: S.optional(__S(9188, __c287, 4)),
-          vectorEmbeddingPolicy: S.optional(__S(9191, __c287, 7)),
-          fullTextPolicy: S.optional(__S(9194, __c287, 10)),
+          computedProperties: S.optional(__S(10020, __c313, 4)),
+          vectorEmbeddingPolicy: S.optional(__S(10023, __c313, 7)),
+          fullTextPolicy: S.optional(__S(10026, __c313, 10)),
           _rid: S.optional(S.String),
           _ts: S.optional(S.Number),
           _etag: S.optional(S.String),
@@ -15400,36 +16032,36 @@ function __c103(j: number): any {
           eventTimestamp: S.optional(S.String),
           ownerId: S.optional(S.String),
           ownerResourceId: S.optional(S.String),
-          container: S.optional(__S(3297, __c103, 1)),
+          container: S.optional(__S(3361, __c105, 1)),
         }),
       ).annotate({ identifier: "RestorableSqlContainerPropertiesResource" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(3298, __c103, 2)),
+          resource: S.optional(__S(3362, __c105, 2)),
         }),
       ).annotate({ identifier: "RestorableSqlContainerProperties" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(3299, __c103, 3)),
+          properties: S.optional(__S(3363, __c105, 3)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestorableSqlContainerGetResult" });
     case 5:
-      return S.Array(__S(3300, __c103, 4));
+      return S.Array(__S(3364, __c105, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3301, __c103, 5)),
+          value: S.optional(__S(3365, __c105, 5)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestorableSqlContainersListResult" });
   }
 }
-function __c104(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15450,7 +16082,7 @@ function __c104(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          restoreParameters: S.optional(__S(7840, __c245, 0)),
+          restoreParameters: S.optional(__S(8416, __c263, 0)),
           createMode: S.optional(S.String),
           _rid: S.optional(S.String),
           _ts: S.optional(S.Number),
@@ -15470,36 +16102,36 @@ function __c104(j: number): any {
           eventTimestamp: S.optional(S.String),
           ownerId: S.optional(S.String),
           ownerResourceId: S.optional(S.String),
-          database: S.optional(__S(3329, __c104, 1)),
+          database: S.optional(__S(3393, __c106, 1)),
         }),
       ).annotate({ identifier: "RestorableSqlDatabasePropertiesResource" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(3330, __c104, 2)),
+          resource: S.optional(__S(3394, __c106, 2)),
         }),
       ).annotate({ identifier: "RestorableSqlDatabaseProperties" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(3331, __c104, 3)),
+          properties: S.optional(__S(3395, __c106, 3)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestorableSqlDatabaseGetResult" });
     case 5:
-      return S.Array(__S(3332, __c104, 4));
+      return S.Array(__S(3396, __c106, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3333, __c104, 5)),
+          value: S.optional(__S(3397, __c106, 5)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestorableSqlDatabasesListResult" });
   }
 }
-function __c105(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15520,7 +16152,7 @@ function __c105(j: number): any {
       ).annotate({ identifier: "ListRestorableSqlResourcesRequest" });
   }
 }
-function __c106(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15548,17 +16180,17 @@ function __c106(j: number): any {
         }),
       ).annotate({ identifier: "RestorableTableResourcesGetResult" });
     case 2:
-      return S.Array(__S(3393, __c106, 1));
+      return S.Array(__S(3457, __c108, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3394, __c106, 2)),
+          value: S.optional(__S(3458, __c108, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestorableTableResourcesListResult" });
   }
 }
-function __c107(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15579,7 +16211,7 @@ function __c107(j: number): any {
       ).annotate({ identifier: "ListRestorableTablesRequest" });
   }
 }
-function __c108(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15597,17 +16229,17 @@ function __c108(j: number): any {
         ),
       ).annotate({ identifier: "ListServiceRequest" });
     case 1:
-      return S.Array(__S(865, __c27, 1));
+      return S.Array(__S(9824, __c307, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3457, __c108, 1)),
+          value: S.optional(__S(3521, __c110, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceResourceListResult" });
   }
 }
-function __c109(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15626,17 +16258,17 @@ function __c109(j: number): any {
         ),
       ).annotate({ identifier: "ListSqlResourceClientEncryptionKeysRequest" });
     case 1:
-      return S.Array(__S(9091, __c284, 3));
+      return S.Array(__S(9888, __c309, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3489, __c109, 1)),
+          value: S.optional(__S(3553, __c111, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClientEncryptionKeysListResult" });
   }
 }
-function __c110(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15655,17 +16287,17 @@ function __c110(j: number): any {
         ),
       ).annotate({ identifier: "ListSqlResourceSqlContainersRequest" });
     case 1:
-      return S.Array(__S(9218, __c288, 2));
+      return S.Array(__S(10048, __c314, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3521, __c110, 1)),
+          value: S.optional(__S(3585, __c112, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlContainerListResult" });
   }
 }
-function __c111(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15685,7 +16317,7 @@ function __c111(j: number): any {
       ).annotate({ identifier: "DatabaseAccountsOnlineRegionRequest" });
   }
 }
-function __c112(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15703,17 +16335,17 @@ function __c112(j: number): any {
         ),
       ).annotate({ identifier: "ListSqlResourceSqlDatabasesRequest" });
     case 1:
-      return S.Array(__S(9314, __c291, 2));
+      return S.Array(__S(10176, __c318, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3585, __c112, 1)),
+          value: S.optional(__S(3649, __c114, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlDatabaseListResult" });
   }
 }
-function __c113(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15731,17 +16363,17 @@ function __c113(j: number): any {
         ),
       ).annotate({ identifier: "ListSqlResourceSqlRoleAssignmentsRequest" });
     case 1:
-      return S.Array(__S(9472, __c296, 0));
+      return S.Array(__S(10368, __c324, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3617, __c113, 1)),
+          value: S.optional(__S(3681, __c115, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlRoleAssignmentListResult" });
   }
 }
-function __c114(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15759,17 +16391,17 @@ function __c114(j: number): any {
         ),
       ).annotate({ identifier: "ListSqlResourceSqlRoleDefinitionsRequest" });
     case 1:
-      return S.Array(__S(9537, __c298, 1));
+      return S.Array(__S(10432, __c326, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3649, __c114, 1)),
+          value: S.optional(__S(3713, __c116, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlRoleDefinitionListResult" });
   }
 }
-function __c115(j: number): any {
+function __c117(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15790,20 +16422,20 @@ function __c115(j: number): any {
       ).annotate({ identifier: "ListSqlResourceSqlStoredProceduresRequest" });
   }
 }
-function __c116(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(9602, __c300, 2));
+      return S.Array(__S(10528, __c329, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3712, __c116, 0)),
+          value: S.optional(__S(3776, __c118, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlStoredProcedureListResult" });
   }
 }
-function __c117(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15823,17 +16455,17 @@ function __c117(j: number): any {
         ),
       ).annotate({ identifier: "ListSqlResourceSqlTriggersRequest" });
     case 1:
-      return S.Array(__S(3778, __c118, 2));
+      return S.Array(__S(3872, __c121, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3745, __c117, 1)),
+          value: S.optional(__S(3809, __c119, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlTriggerListResult" });
   }
 }
-function __c118(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15850,25 +16482,29 @@ function __c118(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(3776, __c118, 0)),
+          resource: S.optional(__S(3840, __c120, 0)),
         }),
       ).annotate({ identifier: "SqlTriggerGetProperties" });
-    case 2:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(3777, __c118, 1)),
+          properties: S.optional(__S(3841, __c120, 1)),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6722, __c210, 2)),
+          identity: S.optional(__S(6914, __c216, 2)),
         }),
       ).annotate({ identifier: "SqlTriggerGetResults" });
   }
 }
-function __c119(j: number): any {
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15889,7 +16525,7 @@ function __c119(j: number): any {
       ).annotate({ identifier: "ListSqlResourceSqlUserDefinedFunctionsRequest" });
   }
 }
-function __c120(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15908,7 +16544,7 @@ function __c120(j: number): any {
       ).annotate({ identifier: "ListTableResourceTableRoleAssignmentsRequest" });
   }
 }
-function __c121(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15927,7 +16563,7 @@ function __c121(j: number): any {
       ).annotate({ identifier: "ListTableResourceTableRoleDefinitionsRequest" });
   }
 }
-function __c122(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15946,7 +16582,7 @@ function __c122(j: number): any {
       ).annotate({ identifier: "ListTableResourceTablesRequest" });
   }
 }
-function __c123(j: number): any {
+function __c126(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15966,7 +16602,27 @@ function __c123(j: number): any {
       ).annotate({ identifier: "MigrateCassandraResourceCassandraKeyspaceToAutoscaleRequest" });
   }
 }
-function __c124(j: number): any {
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(7716, __c241, 4)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(6914, __c216, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "MigrateCassandraResourceCassandraKeyspaceToAutoscaleResponse" });
+  }
+}
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15985,7 +16641,7 @@ function __c124(j: number): any {
       ).annotate({ identifier: "DeleteCassandraClusterRequest" });
   }
 }
-function __c125(j: number): any {
+function __c129(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16007,7 +16663,7 @@ function __c125(j: number): any {
       });
   }
 }
-function __c126(j: number): any {
+function __c130(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16028,7 +16684,7 @@ function __c126(j: number): any {
       ).annotate({ identifier: "MigrateCassandraResourceCassandraTableToAutoscaleRequest" });
   }
 }
-function __c127(j: number): any {
+function __c131(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16049,7 +16705,7 @@ function __c127(j: number): any {
       ).annotate({ identifier: "MigrateCassandraResourceCassandraTableToManualThroughputRequest" });
   }
 }
-function __c128(j: number): any {
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16069,7 +16725,7 @@ function __c128(j: number): any {
       ).annotate({ identifier: "MigrateGremlinResourceGremlinDatabaseToAutoscaleRequest" });
   }
 }
-function __c129(j: number): any {
+function __c133(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16089,7 +16745,7 @@ function __c129(j: number): any {
       ).annotate({ identifier: "MigrateGremlinResourceGremlinDatabaseToManualThroughputRequest" });
   }
 }
-function __c130(j: number): any {
+function __c134(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16110,7 +16766,7 @@ function __c130(j: number): any {
       ).annotate({ identifier: "MigrateGremlinResourceGremlinGraphToAutoscaleRequest" });
   }
 }
-function __c131(j: number): any {
+function __c135(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16131,7 +16787,7 @@ function __c131(j: number): any {
       ).annotate({ identifier: "MigrateGremlinResourceGremlinGraphToManualThroughputRequest" });
   }
 }
-function __c132(j: number): any {
+function __c136(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16152,7 +16808,7 @@ function __c132(j: number): any {
       ).annotate({ identifier: "MigrateMongoDBResourceMongoDBCollectionToAutoscaleRequest" });
   }
 }
-function __c133(j: number): any {
+function __c137(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16175,7 +16831,7 @@ function __c133(j: number): any {
       });
   }
 }
-function __c134(j: number): any {
+function __c138(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16195,7 +16851,7 @@ function __c134(j: number): any {
       ).annotate({ identifier: "MigrateMongoDBResourceMongoDBDatabaseToAutoscaleRequest" });
   }
 }
-function __c135(j: number): any {
+function __c139(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16215,7 +16871,7 @@ function __c135(j: number): any {
       ).annotate({ identifier: "DeleteCassandraDataCenterRequest" });
   }
 }
-function __c136(j: number): any {
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16235,7 +16891,7 @@ function __c136(j: number): any {
       ).annotate({ identifier: "MigrateMongoDBResourceMongoDBDatabaseToManualThroughputRequest" });
   }
 }
-function __c137(j: number): any {
+function __c141(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16256,7 +16912,26 @@ function __c137(j: number): any {
       ).annotate({ identifier: "MigrateSqlResourceSqlContainerToAutoscaleRequest" });
   }
 }
-function __c138(j: number): any {
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(7716, __c241, 4)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(6914, __c216, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "MigrateSqlResourceSqlContainerToAutoscaleResponse" });
+  }
+}
+function __c143(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16277,7 +16952,7 @@ function __c138(j: number): any {
       ).annotate({ identifier: "MigrateSqlResourceSqlContainerToManualThroughputRequest" });
   }
 }
-function __c139(j: number): any {
+function __c144(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16297,7 +16972,7 @@ function __c139(j: number): any {
       ).annotate({ identifier: "MigrateSqlResourceSqlDatabaseToAutoscaleRequest" });
   }
 }
-function __c140(j: number): any {
+function __c145(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16317,7 +16992,7 @@ function __c140(j: number): any {
       ).annotate({ identifier: "MigrateSqlResourceSqlDatabaseToManualThroughputRequest" });
   }
 }
-function __c141(j: number): any {
+function __c146(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16337,7 +17012,7 @@ function __c141(j: number): any {
       ).annotate({ identifier: "MigrateTableResourceTableToAutoscaleRequest" });
   }
 }
-function __c142(j: number): any {
+function __c147(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16357,24 +17032,24 @@ function __c142(j: number): any {
       ).annotate({ identifier: "MigrateTableResourceTableToManualThroughputRequest" });
   }
 }
-function __c143(j: number): any {
+function __c148(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           shardKey: S.optional(__S(64, __c2, 0)),
-          indexes: S.optional(__S(8387, __c262, 3)),
+          indexes: S.optional(__S(9059, __c283, 3)),
           analyticalStorageTtl: S.optional(S.Number),
-          restoreParameters: S.optional(__S(7840, __c245, 0)),
+          restoreParameters: S.optional(__S(8416, __c263, 0)),
           createMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "MongoDBCollectionResource" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: __S(4576, __c143, 0),
-          options: S.optional(__S(6785, __c212, 1)),
+          resource: __S(4736, __c148, 0),
+          options: S.optional(__S(6977, __c218, 1)),
         }),
       ).annotate({ identifier: "MongoDBCollectionCreateUpdateProperties" });
     case 2:
@@ -16387,8 +17062,8 @@ function __c143(j: number): any {
           collectionName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
-          properties: __S(4577, __c143, 1),
+          identity: S.optional(__S(6946, __c217, 2)),
+          properties: __S(4737, __c148, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16398,9 +17073,25 @@ function __c143(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MongoDBResourcesCreateUpdateMongoDBCollectionRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(9061, __c283, 5)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(6914, __c216, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "MongoDBResourcesCreateUpdateMongoDBCollectionResponse" });
   }
 }
-function __c144(j: number): any {
+function __c149(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16411,8 +17102,8 @@ function __c144(j: number): any {
           databaseName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
-          properties: __S(9857, __c308, 1),
+          identity: S.optional(__S(6946, __c217, 2)),
+          properties: __S(10817, __c338, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16424,7 +17115,7 @@ function __c144(j: number): any {
       ).annotate({ identifier: "MongoDBResourcesCreateUpdateMongoDBDatabaseRequest" });
   }
 }
-function __c145(j: number): any {
+function __c150(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16433,7 +17124,7 @@ function __c145(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           mongoRoleDefinitionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(8547, __c267, 3)),
+          properties: S.optional(__S(9251, __c289, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16443,9 +17134,21 @@ function __c145(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MongoDBResourcesCreateUpdateMongoRoleDefinitionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(9251, __c289, 3)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "MongoDBResourcesCreateUpdateMongoRoleDefinitionResponse" });
   }
 }
-function __c146(j: number): any {
+function __c151(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16481,7 +17184,7 @@ function __c146(j: number): any {
         }),
       ).annotate({ identifier: "ConnectionError" });
     case 3:
-      return S.Array(__S(4674, __c146, 2));
+      return S.Array(__S(4834, __c151, 2));
     case 4:
       return S.Array(__S(32, __c1, 0));
     case 5:
@@ -16511,30 +17214,30 @@ function __c146(j: number): any {
           "ComponentsM9L909SchemasCassandraclusterpublicstatusPropertiesDatacentersItemsPropertiesNodesItems",
       });
     case 6:
-      return S.Array(__S(4677, __c146, 5));
+      return S.Array(__S(4837, __c151, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           seedNodes: S.optional(__S(96, __c3, 0)),
-          nodes: S.optional(__S(4678, __c146, 6)),
+          nodes: S.optional(__S(4838, __c151, 6)),
         }),
       ).annotate({ identifier: "CassandraClusterPublicStatusDataCentersItem" });
     case 8:
-      return S.Array(__S(4679, __c146, 7));
+      return S.Array(__S(4839, __c151, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
           eTag: S.optional(S.String),
-          reaperStatus: S.optional(__S(4673, __c146, 1)),
-          connectionErrors: S.optional(__S(4675, __c146, 3)),
-          errors: S.optional(__S(4676, __c146, 4)),
-          dataCenters: S.optional(__S(4680, __c146, 8)),
+          reaperStatus: S.optional(__S(4833, __c151, 1)),
+          connectionErrors: S.optional(__S(4835, __c151, 3)),
+          errors: S.optional(__S(4836, __c151, 4)),
+          dataCenters: S.optional(__S(4840, __c151, 8)),
         }),
       ).annotate({ identifier: "CassandraClusterPublicStatus" });
   }
 }
-function __c147(j: number): any {
+function __c152(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16554,7 +17257,18 @@ function __c147(j: number): any {
       ).annotate({ identifier: "DeleteCassandraResourceCassandraKeyspaceRequest" });
   }
 }
-function __c148(j: number): any {
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "DeleteCassandraResourceCassandraKeyspaceResponse" });
+  }
+}
+function __c154(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16563,7 +17277,7 @@ function __c148(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           mongoUserDefinitionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(8640, __c270, 0)),
+          properties: S.optional(__S(9376, __c293, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16573,9 +17287,21 @@ function __c148(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MongoDBResourcesCreateUpdateMongoUserDefinitionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(9376, __c293, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "MongoDBResourcesCreateUpdateMongoUserDefinitionResponse" });
   }
 }
-function __c149(j: number): any {
+function __c155(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16584,7 +17310,7 @@ function __c149(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           roleAssignmentId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(7200, __c225, 0)),
+          properties: S.optional(__S(7424, __c232, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16596,7 +17322,7 @@ function __c149(j: number): any {
       ).annotate({ identifier: "MongoMIResourcesCreateUpdateMongoMIRoleAssignmentRequest" });
   }
 }
-function __c150(j: number): any {
+function __c156(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16605,7 +17331,7 @@ function __c150(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           roleDefinitionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(7648, __c239, 0)),
+          properties: S.optional(__S(8160, __c255, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16617,7 +17343,7 @@ function __c150(j: number): any {
       ).annotate({ identifier: "MongoMIResourcesCreateUpdateMongoMIRoleDefinitionRequest" });
   }
 }
-function __c151(j: number): any {
+function __c157(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16635,9 +17361,20 @@ function __c151(j: number): any {
           }),
         ),
       ).annotate({ identifier: "NotebookWorkspacesCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(9536, __c298, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "NotebookWorkspacesCreateOrUpdateResponse" });
   }
 }
-function __c152(j: number): any {
+function __c158(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16650,7 +17387,7 @@ function __c152(j: number): any {
       return S.suspend(() =>
         S.Struct({
           privateEndpoint: S.optional(__S(1568, __c49, 0)),
-          privateLinkServiceConnectionState: S.optional(__S(4864, __c152, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(5056, __c158, 0)),
           groupId: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
@@ -16662,7 +17399,7 @@ function __c152(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(4865, __c152, 1)),
+          properties: S.optional(__S(5057, __c158, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16672,9 +17409,21 @@ function __c152(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PrivateEndpointConnectionsCreateOrUpdateRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(1570, __c49, 2)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "PrivateEndpointConnectionsCreateOrUpdateResponse" });
   }
 }
-function __c153(j: number): any {
+function __c159(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16694,7 +17443,7 @@ function __c153(j: number): any {
       ).annotate({ identifier: "RegenerateDatabaseAccountKeyRequest" });
   }
 }
-function __c154(j: number): any {
+function __c160(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16714,7 +17463,7 @@ function __c154(j: number): any {
       ).annotate({ identifier: "RegenerateNotebookWorkspaceAuthTokenRequest" });
   }
 }
-function __c155(j: number): any {
+function __c161(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16722,13 +17471,13 @@ function __c155(j: number): any {
           id: S.optional(S.String),
           encryptionAlgorithm: S.optional(S.String),
           wrappedDataEncryptionKey: S.optional(S.String),
-          keyWrapMetadata: S.optional(__S(9088, __c284, 0)),
+          keyWrapMetadata: S.optional(__S(9920, __c310, 0)),
         }),
       ).annotate({ identifier: "ClientEncryptionKeyResource" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: __S(4960, __c155, 0),
+          resource: __S(5152, __c161, 0),
         }),
       ).annotate({ identifier: "ClientEncryptionKeyCreateUpdateProperties" });
     case 2:
@@ -16739,7 +17488,7 @@ function __c155(j: number): any {
           accountName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           clientEncryptionKeyName: S.String.pipe(T.Label()),
-          properties: __S(4961, __c155, 1),
+          properties: __S(5153, __c161, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16749,33 +17498,46 @@ function __c155(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SqlResourcesCreateUpdateClientEncryptionKeyRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(9922, __c310, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SqlResourcesCreateUpdateClientEncryptionKeyResponse" });
   }
 }
-function __c156(j: number): any {
+function __c162(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          indexingPolicy: S.optional(__S(8047, __c251, 15)),
+          indexingPolicy: S.optional(__S(8687, __c271, 15)),
           partitionKey: S.optional(__S(416, __c13, 0)),
           defaultTtl: S.optional(S.Number),
-          uniqueKeyPolicy: S.optional(__S(8051, __c251, 19)),
-          conflictResolutionPolicy: S.optional(__S(8052, __c251, 20)),
-          clientEncryptionPolicy: S.optional(__S(9186, __c287, 2)),
+          uniqueKeyPolicy: S.optional(__S(8691, __c271, 19)),
+          conflictResolutionPolicy: S.optional(__S(8692, __c271, 20)),
+          clientEncryptionPolicy: S.optional(__S(10018, __c313, 2)),
           analyticalStorageTtl: S.optional(S.Number),
-          restoreParameters: S.optional(__S(7840, __c245, 0)),
+          restoreParameters: S.optional(__S(8416, __c263, 0)),
           createMode: S.optional(S.String),
-          computedProperties: S.optional(__S(9188, __c287, 4)),
-          vectorEmbeddingPolicy: S.optional(__S(9191, __c287, 7)),
-          fullTextPolicy: S.optional(__S(9194, __c287, 10)),
+          computedProperties: S.optional(__S(10020, __c313, 4)),
+          vectorEmbeddingPolicy: S.optional(__S(10023, __c313, 7)),
+          fullTextPolicy: S.optional(__S(10026, __c313, 10)),
         }),
       ).annotate({ identifier: "SqlContainerResourceInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: __S(4992, __c156, 0),
-          options: S.optional(__S(6785, __c212, 1)),
+          resource: __S(5184, __c162, 0),
+          options: S.optional(__S(6977, __c218, 1)),
         }),
       ).annotate({ identifier: "SqlContainerCreateUpdatePropertiesInput" });
     case 2:
@@ -16788,8 +17550,8 @@ function __c156(j: number): any {
           containerName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
-          properties: __S(4993, __c156, 1),
+          identity: S.optional(__S(6946, __c217, 2)),
+          properties: __S(5185, __c162, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16799,9 +17561,25 @@ function __c156(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SqlResourcesCreateUpdateSqlContainerRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(10081, __c315, 1)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(6914, __c216, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SqlResourcesCreateUpdateSqlContainerResponse" });
   }
 }
-function __c157(j: number): any {
+function __c163(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16812,8 +17590,8 @@ function __c157(j: number): any {
           databaseName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
-          properties: __S(9857, __c308, 1),
+          identity: S.optional(__S(6946, __c217, 2)),
+          properties: __S(10817, __c338, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16823,9 +17601,25 @@ function __c157(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SqlResourcesCreateUpdateSqlDatabaseRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(10209, __c319, 1)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(6914, __c216, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SqlResourcesCreateUpdateSqlDatabaseResponse" });
   }
 }
-function __c158(j: number): any {
+function __c164(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16845,7 +17639,7 @@ function __c158(j: number): any {
       ).annotate({ identifier: "DeleteCassandraResourceCassandraRoleAssignmentRequest" });
   }
 }
-function __c159(j: number): any {
+function __c165(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16854,7 +17648,7 @@ function __c159(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           roleAssignmentId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(7200, __c225, 0)),
+          properties: S.optional(__S(7424, __c232, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16864,9 +17658,21 @@ function __c159(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SqlResourcesCreateUpdateSqlRoleAssignmentRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(7424, __c232, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SqlResourcesCreateUpdateSqlRoleAssignmentResponse" });
   }
 }
-function __c160(j: number): any {
+function __c166(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16875,7 +17681,7 @@ function __c160(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           roleDefinitionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(9536, __c298, 0)),
+          properties: S.optional(__S(10464, __c327, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16885,9 +17691,21 @@ function __c160(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SqlResourcesCreateUpdateSqlRoleDefinitionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(10464, __c327, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SqlResourcesCreateUpdateSqlRoleDefinitionResponse" });
   }
 }
-function __c161(j: number): any {
+function __c167(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16900,8 +17718,8 @@ function __c161(j: number): any {
           storedProcedureName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
-          properties: __S(5185, __c162, 1),
+          identity: S.optional(__S(6946, __c217, 2)),
+          properties: __S(5377, __c168, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16913,7 +17731,7 @@ function __c161(j: number): any {
       ).annotate({ identifier: "SqlResourcesCreateUpdateSqlStoredProcedureRequest" });
   }
 }
-function __c162(j: number): any {
+function __c168(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16925,13 +17743,29 @@ function __c162(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: __S(5184, __c162, 0),
-          options: S.optional(__S(6785, __c212, 1)),
+          resource: __S(5376, __c168, 0),
+          options: S.optional(__S(6977, __c218, 1)),
         }),
       ).annotate({ identifier: "SqlStoredProcedureCreateUpdateProperties" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(10561, __c330, 1)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(6914, __c216, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SqlResourcesCreateUpdateSqlStoredProcedureResponse" });
   }
 }
-function __c163(j: number): any {
+function __c169(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16945,8 +17779,8 @@ function __c163(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: __S(5216, __c163, 0),
-          options: S.optional(__S(6785, __c212, 1)),
+          resource: __S(5408, __c169, 0),
+          options: S.optional(__S(6977, __c218, 1)),
         }),
       ).annotate({ identifier: "SqlTriggerCreateUpdateProperties" });
     case 2:
@@ -16960,8 +17794,8 @@ function __c163(j: number): any {
           triggerName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
-          properties: __S(5217, __c163, 1),
+          identity: S.optional(__S(6946, __c217, 2)),
+          properties: __S(5409, __c169, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16971,9 +17805,25 @@ function __c163(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SqlResourcesCreateUpdateSqlTriggerRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(3841, __c120, 1)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(6914, __c216, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SqlResourcesCreateUpdateSqlTriggerResponse" });
   }
 }
-function __c164(j: number): any {
+function __c170(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16986,8 +17836,8 @@ function __c164(j: number): any {
           userDefinedFunctionName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
-          properties: __S(5185, __c162, 1),
+          identity: S.optional(__S(6946, __c217, 2)),
+          properties: __S(5377, __c168, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16999,7 +17849,7 @@ function __c164(j: number): any {
       ).annotate({ identifier: "SqlResourcesCreateUpdateSqlUserDefinedFunctionRequest" });
   }
 }
-function __c165(j: number): any {
+function __c171(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17021,7 +17871,7 @@ function __c165(j: number): any {
       ).annotate({ identifier: "SqlResourcesDeleteSqlTriggerRequest" });
   }
 }
-function __c166(j: number): any {
+function __c172(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17043,7 +17893,7 @@ function __c166(j: number): any {
       ).annotate({ identifier: "SqlResourcesGetSqlTriggerRequest" });
   }
 }
-function __c167(j: number): any {
+function __c173(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17062,7 +17912,7 @@ function __c167(j: number): any {
       ).annotate({ identifier: "StartCassandraClusterRequest" });
   }
 }
-function __c168(j: number): any {
+function __c174(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17082,7 +17932,7 @@ function __c168(j: number): any {
       ).annotate({ identifier: "StartNotebookWorkspaceRequest" });
   }
 }
-function __c169(j: number): any {
+function __c175(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17093,8 +17943,8 @@ function __c169(j: number): any {
           tableName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
-          properties: __S(9857, __c308, 1),
+          identity: S.optional(__S(6946, __c217, 2)),
+          properties: __S(10817, __c338, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17106,7 +17956,7 @@ function __c169(j: number): any {
       ).annotate({ identifier: "TableResourcesCreateUpdateTableRequest" });
   }
 }
-function __c170(j: number): any {
+function __c176(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17126,7 +17976,7 @@ function __c170(j: number): any {
       ).annotate({ identifier: "DeleteCassandraResourceCassandraRoleDefinitionRequest" });
   }
 }
-function __c171(j: number): any {
+function __c177(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17135,7 +17985,7 @@ function __c171(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           roleAssignmentId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(7200, __c225, 0)),
+          properties: S.optional(__S(7424, __c232, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17147,7 +17997,7 @@ function __c171(j: number): any {
       ).annotate({ identifier: "TableResourcesCreateUpdateTableRoleAssignmentRequest" });
   }
 }
-function __c172(j: number): any {
+function __c178(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17156,7 +18006,7 @@ function __c172(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           roleDefinitionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(7648, __c239, 0)),
+          properties: S.optional(__S(8160, __c255, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17166,9 +18016,21 @@ function __c172(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TableResourcesCreateUpdateTableRoleDefinitionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(8160, __c255, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "TableResourcesCreateUpdateTableRoleDefinitionResponse" });
   }
 }
-function __c173(j: number): any {
+function __c179(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17191,7 +18053,7 @@ function __c173(j: number): any {
       ).annotate({ identifier: "UpdateCassandraClusterRequest" });
   }
 }
-function __c174(j: number): any {
+function __c180(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17200,7 +18062,7 @@ function __c174(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           dataCenterName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(6272, __c196, 0)),
+          properties: S.optional(__S(6464, __c202, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17212,7 +18074,7 @@ function __c174(j: number): any {
       ).annotate({ identifier: "UpdateCassandraDataCenterRequest" });
   }
 }
-function __c175(j: number): any {
+function __c181(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17223,8 +18085,8 @@ function __c175(j: number): any {
           keyspaceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
-          properties: __S(5634, __c176, 2),
+          identity: S.optional(__S(6946, __c217, 2)),
+          properties: __S(5826, __c182, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17236,31 +18098,31 @@ function __c175(j: number): any {
       ).annotate({ identifier: "UpdateCassandraResourceCassandraKeyspaceThroughputRequest" });
   }
 }
-function __c176(j: number): any {
+function __c182(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           maxThroughput: S.Number,
-          autoUpgradePolicy: S.optional(__S(7361, __c230, 1)),
+          autoUpgradePolicy: S.optional(__S(7713, __c241, 1)),
         }),
       ).annotate({ identifier: "AutoscaleSettingsResourceInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           throughput: S.optional(S.Number),
-          autoscaleSettings: S.optional(__S(5632, __c176, 0)),
+          autoscaleSettings: S.optional(__S(5824, __c182, 0)),
         }),
       ).annotate({ identifier: "ThroughputSettingsResourceInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resource: __S(5633, __c176, 1),
+          resource: __S(5825, __c182, 1),
         }),
       ).annotate({ identifier: "ThroughputSettingsUpdatePropertiesInput" });
   }
 }
-function __c177(j: number): any {
+function __c183(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17272,8 +18134,8 @@ function __c177(j: number): any {
           tableName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
-          properties: __S(5634, __c176, 2),
+          identity: S.optional(__S(6946, __c217, 2)),
+          properties: __S(5826, __c182, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17285,7 +18147,7 @@ function __c177(j: number): any {
       ).annotate({ identifier: "UpdateCassandraResourceCassandraTableThroughputRequest" });
   }
 }
-function __c178(j: number): any {
+function __c184(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17295,7 +18157,7 @@ function __c178(j: number): any {
           ipRules: S.optional(__S(1538, __c48, 2)),
           isVirtualNetworkFilterEnabled: S.optional(S.Boolean),
           enableAutomaticFailover: S.optional(S.Boolean),
-          capabilities: S.optional(__S(8257, __c258, 1)),
+          capabilities: S.optional(__S(8897, __c278, 1)),
           virtualNetworkRules: S.optional(__S(1540, __c48, 4)),
           enableMultipleWriteLocations: S.optional(S.Boolean),
           enableCassandraConnector: S.optional(S.Boolean),
@@ -17332,8 +18194,8 @@ function __c178(j: number): any {
           accountName: S.String.pipe(T.Label()),
           tags: S.optional(__S(64, __c2, 0)),
           location: S.optional(S.String),
-          identity: S.optional(__S(6753, __c211, 1)),
-          properties: S.optional(__S(5696, __c178, 0)),
+          identity: S.optional(__S(6946, __c217, 2)),
+          properties: S.optional(__S(5888, __c184, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17345,7 +18207,7 @@ function __c178(j: number): any {
       ).annotate({ identifier: "UpdateDatabaseAccountRequest" });
   }
 }
-function __c179(j: number): any {
+function __c185(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17354,7 +18216,7 @@ function __c179(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           tags: S.optional(__S(64, __c2, 0)),
-          properties: S.optional(__S(8832, __c276, 0)),
+          properties: S.optional(__S(9600, __c300, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17366,7 +18228,7 @@ function __c179(j: number): any {
       ).annotate({ identifier: "UpdateFleetRequest" });
   }
 }
-function __c180(j: number): any {
+function __c186(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17375,7 +18237,7 @@ function __c180(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           fleetspaceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(9409, __c294, 1)),
+          properties: S.optional(__S(10305, __c322, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17385,9 +18247,22 @@ function __c180(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFleetspaceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(10305, __c322, 1)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateFleetspaceResponse" });
   }
 }
-function __c181(j: number): any {
+function __c187(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17398,8 +18273,8 @@ function __c181(j: number): any {
           databaseName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
-          properties: __S(5634, __c176, 2),
+          identity: S.optional(__S(6946, __c217, 2)),
+          properties: __S(5826, __c182, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17411,7 +18286,7 @@ function __c181(j: number): any {
       ).annotate({ identifier: "UpdateGremlinResourceGremlinDatabaseThroughputRequest" });
   }
 }
-function __c182(j: number): any {
+function __c188(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17432,7 +18307,7 @@ function __c182(j: number): any {
       ).annotate({ identifier: "DeleteCassandraResourceCassandraTableRequest" });
   }
 }
-function __c183(j: number): any {
+function __c189(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17444,8 +18319,8 @@ function __c183(j: number): any {
           graphName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
-          properties: __S(5634, __c176, 2),
+          identity: S.optional(__S(6946, __c217, 2)),
+          properties: __S(5826, __c182, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17457,7 +18332,7 @@ function __c183(j: number): any {
       ).annotate({ identifier: "UpdateGremlinResourceGremlinGraphThroughputRequest" });
   }
 }
-function __c184(j: number): any {
+function __c190(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17469,8 +18344,8 @@ function __c184(j: number): any {
           collectionName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
-          properties: __S(5634, __c176, 2),
+          identity: S.optional(__S(6946, __c217, 2)),
+          properties: __S(5826, __c182, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17482,7 +18357,7 @@ function __c184(j: number): any {
       ).annotate({ identifier: "UpdateMongoDBResourceMongoDBCollectionThroughputRequest" });
   }
 }
-function __c185(j: number): any {
+function __c191(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17493,8 +18368,8 @@ function __c185(j: number): any {
           databaseName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
-          properties: __S(5634, __c176, 2),
+          identity: S.optional(__S(6946, __c217, 2)),
+          properties: __S(5826, __c182, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17506,7 +18381,7 @@ function __c185(j: number): any {
       ).annotate({ identifier: "UpdateMongoDBResourceMongoDBDatabaseThroughputRequest" });
   }
 }
-function __c186(j: number): any {
+function __c192(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17518,8 +18393,8 @@ function __c186(j: number): any {
           containerName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
-          properties: __S(5634, __c176, 2),
+          identity: S.optional(__S(6946, __c217, 2)),
+          properties: __S(5826, __c182, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17531,7 +18406,7 @@ function __c186(j: number): any {
       ).annotate({ identifier: "UpdateSqlResourceSqlContainerThroughputRequest" });
   }
 }
-function __c187(j: number): any {
+function __c193(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17542,8 +18417,8 @@ function __c187(j: number): any {
           databaseName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
-          properties: __S(5634, __c176, 2),
+          identity: S.optional(__S(6946, __c217, 2)),
+          properties: __S(5826, __c182, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17555,7 +18430,7 @@ function __c187(j: number): any {
       ).annotate({ identifier: "UpdateSqlResourceSqlDatabaseThroughputRequest" });
   }
 }
-function __c188(j: number): any {
+function __c194(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17566,8 +18441,8 @@ function __c188(j: number): any {
           tableName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
-          properties: __S(5634, __c176, 2),
+          identity: S.optional(__S(6946, __c217, 2)),
+          properties: __S(5826, __c182, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17579,7 +18454,7 @@ function __c188(j: number): any {
       ).annotate({ identifier: "UpdateTableResourceTableThroughputRequest" });
   }
 }
-function __c189(j: number): any {
+function __c195(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17598,7 +18473,7 @@ function __c189(j: number): any {
       ).annotate({ identifier: "DeleteDatabaseAccountRequest" });
   }
 }
-function __c190(j: number): any {
+function __c196(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17617,7 +18492,7 @@ function __c190(j: number): any {
       ).annotate({ identifier: "DeleteFleetRequest" });
   }
 }
-function __c191(j: number): any {
+function __c197(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17637,7 +18512,7 @@ function __c191(j: number): any {
       ).annotate({ identifier: "DeleteFleetspaceRequest" });
   }
 }
-function __c192(j: number): any {
+function __c198(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17658,7 +18533,7 @@ function __c192(j: number): any {
       ).annotate({ identifier: "DeleteFleetspaceAccountRequest" });
   }
 }
-function __c193(j: number): any {
+function __c199(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17678,7 +18553,7 @@ function __c193(j: number): any {
       ).annotate({ identifier: "DeleteGremlinResourceGremlinDatabaseRequest" });
   }
 }
-function __c194(j: number): any {
+function __c200(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17699,7 +18574,7 @@ function __c194(j: number): any {
       ).annotate({ identifier: "DeleteGremlinResourceGremlinGraphRequest" });
   }
 }
-function __c195(j: number): any {
+function __c201(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17708,7 +18583,7 @@ function __c195(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           dataCenterName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(6272, __c196, 0)),
+          properties: S.optional(__S(6464, __c202, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17720,7 +18595,7 @@ function __c195(j: number): any {
       ).annotate({ identifier: "CassandraDataCentersCreateUpdateRequest" });
   }
 }
-function __c196(j: number): any {
+function __c202(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17736,15 +18611,27 @@ function __c196(j: number): any {
           diskSku: S.optional(S.String),
           diskCapacity: S.optional(S.Number),
           availabilityZone: S.optional(S.Boolean),
-          authenticationMethodLdapProperties: S.optional(__S(6304, __c197, 0)),
+          authenticationMethodLdapProperties: S.optional(__S(6496, __c203, 0)),
           deallocated: S.optional(S.Boolean),
           provisionError: S.optional(__S(32, __c1, 0)),
           privateEndpointIpAddress: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataCenterResourcePropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(6497, __c203, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CassandraDataCentersCreateUpdateResponse" });
   }
 }
-function __c197(j: number): any {
+function __c203(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17774,25 +18661,15 @@ function __c197(j: number): any {
           diskSku: S.optional(S.String),
           diskCapacity: S.optional(S.Number),
           availabilityZone: S.optional(S.Boolean),
-          authenticationMethodLdapProperties: S.optional(__S(6304, __c197, 0)),
+          authenticationMethodLdapProperties: S.optional(__S(6496, __c203, 0)),
           deallocated: S.optional(S.Boolean),
           provisionError: S.optional(__S(32, __c1, 0)),
           privateEndpointIpAddress: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataCenterResourceProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(6305, __c197, 1)),
-        }),
-      ).annotate({ identifier: "CassandraDataCentersCreateUpdateResponse" });
   }
 }
-function __c198(j: number): any {
+function __c204(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17812,7 +18689,7 @@ function __c198(j: number): any {
       ).annotate({ identifier: "DeleteGremlinResourceGremlinRoleAssignmentRequest" });
   }
 }
-function __c199(j: number): any {
+function __c205(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17832,7 +18709,7 @@ function __c199(j: number): any {
       ).annotate({ identifier: "DeleteGremlinResourceGremlinRoleDefinitionRequest" });
   }
 }
-function __c200(j: number): any {
+function __c206(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17853,7 +18730,7 @@ function __c200(j: number): any {
       ).annotate({ identifier: "DeleteMongoDBResourceMongoDBCollectionRequest" });
   }
 }
-function __c201(j: number): any {
+function __c207(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17873,7 +18750,7 @@ function __c201(j: number): any {
       ).annotate({ identifier: "DeleteMongoDBResourceMongoDBDatabaseRequest" });
   }
 }
-function __c202(j: number): any {
+function __c208(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17893,7 +18770,7 @@ function __c202(j: number): any {
       ).annotate({ identifier: "DeleteMongoDBResourceMongoRoleDefinitionRequest" });
   }
 }
-function __c203(j: number): any {
+function __c209(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17913,7 +18790,7 @@ function __c203(j: number): any {
       ).annotate({ identifier: "DeleteMongoDBResourceMongoUserDefinitionRequest" });
   }
 }
-function __c204(j: number): any {
+function __c210(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17933,7 +18810,7 @@ function __c204(j: number): any {
       ).annotate({ identifier: "DeleteMongoMIResourceMongoMIRoleAssignmentRequest" });
   }
 }
-function __c205(j: number): any {
+function __c211(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17953,7 +18830,7 @@ function __c205(j: number): any {
       ).annotate({ identifier: "DeleteMongoMIResourceMongoMIRoleDefinitionRequest" });
   }
 }
-function __c206(j: number): any {
+function __c212(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17973,7 +18850,7 @@ function __c206(j: number): any {
       ).annotate({ identifier: "DeleteNotebookWorkspaceRequest" });
   }
 }
-function __c207(j: number): any {
+function __c213(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17993,7 +18870,7 @@ function __c207(j: number): any {
       ).annotate({ identifier: "DeletePrivateEndpointConnectionRequest" });
   }
 }
-function __c208(j: number): any {
+function __c214(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18004,8 +18881,8 @@ function __c208(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: __S(6656, __c208, 0),
-          options: S.optional(__S(6785, __c212, 1)),
+          resource: __S(6848, __c214, 0),
+          options: S.optional(__S(6977, __c218, 1)),
         }),
       ).annotate({ identifier: "CassandraKeyspaceCreateUpdateProperties" });
     case 2:
@@ -18017,8 +18894,8 @@ function __c208(j: number): any {
           keyspaceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
-          properties: __S(6657, __c208, 1),
+          identity: S.optional(__S(6946, __c217, 2)),
+          properties: __S(6849, __c214, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18028,9 +18905,25 @@ function __c208(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CassandraResourcesCreateUpdateCassandraKeyspaceRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(6881, __c215, 1)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(6914, __c216, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CassandraResourcesCreateUpdateCassandraKeyspaceResponse" });
   }
 }
-function __c209(j: number): any {
+function __c215(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18044,26 +18937,13 @@ function __c209(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(6688, __c209, 0)),
-          options: S.optional(__S(6785, __c212, 1)),
+          resource: S.optional(__S(6880, __c215, 0)),
+          options: S.optional(__S(6977, __c218, 1)),
         }),
       ).annotate({ identifier: "CassandraKeyspaceGetProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(6689, __c209, 1)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6722, __c210, 2)),
-        }),
-      ).annotate({ identifier: "CassandraResourcesCreateUpdateCassandraKeyspaceResponse" });
   }
 }
-function __c210(j: number): any {
+function __c216(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18073,32 +18953,36 @@ function __c210(j: number): any {
         }),
       ).annotate({ identifier: "ManagedServiceIdentityUserAssignedIdentities" });
     case 1:
-      return S.Record(S.String, __S(6720, __c210, 0));
+      return S.Record(S.String, __S(6912, __c216, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(6721, __c210, 1)),
+          userAssignedIdentities: S.optional(__S(6913, __c216, 1)),
         }),
       ).annotate({ identifier: "ManagedServiceIdentity" });
   }
 }
-function __c211(j: number): any {
+function __c217(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(288, __c9, 0));
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ManagedServiceIdentityUserAssignedIdentitiesInput",
+      });
     case 1:
+      return S.Record(S.String, __S(6944, __c217, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(6752, __c211, 0)),
+          userAssignedIdentities: S.optional(__S(6945, __c217, 1)),
         }),
       ).annotate({ identifier: "ManagedServiceIdentityInput" });
   }
 }
-function __c212(j: number): any {
+function __c218(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18110,12 +18994,12 @@ function __c212(j: number): any {
       return S.suspend(() =>
         S.Struct({
           throughput: S.optional(S.Number),
-          autoscaleSettings: S.optional(__S(6784, __c212, 0)),
+          autoscaleSettings: S.optional(__S(6976, __c218, 0)),
         }),
       ).annotate({ identifier: "CreateUpdateOptions" });
   }
 }
-function __c213(j: number): any {
+function __c219(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18135,7 +19019,7 @@ function __c213(j: number): any {
       ).annotate({ identifier: "DeleteServiceRequest" });
   }
 }
-function __c214(j: number): any {
+function __c220(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18156,7 +19040,7 @@ function __c214(j: number): any {
       ).annotate({ identifier: "DeleteSqlResourceSqlContainerRequest" });
   }
 }
-function __c215(j: number): any {
+function __c221(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18176,7 +19060,7 @@ function __c215(j: number): any {
       ).annotate({ identifier: "DeleteSqlResourceSqlDatabaseRequest" });
   }
 }
-function __c216(j: number): any {
+function __c222(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18196,7 +19080,7 @@ function __c216(j: number): any {
       ).annotate({ identifier: "DeleteSqlResourceSqlRoleAssignmentRequest" });
   }
 }
-function __c217(j: number): any {
+function __c223(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18216,7 +19100,7 @@ function __c217(j: number): any {
       ).annotate({ identifier: "DeleteSqlResourceSqlRoleDefinitionRequest" });
   }
 }
-function __c218(j: number): any {
+function __c224(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18238,7 +19122,7 @@ function __c218(j: number): any {
       ).annotate({ identifier: "DeleteSqlResourceSqlStoredProcedureRequest" });
   }
 }
-function __c219(j: number): any {
+function __c225(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18260,7 +19144,7 @@ function __c219(j: number): any {
       ).annotate({ identifier: "DeleteSqlResourceSqlUserDefinedFunctionRequest" });
   }
 }
-function __c220(j: number): any {
+function __c226(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18280,7 +19164,7 @@ function __c220(j: number): any {
       ).annotate({ identifier: "DeleteTableResourceTableRequest" });
   }
 }
-function __c221(j: number): any {
+function __c227(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18300,7 +19184,7 @@ function __c221(j: number): any {
       ).annotate({ identifier: "DeleteTableResourceTableRoleAssignmentRequest" });
   }
 }
-function __c222(j: number): any {
+function __c228(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18320,7 +19204,7 @@ function __c222(j: number): any {
       ).annotate({ identifier: "DeleteTableResourceTableRoleDefinitionRequest" });
   }
 }
-function __c223(j: number): any {
+function __c229(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18329,7 +19213,7 @@ function __c223(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           roleAssignmentId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(7200, __c225, 0)),
+          properties: S.optional(__S(7424, __c232, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18341,7 +19225,24 @@ function __c223(j: number): any {
       ).annotate({ identifier: "CassandraResourcesCreateUpdateCassandraRoleAssignmentRequest" });
   }
 }
-function __c224(j: number): any {
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(7392, __c231, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CassandraResourcesCreateUpdateCassandraRoleAssignmentResponse" });
+  }
+}
+function __c231(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18352,19 +19253,9 @@ function __c224(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "CassandraRoleAssignmentResourceProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(7168, __c224, 0)),
-        }),
-      ).annotate({ identifier: "CassandraResourcesCreateUpdateCassandraRoleAssignmentResponse" });
   }
 }
-function __c225(j: number): any {
+function __c232(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18376,7 +19267,7 @@ function __c225(j: number): any {
       ).annotate({ identifier: "CassandraRoleAssignmentResourcePropertiesInput" });
   }
 }
-function __c226(j: number): any {
+function __c233(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18395,7 +19286,24 @@ function __c226(j: number): any {
       ).annotate({ identifier: "GetCassandraClusterRequest" });
   }
 }
-function __c227(j: number): any {
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(226, __c7, 2)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(227, __c7, 3)),
+        }),
+      ).annotate({ identifier: "GetCassandraClusterResponse" });
+  }
+}
+function __c235(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18415,7 +19323,21 @@ function __c227(j: number): any {
       ).annotate({ identifier: "GetCassandraDataCenterRequest" });
   }
 }
-function __c228(j: number): any {
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(6497, __c203, 1)),
+        }),
+      ).annotate({ identifier: "GetCassandraDataCenterResponse" });
+  }
+}
+function __c237(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18435,7 +19357,24 @@ function __c228(j: number): any {
       ).annotate({ identifier: "GetCassandraResourceCassandraKeyspaceRequest" });
   }
 }
-function __c229(j: number): any {
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(6881, __c215, 1)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(6914, __c216, 2)),
+        }),
+      ).annotate({ identifier: "GetCassandraResourceCassandraKeyspaceResponse" });
+  }
+}
+function __c239(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18455,7 +19394,24 @@ function __c229(j: number): any {
       ).annotate({ identifier: "GetCassandraResourceCassandraKeyspaceThroughputRequest" });
   }
 }
-function __c230(j: number): any {
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(7716, __c241, 4)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(6914, __c216, 2)),
+        }),
+      ).annotate({ identifier: "GetCassandraResourceCassandraKeyspaceThroughputResponse" });
+  }
+}
+function __c241(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18467,14 +19423,14 @@ function __c230(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          throughputPolicy: S.optional(__S(7360, __c230, 0)),
+          throughputPolicy: S.optional(__S(7712, __c241, 0)),
         }),
       ).annotate({ identifier: "AutoUpgradePolicyResource" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           maxThroughput: S.Number,
-          autoUpgradePolicy: S.optional(__S(7361, __c230, 1)),
+          autoUpgradePolicy: S.optional(__S(7713, __c241, 1)),
           targetMaxThroughput: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AutoscaleSettingsResource" });
@@ -18482,7 +19438,7 @@ function __c230(j: number): any {
       return S.suspend(() =>
         S.Struct({
           throughput: S.optional(S.Number),
-          autoscaleSettings: S.optional(__S(7362, __c230, 2)),
+          autoscaleSettings: S.optional(__S(7714, __c241, 2)),
           minimumThroughput: S.optional(S.String),
           offerReplacePending: S.optional(S.String),
           instantMaximumThroughput: S.optional(S.String),
@@ -18495,25 +19451,12 @@ function __c230(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(7363, __c230, 3)),
+          resource: S.optional(__S(7715, __c241, 3)),
         }),
       ).annotate({ identifier: "ThroughputSettingsGetProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(7364, __c230, 4)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6722, __c210, 2)),
-        }),
-      ).annotate({ identifier: "GetCassandraResourceCassandraKeyspaceThroughputResponse" });
   }
 }
-function __c231(j: number): any {
+function __c242(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18533,7 +19476,21 @@ function __c231(j: number): any {
       ).annotate({ identifier: "GetCassandraResourceCassandraRoleAssignmentRequest" });
   }
 }
-function __c232(j: number): any {
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(7392, __c231, 0)),
+        }),
+      ).annotate({ identifier: "GetCassandraResourceCassandraRoleAssignmentResponse" });
+  }
+}
+function __c244(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18553,7 +19510,21 @@ function __c232(j: number): any {
       ).annotate({ identifier: "GetCassandraResourceCassandraRoleDefinitionRequest" });
   }
 }
-function __c233(j: number): any {
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(8160, __c255, 0)),
+        }),
+      ).annotate({ identifier: "GetCassandraResourceCassandraRoleDefinitionResponse" });
+  }
+}
+function __c246(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18574,7 +19545,24 @@ function __c233(j: number): any {
       ).annotate({ identifier: "GetCassandraResourceCassandraTableRequest" });
   }
 }
-function __c234(j: number): any {
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(8934, __c279, 6)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(6914, __c216, 2)),
+        }),
+      ).annotate({ identifier: "GetCassandraResourceCassandraTableResponse" });
+  }
+}
+function __c248(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18595,7 +19583,7 @@ function __c234(j: number): any {
       ).annotate({ identifier: "GetCassandraResourceCassandraTableThroughputRequest" });
   }
 }
-function __c235(j: number): any {
+function __c249(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18614,7 +19602,25 @@ function __c235(j: number): any {
       ).annotate({ identifier: "GetDatabaseAccountRequest" });
   }
 }
-function __c236(j: number): any {
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(1559, __c48, 23)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(6914, __c216, 2)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetDatabaseAccountResponse" });
+  }
+}
+function __c251(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18633,7 +19639,7 @@ function __c236(j: number): any {
       ).annotate({ identifier: "GetFleetRequest" });
   }
 }
-function __c237(j: number): any {
+function __c252(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18642,7 +19648,7 @@ function __c237(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           roleDefinitionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(7648, __c239, 0)),
+          properties: S.optional(__S(8160, __c255, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18654,7 +19660,24 @@ function __c237(j: number): any {
       ).annotate({ identifier: "CassandraResourcesCreateUpdateCassandraRoleDefinitionRequest" });
   }
 }
-function __c238(j: number): any {
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(8160, __c255, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CassandraResourcesCreateUpdateCassandraRoleDefinitionResponse" });
+  }
+}
+function __c254(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18665,10 +19688,10 @@ function __c238(j: number): any {
         }),
       ).annotate({ identifier: "Permission" });
     case 1:
-      return S.Array(__S(7616, __c238, 0));
+      return S.Array(__S(8128, __c254, 0));
   }
 }
-function __c239(j: number): any {
+function __c255(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18677,22 +19700,12 @@ function __c239(j: number): any {
           roleName: S.optional(S.String),
           type: S.optional(S.String),
           assignableScopes: S.optional(__S(96, __c3, 0)),
-          permissions: S.optional(__S(7617, __c238, 1)),
+          permissions: S.optional(__S(8129, __c254, 1)),
         }),
       ).annotate({ identifier: "CassandraRoleDefinitionResourceProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(7648, __c239, 0)),
-        }),
-      ).annotate({ identifier: "CassandraResourcesCreateUpdateCassandraRoleDefinitionResponse" });
   }
 }
-function __c240(j: number): any {
+function __c256(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18712,7 +19725,21 @@ function __c240(j: number): any {
       ).annotate({ identifier: "GetFleetspaceRequest" });
   }
 }
-function __c241(j: number): any {
+function __c257(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(10305, __c322, 1)),
+        }),
+      ).annotate({ identifier: "GetFleetspaceResponse" });
+  }
+}
+function __c258(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18733,7 +19760,21 @@ function __c241(j: number): any {
       ).annotate({ identifier: "GetFleetspaceAccountRequest" });
   }
 }
-function __c242(j: number): any {
+function __c259(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(353, __c11, 1)),
+        }),
+      ).annotate({ identifier: "GetFleetspaceAccountResponse" });
+  }
+}
+function __c260(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18755,7 +19796,7 @@ function __c242(j: number): any {
       ).annotate({ identifier: "GetGremlinResourceContinuousBackupInformationRequest" });
   }
 }
-function __c243(j: number): any {
+function __c261(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18766,12 +19807,14 @@ function __c243(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          continuousBackupInformation: S.optional(__S(7776, __c243, 0)),
+          continuousBackupInformation: S.optional(__S(8352, __c261, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "BackupInformation" });
   }
 }
-function __c244(j: number): any {
+function __c262(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18791,7 +19834,7 @@ function __c244(j: number): any {
       ).annotate({ identifier: "GetGremlinResourceGremlinDatabaseRequest" });
   }
 }
-function __c245(j: number): any {
+function __c263(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18803,13 +19846,30 @@ function __c245(j: number): any {
       ).annotate({ identifier: "RestoreParametersBase" });
   }
 }
-function __c246(j: number): any {
+function __c264(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(8481, __c265, 1)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(6914, __c216, 2)),
+        }),
+      ).annotate({ identifier: "GetGremlinResourceGremlinDatabaseResponse" });
+  }
+}
+function __c265(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          restoreParameters: S.optional(__S(7840, __c245, 0)),
+          restoreParameters: S.optional(__S(8416, __c263, 0)),
           createMode: S.optional(S.String),
           _rid: S.optional(S.String),
           _ts: S.optional(S.Number),
@@ -18819,26 +19879,13 @@ function __c246(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(7872, __c246, 0)),
-          options: S.optional(__S(6785, __c212, 1)),
+          resource: S.optional(__S(8480, __c265, 0)),
+          options: S.optional(__S(6977, __c218, 1)),
         }),
       ).annotate({ identifier: "GremlinDatabaseGetProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(7873, __c246, 1)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6722, __c210, 2)),
-        }),
-      ).annotate({ identifier: "GetGremlinResourceGremlinDatabaseResponse" });
   }
 }
-function __c247(j: number): any {
+function __c266(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18858,7 +19905,7 @@ function __c247(j: number): any {
       ).annotate({ identifier: "GetGremlinResourceGremlinDatabaseThroughputRequest" });
   }
 }
-function __c248(j: number): any {
+function __c267(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18879,19 +19926,19 @@ function __c248(j: number): any {
       ).annotate({ identifier: "GetGremlinResourceGremlinGraphRequest" });
   }
 }
-function __c249(j: number): any {
+function __c268(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          indexingPolicy: S.optional(__S(8047, __c251, 15)),
-          partitionKey: S.optional(__S(8048, __c251, 16)),
+          indexingPolicy: S.optional(__S(8687, __c271, 15)),
+          partitionKey: S.optional(__S(8688, __c271, 16)),
           defaultTtl: S.optional(S.Number),
-          uniqueKeyPolicy: S.optional(__S(8051, __c251, 19)),
-          conflictResolutionPolicy: S.optional(__S(8052, __c251, 20)),
+          uniqueKeyPolicy: S.optional(__S(8691, __c271, 19)),
+          conflictResolutionPolicy: S.optional(__S(8692, __c271, 20)),
           analyticalStorageTtl: S.optional(S.Number),
-          restoreParameters: S.optional(__S(7840, __c245, 0)),
+          restoreParameters: S.optional(__S(8416, __c263, 0)),
           createMode: S.optional(S.String),
           _rid: S.optional(S.String),
           _ts: S.optional(S.Number),
@@ -18901,32 +19948,36 @@ function __c249(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(7968, __c249, 0)),
-          options: S.optional(__S(6785, __c212, 1)),
+          resource: S.optional(__S(8576, __c268, 0)),
+          options: S.optional(__S(6977, __c218, 1)),
         }),
       ).annotate({ identifier: "GremlinGraphGetProperties" });
-    case 2:
+  }
+}
+function __c269(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(7969, __c249, 1)),
+          properties: S.optional(__S(8577, __c268, 1)),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6722, __c210, 2)),
+          identity: S.optional(__S(6914, __c216, 2)),
         }),
       ).annotate({ identifier: "GetGremlinResourceGremlinGraphResponse" });
   }
 }
-function __c250(j: number): any {
+function __c270(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c251(j: number): any {
+function __c271(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18937,16 +19988,16 @@ function __c251(j: number): any {
         }),
       ).annotate({ identifier: "Indexes" });
     case 1:
-      return S.Array(__S(8032, __c251, 0));
+      return S.Array(__S(8672, __c271, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
-          indexes: S.optional(__S(8033, __c251, 1)),
+          indexes: S.optional(__S(8673, __c271, 1)),
         }),
       ).annotate({ identifier: "IncludedPath" });
     case 3:
-      return S.Array(__S(8034, __c251, 2));
+      return S.Array(__S(8674, __c271, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -18954,7 +20005,7 @@ function __c251(j: number): any {
         }),
       ).annotate({ identifier: "ExcludedPath" });
     case 5:
-      return S.Array(__S(8036, __c251, 4));
+      return S.Array(__S(8676, __c271, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -18963,18 +20014,18 @@ function __c251(j: number): any {
         }),
       ).annotate({ identifier: "CompositePath" });
     case 7:
-      return S.Array(__S(8038, __c251, 6));
+      return S.Array(__S(8678, __c271, 6));
     case 8:
-      return S.Array(__S(8039, __c251, 7));
+      return S.Array(__S(8679, __c271, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
-          types: S.optional(__S(8000, __c250, 0)),
+          types: S.optional(__S(8640, __c270, 0)),
         }),
       ).annotate({ identifier: "SpatialSpec" });
     case 10:
-      return S.Array(__S(8041, __c251, 9));
+      return S.Array(__S(8681, __c271, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
@@ -18986,7 +20037,7 @@ function __c251(j: number): any {
         }),
       ).annotate({ identifier: "VectorIndex" });
     case 12:
-      return S.Array(__S(8043, __c251, 11));
+      return S.Array(__S(8683, __c271, 11));
     case 13:
       return S.suspend(() =>
         S.Struct({
@@ -18994,18 +20045,18 @@ function __c251(j: number): any {
         }),
       ).annotate({ identifier: "FullTextIndexPath" });
     case 14:
-      return S.Array(__S(8045, __c251, 13));
+      return S.Array(__S(8685, __c271, 13));
     case 15:
       return S.suspend(() =>
         S.Struct({
           automatic: S.optional(S.Boolean),
           indexingMode: S.optional(S.String),
-          includedPaths: S.optional(__S(8035, __c251, 3)),
-          excludedPaths: S.optional(__S(8037, __c251, 5)),
-          compositeIndexes: S.optional(__S(8040, __c251, 8)),
-          spatialIndexes: S.optional(__S(8042, __c251, 10)),
-          vectorIndexes: S.optional(__S(8044, __c251, 12)),
-          fullTextIndexes: S.optional(__S(8046, __c251, 14)),
+          includedPaths: S.optional(__S(8675, __c271, 3)),
+          excludedPaths: S.optional(__S(8677, __c271, 5)),
+          compositeIndexes: S.optional(__S(8680, __c271, 8)),
+          spatialIndexes: S.optional(__S(8682, __c271, 10)),
+          vectorIndexes: S.optional(__S(8684, __c271, 12)),
+          fullTextIndexes: S.optional(__S(8686, __c271, 14)),
         }),
       ).annotate({ identifier: "IndexingPolicy" });
     case 16:
@@ -19024,11 +20075,11 @@ function __c251(j: number): any {
         }),
       ).annotate({ identifier: "UniqueKey" });
     case 18:
-      return S.Array(__S(8049, __c251, 17));
+      return S.Array(__S(8689, __c271, 17));
     case 19:
       return S.suspend(() =>
         S.Struct({
-          uniqueKeys: S.optional(__S(8050, __c251, 18)),
+          uniqueKeys: S.optional(__S(8690, __c271, 18)),
         }),
       ).annotate({ identifier: "UniqueKeyPolicy" });
     case 20:
@@ -19041,7 +20092,7 @@ function __c251(j: number): any {
       ).annotate({ identifier: "ConflictResolutionPolicy" });
   }
 }
-function __c252(j: number): any {
+function __c272(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19062,7 +20113,7 @@ function __c252(j: number): any {
       ).annotate({ identifier: "GetGremlinResourceGremlinGraphThroughputRequest" });
   }
 }
-function __c253(j: number): any {
+function __c273(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19082,7 +20133,7 @@ function __c253(j: number): any {
       ).annotate({ identifier: "GetGremlinResourceGremlinRoleAssignmentRequest" });
   }
 }
-function __c254(j: number): any {
+function __c274(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19102,7 +20153,7 @@ function __c254(j: number): any {
       ).annotate({ identifier: "GetGremlinResourceGremlinRoleDefinitionRequest" });
   }
 }
-function __c255(j: number): any {
+function __c275(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19120,14 +20171,14 @@ function __c255(j: number): any {
       ).annotate({ identifier: "GetLocationRequest" });
   }
 }
-function __c256(j: number): any {
+function __c276(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           supportsAvailabilityZone: S.optional(S.Boolean),
           isResidencyRestricted: S.optional(S.Boolean),
-          backupStorageRedundancies: S.optional(__S(8000, __c250, 0)),
+          backupStorageRedundancies: S.optional(__S(8640, __c270, 0)),
           isSubscriptionRegionAccessAllowedForRegular: S.optional(S.Boolean),
           isSubscriptionRegionAccessAllowedForAz: S.optional(S.Boolean),
           status: S.optional(S.String),
@@ -19140,27 +20191,27 @@ function __c256(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(8192, __c256, 0)),
+          properties: S.optional(__S(8832, __c276, 0)),
         }),
       ).annotate({ identifier: "GetLocationResponse" });
   }
 }
-function __c257(j: number): any {
+function __c277(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           defaultTtl: S.optional(S.Number),
-          schema: S.optional(__S(8292, __c259, 4)),
+          schema: S.optional(__S(8932, __c279, 4)),
           analyticalStorageTtl: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CassandraTableResource" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: __S(8224, __c257, 0),
-          options: S.optional(__S(6785, __c212, 1)),
+          resource: __S(8864, __c277, 0),
+          options: S.optional(__S(6977, __c218, 1)),
         }),
       ).annotate({ identifier: "CassandraTableCreateUpdateProperties" });
     case 2:
@@ -19173,8 +20224,8 @@ function __c257(j: number): any {
           tableName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
-          properties: __S(8225, __c257, 1),
+          identity: S.optional(__S(6946, __c217, 2)),
+          properties: __S(8865, __c277, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19184,9 +20235,25 @@ function __c257(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CassandraResourcesCreateUpdateCassandraTableRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(8934, __c279, 6)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(6914, __c216, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CassandraResourcesCreateUpdateCassandraTableResponse" });
   }
 }
-function __c258(j: number): any {
+function __c278(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19195,10 +20262,10 @@ function __c258(j: number): any {
         }),
       ).annotate({ identifier: "CassandraPartitionKey" });
     case 1:
-      return S.Array(__S(8256, __c258, 0));
+      return S.Array(__S(8896, __c278, 0));
   }
 }
-function __c259(j: number): any {
+function __c279(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19208,7 +20275,7 @@ function __c259(j: number): any {
         }),
       ).annotate({ identifier: "Column" });
     case 1:
-      return S.Array(__S(8288, __c259, 0));
+      return S.Array(__S(8928, __c279, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -19217,13 +20284,13 @@ function __c259(j: number): any {
         }),
       ).annotate({ identifier: "ClusterKey" });
     case 3:
-      return S.Array(__S(8290, __c259, 2));
+      return S.Array(__S(8930, __c279, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(__S(8289, __c259, 1)),
-          partitionKeys: S.optional(__S(8257, __c258, 1)),
-          clusterKeys: S.optional(__S(8291, __c259, 3)),
+          columns: S.optional(__S(8929, __c279, 1)),
+          partitionKeys: S.optional(__S(8897, __c278, 1)),
+          clusterKeys: S.optional(__S(8931, __c279, 3)),
         }),
       ).annotate({ identifier: "CassandraSchema" });
     case 5:
@@ -19231,7 +20298,7 @@ function __c259(j: number): any {
         S.Struct({
           id: S.String,
           defaultTtl: S.optional(S.Number),
-          schema: S.optional(__S(8292, __c259, 4)),
+          schema: S.optional(__S(8932, __c279, 4)),
           analyticalStorageTtl: S.optional(S.Number),
           _rid: S.optional(S.String),
           _ts: S.optional(S.Number),
@@ -19241,26 +20308,13 @@ function __c259(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(8293, __c259, 5)),
-          options: S.optional(__S(6785, __c212, 1)),
+          resource: S.optional(__S(8933, __c279, 5)),
+          options: S.optional(__S(6977, __c218, 1)),
         }),
       ).annotate({ identifier: "CassandraTableGetProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(8294, __c259, 6)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6722, __c210, 2)),
-        }),
-      ).annotate({ identifier: "CassandraResourcesCreateUpdateCassandraTableResponse" });
   }
 }
-function __c260(j: number): any {
+function __c280(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19282,7 +20336,7 @@ function __c260(j: number): any {
       ).annotate({ identifier: "GetMongoDBResourceContinuousBackupInformationRequest" });
   }
 }
-function __c261(j: number): any {
+function __c281(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19303,7 +20357,24 @@ function __c261(j: number): any {
       ).annotate({ identifier: "GetMongoDBResourceMongoDBCollectionRequest" });
   }
 }
-function __c262(j: number): any {
+function __c282(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(9061, __c283, 5)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(6914, __c216, 2)),
+        }),
+      ).annotate({ identifier: "GetMongoDBResourceMongoDBCollectionResponse" });
+  }
+}
+function __c283(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19321,20 +20392,20 @@ function __c262(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          key: S.optional(__S(8384, __c262, 0)),
-          options: S.optional(__S(8385, __c262, 1)),
+          key: S.optional(__S(9056, __c283, 0)),
+          options: S.optional(__S(9057, __c283, 1)),
         }),
       ).annotate({ identifier: "MongoIndex" });
     case 3:
-      return S.Array(__S(8386, __c262, 2));
+      return S.Array(__S(9058, __c283, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           shardKey: S.optional(__S(64, __c2, 0)),
-          indexes: S.optional(__S(8387, __c262, 3)),
+          indexes: S.optional(__S(9059, __c283, 3)),
           analyticalStorageTtl: S.optional(S.Number),
-          restoreParameters: S.optional(__S(7840, __c245, 0)),
+          restoreParameters: S.optional(__S(8416, __c263, 0)),
           createMode: S.optional(S.String),
           _rid: S.optional(S.String),
           _ts: S.optional(S.Number),
@@ -19344,26 +20415,13 @@ function __c262(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(8388, __c262, 4)),
-          options: S.optional(__S(6785, __c212, 1)),
+          resource: S.optional(__S(9060, __c283, 4)),
+          options: S.optional(__S(6977, __c218, 1)),
         }),
       ).annotate({ identifier: "MongoDBCollectionGetProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(8389, __c262, 5)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6722, __c210, 2)),
-        }),
-      ).annotate({ identifier: "GetMongoDBResourceMongoDBCollectionResponse" });
   }
 }
-function __c263(j: number): any {
+function __c284(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19384,7 +20442,7 @@ function __c263(j: number): any {
       ).annotate({ identifier: "GetMongoDBResourceMongoDBCollectionThroughputRequest" });
   }
 }
-function __c264(j: number): any {
+function __c285(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19404,7 +20462,7 @@ function __c264(j: number): any {
       ).annotate({ identifier: "GetMongoDBResourceMongoDBDatabaseRequest" });
   }
 }
-function __c265(j: number): any {
+function __c286(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19424,7 +20482,7 @@ function __c265(j: number): any {
       ).annotate({ identifier: "GetMongoDBResourceMongoDBDatabaseThroughputRequest" });
   }
 }
-function __c266(j: number): any {
+function __c287(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19444,7 +20502,21 @@ function __c266(j: number): any {
       ).annotate({ identifier: "GetMongoDBResourceMongoRoleDefinitionRequest" });
   }
 }
-function __c267(j: number): any {
+function __c288(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(9251, __c289, 3)),
+        }),
+      ).annotate({ identifier: "GetMongoDBResourceMongoRoleDefinitionResponse" });
+  }
+}
+function __c289(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19456,35 +20528,25 @@ function __c267(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(8544, __c267, 0)),
+          resource: S.optional(__S(9248, __c289, 0)),
           actions: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({ identifier: "Privilege" });
     case 2:
-      return S.Array(__S(8545, __c267, 1));
+      return S.Array(__S(9249, __c289, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           roleName: S.optional(S.String),
           type: S.optional(S.String),
           databaseName: S.optional(S.String),
-          privileges: S.optional(__S(8546, __c267, 2)),
-          roles: S.optional(__S(8577, __c268, 1)),
+          privileges: S.optional(__S(9250, __c289, 2)),
+          roles: S.optional(__S(9281, __c290, 1)),
         }),
       ).annotate({ identifier: "MongoRoleDefinitionResource" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(8547, __c267, 3)),
-        }),
-      ).annotate({ identifier: "GetMongoDBResourceMongoRoleDefinitionResponse" });
   }
 }
-function __c268(j: number): any {
+function __c290(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19494,10 +20556,10 @@ function __c268(j: number): any {
         }),
       ).annotate({ identifier: "Role" });
     case 1:
-      return S.Array(__S(8576, __c268, 0));
+      return S.Array(__S(9280, __c290, 0));
   }
 }
-function __c269(j: number): any {
+function __c291(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19517,7 +20579,21 @@ function __c269(j: number): any {
       ).annotate({ identifier: "GetMongoDBResourceMongoUserDefinitionRequest" });
   }
 }
-function __c270(j: number): any {
+function __c292(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(9376, __c293, 0)),
+        }),
+      ).annotate({ identifier: "GetMongoDBResourceMongoUserDefinitionResponse" });
+  }
+}
+function __c293(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19526,23 +20602,13 @@ function __c270(j: number): any {
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           databaseName: S.optional(S.String),
           customData: S.optional(S.String),
-          roles: S.optional(__S(8577, __c268, 1)),
+          roles: S.optional(__S(9281, __c290, 1)),
           mechanisms: S.optional(S.String),
         }),
       ).annotate({ identifier: "MongoUserDefinitionResource" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(8640, __c270, 0)),
-        }),
-      ).annotate({ identifier: "GetMongoDBResourceMongoUserDefinitionResponse" });
   }
 }
-function __c271(j: number): any {
+function __c294(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19562,7 +20628,7 @@ function __c271(j: number): any {
       ).annotate({ identifier: "GetMongoMIResourceMongoMIRoleAssignmentRequest" });
   }
 }
-function __c272(j: number): any {
+function __c295(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19582,7 +20648,7 @@ function __c272(j: number): any {
       ).annotate({ identifier: "GetMongoMIResourceMongoMIRoleDefinitionRequest" });
   }
 }
-function __c273(j: number): any {
+function __c296(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19602,7 +20668,21 @@ function __c273(j: number): any {
       ).annotate({ identifier: "GetNotebookWorkspaceRequest" });
   }
 }
-function __c274(j: number): any {
+function __c297(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(9536, __c298, 0)),
+        }),
+      ).annotate({ identifier: "GetNotebookWorkspaceResponse" });
+  }
+}
+function __c298(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19611,19 +20691,9 @@ function __c274(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotebookWorkspaceProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(8768, __c274, 0)),
-        }),
-      ).annotate({ identifier: "GetNotebookWorkspaceResponse" });
   }
 }
-function __c275(j: number): any {
+function __c299(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19633,7 +20703,7 @@ function __c275(j: number): any {
           fleetName: S.String.pipe(T.Label()),
           tags: S.optional(__S(64, __c2, 0)),
           location: S.String,
-          properties: S.optional(__S(8832, __c276, 0)),
+          properties: S.optional(__S(9600, __c300, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19645,7 +20715,7 @@ function __c275(j: number): any {
       ).annotate({ identifier: "CreateFleetRequest" });
   }
 }
-function __c276(j: number): any {
+function __c300(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19662,12 +20732,12 @@ function __c276(j: number): any {
           systemData: S.optional(__S(160, __c5, 0)),
           tags: S.optional(__S(64, __c2, 0)),
           location: S.String,
-          properties: S.optional(__S(8832, __c276, 0)),
+          properties: S.optional(__S(9600, __c300, 0)),
         }),
       ).annotate({ identifier: "CreateFleetResponse" });
   }
 }
-function __c277(j: number): any {
+function __c301(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19687,7 +20757,7 @@ function __c277(j: number): any {
       ).annotate({ identifier: "GetPrivateEndpointConnectionRequest" });
   }
 }
-function __c278(j: number): any {
+function __c302(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19707,7 +20777,7 @@ function __c278(j: number): any {
       ).annotate({ identifier: "GetPrivateLinkResourceRequest" });
   }
 }
-function __c279(j: number): any {
+function __c303(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19724,12 +20794,12 @@ function __c279(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(8928, __c279, 0)),
+          properties: S.optional(__S(9696, __c303, 0)),
         }),
       ).annotate({ identifier: "GetPrivateLinkResourceResponse" });
   }
 }
-function __c280(j: number): any {
+function __c304(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19748,7 +20818,7 @@ function __c280(j: number): any {
       ).annotate({ identifier: "GetRestorableDatabaseAccountByLocationRequest" });
   }
 }
-function __c281(j: number): any {
+function __c305(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19760,7 +20830,7 @@ function __c281(j: number): any {
         }),
       ).annotate({ identifier: "RestorableLocationResource" });
     case 1:
-      return S.Array(__S(8992, __c281, 0));
+      return S.Array(__S(9760, __c305, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -19769,7 +20839,7 @@ function __c281(j: number): any {
           oldestRestorableTime: S.optional(S.String),
           deletionTime: S.optional(S.String),
           apiType: S.optional(S.String),
-          restorableLocations: S.optional(__S(8993, __c281, 1)),
+          restorableLocations: S.optional(__S(9761, __c305, 1)),
         }),
       ).annotate({ identifier: "RestorableDatabaseAccountProperties" });
     case 3:
@@ -19779,13 +20849,13 @@ function __c281(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(8994, __c281, 2)),
+          properties: S.optional(__S(9762, __c305, 2)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetRestorableDatabaseAccountByLocationResponse" });
   }
 }
-function __c282(j: number): any {
+function __c306(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19805,7 +20875,21 @@ function __c282(j: number): any {
       ).annotate({ identifier: "GetServiceRequest" });
   }
 }
-function __c283(j: number): any {
+function __c307(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(864, __c27, 0)),
+        }),
+      ).annotate({ identifier: "GetServiceResponse" });
+  }
+}
+function __c308(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19826,7 +20910,21 @@ function __c283(j: number): any {
       ).annotate({ identifier: "GetSqlResourceClientEncryptionKeyRequest" });
   }
 }
-function __c284(j: number): any {
+function __c309(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(9922, __c310, 2)),
+        }),
+      ).annotate({ identifier: "GetSqlResourceClientEncryptionKeyResponse" });
+  }
+}
+function __c310(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19843,7 +20941,7 @@ function __c284(j: number): any {
           id: S.optional(S.String),
           encryptionAlgorithm: S.optional(S.String),
           wrappedDataEncryptionKey: S.optional(S.String),
-          keyWrapMetadata: S.optional(__S(9088, __c284, 0)),
+          keyWrapMetadata: S.optional(__S(9920, __c310, 0)),
           _rid: S.optional(S.String),
           _ts: S.optional(S.Number),
           _etag: S.optional(S.String),
@@ -19852,22 +20950,12 @@ function __c284(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(9089, __c284, 1)),
+          resource: S.optional(__S(9921, __c310, 1)),
         }),
       ).annotate({ identifier: "ClientEncryptionKeyGetProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(9090, __c284, 2)),
-        }),
-      ).annotate({ identifier: "GetSqlResourceClientEncryptionKeyResponse" });
   }
 }
-function __c285(j: number): any {
+function __c311(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19889,7 +20977,7 @@ function __c285(j: number): any {
       ).annotate({ identifier: "GetSqlResourceContinuousBackupInformationRequest" });
   }
 }
-function __c286(j: number): any {
+function __c312(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19910,7 +20998,7 @@ function __c286(j: number): any {
       ).annotate({ identifier: "GetSqlResourceSqlContainerRequest" });
   }
 }
-function __c287(j: number): any {
+function __c313(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19922,11 +21010,11 @@ function __c287(j: number): any {
         }),
       ).annotate({ identifier: "ClientEncryptionIncludedPath" });
     case 1:
-      return S.Array(__S(9184, __c287, 0));
+      return S.Array(__S(10016, __c313, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          includedPaths: __S(9185, __c287, 1),
+          includedPaths: __S(10017, __c313, 1),
           policyFormatVersion: S.Number,
         }),
       ).annotate({ identifier: "ClientEncryptionPolicy" });
@@ -19938,7 +21026,7 @@ function __c287(j: number): any {
         }),
       ).annotate({ identifier: "ComputedProperty" });
     case 4:
-      return S.Array(__S(9187, __c287, 3));
+      return S.Array(__S(10019, __c313, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -19949,11 +21037,11 @@ function __c287(j: number): any {
         }),
       ).annotate({ identifier: "VectorEmbedding" });
     case 6:
-      return S.Array(__S(9189, __c287, 5));
+      return S.Array(__S(10021, __c313, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          vectorEmbeddings: S.optional(__S(9190, __c287, 6)),
+          vectorEmbeddings: S.optional(__S(10022, __c313, 6)),
         }),
       ).annotate({ identifier: "VectorEmbeddingPolicy" });
     case 8:
@@ -19964,34 +21052,51 @@ function __c287(j: number): any {
         }),
       ).annotate({ identifier: "FullTextPath" });
     case 9:
-      return S.Array(__S(9192, __c287, 8));
+      return S.Array(__S(10024, __c313, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
           defaultLanguage: S.optional(S.String),
-          fullTextPaths: S.optional(__S(9193, __c287, 9)),
+          fullTextPaths: S.optional(__S(10025, __c313, 9)),
         }),
       ).annotate({ identifier: "FullTextPolicy" });
   }
 }
-function __c288(j: number): any {
+function __c314(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(10081, __c315, 1)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(6914, __c216, 2)),
+        }),
+      ).annotate({ identifier: "GetSqlResourceSqlContainerResponse" });
+  }
+}
+function __c315(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          indexingPolicy: S.optional(__S(8047, __c251, 15)),
-          partitionKey: S.optional(__S(8048, __c251, 16)),
+          indexingPolicy: S.optional(__S(8687, __c271, 15)),
+          partitionKey: S.optional(__S(8688, __c271, 16)),
           defaultTtl: S.optional(S.Number),
-          uniqueKeyPolicy: S.optional(__S(8051, __c251, 19)),
-          conflictResolutionPolicy: S.optional(__S(8052, __c251, 20)),
-          clientEncryptionPolicy: S.optional(__S(9186, __c287, 2)),
+          uniqueKeyPolicy: S.optional(__S(8691, __c271, 19)),
+          conflictResolutionPolicy: S.optional(__S(8692, __c271, 20)),
+          clientEncryptionPolicy: S.optional(__S(10018, __c313, 2)),
           analyticalStorageTtl: S.optional(S.Number),
-          restoreParameters: S.optional(__S(7840, __c245, 0)),
+          restoreParameters: S.optional(__S(8416, __c263, 0)),
           createMode: S.optional(S.String),
-          computedProperties: S.optional(__S(9188, __c287, 4)),
-          vectorEmbeddingPolicy: S.optional(__S(9191, __c287, 7)),
-          fullTextPolicy: S.optional(__S(9194, __c287, 10)),
+          computedProperties: S.optional(__S(10020, __c313, 4)),
+          vectorEmbeddingPolicy: S.optional(__S(10023, __c313, 7)),
+          fullTextPolicy: S.optional(__S(10026, __c313, 10)),
           _rid: S.optional(S.String),
           _ts: S.optional(S.Number),
           _etag: S.optional(S.String),
@@ -20000,26 +21105,13 @@ function __c288(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(9216, __c288, 0)),
-          options: S.optional(__S(6785, __c212, 1)),
+          resource: S.optional(__S(10080, __c315, 0)),
+          options: S.optional(__S(6977, __c218, 1)),
         }),
       ).annotate({ identifier: "SqlContainerGetProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(9217, __c288, 1)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6722, __c210, 2)),
-        }),
-      ).annotate({ identifier: "GetSqlResourceSqlContainerResponse" });
   }
 }
-function __c289(j: number): any {
+function __c316(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20040,7 +21132,7 @@ function __c289(j: number): any {
       ).annotate({ identifier: "GetSqlResourceSqlContainerThroughputRequest" });
   }
 }
-function __c290(j: number): any {
+function __c317(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20060,13 +21152,30 @@ function __c290(j: number): any {
       ).annotate({ identifier: "GetSqlResourceSqlDatabaseRequest" });
   }
 }
-function __c291(j: number): any {
+function __c318(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(10209, __c319, 1)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(6914, __c216, 2)),
+        }),
+      ).annotate({ identifier: "GetSqlResourceSqlDatabaseResponse" });
+  }
+}
+function __c319(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          restoreParameters: S.optional(__S(7840, __c245, 0)),
+          restoreParameters: S.optional(__S(8416, __c263, 0)),
           createMode: S.optional(S.String),
           _rid: S.optional(S.String),
           _ts: S.optional(S.Number),
@@ -20078,26 +21187,13 @@ function __c291(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(9312, __c291, 0)),
-          options: S.optional(__S(6785, __c212, 1)),
+          resource: S.optional(__S(10208, __c319, 0)),
+          options: S.optional(__S(6977, __c218, 1)),
         }),
       ).annotate({ identifier: "SqlDatabaseGetProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(9313, __c291, 1)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6722, __c210, 2)),
-        }),
-      ).annotate({ identifier: "GetSqlResourceSqlDatabaseResponse" });
   }
 }
-function __c292(j: number): any {
+function __c320(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20117,7 +21213,7 @@ function __c292(j: number): any {
       ).annotate({ identifier: "GetSqlResourceSqlDatabaseThroughputRequest" });
   }
 }
-function __c293(j: number): any {
+function __c321(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20126,7 +21222,7 @@ function __c293(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           fleetspaceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(9409, __c294, 1)),
+          properties: S.optional(__S(10305, __c322, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20136,9 +21232,21 @@ function __c293(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateFleetspaceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(10305, __c322, 1)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateFleetspaceResponse" });
   }
 }
-function __c294(j: number): any {
+function __c322(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20156,22 +21264,12 @@ function __c294(j: number): any {
           fleetspaceApiKind: S.optional(S.String),
           serviceTier: S.optional(S.String),
           dataRegions: S.optional(__S(96, __c3, 0)),
-          throughputPoolConfiguration: S.optional(__S(9408, __c294, 0)),
+          throughputPoolConfiguration: S.optional(__S(10304, __c322, 0)),
         }),
       ).annotate({ identifier: "FleetspaceProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(9409, __c294, 1)),
-        }),
-      ).annotate({ identifier: "CreateFleetspaceResponse" });
   }
 }
-function __c295(j: number): any {
+function __c323(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20191,7 +21289,7 @@ function __c295(j: number): any {
       ).annotate({ identifier: "GetSqlResourceSqlRoleAssignmentRequest" });
   }
 }
-function __c296(j: number): any {
+function __c324(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20200,12 +21298,12 @@ function __c296(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(7200, __c225, 0)),
+          properties: S.optional(__S(7424, __c232, 0)),
         }),
       ).annotate({ identifier: "GetSqlResourceSqlRoleAssignmentResponse" });
   }
 }
-function __c297(j: number): any {
+function __c325(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20225,7 +21323,21 @@ function __c297(j: number): any {
       ).annotate({ identifier: "GetSqlResourceSqlRoleDefinitionRequest" });
   }
 }
-function __c298(j: number): any {
+function __c326(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(10464, __c327, 0)),
+        }),
+      ).annotate({ identifier: "GetSqlResourceSqlRoleDefinitionResponse" });
+  }
+}
+function __c327(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20233,22 +21345,12 @@ function __c298(j: number): any {
           roleName: S.optional(S.String),
           type: S.optional(S.String),
           assignableScopes: S.optional(__S(96, __c3, 0)),
-          permissions: S.optional(__S(7617, __c238, 1)),
+          permissions: S.optional(__S(8129, __c254, 1)),
         }),
       ).annotate({ identifier: "SqlRoleDefinitionResource" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(9536, __c298, 0)),
-        }),
-      ).annotate({ identifier: "GetSqlResourceSqlRoleDefinitionResponse" });
   }
 }
-function __c299(j: number): any {
+function __c328(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20270,7 +21372,24 @@ function __c299(j: number): any {
       ).annotate({ identifier: "GetSqlResourceSqlStoredProcedureRequest" });
   }
 }
-function __c300(j: number): any {
+function __c329(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(10561, __c330, 1)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(6914, __c216, 2)),
+        }),
+      ).annotate({ identifier: "GetSqlResourceSqlStoredProcedureResponse" });
+  }
+}
+function __c330(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20285,25 +21404,12 @@ function __c300(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(9600, __c300, 0)),
+          resource: S.optional(__S(10560, __c330, 0)),
         }),
       ).annotate({ identifier: "SqlStoredProcedureGetProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(9601, __c300, 1)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6722, __c210, 2)),
-        }),
-      ).annotate({ identifier: "GetSqlResourceSqlStoredProcedureResponse" });
   }
 }
-function __c301(j: number): any {
+function __c331(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20325,7 +21431,7 @@ function __c301(j: number): any {
       ).annotate({ identifier: "GetSqlResourceSqlUserDefinedFunctionRequest" });
   }
 }
-function __c302(j: number): any {
+function __c332(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20346,7 +21452,7 @@ function __c302(j: number): any {
       ).annotate({ identifier: "GetTableResourceContinuousBackupInformationRequest" });
   }
 }
-function __c303(j: number): any {
+function __c333(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20366,7 +21472,7 @@ function __c303(j: number): any {
       ).annotate({ identifier: "GetTableResourceTableRequest" });
   }
 }
-function __c304(j: number): any {
+function __c334(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20386,7 +21492,7 @@ function __c304(j: number): any {
       ).annotate({ identifier: "GetTableResourceTableRoleAssignmentRequest" });
   }
 }
-function __c305(j: number): any {
+function __c335(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20406,7 +21512,7 @@ function __c305(j: number): any {
       ).annotate({ identifier: "GetTableResourceTableRoleDefinitionRequest" });
   }
 }
-function __c306(j: number): any {
+function __c336(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20426,7 +21532,7 @@ function __c306(j: number): any {
       ).annotate({ identifier: "GetTableResourceTableThroughputRequest" });
   }
 }
-function __c307(j: number): any {
+function __c337(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20437,8 +21543,8 @@ function __c307(j: number): any {
           databaseName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
           tags: S.optional(__S(64, __c2, 0)),
-          identity: S.optional(__S(6753, __c211, 1)),
-          properties: __S(9857, __c308, 1),
+          identity: S.optional(__S(6946, __c217, 2)),
+          properties: __S(10817, __c338, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20450,23 +21556,43 @@ function __c307(j: number): any {
       ).annotate({ identifier: "GremlinResourcesCreateUpdateGremlinDatabaseRequest" });
   }
 }
-function __c308(j: number): any {
+function __c338(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          restoreParameters: S.optional(__S(7840, __c245, 0)),
+          restoreParameters: S.optional(__S(8416, __c263, 0)),
           createMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "GremlinDatabaseResource" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: __S(9856, __c308, 0),
-          options: S.optional(__S(6785, __c212, 1)),
+          resource: __S(10816, __c338, 0),
+          options: S.optional(__S(6977, __c218, 1)),
         }),
       ).annotate({ identifier: "GremlinDatabaseCreateUpdateProperties" });
+  }
+}
+function __c339(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(8481, __c265, 1)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(6914, __c216, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "GremlinResourcesCreateUpdateGremlinDatabaseResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

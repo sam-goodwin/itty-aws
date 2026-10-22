@@ -135,6 +135,10 @@ export interface CreateOrUpdateServiceGroupResponse {
   kind?: string;
   /** The serviceGroup tags. */
   tags?: CreateOrUpdateServiceGroupResponseTagsMap;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteHierarchySettingsRequest {
   /** Management Group ID. */
@@ -145,7 +149,14 @@ export interface DeleteManagementGroupRequest {
   /** Management Group ID. */
   groupId: string;
 }
-export interface DeleteManagementGroupResponse {}
+export interface DeleteManagementGroupResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteManagementGroupSubscriptionRequest {
   /** Management Group ID. */
   groupId: string;
@@ -157,7 +168,14 @@ export interface DeleteServiceGroupRequest {
   /** ServiceGroup Name. */
   serviceGroupName: string;
 }
-export interface DeleteServiceGroupResponse {}
+export interface DeleteServiceGroupResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetHierarchySettingsRequest {
   /** Management Group ID. */
   groupId: string;
@@ -611,6 +629,10 @@ export interface ManagementGroupsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The generic properties of a management group. */
   properties?: ManagementGroupProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 export interface StartTenantBackfillRequest {}
 /** The status of the Tenant Backfill */
@@ -696,6 +718,12 @@ export interface UpdateServiceGroupResponse {
   kind?: string;
   /** The serviceGroup tags. */
   tags?: UpdateServiceGroupResponseTagsMap;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type CheckNameAvailabilityError = AzureOpError;
 /** Checks if the specified management group name is valid and unique */
@@ -720,8 +748,8 @@ export const CreateManagementGroupSubscription: API.OperationMethod<
   CreateManagementGroupSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c1, 0) as any as S.Schema<CreateManagementGroupSubscriptionRequest>,
-  output: __S(33, __c2, 1) as any as S.Schema<CreateManagementGroupSubscriptionResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateManagementGroupSubscriptionRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CreateManagementGroupSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -735,8 +763,8 @@ export const CreateOrUpdateServiceGroup: API.OperationMethod<
   CreateOrUpdateServiceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<CreateOrUpdateServiceGroupRequest>,
-  output: __S(292, __c18, 4) as any as S.Schema<CreateOrUpdateServiceGroupResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<CreateOrUpdateServiceGroupRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<CreateOrUpdateServiceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -750,8 +778,8 @@ export const DeleteHierarchySettings: API.OperationMethod<
   DeleteHierarchySettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<DeleteHierarchySettingsRequest>,
-  output: __S(384, __c24, 0) as any as S.Schema<DeleteHierarchySettingsResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<DeleteHierarchySettingsRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<DeleteHierarchySettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -765,8 +793,8 @@ export const DeleteManagementGroup: API.OperationMethod<
   DeleteManagementGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<DeleteManagementGroupRequest>,
-  output: __S(384, __c24, 0) as any as S.Schema<DeleteManagementGroupResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<DeleteManagementGroupRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<DeleteManagementGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -780,8 +808,8 @@ export const DeleteManagementGroupSubscription: API.OperationMethod<
   DeleteManagementGroupSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<DeleteManagementGroupSubscriptionRequest>,
-  output: __S(384, __c24, 0) as any as S.Schema<DeleteManagementGroupSubscriptionResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<DeleteManagementGroupSubscriptionRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<DeleteManagementGroupSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -795,8 +823,8 @@ export const DeleteServiceGroup: API.OperationMethod<
   DeleteServiceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c27, 0) as any as S.Schema<DeleteServiceGroupRequest>,
-  output: __S(384, __c24, 0) as any as S.Schema<DeleteServiceGroupResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<DeleteServiceGroupRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<DeleteServiceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -810,8 +838,8 @@ export const GetHierarchySettings: API.OperationMethod<
   GetHierarchySettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<GetHierarchySettingsRequest>,
-  output: __S(480, __c30, 0) as any as S.Schema<GetHierarchySettingsResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<GetHierarchySettingsRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<GetHierarchySettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -825,8 +853,8 @@ export const GetManagementGroup: API.OperationMethod<
   GetManagementGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<GetManagementGroupRequest>,
-  output: __S(536, __c33, 8) as any as S.Schema<GetManagementGroupResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<GetManagementGroupRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<GetManagementGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -840,8 +868,8 @@ export const GetManagementGroupDescendants: API.OperationMethod<
   GetManagementGroupDescendantsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<GetManagementGroupDescendantsRequest>,
-  output: __S(548, __c34, 4) as any as S.Schema<DescendantListResult>,
+  input: __S(288, __c36, 0) as any as S.Schema<GetManagementGroupDescendantsRequest>,
+  output: __S(292, __c36, 4) as any as S.Schema<DescendantListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -855,8 +883,8 @@ export const GetManagementGroupSubscriptionSubscription: API.OperationMethod<
   GetManagementGroupSubscriptionSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c5, 0) as any as S.Schema<GetManagementGroupSubscriptionSubscriptionRequest>,
-  output: __S(33, __c2, 1) as any as S.Schema<GetManagementGroupSubscriptionSubscriptionResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetManagementGroupSubscriptionSubscriptionRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<GetManagementGroupSubscriptionSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -871,11 +899,11 @@ export const GetManagementGroupSubscriptionSubscriptionsUnderManagementGroup: AP
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    96,
+    48,
     __c6,
     0,
   ) as any as S.Schema<GetManagementGroupSubscriptionSubscriptionsUnderManagementGroupRequest>,
-  output: __S(98, __c6, 2) as any as S.Schema<ListSubscriptionUnderManagementGroup>,
+  output: __S(50, __c6, 2) as any as S.Schema<ListSubscriptionUnderManagementGroup>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -889,8 +917,8 @@ export const GetServiceGroup: API.OperationMethod<
   GetServiceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c7, 0) as any as S.Schema<GetServiceGroupRequest>,
-  output: __S(292, __c18, 4) as any as S.Schema<GetServiceGroupResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetServiceGroupRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<GetServiceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -904,8 +932,8 @@ export const HierarchySettingsCreateOrUpdate: API.OperationMethod<
   HierarchySettingsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c8, 0) as any as S.Schema<HierarchySettingsCreateOrUpdateRequest>,
-  output: __S(480, __c30, 0) as any as S.Schema<HierarchySettingsCreateOrUpdateResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<HierarchySettingsCreateOrUpdateRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<HierarchySettingsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -919,8 +947,8 @@ export const ListEntities: API.OperationMethod<
   ListEntitiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c10, 0) as any as S.Schema<ListEntitiesRequest>,
-  output: __S(164, __c10, 4) as any as S.Schema<EntityListResult>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListEntitiesRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<EntityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -934,8 +962,8 @@ export const ListHierarchySettings: API.OperationMethod<
   ListHierarchySettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c11, 0) as any as S.Schema<ListHierarchySettingsRequest>,
-  output: __S(179, __c11, 3) as any as S.Schema<HierarchySettingsList>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListHierarchySettingsRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<HierarchySettingsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -949,8 +977,8 @@ export const ListManagementGroups: API.OperationMethod<
   ListManagementGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c12, 0) as any as S.Schema<ListManagementGroupsRequest>,
-  output: __S(196, __c12, 4) as any as S.Schema<ManagementGroupListResult>,
+  input: __S(96, __c12, 0) as any as S.Schema<ListManagementGroupsRequest>,
+  output: __S(100, __c12, 4) as any as S.Schema<ManagementGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -964,8 +992,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(212, __c13, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(108, __c13, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -979,8 +1007,8 @@ export const ManagementGroupsCreateOrUpdate: API.OperationMethod<
   ManagementGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c14, 2) as any as S.Schema<ManagementGroupsCreateOrUpdateRequest>,
-  output: __S(536, __c33, 8) as any as S.Schema<ManagementGroupsCreateOrUpdateResponse>,
+  input: __S(114, __c14, 2) as any as S.Schema<ManagementGroupsCreateOrUpdateRequest>,
+  output: __S(115, __c14, 3) as any as S.Schema<ManagementGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -994,8 +1022,8 @@ export const StartTenantBackfill: API.OperationMethod<
   StartTenantBackfillError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c15, 0) as any as S.Schema<StartTenantBackfillRequest>,
-  output: __S(256, __c16, 0) as any as S.Schema<TenantBackfillStatusResult>,
+  input: __S(120, __c15, 0) as any as S.Schema<StartTenantBackfillRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<TenantBackfillStatusResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1009,8 +1037,8 @@ export const TenantBackfillStatus: API.OperationMethod<
   TenantBackfillStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<TenantBackfillStatusRequest>,
-  output: __S(256, __c16, 0) as any as S.Schema<TenantBackfillStatusResult>,
+  input: __S(152, __c19, 0) as any as S.Schema<TenantBackfillStatusRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<TenantBackfillStatusResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1024,8 +1052,8 @@ export const UpdateHierarchySettings: API.OperationMethod<
   UpdateHierarchySettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<UpdateHierarchySettingsRequest>,
-  output: __S(480, __c30, 0) as any as S.Schema<UpdateHierarchySettingsResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<UpdateHierarchySettingsRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<UpdateHierarchySettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1039,8 +1067,8 @@ export const UpdateManagementGroup: API.OperationMethod<
   UpdateManagementGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<UpdateManagementGroupRequest>,
-  output: __S(536, __c33, 8) as any as S.Schema<UpdateManagementGroupResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<UpdateManagementGroupRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<UpdateManagementGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1054,8 +1082,8 @@ export const UpdateServiceGroup: API.OperationMethod<
   UpdateServiceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<UpdateServiceGroupRequest>,
-  output: __S(292, __c18, 4) as any as S.Schema<UpdateServiceGroupResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<UpdateServiceGroupRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<UpdateServiceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1113,7 +1141,7 @@ function __c2(j: number): any {
         S.Struct({
           tenant: S.optional(S.String),
           displayName: S.optional(S.String),
-          parent: S.optional(S.NullOr(__S(64, __c4, 0))),
+          parent: S.optional(S.NullOr(__S(32, __c4, 0))),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubscriptionUnderManagementGroupProperties" });
@@ -1123,8 +1151,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
-          properties: S.optional(__S(32, __c2, 0)),
+          systemData: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "CreateManagementGroupSubscriptionResponse" });
   }
@@ -1191,11 +1219,11 @@ function __c6(j: number): any {
         identifier: "GetManagementGroupSubscriptionSubscriptionsUnderManagementGroupRequest",
       });
     case 1:
-      return S.Array(__S(33, __c2, 1));
+      return S.Array(__S(17, __c2, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(97, __c6, 1),
+          value: __S(49, __c6, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSubscriptionUnderManagementGroup" });
@@ -1216,6 +1244,18 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetServiceGroupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(146, __c18, 2)),
+          kind: S.optional(S.String),
+          tags: S.optional(__S(147, __c18, 3)),
+        }),
+      ).annotate({ identifier: "GetServiceGroupResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1224,7 +1264,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(144, __c9, 0)),
+          properties: S.optional(__S(72, __c9, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1274,14 +1314,14 @@ function __c10(j: number): any {
         S.Struct({
           tenantId: S.optional(S.NullOr(S.String)),
           displayName: S.optional(S.NullOr(S.String)),
-          parent: S.optional(S.NullOr(__S(64, __c4, 0))),
+          parent: S.optional(S.NullOr(__S(32, __c4, 0))),
           permissions: S.optional(S.NullOr(S.String)),
           inheritedPermissions: S.optional(S.NullOr(S.String)),
           numberOfDescendants: S.optional(S.NullOr(S.Number)),
           numberOfChildren: S.optional(S.NullOr(S.Number)),
           numberOfChildGroups: S.optional(S.NullOr(S.Number)),
-          parentDisplayNameChain: S.optional(S.NullOr(__S(512, __c32, 0))),
-          parentNameChain: S.optional(S.NullOr(__S(512, __c32, 0))),
+          parentDisplayNameChain: S.optional(S.NullOr(__S(264, __c33, 0))),
+          parentNameChain: S.optional(S.NullOr(__S(264, __c33, 0))),
         }),
       ).annotate({ identifier: "EntityInfoProperties" });
     case 2:
@@ -1290,15 +1330,15 @@ function __c10(j: number): any {
           id: S.optional(S.NullOr(S.String)),
           type: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
-          properties: S.optional(S.NullOr(__S(161, __c10, 1))),
+          properties: S.optional(S.NullOr(__S(81, __c10, 1))),
         }),
       ).annotate({ identifier: "EntityInfo" });
     case 3:
-      return S.Array(__S(162, __c10, 2));
+      return S.Array(__S(82, __c10, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(163, __c10, 3),
+          value: __S(83, __c10, 3),
           nextLink: S.optional(S.String),
           count: S.optional(S.Number),
         }),
@@ -1326,15 +1366,15 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(464, __c29, 0)),
+          properties: S.optional(__S(240, __c30, 0)),
         }),
       ).annotate({ identifier: "HierarchySettingsInfo" });
     case 2:
-      return S.Array(__S(177, __c11, 1));
+      return S.Array(__S(89, __c11, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(178, __c11, 2)),
+          value: S.optional(__S(90, __c11, 2)),
           _nextLink: S.optional(S.String.pipe(T.Body("@nextLink"))),
         }),
       ).annotate({ identifier: "HierarchySettingsList" });
@@ -1368,15 +1408,15 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(193, __c12, 1)),
+          properties: S.optional(__S(97, __c12, 1)),
         }),
       ).annotate({ identifier: "ManagementGroupInfo" });
     case 3:
-      return S.Array(__S(194, __c12, 2));
+      return S.Array(__S(98, __c12, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(195, __c12, 3)),
+          value: S.optional(__S(99, __c12, 3)),
           _nextLink: S.optional(S.String.pipe(T.Body("@nextLink"))),
         }),
       ).annotate({ identifier: "ManagementGroupListResult" });
@@ -1409,17 +1449,17 @@ function __c13(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(209, __c13, 1)),
+          display: S.optional(__S(105, __c13, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(210, __c13, 2));
+      return S.Array(__S(106, __c13, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(211, __c13, 3)),
+          value: S.optional(__S(107, __c13, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -1430,14 +1470,14 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          parent: S.optional(__S(64, __c4, 0)),
+          parent: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "CreateManagementGroupDetailsInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
-          details: S.optional(__S(224, __c14, 0)),
+          details: S.optional(__S(112, __c14, 0)),
         }),
       ).annotate({ identifier: "CreateManagementGroupPropertiesInput" });
     case 2:
@@ -1445,7 +1485,7 @@ function __c14(j: number): any {
         S.Struct({
           groupId: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          properties: S.optional(__S(225, __c14, 1)),
+          properties: S.optional(__S(113, __c14, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1455,6 +1495,18 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ManagementGroupsCreateOrUpdateRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(279, __c34, 7)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "ManagementGroupsCreateOrUpdateResponse" });
   }
 }
 function __c15(j: number): any {
@@ -1489,9 +1541,9 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(290, __c18, 2)),
+          properties: S.optional(__S(146, __c18, 2)),
           kind: S.optional(S.String),
-          tags: S.optional(__S(291, __c18, 3)),
+          tags: S.optional(__S(147, __c18, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1501,6 +1553,20 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateOrUpdateServiceGroupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(146, __c18, 2)),
+          kind: S.optional(S.String),
+          tags: S.optional(__S(147, __c18, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateOrUpdateServiceGroupResponse" });
   }
 }
 function __c18(j: number): any {
@@ -1522,24 +1588,12 @@ function __c18(j: number): any {
         S.Struct({
           provisioningState: S.optional(S.String),
           displayName: S.optional(S.String),
-          attributes: S.optional(__S(288, __c18, 0)),
-          parent: S.optional(__S(289, __c18, 1)),
+          attributes: S.optional(__S(144, __c18, 0)),
+          parent: S.optional(__S(145, __c18, 1)),
         }),
       ).annotate({ identifier: "ServiceGroupProperties" });
     case 3:
       return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
-          properties: S.optional(__S(290, __c18, 2)),
-          kind: S.optional(S.String),
-          tags: S.optional(__S(291, __c18, 3)),
-        }),
-      ).annotate({ identifier: "CreateOrUpdateServiceGroupResponse" });
   }
 }
 function __c19(j: number): any {
@@ -1563,7 +1617,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(144, __c9, 0)),
+          properties: S.optional(__S(72, __c9, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1600,9 +1654,9 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(290, __c18, 2)),
+          properties: S.optional(__S(146, __c18, 2)),
           kind: S.optional(S.String),
-          tags: S.optional(__S(291, __c18, 3)),
+          tags: S.optional(__S(147, __c18, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1612,6 +1666,21 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateServiceGroupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(146, __c18, 2)),
+          kind: S.optional(S.String),
+          tags: S.optional(__S(147, __c18, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateServiceGroupResponse" });
   }
 }
 function __c23(j: number): any {
@@ -1661,6 +1730,18 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteManagementGroupResponse" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           groupId: S.String.pipe(T.Label()),
           subscriptionId: S.String.pipe(T.Label()),
         }).pipe(
@@ -1674,7 +1755,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "DeleteManagementGroupSubscriptionRequest" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1691,7 +1772,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "DeleteServiceGroupRequest" });
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1708,7 +1789,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "GetHierarchySettingsRequest" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1720,7 +1801,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "HierarchySettingsProperties" });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1728,13 +1809,13 @@ function __c30(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
-          properties: S.optional(__S(464, __c29, 0)),
+          systemData: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(240, __c30, 0)),
         }),
       ).annotate({ identifier: "GetHierarchySettingsResponse" });
   }
 }
-function __c31(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1754,13 +1835,13 @@ function __c31(j: number): any {
       ).annotate({ identifier: "GetManagementGroupRequest" });
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1778,21 +1859,21 @@ function __c33(j: number): any {
         }),
       ).annotate({ identifier: "ManagementGroupPathElement" });
     case 2:
-      return S.Array(__S(529, __c33, 1));
+      return S.Array(__S(273, __c34, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
           updatedTime: S.optional(S.String),
           updatedBy: S.optional(S.String),
-          parent: S.optional(__S(528, __c33, 0)),
-          path: S.optional(__S(530, __c33, 2)),
-          managementGroupAncestors: S.optional(S.NullOr(__S(512, __c32, 0))),
-          managementGroupAncestorsChain: S.optional(__S(530, __c33, 2)),
+          parent: S.optional(__S(272, __c34, 0)),
+          path: S.optional(__S(274, __c34, 2)),
+          managementGroupAncestors: S.optional(S.NullOr(__S(264, __c33, 0))),
+          managementGroupAncestorsChain: S.optional(__S(274, __c34, 2)),
         }),
       ).annotate({ identifier: "ManagementGroupDetails" });
     case 4:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(533, __c33, 5)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(277, __c34, 5)));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1800,33 +1881,37 @@ function __c33(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
-          children: S.optional(__S(532, __c33, 4)),
+          children: S.optional(__S(276, __c34, 4)),
         }),
       ).annotate({ identifier: "ManagementGroupChildInfo" });
     case 6:
-      return S.Array(__S(533, __c33, 5));
+      return S.Array(__S(277, __c34, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
           displayName: S.optional(S.String),
-          details: S.optional(__S(531, __c33, 3)),
-          children: S.optional(S.NullOr(__S(534, __c33, 6))),
+          details: S.optional(__S(275, __c34, 3)),
+          children: S.optional(S.NullOr(__S(278, __c34, 6))),
         }),
       ).annotate({ identifier: "ManagementGroupProperties" });
-    case 8:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
-          properties: S.optional(__S(535, __c33, 7)),
+          systemData: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(279, __c34, 7)),
         }),
       ).annotate({ identifier: "GetManagementGroupResponse" });
   }
 }
-function __c34(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1847,7 +1932,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
-          parent: S.optional(S.NullOr(__S(64, __c4, 0))),
+          parent: S.optional(S.NullOr(__S(32, __c4, 0))),
         }),
       ).annotate({ identifier: "DescendantInfoProperties" });
     case 2:
@@ -1856,15 +1941,15 @@ function __c34(j: number): any {
           id: S.optional(S.NullOr(S.String)),
           type: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
-          properties: S.optional(S.NullOr(__S(545, __c34, 1))),
+          properties: S.optional(S.NullOr(__S(289, __c36, 1))),
         }),
       ).annotate({ identifier: "DescendantInfo" });
     case 3:
-      return S.Array(__S(546, __c34, 2));
+      return S.Array(__S(290, __c36, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(547, __c34, 3),
+          value: __S(291, __c36, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DescendantListResult" });

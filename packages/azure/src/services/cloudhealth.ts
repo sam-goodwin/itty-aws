@@ -109,6 +109,10 @@ export interface AuthenticationSettingsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: AuthenticationSettingProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateHealthModelRequestTagsMap = { [key: string]: string | undefined };
@@ -193,6 +197,10 @@ export interface CreateHealthModelResponse {
   properties?: HealthModelProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateHealthModelResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteAuthenticationSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -204,7 +212,12 @@ export interface DeleteAuthenticationSettingsRequest {
   /** Name of the authentication setting. Must be unique within a health model. */
   authenticationSettingName: string;
 }
-export interface DeleteAuthenticationSettingsResponse {}
+export interface DeleteAuthenticationSettingsResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDiscoveryRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -215,7 +228,12 @@ export interface DeleteDiscoveryRuleRequest {
   /** Name of the discovery rule. Must be unique within a health model. */
   discoveryRuleName: string;
 }
-export interface DeleteDiscoveryRuleResponse {}
+export interface DeleteDiscoveryRuleResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteEntityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -226,7 +244,12 @@ export interface DeleteEntityRequest {
   /** Name of the entity. Must be unique within a health model. */
   entityName: string;
 }
-export interface DeleteEntityResponse {}
+export interface DeleteEntityResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteHealthModelRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -235,7 +258,12 @@ export interface DeleteHealthModelRequest {
   /** Name of health model resource */
   healthModelName: string;
 }
-export interface DeleteHealthModelResponse {}
+export interface DeleteHealthModelResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteRelationshipRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -246,7 +274,12 @@ export interface DeleteRelationshipRequest {
   /** Name of the relationship. Must be unique within a health model. For example, a concatenation of parentEntityName and childEntityName can be used as the name. */
   relationshipName: string;
 }
-export interface DeleteRelationshipResponse {}
+export interface DeleteRelationshipResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSignalDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -257,7 +290,12 @@ export interface DeleteSignalDefinitionRequest {
   /** Name of the signal definition. Must be unique within a health model. */
   signalDefinitionName: string;
 }
-export interface DeleteSignalDefinitionResponse {}
+export interface DeleteSignalDefinitionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Discovery rule relationship discovery behavior */
 export type DiscoveryRuleRelationshipDiscoveryBehavior = "Enabled" | "Disabled";
 /** Discovery rule recommended signal behavior */
@@ -341,6 +379,10 @@ export interface DiscoveryRulesCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: DiscoveryRuleProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Visual position of the entity */
 export interface EntityCoordinates {
@@ -963,6 +1005,10 @@ export interface EntitiesCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: EntityProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Evaluation rules for the health report */
 export type HealthReportEvaluationRule = EvaluationRule;
@@ -1639,6 +1685,10 @@ export interface RelationshipsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: RelationshipProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Interval in which the signal is being evaluated. Defaults to PT1M (1 minute). */
 export type SignalDefinitionPropertiesInputRefreshInterval =
@@ -1689,6 +1739,10 @@ export interface SignalDefinitionsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: SignalDefinitionProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateHealthModelRequestIdentityUserAssignedIdentitiesMap = {
@@ -1747,6 +1801,10 @@ export interface UpdateHealthModelResponse {
   properties?: HealthModelProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdateHealthModelResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type AddEntityDataAnnotationError = AzureOpError;
 /** Add a data annotation to an entity */
@@ -1772,7 +1830,7 @@ export const AuthenticationSettingsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(97, __c3, 1) as any as S.Schema<AuthenticationSettingsCreateOrUpdateRequest>,
-  output: __S(129, __c4, 1) as any as S.Schema<AuthenticationSettingsCreateOrUpdateResponse>,
+  output: __S(98, __c3, 2) as any as S.Schema<AuthenticationSettingsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1786,8 +1844,8 @@ export const CreateHealthModel: API.OperationMethod<
   CreateHealthModelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c18, 0) as any as S.Schema<CreateHealthModelRequest>,
-  output: __S(612, __c19, 4) as any as S.Schema<CreateHealthModelResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<CreateHealthModelRequest>,
+  output: __S(705, __c22, 1) as any as S.Schema<CreateHealthModelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1801,8 +1859,8 @@ export const DeleteAuthenticationSettings: API.OperationMethod<
   DeleteAuthenticationSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c35, 0) as any as S.Schema<DeleteAuthenticationSettingsRequest>,
-  output: __S(640, __c20, 0) as any as S.Schema<DeleteAuthenticationSettingsResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<DeleteAuthenticationSettingsRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<DeleteAuthenticationSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1816,8 +1874,8 @@ export const DeleteDiscoveryRule: API.OperationMethod<
   DeleteDiscoveryRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c39, 0) as any as S.Schema<DeleteDiscoveryRuleRequest>,
-  output: __S(640, __c20, 0) as any as S.Schema<DeleteDiscoveryRuleResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<DeleteDiscoveryRuleRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<DeleteDiscoveryRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1831,8 +1889,8 @@ export const DeleteEntity: API.OperationMethod<
   DeleteEntityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c40, 0) as any as S.Schema<DeleteEntityRequest>,
-  output: __S(640, __c20, 0) as any as S.Schema<DeleteEntityResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<DeleteEntityRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<DeleteEntityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1846,8 +1904,8 @@ export const DeleteHealthModel: API.OperationMethod<
   DeleteHealthModelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c41, 0) as any as S.Schema<DeleteHealthModelRequest>,
-  output: __S(640, __c20, 0) as any as S.Schema<DeleteHealthModelResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<DeleteHealthModelRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<DeleteHealthModelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1861,8 +1919,8 @@ export const DeleteRelationship: API.OperationMethod<
   DeleteRelationshipError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c42, 0) as any as S.Schema<DeleteRelationshipRequest>,
-  output: __S(640, __c20, 0) as any as S.Schema<DeleteRelationshipResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<DeleteRelationshipRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<DeleteRelationshipResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1876,8 +1934,8 @@ export const DeleteSignalDefinition: API.OperationMethod<
   DeleteSignalDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c43, 0) as any as S.Schema<DeleteSignalDefinitionRequest>,
-  output: __S(640, __c20, 0) as any as S.Schema<DeleteSignalDefinitionResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<DeleteSignalDefinitionRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<DeleteSignalDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1891,8 +1949,8 @@ export const DiscoveryRulesCreateOrUpdate: API.OperationMethod<
   DiscoveryRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1409, __c44, 1) as any as S.Schema<DiscoveryRulesCreateOrUpdateRequest>,
-  output: __S(1475, __c46, 3) as any as S.Schema<DiscoveryRulesCreateOrUpdateResponse>,
+  input: __S(1633, __c51, 1) as any as S.Schema<DiscoveryRulesCreateOrUpdateRequest>,
+  output: __S(1634, __c51, 2) as any as S.Schema<DiscoveryRulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1907,7 +1965,7 @@ export const EntitiesCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(206, __c6, 14) as any as S.Schema<EntitiesCreateOrUpdateRequest>,
-  output: __S(280, __c8, 24) as any as S.Schema<EntitiesCreateOrUpdateResponse>,
+  output: __S(207, __c6, 15) as any as S.Schema<EntitiesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1922,7 +1980,7 @@ export const EntitiesIngestHealthReport: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(288, __c9, 0) as any as S.Schema<EntitiesIngestHealthReportRequest>,
-  output: __S(640, __c20, 0) as any as S.Schema<EntitiesIngestHealthReportResponse>,
+  output: __S(736, __c23, 0) as any as S.Schema<EntitiesIngestHealthReportResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1937,7 +1995,7 @@ export const GetAuthenticationSettings: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(320, __c10, 0) as any as S.Schema<GetAuthenticationSettingsRequest>,
-  output: __S(129, __c4, 1) as any as S.Schema<GetAuthenticationSettingsResponse>,
+  output: __S(352, __c11, 0) as any as S.Schema<GetAuthenticationSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1951,8 +2009,8 @@ export const GetDiscoveryRule: API.OperationMethod<
   GetDiscoveryRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c11, 0) as any as S.Schema<GetDiscoveryRuleRequest>,
-  output: __S(1475, __c46, 3) as any as S.Schema<GetDiscoveryRuleResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetDiscoveryRuleRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<GetDiscoveryRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1966,8 +2024,8 @@ export const GetEntity: API.OperationMethod<
   GetEntityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c12, 0) as any as S.Schema<GetEntityRequest>,
-  output: __S(280, __c8, 24) as any as S.Schema<GetEntityResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetEntityRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<GetEntityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1981,8 +2039,8 @@ export const GetEntityDataAnnotations: API.OperationMethod<
   GetEntityDataAnnotationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c13, 0) as any as S.Schema<GetEntityDataAnnotationsRequest>,
-  output: __S(418, __c13, 2) as any as S.Schema<GetDataAnnotationsResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetEntityDataAnnotationsRequest>,
+  output: __S(514, __c16, 2) as any as S.Schema<GetDataAnnotationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1996,8 +2054,8 @@ export const GetEntityHistory: API.OperationMethod<
   GetEntityHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c14, 0) as any as S.Schema<GetEntityHistoryRequest>,
-  output: __S(451, __c14, 3) as any as S.Schema<EntityHistoryResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetEntityHistoryRequest>,
+  output: __S(547, __c17, 3) as any as S.Schema<EntityHistoryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2011,8 +2069,8 @@ export const GetEntitySignalHistory: API.OperationMethod<
   GetEntitySignalHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c15, 0) as any as S.Schema<GetEntitySignalHistoryRequest>,
-  output: __S(483, __c15, 3) as any as S.Schema<SignalHistoryResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetEntitySignalHistoryRequest>,
+  output: __S(579, __c18, 3) as any as S.Schema<SignalHistoryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2026,8 +2084,8 @@ export const GetEntitySignalRecommendations: API.OperationMethod<
   GetEntitySignalRecommendationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c16, 0) as any as S.Schema<GetEntitySignalRecommendationsRequest>,
-  output: __S(516, __c16, 4) as any as S.Schema<GetSignalRecommendationsResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetEntitySignalRecommendationsRequest>,
+  output: __S(612, __c19, 4) as any as S.Schema<GetSignalRecommendationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2041,8 +2099,8 @@ export const GetHealthModel: API.OperationMethod<
   GetHealthModelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<GetHealthModelRequest>,
-  output: __S(612, __c19, 4) as any as S.Schema<GetHealthModelResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetHealthModelRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<GetHealthModelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2056,8 +2114,8 @@ export const GetRelationship: API.OperationMethod<
   GetRelationshipError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c22, 0) as any as S.Schema<GetRelationshipRequest>,
-  output: __S(737, __c23, 1) as any as S.Schema<GetRelationshipResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetRelationshipRequest>,
+  output: __S(864, __c27, 0) as any as S.Schema<GetRelationshipResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2071,8 +2129,8 @@ export const GetSignalDefinition: API.OperationMethod<
   GetSignalDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c24, 0) as any as S.Schema<GetSignalDefinitionRequest>,
-  output: __S(801, __c25, 1) as any as S.Schema<GetSignalDefinitionResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetSignalDefinitionRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<GetSignalDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2086,8 +2144,8 @@ export const ListAuthenticationSettingsByHealthModel: API.OperationMethod<
   ListAuthenticationSettingsByHealthModelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c26, 0) as any as S.Schema<ListAuthenticationSettingsByHealthModelRequest>,
-  output: __S(834, __c26, 2) as any as S.Schema<AuthenticationSettingListResult>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListAuthenticationSettingsByHealthModelRequest>,
+  output: __S(1026, __c32, 2) as any as S.Schema<AuthenticationSettingListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2101,8 +2159,8 @@ export const ListDiscoveryRuleByHealthModel: API.OperationMethod<
   ListDiscoveryRuleByHealthModelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<ListDiscoveryRuleByHealthModelRequest>,
-  output: __S(866, __c27, 2) as any as S.Schema<DiscoveryRuleListResult>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListDiscoveryRuleByHealthModelRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<DiscoveryRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2116,8 +2174,8 @@ export const ListEntityByHealthModel: API.OperationMethod<
   ListEntityByHealthModelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<ListEntityByHealthModelRequest>,
-  output: __S(898, __c28, 2) as any as S.Schema<EntityListResult>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListEntityByHealthModelRequest>,
+  output: __S(1090, __c34, 2) as any as S.Schema<EntityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2131,8 +2189,8 @@ export const ListHealthModelByResourceGroup: API.OperationMethod<
   ListHealthModelByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<ListHealthModelByResourceGroupRequest>,
-  output: __S(961, __c30, 1) as any as S.Schema<HealthModelListResult>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListHealthModelByResourceGroupRequest>,
+  output: __S(1153, __c36, 1) as any as S.Schema<HealthModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2146,8 +2204,8 @@ export const ListHealthModelBySubscription: API.OperationMethod<
   ListHealthModelBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<ListHealthModelBySubscriptionRequest>,
-  output: __S(961, __c30, 1) as any as S.Schema<HealthModelListResult>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListHealthModelBySubscriptionRequest>,
+  output: __S(1153, __c36, 1) as any as S.Schema<HealthModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2161,8 +2219,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c32, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(1028, __c32, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1220, __c38, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2176,8 +2234,8 @@ export const ListRelationshipByHealthModel: API.OperationMethod<
   ListRelationshipByHealthModelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c33, 0) as any as S.Schema<ListRelationshipByHealthModelRequest>,
-  output: __S(1058, __c33, 2) as any as S.Schema<RelationshipListResult>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ListRelationshipByHealthModelRequest>,
+  output: __S(1250, __c39, 2) as any as S.Schema<RelationshipListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2191,8 +2249,8 @@ export const ListSignalDefinitionByHealthModel: API.OperationMethod<
   ListSignalDefinitionByHealthModelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c34, 0) as any as S.Schema<ListSignalDefinitionByHealthModelRequest>,
-  output: __S(1090, __c34, 2) as any as S.Schema<SignalDefinitionListResult>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListSignalDefinitionByHealthModelRequest>,
+  output: __S(1282, __c40, 2) as any as S.Schema<SignalDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2206,8 +2264,8 @@ export const RelationshipsCreateOrUpdate: API.OperationMethod<
   RelationshipsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1153, __c36, 1) as any as S.Schema<RelationshipsCreateOrUpdateRequest>,
-  output: __S(737, __c23, 1) as any as S.Schema<RelationshipsCreateOrUpdateResponse>,
+  input: __S(1377, __c43, 1) as any as S.Schema<RelationshipsCreateOrUpdateRequest>,
+  output: __S(1378, __c43, 2) as any as S.Schema<RelationshipsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2221,8 +2279,8 @@ export const SignalDefinitionsCreateOrUpdate: API.OperationMethod<
   SignalDefinitionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1185, __c37, 1) as any as S.Schema<SignalDefinitionsCreateOrUpdateRequest>,
-  output: __S(801, __c25, 1) as any as S.Schema<SignalDefinitionsCreateOrUpdateResponse>,
+  input: __S(1409, __c44, 1) as any as S.Schema<SignalDefinitionsCreateOrUpdateRequest>,
+  output: __S(1410, __c44, 2) as any as S.Schema<SignalDefinitionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2236,8 +2294,8 @@ export const UpdateHealthModel: API.OperationMethod<
   UpdateHealthModelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c38, 0) as any as S.Schema<UpdateHealthModelRequest>,
-  output: __S(612, __c19, 4) as any as S.Schema<UpdateHealthModelResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<UpdateHealthModelRequest>,
+  output: __S(1441, __c45, 1) as any as S.Schema<UpdateHealthModelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2311,6 +2369,18 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AuthenticationSettingsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(128, __c4, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AuthenticationSettingsCreateOrUpdateResponse" });
   }
 }
 function __c4(j: number): any {
@@ -2323,16 +2393,6 @@ function __c4(j: number): any {
           authenticationKind: S.String,
         }),
       ).annotate({ identifier: "AuthenticationSettingProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(128, __c4, 0)),
-        }),
-      ).annotate({ identifier: "AuthenticationSettingsCreateOrUpdateResponse" });
   }
 }
 function __c5(j: number): any {
@@ -2451,7 +2511,7 @@ function __c6(j: number): any {
           name: S.String,
           displayName: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          members: __S(1440, __c45, 0),
+          members: __S(1664, __c52, 0),
           degradedThreshold: S.optional(S.Number),
           unhealthyThreshold: S.optional(S.Number),
           unit: S.optional(S.String),
@@ -2491,6 +2551,18 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "EntitiesCreateOrUpdateRequest" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(279, __c8, 23)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "EntitiesCreateOrUpdateResponse" });
   }
 }
 function __c7(j: number): any {
@@ -2543,7 +2615,7 @@ function __c8(j: number): any {
         S.Struct({
           severity: S.String,
           description: S.optional(S.String),
-          actionGroupIds: S.optional(__S(1440, __c45, 0)),
+          actionGroupIds: S.optional(__S(1664, __c52, 0)),
         }),
       ).annotate({ identifier: "AlertConfiguration" });
     case 4:
@@ -2703,13 +2775,13 @@ function __c8(j: number): any {
           name: S.String,
           displayName: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          members: __S(1440, __c45, 0),
+          members: __S(1664, __c52, 0),
           degradedThreshold: S.optional(S.Number),
           unhealthyThreshold: S.optional(S.Number),
           unit: S.optional(S.String),
           ignoreUnknown: S.optional(S.Boolean),
           aggregatedHealthState: S.optional(S.String),
-          unresolvedMembers: S.optional(__S(1440, __c45, 0)),
+          unresolvedMembers: S.optional(__S(1664, __c52, 0)),
         }),
       ).annotate({ identifier: "SignalAggregationGroup" });
     case 22:
@@ -2731,16 +2803,6 @@ function __c8(j: number): any {
           alerts: S.optional(__S(260, __c8, 4)),
         }),
       ).annotate({ identifier: "EntityProperties" });
-    case 24:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(279, __c8, 23)),
-        }),
-      ).annotate({ identifier: "EntitiesCreateOrUpdateResponse" });
   }
 }
 function __c9(j: number): any {
@@ -2794,6 +2856,20 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({ identifier: "GetAuthenticationSettingsResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           healthModelName: S.String.pipe(T.Label()),
@@ -2809,7 +2885,21 @@ function __c11(j: number): any {
       ).annotate({ identifier: "GetDiscoveryRuleRequest" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(1698, __c53, 2)),
+        }),
+      ).annotate({ identifier: "GetDiscoveryRuleResponse" });
+  }
+}
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2829,7 +2919,21 @@ function __c12(j: number): any {
       ).annotate({ identifier: "GetEntityRequest" });
   }
 }
-function __c13(j: number): any {
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(279, __c8, 23)),
+        }),
+      ).annotate({ identifier: "GetEntityResponse" });
+  }
+}
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2857,13 +2961,13 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           entityName: S.String,
-          annotations: __S(417, __c13, 1),
+          annotations: __S(513, __c16, 1),
           nextMarker: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetDataAnnotationsResponse" });
   }
 }
-function __c14(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2895,18 +2999,18 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "HealthStateTransition" });
     case 2:
-      return S.Array(__S(449, __c14, 1));
+      return S.Array(__S(545, __c17, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           entityName: S.String,
-          history: __S(450, __c14, 2),
+          history: __S(546, __c17, 2),
           nextMarker: S.optional(S.String),
         }),
       ).annotate({ identifier: "EntityHistoryResponse" });
   }
 }
-function __c15(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2939,19 +3043,19 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "SignalHistoryDataPoint" });
     case 2:
-      return S.Array(__S(481, __c15, 1));
+      return S.Array(__S(577, __c18, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           entityName: S.String,
           signalName: S.String,
-          history: __S(482, __c15, 2),
+          history: __S(578, __c18, 2),
           nextMarker: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalHistoryResponse" });
   }
 }
-function __c16(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2981,25 +3085,25 @@ function __c16(j: number): any {
           signalId: S.String,
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          applicableResourceTypes: S.optional(__S(1440, __c45, 0)),
+          applicableResourceTypes: S.optional(__S(1664, __c52, 0)),
           refreshInterval: S.optional(S.String),
           dataUnit: S.optional(S.String),
-          configuration: __S(513, __c16, 1),
+          configuration: __S(609, __c19, 1),
           evaluationRules: S.optional(__S(225, __c7, 1)),
         }),
       ).annotate({ identifier: "SignalConfiguration" });
     case 3:
-      return S.Array(__S(514, __c16, 2));
+      return S.Array(__S(610, __c19, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          recommendedSignals: __S(515, __c16, 3),
-          recommendedConfigurations: __S(515, __c16, 3),
+          recommendedSignals: __S(611, __c19, 3),
+          recommendedConfigurations: __S(611, __c19, 3),
         }),
       ).annotate({ identifier: "GetSignalRecommendationsResponse" });
   }
 }
-function __c17(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3018,7 +3122,24 @@ function __c17(j: number): any {
       ).annotate({ identifier: "GetHealthModelRequest" });
   }
 }
-function __c18(j: number): any {
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(768, __c24, 0)),
+          identity: S.optional(__S(771, __c24, 3)),
+        }),
+      ).annotate({ identifier: "GetHealthModelResponse" });
+  }
+}
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3028,8 +3149,8 @@ function __c18(j: number): any {
           healthModelName: S.String.pipe(T.Label()),
           tags: S.optional(__S(64, __c2, 0)),
           location: S.String,
-          properties: S.optional(__S(640, __c20, 0)),
-          identity: S.optional(__S(673, __c21, 1)),
+          properties: S.optional(__S(736, __c23, 0)),
+          identity: S.optional(__S(801, __c25, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3039,9 +3160,30 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateHealthModelRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(768, __c24, 0)),
+          identity: S.optional(__S(771, __c24, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateHealthModelResponse" });
   }
 }
-function __c19(j: number): any {
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "HealthModelPropertiesInput" });
+  }
+}
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3057,51 +3199,32 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(609, __c19, 1)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(769, __c24, 1)));
     case 3:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(610, __c19, 2)),
+          userAssignedIdentities: S.optional(__S(770, __c24, 2)),
         }),
       ).annotate({ identifier: "CreateHealthModelResponseIdentity" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          tags: S.optional(__S(64, __c2, 0)),
-          location: S.String,
-          properties: S.optional(__S(608, __c19, 0)),
-          identity: S.optional(__S(611, __c19, 3)),
-        }),
-      ).annotate({ identifier: "CreateHealthModelResponse" });
   }
 }
-function __c20(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "HealthModelPropertiesInput" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(640, __c20, 0)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(736, __c23, 0)));
     case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(672, __c21, 0)),
+          userAssignedIdentities: S.optional(__S(800, __c25, 0)),
         }),
       ).annotate({ identifier: "CreateHealthModelRequestIdentity" });
   }
 }
-function __c22(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3121,7 +3244,21 @@ function __c22(j: number): any {
       ).annotate({ identifier: "GetRelationshipRequest" });
   }
 }
-function __c23(j: number): any {
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(896, __c28, 0)),
+        }),
+      ).annotate({ identifier: "GetRelationshipResponse" });
+  }
+}
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3134,19 +3271,9 @@ function __c23(j: number): any {
           discoveredBy: S.optional(S.String),
         }),
       ).annotate({ identifier: "RelationshipProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(736, __c23, 0)),
-        }),
-      ).annotate({ identifier: "GetRelationshipResponse" });
   }
 }
-function __c24(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3166,7 +3293,21 @@ function __c24(j: number): any {
       ).annotate({ identifier: "GetSignalDefinitionRequest" });
   }
 }
-function __c25(j: number): any {
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(992, __c31, 0)),
+        }),
+      ).annotate({ identifier: "GetSignalDefinitionResponse" });
+  }
+}
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3180,19 +3321,9 @@ function __c25(j: number): any {
           evaluationRules: __S(225, __c7, 1),
         }),
       ).annotate({ identifier: "SignalDefinitionProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(800, __c25, 0)),
-        }),
-      ).annotate({ identifier: "GetSignalDefinitionResponse" });
   }
 }
-function __c26(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3210,17 +3341,17 @@ function __c26(j: number): any {
         ),
       ).annotate({ identifier: "ListAuthenticationSettingsByHealthModelRequest" });
     case 1:
-      return S.Array(__S(129, __c4, 1));
+      return S.Array(__S(352, __c11, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(833, __c26, 1),
+          value: __S(1025, __c32, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthenticationSettingListResult" });
   }
 }
-function __c27(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3239,17 +3370,17 @@ function __c27(j: number): any {
         ),
       ).annotate({ identifier: "ListDiscoveryRuleByHealthModelRequest" });
     case 1:
-      return S.Array(__S(1475, __c46, 3));
+      return S.Array(__S(416, __c13, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(865, __c27, 1),
+          value: __S(1057, __c33, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiscoveryRuleListResult" });
   }
 }
-function __c28(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3268,17 +3399,17 @@ function __c28(j: number): any {
         ),
       ).annotate({ identifier: "ListEntityByHealthModelRequest" });
     case 1:
-      return S.Array(__S(280, __c8, 24));
+      return S.Array(__S(480, __c15, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(897, __c28, 1),
+          value: __S(1089, __c34, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EntityListResult" });
   }
 }
-function __c29(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3296,20 +3427,20 @@ function __c29(j: number): any {
       ).annotate({ identifier: "ListHealthModelByResourceGroupRequest" });
   }
 }
-function __c30(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(612, __c19, 4));
+      return S.Array(__S(672, __c21, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(960, __c30, 0),
+          value: __S(1152, __c36, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "HealthModelListResult" });
   }
 }
-function __c31(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3326,7 +3457,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "ListHealthModelBySubscriptionRequest" });
   }
 }
-function __c32(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3353,23 +3484,23 @@ function __c32(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(1025, __c32, 1)),
+          display: S.optional(__S(1217, __c38, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(1026, __c32, 2));
+      return S.Array(__S(1218, __c38, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1027, __c32, 3)),
+          value: S.optional(__S(1219, __c38, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c33(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3388,17 +3519,17 @@ function __c33(j: number): any {
         ),
       ).annotate({ identifier: "ListRelationshipByHealthModelRequest" });
     case 1:
-      return S.Array(__S(737, __c23, 1));
+      return S.Array(__S(864, __c27, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1057, __c33, 1),
+          value: __S(1249, __c39, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RelationshipListResult" });
   }
 }
-function __c34(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3417,17 +3548,17 @@ function __c34(j: number): any {
         ),
       ).annotate({ identifier: "ListSignalDefinitionByHealthModelRequest" });
     case 1:
-      return S.Array(__S(801, __c25, 1));
+      return S.Array(__S(960, __c30, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1089, __c34, 1),
+          value: __S(1281, __c40, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalDefinitionListResult" });
   }
 }
-function __c35(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3447,7 +3578,18 @@ function __c35(j: number): any {
       ).annotate({ identifier: "DeleteAuthenticationSettingsRequest" });
   }
 }
-function __c36(j: number): any {
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteAuthenticationSettingsResponse" });
+  }
+}
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3465,7 +3607,7 @@ function __c36(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           healthModelName: S.String.pipe(T.Label()),
           relationshipName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1152, __c36, 0)),
+          properties: S.optional(__S(1376, __c43, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3475,9 +3617,21 @@ function __c36(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RelationshipsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(896, __c28, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "RelationshipsCreateOrUpdateResponse" });
   }
 }
-function __c37(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3497,7 +3651,7 @@ function __c37(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           healthModelName: S.String.pipe(T.Label()),
           signalDefinitionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1184, __c37, 0)),
+          properties: S.optional(__S(1408, __c44, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3507,9 +3661,21 @@ function __c37(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SignalDefinitionsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(992, __c31, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SignalDefinitionsCreateOrUpdateResponse" });
   }
 }
-function __c38(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3517,7 +3683,7 @@ function __c38(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           healthModelName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(673, __c21, 1)),
+          identity: S.optional(__S(801, __c25, 1)),
           tags: S.optional(__S(64, __c2, 0)),
         }).pipe(
           T.Http({
@@ -3528,9 +3694,24 @@ function __c38(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateHealthModelRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(768, __c24, 0)),
+          identity: S.optional(__S(771, __c24, 3)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateHealthModelResponse" });
   }
 }
-function __c39(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3550,7 +3731,7 @@ function __c39(j: number): any {
       ).annotate({ identifier: "DeleteDiscoveryRuleRequest" });
   }
 }
-function __c40(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3570,7 +3751,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "DeleteEntityRequest" });
   }
 }
-function __c41(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3589,7 +3770,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "DeleteHealthModelRequest" });
   }
 }
-function __c42(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3609,7 +3790,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "DeleteRelationshipRequest" });
   }
 }
-function __c43(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3629,7 +3810,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "DeleteSignalDefinitionRequest" });
   }
 }
-function __c44(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3638,7 +3819,7 @@ function __c44(j: number): any {
           authenticationSetting: S.String,
           discoverRelationships: S.String,
           addRecommendedSignals: S.String,
-          specification: __S(1472, __c46, 0),
+          specification: __S(1696, __c53, 0),
           addResourceHealthSignal: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiscoveryRulePropertiesInput" });
@@ -3649,7 +3830,7 @@ function __c44(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           healthModelName: S.String.pipe(T.Label()),
           discoveryRuleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1408, __c44, 0)),
+          properties: S.optional(__S(1632, __c51, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3659,15 +3840,27 @@ function __c44(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DiscoveryRulesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(1698, __c53, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DiscoveryRulesCreateOrUpdateResponse" });
   }
 }
-function __c45(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c46(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3679,7 +3872,7 @@ function __c46(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.String,
-          context: S.optional(__S(1440, __c45, 0)),
+          context: S.optional(__S(1664, __c52, 0)),
         }),
       ).annotate({ identifier: "DiscoveryError" });
     case 2:
@@ -3690,22 +3883,12 @@ function __c46(j: number): any {
           authenticationSetting: S.String,
           discoverRelationships: S.String,
           addRecommendedSignals: S.String,
-          specification: __S(1472, __c46, 0),
+          specification: __S(1696, __c53, 0),
           addResourceHealthSignal: S.optional(S.String),
-          error: S.optional(__S(1473, __c46, 1)),
+          error: S.optional(__S(1697, __c53, 1)),
           entityName: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiscoveryRuleProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(1474, __c46, 2)),
-        }),
-      ).annotate({ identifier: "DiscoveryRulesCreateOrUpdateResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

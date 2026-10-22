@@ -675,6 +675,9 @@ export interface DeleteIotHubResourceResponse {
   identity?: ArmIdentity;
   /** The system meta data relating to this resource. */
   systemData?: SystemData;
+  /** URL to query for status of the operation. */
+  azureAsyncOperation?: string;
+  locationHeader?: string;
 }
 export interface DeleteIotHubResourceEventHubConsumerGroupRequest {
   /** The subscription identifier. */
@@ -698,6 +701,19 @@ export interface DeletePrivateEndpointConnectionRequest {
   resourceName: string;
   /** The name of the private endpoint connection */
   privateEndpointConnectionName: string;
+}
+/** The private endpoint connection of an IotHub */
+export interface DeletePrivateEndpointConnectionResponse {
+  /** The resource identifier. */
+  id?: string;
+  /** The resource name. */
+  name?: string;
+  /** The resource type. */
+  type?: string;
+  properties: PrivateEndpointConnectionProperties;
+  /** URL to query for status of the operation. */
+  azureAsyncOperation?: string;
+  location?: string;
 }
 /** Specifies authentication type being used for connecting to the storage account. */
 export type ExportIotHubResourceDevicesRequestAuthenticationType = "keyBased" | "identityBased";
@@ -1107,7 +1123,11 @@ export interface IotHubManualFailoverRequest {
   /** Region the hub will be failed over to */
   failoverRegion: string;
 }
-export interface IotHubManualFailoverResponse {}
+export interface IotHubManualFailoverResponse {
+  /** URL to query for status of the operation. */
+  azureAsyncOperation?: string;
+  location?: string;
+}
 /** The resource tags. */
 export type IotHubResourceCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
 /** The shared access policies you can use to secure a connection to the IoT hub. */
@@ -1711,8 +1731,8 @@ export const CreateIotHubResourceEventHubConsumerGroup: API.OperationMethod<
   CreateIotHubResourceEventHubConsumerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449, __c14, 1) as any as S.Schema<CreateIotHubResourceEventHubConsumerGroupRequest>,
-  output: __S(481, __c15, 1) as any as S.Schema<EventHubConsumerGroupInfo>,
+  input: __S(481, __c15, 1) as any as S.Schema<CreateIotHubResourceEventHubConsumerGroupRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<EventHubConsumerGroupInfo>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1726,8 +1746,8 @@ export const DeleteCertificate: API.OperationMethod<
   DeleteCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<DeleteCertificateRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<DeleteCertificateResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<DeleteCertificateRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<DeleteCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1741,8 +1761,8 @@ export const DeleteIotHubResource: API.OperationMethod<
   DeleteIotHubResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c39, 0) as any as S.Schema<DeleteIotHubResourceRequest>,
-  output: __S(1503, __c46, 31) as any as S.Schema<DeleteIotHubResourceResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<DeleteIotHubResourceRequest>,
+  output: __S(1281, __c40, 1) as any as S.Schema<DeleteIotHubResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1756,8 +1776,8 @@ export const DeleteIotHubResourceEventHubConsumerGroup: API.OperationMethod<
   DeleteIotHubResourceEventHubConsumerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c49, 0) as any as S.Schema<DeleteIotHubResourceEventHubConsumerGroupRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<DeleteIotHubResourceEventHubConsumerGroupResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<DeleteIotHubResourceEventHubConsumerGroupRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<DeleteIotHubResourceEventHubConsumerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1767,12 +1787,12 @@ export type DeletePrivateEndpointConnectionError = AzureOpError;
 /** Delete private endpoint connection Delete private endpoint connection with the specified name */
 export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionRequest,
-  PrivateEndpointConnection,
+  DeletePrivateEndpointConnectionResponse,
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1600, __c50, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(1507, __c47, 3) as any as S.Schema<PrivateEndpointConnection>,
+  input: __S(1664, __c52, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(1665, __c52, 1) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1786,8 +1806,8 @@ export const ExportIotHubResourceDevices: API.OperationMethod<
   ExportIotHubResourceDevicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1632, __c51, 0) as any as S.Schema<ExportIotHubResourceDevicesRequest>,
-  output: __S(1664, __c52, 0) as any as S.Schema<JobResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<ExportIotHubResourceDevicesRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<JobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1801,8 +1821,8 @@ export const GenerateCertificateVerificationCode: API.OperationMethod<
   GenerateCertificateVerificationCodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<GenerateCertificateVerificationCodeRequest>,
-  output: __S(1698, __c53, 2) as any as S.Schema<CertificateWithNonceDescription>,
+  input: __S(1760, __c55, 0) as any as S.Schema<GenerateCertificateVerificationCodeRequest>,
+  output: __S(1762, __c55, 2) as any as S.Schema<CertificateWithNonceDescription>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1816,7 +1836,7 @@ export const GetCertificate: API.OperationMethod<
   GetCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c54, 0) as any as S.Schema<GetCertificateRequest>,
+  input: __S(1792, __c56, 0) as any as S.Schema<GetCertificateRequest>,
   output: __S(33, __c1, 1) as any as S.Schema<CertificateDescription>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1832,7 +1852,7 @@ export const GetIotHubResource: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c3, 0) as any as S.Schema<GetIotHubResourceRequest>,
-  output: __S(1503, __c46, 31) as any as S.Schema<GetIotHubResourceResponse>,
+  output: __S(128, __c4, 0) as any as S.Schema<GetIotHubResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1846,8 +1866,8 @@ export const GetIotHubResourceEndpointHealth: API.OperationMethod<
   GetIotHubResourceEndpointHealthError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c4, 0) as any as S.Schema<GetIotHubResourceEndpointHealthRequest>,
-  output: __S(131, __c4, 3) as any as S.Schema<EndpointHealthDataListResult>,
+  input: __S(160, __c5, 0) as any as S.Schema<GetIotHubResourceEndpointHealthRequest>,
+  output: __S(163, __c5, 3) as any as S.Schema<EndpointHealthDataListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1861,8 +1881,8 @@ export const GetIotHubResourceEventHubConsumerGroup: API.OperationMethod<
   GetIotHubResourceEventHubConsumerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c5, 0) as any as S.Schema<GetIotHubResourceEventHubConsumerGroupRequest>,
-  output: __S(481, __c15, 1) as any as S.Schema<EventHubConsumerGroupInfo>,
+  input: __S(192, __c6, 0) as any as S.Schema<GetIotHubResourceEventHubConsumerGroupRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<EventHubConsumerGroupInfo>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1876,8 +1896,8 @@ export const GetIotHubResourceJob: API.OperationMethod<
   GetIotHubResourceJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c6, 0) as any as S.Schema<GetIotHubResourceJobRequest>,
-  output: __S(1664, __c52, 0) as any as S.Schema<JobResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetIotHubResourceJobRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<JobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1891,8 +1911,8 @@ export const GetIotHubResourceKeysForKeyName: API.OperationMethod<
   GetIotHubResourceKeysForKeyNameError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c7, 0) as any as S.Schema<GetIotHubResourceKeysForKeyNameRequest>,
-  output: __S(1280, __c40, 0) as any as S.Schema<SharedAccessSignatureAuthorizationRule>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetIotHubResourceKeysForKeyNameRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<SharedAccessSignatureAuthorizationRule>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1906,8 +1926,8 @@ export const GetIotHubResourceQuotaMetrics: API.OperationMethod<
   GetIotHubResourceQuotaMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c8, 0) as any as S.Schema<GetIotHubResourceQuotaMetricsRequest>,
-  output: __S(259, __c8, 3) as any as S.Schema<IotHubQuotaMetricInfoListResult>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetIotHubResourceQuotaMetricsRequest>,
+  output: __S(291, __c9, 3) as any as S.Schema<IotHubQuotaMetricInfoListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1921,8 +1941,8 @@ export const GetIotHubResourceStats: API.OperationMethod<
   GetIotHubResourceStatsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c9, 0) as any as S.Schema<GetIotHubResourceStatsRequest>,
-  output: __S(289, __c9, 1) as any as S.Schema<RegistryStatistics>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetIotHubResourceStatsRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<RegistryStatistics>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1936,8 +1956,8 @@ export const GetIotHubResourceValidSkus: API.OperationMethod<
   GetIotHubResourceValidSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c10, 0) as any as S.Schema<GetIotHubResourceValidSkusRequest>,
-  output: __S(324, __c10, 4) as any as S.Schema<IotHubSkuDescriptionListResult>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetIotHubResourceValidSkusRequest>,
+  output: __S(356, __c11, 4) as any as S.Schema<IotHubSkuDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1951,8 +1971,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c11, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(1507, __c47, 3) as any as S.Schema<PrivateEndpointConnection>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(1376, __c43, 0) as any as S.Schema<PrivateEndpointConnection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1966,8 +1986,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c12, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(417, __c13, 1) as any as S.Schema<GroupIdInformation>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(449, __c14, 1) as any as S.Schema<GroupIdInformation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1981,8 +2001,8 @@ export const GetResourceProviderCommonSubscriptionQuota: API.OperationMethod<
   GetResourceProviderCommonSubscriptionQuotaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c16, 0) as any as S.Schema<GetResourceProviderCommonSubscriptionQuotaRequest>,
-  output: __S(516, __c16, 4) as any as S.Schema<UserSubscriptionQuotaListResult>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetResourceProviderCommonSubscriptionQuotaRequest>,
+  output: __S(548, __c17, 4) as any as S.Schema<UserSubscriptionQuotaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1996,8 +2016,8 @@ export const ImportIotHubResourceDevices: API.OperationMethod<
   ImportIotHubResourceDevicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<ImportIotHubResourceDevicesRequest>,
-  output: __S(1664, __c52, 0) as any as S.Schema<JobResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<ImportIotHubResourceDevicesRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<JobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2011,8 +2031,8 @@ export const IotHubManualFailover: API.OperationMethod<
   IotHubManualFailoverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c18, 0) as any as S.Schema<IotHubManualFailoverRequest>,
-  output: __S(928, __c29, 0) as any as S.Schema<IotHubManualFailoverResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<IotHubManualFailoverRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<IotHubManualFailoverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2026,8 +2046,8 @@ export const IotHubResourceCreateOrUpdate: API.OperationMethod<
   IotHubResourceCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(620, __c19, 12) as any as S.Schema<IotHubResourceCreateOrUpdateRequest>,
-  output: __S(1503, __c46, 31) as any as S.Schema<IotHubResourceCreateOrUpdateResponse>,
+  input: __S(652, __c20, 12) as any as S.Schema<IotHubResourceCreateOrUpdateRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<IotHubResourceCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2041,8 +2061,8 @@ export const ListCertificateByIotHub: API.OperationMethod<
   ListCertificateByIotHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<ListCertificateByIotHubRequest>,
-  output: __S(674, __c21, 2) as any as S.Schema<CertificateListDescription>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListCertificateByIotHubRequest>,
+  output: __S(706, __c22, 2) as any as S.Schema<CertificateListDescription>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2056,8 +2076,8 @@ export const ListIotHubResourceByResourceGroup: API.OperationMethod<
   ListIotHubResourceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c22, 0) as any as S.Schema<ListIotHubResourceByResourceGroupRequest>,
-  output: __S(737, __c23, 1) as any as S.Schema<IotHubDescriptionListResult>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListIotHubResourceByResourceGroupRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<IotHubDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2071,8 +2091,8 @@ export const ListIotHubResourceBySubscription: API.OperationMethod<
   ListIotHubResourceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c24, 0) as any as S.Schema<ListIotHubResourceBySubscriptionRequest>,
-  output: __S(737, __c23, 1) as any as S.Schema<IotHubDescriptionListResult>,
+  input: __S(800, __c25, 0) as any as S.Schema<ListIotHubResourceBySubscriptionRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<IotHubDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2086,8 +2106,8 @@ export const ListIotHubResourceEventHubConsumerGroups: API.OperationMethod<
   ListIotHubResourceEventHubConsumerGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c25, 0) as any as S.Schema<ListIotHubResourceEventHubConsumerGroupsRequest>,
-  output: __S(802, __c25, 2) as any as S.Schema<EventHubConsumerGroupsListResult>,
+  input: __S(832, __c26, 0) as any as S.Schema<ListIotHubResourceEventHubConsumerGroupsRequest>,
+  output: __S(834, __c26, 2) as any as S.Schema<EventHubConsumerGroupsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2101,8 +2121,8 @@ export const ListIotHubResourceJobs: API.OperationMethod<
   ListIotHubResourceJobsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c26, 0) as any as S.Schema<ListIotHubResourceJobsRequest>,
-  output: __S(834, __c26, 2) as any as S.Schema<JobResponseListResult>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListIotHubResourceJobsRequest>,
+  output: __S(866, __c27, 2) as any as S.Schema<JobResponseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2116,8 +2136,8 @@ export const ListIotHubResourceKeys: API.OperationMethod<
   ListIotHubResourceKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<ListIotHubResourceKeysRequest>,
-  output: __S(865, __c27, 1) as any as S.Schema<SharedAccessSignatureAuthorizationRuleListResult>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListIotHubResourceKeysRequest>,
+  output: __S(897, __c28, 1) as any as S.Schema<SharedAccessSignatureAuthorizationRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2131,8 +2151,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c30, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(964, __c30, 4) as any as S.Schema<OperationListResult>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(996, __c31, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2146,8 +2166,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(993, __c31, 1) as any as S.Schema<ListPrivateEndpointConnectionsResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(1025, __c32, 1) as any as S.Schema<ListPrivateEndpointConnectionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2161,8 +2181,8 @@ export const ListPrivateLinkResources: API.OperationMethod<
   ListPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c32, 0) as any as S.Schema<ListPrivateLinkResourcesRequest>,
-  output: __S(1026, __c32, 2) as any as S.Schema<PrivateLinkResources>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListPrivateLinkResourcesRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<PrivateLinkResources>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2176,8 +2196,8 @@ export const TestIotHubResourceAllRoutes: API.OperationMethod<
   TestIotHubResourceAllRoutesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c33, 0) as any as S.Schema<TestIotHubResourceAllRoutesRequest>,
-  output: __S(1059, __c33, 3) as any as S.Schema<TestAllRoutesResult>,
+  input: __S(1088, __c34, 0) as any as S.Schema<TestIotHubResourceAllRoutesRequest>,
+  output: __S(1091, __c34, 3) as any as S.Schema<TestAllRoutesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2191,8 +2211,8 @@ export const TestIotHubResourceRoute: API.OperationMethod<
   TestIotHubResourceRouteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c35, 0) as any as S.Schema<TestIotHubResourceRouteRequest>,
-  output: __S(1126, __c35, 6) as any as S.Schema<TestRouteResult>,
+  input: __S(1152, __c36, 0) as any as S.Schema<TestIotHubResourceRouteRequest>,
+  output: __S(1158, __c36, 6) as any as S.Schema<TestRouteResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2206,8 +2226,8 @@ export const UpdateIotHubResource: API.OperationMethod<
   UpdateIotHubResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1152, __c36, 0) as any as S.Schema<UpdateIotHubResourceRequest>,
-  output: __S(1503, __c46, 31) as any as S.Schema<UpdateIotHubResourceResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<UpdateIotHubResourceRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<UpdateIotHubResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2221,8 +2241,8 @@ export const UpdatePrivateEndpointConnection: API.OperationMethod<
   UpdatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c37, 0) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>,
-  output: __S(1507, __c47, 3) as any as S.Schema<PrivateEndpointConnection>,
+  input: __S(1216, __c38, 0) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>,
+  output: __S(1376, __c43, 0) as any as S.Schema<PrivateEndpointConnection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2236,7 +2256,7 @@ export const VerifyCertificate: API.OperationMethod<
   VerifyCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c38, 0) as any as S.Schema<VerifyCertificateRequest>,
+  input: __S(1248, __c39, 0) as any as S.Schema<VerifyCertificateRequest>,
   output: __S(33, __c1, 1) as any as S.Schema<CertificateDescription>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2349,6 +2369,25 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.String,
+          tags: S.optional(__S(1504, __c47, 0)),
+          etag: S.optional(S.String),
+          properties: S.optional(__S(1562, __c48, 26)),
+          sku: __S(1344, __c42, 0),
+          identity: S.optional(__S(1565, __c48, 29)),
+          systemData: S.optional(__S(1566, __c48, 30)),
+        }),
+      ).annotate({ identifier: "GetIotHubResourceResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           iotHubName: S.String.pipe(T.Label()),
@@ -2373,17 +2412,17 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "EndpointHealthData" });
     case 2:
-      return S.Array(__S(129, __c4, 1));
+      return S.Array(__S(161, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(130, __c4, 2)),
+          value: S.optional(__S(162, __c5, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EndpointHealthDataListResult" });
   }
 }
-function __c5(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2404,7 +2443,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "GetIotHubResourceEventHubConsumerGroupRequest" });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2424,7 +2463,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "GetIotHubResourceJobRequest" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2444,7 +2483,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "GetIotHubResourceKeysForKeyNameRequest" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2470,17 +2509,17 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "IotHubQuotaMetricInfo" });
     case 2:
-      return S.Array(__S(257, __c8, 1));
+      return S.Array(__S(289, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(258, __c8, 2)),
+          value: S.optional(__S(290, __c9, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IotHubQuotaMetricInfoListResult" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2507,7 +2546,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "RegistryStatistics" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2537,22 +2576,22 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
-          sku: __S(1312, __c41, 0),
-          capacity: __S(321, __c10, 1),
+          sku: __S(1344, __c42, 0),
+          capacity: __S(353, __c11, 1),
         }),
       ).annotate({ identifier: "IotHubSkuDescription" });
     case 3:
-      return S.Array(__S(322, __c10, 2));
+      return S.Array(__S(354, __c11, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(323, __c10, 3)),
+          value: S.optional(__S(355, __c11, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IotHubSkuDescriptionListResult" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2572,7 +2611,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "GetPrivateEndpointConnectionRequest" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2592,14 +2631,14 @@ function __c12(j: number): any {
       ).annotate({ identifier: "GetPrivateLinkResourceRequest" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(1344, __c42, 0)),
-          requiredZoneNames: S.optional(__S(1344, __c42, 0)),
+          requiredMembers: S.optional(__S(1408, __c44, 0)),
+          requiredZoneNames: S.optional(__S(1408, __c44, 0)),
         }),
       ).annotate({ identifier: "GroupIdInformationProperties" });
     case 1:
@@ -2608,12 +2647,12 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: __S(416, __c13, 0),
+          properties: __S(448, __c14, 0),
         }),
       ).annotate({ identifier: "GroupIdInformation" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2629,7 +2668,7 @@ function __c14(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           eventHubEndpointName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: __S(448, __c14, 0),
+          properties: __S(480, __c15, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2641,14 +2680,14 @@ function __c14(j: number): any {
       ).annotate({ identifier: "CreateIotHubResourceEventHubConsumerGroupRequest" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(480, __c15, 0)),
+          properties: S.optional(__S(512, __c16, 0)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
@@ -2657,7 +2696,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "EventHubConsumerGroupInfo" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2687,21 +2726,21 @@ function __c16(j: number): any {
           unit: S.optional(S.String),
           currentValue: S.optional(S.Number),
           limit: S.optional(S.Number),
-          name: S.optional(__S(513, __c16, 1)),
+          name: S.optional(__S(545, __c17, 1)),
         }),
       ).annotate({ identifier: "UserSubscriptionQuota" });
     case 3:
-      return S.Array(__S(514, __c16, 2));
+      return S.Array(__S(546, __c17, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(515, __c16, 3)),
+          value: S.optional(__S(547, __c17, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserSubscriptionQuotaListResult" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2714,7 +2753,7 @@ function __c17(j: number): any {
           inputBlobName: S.optional(S.String),
           outputBlobName: S.optional(S.String),
           authenticationType: S.optional(S.String),
-          identity: S.optional(__S(1536, __c48, 0)),
+          identity: S.optional(__S(1600, __c50, 0)),
           includeConfigurations: S.optional(S.Boolean),
           configurationsBlobName: S.optional(S.String),
         }).pipe(
@@ -2728,7 +2767,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "ImportIotHubResourceDevicesRequest" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2746,18 +2785,25 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "IotHubManualFailoverRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "IotHubManualFailoverResponse" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(640, __c20, 0),
+          properties: __S(672, __c21, 0),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionInput" });
     case 1:
-      return S.Array(__S(608, __c19, 0));
+      return S.Array(__S(640, __c20, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2766,7 +2812,7 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "EventHubPropertiesInput" });
     case 3:
-      return S.Record(S.String, __S(610, __c19, 2));
+      return S.Record(S.String, __S(642, __c20, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2775,7 +2821,7 @@ function __c19(j: number): any {
           resourceGroup: S.optional(S.String),
           endpointUri: S.String,
           authenticationType: S.optional(S.String),
-          identity: S.optional(__S(1536, __c48, 0)),
+          identity: S.optional(__S(1600, __c50, 0)),
           primaryKey: S.optional(S.String),
           secondaryKey: S.optional(S.String),
           databaseName: S.String,
@@ -2785,46 +2831,46 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "RoutingCosmosDBSqlApiPropertiesInput" });
     case 5:
-      return S.Array(__S(612, __c19, 4));
+      return S.Array(__S(644, __c20, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          serviceBusQueues: S.optional(__S(1480, __c46, 8)),
-          serviceBusTopics: S.optional(__S(1480, __c46, 8)),
-          eventHubs: S.optional(__S(1480, __c46, 8)),
-          storageContainers: S.optional(__S(1482, __c46, 10)),
-          cosmosDBSqlContainers: S.optional(__S(613, __c19, 5)),
+          serviceBusQueues: S.optional(__S(1544, __c48, 8)),
+          serviceBusTopics: S.optional(__S(1544, __c48, 8)),
+          eventHubs: S.optional(__S(1544, __c48, 8)),
+          storageContainers: S.optional(__S(1546, __c48, 10)),
+          cosmosDBSqlContainers: S.optional(__S(645, __c20, 5)),
         }),
       ).annotate({ identifier: "RoutingEndpointsInput" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          endpoints: S.optional(__S(614, __c19, 6)),
-          routes: S.optional(__S(1486, __c46, 14)),
-          fallbackRoute: S.optional(__S(1487, __c46, 15)),
-          enrichments: S.optional(__S(1489, __c46, 17)),
+          endpoints: S.optional(__S(646, __c20, 6)),
+          routes: S.optional(__S(1550, __c48, 14)),
+          fallbackRoute: S.optional(__S(1551, __c48, 15)),
+          enrichments: S.optional(__S(1553, __c48, 17)),
         }),
       ).annotate({ identifier: "RoutingPropertiesInput" });
     case 8:
       return S.suspend(() =>
         S.Struct({
-          authorizationPolicies: S.optional(__S(1376, __c43, 0)),
+          authorizationPolicies: S.optional(__S(1440, __c45, 0)),
           disableLocalAuth: S.optional(S.Boolean),
           disableDeviceSAS: S.optional(S.Boolean),
           disableModuleSAS: S.optional(S.Boolean),
           restrictOutboundNetworkAccess: S.optional(S.Boolean),
-          allowedFqdnList: S.optional(__S(1344, __c42, 0)),
+          allowedFqdnList: S.optional(__S(1408, __c44, 0)),
           publicNetworkAccess: S.optional(S.String),
-          ipFilterRules: S.optional(__S(1473, __c46, 1)),
-          networkRuleSets: S.optional(__S(1476, __c46, 4)),
+          ipFilterRules: S.optional(__S(1537, __c48, 1)),
+          networkRuleSets: S.optional(__S(1540, __c48, 4)),
           minTlsVersion: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(609, __c19, 1)),
-          eventHubEndpoints: S.optional(__S(611, __c19, 3)),
-          routing: S.optional(__S(615, __c19, 7)),
-          storageEndpoints: S.optional(__S(1492, __c46, 20)),
-          messagingEndpoints: S.optional(__S(1494, __c46, 22)),
+          privateEndpointConnections: S.optional(__S(641, __c20, 1)),
+          eventHubEndpoints: S.optional(__S(643, __c20, 3)),
+          routing: S.optional(__S(647, __c20, 7)),
+          storageEndpoints: S.optional(__S(1556, __c48, 20)),
+          messagingEndpoints: S.optional(__S(1558, __c48, 22)),
           enableFileUploadNotifications: S.optional(S.Boolean),
-          cloudToDevice: S.optional(__S(1495, __c46, 23)),
+          cloudToDevice: S.optional(__S(1559, __c48, 23)),
           comments: S.optional(S.String),
           features: S.optional(S.String),
           enableDataResidency: S.optional(S.Boolean),
@@ -2838,12 +2884,12 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "IotHubSkuInfoInput" });
     case 10:
-      return S.Record(S.String, __S(928, __c29, 0));
+      return S.Record(S.String, __S(960, __c30, 0));
     case 11:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(618, __c19, 10)),
+          userAssignedIdentities: S.optional(__S(650, __c20, 10)),
         }),
       ).annotate({ identifier: "ArmIdentityInput" });
     case 12:
@@ -2853,11 +2899,11 @@ function __c19(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           location: S.String,
-          tags: S.optional(__S(1440, __c45, 0)),
+          tags: S.optional(__S(1504, __c47, 0)),
           etag: S.optional(S.String),
-          properties: S.optional(__S(616, __c19, 8)),
-          sku: __S(617, __c19, 9),
-          identity: S.optional(__S(619, __c19, 11)),
+          properties: S.optional(__S(648, __c20, 8)),
+          sku: __S(649, __c20, 9),
+          identity: S.optional(__S(651, __c20, 11)),
           ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
         }).pipe(
           T.Http({
@@ -2870,18 +2916,18 @@ function __c19(j: number): any {
       ).annotate({ identifier: "IotHubResourceCreateOrUpdateRequest" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(928, __c29, 0)),
-          privateLinkServiceConnectionState: __S(1505, __c47, 1),
+          privateEndpoint: S.optional(__S(960, __c30, 0)),
+          privateLinkServiceConnectionState: __S(1569, __c49, 1),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionPropertiesInput" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2903,12 +2949,12 @@ function __c21(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(673, __c21, 1)),
+          value: S.optional(__S(705, __c22, 1)),
         }),
       ).annotate({ identifier: "CertificateListDescription" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2926,20 +2972,20 @@ function __c22(j: number): any {
       ).annotate({ identifier: "ListIotHubResourceByResourceGroupRequest" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1503, __c46, 31));
+      return S.Array(__S(128, __c4, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(736, __c23, 0)),
+          value: S.optional(__S(768, __c24, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IotHubDescriptionListResult" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2956,7 +3002,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "ListIotHubResourceBySubscriptionRequest" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2975,17 +3021,17 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "ListIotHubResourceEventHubConsumerGroupsRequest" });
     case 1:
-      return S.Array(__S(481, __c15, 1));
+      return S.Array(__S(513, __c16, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(801, __c25, 1)),
+          value: S.optional(__S(833, __c26, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventHubConsumerGroupsListResult" });
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3003,17 +3049,17 @@ function __c26(j: number): any {
         ),
       ).annotate({ identifier: "ListIotHubResourceJobsRequest" });
     case 1:
-      return S.Array(__S(1664, __c52, 0));
+      return S.Array(__S(1728, __c54, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(833, __c26, 1)),
+          value: S.optional(__S(865, __c27, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobResponseListResult" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3033,13 +3079,13 @@ function __c27(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1376, __c43, 0)),
+          value: S.optional(__S(1440, __c45, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SharedAccessSignatureAuthorizationRuleListResult" });
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3060,13 +3106,13 @@ function __c28(j: number): any {
       ).annotate({ identifier: "DeleteCertificateRequest" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteCertificateResponse" });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3092,21 +3138,21 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(961, __c30, 1)),
+          display: S.optional(__S(993, __c31, 1)),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(962, __c30, 2));
+      return S.Array(__S(994, __c31, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(963, __c30, 3)),
+          value: S.optional(__S(995, __c31, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
   }
 }
-function __c31(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3124,12 +3170,12 @@ function __c31(j: number): any {
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionsRequest" });
     case 1:
-      return S.suspend(() => __S(1408, __c44, 0).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(1472, __c46, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPrivateEndpointConnectionsResponse",
       });
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3147,16 +3193,16 @@ function __c32(j: number): any {
         ),
       ).annotate({ identifier: "ListPrivateLinkResourcesRequest" });
     case 1:
-      return S.Array(__S(417, __c13, 1));
+      return S.Array(__S(449, __c14, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1025, __c32, 1)),
+          value: S.optional(__S(1057, __c33, 1)),
         }),
       ).annotate({ identifier: "PrivateLinkResources" });
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3165,8 +3211,8 @@ function __c33(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           iotHubName: S.String.pipe(T.Label()),
           routingSource: S.optional(S.String),
-          message: S.optional(__S(1088, __c34, 0)),
-          twin: S.optional(__S(1090, __c34, 2)),
+          message: S.optional(__S(1120, __c35, 0)),
+          twin: S.optional(__S(1122, __c35, 2)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3179,27 +3225,27 @@ function __c33(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(1441, __c45, 1)),
+          properties: S.optional(__S(1505, __c47, 1)),
         }),
       ).annotate({ identifier: "MatchedRoute" });
     case 2:
-      return S.Array(__S(1057, __c33, 1));
+      return S.Array(__S(1089, __c34, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          routes: S.optional(__S(1058, __c33, 2)),
+          routes: S.optional(__S(1090, __c34, 2)),
         }),
       ).annotate({ identifier: "TestAllRoutesResult" });
   }
 }
-function __c34(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           body: S.optional(S.String),
-          appProperties: S.optional(__S(1440, __c45, 0)),
-          systemProperties: S.optional(__S(1440, __c45, 0)),
+          appProperties: S.optional(__S(1504, __c47, 0)),
+          systemProperties: S.optional(__S(1504, __c47, 0)),
         }),
       ).annotate({ identifier: "RoutingMessage" });
     case 1:
@@ -3213,12 +3259,12 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tags: S.optional(S.Unknown),
-          properties: S.optional(__S(1089, __c34, 1)),
+          properties: S.optional(__S(1121, __c35, 1)),
         }),
       ).annotate({ identifier: "RoutingTwin" });
   }
 }
-function __c35(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3226,9 +3272,9 @@ function __c35(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           iotHubName: S.String.pipe(T.Label()),
-          message: S.optional(__S(1088, __c34, 0)),
-          route: __S(1441, __c45, 1),
-          twin: S.optional(__S(1090, __c34, 2)),
+          message: S.optional(__S(1120, __c35, 0)),
+          route: __S(1505, __c47, 1),
+          twin: S.optional(__S(1122, __c35, 2)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3248,8 +3294,8 @@ function __c35(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          start: S.optional(__S(1121, __c35, 1)),
-          end: S.optional(__S(1121, __c35, 1)),
+          start: S.optional(__S(1153, __c36, 1)),
+          end: S.optional(__S(1153, __c36, 1)),
         }),
       ).annotate({ identifier: "RouteErrorRange" });
     case 3:
@@ -3257,27 +3303,27 @@ function __c35(j: number): any {
         S.Struct({
           message: S.optional(S.String),
           severity: S.optional(S.String),
-          location: S.optional(__S(1122, __c35, 2)),
+          location: S.optional(__S(1154, __c36, 2)),
         }),
       ).annotate({ identifier: "RouteCompilationError" });
     case 4:
-      return S.Array(__S(1123, __c35, 3));
+      return S.Array(__S(1155, __c36, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          compilationErrors: S.optional(__S(1124, __c35, 4)),
+          compilationErrors: S.optional(__S(1156, __c36, 4)),
         }),
       ).annotate({ identifier: "TestRouteResultDetails" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           result: S.optional(S.String),
-          details: S.optional(__S(1125, __c35, 5)),
+          details: S.optional(__S(1157, __c36, 5)),
         }),
       ).annotate({ identifier: "TestRouteResult" });
   }
 }
-function __c36(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3285,7 +3331,7 @@ function __c36(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1440, __c45, 0)),
+          tags: S.optional(__S(1504, __c47, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3297,7 +3343,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "UpdateIotHubResourceRequest" });
   }
 }
-function __c37(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3306,7 +3352,7 @@ function __c37(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: __S(640, __c20, 0),
+          properties: __S(672, __c21, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3318,7 +3364,7 @@ function __c37(j: number): any {
       ).annotate({ identifier: "UpdatePrivateEndpointConnectionRequest" });
   }
 }
-function __c38(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3339,7 +3385,7 @@ function __c38(j: number): any {
       ).annotate({ identifier: "VerifyCertificateRequest" });
   }
 }
-function __c39(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3356,9 +3402,26 @@ function __c39(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteIotHubResourceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.String,
+          tags: S.optional(__S(1504, __c47, 0)),
+          etag: S.optional(S.String),
+          properties: S.optional(__S(1562, __c48, 26)),
+          sku: __S(1344, __c42, 0),
+          identity: S.optional(__S(1565, __c48, 29)),
+          systemData: S.optional(__S(1566, __c48, 30)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "DeleteIotHubResourceResponse" });
   }
 }
-function __c40(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3371,7 +3434,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "SharedAccessSignatureAuthorizationRule" });
   }
 }
-function __c41(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3383,25 +3446,38 @@ function __c41(j: number): any {
       ).annotate({ identifier: "IotHubSkuInfo" });
   }
 }
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-  }
-}
 function __c43(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1280, __c40, 0));
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: __S(1570, __c49, 2),
+        }),
+      ).annotate({ identifier: "PrivateEndpointConnection" });
   }
 }
 function __c44(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1507, __c47, 3));
+      return S.Array(S.String);
   }
 }
 function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1312, __c41, 0));
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1376, __c43, 0));
+  }
+}
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
@@ -3411,13 +3487,13 @@ function __c45(j: number): any {
           name: S.String,
           source: S.String,
           condition: S.optional(S.String),
-          endpointNames: __S(1344, __c42, 0),
+          endpointNames: __S(1408, __c44, 0),
           isEnabled: S.Boolean,
         }),
       ).annotate({ identifier: "RouteProperties" });
   }
 }
-function __c46(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3428,7 +3504,7 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "IpFilterRule" });
     case 1:
-      return S.Array(__S(1472, __c46, 0));
+      return S.Array(__S(1536, __c48, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3438,13 +3514,13 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "NetworkRuleSetIpRule" });
     case 3:
-      return S.Array(__S(1474, __c46, 2));
+      return S.Array(__S(1538, __c48, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           defaultAction: S.optional(S.String),
           applyToBuiltInEventHubEndpoint: S.Boolean,
-          ipRules: __S(1475, __c46, 3),
+          ipRules: __S(1539, __c48, 3),
         }),
       ).annotate({ identifier: "NetworkRuleSetProperties" });
     case 5:
@@ -3452,13 +3528,13 @@ function __c46(j: number): any {
         S.Struct({
           retentionTimeInDays: S.optional(S.Number),
           partitionCount: S.optional(S.Number),
-          partitionIds: S.optional(__S(1344, __c42, 0)),
+          partitionIds: S.optional(__S(1408, __c44, 0)),
           path: S.optional(S.String),
           endpoint: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventHubProperties" });
     case 6:
-      return S.Record(S.String, __S(1477, __c46, 5));
+      return S.Record(S.String, __S(1541, __c48, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -3467,14 +3543,14 @@ function __c46(j: number): any {
           endpointUri: S.optional(S.String),
           entityPath: S.optional(S.String),
           authenticationType: S.optional(S.String),
-          identity: S.optional(__S(1536, __c48, 0)),
+          identity: S.optional(__S(1600, __c50, 0)),
           name: S.String,
           subscriptionId: S.optional(S.String),
           resourceGroup: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoutingServiceBusQueueEndpointProperties" });
     case 8:
-      return S.Array(__S(1479, __c46, 7));
+      return S.Array(__S(1543, __c48, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
@@ -3482,7 +3558,7 @@ function __c46(j: number): any {
           connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
           endpointUri: S.optional(S.String),
           authenticationType: S.optional(S.String),
-          identity: S.optional(__S(1536, __c48, 0)),
+          identity: S.optional(__S(1600, __c50, 0)),
           name: S.String,
           subscriptionId: S.optional(S.String),
           resourceGroup: S.optional(S.String),
@@ -3494,7 +3570,7 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "RoutingStorageContainerProperties" });
     case 10:
-      return S.Array(__S(1481, __c46, 9));
+      return S.Array(__S(1545, __c48, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
@@ -3504,7 +3580,7 @@ function __c46(j: number): any {
           resourceGroup: S.optional(S.String),
           endpointUri: S.String,
           authenticationType: S.optional(S.String),
-          identity: S.optional(__S(1536, __c48, 0)),
+          identity: S.optional(__S(1600, __c50, 0)),
           primaryKey: S.optional(S.String),
           secondaryKey: S.optional(S.String),
           databaseName: S.String,
@@ -3514,26 +3590,26 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "RoutingCosmosDBSqlApiProperties" });
     case 12:
-      return S.Array(__S(1483, __c46, 11));
+      return S.Array(__S(1547, __c48, 11));
     case 13:
       return S.suspend(() =>
         S.Struct({
-          serviceBusQueues: S.optional(__S(1480, __c46, 8)),
-          serviceBusTopics: S.optional(__S(1480, __c46, 8)),
-          eventHubs: S.optional(__S(1480, __c46, 8)),
-          storageContainers: S.optional(__S(1482, __c46, 10)),
-          cosmosDBSqlContainers: S.optional(__S(1484, __c46, 12)),
+          serviceBusQueues: S.optional(__S(1544, __c48, 8)),
+          serviceBusTopics: S.optional(__S(1544, __c48, 8)),
+          eventHubs: S.optional(__S(1544, __c48, 8)),
+          storageContainers: S.optional(__S(1546, __c48, 10)),
+          cosmosDBSqlContainers: S.optional(__S(1548, __c48, 12)),
         }),
       ).annotate({ identifier: "RoutingEndpoints" });
     case 14:
-      return S.Array(__S(1441, __c45, 1));
+      return S.Array(__S(1505, __c47, 1));
     case 15:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           source: S.String,
           condition: S.optional(S.String),
-          endpointNames: __S(1344, __c42, 0),
+          endpointNames: __S(1408, __c44, 0),
           isEnabled: S.Boolean,
         }),
       ).annotate({ identifier: "FallbackRouteProperties" });
@@ -3542,18 +3618,18 @@ function __c46(j: number): any {
         S.Struct({
           key: S.String,
           value: S.String,
-          endpointNames: __S(1344, __c42, 0),
+          endpointNames: __S(1408, __c44, 0),
         }),
       ).annotate({ identifier: "EnrichmentProperties" });
     case 17:
-      return S.Array(__S(1488, __c46, 16));
+      return S.Array(__S(1552, __c48, 16));
     case 18:
       return S.suspend(() =>
         S.Struct({
-          endpoints: S.optional(__S(1485, __c46, 13)),
-          routes: S.optional(__S(1486, __c46, 14)),
-          fallbackRoute: S.optional(__S(1487, __c46, 15)),
-          enrichments: S.optional(__S(1489, __c46, 17)),
+          endpoints: S.optional(__S(1549, __c48, 13)),
+          routes: S.optional(__S(1550, __c48, 14)),
+          fallbackRoute: S.optional(__S(1551, __c48, 15)),
+          enrichments: S.optional(__S(1553, __c48, 17)),
         }),
       ).annotate({ identifier: "RoutingProperties" });
     case 19:
@@ -3563,11 +3639,11 @@ function __c46(j: number): any {
           connectionString: S.String.pipe(T.SensitiveValue({})),
           containerName: S.String,
           authenticationType: S.optional(S.String),
-          identity: S.optional(__S(1536, __c48, 0)),
+          identity: S.optional(__S(1600, __c50, 0)),
         }),
       ).annotate({ identifier: "StorageEndpointProperties" });
     case 20:
-      return S.Record(S.String, __S(1491, __c46, 19));
+      return S.Record(S.String, __S(1555, __c48, 19));
     case 21:
       return S.suspend(() =>
         S.Struct({
@@ -3577,13 +3653,13 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "MessagingEndpointProperties" });
     case 22:
-      return S.Record(S.String, __S(1493, __c46, 21));
+      return S.Record(S.String, __S(1557, __c48, 21));
     case 23:
       return S.suspend(() =>
         S.Struct({
           maxDeliveryCount: S.optional(S.Number),
           defaultTtlAsIso8601: S.optional(S.String),
-          feedback: S.optional(__S(1493, __c46, 21)),
+          feedback: S.optional(__S(1557, __c48, 21)),
         }),
       ).annotate({ identifier: "CloudToDeviceProperties" });
     case 24:
@@ -3594,33 +3670,33 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "IotHubLocationDescription" });
     case 25:
-      return S.Array(__S(1496, __c46, 24));
+      return S.Array(__S(1560, __c48, 24));
     case 26:
       return S.suspend(() =>
         S.Struct({
-          authorizationPolicies: S.optional(__S(1376, __c43, 0)),
+          authorizationPolicies: S.optional(__S(1440, __c45, 0)),
           disableLocalAuth: S.optional(S.Boolean),
           disableDeviceSAS: S.optional(S.Boolean),
           disableModuleSAS: S.optional(S.Boolean),
           restrictOutboundNetworkAccess: S.optional(S.Boolean),
-          allowedFqdnList: S.optional(__S(1344, __c42, 0)),
+          allowedFqdnList: S.optional(__S(1408, __c44, 0)),
           publicNetworkAccess: S.optional(S.String),
-          ipFilterRules: S.optional(__S(1473, __c46, 1)),
-          networkRuleSets: S.optional(__S(1476, __c46, 4)),
+          ipFilterRules: S.optional(__S(1537, __c48, 1)),
+          networkRuleSets: S.optional(__S(1540, __c48, 4)),
           minTlsVersion: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(1408, __c44, 0)),
+          privateEndpointConnections: S.optional(__S(1472, __c46, 0)),
           provisioningState: S.optional(S.String),
           state: S.optional(S.String),
           hostName: S.optional(S.String),
-          eventHubEndpoints: S.optional(__S(1478, __c46, 6)),
-          routing: S.optional(__S(1490, __c46, 18)),
-          storageEndpoints: S.optional(__S(1492, __c46, 20)),
-          messagingEndpoints: S.optional(__S(1494, __c46, 22)),
+          eventHubEndpoints: S.optional(__S(1542, __c48, 6)),
+          routing: S.optional(__S(1554, __c48, 18)),
+          storageEndpoints: S.optional(__S(1556, __c48, 20)),
+          messagingEndpoints: S.optional(__S(1558, __c48, 22)),
           enableFileUploadNotifications: S.optional(S.Boolean),
-          cloudToDevice: S.optional(__S(1495, __c46, 23)),
+          cloudToDevice: S.optional(__S(1559, __c48, 23)),
           comments: S.optional(S.String),
           features: S.optional(S.String),
-          locations: S.optional(__S(1497, __c46, 25)),
+          locations: S.optional(__S(1561, __c48, 25)),
           enableDataResidency: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "IotHubProperties" });
@@ -3632,14 +3708,14 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "ArmUserIdentity" });
     case 28:
-      return S.Record(S.String, __S(1499, __c46, 27));
+      return S.Record(S.String, __S(1563, __c48, 27));
     case 29:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(1500, __c46, 28)),
+          userAssignedIdentities: S.optional(__S(1564, __c48, 28)),
         }),
       ).annotate({ identifier: "ArmIdentity" });
     case 30:
@@ -3653,24 +3729,9 @@ function __c46(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 31:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.String,
-          tags: S.optional(__S(1440, __c45, 0)),
-          etag: S.optional(S.String),
-          properties: S.optional(__S(1498, __c46, 26)),
-          sku: __S(1312, __c41, 0),
-          identity: S.optional(__S(1501, __c46, 29)),
-          systemData: S.optional(__S(1502, __c46, 30)),
-        }),
-      ).annotate({ identifier: "DeleteIotHubResourceResponse" });
   }
 }
-function __c47(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3689,22 +3750,13 @@ function __c47(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(1504, __c47, 0)),
-          privateLinkServiceConnectionState: __S(1505, __c47, 1),
+          privateEndpoint: S.optional(__S(1568, __c49, 0)),
+          privateLinkServiceConnectionState: __S(1569, __c49, 1),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: __S(1506, __c47, 2),
-        }),
-      ).annotate({ identifier: "PrivateEndpointConnection" });
   }
 }
-function __c48(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3714,7 +3766,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "ManagedIdentity" });
   }
 }
-function __c49(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3735,7 +3787,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "DeleteIotHubResourceEventHubConsumerGroupRequest" });
   }
 }
-function __c50(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3753,9 +3805,20 @@ function __c50(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeletePrivateEndpointConnectionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: __S(1570, __c49, 2),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "DeletePrivateEndpointConnectionResponse" });
   }
 }
-function __c51(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3767,7 +3830,7 @@ function __c51(j: number): any {
           excludeKeys: S.Boolean,
           exportBlobName: S.optional(S.String),
           authenticationType: S.optional(S.String),
-          identity: S.optional(__S(1536, __c48, 0)),
+          identity: S.optional(__S(1600, __c50, 0)),
           includeConfigurations: S.optional(S.Boolean),
           configurationsBlobName: S.optional(S.String),
         }).pipe(
@@ -3781,7 +3844,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "ExportIotHubResourceDevicesRequest" });
   }
 }
-function __c52(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3798,7 +3861,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "JobResponse" });
   }
 }
-function __c53(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3832,7 +3895,7 @@ function __c53(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(1697, __c53, 1)),
+          properties: S.optional(__S(1761, __c55, 1)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           etag: S.optional(S.String),
@@ -3841,7 +3904,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "CertificateWithNonceDescription" });
   }
 }
-function __c54(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

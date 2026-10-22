@@ -207,6 +207,8 @@ export interface ContactProfilesCreateOrUpdateResponse {
   location: string;
   /** Properties of the contact profile resource. */
   properties: ContactProfilesProperties;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
 }
 /** Resource Reference. */
 export interface ResourceReference {
@@ -300,6 +302,8 @@ export interface CreateContactResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   properties: ContactsProperties;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
 }
 export interface DeleteContactRequest {
   /** The ID of the target subscription. */
@@ -311,7 +315,10 @@ export interface DeleteContactRequest {
   /** Contact name. */
   contactName: string;
 }
-export interface DeleteContactResponse {}
+export interface DeleteContactResponse {
+  /** URL for determining when an operation has completed. */
+  location?: string;
+}
 export interface DeleteContactProfileRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -320,7 +327,10 @@ export interface DeleteContactProfileRequest {
   /** Contact Profile name. */
   contactProfileName: string;
 }
-export interface DeleteContactProfileResponse {}
+export interface DeleteContactProfileResponse {
+  /** URL for determining when an operation has completed. */
+  location?: string;
+}
 export interface DeleteEdgeSiteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -347,7 +357,10 @@ export interface DeleteL2ConnectionRequest {
   /** L2 Connection name. */
   l2ConnectionName: string;
 }
-export interface DeleteL2ConnectionResponse {}
+export interface DeleteL2ConnectionResponse {
+  /** URL for determining when an operation has completed. */
+  location?: string;
+}
 export interface DeleteSpacecraftRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -356,7 +369,10 @@ export interface DeleteSpacecraftRequest {
   /** Spacecraft ID. */
   spacecraftName: string;
 }
-export interface DeleteSpacecraftResponse {}
+export interface DeleteSpacecraftResponse {
+  /** URL for determining when an operation has completed. */
+  location?: string;
+}
 /** Resource tags. */
 export type EdgeSitesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
 /** Properties object for an edge site. */
@@ -619,6 +635,8 @@ export interface OperationResult {
   nextLink?: string;
   properties?: unknown;
   error?: OperationResultErrorProperties;
+  /** URL for determining when an operation has completed. */
+  location?: string;
 }
 export interface GetSpacecraftRequest {
   /** The ID of the target subscription. */
@@ -796,6 +814,8 @@ export interface L2ConnectionsCreateOrUpdateResponse {
   location: string;
   /** The properties bag for this resource. */
   properties: L2ConnectionsProperties;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
 }
 export type ListAvailableGroundStationByCapabilityRequestCapability =
   | "EarthObservation"
@@ -1223,6 +1243,8 @@ export interface AvailableContactsListResult {
   value?: AvailableContactsListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
+  /** URL for determining when an operation has completed. */
+  location?: string;
 }
 export interface ListSpacecraftBySubscriptionRequest {
   /** The ID of the target subscription. */
@@ -1337,6 +1359,8 @@ export interface SpacecraftsCreateOrUpdateResponse {
   location: string;
   /** Spacecraft Properties */
   properties: SpacecraftsProperties;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
 }
 /** Resource tags. */
 export type UpdateContactProfileTagsRequestTagsMap = { [key: string]: string | undefined };
@@ -1367,6 +1391,8 @@ export interface UpdateContactProfileTagsResponse {
   location: string;
   /** Properties of the contact profile resource. */
   properties: ContactProfilesProperties;
+  /** URL for determining when an operation has completed. */
+  locationHeader?: string;
 }
 /** Resource tags. */
 export type UpdateEdgeSiteTagsRequestTagsMap = { [key: string]: string | undefined };
@@ -1457,6 +1483,8 @@ export interface UpdateL2ConnectionTagsResponse {
   location: string;
   /** The properties bag for this resource. */
   properties: L2ConnectionsProperties;
+  /** URL for determining when an operation has completed. */
+  locationHeader?: string;
 }
 /** Resource tags. */
 export type UpdateSpacecraftTagsRequestTagsMap = { [key: string]: string | undefined };
@@ -1487,6 +1515,8 @@ export interface UpdateSpacecraftTagsResponse {
   location: string;
   /** Spacecraft Properties */
   properties: SpacecraftsProperties;
+  /** URL for determining when an operation has completed. */
+  locationHeader?: string;
 }
 export type ContactProfilesCreateOrUpdateError = AzureOpError;
 /** Creates or updates a contact profile. */
@@ -1497,7 +1527,7 @@ export const ContactProfilesCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ContactProfilesCreateOrUpdateRequest>,
-  output: __S(41, __c2, 9) as any as S.Schema<ContactProfilesCreateOrUpdateResponse>,
+  output: __S(1, __c0, 1) as any as S.Schema<ContactProfilesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1512,7 +1542,7 @@ export const CreateContact: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(65, __c4, 1) as any as S.Schema<CreateContactRequest>,
-  output: __S(99, __c6, 3) as any as S.Schema<CreateContactResponse>,
+  output: __S(66, __c4, 2) as any as S.Schema<CreateContactResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1526,8 +1556,8 @@ export const DeleteContact: API.OperationMethod<
   DeleteContactError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<DeleteContactRequest>,
-  output: __S(352, __c22, 0) as any as S.Schema<DeleteContactResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<DeleteContactRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<DeleteContactResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1541,8 +1571,8 @@ export const DeleteContactProfile: API.OperationMethod<
   DeleteContactProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<DeleteContactProfileRequest>,
-  output: __S(352, __c22, 0) as any as S.Schema<DeleteContactProfileResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<DeleteContactProfileRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<DeleteContactProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1556,8 +1586,8 @@ export const DeleteEdgeSite: API.OperationMethod<
   DeleteEdgeSiteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c49, 0) as any as S.Schema<DeleteEdgeSiteRequest>,
-  output: __S(352, __c22, 0) as any as S.Schema<DeleteEdgeSiteResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<DeleteEdgeSiteRequest>,
+  output: __S(848, __c53, 0) as any as S.Schema<DeleteEdgeSiteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1571,8 +1601,8 @@ export const DeleteGroundStation: API.OperationMethod<
   DeleteGroundStationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(816, __c51, 0) as any as S.Schema<DeleteGroundStationRequest>,
-  output: __S(352, __c22, 0) as any as S.Schema<DeleteGroundStationResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<DeleteGroundStationRequest>,
+  output: __S(848, __c53, 0) as any as S.Schema<DeleteGroundStationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1586,8 +1616,8 @@ export const DeleteL2Connection: API.OperationMethod<
   DeleteL2ConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c52, 0) as any as S.Schema<DeleteL2ConnectionRequest>,
-  output: __S(352, __c22, 0) as any as S.Schema<DeleteL2ConnectionResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<DeleteL2ConnectionRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<DeleteL2ConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1601,8 +1631,8 @@ export const DeleteSpacecraft: API.OperationMethod<
   DeleteSpacecraftError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(848, __c53, 0) as any as S.Schema<DeleteSpacecraftRequest>,
-  output: __S(352, __c22, 0) as any as S.Schema<DeleteSpacecraftResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<DeleteSpacecraftRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<DeleteSpacecraftResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1616,8 +1646,8 @@ export const EdgeSitesCreateOrUpdate: API.OperationMethod<
   EdgeSitesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c54, 0) as any as S.Schema<EdgeSitesCreateOrUpdateRequest>,
-  output: __S(881, __c55, 1) as any as S.Schema<EdgeSitesCreateOrUpdateResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<EdgeSitesCreateOrUpdateRequest>,
+  output: __S(945, __c59, 1) as any as S.Schema<EdgeSitesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1631,8 +1661,8 @@ export const GetContact: API.OperationMethod<
   GetContactError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c56, 0) as any as S.Schema<GetContactRequest>,
-  output: __S(99, __c6, 3) as any as S.Schema<GetContactResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<GetContactRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<GetContactResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1647,7 +1677,7 @@ export const GetContactProfile: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(112, __c7, 0) as any as S.Schema<GetContactProfileRequest>,
-  output: __S(41, __c2, 9) as any as S.Schema<GetContactProfileResponse>,
+  output: __S(128, __c8, 0) as any as S.Schema<GetContactProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1661,8 +1691,8 @@ export const GetEdgeSite: API.OperationMethod<
   GetEdgeSiteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c8, 0) as any as S.Schema<GetEdgeSiteRequest>,
-  output: __S(881, __c55, 1) as any as S.Schema<GetEdgeSiteResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetEdgeSiteRequest>,
+  output: __S(945, __c59, 1) as any as S.Schema<GetEdgeSiteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1676,8 +1706,8 @@ export const GetGroundStation: API.OperationMethod<
   GetGroundStationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c9, 0) as any as S.Schema<GetGroundStationRequest>,
-  output: __S(162, __c10, 2) as any as S.Schema<GetGroundStationResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetGroundStationRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<GetGroundStationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1691,8 +1721,8 @@ export const GetL2Connection: API.OperationMethod<
   GetL2ConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c11, 0) as any as S.Schema<GetL2ConnectionRequest>,
-  output: __S(194, __c12, 2) as any as S.Schema<GetL2ConnectionResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetL2ConnectionRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<GetL2ConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1706,8 +1736,8 @@ export const GetOperationsResult: API.OperationMethod<
   GetOperationsResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<GetOperationsResultRequest>,
-  output: __S(211, __c13, 3) as any as S.Schema<OperationResult>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetOperationsResultRequest>,
+  output: __S(243, __c15, 3) as any as S.Schema<OperationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1721,8 +1751,8 @@ export const GetSpacecraft: API.OperationMethod<
   GetSpacecraftError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<GetSpacecraftRequest>,
-  output: __S(245, __c15, 5) as any as S.Schema<GetSpacecraftResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetSpacecraftRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<GetSpacecraftResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1736,8 +1766,8 @@ export const GroundStationsCreateOrUpdate: API.OperationMethod<
   GroundStationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257, __c16, 1) as any as S.Schema<GroundStationsCreateOrUpdateRequest>,
-  output: __S(162, __c10, 2) as any as S.Schema<GroundStationsCreateOrUpdateResponse>,
+  input: __S(305, __c19, 1) as any as S.Schema<GroundStationsCreateOrUpdateRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<GroundStationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1751,8 +1781,8 @@ export const L2ConnectionsCreateOrUpdate: API.OperationMethod<
   L2ConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c17, 1) as any as S.Schema<L2ConnectionsCreateOrUpdateRequest>,
-  output: __S(194, __c12, 2) as any as S.Schema<L2ConnectionsCreateOrUpdateResponse>,
+  input: __S(321, __c20, 1) as any as S.Schema<L2ConnectionsCreateOrUpdateRequest>,
+  output: __S(322, __c20, 2) as any as S.Schema<L2ConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1766,8 +1796,8 @@ export const ListAvailableGroundStationByCapability: API.OperationMethod<
   ListAvailableGroundStationByCapabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<ListAvailableGroundStationByCapabilityRequest>,
-  output: __S(292, __c18, 4) as any as S.Schema<AvailableGroundStationListResult>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListAvailableGroundStationByCapabilityRequest>,
+  output: __S(340, __c21, 4) as any as S.Schema<AvailableGroundStationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1781,8 +1811,8 @@ export const ListContactProfileBySubscription: API.OperationMethod<
   ListContactProfileBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<ListContactProfileBySubscriptionRequest>,
-  output: __S(321, __c20, 1) as any as S.Schema<ContactProfileListResult>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListContactProfileBySubscriptionRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<ContactProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1796,8 +1826,8 @@ export const ListContactProfiles: API.OperationMethod<
   ListContactProfilesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<ListContactProfilesRequest>,
-  output: __S(321, __c20, 1) as any as S.Schema<ContactProfileListResult>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListContactProfilesRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<ContactProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1811,8 +1841,8 @@ export const ListContacts: API.OperationMethod<
   ListContactsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<ListContactsRequest>,
-  output: __S(386, __c24, 2) as any as S.Schema<ContactListResult>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListContactsRequest>,
+  output: __S(434, __c27, 2) as any as S.Schema<ContactListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1826,8 +1856,8 @@ export const ListEdgeSiteBySubscription: API.OperationMethod<
   ListEdgeSiteBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<ListEdgeSiteBySubscriptionRequest>,
-  output: __S(417, __c26, 1) as any as S.Schema<EdgeSiteListResult>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListEdgeSiteBySubscriptionRequest>,
+  output: __S(465, __c29, 1) as any as S.Schema<EdgeSiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1841,8 +1871,8 @@ export const ListEdgeSiteL2Connections: API.OperationMethod<
   ListEdgeSiteL2ConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c27, 0) as any as S.Schema<ListEdgeSiteL2ConnectionsRequest>,
-  output: __S(450, __c28, 2) as any as S.Schema<ResourceIdListResult>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListEdgeSiteL2ConnectionsRequest>,
+  output: __S(498, __c31, 2) as any as S.Schema<ResourceIdListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1856,8 +1886,8 @@ export const ListEdgeSites: API.OperationMethod<
   ListEdgeSitesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<ListEdgeSitesRequest>,
-  output: __S(417, __c26, 1) as any as S.Schema<EdgeSiteListResult>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListEdgeSitesRequest>,
+  output: __S(465, __c29, 1) as any as S.Schema<EdgeSiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1871,8 +1901,8 @@ export const ListGlobalCommunicationsSiteBySubscription: API.OperationMethod<
   ListGlobalCommunicationsSiteBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<ListGlobalCommunicationsSiteBySubscriptionRequest>,
-  output: __S(487, __c30, 7) as any as S.Schema<GlobalCommunicationsSiteListResult>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListGlobalCommunicationsSiteBySubscriptionRequest>,
+  output: __S(535, __c33, 7) as any as S.Schema<GlobalCommunicationsSiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1886,8 +1916,8 @@ export const ListGroundStationBySubscription: API.OperationMethod<
   ListGroundStationBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<ListGroundStationBySubscriptionRequest>,
-  output: __S(513, __c32, 1) as any as S.Schema<GroundStationListResult>,
+  input: __S(544, __c34, 0) as any as S.Schema<ListGroundStationBySubscriptionRequest>,
+  output: __S(561, __c35, 1) as any as S.Schema<GroundStationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1901,8 +1931,8 @@ export const ListGroundStationL2Connections: API.OperationMethod<
   ListGroundStationL2ConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<ListGroundStationL2ConnectionsRequest>,
-  output: __S(450, __c28, 2) as any as S.Schema<ResourceIdListResult>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListGroundStationL2ConnectionsRequest>,
+  output: __S(498, __c31, 2) as any as S.Schema<ResourceIdListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1916,8 +1946,8 @@ export const ListGroundStations: API.OperationMethod<
   ListGroundStationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<ListGroundStationsRequest>,
-  output: __S(513, __c32, 1) as any as S.Schema<GroundStationListResult>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListGroundStationsRequest>,
+  output: __S(561, __c35, 1) as any as S.Schema<GroundStationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1931,8 +1961,8 @@ export const ListL2ConnectionBySubscription: API.OperationMethod<
   ListL2ConnectionBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c35, 0) as any as S.Schema<ListL2ConnectionBySubscriptionRequest>,
-  output: __S(577, __c36, 1) as any as S.Schema<L2ConnectionListResult>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListL2ConnectionBySubscriptionRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<L2ConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1946,8 +1976,8 @@ export const ListL2Connections: API.OperationMethod<
   ListL2ConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<ListL2ConnectionsRequest>,
-  output: __S(577, __c36, 1) as any as S.Schema<L2ConnectionListResult>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListL2ConnectionsRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<L2ConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1961,8 +1991,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(628, __c39, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(676, __c42, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1976,8 +2006,8 @@ export const ListSpacecraftAvailableContacts: API.OperationMethod<
   ListSpacecraftAvailableContactsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<ListSpacecraftAvailableContactsRequest>,
-  output: __S(644, __c40, 4) as any as S.Schema<AvailableContactsListResult>,
+  input: __S(688, __c43, 0) as any as S.Schema<ListSpacecraftAvailableContactsRequest>,
+  output: __S(692, __c43, 4) as any as S.Schema<AvailableContactsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1991,8 +2021,8 @@ export const ListSpacecraftBySubscription: API.OperationMethod<
   ListSpacecraftBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<ListSpacecraftBySubscriptionRequest>,
-  output: __S(673, __c42, 1) as any as S.Schema<SpacecraftListResult>,
+  input: __S(704, __c44, 0) as any as S.Schema<ListSpacecraftBySubscriptionRequest>,
+  output: __S(721, __c45, 1) as any as S.Schema<SpacecraftListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2006,8 +2036,8 @@ export const ListSpacecrafts: API.OperationMethod<
   ListSpacecraftsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c43, 0) as any as S.Schema<ListSpacecraftsRequest>,
-  output: __S(673, __c42, 1) as any as S.Schema<SpacecraftListResult>,
+  input: __S(736, __c46, 0) as any as S.Schema<ListSpacecraftsRequest>,
+  output: __S(721, __c45, 1) as any as S.Schema<SpacecraftListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2021,8 +2051,8 @@ export const SpacecraftsCreateOrUpdate: API.OperationMethod<
   SpacecraftsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(707, __c44, 3) as any as S.Schema<SpacecraftsCreateOrUpdateRequest>,
-  output: __S(245, __c15, 5) as any as S.Schema<SpacecraftsCreateOrUpdateResponse>,
+  input: __S(755, __c47, 3) as any as S.Schema<SpacecraftsCreateOrUpdateRequest>,
+  output: __S(756, __c47, 4) as any as S.Schema<SpacecraftsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2036,8 +2066,8 @@ export const UpdateContactProfileTags: API.OperationMethod<
   UpdateContactProfileTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<UpdateContactProfileTagsRequest>,
-  output: __S(41, __c2, 9) as any as S.Schema<UpdateContactProfileTagsResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<UpdateContactProfileTagsRequest>,
+  output: __S(769, __c48, 1) as any as S.Schema<UpdateContactProfileTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2051,8 +2081,8 @@ export const UpdateEdgeSiteTags: API.OperationMethod<
   UpdateEdgeSiteTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c46, 0) as any as S.Schema<UpdateEdgeSiteTagsRequest>,
-  output: __S(881, __c55, 1) as any as S.Schema<UpdateEdgeSiteTagsResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<UpdateEdgeSiteTagsRequest>,
+  output: __S(945, __c59, 1) as any as S.Schema<UpdateEdgeSiteTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2066,8 +2096,8 @@ export const UpdateGroundStationTags: API.OperationMethod<
   UpdateGroundStationTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c47, 0) as any as S.Schema<UpdateGroundStationTagsRequest>,
-  output: __S(162, __c10, 2) as any as S.Schema<UpdateGroundStationTagsResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<UpdateGroundStationTagsRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<UpdateGroundStationTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2081,8 +2111,8 @@ export const UpdateL2ConnectionTags: API.OperationMethod<
   UpdateL2ConnectionTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c48, 0) as any as S.Schema<UpdateL2ConnectionTagsRequest>,
-  output: __S(194, __c12, 2) as any as S.Schema<UpdateL2ConnectionTagsResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<UpdateL2ConnectionTagsRequest>,
+  output: __S(817, __c51, 1) as any as S.Schema<UpdateL2ConnectionTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2096,8 +2126,8 @@ export const UpdateSpacecraftTags: API.OperationMethod<
   UpdateSpacecraftTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c50, 0) as any as S.Schema<UpdateSpacecraftTagsRequest>,
-  output: __S(245, __c15, 5) as any as S.Schema<UpdateSpacecraftTagsResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<UpdateSpacecraftTagsRequest>,
+  output: __S(865, __c54, 1) as any as S.Schema<UpdateSpacecraftTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2124,6 +2154,19 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ContactProfilesCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
+          location: S.String,
+          properties: __S(40, __c2, 8),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+        }),
+      ).annotate({ identifier: "ContactProfilesCreateOrUpdateResponse" });
   }
 }
 function __c1(j: number): any {
@@ -2208,18 +2251,6 @@ function __c2(j: number): any {
           links: __S(39, __c2, 7),
         }),
       ).annotate({ identifier: "ContactProfilesPropertiesInput" });
-    case 9:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          tags: S.optional(__S(48, __c3, 0)),
-          location: S.String,
-          properties: __S(40, __c2, 8),
-        }),
-      ).annotate({ identifier: "ContactProfilesCreateOrUpdateResponse" });
   }
 }
 function __c3(j: number): any {
@@ -2257,6 +2288,17 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateContactRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(98, __c6, 2),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+        }),
+      ).annotate({ identifier: "CreateContactResponse" });
   }
 }
 function __c5(j: number): any {
@@ -2302,16 +2344,6 @@ function __c6(j: number): any {
           contactProfile: __S(80, __c5, 0),
         }),
       ).annotate({ identifier: "ContactsProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: __S(98, __c6, 2),
-        }),
-      ).annotate({ identifier: "CreateContactResponse" });
   }
 }
 function __c7(j: number): any {
@@ -2338,6 +2370,22 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
+          location: S.String,
+          properties: __S(40, __c2, 8),
+        }),
+      ).annotate({ identifier: "GetContactProfileResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           edgeSiteName: S.String.pipe(T.Label()),
@@ -2352,7 +2400,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "GetEdgeSiteRequest" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2371,7 +2419,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "GetGroundStationRequest" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -2379,7 +2427,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           city: S.optional(S.String),
-          capabilities: __S(160, __c10, 0),
+          capabilities: __S(176, __c11, 0),
           providerName: S.optional(S.String),
           longitudeDegrees: S.optional(S.Number),
           latitudeDegrees: S.optional(S.Number),
@@ -2397,12 +2445,12 @@ function __c10(j: number): any {
           systemData: S.optional(__S(16, __c1, 0)),
           tags: S.optional(__S(48, __c3, 0)),
           location: S.String,
-          properties: S.optional(__S(161, __c10, 1)),
+          properties: S.optional(__S(177, __c11, 1)),
         }),
       ).annotate({ identifier: "GetGroundStationResponse" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2421,7 +2469,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "GetL2ConnectionRequest" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2435,13 +2483,17 @@ function __c12(j: number): any {
           provisioningState: S.optional(S.String),
           circuitId: S.optional(S.String),
           edgeSite: __S(80, __c5, 0),
-          edgeSitePartnerRouter: __S(192, __c12, 0),
+          edgeSitePartnerRouter: __S(208, __c13, 0),
           groundStation: __S(80, __c5, 0),
-          groundStationPartnerRouter: __S(192, __c12, 0),
+          groundStationPartnerRouter: __S(208, __c13, 0),
           vlanId: S.Number,
         }),
       ).annotate({ identifier: "L2ConnectionsProperties" });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2450,12 +2502,12 @@ function __c12(j: number): any {
           systemData: S.optional(__S(16, __c1, 0)),
           tags: S.optional(__S(48, __c3, 0)),
           location: S.String,
-          properties: __S(193, __c12, 1),
+          properties: __S(209, __c13, 1),
         }),
       ).annotate({ identifier: "GetL2ConnectionResponse" });
   }
 }
-function __c13(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2490,15 +2542,16 @@ function __c13(j: number): any {
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           percentComplete: S.optional(S.Number),
-          value: S.optional(__S(209, __c13, 1)),
+          value: S.optional(__S(241, __c15, 1)),
           nextLink: S.optional(S.String),
           properties: S.optional(S.Unknown),
-          error: S.optional(__S(210, __c13, 2)),
+          error: S.optional(__S(242, __c15, 2)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "OperationResult" });
   }
 }
-function __c14(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2517,7 +2570,23 @@ function __c14(j: number): any {
       ).annotate({ identifier: "GetSpacecraftRequest" });
   }
 }
-function __c15(j: number): any {
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
+          location: S.String,
+          properties: __S(292, __c18, 4),
+        }),
+      ).annotate({ identifier: "GetSpacecraftResponse" });
+  }
+}
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2527,7 +2596,7 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "AuthorizedGroundstation" });
     case 1:
-      return S.Array(__S(240, __c15, 0));
+      return S.Array(__S(288, __c18, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2536,11 +2605,11 @@ function __c15(j: number): any {
           bandwidthMHz: S.Number,
           direction: S.String,
           polarization: S.String,
-          authorizations: S.optional(__S(241, __c15, 1)),
+          authorizations: S.optional(__S(289, __c18, 1)),
         }),
       ).annotate({ identifier: "SpacecraftLink" });
     case 3:
-      return S.Array(__S(242, __c15, 2));
+      return S.Array(__S(290, __c18, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2549,30 +2618,18 @@ function __c15(j: number): any {
           titleLine: S.String,
           tleLine1: S.String,
           tleLine2: S.String,
-          links: __S(243, __c15, 3),
+          links: __S(291, __c18, 3),
         }),
       ).annotate({ identifier: "SpacecraftsProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          tags: S.optional(__S(48, __c3, 0)),
-          location: S.String,
-          properties: __S(244, __c15, 4),
-        }),
-      ).annotate({ identifier: "GetSpacecraftResponse" });
   }
 }
-function __c16(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           city: S.optional(S.String),
-          capabilities: __S(160, __c10, 0),
+          capabilities: __S(176, __c11, 0),
           providerName: S.optional(S.String),
           longitudeDegrees: S.optional(S.Number),
           latitudeDegrees: S.optional(S.Number),
@@ -2588,7 +2645,7 @@ function __c16(j: number): any {
           groundStationName: S.String.pipe(T.Label()),
           tags: S.optional(__S(48, __c3, 0)),
           location: S.String,
-          properties: S.optional(__S(256, __c16, 0)),
+          properties: S.optional(__S(304, __c19, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2600,15 +2657,15 @@ function __c16(j: number): any {
       ).annotate({ identifier: "GroundStationsCreateOrUpdateRequest" });
   }
 }
-function __c17(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           edgeSite: __S(80, __c5, 0),
-          edgeSitePartnerRouter: __S(192, __c12, 0),
+          edgeSitePartnerRouter: __S(208, __c13, 0),
           groundStation: __S(80, __c5, 0),
-          groundStationPartnerRouter: __S(192, __c12, 0),
+          groundStationPartnerRouter: __S(208, __c13, 0),
           vlanId: S.Number,
         }),
       ).annotate({ identifier: "L2ConnectionsPropertiesInput" });
@@ -2620,7 +2677,7 @@ function __c17(j: number): any {
           l2ConnectionName: S.String.pipe(T.Label()),
           tags: S.optional(__S(48, __c3, 0)),
           location: S.String,
-          properties: __S(272, __c17, 0),
+          properties: __S(320, __c20, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2630,9 +2687,22 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "L2ConnectionsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
+          location: S.String,
+          properties: __S(209, __c13, 1),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+        }),
+      ).annotate({ identifier: "L2ConnectionsCreateOrUpdateResponse" });
   }
 }
-function __c18(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2666,21 +2736,21 @@ function __c18(j: number): any {
           name: S.optional(S.String),
           location: S.optional(S.String),
           type: S.optional(S.String),
-          properties: __S(289, __c18, 1),
+          properties: __S(337, __c21, 1),
         }),
       ).annotate({ identifier: "AvailableGroundStation" });
     case 3:
-      return S.Array(__S(290, __c18, 2));
+      return S.Array(__S(338, __c21, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(291, __c18, 3)),
+          value: S.optional(__S(339, __c21, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AvailableGroundStationListResult" });
   }
 }
-function __c19(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2698,20 +2768,20 @@ function __c19(j: number): any {
       ).annotate({ identifier: "ListContactProfileBySubscriptionRequest" });
   }
 }
-function __c20(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(41, __c2, 9));
+      return S.Array(__S(128, __c8, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(320, __c20, 0)),
+          value: S.optional(__S(368, __c23, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContactProfileListResult" });
   }
 }
-function __c21(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2731,13 +2801,17 @@ function __c21(j: number): any {
       ).annotate({ identifier: "DeleteContactRequest" });
   }
 }
-function __c22(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteContactResponse" });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "DeleteContactResponse" });
   }
 }
-function __c23(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2756,7 +2830,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "ListContactProfilesRequest" });
   }
 }
-function __c24(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2775,17 +2849,17 @@ function __c24(j: number): any {
         ),
       ).annotate({ identifier: "ListContactsRequest" });
     case 1:
-      return S.Array(__S(99, __c6, 3));
+      return S.Array(__S(976, __c61, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(385, __c24, 1)),
+          value: S.optional(__S(433, __c27, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContactListResult" });
   }
 }
-function __c25(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2803,20 +2877,20 @@ function __c25(j: number): any {
       ).annotate({ identifier: "ListEdgeSiteBySubscriptionRequest" });
   }
 }
-function __c26(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(881, __c55, 1));
+      return S.Array(__S(945, __c59, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(416, __c26, 0)),
+          value: S.optional(__S(464, __c29, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EdgeSiteListResult" });
   }
 }
-function __c27(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2835,7 +2909,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "ListEdgeSiteL2ConnectionsRequest" });
   }
 }
-function __c28(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2844,17 +2918,17 @@ function __c28(j: number): any {
         }),
       ).annotate({ identifier: "ResourceIdListResultValueItem" });
     case 1:
-      return S.Array(__S(448, __c28, 0));
+      return S.Array(__S(496, __c31, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(449, __c28, 1)),
+          value: S.optional(__S(497, __c31, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceIdListResult" });
   }
 }
-function __c29(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2873,7 +2947,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "ListEdgeSitesRequest" });
   }
 }
-function __c30(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2905,13 +2979,13 @@ function __c30(j: number): any {
         }),
       ).annotate({ identifier: "PartnerRouter" });
     case 3:
-      return S.Array(__S(482, __c30, 2));
+      return S.Array(__S(530, __c33, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          locationData: S.optional(__S(481, __c30, 1)),
+          locationData: S.optional(__S(529, __c33, 1)),
           globalCommunicationsSiteType: S.optional(S.String),
-          partnerRouters: S.optional(__S(483, __c30, 3)),
+          partnerRouters: S.optional(__S(531, __c33, 3)),
           partnerSiteBandwidth: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GlobalCommunicationsSitesProperties" });
@@ -2922,21 +2996,21 @@ function __c30(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(484, __c30, 4)),
+          properties: S.optional(__S(532, __c33, 4)),
         }),
       ).annotate({ identifier: "GlobalCommunicationsSite" });
     case 6:
-      return S.Array(__S(485, __c30, 5));
+      return S.Array(__S(533, __c33, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(486, __c30, 6)),
+          value: S.optional(__S(534, __c33, 6)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GlobalCommunicationsSiteListResult" });
   }
 }
-function __c31(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2954,20 +3028,20 @@ function __c31(j: number): any {
       ).annotate({ identifier: "ListGroundStationBySubscriptionRequest" });
   }
 }
-function __c32(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(162, __c10, 2));
+      return S.Array(__S(178, __c11, 2));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(512, __c32, 0)),
+          value: S.optional(__S(560, __c35, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GroundStationListResult" });
   }
 }
-function __c33(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2986,7 +3060,7 @@ function __c33(j: number): any {
       ).annotate({ identifier: "ListGroundStationL2ConnectionsRequest" });
   }
 }
-function __c34(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3005,7 +3079,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "ListGroundStationsRequest" });
   }
 }
-function __c35(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3023,20 +3097,20 @@ function __c35(j: number): any {
       ).annotate({ identifier: "ListL2ConnectionBySubscriptionRequest" });
   }
 }
-function __c36(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(194, __c12, 2));
+      return S.Array(__S(224, __c14, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(576, __c36, 0)),
+          value: S.optional(__S(624, __c39, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "L2ConnectionListResult" });
   }
 }
-function __c37(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3055,7 +3129,7 @@ function __c37(j: number): any {
       ).annotate({ identifier: "DeleteContactProfileRequest" });
   }
 }
-function __c38(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3074,7 +3148,7 @@ function __c38(j: number): any {
       ).annotate({ identifier: "ListL2ConnectionsRequest" });
   }
 }
-function __c39(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3101,23 +3175,23 @@ function __c39(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(625, __c39, 1)),
+          display: S.optional(__S(673, __c42, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(626, __c39, 2));
+      return S.Array(__S(674, __c42, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(627, __c39, 3)),
+          value: S.optional(__S(675, __c42, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c40(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3157,21 +3231,22 @@ function __c40(j: number): any {
         S.Struct({
           spacecraft: S.optional(__S(80, __c5, 0)),
           groundStationName: S.optional(S.String),
-          properties: S.optional(__S(641, __c40, 1)),
+          properties: S.optional(__S(689, __c43, 1)),
         }),
       ).annotate({ identifier: "AvailableContacts" });
     case 3:
-      return S.Array(__S(642, __c40, 2));
+      return S.Array(__S(690, __c43, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(643, __c40, 3)),
+          value: S.optional(__S(691, __c43, 3)),
           nextLink: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "AvailableContactsListResult" });
   }
 }
-function __c41(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3189,20 +3264,20 @@ function __c41(j: number): any {
       ).annotate({ identifier: "ListSpacecraftBySubscriptionRequest" });
   }
 }
-function __c42(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(245, __c15, 5));
+      return S.Array(__S(272, __c17, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(672, __c42, 0)),
+          value: S.optional(__S(720, __c45, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SpacecraftListResult" });
   }
 }
-function __c43(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3221,7 +3296,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "ListSpacecraftsRequest" });
   }
 }
-function __c44(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3234,7 +3309,7 @@ function __c44(j: number): any {
         }),
       ).annotate({ identifier: "SpacecraftLinkInput" });
     case 1:
-      return S.Array(__S(704, __c44, 0));
+      return S.Array(__S(752, __c47, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3243,7 +3318,7 @@ function __c44(j: number): any {
           titleLine: S.String,
           tleLine1: S.String,
           tleLine2: S.String,
-          links: __S(705, __c44, 1),
+          links: __S(753, __c47, 1),
         }),
       ).annotate({ identifier: "SpacecraftsPropertiesInput" });
     case 3:
@@ -3254,7 +3329,7 @@ function __c44(j: number): any {
           spacecraftName: S.String.pipe(T.Label()),
           tags: S.optional(__S(48, __c3, 0)),
           location: S.String,
-          properties: __S(706, __c44, 2),
+          properties: __S(754, __c47, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3264,9 +3339,22 @@ function __c44(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SpacecraftsCreateOrUpdateRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
+          location: S.String,
+          properties: __S(292, __c18, 4),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+        }),
+      ).annotate({ identifier: "SpacecraftsCreateOrUpdateResponse" });
   }
 }
-function __c45(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3284,9 +3372,22 @@ function __c45(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateContactProfileTagsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
+          location: S.String,
+          properties: __S(40, __c2, 8),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateContactProfileTagsResponse" });
   }
 }
-function __c46(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3306,7 +3407,7 @@ function __c46(j: number): any {
       ).annotate({ identifier: "UpdateEdgeSiteTagsRequest" });
   }
 }
-function __c47(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3326,7 +3427,7 @@ function __c47(j: number): any {
       ).annotate({ identifier: "UpdateGroundStationTagsRequest" });
   }
 }
-function __c48(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3344,9 +3445,22 @@ function __c48(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateL2ConnectionTagsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
+          location: S.String,
+          properties: __S(209, __c13, 1),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateL2ConnectionTagsResponse" });
   }
 }
-function __c49(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3365,7 +3479,13 @@ function __c49(j: number): any {
       ).annotate({ identifier: "DeleteEdgeSiteRequest" });
   }
 }
-function __c50(j: number): any {
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteEdgeSiteResponse" });
+  }
+}
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3383,9 +3503,22 @@ function __c50(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSpacecraftTagsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
+          location: S.String,
+          properties: __S(292, __c18, 4),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateSpacecraftTagsResponse" });
   }
 }
-function __c51(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3404,7 +3537,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "DeleteGroundStationRequest" });
   }
 }
-function __c52(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3423,7 +3556,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "DeleteL2ConnectionRequest" });
   }
 }
-function __c53(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3442,7 +3575,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "DeleteSpacecraftRequest" });
   }
 }
-function __c54(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3452,7 +3585,7 @@ function __c54(j: number): any {
           edgeSiteName: S.String.pipe(T.Label()),
           tags: S.optional(__S(48, __c3, 0)),
           location: S.String,
-          properties: __S(880, __c55, 0),
+          properties: __S(944, __c59, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3464,7 +3597,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "EdgeSitesCreateOrUpdateRequest" });
   }
 }
-function __c55(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3481,12 +3614,12 @@ function __c55(j: number): any {
           systemData: S.optional(__S(16, __c1, 0)),
           tags: S.optional(__S(48, __c3, 0)),
           location: S.String,
-          properties: __S(880, __c55, 0),
+          properties: __S(944, __c59, 0),
         }),
       ).annotate({ identifier: "EdgeSitesCreateOrUpdateResponse" });
   }
 }
-function __c56(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3504,6 +3637,20 @@ function __c56(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetContactRequest" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(98, __c6, 2),
+        }),
+      ).annotate({ identifier: "GetContactResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

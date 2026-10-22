@@ -85,6 +85,64 @@ export const resolveNode = (ast: AST.AST): AST.AST => {
 };
 //#endregion
 
+//#region Response headers on outputs
+
+/** An output member read from a response header (`T.Header`). */
+export interface ResponseHeaderMember {
+  readonly key: string;
+  /** Lowercase header name. */
+  readonly wire: string;
+  /** The member is a number; the header's text is parsed. */
+  readonly number: boolean;
+}
+
+const noHeaderMembers: ReadonlyArray<ResponseHeaderMember> = [];
+const headerMemberCache = /*@__PURE__*/ new WeakMap<AST.AST, ReadonlyArray<ResponseHeaderMember>>();
+
+/** The output's header-bound members, read from the schema once. */
+export const responseHeaderMembers = (outputAst: AST.AST): ReadonlyArray<ResponseHeaderMember> => {
+  let members = headerMemberCache.get(outputAst);
+  if (members !== undefined) return members;
+  const found: ResponseHeaderMember[] = [];
+  for (const prop of getProps(outputAst)) {
+    if (!hasPropAnn(prop, headerSymbol)) continue;
+    found.push({
+      key: String(prop.name),
+      wire: nameOf(prop, headerSymbol).toLowerCase(),
+      number: resolveNode(prop.type)._tag === "Number",
+    });
+  }
+  members = found.length === 0 ? noHeaderMembers : found;
+  headerMemberCache.set(outputAst, members);
+  return members;
+};
+
+/**
+ * Copy the response headers an output declares onto its decoded body. A
+ * number member gets the header parsed; text that is not a number is kept
+ * as sent, so strict validation reports it. A body that is not an object
+ * (a raw root) is returned as is -- generators bind no headers there.
+ */
+export const withResponseHeaders = (
+  members: ReadonlyArray<ResponseHeaderMember>,
+  body: unknown,
+  headers: Record<string, string | undefined>,
+): unknown => {
+  if (members.length === 0 || body === null || typeof body !== "object" || Array.isArray(body)) {
+    return body;
+  }
+  let result: Record<string, unknown> | undefined;
+  for (const m of members) {
+    const raw = headers[m.wire];
+    if (raw === undefined) continue;
+    result ??= { ...(body as Record<string, unknown>) };
+    const parsed = m.number && raw.trim() !== "" ? Number(raw) : Number.NaN;
+    result[m.key] = Number.isNaN(parsed) ? raw : parsed;
+  }
+  return result ?? body;
+};
+//#endregion
+
 //#region Recursive wire-name mapping
 
 export { isOpaqueValue };

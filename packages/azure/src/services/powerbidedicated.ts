@@ -216,6 +216,10 @@ export interface CreateCapacityResponse {
   properties?: DedicatedCapacityProperties;
   /** The SKU of the PowerBI Dedicated capacity resource. */
   sku: CapacitySku;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteAutoScaleVCoreRequest {
   /** The ID of the target subscription. */
@@ -234,7 +238,12 @@ export interface DeleteCapacityRequest {
   /** The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63. */
   dedicatedCapacityName: string;
 }
-export interface DeleteCapacityResponse {}
+export interface DeleteCapacityResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetAutoScaleVCoreRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -493,7 +502,12 @@ export interface ResumeCapacityRequest {
   /** The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63. */
   dedicatedCapacityName: string;
 }
-export interface ResumeCapacityResponse {}
+export interface ResumeCapacityResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface SuspendCapacityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -502,7 +516,12 @@ export interface SuspendCapacityRequest {
   /** The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63. */
   dedicatedCapacityName: string;
 }
-export interface SuspendCapacityResponse {}
+export interface SuspendCapacityResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Key-value pairs of additional provisioning properties. */
 export type UpdateAutoScaleVCoreRequestTagsMap = { [key: string]: string | undefined };
 /** An object that represents a set of mutable auto scale v-core resource properties. */
@@ -581,6 +600,10 @@ export interface UpdateCapacityResponse {
   properties?: DedicatedCapacityProperties;
   /** The SKU of the PowerBI Dedicated capacity resource. */
   sku: CapacitySku;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type CheckCapacityNameAvailabilityError = AzureOpError;
 /** Check the name availability in the target location. */
@@ -621,7 +644,7 @@ export const CreateCapacity: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(208, __c13, 0) as any as S.Schema<CreateCapacityRequest>,
-  output: __S(243, __c15, 3) as any as S.Schema<CreateCapacityResponse>,
+  output: __S(225, __c14, 1) as any as S.Schema<CreateCapacityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -636,7 +659,7 @@ export const DeleteAutoScaleVCore: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(256, __c16, 0) as any as S.Schema<DeleteAutoScaleVCoreRequest>,
-  output: __S(272, __c17, 0) as any as S.Schema<DeleteAutoScaleVCoreResponse>,
+  output: __S(257, __c16, 1) as any as S.Schema<DeleteAutoScaleVCoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -650,8 +673,8 @@ export const DeleteCapacity: API.OperationMethod<
   DeleteCapacityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<DeleteCapacityRequest>,
-  output: __S(272, __c17, 0) as any as S.Schema<DeleteCapacityResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<DeleteCapacityRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<DeleteCapacityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -681,7 +704,7 @@ export const GetCapacityDetails: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(320, __c20, 0) as any as S.Schema<GetCapacityDetailsRequest>,
-  output: __S(243, __c15, 3) as any as S.Schema<GetCapacityDetailsResponse>,
+  output: __S(336, __c21, 0) as any as S.Schema<GetCapacityDetailsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -695,8 +718,8 @@ export const ListAutoScaleVCoreByResourceGroup: API.OperationMethod<
   ListAutoScaleVCoreByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<ListAutoScaleVCoreByResourceGroupRequest>,
-  output: __S(353, __c22, 1) as any as S.Schema<AutoScaleVCoreListResult>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListAutoScaleVCoreByResourceGroupRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<AutoScaleVCoreListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -710,8 +733,8 @@ export const ListAutoScaleVCoreBySubscription: API.OperationMethod<
   ListAutoScaleVCoreBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<ListAutoScaleVCoreBySubscriptionRequest>,
-  output: __S(353, __c22, 1) as any as S.Schema<AutoScaleVCoreListResult>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListAutoScaleVCoreBySubscriptionRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<AutoScaleVCoreListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -725,8 +748,8 @@ export const ListCapacities: API.OperationMethod<
   ListCapacitiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<ListCapacitiesRequest>,
-  output: __S(401, __c25, 1) as any as S.Schema<DedicatedCapacities>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListCapacitiesRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<DedicatedCapacities>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -741,7 +764,7 @@ export const ListCapacityByResourceGroup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(80, __c5, 0) as any as S.Schema<ListCapacityByResourceGroupRequest>,
-  output: __S(401, __c25, 1) as any as S.Schema<DedicatedCapacities>,
+  output: __S(417, __c26, 1) as any as S.Schema<DedicatedCapacities>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -801,7 +824,7 @@ export const ResumeCapacity: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(144, __c9, 0) as any as S.Schema<ResumeCapacityRequest>,
-  output: __S(272, __c17, 0) as any as S.Schema<ResumeCapacityResponse>,
+  output: __S(288, __c18, 0) as any as S.Schema<ResumeCapacityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -816,7 +839,7 @@ export const SuspendCapacity: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c10, 0) as any as S.Schema<SuspendCapacityRequest>,
-  output: __S(272, __c17, 0) as any as S.Schema<SuspendCapacityResponse>,
+  output: __S(288, __c18, 0) as any as S.Schema<SuspendCapacityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -846,7 +869,7 @@ export const UpdateCapacity: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<UpdateCapacityRequest>,
-  output: __S(243, __c15, 3) as any as S.Schema<UpdateCapacityResponse>,
+  output: __S(225, __c14, 1) as any as S.Schema<UpdateCapacityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1243,6 +1266,21 @@ function __c14(j: number): any {
           mode: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedCapacityPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(49, __c3, 1)),
+          tags: S.optional(__S(48, __c3, 0)),
+          location: S.String,
+          properties: S.optional(__S(242, __c15, 2)),
+          sku: __S(32, __c2, 0),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateCapacityResponse" });
   }
 }
 function __c15(j: number): any {
@@ -1266,19 +1304,6 @@ function __c15(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedCapacityProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(49, __c3, 1)),
-          tags: S.optional(__S(48, __c3, 0)),
-          location: S.String,
-          properties: S.optional(__S(242, __c15, 2)),
-          sku: __S(32, __c2, 0),
-        }),
-      ).annotate({ identifier: "CreateCapacityResponse" });
   }
 }
 function __c16(j: number): any {
@@ -1298,15 +1323,11 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteAutoScaleVCoreRequest" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteAutoScaleVCoreResponse" });
   }
 }
-function __c18(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1323,6 +1344,17 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteCapacityRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteCapacityResponse" });
   }
 }
 function __c19(j: number): any {
@@ -1368,6 +1400,23 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(49, __c3, 1)),
+          tags: S.optional(__S(48, __c3, 0)),
+          location: S.String,
+          properties: S.optional(__S(242, __c15, 2)),
+          sku: __S(32, __c2, 0),
+        }),
+      ).annotate({ identifier: "GetCapacityDetailsResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
         }).pipe(
@@ -1381,20 +1430,20 @@ function __c21(j: number): any {
       ).annotate({ identifier: "ListAutoScaleVCoreByResourceGroupRequest" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(65, __c4, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(352, __c22, 0),
+          value: __S(368, __c23, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AutoScaleVCoreListResult" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1411,7 +1460,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "ListAutoScaleVCoreBySubscriptionRequest" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1428,14 +1477,14 @@ function __c24(j: number): any {
       ).annotate({ identifier: "ListCapacitiesRequest" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(243, __c15, 3));
+      return S.Array(__S(336, __c21, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(400, __c25, 0),
+          value: __S(416, __c26, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedCapacities" });

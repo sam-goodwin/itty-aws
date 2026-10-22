@@ -39,7 +39,12 @@ export interface DeleteFabricCapacityRequest {
   /** The name of the Microsoft Fabric capacity. It must be a minimum of 3 characters, and a maximum of 63. */
   capacityName: string;
 }
-export interface DeleteFabricCapacityResponse {}
+export interface DeleteFabricCapacityResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Resource tags. */
 export type FabricCapacitiesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
 /** An array of administrator user identities. */
@@ -148,6 +153,10 @@ export interface FabricCapacitiesCreateOrUpdateResponse {
   properties: FabricCapacityProperties;
   /** The SKU details */
   sku: RpSku;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetFabricCapacityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -311,7 +320,12 @@ export interface ResumeFabricCapacityRequest {
   /** The name of the Microsoft Fabric capacity. It must be a minimum of 3 characters, and a maximum of 63. */
   capacityName: string;
 }
-export interface ResumeFabricCapacityResponse {}
+export interface ResumeFabricCapacityResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface SuspendFabricCapacityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -320,7 +334,12 @@ export interface SuspendFabricCapacityRequest {
   /** The name of the Microsoft Fabric capacity. It must be a minimum of 3 characters, and a maximum of 63. */
   capacityName: string;
 }
-export interface SuspendFabricCapacityResponse {}
+export interface SuspendFabricCapacityResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Resource tags. */
 export type UpdateFabricCapacityRequestTagsMap = { [key: string]: string | undefined };
 /** The updatable properties of the FabricCapacity. */
@@ -361,6 +380,10 @@ export interface UpdateFabricCapacityResponse {
   properties: FabricCapacityProperties;
   /** The SKU details */
   sku: RpSku;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type CheckFabricCapacityNameAvailabilityError = AzureOpError;
 /** Implements local CheckNameAvailability operations */
@@ -401,7 +424,7 @@ export const FabricCapacitiesCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(41, __c5, 1) as any as S.Schema<FabricCapacitiesCreateOrUpdateRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<FabricCapacitiesCreateOrUpdateResponse>,
+  output: __S(42, __c5, 2) as any as S.Schema<FabricCapacitiesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -416,7 +439,7 @@ export const GetFabricCapacity: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(72, __c9, 0) as any as S.Schema<GetFabricCapacityRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<GetFabricCapacityResponse>,
+  output: __S(80, __c10, 0) as any as S.Schema<GetFabricCapacityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -430,8 +453,8 @@ export const ListFabricCapacityByResourceGroup: API.OperationMethod<
   ListFabricCapacityByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListFabricCapacityByResourceGroupRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<FabricCapacityListResult>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListFabricCapacityByResourceGroupRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<FabricCapacityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -445,8 +468,8 @@ export const ListFabricCapacityBySubscription: API.OperationMethod<
   ListFabricCapacityBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListFabricCapacityBySubscriptionRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<FabricCapacityListResult>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListFabricCapacityBySubscriptionRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<FabricCapacityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -460,8 +483,8 @@ export const ListFabricCapacitySkus: API.OperationMethod<
   ListFabricCapacitySkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListFabricCapacitySkusRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<RpSkuEnumerationForNewResourceResult>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListFabricCapacitySkusRequest>,
+  output: __S(115, __c14, 3) as any as S.Schema<RpSkuEnumerationForNewResourceResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -475,8 +498,8 @@ export const ListFabricCapacitySkusForCapacity: API.OperationMethod<
   ListFabricCapacitySkusForCapacityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListFabricCapacitySkusForCapacityRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<RpSkuEnumerationForExistingResourceResult>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListFabricCapacitySkusForCapacityRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<RpSkuEnumerationForExistingResourceResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -490,8 +513,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -505,7 +528,7 @@ export const ResumeFabricCapacity: API.OperationMethod<
   ResumeFabricCapacityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ResumeFabricCapacityRequest>,
+  input: __S(136, __c17, 0) as any as S.Schema<ResumeFabricCapacityRequest>,
   output: __S(16, __c2, 0) as any as S.Schema<ResumeFabricCapacityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -536,7 +559,7 @@ export const UpdateFabricCapacity: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(33, __c4, 1) as any as S.Schema<UpdateFabricCapacityRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<UpdateFabricCapacityResponse>,
+  output: __S(34, __c4, 2) as any as S.Schema<UpdateFabricCapacityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -593,7 +616,12 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteFabricCapacityResponse" });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteFabricCapacityResponse" });
   }
 }
 function __c3(j: number): any {
@@ -641,6 +669,21 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFabricCapacityRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(50, __c6, 2)),
+          tags: S.optional(__S(48, __c6, 0)),
+          location: S.String,
+          properties: __S(51, __c6, 3),
+          sku: __S(64, __c8, 0),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateFabricCapacityResponse" });
   }
 }
 function __c5(j: number): any {
@@ -670,6 +713,21 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "FabricCapacitiesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(50, __c6, 2)),
+          tags: S.optional(__S(48, __c6, 0)),
+          location: S.String,
+          properties: __S(51, __c6, 3),
+          sku: __S(64, __c8, 0),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "FabricCapacitiesCreateOrUpdateResponse" });
   }
 }
 function __c6(j: number): any {
@@ -701,19 +759,6 @@ function __c6(j: number): any {
           administration: __S(49, __c6, 1),
         }),
       ).annotate({ identifier: "FabricCapacityProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(50, __c6, 2)),
-          tags: S.optional(__S(48, __c6, 0)),
-          location: S.String,
-          properties: __S(51, __c6, 3),
-          sku: __S(64, __c8, 0),
-        }),
-      ).annotate({ identifier: "FabricCapacitiesCreateOrUpdateResponse" });
   }
 }
 function __c7(j: number): any {
@@ -757,6 +802,23 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(50, __c6, 2)),
+          tags: S.optional(__S(48, __c6, 0)),
+          location: S.String,
+          properties: __S(51, __c6, 3),
+          sku: __S(64, __c8, 0),
+        }),
+      ).annotate({ identifier: "GetFabricCapacityResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
         }).pipe(
@@ -770,20 +832,20 @@ function __c10(j: number): any {
       ).annotate({ identifier: "ListFabricCapacityByResourceGroupRequest" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(52, __c6, 4));
+      return S.Array(__S(80, __c10, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(88, __c11, 0),
+          value: __S(96, __c12, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FabricCapacityListResult" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -800,7 +862,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "ListFabricCapacityBySubscriptionRequest" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -824,17 +886,17 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "RpSkuDetailsForNewResource" });
     case 2:
-      return S.Array(__S(105, __c13, 1));
+      return S.Array(__S(113, __c14, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(106, __c13, 2),
+          value: __S(114, __c14, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RpSkuEnumerationForNewResourceResult" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -859,17 +921,17 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "RpSkuDetailsForExistingResource" });
     case 2:
-      return S.Array(__S(113, __c14, 1));
+      return S.Array(__S(121, __c15, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(114, __c14, 2),
+          value: __S(122, __c15, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RpSkuEnumerationForExistingResourceResult" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -896,23 +958,23 @@ function __c15(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(121, __c15, 1)),
+          display: S.optional(__S(129, __c16, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(122, __c15, 2));
+      return S.Array(__S(130, __c16, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(123, __c15, 3)),
+          value: S.optional(__S(131, __c16, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

@@ -180,6 +180,10 @@ export interface CreateDeidServiceResponse {
   properties?: DeidServiceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateDeidServiceResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The private endpoint resource. */
 export type PrivateEndpointInput = UserAssignedIdentityInput;
@@ -226,6 +230,10 @@ export interface CreatePrivateEndpointConnectionResponse {
   systemData?: SystemData;
   /** Properties of the private endpoint connection. */
   properties?: CreatePrivateEndpointConnectionResponseProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteDeidServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -235,7 +243,12 @@ export interface DeleteDeidServiceRequest {
   /** The name of the deid service */
   deidServiceName: string;
 }
-export interface DeleteDeidServiceResponse {}
+export interface DeleteDeidServiceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -246,7 +259,12 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-export interface DeletePrivateEndpointConnectionResponse {}
+export interface DeletePrivateEndpointConnectionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetDeidServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -537,6 +555,10 @@ export interface UpdateDeidServiceResponse {
   properties?: DeidServiceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateDeidServiceResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type CreateDeidServiceError = AzureOpError;
 /** Create a DeidService */
@@ -547,7 +569,7 @@ export const CreateDeidService: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2, __c0, 2) as any as S.Schema<CreateDeidServiceRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<CreateDeidServiceResponse>,
+  output: __S(3, __c0, 3) as any as S.Schema<CreateDeidServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -561,8 +583,8 @@ export const CreatePrivateEndpointConnection: API.OperationMethod<
   CreatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
+  input: __S(65, __c8, 1) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -576,8 +598,8 @@ export const DeleteDeidService: API.OperationMethod<
   DeleteDeidServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<DeleteDeidServiceRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteDeidServiceResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteDeidServiceRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<DeleteDeidServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -591,8 +613,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -606,8 +628,8 @@ export const GetDeidService: API.OperationMethod<
   GetDeidServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<GetDeidServiceRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GetDeidServiceResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetDeidServiceRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<GetDeidServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -621,8 +643,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -636,8 +658,8 @@ export const ListDeidServiceByResourceGroup: API.OperationMethod<
   ListDeidServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListDeidServiceByResourceGroupRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<DeidServiceListResult>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListDeidServiceByResourceGroupRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<DeidServiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -651,8 +673,8 @@ export const ListDeidServiceBySubscription: API.OperationMethod<
   ListDeidServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListDeidServiceBySubscriptionRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<DeidServiceListResult>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListDeidServiceBySubscriptionRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<DeidServiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -666,8 +688,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(164, __c20, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -681,8 +703,8 @@ export const ListPrivateEndpointConnectionByDeidService: API.OperationMethod<
   ListPrivateEndpointConnectionByDeidServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListPrivateEndpointConnectionByDeidServiceRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<PrivateEndpointConnectionResourceListResult>,
+  input: __S(168, __c21, 0) as any as S.Schema<ListPrivateEndpointConnectionByDeidServiceRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<PrivateEndpointConnectionResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -696,8 +718,8 @@ export const ListPrivateLinkByDeidService: API.OperationMethod<
   ListPrivateLinkByDeidServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListPrivateLinkByDeidServiceRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListPrivateLinkByDeidServiceRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -711,8 +733,8 @@ export const UpdateDeidService: API.OperationMethod<
   UpdateDeidServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<UpdateDeidServiceRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<UpdateDeidServiceResponse>,
+  input: __S(82, __c10, 2) as any as S.Schema<UpdateDeidServiceRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<UpdateDeidServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -736,7 +758,7 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deidServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(40, __c5, 0)),
+          tags: S.optional(__S(48, __c6, 0)),
           location: S.String,
           properties: S.optional(__S(32, __c4, 0)),
           identity: S.optional(__S(1, __c0, 1)),
@@ -749,6 +771,21 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateDeidServiceRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(48, __c6, 0)),
+          location: S.String,
+          properties: S.optional(__S(49, __c6, 1)),
+          identity: S.optional(__S(52, __c6, 4)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateDeidServiceResponse" });
   }
 }
 function __c1(j: number): any {
@@ -799,16 +836,6 @@ function __c3(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "DeidServicePropertiesPrivateEndpointConnectionsItem" });
   }
 }
 function __c4(j: number): any {
@@ -824,13 +851,27 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(26, __c3, 2)),
+        }),
+      ).annotate({ identifier: "DeidServicePropertiesPrivateEndpointConnectionsItem" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           serviceUrl: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(48, __c6, 0)),
+          privateEndpointConnections: S.optional(__S(56, __c7, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeidServiceProperties" });
@@ -842,38 +883,25 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(42, __c5, 2)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(50, __c6, 2)));
     case 4:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(43, __c5, 3)),
+          userAssignedIdentities: S.optional(__S(51, __c6, 3)),
         }),
       ).annotate({ identifier: "CreateDeidServiceResponseIdentity" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(40, __c5, 0)),
-          location: S.String,
-          properties: S.optional(__S(41, __c5, 1)),
-          identity: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({ identifier: "CreateDeidServiceResponse" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(27, __c3, 3));
   }
 }
 function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(40, __c5, 0));
+  }
+}
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -889,7 +917,7 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           deidServiceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(64, __c8, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -899,9 +927,21 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreatePrivateEndpointConnectionRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(26, __c3, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreatePrivateEndpointConnectionResponse" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -933,21 +973,21 @@ function __c8(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(65, __c8, 1)),
+          properties: S.optional(__S(73, __c9, 1)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 3:
-      return S.Array(__S(66, __c8, 2));
+      return S.Array(__S(74, __c9, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(67, __c8, 3),
+          value: __S(75, __c9, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResourceListResult" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, __S(8, __c1, 0));
@@ -955,7 +995,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(72, __c9, 0)),
+          userAssignedIdentities: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({ identifier: "ManagedServiceIdentityUpdateInput" });
     case 2:
@@ -964,8 +1004,8 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deidServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(40, __c5, 0)),
-          identity: S.optional(__S(73, __c9, 1)),
+          tags: S.optional(__S(48, __c6, 0)),
+          identity: S.optional(__S(81, __c10, 1)),
           properties: S.optional(__S(32, __c4, 0)),
         }).pipe(
           T.Http({
@@ -976,9 +1016,24 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDeidServiceRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(48, __c6, 0)),
+          location: S.String,
+          properties: S.optional(__S(49, __c6, 1)),
+          identity: S.optional(__S(52, __c6, 4)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateDeidServiceResponse" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -997,7 +1052,18 @@ function __c10(j: number): any {
       ).annotate({ identifier: "DeleteDeidServiceRequest" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteDeidServiceResponse" });
+  }
+}
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1017,7 +1083,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "DeletePrivateEndpointConnectionRequest" });
   }
 }
-function __c12(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1036,7 +1102,24 @@ function __c12(j: number): any {
       ).annotate({ identifier: "GetDeidServiceRequest" });
   }
 }
-function __c13(j: number): any {
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(48, __c6, 0)),
+          location: S.String,
+          properties: S.optional(__S(49, __c6, 1)),
+          identity: S.optional(__S(52, __c6, 4)),
+        }),
+      ).annotate({ identifier: "GetDeidServiceResponse" });
+  }
+}
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1056,7 +1139,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "GetPrivateEndpointConnectionRequest" });
   }
 }
-function __c14(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1074,20 +1157,20 @@ function __c14(j: number): any {
       ).annotate({ identifier: "ListDeidServiceByResourceGroupRequest" });
   }
 }
-function __c15(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(45, __c5, 5));
+      return S.Array(__S(120, __c15, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(120, __c15, 0),
+          value: __S(144, __c18, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeidServiceListResult" });
   }
 }
-function __c16(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1104,7 +1187,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "ListDeidServiceBySubscriptionRequest" });
   }
 }
-function __c17(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1131,23 +1214,23 @@ function __c17(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(137, __c17, 1)),
+          display: S.optional(__S(161, __c20, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(138, __c17, 2));
+      return S.Array(__S(162, __c20, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(139, __c17, 3)),
+          value: S.optional(__S(163, __c20, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c18(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1167,7 +1250,7 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(48, __c6, 0),
+          value: __S(56, __c7, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionResourceListResult" });

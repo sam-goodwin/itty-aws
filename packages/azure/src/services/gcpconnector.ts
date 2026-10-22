@@ -296,6 +296,10 @@ export interface BigQueryDatasetsCreateOrReplaceResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: BigQueryDatasetProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CloudFunctionsCreateOrReplaceRequestTagsMap = { [key: string]: string | undefined };
@@ -647,6 +651,10 @@ export interface CloudFunctionsCreateOrReplaceResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: FunctionProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Specifies options for controlling advanced machine features. Options that would traditionally be configured in a BIOS belong here. Features that require operating system support may have corresponding entries in the GuestOsFeatures of an Image (e.g., whether or not the OS in the Image supports nested virtualization being enabled or disabled). */
 export interface AdvancedMachineFeatures {
@@ -1294,6 +1302,10 @@ export interface ComputeInstancesCreateOrReplaceResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: InstanceProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Configuration for the HTTP Load Balancing addon */
 export interface HttpLoadBalancing {
@@ -2871,6 +2883,10 @@ export interface ContainerClustersCreateOrReplaceResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: ClusterProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteBigQueryDatasetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2880,7 +2896,12 @@ export interface DeleteBigQueryDatasetRequest {
   /** Name of BigQueryDataset */
   name: string;
 }
-export interface DeleteBigQueryDatasetResponse {}
+export interface DeleteBigQueryDatasetResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteCloudFunctionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2889,17 +2910,32 @@ export interface DeleteCloudFunctionRequest {
   /** Name of CloudFunction */
   name: string;
 }
-export interface DeleteCloudFunctionResponse {}
+export interface DeleteCloudFunctionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteComputeInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export interface DeleteComputeInstanceResponse {}
+export interface DeleteComputeInstanceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteContainerClusterRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export interface DeleteContainerClusterResponse {}
+export interface DeleteContainerClusterResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSQLAdminInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2908,7 +2944,12 @@ export interface DeleteSQLAdminInstanceRequest {
   /** Name of SQLAdminInstance */
   name: string;
 }
-export interface DeleteSQLAdminInstanceResponse {}
+export interface DeleteSQLAdminInstanceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteStorageBucketRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2917,7 +2958,12 @@ export interface DeleteStorageBucketRequest {
   /** Name of StorageBucket */
   name: string;
 }
-export interface DeleteStorageBucketResponse {}
+export interface DeleteStorageBucketResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetBigQueryDatasetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4180,6 +4226,10 @@ export interface SQLAdminInstancesCreateOrReplaceResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: SQLAdminInstanceProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type StorageBucketsCreateOrReplaceRequestTagsMap = { [key: string]: string | undefined };
@@ -4237,6 +4287,10 @@ export interface StorageBucketsCreateOrReplaceResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: BucketProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateBigQueryDatasetRequestTagsMap = { [key: string]: string | undefined };
@@ -4267,6 +4321,10 @@ export interface UpdateBigQueryDatasetResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: BigQueryDatasetProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateCloudFunctionRequestTagsMap = { [key: string]: string | undefined };
@@ -4297,6 +4355,10 @@ export interface UpdateCloudFunctionResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: FunctionProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateSQLAdminInstanceRequestTagsMap = { [key: string]: string | undefined };
@@ -4327,6 +4389,10 @@ export interface UpdateSQLAdminInstanceResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: SQLAdminInstanceProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateStorageBucketRequestTagsMap = { [key: string]: string | undefined };
@@ -4357,6 +4423,10 @@ export interface UpdateStorageBucketResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: BucketProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type BigQueryDatasetsCreateOrReplaceError = AzureOpError;
 /** Create a big query dataset. Please note that end user resource creation is currently restricted, but it will be enabled in the future. */
@@ -4367,7 +4437,7 @@ export const BigQueryDatasetsCreateOrReplace: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<BigQueryDatasetsCreateOrReplaceRequest>,
-  output: __S(78, __c2, 14) as any as S.Schema<BigQueryDatasetsCreateOrReplaceResponse>,
+  output: __S(2, __c0, 2) as any as S.Schema<BigQueryDatasetsCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4382,7 +4452,7 @@ export const CloudFunctionsCreateOrReplace: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(161, __c5, 1) as any as S.Schema<CloudFunctionsCreateOrReplaceRequest>,
-  output: __S(212, __c6, 20) as any as S.Schema<CloudFunctionsCreateOrReplaceResponse>,
+  output: __S(162, __c5, 2) as any as S.Schema<CloudFunctionsCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4396,8 +4466,8 @@ export const ComputeInstancesCreateOrReplace: API.OperationMethod<
   ComputeInstancesCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(705, __c22, 1) as any as S.Schema<ComputeInstancesCreateOrReplaceRequest>,
-  output: __S(768, __c24, 0) as any as S.Schema<ComputeInstancesCreateOrReplaceResponse>,
+  input: __S(865, __c27, 1) as any as S.Schema<ComputeInstancesCreateOrReplaceRequest>,
+  output: __S(866, __c27, 2) as any as S.Schema<ComputeInstancesCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4411,8 +4481,8 @@ export const ContainerClustersCreateOrReplace: API.OperationMethod<
   ContainerClustersCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1249, __c39, 1) as any as S.Schema<ContainerClustersCreateOrReplaceRequest>,
-  output: __S(1409, __c44, 1) as any as S.Schema<ContainerClustersCreateOrReplaceResponse>,
+  input: __S(1377, __c43, 1) as any as S.Schema<ContainerClustersCreateOrReplaceRequest>,
+  output: __S(1378, __c43, 2) as any as S.Schema<ContainerClustersCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4426,8 +4496,8 @@ export const DeleteBigQueryDataset: API.OperationMethod<
   DeleteBigQueryDatasetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c48, 0) as any as S.Schema<DeleteBigQueryDatasetRequest>,
-  output: __S(1568, __c49, 0) as any as S.Schema<DeleteBigQueryDatasetResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<DeleteBigQueryDatasetRequest>,
+  output: __S(1696, __c53, 0) as any as S.Schema<DeleteBigQueryDatasetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4441,8 +4511,8 @@ export const DeleteCloudFunction: API.OperationMethod<
   DeleteCloudFunctionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1600, __c50, 0) as any as S.Schema<DeleteCloudFunctionRequest>,
-  output: __S(1568, __c49, 0) as any as S.Schema<DeleteCloudFunctionResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<DeleteCloudFunctionRequest>,
+  output: __S(1696, __c53, 0) as any as S.Schema<DeleteCloudFunctionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4456,8 +4526,8 @@ export const DeleteComputeInstance: API.OperationMethod<
   DeleteComputeInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1632, __c51, 0) as any as S.Schema<DeleteComputeInstanceRequest>,
-  output: __S(1568, __c49, 0) as any as S.Schema<DeleteComputeInstanceResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<DeleteComputeInstanceRequest>,
+  output: __S(1696, __c53, 0) as any as S.Schema<DeleteComputeInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4471,8 +4541,8 @@ export const DeleteContainerCluster: API.OperationMethod<
   DeleteContainerClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1664, __c52, 0) as any as S.Schema<DeleteContainerClusterRequest>,
-  output: __S(1568, __c49, 0) as any as S.Schema<DeleteContainerClusterResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<DeleteContainerClusterRequest>,
+  output: __S(1696, __c53, 0) as any as S.Schema<DeleteContainerClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4486,8 +4556,8 @@ export const DeleteSQLAdminInstance: API.OperationMethod<
   DeleteSQLAdminInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<DeleteSQLAdminInstanceRequest>,
-  output: __S(1568, __c49, 0) as any as S.Schema<DeleteSQLAdminInstanceResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<DeleteSQLAdminInstanceRequest>,
+  output: __S(1696, __c53, 0) as any as S.Schema<DeleteSQLAdminInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4501,8 +4571,8 @@ export const DeleteStorageBucket: API.OperationMethod<
   DeleteStorageBucketError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c54, 0) as any as S.Schema<DeleteStorageBucketRequest>,
-  output: __S(1568, __c49, 0) as any as S.Schema<DeleteStorageBucketResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<DeleteStorageBucketRequest>,
+  output: __S(1696, __c53, 0) as any as S.Schema<DeleteStorageBucketResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4517,7 +4587,7 @@ export const GetBigQueryDataset: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(224, __c7, 0) as any as S.Schema<GetBigQueryDatasetRequest>,
-  output: __S(78, __c2, 14) as any as S.Schema<GetBigQueryDatasetResponse>,
+  output: __S(256, __c8, 0) as any as S.Schema<GetBigQueryDatasetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4531,8 +4601,8 @@ export const GetCloudFunction: API.OperationMethod<
   GetCloudFunctionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c8, 0) as any as S.Schema<GetCloudFunctionRequest>,
-  output: __S(212, __c6, 20) as any as S.Schema<GetCloudFunctionResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetCloudFunctionRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<GetCloudFunctionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4546,8 +4616,8 @@ export const GetComputeInstance: API.OperationMethod<
   GetComputeInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c9, 0) as any as S.Schema<GetComputeInstanceRequest>,
-  output: __S(768, __c24, 0) as any as S.Schema<GetComputeInstanceResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetComputeInstanceRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<GetComputeInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4561,8 +4631,8 @@ export const GetContainerCluster: API.OperationMethod<
   GetContainerClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c10, 0) as any as S.Schema<GetContainerClusterRequest>,
-  output: __S(1409, __c44, 1) as any as S.Schema<GetContainerClusterResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetContainerClusterRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<GetContainerClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4576,8 +4646,8 @@ export const GetSQLAdminInstance: API.OperationMethod<
   GetSQLAdminInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c11, 0) as any as S.Schema<GetSQLAdminInstanceRequest>,
-  output: __S(416, __c13, 0) as any as S.Schema<GetSQLAdminInstanceResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetSQLAdminInstanceRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<GetSQLAdminInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4591,8 +4661,8 @@ export const GetStorageBucket: API.OperationMethod<
   GetStorageBucketError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c14, 0) as any as S.Schema<GetStorageBucketRequest>,
-  output: __S(506, __c15, 26) as any as S.Schema<GetStorageBucketResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetStorageBucketRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<GetStorageBucketResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4606,8 +4676,8 @@ export const ListBigQueryDatasetByResourceGroup: API.OperationMethod<
   ListBigQueryDatasetByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c16, 0) as any as S.Schema<ListBigQueryDatasetByResourceGroupRequest>,
-  output: __S(545, __c17, 1) as any as S.Schema<BigQueryDatasetListResult>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListBigQueryDatasetByResourceGroupRequest>,
+  output: __S(705, __c22, 1) as any as S.Schema<BigQueryDatasetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4621,8 +4691,8 @@ export const ListBigQueryDatasetBySubscription: API.OperationMethod<
   ListBigQueryDatasetBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c18, 0) as any as S.Schema<ListBigQueryDatasetBySubscriptionRequest>,
-  output: __S(545, __c17, 1) as any as S.Schema<BigQueryDatasetListResult>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListBigQueryDatasetBySubscriptionRequest>,
+  output: __S(705, __c22, 1) as any as S.Schema<BigQueryDatasetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4636,8 +4706,8 @@ export const ListCloudFunctionByResourceGroup: API.OperationMethod<
   ListCloudFunctionByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c19, 0) as any as S.Schema<ListCloudFunctionByResourceGroupRequest>,
-  output: __S(641, __c20, 1) as any as S.Schema<CloudFunctionListResult>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListCloudFunctionByResourceGroupRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<CloudFunctionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4651,8 +4721,8 @@ export const ListCloudFunctionBySubscription: API.OperationMethod<
   ListCloudFunctionBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<ListCloudFunctionBySubscriptionRequest>,
-  output: __S(641, __c20, 1) as any as S.Schema<CloudFunctionListResult>,
+  input: __S(832, __c26, 0) as any as S.Schema<ListCloudFunctionBySubscriptionRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<CloudFunctionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4666,8 +4736,8 @@ export const ListComputeInstances: API.OperationMethod<
   ListComputeInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<ListComputeInstancesRequest>,
-  output: __S(866, __c27, 2) as any as S.Schema<ComputeInstanceListResult>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListComputeInstancesRequest>,
+  output: __S(994, __c31, 2) as any as S.Schema<ComputeInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4681,8 +4751,8 @@ export const ListContainerClusters: API.OperationMethod<
   ListContainerClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<ListContainerClustersRequest>,
-  output: __S(898, __c28, 2) as any as S.Schema<ContainerClusterListResult>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListContainerClustersRequest>,
+  output: __S(1026, __c32, 2) as any as S.Schema<ContainerClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4696,8 +4766,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(932, __c29, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1060, __c33, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4711,8 +4781,8 @@ export const ListSQLAdminInstanceByResourceGroup: API.OperationMethod<
   ListSQLAdminInstanceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c30, 0) as any as S.Schema<ListSQLAdminInstanceByResourceGroupRequest>,
-  output: __S(993, __c31, 1) as any as S.Schema<SQLAdminInstanceListResult>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListSQLAdminInstanceByResourceGroupRequest>,
+  output: __S(1121, __c35, 1) as any as S.Schema<SQLAdminInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4726,8 +4796,8 @@ export const ListSQLAdminInstanceBySubscription: API.OperationMethod<
   ListSQLAdminInstanceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c32, 0) as any as S.Schema<ListSQLAdminInstanceBySubscriptionRequest>,
-  output: __S(993, __c31, 1) as any as S.Schema<SQLAdminInstanceListResult>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListSQLAdminInstanceBySubscriptionRequest>,
+  output: __S(1121, __c35, 1) as any as S.Schema<SQLAdminInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4741,8 +4811,8 @@ export const ListStorageBucketByResourceGroup: API.OperationMethod<
   ListStorageBucketByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c33, 0) as any as S.Schema<ListStorageBucketByResourceGroupRequest>,
-  output: __S(1089, __c34, 1) as any as S.Schema<StorageBucketListResult>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListStorageBucketByResourceGroupRequest>,
+  output: __S(1217, __c38, 1) as any as S.Schema<StorageBucketListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4756,8 +4826,8 @@ export const ListStorageBucketBySubscription: API.OperationMethod<
   ListStorageBucketBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c35, 0) as any as S.Schema<ListStorageBucketBySubscriptionRequest>,
-  output: __S(1089, __c34, 1) as any as S.Schema<StorageBucketListResult>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ListStorageBucketBySubscriptionRequest>,
+  output: __S(1217, __c38, 1) as any as S.Schema<StorageBucketListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4771,8 +4841,8 @@ export const SQLAdminInstancesCreateOrReplace: API.OperationMethod<
   SQLAdminInstancesCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1153, __c36, 1) as any as S.Schema<SQLAdminInstancesCreateOrReplaceRequest>,
-  output: __S(416, __c13, 0) as any as S.Schema<SQLAdminInstancesCreateOrReplaceResponse>,
+  input: __S(1281, __c40, 1) as any as S.Schema<SQLAdminInstancesCreateOrReplaceRequest>,
+  output: __S(1282, __c40, 2) as any as S.Schema<SQLAdminInstancesCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4786,8 +4856,8 @@ export const StorageBucketsCreateOrReplace: API.OperationMethod<
   StorageBucketsCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1185, __c37, 1) as any as S.Schema<StorageBucketsCreateOrReplaceRequest>,
-  output: __S(506, __c15, 26) as any as S.Schema<StorageBucketsCreateOrReplaceResponse>,
+  input: __S(1313, __c41, 1) as any as S.Schema<StorageBucketsCreateOrReplaceRequest>,
+  output: __S(1314, __c41, 2) as any as S.Schema<StorageBucketsCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4801,8 +4871,8 @@ export const UpdateBigQueryDataset: API.OperationMethod<
   UpdateBigQueryDatasetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c38, 0) as any as S.Schema<UpdateBigQueryDatasetRequest>,
-  output: __S(78, __c2, 14) as any as S.Schema<UpdateBigQueryDatasetResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<UpdateBigQueryDatasetRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<UpdateBigQueryDatasetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4816,8 +4886,8 @@ export const UpdateCloudFunction: API.OperationMethod<
   UpdateCloudFunctionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c45, 0) as any as S.Schema<UpdateCloudFunctionRequest>,
-  output: __S(212, __c6, 20) as any as S.Schema<UpdateCloudFunctionResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<UpdateCloudFunctionRequest>,
+  output: __S(1569, __c49, 1) as any as S.Schema<UpdateCloudFunctionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4831,8 +4901,8 @@ export const UpdateSQLAdminInstance: API.OperationMethod<
   UpdateSQLAdminInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c46, 0) as any as S.Schema<UpdateSQLAdminInstanceRequest>,
-  output: __S(416, __c13, 0) as any as S.Schema<UpdateSQLAdminInstanceResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<UpdateSQLAdminInstanceRequest>,
+  output: __S(1601, __c50, 1) as any as S.Schema<UpdateSQLAdminInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4846,8 +4916,8 @@ export const UpdateStorageBucket: API.OperationMethod<
   UpdateStorageBucketError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c47, 0) as any as S.Schema<UpdateStorageBucketRequest>,
-  output: __S(506, __c15, 26) as any as S.Schema<UpdateStorageBucketResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<UpdateStorageBucketRequest>,
+  output: __S(1633, __c51, 1) as any as S.Schema<UpdateStorageBucketResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4888,6 +4958,20 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "BigQueryDatasetsCreateOrReplaceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          tags: S.optional(__S(32, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(77, __c2, 13)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "BigQueryDatasetsCreateOrReplaceResponse" });
   }
 }
 function __c1(j: number): any {
@@ -5046,18 +5130,6 @@ function __c2(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "BigQueryDatasetProperties" });
-    case 14:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(33, __c1, 1)),
-          tags: S.optional(__S(32, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(77, __c2, 13)),
-        }),
-      ).annotate({ identifier: "BigQueryDatasetsCreateOrReplaceResponse" });
   }
 }
 function __c3(j: number): any {
@@ -5113,6 +5185,20 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CloudFunctionsCreateOrReplaceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          tags: S.optional(__S(32, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(211, __c6, 19)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CloudFunctionsCreateOrReplaceResponse" });
   }
 }
 function __c6(j: number): any {
@@ -5299,18 +5385,6 @@ function __c6(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "FunctionProperties" });
-    case 20:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(33, __c1, 1)),
-          tags: S.optional(__S(32, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(211, __c6, 19)),
-        }),
-      ).annotate({ identifier: "CloudFunctionsCreateOrReplaceResponse" });
   }
 }
 function __c7(j: number): any {
@@ -5337,6 +5411,22 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          tags: S.optional(__S(32, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(77, __c2, 13)),
+        }),
+      ).annotate({ identifier: "GetBigQueryDatasetResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
@@ -5351,7 +5441,23 @@ function __c8(j: number): any {
       ).annotate({ identifier: "GetCloudFunctionRequest" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          tags: S.optional(__S(32, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(211, __c6, 19)),
+        }),
+      ).annotate({ identifier: "GetCloudFunctionResponse" });
+  }
+}
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5368,7 +5474,21 @@ function __c9(j: number): any {
       ).annotate({ identifier: "GetComputeInstanceRequest" });
   }
 }
-function __c10(j: number): any {
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(927, __c28, 31)),
+        }),
+      ).annotate({ identifier: "GetComputeInstanceResponse" });
+  }
+}
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5385,7 +5505,21 @@ function __c10(j: number): any {
       ).annotate({ identifier: "GetContainerClusterRequest" });
   }
 }
-function __c11(j: number): any {
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(1536, __c48, 0)),
+        }),
+      ).annotate({ identifier: "GetContainerClusterResponse" });
+  }
+}
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5404,7 +5538,23 @@ function __c11(j: number): any {
       ).annotate({ identifier: "GetSQLAdminInstanceRequest" });
   }
 }
-function __c12(j: number): any {
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          tags: S.optional(__S(32, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(575, __c17, 31)),
+        }),
+      ).annotate({ identifier: "GetSQLAdminInstanceResponse" });
+  }
+}
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5436,7 +5586,7 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "IpMapping" });
     case 4:
-      return S.Array(__S(387, __c12, 3));
+      return S.Array(__S(547, __c17, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5471,7 +5621,7 @@ function __c12(j: number): any {
         S.Struct({
           failoverTarget: S.optional(S.Boolean),
           kind: S.optional(S.String),
-          mysqlReplicaConfiguration: S.optional(__S(390, __c12, 6)),
+          mysqlReplicaConfiguration: S.optional(__S(550, __c17, 6)),
         }),
       ).annotate({ identifier: "ReplicaConfiguration" });
     case 8:
@@ -5513,7 +5663,7 @@ function __c12(j: number): any {
     case 12:
       return S.suspend(() =>
         S.Struct({
-          backupRetentionSettings: S.optional(__S(395, __c12, 11)),
+          backupRetentionSettings: S.optional(__S(555, __c17, 11)),
           enabled: S.optional(S.Boolean),
           kind: S.optional(S.String),
           location: S.optional(S.String),
@@ -5531,7 +5681,7 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "DatabaseFlags" });
     case 14:
-      return S.Array(__S(397, __c12, 13));
+      return S.Array(__S(557, __c17, 13));
     case 15:
       return S.suspend(() =>
         S.Struct({
@@ -5542,12 +5692,12 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "AclEntry" });
     case 16:
-      return S.Array(__S(399, __c12, 15));
+      return S.Array(__S(559, __c17, 15));
     case 17:
       return S.suspend(() =>
         S.Struct({
           allocatedIpRange: S.optional(S.String),
-          authorizedNetworks: S.optional(__S(400, __c12, 16)),
+          authorizedNetworks: S.optional(__S(560, __c17, 16)),
           ipv4Enabled: S.optional(S.Boolean),
           privateNetwork: S.optional(S.String),
           requireSsl: S.optional(S.Boolean),
@@ -5575,19 +5725,19 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           activationPolicy: S.optional(S.String),
-          activeDirectoryConfig: S.optional(__S(394, __c12, 10)),
-          authorizedGaeApplications: S.optional(__S(800, __c25, 0)),
+          activeDirectoryConfig: S.optional(__S(554, __c17, 10)),
+          authorizedGaeApplications: S.optional(__S(928, __c29, 0)),
           availabilityType: S.optional(S.String),
-          backupConfiguration: S.optional(__S(396, __c12, 12)),
+          backupConfiguration: S.optional(__S(556, __c17, 12)),
           collation: S.optional(S.String),
           crashSafeReplicationEnabled: S.optional(S.Boolean),
           dataDiskSizeGb: S.optional(S.String),
           dataDiskType: S.optional(S.String),
-          databaseFlags: S.optional(__S(398, __c12, 14)),
-          ipConfiguration: S.optional(__S(401, __c12, 17)),
+          databaseFlags: S.optional(__S(558, __c17, 14)),
+          ipConfiguration: S.optional(__S(561, __c17, 17)),
           kind: S.optional(S.String),
-          locationPreference: S.optional(__S(402, __c12, 18)),
-          maintenanceWindow: S.optional(__S(403, __c12, 19)),
+          locationPreference: S.optional(__S(562, __c17, 18)),
+          maintenanceWindow: S.optional(__S(563, __c17, 19)),
           pricingPlan: S.optional(S.String),
           replicationType: S.optional(S.String),
           settingsVersion: S.optional(S.String),
@@ -5602,11 +5752,11 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
-          supportedEditions: S.optional(__S(800, __c25, 0)),
+          supportedEditions: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({ identifier: "AvailableDatabaseVersion" });
     case 22:
-      return S.Array(__S(405, __c12, 21));
+      return S.Array(__S(565, __c17, 21));
     case 23:
       return S.suspend(() =>
         S.Struct({
@@ -5618,7 +5768,7 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "PoolNodeConfig" });
     case 24:
-      return S.Array(__S(407, __c12, 23));
+      return S.Array(__S(567, __c17, 23));
     case 25:
       return S.suspend(() =>
         S.Struct({
@@ -5628,7 +5778,7 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "DnsNameMapping" });
     case 26:
-      return S.Array(__S(409, __c12, 25));
+      return S.Array(__S(569, __c17, 25));
     case 27:
       return S.suspend(() =>
         S.Struct({
@@ -5658,48 +5808,48 @@ function __c12(j: number): any {
           connectionName: S.optional(S.String),
           createTime: S.optional(S.String),
           databaseVersion: S.optional(S.String),
-          diskEncryptionConfiguration: S.optional(__S(384, __c12, 0)),
-          diskEncryptionStatus: S.optional(__S(385, __c12, 1)),
+          diskEncryptionConfiguration: S.optional(__S(544, __c17, 0)),
+          diskEncryptionStatus: S.optional(__S(545, __c17, 1)),
           etag: S.optional(S.String),
-          failoverReplica: S.optional(__S(386, __c12, 2)),
+          failoverReplica: S.optional(__S(546, __c17, 2)),
           gceZone: S.optional(S.String),
           instanceType: S.optional(S.String),
-          ipAddresses: S.optional(__S(388, __c12, 4)),
+          ipAddresses: S.optional(__S(548, __c17, 4)),
           ipv6Address: S.optional(S.String),
           kind: S.optional(S.String),
           masterInstanceName: S.optional(S.String),
           maxDiskSize: S.optional(S.String),
           name: S.optional(S.String),
-          onPremisesConfiguration: S.optional(__S(389, __c12, 5)),
+          onPremisesConfiguration: S.optional(__S(549, __c17, 5)),
           project: S.optional(S.String),
           region: S.optional(S.String),
-          replicaConfiguration: S.optional(__S(391, __c12, 7)),
-          replicaNames: S.optional(__S(800, __c25, 0)),
+          replicaConfiguration: S.optional(__S(551, __c17, 7)),
+          replicaNames: S.optional(__S(928, __c29, 0)),
           rootPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           satisfiesPzs: S.optional(S.Boolean),
-          scheduledMaintenance: S.optional(__S(392, __c12, 8)),
+          scheduledMaintenance: S.optional(__S(552, __c17, 8)),
           secondaryGceZone: S.optional(S.String),
           selfLink: S.optional(S.String),
-          serverCaCert: S.optional(__S(393, __c12, 9)),
+          serverCaCert: S.optional(__S(553, __c17, 9)),
           serviceAccountEmailAddress: S.optional(S.String),
-          settings: S.optional(__S(404, __c12, 20)),
+          settings: S.optional(__S(564, __c17, 20)),
           state: S.optional(S.String),
-          suspensionReason: S.optional(__S(800, __c25, 0)),
+          suspensionReason: S.optional(__S(928, __c29, 0)),
           databaseInstalledVersion: S.optional(S.String),
           currentDiskSize: S.optional(S.String),
-          availableMaintenanceVersions: S.optional(__S(800, __c25, 0)),
+          availableMaintenanceVersions: S.optional(__S(928, __c29, 0)),
           maintenanceVersion: S.optional(S.String),
-          upgradableDatabaseVersions: S.optional(__S(406, __c12, 22)),
-          nodes: S.optional(__S(408, __c12, 24)),
-          dnsNames: S.optional(__S(410, __c12, 26)),
-          outOfDiskReport: S.optional(__S(411, __c12, 27)),
+          upgradableDatabaseVersions: S.optional(__S(566, __c17, 22)),
+          nodes: S.optional(__S(568, __c17, 24)),
+          dnsNames: S.optional(__S(570, __c17, 26)),
+          outOfDiskReport: S.optional(__S(571, __c17, 27)),
           sqlNetworkArchitecture: S.optional(S.String),
           pscServiceAttachmentLink: S.optional(S.String),
           dnsName: S.optional(S.String),
           primaryDnsName: S.optional(S.String),
           writeEndpoint: S.optional(S.String),
-          replicationCluster: S.optional(__S(412, __c12, 28)),
-          geminiConfig: S.optional(__S(413, __c12, 29)),
+          replicationCluster: S.optional(__S(572, __c17, 28)),
+          geminiConfig: S.optional(__S(573, __c17, 29)),
           switchTransactionLogsToCloudStorageEnabled: S.optional(S.Boolean),
           nodeCount: S.optional(S.Number),
         }),
@@ -5707,7 +5857,7 @@ function __c12(j: number): any {
     case 31:
       return S.suspend(() =>
         S.Struct({
-          gcpProperties: S.optional(__S(414, __c12, 30)),
+          gcpProperties: S.optional(__S(574, __c17, 30)),
           publicCloudConnectorsResourceId: S.optional(S.String),
           gcpProjectNumber: S.optional(S.String),
           gcpProjectId: S.optional(S.String),
@@ -5721,23 +5871,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "SQLAdminInstanceProperties" });
   }
 }
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(33, __c1, 1)),
-          tags: S.optional(__S(32, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(415, __c12, 31)),
-        }),
-      ).annotate({ identifier: "GetSQLAdminInstanceResponse" });
-  }
-}
-function __c14(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5756,7 +5890,23 @@ function __c14(j: number): any {
       ).annotate({ identifier: "GetStorageBucketRequest" });
   }
 }
-function __c15(j: number): any {
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          tags: S.optional(__S(32, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(665, __c20, 25)),
+        }),
+      ).annotate({ identifier: "GetStorageBucketResponse" });
+  }
+}
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5776,13 +5926,13 @@ function __c15(j: number): any {
           etag: S.optional(S.String),
           id: S.optional(S.String),
           kind: S.optional(S.String),
-          projectTeam: S.optional(__S(480, __c15, 0)),
+          projectTeam: S.optional(__S(640, __c20, 0)),
           role: S.optional(S.String),
           selfLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BucketAccessControl" });
     case 2:
-      return S.Array(__S(481, __c15, 1));
+      return S.Array(__S(641, __c20, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5802,17 +5952,17 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           maxAgeSeconds: S.optional(S.Number),
-          method: S.optional(__S(800, __c25, 0)),
-          origin: S.optional(__S(800, __c25, 0)),
-          responseHeader: S.optional(__S(800, __c25, 0)),
+          method: S.optional(__S(928, __c29, 0)),
+          origin: S.optional(__S(928, __c29, 0)),
+          responseHeader: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({ identifier: "GcpBucketPropertiesCorsItem" });
     case 6:
-      return S.Array(__S(485, __c15, 5));
+      return S.Array(__S(645, __c20, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dataLocations: S.optional(__S(800, __c25, 0)),
+          dataLocations: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({ identifier: "GcpBucketPropertiesCustomPlacementConfig" });
     case 8:
@@ -5828,13 +5978,13 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           kind: S.optional(S.String),
           object: S.optional(S.String),
-          projectTeam: S.optional(__S(480, __c15, 0)),
+          projectTeam: S.optional(__S(640, __c20, 0)),
           role: S.optional(S.String),
           selfLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ObjectAccessControl" });
     case 9:
-      return S.Array(__S(488, __c15, 8));
+      return S.Array(__S(648, __c20, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -5851,9 +6001,9 @@ function __c15(j: number): any {
     case 12:
       return S.suspend(() =>
         S.Struct({
-          bucketPolicyOnly: S.optional(__S(491, __c15, 11)),
+          bucketPolicyOnly: S.optional(__S(651, __c20, 11)),
           publicAccessPrevention: S.optional(S.String),
-          uniformBucketLevelAccess: S.optional(__S(491, __c15, 11)),
+          uniformBucketLevelAccess: S.optional(__S(651, __c20, 11)),
         }),
       ).annotate({ identifier: "GcpBucketPropertiesIamConfiguration" });
     case 13:
@@ -5873,9 +6023,9 @@ function __c15(j: number): any {
           daysSinceNoncurrentTime: S.optional(S.Number),
           isLive: S.optional(S.Boolean),
           matchesPattern: S.optional(S.String),
-          matchesPrefix: S.optional(__S(800, __c25, 0)),
-          matchesStorageClass: S.optional(__S(800, __c25, 0)),
-          matchesSuffix: S.optional(__S(800, __c25, 0)),
+          matchesPrefix: S.optional(__S(928, __c29, 0)),
+          matchesStorageClass: S.optional(__S(928, __c29, 0)),
+          matchesSuffix: S.optional(__S(928, __c29, 0)),
           noncurrentTimeBefore: S.optional(S.String),
           numNewerVersions: S.optional(S.Number),
         }),
@@ -5883,16 +6033,16 @@ function __c15(j: number): any {
     case 15:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(__S(493, __c15, 13)),
-          condition: S.optional(__S(494, __c15, 14)),
+          action: S.optional(__S(653, __c20, 13)),
+          condition: S.optional(__S(654, __c20, 14)),
         }),
       ).annotate({ identifier: "GcpBucketPropertiesLifecycleRuleItem" });
     case 16:
-      return S.Array(__S(495, __c15, 15));
+      return S.Array(__S(655, __c20, 15));
     case 17:
       return S.suspend(() =>
         S.Struct({
-          rule: S.optional(__S(496, __c15, 16)),
+          rule: S.optional(__S(656, __c20, 16)),
         }),
       ).annotate({ identifier: "GcpBucketPropertiesLifecycle" });
     case 18:
@@ -5940,46 +6090,46 @@ function __c15(j: number): any {
     case 24:
       return S.suspend(() =>
         S.Struct({
-          acl: S.optional(__S(482, __c15, 2)),
-          autoclass: S.optional(__S(483, __c15, 3)),
-          billing: S.optional(__S(484, __c15, 4)),
-          cors: S.optional(__S(486, __c15, 6)),
-          customPlacementConfig: S.optional(__S(487, __c15, 7)),
+          acl: S.optional(__S(642, __c20, 2)),
+          autoclass: S.optional(__S(643, __c20, 3)),
+          billing: S.optional(__S(644, __c20, 4)),
+          cors: S.optional(__S(646, __c20, 6)),
+          customPlacementConfig: S.optional(__S(647, __c20, 7)),
           defaultEventBasedHold: S.optional(S.Boolean),
-          defaultObjectAcl: S.optional(__S(489, __c15, 9)),
-          encryption: S.optional(__S(490, __c15, 10)),
+          defaultObjectAcl: S.optional(__S(649, __c20, 9)),
+          encryption: S.optional(__S(650, __c20, 10)),
           etag: S.optional(S.String),
-          hierarchicalNamespace: S.optional(__S(1280, __c40, 0)),
-          iamConfiguration: S.optional(__S(492, __c15, 12)),
+          hierarchicalNamespace: S.optional(__S(1408, __c44, 0)),
+          iamConfiguration: S.optional(__S(652, __c20, 12)),
           id: S.optional(S.String),
           generation: S.optional(S.String),
           kind: S.optional(S.String),
           labels: S.optional(__S(32, __c1, 0)),
-          lifecycle: S.optional(__S(497, __c15, 17)),
+          lifecycle: S.optional(__S(657, __c20, 17)),
           location: S.optional(S.String),
           locationType: S.optional(S.String),
-          logging: S.optional(__S(498, __c15, 18)),
+          logging: S.optional(__S(658, __c20, 18)),
           metageneration: S.optional(S.String),
           name: S.optional(S.String),
-          objectRetention: S.optional(__S(499, __c15, 19)),
-          owner: S.optional(__S(500, __c15, 20)),
+          objectRetention: S.optional(__S(659, __c20, 19)),
+          owner: S.optional(__S(660, __c20, 20)),
           projectNumber: S.optional(S.String),
-          retentionPolicy: S.optional(__S(501, __c15, 21)),
+          retentionPolicy: S.optional(__S(661, __c20, 21)),
           rpo: S.optional(S.String),
           satisfiesPZS: S.optional(S.Boolean),
           selfLink: S.optional(S.String),
-          softDeletePolicy: S.optional(__S(502, __c15, 22)),
+          softDeletePolicy: S.optional(__S(662, __c20, 22)),
           storageClass: S.optional(S.String),
           timeCreated: S.optional(S.String),
           updated: S.optional(S.String),
-          versioning: S.optional(__S(1280, __c40, 0)),
-          website: S.optional(__S(503, __c15, 23)),
+          versioning: S.optional(__S(1408, __c44, 0)),
+          website: S.optional(__S(663, __c20, 23)),
         }),
       ).annotate({ identifier: "GcpBucketProperties" });
     case 25:
       return S.suspend(() =>
         S.Struct({
-          gcpProperties: S.optional(__S(504, __c15, 24)),
+          gcpProperties: S.optional(__S(664, __c20, 24)),
           publicCloudConnectorsResourceId: S.optional(S.String),
           gcpProjectNumber: S.optional(S.String),
           gcpProjectId: S.optional(S.String),
@@ -5991,21 +6141,9 @@ function __c15(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "BucketProperties" });
-    case 26:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(33, __c1, 1)),
-          tags: S.optional(__S(32, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(505, __c15, 25)),
-        }),
-      ).annotate({ identifier: "GetStorageBucketResponse" });
   }
 }
-function __c16(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6023,20 +6161,20 @@ function __c16(j: number): any {
       ).annotate({ identifier: "ListBigQueryDatasetByResourceGroupRequest" });
   }
 }
-function __c17(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(78, __c2, 14));
+      return S.Array(__S(256, __c8, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(544, __c17, 0),
+          value: __S(704, __c22, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BigQueryDatasetListResult" });
   }
 }
-function __c18(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6053,7 +6191,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "ListBigQueryDatasetBySubscriptionRequest" });
   }
 }
-function __c19(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6071,20 +6209,20 @@ function __c19(j: number): any {
       ).annotate({ identifier: "ListCloudFunctionByResourceGroupRequest" });
   }
 }
-function __c20(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(212, __c6, 20));
+      return S.Array(__S(320, __c10, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(640, __c20, 0),
+          value: __S(800, __c25, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudFunctionListResult" });
   }
 }
-function __c21(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6101,12 +6239,12 @@ function __c21(j: number): any {
       ).annotate({ identifier: "ListCloudFunctionBySubscriptionRequest" });
   }
 }
-function __c22(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          gcpProperties: S.optional(__S(766, __c23, 30)),
+          gcpProperties: S.optional(__S(926, __c28, 30)),
           publicCloudConnectorsResourceId: S.optional(S.String),
           gcpProjectNumber: S.optional(S.String),
           gcpProjectId: S.optional(S.String),
@@ -6121,7 +6259,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
-          properties: S.optional(__S(704, __c22, 0)),
+          properties: S.optional(__S(864, __c27, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6131,9 +6269,21 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ComputeInstancesCreateOrReplaceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(927, __c28, 31)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ComputeInstancesCreateOrReplaceResponse" });
   }
 }
-function __c23(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6161,7 +6311,7 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "CustomerEncryptionKey" });
     case 3:
-      return S.Array(__S(832, __c26, 0));
+      return S.Array(__S(960, __c30, 0));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -6172,17 +6322,17 @@ function __c23(j: number): any {
           diskType: S.optional(S.String),
           enableConfidentialCompute: S.optional(S.Boolean),
           labels: S.optional(__S(32, __c1, 0)),
-          licenses: S.optional(__S(800, __c25, 0)),
+          licenses: S.optional(__S(928, __c29, 0)),
           onUpdateAction: S.optional(S.String),
           provisionedIops: S.optional(S.String),
           provisionedThroughput: S.optional(S.String),
-          replicaZones: S.optional(__S(800, __c25, 0)),
+          replicaZones: S.optional(__S(928, __c29, 0)),
           resourceManagerTags: S.optional(__S(32, __c1, 0)),
-          resourcePolicies: S.optional(__S(800, __c25, 0)),
+          resourcePolicies: S.optional(__S(928, __c29, 0)),
           sourceImage: S.optional(S.String),
-          sourceImageEncryptionKey: S.optional(__S(738, __c23, 2)),
+          sourceImageEncryptionKey: S.optional(__S(898, __c28, 2)),
           sourceSnapshot: S.optional(S.String),
-          sourceSnapshotEncryptionKey: S.optional(__S(738, __c23, 2)),
+          sourceSnapshotEncryptionKey: S.optional(__S(898, __c28, 2)),
         }),
       ).annotate({ identifier: "AttachedDiskInitializeParams" });
     case 5:
@@ -6193,14 +6343,14 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "FileContentBuffer" });
     case 6:
-      return S.Array(__S(741, __c23, 5));
+      return S.Array(__S(901, __c28, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dbs: S.optional(__S(742, __c23, 6)),
-          dbxs: S.optional(__S(742, __c23, 6)),
-          keks: S.optional(__S(742, __c23, 6)),
-          pk: S.optional(__S(741, __c23, 5)),
+          dbs: S.optional(__S(902, __c28, 6)),
+          dbxs: S.optional(__S(902, __c28, 6)),
+          keks: S.optional(__S(902, __c28, 6)),
+          pk: S.optional(__S(901, __c28, 5)),
         }),
       ).annotate({ identifier: "InitialStateConfig" });
     case 8:
@@ -6210,24 +6360,24 @@ function __c23(j: number): any {
           autoDelete: S.optional(S.Boolean),
           boot: S.optional(S.Boolean),
           deviceName: S.optional(S.String),
-          diskEncryptionKey: S.optional(__S(738, __c23, 2)),
+          diskEncryptionKey: S.optional(__S(898, __c28, 2)),
           diskSizeGb: S.optional(S.String),
           forceAttach: S.optional(S.Boolean),
-          guestOsFeatures: S.optional(__S(739, __c23, 3)),
+          guestOsFeatures: S.optional(__S(899, __c28, 3)),
           index: S.optional(S.Number),
-          initializeParams: S.optional(__S(740, __c23, 4)),
+          initializeParams: S.optional(__S(900, __c28, 4)),
           interface: S.optional(S.String),
           kind: S.optional(S.String),
-          licenses: S.optional(__S(800, __c25, 0)),
+          licenses: S.optional(__S(928, __c29, 0)),
           mode: S.optional(S.String),
           savedState: S.optional(S.String),
-          shieldedInstanceInitialState: S.optional(__S(743, __c23, 7)),
+          shieldedInstanceInitialState: S.optional(__S(903, __c28, 7)),
           source: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "AttachedDisk" });
     case 9:
-      return S.Array(__S(744, __c23, 8));
+      return S.Array(__S(904, __c28, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -6242,7 +6392,7 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "AcceleratorConfig" });
     case 12:
-      return S.Array(__S(747, __c23, 11));
+      return S.Array(__S(907, __c28, 11));
     case 13:
       return S.suspend(() =>
         S.Struct({
@@ -6267,7 +6417,7 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "AccessConfig" });
     case 15:
-      return S.Array(__S(750, __c23, 14));
+      return S.Array(__S(910, __c28, 14));
     case 16:
       return S.suspend(() =>
         S.Struct({
@@ -6276,15 +6426,15 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "AliasIpRange" });
     case 17:
-      return S.Array(__S(752, __c23, 16));
+      return S.Array(__S(912, __c28, 16));
     case 18:
       return S.suspend(() =>
         S.Struct({
-          accessConfigs: S.optional(__S(751, __c23, 15)),
-          aliasIpRanges: S.optional(__S(753, __c23, 17)),
+          accessConfigs: S.optional(__S(911, __c28, 15)),
+          aliasIpRanges: S.optional(__S(913, __c28, 17)),
           fingerprint: S.optional(S.String),
           internalIpv6PrefixLength: S.optional(S.Number),
-          ipv6AccessConfigs: S.optional(__S(751, __c23, 15)),
+          ipv6AccessConfigs: S.optional(__S(911, __c28, 15)),
           ipv6AccessType: S.optional(S.String),
           ipv6Address: S.optional(S.String),
           kind: S.optional(S.String),
@@ -6299,7 +6449,7 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "NetworkInterface" });
     case 19:
-      return S.Array(__S(754, __c23, 18));
+      return S.Array(__S(914, __c28, 18));
     case 20:
       return S.suspend(() =>
         S.Struct({
@@ -6321,7 +6471,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           physicalHost: S.optional(S.String),
-          upcomingMaintenance: S.optional(__S(757, __c23, 21)),
+          upcomingMaintenance: S.optional(__S(917, __c28, 21)),
         }),
       ).annotate({ identifier: "ResourceStatus" });
     case 23:
@@ -6336,10 +6486,10 @@ function __c23(j: number): any {
         S.Struct({
           automaticRestart: S.optional(S.Boolean),
           instanceTerminationAction: S.optional(S.String),
-          localSsdRecoveryTimeout: S.optional(__S(759, __c23, 23)),
+          localSsdRecoveryTimeout: S.optional(__S(919, __c28, 23)),
           locationHint: S.optional(S.String),
           minNodeCpus: S.optional(S.Number),
-          nodeAffinities: S.optional(__S(836, __c26, 4)),
+          nodeAffinities: S.optional(__S(964, __c30, 4)),
           onHostMaintenance: S.optional(S.String),
           preemptible: S.optional(S.Boolean),
           provisioningModel: S.optional(S.String),
@@ -6349,11 +6499,11 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
-          scopes: S.optional(__S(800, __c25, 0)),
+          scopes: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({ identifier: "ServiceAccount" });
     case 26:
-      return S.Array(__S(761, __c23, 25));
+      return S.Array(__S(921, __c28, 25));
     case 27:
       return S.suspend(() =>
         S.Struct({
@@ -6372,26 +6522,26 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fingerprint: S.optional(S.String),
-          items: S.optional(__S(800, __c25, 0)),
+          items: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({ identifier: "Tags" });
     case 30:
       return S.suspend(() =>
         S.Struct({
-          advancedMachineFeatures: S.optional(__S(736, __c23, 0)),
+          advancedMachineFeatures: S.optional(__S(896, __c28, 0)),
           canIpForward: S.optional(S.Boolean),
-          confidentialInstanceConfig: S.optional(__S(737, __c23, 1)),
+          confidentialInstanceConfig: S.optional(__S(897, __c28, 1)),
           cpuPlatform: S.optional(S.String),
           creationTimestamp: S.optional(S.String),
           deletionProtection: S.optional(S.Boolean),
           description: S.optional(S.String),
-          disks: S.optional(__S(745, __c23, 9)),
-          displayDevice: S.optional(__S(746, __c23, 10)),
+          disks: S.optional(__S(905, __c28, 9)),
+          displayDevice: S.optional(__S(906, __c28, 10)),
           fingerprint: S.optional(S.String),
-          guestAccelerators: S.optional(__S(748, __c23, 12)),
+          guestAccelerators: S.optional(__S(908, __c28, 12)),
           hostname: S.optional(S.String),
           id: S.optional(S.String),
-          instanceEncryptionKey: S.optional(__S(738, __c23, 2)),
+          instanceEncryptionKey: S.optional(__S(898, __c28, 2)),
           keyRevocationActionType: S.optional(S.String),
           kind: S.optional(S.String),
           labelFingerprint: S.optional(S.String),
@@ -6400,36 +6550,36 @@ function __c23(j: number): any {
           lastStopTimestamp: S.optional(S.String),
           lastSuspendedTimestamp: S.optional(S.String),
           machineType: S.optional(S.String),
-          metadata: S.optional(__S(749, __c23, 13)),
+          metadata: S.optional(__S(909, __c28, 13)),
           minCpuPlatform: S.optional(S.String),
           name: S.optional(S.String),
-          networkInterfaces: S.optional(__S(755, __c23, 19)),
-          networkPerformanceConfig: S.optional(__S(833, __c26, 1)),
-          params: S.optional(__S(756, __c23, 20)),
+          networkInterfaces: S.optional(__S(915, __c28, 19)),
+          networkPerformanceConfig: S.optional(__S(961, __c30, 1)),
+          params: S.optional(__S(916, __c28, 20)),
           privateIpv6GoogleAccess: S.optional(S.String),
-          reservationAffinity: S.optional(__S(834, __c26, 2)),
-          resourcePolicies: S.optional(__S(800, __c25, 0)),
-          resourceStatus: S.optional(__S(758, __c23, 22)),
+          reservationAffinity: S.optional(__S(962, __c30, 2)),
+          resourcePolicies: S.optional(__S(928, __c29, 0)),
+          resourceStatus: S.optional(__S(918, __c28, 22)),
           satisfiesPzi: S.optional(S.Boolean),
           satisfiesPzs: S.optional(S.Boolean),
-          scheduling: S.optional(__S(760, __c23, 24)),
+          scheduling: S.optional(__S(920, __c28, 24)),
           selfLink: S.optional(S.String),
-          serviceAccounts: S.optional(__S(762, __c23, 26)),
-          shieldedInstanceConfig: S.optional(__S(763, __c23, 27)),
-          shieldedInstanceIntegrityPolicy: S.optional(__S(764, __c23, 28)),
+          serviceAccounts: S.optional(__S(922, __c28, 26)),
+          shieldedInstanceConfig: S.optional(__S(923, __c28, 27)),
+          shieldedInstanceIntegrityPolicy: S.optional(__S(924, __c28, 28)),
           sourceMachineImage: S.optional(S.String),
-          sourceMachineImageEncryptionKey: S.optional(__S(738, __c23, 2)),
+          sourceMachineImageEncryptionKey: S.optional(__S(898, __c28, 2)),
           startRestricted: S.optional(S.Boolean),
           status: S.optional(S.String),
           statusMessage: S.optional(S.String),
-          tags: S.optional(__S(765, __c23, 29)),
+          tags: S.optional(__S(925, __c28, 29)),
           zone: S.optional(S.String),
         }),
       ).annotate({ identifier: "GcpComputeInstanceProperties" });
     case 31:
       return S.suspend(() =>
         S.Struct({
-          gcpProperties: S.optional(__S(766, __c23, 30)),
+          gcpProperties: S.optional(__S(926, __c28, 30)),
           publicCloudConnectorsResourceId: S.optional(S.String),
           gcpProjectNumber: S.optional(S.String),
           gcpProjectId: S.optional(S.String),
@@ -6443,27 +6593,13 @@ function __c23(j: number): any {
       ).annotate({ identifier: "InstanceProperties" });
   }
 }
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(33, __c1, 1)),
-          properties: S.optional(__S(767, __c23, 31)),
-        }),
-      ).annotate({ identifier: "ComputeInstancesCreateOrReplaceResponse" });
-  }
-}
-function __c25(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c26(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6482,7 +6618,7 @@ function __c26(j: number): any {
         S.Struct({
           consumeReservationType: S.optional(S.String),
           key: S.optional(S.String),
-          values: S.optional(__S(800, __c25, 0)),
+          values: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({ identifier: "ReservationAffinity" });
     case 3:
@@ -6490,14 +6626,14 @@ function __c26(j: number): any {
         S.Struct({
           key: S.optional(S.String),
           operator: S.optional(S.String),
-          values: S.optional(__S(800, __c25, 0)),
+          values: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({ identifier: "SchedulingNodeAffinity" });
     case 4:
-      return S.Array(__S(835, __c26, 3));
+      return S.Array(__S(963, __c30, 3));
   }
 }
-function __c27(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6513,17 +6649,17 @@ function __c27(j: number): any {
         ),
       ).annotate({ identifier: "ListComputeInstancesRequest" });
     case 1:
-      return S.Array(__S(768, __c24, 0));
+      return S.Array(__S(384, __c12, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(865, __c27, 1),
+          value: __S(993, __c31, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComputeInstanceListResult" });
   }
 }
-function __c28(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6539,17 +6675,17 @@ function __c28(j: number): any {
         ),
       ).annotate({ identifier: "ListContainerClustersRequest" });
     case 1:
-      return S.Array(__S(1409, __c44, 1));
+      return S.Array(__S(448, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(897, __c28, 1),
+          value: __S(1025, __c32, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerClusterListResult" });
   }
 }
-function __c29(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6576,23 +6712,23 @@ function __c29(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(929, __c29, 1)),
+          display: S.optional(__S(1057, __c33, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(930, __c29, 2));
+      return S.Array(__S(1058, __c33, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(931, __c29, 3)),
+          value: S.optional(__S(1059, __c33, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c30(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6610,20 +6746,20 @@ function __c30(j: number): any {
       ).annotate({ identifier: "ListSQLAdminInstanceByResourceGroupRequest" });
   }
 }
-function __c31(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(416, __c13, 0));
+      return S.Array(__S(512, __c16, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(992, __c31, 0),
+          value: __S(1120, __c35, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SQLAdminInstanceListResult" });
   }
 }
-function __c32(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6640,7 +6776,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "ListSQLAdminInstanceBySubscriptionRequest" });
   }
 }
-function __c33(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6658,20 +6794,20 @@ function __c33(j: number): any {
       ).annotate({ identifier: "ListStorageBucketByResourceGroupRequest" });
   }
 }
-function __c34(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(506, __c15, 26));
+      return S.Array(__S(608, __c19, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1088, __c34, 0),
+          value: __S(1216, __c38, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageBucketListResult" });
   }
 }
-function __c35(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6688,12 +6824,12 @@ function __c35(j: number): any {
       ).annotate({ identifier: "ListStorageBucketBySubscriptionRequest" });
   }
 }
-function __c36(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          gcpProperties: S.optional(__S(414, __c12, 30)),
+          gcpProperties: S.optional(__S(574, __c17, 30)),
           publicCloudConnectorsResourceId: S.optional(S.String),
           gcpProjectNumber: S.optional(S.String),
           gcpProjectId: S.optional(S.String),
@@ -6712,7 +6848,7 @@ function __c36(j: number): any {
           name: S.String.pipe(T.Label()),
           tags: S.optional(__S(32, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(1152, __c36, 0)),
+          properties: S.optional(__S(1280, __c40, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6722,14 +6858,28 @@ function __c36(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SQLAdminInstancesCreateOrReplaceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          tags: S.optional(__S(32, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(575, __c17, 31)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SQLAdminInstancesCreateOrReplaceResponse" });
   }
 }
-function __c37(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          gcpProperties: S.optional(__S(504, __c15, 24)),
+          gcpProperties: S.optional(__S(664, __c20, 24)),
           publicCloudConnectorsResourceId: S.optional(S.String),
           gcpProjectNumber: S.optional(S.String),
           gcpProjectId: S.optional(S.String),
@@ -6748,7 +6898,7 @@ function __c37(j: number): any {
           name: S.String.pipe(T.Label()),
           tags: S.optional(__S(32, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(1184, __c37, 0)),
+          properties: S.optional(__S(1312, __c41, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6758,9 +6908,23 @@ function __c37(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StorageBucketsCreateOrReplaceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          tags: S.optional(__S(32, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(665, __c20, 25)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "StorageBucketsCreateOrReplaceResponse" });
   }
 }
-function __c38(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6778,14 +6942,28 @@ function __c38(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateBigQueryDatasetRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          tags: S.optional(__S(32, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(77, __c2, 13)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateBigQueryDatasetResponse" });
   }
 }
-function __c39(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          gcpProperties: S.optional(__S(1407, __c43, 31)),
+          gcpProperties: S.optional(__S(1535, __c47, 31)),
           publicCloudConnectorsResourceId: S.optional(S.String),
           gcpProjectNumber: S.optional(S.String),
           gcpProjectId: S.optional(S.String),
@@ -6800,7 +6978,7 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1248, __c39, 0)),
+          properties: S.optional(__S(1376, __c43, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6810,9 +6988,21 @@ function __c39(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ContainerClustersCreateOrReplaceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(1536, __c48, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ContainerClustersCreateOrReplaceResponse" });
   }
 }
-function __c40(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6822,7 +7012,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "DnsCacheConfig" });
   }
 }
-function __c41(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6841,29 +7031,29 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          rayClusterLoggingConfig: S.optional(__S(1280, __c40, 0)),
-          rayClusterMonitoringConfig: S.optional(__S(1280, __c40, 0)),
+          rayClusterLoggingConfig: S.optional(__S(1408, __c44, 0)),
+          rayClusterMonitoringConfig: S.optional(__S(1408, __c44, 0)),
         }),
       ).annotate({ identifier: "RayOperatorConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          httpLoadBalancing: S.optional(__S(1312, __c41, 0)),
-          horizontalPodAutoscaling: S.optional(__S(1312, __c41, 0)),
-          kubernetesDashboard: S.optional(__S(1312, __c41, 0)),
-          networkPolicyConfig: S.optional(__S(1312, __c41, 0)),
-          cloudRunConfig: S.optional(__S(1313, __c41, 1)),
-          dnsCacheConfig: S.optional(__S(1280, __c40, 0)),
-          configConnectorConfig: S.optional(__S(1280, __c40, 0)),
-          gcePersistentDiskCsiDriverConfig: S.optional(__S(1280, __c40, 0)),
-          gcpFilestoreCsiDriverConfig: S.optional(__S(1280, __c40, 0)),
-          gkeBackupAgentConfig: S.optional(__S(1280, __c40, 0)),
-          gcsFuseCsiDriverConfig: S.optional(__S(1280, __c40, 0)),
-          statefulHaConfig: S.optional(__S(1280, __c40, 0)),
-          parallelstoreCsiDriverConfig: S.optional(__S(1280, __c40, 0)),
-          rayOperatorConfig: S.optional(__S(1314, __c41, 2)),
-          highScaleCheckpointingConfig: S.optional(__S(1280, __c40, 0)),
-          lustreCsiDriverConfig: S.optional(__S(1280, __c40, 0)),
+          httpLoadBalancing: S.optional(__S(1440, __c45, 0)),
+          horizontalPodAutoscaling: S.optional(__S(1440, __c45, 0)),
+          kubernetesDashboard: S.optional(__S(1440, __c45, 0)),
+          networkPolicyConfig: S.optional(__S(1440, __c45, 0)),
+          cloudRunConfig: S.optional(__S(1441, __c45, 1)),
+          dnsCacheConfig: S.optional(__S(1408, __c44, 0)),
+          configConnectorConfig: S.optional(__S(1408, __c44, 0)),
+          gcePersistentDiskCsiDriverConfig: S.optional(__S(1408, __c44, 0)),
+          gcpFilestoreCsiDriverConfig: S.optional(__S(1408, __c44, 0)),
+          gkeBackupAgentConfig: S.optional(__S(1408, __c44, 0)),
+          gcsFuseCsiDriverConfig: S.optional(__S(1408, __c44, 0)),
+          statefulHaConfig: S.optional(__S(1408, __c44, 0)),
+          parallelstoreCsiDriverConfig: S.optional(__S(1408, __c44, 0)),
+          rayOperatorConfig: S.optional(__S(1442, __c45, 2)),
+          highScaleCheckpointingConfig: S.optional(__S(1408, __c44, 0)),
+          lustreCsiDriverConfig: S.optional(__S(1408, __c44, 0)),
         }),
       ).annotate({ identifier: "AddonsConfig" });
     case 4:
@@ -6882,7 +7072,7 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "ResourceLimit" });
     case 6:
-      return S.Array(__S(1317, __c41, 5));
+      return S.Array(__S(1445, __c45, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -6895,7 +7085,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nodePoolSoakDuration: S.optional(S.String),
-          standardRolloutPolicy: S.optional(__S(1319, __c41, 7)),
+          standardRolloutPolicy: S.optional(__S(1447, __c45, 7)),
         }),
       ).annotate({ identifier: "BlueGreenSettings" });
     case 9:
@@ -6904,7 +7094,7 @@ function __c41(j: number): any {
           maxSurge: S.optional(S.Number),
           maxUnavailable: S.optional(S.Number),
           strategy: S.optional(S.String),
-          blueGreenSettings: S.optional(__S(1320, __c41, 8)),
+          blueGreenSettings: S.optional(__S(1448, __c45, 8)),
         }),
       ).annotate({ identifier: "UpgradeSettings" });
     case 10:
@@ -6930,20 +7120,20 @@ function __c41(j: number): any {
     case 13:
       return S.suspend(() =>
         S.Struct({
-          oauthScopes: S.optional(__S(800, __c25, 0)),
+          oauthScopes: S.optional(__S(928, __c29, 0)),
           serviceAccount: S.optional(S.String),
-          upgradeSettings: S.optional(__S(1321, __c41, 9)),
-          management: S.optional(__S(1322, __c41, 10)),
+          upgradeSettings: S.optional(__S(1449, __c45, 9)),
+          management: S.optional(__S(1450, __c45, 10)),
           minCpuPlatform: S.optional(S.String),
           diskSizeGb: S.optional(S.String),
           diskType: S.optional(S.String),
-          shieldedInstanceConfig: S.optional(__S(1323, __c41, 11)),
+          shieldedInstanceConfig: S.optional(__S(1451, __c45, 11)),
           bootDiskKmsKey: S.optional(S.String),
           imageType: S.optional(S.String),
           insecureKubeletReadonlyPortEnabled: S.optional(S.Boolean),
           enableSpotInstances: S.optional(S.Boolean),
           resourceLabels: S.optional(__S(32, __c1, 0)),
-          resourceManagerTags: S.optional(__S(1324, __c41, 12)),
+          resourceManagerTags: S.optional(__S(1452, __c45, 12)),
         }),
       ).annotate({ identifier: "AutoprovisioningNodePoolDefaults" });
     case 14:
@@ -6956,11 +7146,11 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enableNodeAutoprovisioning: S.optional(S.Boolean),
-          resourceLimits: S.optional(__S(1318, __c41, 6)),
+          resourceLimits: S.optional(__S(1446, __c45, 6)),
           autoscalingProfile: S.optional(S.String),
-          autoprovisioningNodePoolDefaults: S.optional(__S(1325, __c41, 13)),
-          autoprovisioningLocations: S.optional(__S(800, __c25, 0)),
-          defaultComputeClassConfig: S.optional(__S(1326, __c41, 14)),
+          autoprovisioningNodePoolDefaults: S.optional(__S(1453, __c45, 13)),
+          autoprovisioningLocations: S.optional(__S(928, __c29, 0)),
+          defaultComputeClassConfig: S.optional(__S(1454, __c45, 14)),
         }),
       ).annotate({ identifier: "ClusterAutoscaling" });
     case 16:
@@ -6979,7 +7169,7 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "StatusCondition" });
     case 18:
-      return S.Array(__S(1329, __c41, 17));
+      return S.Array(__S(1457, __c45, 17));
     case 19:
       return S.suspend(() =>
         S.Struct({
@@ -6997,14 +7187,14 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "OperationError" });
     case 21:
-      return S.Array(__S(1332, __c41, 20));
+      return S.Array(__S(1460, __c45, 20));
     case 22:
       return S.suspend(() =>
         S.Struct({
           keyName: S.optional(S.String),
           state: S.optional(S.String),
-          decryptionKeys: S.optional(__S(800, __c25, 0)),
-          lastOperationErrors: S.optional(__S(1333, __c41, 21)),
+          decryptionKeys: S.optional(__S(928, __c29, 0)),
+          lastOperationErrors: S.optional(__S(1461, __c45, 21)),
           currentState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatabaseEncryption" });
@@ -7018,7 +7208,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enableBetaApis: S.optional(S.Boolean),
-          allowedBetaApis: S.optional(__S(800, __c25, 0)),
+          allowedBetaApis: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({ identifier: "K8sBetaApiConfig" });
     case 25:
@@ -7043,12 +7233,12 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "RangeInfo" });
     case 28:
-      return S.Array(__S(1339, __c41, 27));
+      return S.Array(__S(1467, __c45, 27));
     case 29:
       return S.suspend(() =>
         S.Struct({
-          podRangeInfo: S.optional(__S(1340, __c41, 28)),
-          podRangeNames: S.optional(__S(800, __c25, 0)),
+          podRangeInfo: S.optional(__S(1468, __c45, 28)),
+          podRangeNames: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({ identifier: "AdditionalPodRangesConfig" });
     case 30:
@@ -7060,7 +7250,7 @@ function __c41(j: number): any {
     case 31:
       return S.suspend(() =>
         S.Struct({
-          additionalPodRangesConfig: S.optional(__S(1341, __c41, 29)),
+          additionalPodRangesConfig: S.optional(__S(1469, __c45, 29)),
           clusterIpv4Cidr: S.optional(S.String),
           clusterIpv4CidrBlock: S.optional(S.String),
           clusterSecondaryRangeName: S.optional(S.String),
@@ -7069,7 +7259,7 @@ function __c41(j: number): any {
           ipv6AccessType: S.optional(S.String),
           nodeIpv4Cidr: S.optional(S.String),
           nodeIpv4CidrBlock: S.optional(S.String),
-          podCidrOverprovisionConfig: S.optional(__S(1342, __c41, 30)),
+          podCidrOverprovisionConfig: S.optional(__S(1470, __c45, 30)),
           servicesIpv4Cidr: S.optional(S.String),
           servicesIpv4CidrBlock: S.optional(S.String),
           servicesIpv6CidrBlock: S.optional(S.String),
@@ -7084,7 +7274,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "IpAllocationPolicy" });
   }
 }
-function __c42(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7102,7 +7292,7 @@ function __c42(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          componentConfig: S.optional(__S(1345, __c42, 1)),
+          componentConfig: S.optional(__S(1473, __c46, 1)),
         }),
       ).annotate({ identifier: "LoggingConfig" });
     case 3:
@@ -7122,7 +7312,7 @@ function __c42(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          window: S.optional(__S(1348, __c42, 4)),
+          window: S.optional(__S(1476, __c46, 4)),
           recurrence: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecurringTimeWindow" });
@@ -7135,24 +7325,24 @@ function __c42(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          window: S.optional(__S(1348, __c42, 4)),
-          exclusionOptions: S.optional(__S(1350, __c42, 6)),
+          window: S.optional(__S(1476, __c46, 4)),
+          exclusionOptions: S.optional(__S(1478, __c46, 6)),
         }),
       ).annotate({ identifier: "MaintenanceExclusion" });
     case 8:
-      return S.Record(S.String, __S(1351, __c42, 7));
+      return S.Record(S.String, __S(1479, __c46, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
-          dailyMaintenanceWindow: S.optional(__S(1347, __c42, 3)),
-          recurringWindow: S.optional(__S(1349, __c42, 5)),
-          maintenanceExclusions: S.optional(__S(1352, __c42, 8)),
+          dailyMaintenanceWindow: S.optional(__S(1475, __c46, 3)),
+          recurringWindow: S.optional(__S(1477, __c46, 5)),
+          maintenanceExclusions: S.optional(__S(1480, __c46, 8)),
         }),
       ).annotate({ identifier: "MaintenanceWindow" });
     case 10:
       return S.suspend(() =>
         S.Struct({
-          window: S.optional(__S(1353, __c42, 9)),
+          window: S.optional(__S(1481, __c46, 9)),
           resourceVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "MaintenancePolicy" });
@@ -7167,7 +7357,7 @@ function __c42(j: number): any {
         S.Struct({
           username: S.optional(S.String),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          clientCertificateConfig: S.optional(__S(1355, __c42, 11)),
+          clientCertificateConfig: S.optional(__S(1483, __c46, 11)),
           clusterCaCertificate: S.optional(S.String),
           clientCertificate: S.optional(S.String),
           clientKey: S.optional(S.String),
@@ -7181,12 +7371,12 @@ function __c42(j: number): any {
         }),
       ).annotate({ identifier: "CidrBlock" });
     case 14:
-      return S.Array(__S(1357, __c42, 13));
+      return S.Array(__S(1485, __c46, 13));
     case 15:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          cidrBlocks: S.optional(__S(1358, __c42, 14)),
+          cidrBlocks: S.optional(__S(1486, __c46, 14)),
           gcpPublicCidrsAccessEnabled: S.optional(S.Boolean),
           privateEndpointEnforcementEnabled: S.optional(S.Boolean),
         }),
@@ -7202,7 +7392,7 @@ function __c42(j: number): any {
         S.Struct({
           dnsScope: S.optional(S.String),
           customDnsEndpoint: S.optional(S.String),
-          additionalDnsSearchDomains: S.optional(__S(800, __c25, 0)),
+          additionalDnsSearchDomains: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({ identifier: "DnsConfig" });
     case 18:
@@ -7217,15 +7407,15 @@ function __c42(j: number): any {
           network: S.optional(S.String),
           subnetwork: S.optional(S.String),
           enableIntraNodeVisibility: S.optional(S.Boolean),
-          defaultSnatStatus: S.optional(__S(1312, __c41, 0)),
+          defaultSnatStatus: S.optional(__S(1440, __c45, 0)),
           enableL4ilbSubsetting: S.optional(S.Boolean),
           datapathProvider: S.optional(S.String),
           privateIpv6GoogleAccess: S.optional(S.String),
-          dnsConfig: S.optional(__S(1361, __c42, 17)),
-          serviceExternalIpsConfig: S.optional(__S(1280, __c40, 0)),
-          gatewayApiConfig: S.optional(__S(1362, __c42, 18)),
+          dnsConfig: S.optional(__S(1489, __c46, 17)),
+          serviceExternalIpsConfig: S.optional(__S(1408, __c44, 0)),
+          gatewayApiConfig: S.optional(__S(1490, __c46, 18)),
           enableMultiNetworking: S.optional(S.Boolean),
-          networkPerformanceConfig: S.optional(__S(833, __c26, 1)),
+          networkPerformanceConfig: S.optional(__S(961, __c30, 1)),
           enableFqdnNetworkPolicy: S.optional(S.Boolean),
           inTransitEncryptionConfig: S.optional(S.String),
           enableCiliumClusterwideNetworkPolicy: S.optional(S.Boolean),
@@ -7259,12 +7449,12 @@ function __c42(j: number): any {
           acceleratorCount: S.optional(S.String),
           acceleratorType: S.optional(S.String),
           gpuPartitionSize: S.optional(S.String),
-          gpuSharingConfig: S.optional(__S(1365, __c42, 21)),
-          gpuDriverInstallationConfig: S.optional(__S(1366, __c42, 22)),
+          gpuSharingConfig: S.optional(__S(1493, __c46, 21)),
+          gpuDriverInstallationConfig: S.optional(__S(1494, __c46, 22)),
         }),
       ).annotate({ identifier: "AcceleratorConfig_2" });
     case 24:
-      return S.Array(__S(1367, __c42, 23));
+      return S.Array(__S(1495, __c46, 23));
     case 25:
       return S.suspend(() =>
         S.Struct({
@@ -7304,7 +7494,7 @@ function __c42(j: number): any {
     case 30:
       return S.suspend(() =>
         S.Struct({
-          variantConfig: S.optional(__S(1373, __c42, 29)),
+          variantConfig: S.optional(__S(1501, __c46, 29)),
         }),
       ).annotate({ identifier: "NodePoolLoggingConfig" });
     case 31:
@@ -7316,14 +7506,14 @@ function __c42(j: number): any {
       ).annotate({ identifier: "SecondaryBootDisk" });
   }
 }
-function __c43(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1375, __c42, 31));
+      return S.Array(__S(1503, __c46, 31));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          nodeAffinities: S.optional(__S(836, __c26, 4)),
+          nodeAffinities: S.optional(__S(964, __c30, 4)),
         }),
       ).annotate({ identifier: "SoleTenantConfig" });
     case 2:
@@ -7335,7 +7525,7 @@ function __c43(j: number): any {
         }),
       ).annotate({ identifier: "NodeTaint" });
     case 3:
-      return S.Array(__S(1378, __c43, 2));
+      return S.Array(__S(1506, __c47, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -7351,68 +7541,68 @@ function __c43(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          accelerators: S.optional(__S(1368, __c42, 24)),
-          advancedMachineFeatures: S.optional(__S(1369, __c42, 25)),
+          accelerators: S.optional(__S(1496, __c46, 24)),
+          advancedMachineFeatures: S.optional(__S(1497, __c46, 25)),
           bootDiskKmsKey: S.optional(S.String),
-          confidentialNodes: S.optional(__S(1331, __c41, 19)),
+          confidentialNodes: S.optional(__S(1459, __c45, 19)),
           diskSizeGb: S.optional(S.Number),
           diskType: S.optional(S.String),
           enableConfidentialStorage: S.optional(S.Boolean),
-          ephemeralStorageLocalSsdConfig: S.optional(__S(1370, __c42, 26)),
-          fastSocket: S.optional(__S(1280, __c40, 0)),
-          gcfsConfig: S.optional(__S(1280, __c40, 0)),
-          gvnic: S.optional(__S(1280, __c40, 0)),
+          ephemeralStorageLocalSsdConfig: S.optional(__S(1498, __c46, 26)),
+          fastSocket: S.optional(__S(1408, __c44, 0)),
+          gcfsConfig: S.optional(__S(1408, __c44, 0)),
+          gvnic: S.optional(__S(1408, __c44, 0)),
           imageType: S.optional(S.String),
-          kubeletConfig: S.optional(__S(1371, __c42, 27)),
+          kubeletConfig: S.optional(__S(1499, __c46, 27)),
           labels: S.optional(__S(32, __c1, 0)),
-          linuxNodeConfig: S.optional(__S(1372, __c42, 28)),
-          localNvmeSsdBlockConfig: S.optional(__S(1370, __c42, 26)),
+          linuxNodeConfig: S.optional(__S(1500, __c46, 28)),
+          localNvmeSsdBlockConfig: S.optional(__S(1498, __c46, 26)),
           localSsdCount: S.optional(S.Number),
-          loggingConfig: S.optional(__S(1374, __c42, 30)),
+          loggingConfig: S.optional(__S(1502, __c46, 30)),
           machineType: S.optional(S.String),
           metadata: S.optional(__S(32, __c1, 0)),
           minCpuPlatform: S.optional(S.String),
           nodeGroup: S.optional(S.String),
-          oauthScopes: S.optional(__S(800, __c25, 0)),
+          oauthScopes: S.optional(__S(928, __c29, 0)),
           preemptible: S.optional(S.Boolean),
-          reservationAffinity: S.optional(__S(834, __c26, 2)),
+          reservationAffinity: S.optional(__S(962, __c30, 2)),
           resourceLabels: S.optional(__S(32, __c1, 0)),
-          resourceManagerTags: S.optional(__S(1324, __c41, 12)),
-          sandboxConfig: S.optional(__S(832, __c26, 0)),
-          secondaryBootDisks: S.optional(__S(1376, __c43, 0)),
+          resourceManagerTags: S.optional(__S(1452, __c45, 12)),
+          sandboxConfig: S.optional(__S(960, __c30, 0)),
+          secondaryBootDisks: S.optional(__S(1504, __c47, 0)),
           serviceAccount: S.optional(S.String),
-          shieldedInstanceConfig: S.optional(__S(1323, __c41, 11)),
-          soleTenantConfig: S.optional(__S(1377, __c43, 1)),
+          shieldedInstanceConfig: S.optional(__S(1451, __c45, 11)),
+          soleTenantConfig: S.optional(__S(1505, __c47, 1)),
           spot: S.optional(S.Boolean),
-          tags: S.optional(__S(800, __c25, 0)),
-          taints: S.optional(__S(1379, __c43, 3)),
-          windowsNodeConfig: S.optional(__S(1380, __c43, 4)),
-          workloadMetadataConfig: S.optional(__S(1381, __c43, 5)),
+          tags: S.optional(__S(928, __c29, 0)),
+          taints: S.optional(__S(1507, __c47, 3)),
+          windowsNodeConfig: S.optional(__S(1508, __c47, 4)),
+          workloadMetadataConfig: S.optional(__S(1509, __c47, 5)),
         }),
       ).annotate({ identifier: "NodeConfig" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(800, __c25, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({ identifier: "NetworkTags" });
     case 8:
       return S.suspend(() =>
         S.Struct({
-          networkTags: S.optional(__S(1383, __c43, 7)),
-          resourceManagerTags: S.optional(__S(1324, __c41, 12)),
+          networkTags: S.optional(__S(1511, __c47, 7)),
+          resourceManagerTags: S.optional(__S(1452, __c45, 12)),
         }),
       ).annotate({ identifier: "NodePoolAutoConfig" });
     case 9:
       return S.suspend(() =>
         S.Struct({
-          gcfsConfig: S.optional(__S(1280, __c40, 0)),
+          gcfsConfig: S.optional(__S(1408, __c44, 0)),
         }),
       ).annotate({ identifier: "NodeConfigDefaults" });
     case 10:
       return S.suspend(() =>
         S.Struct({
-          nodeConfigDefaults: S.optional(__S(1385, __c43, 9)),
+          nodeConfigDefaults: S.optional(__S(1513, __c47, 9)),
         }),
       ).annotate({ identifier: "NodePoolDefaults" });
     case 11:
@@ -7442,26 +7632,26 @@ function __c43(j: number): any {
         }),
       ).annotate({ identifier: "AdditionalNodeNetworkConfig" });
     case 14:
-      return S.Array(__S(1389, __c43, 13));
+      return S.Array(__S(1517, __c47, 13));
     case 15:
       return S.suspend(() =>
         S.Struct({
           subnetwork: S.optional(S.String),
           secondaryPodRange: S.optional(S.String),
-          maxPodsPerNode: S.optional(__S(1335, __c41, 23)),
+          maxPodsPerNode: S.optional(__S(1463, __c45, 23)),
         }),
       ).annotate({ identifier: "AdditionalPodNetworkConfig" });
     case 16:
-      return S.Array(__S(1391, __c43, 15));
+      return S.Array(__S(1519, __c47, 15));
     case 17:
       return S.suspend(() =>
         S.Struct({
           createPodRange: S.optional(S.Boolean),
           podRange: S.optional(S.String),
           podIpv4CidrBlock: S.optional(S.String),
-          additionalNodeNetworkConfigs: S.optional(__S(1390, __c43, 14)),
-          additionalPodNetworkConfigs: S.optional(__S(1392, __c43, 16)),
-          podCidrOverprovisionConfig: S.optional(__S(1342, __c41, 30)),
+          additionalNodeNetworkConfigs: S.optional(__S(1518, __c47, 14)),
+          additionalPodNetworkConfigs: S.optional(__S(1520, __c47, 16)),
+          podCidrOverprovisionConfig: S.optional(__S(1470, __c45, 30)),
           enablePrivateNodes: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "NodeNetworkConfig" });
@@ -7477,8 +7667,8 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           phase: S.optional(S.String),
-          blueInstanceGroupUrls: S.optional(__S(800, __c25, 0)),
-          greenInstanceGroupUrls: S.optional(__S(800, __c25, 0)),
+          blueInstanceGroupUrls: S.optional(__S(928, __c29, 0)),
+          greenInstanceGroupUrls: S.optional(__S(928, __c29, 0)),
           bluePoolDeletionStartTime: S.optional(S.String),
           greenPoolVersion: S.optional(S.String),
         }),
@@ -7486,37 +7676,37 @@ function __c43(j: number): any {
     case 20:
       return S.suspend(() =>
         S.Struct({
-          blueGreenInfo: S.optional(__S(1395, __c43, 19)),
+          blueGreenInfo: S.optional(__S(1523, __c47, 19)),
         }),
       ).annotate({ identifier: "UpdateInfo" });
     case 21:
       return S.suspend(() =>
         S.Struct({
-          autoscaling: S.optional(__S(1387, __c43, 11)),
-          bestEffortProvisioning: S.optional(__S(1388, __c43, 12)),
-          conditions: S.optional(__S(1330, __c41, 18)),
-          config: S.optional(__S(1382, __c43, 6)),
+          autoscaling: S.optional(__S(1515, __c47, 11)),
+          bestEffortProvisioning: S.optional(__S(1516, __c47, 12)),
+          conditions: S.optional(__S(1458, __c45, 18)),
+          config: S.optional(__S(1510, __c47, 6)),
           etag: S.optional(S.String),
           initialNodeCount: S.optional(S.Number),
-          instanceGroupUrls: S.optional(__S(800, __c25, 0)),
-          locations: S.optional(__S(800, __c25, 0)),
-          management: S.optional(__S(1322, __c41, 10)),
-          maxPodsConstraint: S.optional(__S(1335, __c41, 23)),
+          instanceGroupUrls: S.optional(__S(928, __c29, 0)),
+          locations: S.optional(__S(928, __c29, 0)),
+          management: S.optional(__S(1450, __c45, 10)),
+          maxPodsConstraint: S.optional(__S(1463, __c45, 23)),
           name: S.optional(S.String),
-          networkConfig: S.optional(__S(1393, __c43, 17)),
-          placementPolicy: S.optional(__S(1394, __c43, 18)),
+          networkConfig: S.optional(__S(1521, __c47, 17)),
+          placementPolicy: S.optional(__S(1522, __c47, 18)),
           podIpv4CidrSize: S.optional(S.Number),
-          queuedProvisioning: S.optional(__S(1280, __c40, 0)),
+          queuedProvisioning: S.optional(__S(1408, __c44, 0)),
           selfLink: S.optional(S.String),
           status: S.optional(S.String),
           statusMessage: S.optional(S.String),
-          updateInfo: S.optional(__S(1396, __c43, 20)),
-          upgradeSettings: S.optional(__S(1321, __c41, 9)),
+          updateInfo: S.optional(__S(1524, __c47, 20)),
+          upgradeSettings: S.optional(__S(1449, __c45, 9)),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "NodePool" });
     case 22:
-      return S.Array(__S(1397, __c43, 21));
+      return S.Array(__S(1525, __c47, 21));
     case 23:
       return S.suspend(() =>
         S.Struct({
@@ -7528,13 +7718,13 @@ function __c43(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           topic: S.optional(S.String),
-          filter: S.optional(__S(1399, __c43, 23)),
+          filter: S.optional(__S(1527, __c47, 23)),
         }),
       ).annotate({ identifier: "PubSub" });
     case 25:
       return S.suspend(() =>
         S.Struct({
-          pubsub: S.optional(__S(1400, __c43, 24)),
+          pubsub: S.optional(__S(1528, __c47, 24)),
         }),
       ).annotate({ identifier: "NotificationConfig" });
     case 26:
@@ -7553,7 +7743,7 @@ function __c43(j: number): any {
           privateEndpoint: S.optional(S.String),
           publicEndpoint: S.optional(S.String),
           peeringName: S.optional(S.String),
-          masterGlobalAccessConfig: S.optional(__S(1280, __c40, 0)),
+          masterGlobalAccessConfig: S.optional(__S(1408, __c44, 0)),
           privateEndpointSubnetwork: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateClusterConfig" });
@@ -7566,9 +7756,9 @@ function __c43(j: number): any {
     case 29:
       return S.suspend(() =>
         S.Struct({
-          bigqueryDestination: S.optional(__S(1404, __c43, 28)),
+          bigqueryDestination: S.optional(__S(1532, __c47, 28)),
           enableNetworkEgressMetering: S.optional(S.Boolean),
-          consumptionMeteringConfig: S.optional(__S(1280, __c40, 0)),
+          consumptionMeteringConfig: S.optional(__S(1408, __c44, 0)),
         }),
       ).annotate({ identifier: "ResourceUsageExportConfig" });
     case 30:
@@ -7580,84 +7770,84 @@ function __c43(j: number): any {
     case 31:
       return S.suspend(() =>
         S.Struct({
-          addonsConfig: S.optional(__S(1315, __c41, 3)),
-          authenticatorGroupsConfig: S.optional(__S(1316, __c41, 4)),
-          autopilot: S.optional(__S(1280, __c40, 0)),
-          autoscaling: S.optional(__S(1327, __c41, 15)),
-          binaryAuthorization: S.optional(__S(1328, __c41, 16)),
+          addonsConfig: S.optional(__S(1443, __c45, 3)),
+          authenticatorGroupsConfig: S.optional(__S(1444, __c45, 4)),
+          autopilot: S.optional(__S(1408, __c44, 0)),
+          autoscaling: S.optional(__S(1455, __c45, 15)),
+          binaryAuthorization: S.optional(__S(1456, __c45, 16)),
           clusterIpv4Cidr: S.optional(S.String),
-          conditions: S.optional(__S(1330, __c41, 18)),
-          confidentialNodes: S.optional(__S(1331, __c41, 19)),
-          costManagementConfig: S.optional(__S(1280, __c40, 0)),
+          conditions: S.optional(__S(1458, __c45, 18)),
+          confidentialNodes: S.optional(__S(1459, __c45, 19)),
+          costManagementConfig: S.optional(__S(1408, __c44, 0)),
           createTime: S.optional(S.String),
           currentMasterVersion: S.optional(S.String),
           currentNodeCount: S.optional(S.Number),
           currentNodeVersion: S.optional(S.String),
-          databaseEncryption: S.optional(__S(1334, __c41, 22)),
-          defaultMaxPodsConstraint: S.optional(__S(1335, __c41, 23)),
+          databaseEncryption: S.optional(__S(1462, __c45, 22)),
+          defaultMaxPodsConstraint: S.optional(__S(1463, __c45, 23)),
           description: S.optional(S.String),
-          enableK8sBetaApis: S.optional(__S(1336, __c41, 24)),
+          enableK8sBetaApis: S.optional(__S(1464, __c45, 24)),
           enableKubernetesAlpha: S.optional(S.Boolean),
           enableTpu: S.optional(S.Boolean),
           endpoint: S.optional(S.String),
-          enterpriseConfig: S.optional(__S(1337, __c41, 25)),
+          enterpriseConfig: S.optional(__S(1465, __c45, 25)),
           etag: S.optional(S.String),
           expireTime: S.optional(S.String),
-          fleet: S.optional(__S(1338, __c41, 26)),
+          fleet: S.optional(__S(1466, __c45, 26)),
           id: S.optional(S.String),
-          identityServiceConfig: S.optional(__S(1280, __c40, 0)),
+          identityServiceConfig: S.optional(__S(1408, __c44, 0)),
           initialClusterVersion: S.optional(S.String),
           initialNodeCount: S.optional(S.Number),
-          instanceGroupUrls: S.optional(__S(800, __c25, 0)),
-          ipAllocationPolicy: S.optional(__S(1343, __c41, 31)),
+          instanceGroupUrls: S.optional(__S(928, __c29, 0)),
+          ipAllocationPolicy: S.optional(__S(1471, __c45, 31)),
           labelFingerprint: S.optional(S.String),
-          legacyAbac: S.optional(__S(1344, __c42, 0)),
+          legacyAbac: S.optional(__S(1472, __c46, 0)),
           location: S.optional(S.String),
-          locations: S.optional(__S(800, __c25, 0)),
-          loggingConfig: S.optional(__S(1346, __c42, 2)),
+          locations: S.optional(__S(928, __c29, 0)),
+          loggingConfig: S.optional(__S(1474, __c46, 2)),
           loggingService: S.optional(S.String),
-          maintenancePolicy: S.optional(__S(1354, __c42, 10)),
-          masterAuth: S.optional(__S(1356, __c42, 12)),
-          masterAuthorizedNetworksConfig: S.optional(__S(1359, __c42, 15)),
-          meshCertificates: S.optional(__S(1360, __c42, 16)),
-          monitoringConfig: S.optional(__S(1346, __c42, 2)),
+          maintenancePolicy: S.optional(__S(1482, __c46, 10)),
+          masterAuth: S.optional(__S(1484, __c46, 12)),
+          masterAuthorizedNetworksConfig: S.optional(__S(1487, __c46, 15)),
+          meshCertificates: S.optional(__S(1488, __c46, 16)),
+          monitoringConfig: S.optional(__S(1474, __c46, 2)),
           monitoringService: S.optional(S.String),
           name: S.optional(S.String),
           network: S.optional(S.String),
-          networkConfig: S.optional(__S(1363, __c42, 19)),
-          networkPolicy: S.optional(__S(1364, __c42, 20)),
-          nodeConfig: S.optional(__S(1382, __c43, 6)),
+          networkConfig: S.optional(__S(1491, __c46, 19)),
+          networkPolicy: S.optional(__S(1492, __c46, 20)),
+          nodeConfig: S.optional(__S(1510, __c47, 6)),
           nodeIpv4CidrSize: S.optional(S.Number),
-          nodePoolAutoConfig: S.optional(__S(1384, __c43, 8)),
-          nodePoolDefaults: S.optional(__S(1386, __c43, 10)),
-          nodePools: S.optional(__S(1398, __c43, 22)),
-          notificationConfig: S.optional(__S(1401, __c43, 25)),
-          parentProductConfig: S.optional(__S(1402, __c43, 26)),
-          privateClusterConfig: S.optional(__S(1403, __c43, 27)),
-          releaseChannel: S.optional(__S(1362, __c42, 18)),
+          nodePoolAutoConfig: S.optional(__S(1512, __c47, 8)),
+          nodePoolDefaults: S.optional(__S(1514, __c47, 10)),
+          nodePools: S.optional(__S(1526, __c47, 22)),
+          notificationConfig: S.optional(__S(1529, __c47, 25)),
+          parentProductConfig: S.optional(__S(1530, __c47, 26)),
+          privateClusterConfig: S.optional(__S(1531, __c47, 27)),
+          releaseChannel: S.optional(__S(1490, __c46, 18)),
           resourceLabels: S.optional(__S(32, __c1, 0)),
-          resourceUsageExportConfig: S.optional(__S(1405, __c43, 29)),
-          securityPostureConfig: S.optional(__S(1381, __c43, 5)),
+          resourceUsageExportConfig: S.optional(__S(1533, __c47, 29)),
+          securityPostureConfig: S.optional(__S(1509, __c47, 5)),
           selfLink: S.optional(S.String),
           servicesIpv4Cidr: S.optional(S.String),
-          shieldedNodes: S.optional(__S(1280, __c40, 0)),
+          shieldedNodes: S.optional(__S(1408, __c44, 0)),
           status: S.optional(S.String),
           statusMessage: S.optional(S.String),
           subnetwork: S.optional(S.String),
           tpuIpv4CidrBlock: S.optional(S.String),
-          verticalPodAutoscaling: S.optional(__S(1280, __c40, 0)),
-          workloadIdentityConfig: S.optional(__S(1406, __c43, 30)),
+          verticalPodAutoscaling: S.optional(__S(1408, __c44, 0)),
+          workloadIdentityConfig: S.optional(__S(1534, __c47, 30)),
           zone: S.optional(S.String),
         }),
       ).annotate({ identifier: "GcpContainerClusterProperties" });
   }
 }
-function __c44(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          gcpProperties: S.optional(__S(1407, __c43, 31)),
+          gcpProperties: S.optional(__S(1535, __c47, 31)),
           publicCloudConnectorsResourceId: S.optional(S.String),
           gcpProjectNumber: S.optional(S.String),
           gcpProjectId: S.optional(S.String),
@@ -7669,19 +7859,9 @@ function __c44(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(33, __c1, 1)),
-          properties: S.optional(__S(1408, __c44, 0)),
-        }),
-      ).annotate({ identifier: "ContainerClustersCreateOrReplaceResponse" });
   }
 }
-function __c45(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7699,9 +7879,23 @@ function __c45(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateCloudFunctionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          tags: S.optional(__S(32, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(211, __c6, 19)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateCloudFunctionResponse" });
   }
 }
-function __c46(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7719,9 +7913,23 @@ function __c46(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSQLAdminInstanceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          tags: S.optional(__S(32, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(575, __c17, 31)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateSQLAdminInstanceResponse" });
   }
 }
-function __c47(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7739,9 +7947,23 @@ function __c47(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateStorageBucketRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          tags: S.optional(__S(32, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(665, __c20, 25)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateStorageBucketResponse" });
   }
 }
-function __c48(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7760,15 +7982,18 @@ function __c48(j: number): any {
       ).annotate({ identifier: "DeleteBigQueryDatasetRequest" });
   }
 }
-function __c49(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteBigQueryDatasetResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteBigQueryDatasetResponse" });
   }
 }
-function __c50(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7787,7 +8012,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "DeleteCloudFunctionRequest" });
   }
 }
-function __c51(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7804,7 +8029,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "DeleteComputeInstanceRequest" });
   }
 }
-function __c52(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7821,7 +8046,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "DeleteContainerClusterRequest" });
   }
 }
-function __c53(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7840,7 +8065,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "DeleteSQLAdminInstanceRequest" });
   }
 }
-function __c54(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

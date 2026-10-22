@@ -20,7 +20,12 @@ export interface DeleteFleetRequest {
   /** The name of the Compute Fleet */
   fleetName: string;
 }
-export interface DeleteFleetResponse {}
+export interface DeleteFleetResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Resource tags. */
 export type FleetsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
 /** Different kind of eviction policies */
@@ -1214,6 +1219,8 @@ export interface FleetsCreateOrUpdateResponse {
   identity?: FleetsCreateOrUpdateResponseIdentity;
   /** Plan for the resource. */
   plan?: FleetsCreateOrUpdateRequestPlan;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetFleetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1523,6 +1530,10 @@ export interface UpdateFleetResponse {
   identity?: FleetsCreateOrUpdateResponseIdentity;
   /** Plan for the resource. */
   plan?: FleetsCreateOrUpdateRequestPlan;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type DeleteFleetError = AzureOpError;
 /** Delete a Fleet */
@@ -1533,7 +1544,7 @@ export const DeleteFleet: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteFleetRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteFleetResponse>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteFleetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1547,8 +1558,8 @@ export const FleetsCreateOrUpdate: API.OperationMethod<
   FleetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c2, 2) as any as S.Schema<FleetsCreateOrUpdateRequest>,
-  output: __S(181, __c5, 21) as any as S.Schema<FleetsCreateOrUpdateResponse>,
+  input: __S(34, __c1, 2) as any as S.Schema<FleetsCreateOrUpdateRequest>,
+  output: __S(35, __c1, 3) as any as S.Schema<FleetsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1562,8 +1573,8 @@ export const GetFleet: API.OperationMethod<
   GetFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c7, 0) as any as S.Schema<GetFleetRequest>,
-  output: __S(181, __c5, 21) as any as S.Schema<GetFleetResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<GetFleetRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<GetFleetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1653,7 +1664,7 @@ export const UpdateFleet: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(483, __c15, 3) as any as S.Schema<UpdateFleetRequest>,
-  output: __S(181, __c5, 21) as any as S.Schema<UpdateFleetResponse>,
+  output: __S(484, __c15, 4) as any as S.Schema<UpdateFleetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1677,23 +1688,24 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteFleetRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteFleetResponse" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteFleetResponse" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(32, __c1, 0)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(172, __c5, 12)));
     case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(64, __c2, 0)),
+          userAssignedIdentities: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({ identifier: "FleetsCreateOrUpdateRequestIdentity" });
     case 2:
@@ -1702,12 +1714,12 @@ function __c2(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
           location: S.String,
-          properties: S.optional(__S(203, __c6, 11)),
-          zones: S.optional(__S(103, __c3, 7)),
-          identity: S.optional(__S(65, __c2, 1)),
-          plan: S.optional(__S(164, __c5, 4)),
+          properties: S.optional(__S(171, __c5, 11)),
+          zones: S.optional(__S(71, __c2, 7)),
+          identity: S.optional(__S(33, __c1, 1)),
+          plan: S.optional(__S(132, __c4, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1717,9 +1729,25 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "FleetsCreateOrUpdateRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(133, __c4, 5)),
+          tags: S.optional(__S(64, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(145, __c4, 17)),
+          zones: S.optional(__S(71, __c2, 7)),
+          identity: S.optional(__S(148, __c4, 20)),
+          plan: S.optional(__S(132, __c4, 4)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "FleetsCreateOrUpdateResponse" });
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
@@ -1750,7 +1778,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "VmSizeProfile" });
     case 4:
-      return S.Array(__S(99, __c3, 3));
+      return S.Array(__S(67, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1765,26 +1793,26 @@ function __c3(j: number): any {
     case 8:
       return S.suspend(() =>
         S.Struct({
-          vCpuCount: __S(101, __c3, 5),
-          memoryInGiB: __S(101, __c3, 5),
-          memoryInGiBPerVCpu: S.optional(__S(101, __c3, 5)),
+          vCpuCount: __S(69, __c2, 5),
+          memoryInGiB: __S(69, __c2, 5),
+          memoryInGiBPerVCpu: S.optional(__S(69, __c2, 5)),
           localStorageSupport: S.optional(S.String),
-          localStorageInGiB: S.optional(__S(101, __c3, 5)),
-          localStorageDiskTypes: S.optional(__S(102, __c3, 6)),
-          dataDiskCount: S.optional(__S(101, __c3, 5)),
-          networkInterfaceCount: S.optional(__S(101, __c3, 5)),
-          networkBandwidthInMbps: S.optional(__S(101, __c3, 5)),
+          localStorageInGiB: S.optional(__S(69, __c2, 5)),
+          localStorageDiskTypes: S.optional(__S(70, __c2, 6)),
+          dataDiskCount: S.optional(__S(69, __c2, 5)),
+          networkInterfaceCount: S.optional(__S(69, __c2, 5)),
+          networkBandwidthInMbps: S.optional(__S(69, __c2, 5)),
           rdmaSupport: S.optional(S.String),
-          rdmaNetworkInterfaceCount: S.optional(__S(101, __c3, 5)),
+          rdmaNetworkInterfaceCount: S.optional(__S(69, __c2, 5)),
           acceleratorSupport: S.optional(S.String),
-          acceleratorManufacturers: S.optional(__S(102, __c3, 6)),
-          acceleratorTypes: S.optional(__S(102, __c3, 6)),
-          acceleratorCount: S.optional(__S(101, __c3, 5)),
-          vmCategories: S.optional(__S(102, __c3, 6)),
-          architectureTypes: S.optional(__S(102, __c3, 6)),
-          cpuManufacturers: S.optional(__S(102, __c3, 6)),
+          acceleratorManufacturers: S.optional(__S(70, __c2, 6)),
+          acceleratorTypes: S.optional(__S(70, __c2, 6)),
+          acceleratorCount: S.optional(__S(69, __c2, 5)),
+          vmCategories: S.optional(__S(70, __c2, 6)),
+          architectureTypes: S.optional(__S(70, __c2, 6)),
+          cpuManufacturers: S.optional(__S(70, __c2, 6)),
           burstableSupport: S.optional(S.String),
-          excludedVMSizes: S.optional(__S(103, __c3, 7)),
+          excludedVMSizes: S.optional(__S(71, __c2, 7)),
         }),
       ).annotate({ identifier: "VMAttributes" });
     case 9:
@@ -1797,7 +1825,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "AdditionalUnattendContent" });
     case 10:
-      return S.Array(__S(105, __c3, 9));
+      return S.Array(__S(73, __c2, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
@@ -1811,7 +1839,7 @@ function __c3(j: number): any {
           patchMode: S.optional(S.String),
           enableHotpatching: S.optional(S.Boolean),
           assessmentMode: S.optional(S.String),
-          automaticByPlatformSettings: S.optional(__S(107, __c3, 11)),
+          automaticByPlatformSettings: S.optional(__S(75, __c2, 11)),
         }),
       ).annotate({ identifier: "PatchSettings" });
     case 13:
@@ -1822,11 +1850,11 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "WinRMListener" });
     case 14:
-      return S.Array(__S(109, __c3, 13));
+      return S.Array(__S(77, __c2, 13));
     case 15:
       return S.suspend(() =>
         S.Struct({
-          listeners: S.optional(__S(110, __c3, 14)),
+          listeners: S.optional(__S(78, __c2, 14)),
         }),
       ).annotate({ identifier: "WinRMConfiguration" });
     case 16:
@@ -1835,9 +1863,9 @@ function __c3(j: number): any {
           provisionVMAgent: S.optional(S.Boolean),
           enableAutomaticUpdates: S.optional(S.Boolean),
           timeZone: S.optional(S.String),
-          additionalUnattendContent: S.optional(__S(106, __c3, 10)),
-          patchSettings: S.optional(__S(108, __c3, 12)),
-          winRM: S.optional(__S(111, __c3, 15)),
+          additionalUnattendContent: S.optional(__S(74, __c2, 10)),
+          patchSettings: S.optional(__S(76, __c2, 12)),
+          winRM: S.optional(__S(79, __c2, 15)),
           enableVMAgentPlatformUpdates: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "WindowsConfiguration" });
@@ -1849,11 +1877,11 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "SshPublicKey" });
     case 18:
-      return S.Array(__S(113, __c3, 17));
+      return S.Array(__S(81, __c2, 17));
     case 19:
       return S.suspend(() =>
         S.Struct({
-          publicKeys: S.optional(__S(114, __c3, 18)),
+          publicKeys: S.optional(__S(82, __c2, 18)),
         }),
       ).annotate({ identifier: "SshConfiguration" });
     case 20:
@@ -1861,16 +1889,16 @@ function __c3(j: number): any {
         S.Struct({
           patchMode: S.optional(S.String),
           assessmentMode: S.optional(S.String),
-          automaticByPlatformSettings: S.optional(__S(107, __c3, 11)),
+          automaticByPlatformSettings: S.optional(__S(75, __c2, 11)),
         }),
       ).annotate({ identifier: "LinuxPatchSettings" });
     case 21:
       return S.suspend(() =>
         S.Struct({
           disablePasswordAuthentication: S.optional(S.Boolean),
-          ssh: S.optional(__S(115, __c3, 19)),
+          ssh: S.optional(__S(83, __c2, 19)),
           provisionVMAgent: S.optional(S.Boolean),
-          patchSettings: S.optional(__S(116, __c3, 20)),
+          patchSettings: S.optional(__S(84, __c2, 20)),
           enableVMAgentPlatformUpdates: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "LinuxConfiguration" });
@@ -1888,16 +1916,16 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "VaultCertificate" });
     case 24:
-      return S.Array(__S(119, __c3, 23));
+      return S.Array(__S(87, __c2, 23));
     case 25:
       return S.suspend(() =>
         S.Struct({
-          sourceVault: S.optional(__S(118, __c3, 22)),
-          vaultCertificates: S.optional(__S(120, __c3, 24)),
+          sourceVault: S.optional(__S(86, __c2, 22)),
+          vaultCertificates: S.optional(__S(88, __c2, 24)),
         }),
       ).annotate({ identifier: "VaultSecretGroup" });
     case 26:
-      return S.Array(__S(121, __c3, 25));
+      return S.Array(__S(89, __c2, 25));
     case 27:
       return S.suspend(() =>
         S.Struct({
@@ -1905,9 +1933,9 @@ function __c3(j: number): any {
           adminUsername: S.optional(S.String),
           adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           customData: S.optional(S.String),
-          windowsConfiguration: S.optional(__S(112, __c3, 16)),
-          linuxConfiguration: S.optional(__S(117, __c3, 21)),
-          secrets: S.optional(__S(122, __c3, 26)),
+          windowsConfiguration: S.optional(__S(80, __c2, 16)),
+          linuxConfiguration: S.optional(__S(85, __c2, 21)),
+          secrets: S.optional(__S(90, __c2, 26)),
           allowExtensionOperations: S.optional(S.Boolean),
           requireGuestProvisionSignal: S.optional(S.Boolean),
         }),
@@ -1929,20 +1957,20 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           securityEncryptionType: S.optional(S.String),
-          diskEncryptionSet: S.optional(__S(118, __c3, 22)),
+          diskEncryptionSet: S.optional(__S(86, __c2, 22)),
         }),
       ).annotate({ identifier: "VMDiskSecurityProfile" });
     case 31:
       return S.suspend(() =>
         S.Struct({
           storageAccountType: S.optional(S.String),
-          diskEncryptionSet: S.optional(__S(118, __c3, 22)),
-          securityProfile: S.optional(__S(126, __c3, 30)),
+          diskEncryptionSet: S.optional(__S(86, __c2, 22)),
+          securityProfile: S.optional(__S(94, __c2, 30)),
         }),
       ).annotate({ identifier: "VirtualMachineScaleSetManagedDiskParameters" });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1951,12 +1979,12 @@ function __c4(j: number): any {
           caching: S.optional(S.String),
           writeAcceleratorEnabled: S.optional(S.Boolean),
           createOption: S.String,
-          diffDiskSettings: S.optional(__S(124, __c3, 28)),
+          diffDiskSettings: S.optional(__S(92, __c2, 28)),
           diskSizeGB: S.optional(S.Number),
           osType: S.optional(S.String),
-          image: S.optional(__S(125, __c3, 29)),
-          vhdContainers: S.optional(__S(103, __c3, 7)),
-          managedDisk: S.optional(__S(127, __c3, 31)),
+          image: S.optional(__S(93, __c2, 29)),
+          vhdContainers: S.optional(__S(71, __c2, 7)),
+          managedDisk: S.optional(__S(95, __c2, 31)),
           deleteOption: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualMachineScaleSetOSDisk" });
@@ -1969,18 +1997,18 @@ function __c4(j: number): any {
           writeAcceleratorEnabled: S.optional(S.Boolean),
           createOption: S.String,
           diskSizeGB: S.optional(S.Number),
-          managedDisk: S.optional(__S(127, __c3, 31)),
+          managedDisk: S.optional(__S(95, __c2, 31)),
           diskIOPSReadWrite: S.optional(S.Number),
           diskMBpsReadWrite: S.optional(S.Number),
           deleteOption: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualMachineScaleSetDataDisk" });
     case 2:
-      return S.Array(__S(129, __c4, 1));
+      return S.Array(__S(97, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dnsServers: S.optional(__S(103, __c3, 7)),
+          dnsServers: S.optional(__S(71, __c2, 7)),
         }),
       ).annotate({ identifier: "VirtualMachineScaleSetNetworkConfigurationDnsSettings" });
     case 4:
@@ -1998,14 +2026,14 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "VirtualMachineScaleSetIpTag" });
     case 6:
-      return S.Array(__S(133, __c4, 5));
+      return S.Array(__S(101, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           idleTimeoutInMinutes: S.optional(S.Number),
-          dnsSettings: S.optional(__S(132, __c4, 4)),
-          ipTags: S.optional(__S(134, __c4, 6)),
-          publicIPPrefix: S.optional(__S(118, __c3, 22)),
+          dnsSettings: S.optional(__S(100, __c3, 4)),
+          ipTags: S.optional(__S(102, __c3, 6)),
+          publicIPPrefix: S.optional(__S(86, __c2, 22)),
           publicIPAddressVersion: S.optional(S.String),
           deleteOption: S.optional(S.String),
         }),
@@ -2021,34 +2049,34 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          properties: S.optional(__S(135, __c4, 7)),
-          sku: S.optional(__S(136, __c4, 8)),
+          properties: S.optional(__S(103, __c3, 7)),
+          sku: S.optional(__S(104, __c3, 8)),
         }),
       ).annotate({ identifier: "VirtualMachineScaleSetPublicIPAddressConfiguration" });
     case 10:
-      return S.Array(__S(118, __c3, 22));
+      return S.Array(__S(86, __c2, 22));
     case 11:
       return S.suspend(() =>
         S.Struct({
-          subnet: S.optional(__S(118, __c3, 22)),
+          subnet: S.optional(__S(86, __c2, 22)),
           primary: S.optional(S.Boolean),
-          publicIPAddressConfiguration: S.optional(__S(137, __c4, 9)),
+          publicIPAddressConfiguration: S.optional(__S(105, __c3, 9)),
           privateIPAddressVersion: S.optional(S.String),
-          applicationGatewayBackendAddressPools: S.optional(__S(138, __c4, 10)),
-          applicationSecurityGroups: S.optional(__S(138, __c4, 10)),
-          loadBalancerBackendAddressPools: S.optional(__S(138, __c4, 10)),
-          loadBalancerInboundNatPools: S.optional(__S(138, __c4, 10)),
+          applicationGatewayBackendAddressPools: S.optional(__S(106, __c3, 10)),
+          applicationSecurityGroups: S.optional(__S(106, __c3, 10)),
+          loadBalancerBackendAddressPools: S.optional(__S(106, __c3, 10)),
+          loadBalancerInboundNatPools: S.optional(__S(106, __c3, 10)),
         }),
       ).annotate({ identifier: "VirtualMachineScaleSetIPConfigurationProperties" });
     case 12:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          properties: S.optional(__S(139, __c4, 11)),
+          properties: S.optional(__S(107, __c3, 11)),
         }),
       ).annotate({ identifier: "VirtualMachineScaleSetIPConfiguration" });
     case 13:
-      return S.Array(__S(140, __c4, 12));
+      return S.Array(__S(108, __c3, 12));
     case 14:
       return S.suspend(() =>
         S.Struct({
@@ -2056,9 +2084,9 @@ function __c4(j: number): any {
           enableAcceleratedNetworking: S.optional(S.Boolean),
           disableTcpStateTracking: S.optional(S.Boolean),
           enableFpga: S.optional(S.Boolean),
-          networkSecurityGroup: S.optional(__S(118, __c3, 22)),
-          dnsSettings: S.optional(__S(131, __c4, 3)),
-          ipConfigurations: __S(141, __c4, 13),
+          networkSecurityGroup: S.optional(__S(86, __c2, 22)),
+          dnsSettings: S.optional(__S(99, __c3, 3)),
+          ipConfigurations: __S(109, __c3, 13),
           enableIPForwarding: S.optional(S.Boolean),
           deleteOption: S.optional(S.String),
           auxiliaryMode: S.optional(S.String),
@@ -2069,16 +2097,16 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          properties: S.optional(__S(142, __c4, 14)),
+          properties: S.optional(__S(110, __c3, 14)),
         }),
       ).annotate({ identifier: "VirtualMachineScaleSetNetworkConfiguration" });
     case 16:
-      return S.Array(__S(143, __c4, 15));
+      return S.Array(__S(111, __c3, 15));
     case 17:
       return S.suspend(() =>
         S.Struct({
-          healthProbe: S.optional(__S(118, __c3, 22)),
-          networkInterfaceConfigurations: S.optional(__S(144, __c4, 16)),
+          healthProbe: S.optional(__S(86, __c2, 22)),
+          networkInterfaceConfigurations: S.optional(__S(112, __c3, 16)),
           networkApiVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualMachineScaleSetNetworkProfile" });
@@ -2106,11 +2134,11 @@ function __c4(j: number): any {
     case 21:
       return S.suspend(() =>
         S.Struct({
-          uefiSettings: S.optional(__S(146, __c4, 18)),
+          uefiSettings: S.optional(__S(114, __c3, 18)),
           encryptionAtHost: S.optional(S.Boolean),
           securityType: S.optional(S.String),
-          encryptionIdentity: S.optional(__S(147, __c4, 19)),
-          proxyAgentSettings: S.optional(__S(148, __c4, 20)),
+          encryptionIdentity: S.optional(__S(115, __c3, 19)),
+          proxyAgentSettings: S.optional(__S(116, __c3, 20)),
         }),
       ).annotate({ identifier: "SecurityProfile" });
     case 22:
@@ -2123,7 +2151,7 @@ function __c4(j: number): any {
     case 23:
       return S.suspend(() =>
         S.Struct({
-          bootDiagnostics: S.optional(__S(150, __c4, 22)),
+          bootDiagnostics: S.optional(__S(118, __c3, 22)),
         }),
       ).annotate({ identifier: "DiagnosticsProfile" });
     case 24:
@@ -2132,7 +2160,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           secretUrl: S.String,
-          sourceVault: __S(118, __c3, 22),
+          sourceVault: __S(86, __c2, 22),
         }),
       ).annotate({ identifier: "KeyVaultSecretReference" });
     case 26:
@@ -2145,14 +2173,14 @@ function __c4(j: number): any {
     case 27:
       return S.suspend(() =>
         S.Struct({
-          terminateNotificationProfile: S.optional(__S(154, __c4, 26)),
-          osImageNotificationProfile: S.optional(__S(154, __c4, 26)),
+          terminateNotificationProfile: S.optional(__S(122, __c3, 26)),
+          osImageNotificationProfile: S.optional(__S(122, __c3, 26)),
         }),
       ).annotate({ identifier: "ScheduledEventsProfile" });
     case 28:
       return S.suspend(() =>
         S.Struct({
-          capacityReservationGroup: S.optional(__S(118, __c3, 22)),
+          capacityReservationGroup: S.optional(__S(86, __c2, 22)),
         }),
       ).annotate({ identifier: "CapacityReservationProfile" });
     case 29:
@@ -2167,16 +2195,16 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "VMGalleryApplication" });
     case 30:
-      return S.Array(__S(157, __c4, 29));
+      return S.Array(__S(125, __c3, 29));
     case 31:
       return S.suspend(() =>
         S.Struct({
-          galleryApplications: S.optional(__S(158, __c4, 30)),
+          galleryApplications: S.optional(__S(126, __c3, 30)),
         }),
       ).annotate({ identifier: "ApplicationProfile" });
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2188,14 +2216,14 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          vmSizeProperties: S.optional(__S(160, __c5, 0)),
+          vmSizeProperties: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({ identifier: "VirtualMachineScaleSetHardwareProfile" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          excludeExtensions: S.optional(__S(103, __c3, 7)),
+          excludeExtensions: S.optional(__S(71, __c2, 7)),
           isOverridable: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SecurityPostureReference" });
@@ -2243,9 +2271,9 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          imageReference: S.optional(__S(166, __c5, 6)),
-          osDisk: S.optional(__S(128, __c4, 0)),
-          dataDisks: S.optional(__S(130, __c4, 2)),
+          imageReference: S.optional(__S(134, __c4, 6)),
+          osDisk: S.optional(__S(96, __c3, 0)),
+          dataDisks: S.optional(__S(98, __c3, 2)),
           diskControllerType: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualMachineScaleSetStorageProfile" });
@@ -2258,12 +2286,12 @@ function __c5(j: number): any {
           typeHandlerVersion: S.optional(S.String),
           autoUpgradeMinorVersion: S.optional(S.Boolean),
           enableAutomaticUpgrade: S.optional(S.Boolean),
-          settings: S.optional(__S(152, __c4, 24)),
-          protectedSettings: S.optional(__S(152, __c4, 24)),
+          settings: S.optional(__S(120, __c3, 24)),
+          protectedSettings: S.optional(__S(120, __c3, 24)),
           provisioningState: S.optional(S.String),
-          provisionAfterExtensions: S.optional(__S(103, __c3, 7)),
+          provisionAfterExtensions: S.optional(__S(71, __c2, 7)),
           suppressFailures: S.optional(S.Boolean),
-          protectedSettingsFromKeyVault: S.optional(__S(153, __c4, 25)),
+          protectedSettingsFromKeyVault: S.optional(__S(121, __c3, 25)),
         }),
       ).annotate({ identifier: "VirtualMachineScaleSetExtensionProperties" });
     case 9:
@@ -2272,35 +2300,35 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(168, __c5, 8)),
+          properties: S.optional(__S(136, __c4, 8)),
         }),
       ).annotate({ identifier: "VirtualMachineScaleSetExtension" });
     case 10:
-      return S.Array(__S(169, __c5, 9));
+      return S.Array(__S(137, __c4, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
-          extensions: S.optional(__S(170, __c5, 10)),
+          extensions: S.optional(__S(138, __c4, 10)),
           extensionsTimeBudget: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualMachineScaleSetExtensionProfile" });
     case 12:
       return S.suspend(() =>
         S.Struct({
-          osProfile: S.optional(__S(123, __c3, 27)),
-          storageProfile: S.optional(__S(167, __c5, 7)),
-          networkProfile: S.optional(__S(145, __c4, 17)),
-          securityProfile: S.optional(__S(149, __c4, 21)),
-          diagnosticsProfile: S.optional(__S(151, __c4, 23)),
-          extensionProfile: S.optional(__S(171, __c5, 11)),
+          osProfile: S.optional(__S(91, __c2, 27)),
+          storageProfile: S.optional(__S(135, __c4, 7)),
+          networkProfile: S.optional(__S(113, __c3, 17)),
+          securityProfile: S.optional(__S(117, __c3, 21)),
+          diagnosticsProfile: S.optional(__S(119, __c3, 23)),
+          extensionProfile: S.optional(__S(139, __c4, 11)),
           licenseType: S.optional(S.String),
-          scheduledEventsProfile: S.optional(__S(155, __c4, 27)),
+          scheduledEventsProfile: S.optional(__S(123, __c3, 27)),
           userData: S.optional(S.String),
-          capacityReservation: S.optional(__S(156, __c4, 28)),
-          applicationProfile: S.optional(__S(159, __c4, 31)),
-          hardwareProfile: S.optional(__S(161, __c5, 1)),
-          serviceArtifactReference: S.optional(__S(118, __c3, 22)),
-          securityPostureReference: S.optional(__S(162, __c5, 2)),
+          capacityReservation: S.optional(__S(124, __c3, 28)),
+          applicationProfile: S.optional(__S(127, __c3, 31)),
+          hardwareProfile: S.optional(__S(129, __c4, 1)),
+          serviceArtifactReference: S.optional(__S(86, __c2, 22)),
+          securityPostureReference: S.optional(__S(130, __c4, 2)),
           timeCreated: S.optional(S.String),
         }),
       ).annotate({ identifier: "BaseVirtualMachineProfile" });
@@ -2308,36 +2336,36 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.String,
-          virtualMachineProfileOverride: S.optional(__S(172, __c5, 12)),
+          virtualMachineProfileOverride: S.optional(__S(140, __c4, 12)),
         }),
       ).annotate({ identifier: "LocationProfile" });
     case 14:
-      return S.Array(__S(173, __c5, 13));
+      return S.Array(__S(141, __c4, 13));
     case 15:
       return S.suspend(() =>
         S.Struct({
-          locationProfiles: __S(174, __c5, 14),
+          locationProfiles: __S(142, __c4, 14),
         }),
       ).annotate({ identifier: "AdditionalLocationsProfile" });
     case 16:
       return S.suspend(() =>
         S.Struct({
-          baseVirtualMachineProfile: __S(172, __c5, 12),
+          baseVirtualMachineProfile: __S(140, __c4, 12),
           computeApiVersion: S.optional(S.String),
           platformFaultDomainCount: S.optional(S.Number),
-          additionalVirtualMachineCapabilities: S.optional(__S(163, __c5, 3)),
+          additionalVirtualMachineCapabilities: S.optional(__S(131, __c4, 3)),
         }),
       ).annotate({ identifier: "ComputeProfile" });
     case 17:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          spotPriorityProfile: S.optional(__S(97, __c3, 1)),
-          regularPriorityProfile: S.optional(__S(98, __c3, 2)),
-          vmSizesProfile: __S(100, __c3, 4),
-          vmAttributes: S.optional(__S(104, __c3, 8)),
-          additionalLocationsProfile: S.optional(__S(175, __c5, 15)),
-          computeProfile: __S(176, __c5, 16),
+          spotPriorityProfile: S.optional(__S(65, __c2, 1)),
+          regularPriorityProfile: S.optional(__S(66, __c2, 2)),
+          vmSizesProfile: __S(68, __c2, 4),
+          vmAttributes: S.optional(__S(72, __c2, 8)),
+          additionalLocationsProfile: S.optional(__S(143, __c4, 15)),
+          computeProfile: __S(144, __c4, 16),
           timeCreated: S.optional(S.String),
           uniqueId: S.optional(S.String),
           mode: S.optional(S.String),
@@ -2353,34 +2381,19 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 19:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(178, __c5, 18)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(146, __c4, 18)));
     case 20:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(179, __c5, 19)),
+          userAssignedIdentities: S.optional(__S(147, __c4, 19)),
         }),
       ).annotate({ identifier: "FleetsCreateOrUpdateResponseIdentity" });
-    case 21:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(165, __c5, 5)),
-          tags: S.optional(__S(96, __c3, 0)),
-          location: S.String,
-          properties: S.optional(__S(177, __c5, 17)),
-          zones: S.optional(__S(103, __c3, 7)),
-          identity: S.optional(__S(180, __c5, 20)),
-          plan: S.optional(__S(164, __c5, 4)),
-        }),
-      ).annotate({ identifier: "FleetsCreateOrUpdateResponse" });
   }
 }
-function __c6(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2397,9 +2410,9 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          imageReference: S.optional(__S(192, __c6, 0)),
-          osDisk: S.optional(__S(128, __c4, 0)),
-          dataDisks: S.optional(__S(130, __c4, 2)),
+          imageReference: S.optional(__S(160, __c5, 0)),
+          osDisk: S.optional(__S(96, __c3, 0)),
+          dataDisks: S.optional(__S(98, __c3, 2)),
           diskControllerType: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualMachineScaleSetStorageProfileInput" });
@@ -2412,89 +2425,91 @@ function __c6(j: number): any {
           typeHandlerVersion: S.optional(S.String),
           autoUpgradeMinorVersion: S.optional(S.Boolean),
           enableAutomaticUpgrade: S.optional(S.Boolean),
-          settings: S.optional(__S(152, __c4, 24)),
-          protectedSettings: S.optional(__S(152, __c4, 24)),
-          provisionAfterExtensions: S.optional(__S(103, __c3, 7)),
+          settings: S.optional(__S(120, __c3, 24)),
+          protectedSettings: S.optional(__S(120, __c3, 24)),
+          provisionAfterExtensions: S.optional(__S(71, __c2, 7)),
           suppressFailures: S.optional(S.Boolean),
-          protectedSettingsFromKeyVault: S.optional(__S(153, __c4, 25)),
+          protectedSettingsFromKeyVault: S.optional(__S(121, __c3, 25)),
         }),
       ).annotate({ identifier: "VirtualMachineScaleSetExtensionPropertiesInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(__S(194, __c6, 2)),
+          properties: S.optional(__S(162, __c5, 2)),
         }),
       ).annotate({ identifier: "VirtualMachineScaleSetExtensionInput" });
     case 4:
-      return S.Array(__S(195, __c6, 3));
+      return S.Array(__S(163, __c5, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          extensions: S.optional(__S(196, __c6, 4)),
+          extensions: S.optional(__S(164, __c5, 4)),
           extensionsTimeBudget: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualMachineScaleSetExtensionProfileInput" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          osProfile: S.optional(__S(123, __c3, 27)),
-          storageProfile: S.optional(__S(193, __c6, 1)),
-          networkProfile: S.optional(__S(145, __c4, 17)),
-          securityProfile: S.optional(__S(149, __c4, 21)),
-          diagnosticsProfile: S.optional(__S(151, __c4, 23)),
-          extensionProfile: S.optional(__S(197, __c6, 5)),
+          osProfile: S.optional(__S(91, __c2, 27)),
+          storageProfile: S.optional(__S(161, __c5, 1)),
+          networkProfile: S.optional(__S(113, __c3, 17)),
+          securityProfile: S.optional(__S(117, __c3, 21)),
+          diagnosticsProfile: S.optional(__S(119, __c3, 23)),
+          extensionProfile: S.optional(__S(165, __c5, 5)),
           licenseType: S.optional(S.String),
-          scheduledEventsProfile: S.optional(__S(155, __c4, 27)),
+          scheduledEventsProfile: S.optional(__S(123, __c3, 27)),
           userData: S.optional(S.String),
-          capacityReservation: S.optional(__S(156, __c4, 28)),
-          applicationProfile: S.optional(__S(159, __c4, 31)),
-          hardwareProfile: S.optional(__S(161, __c5, 1)),
-          serviceArtifactReference: S.optional(__S(118, __c3, 22)),
-          securityPostureReference: S.optional(__S(162, __c5, 2)),
+          capacityReservation: S.optional(__S(124, __c3, 28)),
+          applicationProfile: S.optional(__S(127, __c3, 31)),
+          hardwareProfile: S.optional(__S(129, __c4, 1)),
+          serviceArtifactReference: S.optional(__S(86, __c2, 22)),
+          securityPostureReference: S.optional(__S(130, __c4, 2)),
         }),
       ).annotate({ identifier: "BaseVirtualMachineProfileInput" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           location: S.String,
-          virtualMachineProfileOverride: S.optional(__S(198, __c6, 6)),
+          virtualMachineProfileOverride: S.optional(__S(166, __c5, 6)),
         }),
       ).annotate({ identifier: "LocationProfileInput" });
     case 8:
-      return S.Array(__S(199, __c6, 7));
+      return S.Array(__S(167, __c5, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
-          locationProfiles: __S(200, __c6, 8),
+          locationProfiles: __S(168, __c5, 8),
         }),
       ).annotate({ identifier: "AdditionalLocationsProfileInput" });
     case 10:
       return S.suspend(() =>
         S.Struct({
-          baseVirtualMachineProfile: __S(198, __c6, 6),
+          baseVirtualMachineProfile: __S(166, __c5, 6),
           computeApiVersion: S.optional(S.String),
           platformFaultDomainCount: S.optional(S.Number),
-          additionalVirtualMachineCapabilities: S.optional(__S(163, __c5, 3)),
+          additionalVirtualMachineCapabilities: S.optional(__S(131, __c4, 3)),
         }),
       ).annotate({ identifier: "ComputeProfileInput" });
     case 11:
       return S.suspend(() =>
         S.Struct({
-          spotPriorityProfile: S.optional(__S(97, __c3, 1)),
-          regularPriorityProfile: S.optional(__S(98, __c3, 2)),
-          vmSizesProfile: __S(100, __c3, 4),
-          vmAttributes: S.optional(__S(104, __c3, 8)),
-          additionalLocationsProfile: S.optional(__S(201, __c6, 9)),
-          computeProfile: __S(202, __c6, 10),
+          spotPriorityProfile: S.optional(__S(65, __c2, 1)),
+          regularPriorityProfile: S.optional(__S(66, __c2, 2)),
+          vmSizesProfile: __S(68, __c2, 4),
+          vmAttributes: S.optional(__S(72, __c2, 8)),
+          additionalLocationsProfile: S.optional(__S(169, __c5, 9)),
+          computeProfile: __S(170, __c5, 10),
           mode: S.optional(S.String),
           vmNamePrefix: S.optional(S.String),
           capacityType: S.optional(S.String),
         }),
       ).annotate({ identifier: "FleetPropertiesInput" });
+    case 12:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "UserAssignedIdentityInput" });
   }
 }
-function __c7(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2511,6 +2526,25 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetFleetRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(133, __c4, 5)),
+          tags: S.optional(__S(64, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(145, __c4, 17)),
+          zones: S.optional(__S(71, __c2, 7)),
+          identity: S.optional(__S(148, __c4, 20)),
+          plan: S.optional(__S(132, __c4, 4)),
+        }),
+      ).annotate({ identifier: "GetFleetResponse" });
   }
 }
 function __c8(j: number): any {
@@ -2534,7 +2568,7 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(181, __c5, 21));
+      return S.Array(__S(224, __c7, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2719,7 +2753,7 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(32, __c1, 0));
+      return S.Record(S.String, __S(172, __c5, 12));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2743,10 +2777,10 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
           identity: S.optional(__S(481, __c15, 1)),
           plan: S.optional(__S(482, __c15, 2)),
-          properties: S.optional(__S(203, __c6, 11)),
+          properties: S.optional(__S(171, __c5, 11)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2756,6 +2790,23 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFleetRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(133, __c4, 5)),
+          tags: S.optional(__S(64, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(145, __c4, 17)),
+          zones: S.optional(__S(71, __c2, 7)),
+          identity: S.optional(__S(148, __c4, 20)),
+          plan: S.optional(__S(132, __c4, 4)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateFleetResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

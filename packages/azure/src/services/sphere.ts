@@ -93,6 +93,8 @@ export interface CatalogsCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: CatalogProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Device identifiers of the devices to be claimed. */
 export type ClaimDeviceGroupDevicesRequestDeviceIdentifiersList = Array<string>;
@@ -110,7 +112,12 @@ export interface ClaimDeviceGroupDevicesRequest {
   /** Device identifiers of the devices to be claimed. */
   deviceIdentifiers: ClaimDeviceGroupDevicesRequestDeviceIdentifiersList;
 }
-export interface ClaimDeviceGroupDevicesResponse {}
+export interface ClaimDeviceGroupDevicesResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -119,7 +126,12 @@ export interface DeleteCatalogRequest {
   /** Name of catalog */
   catalogName: string;
 }
-export interface DeleteCatalogResponse {}
+export interface DeleteCatalogResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDeploymentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -134,7 +146,12 @@ export interface DeleteDeploymentRequest {
   /** Deployment name. Use .default for deployment creation and to get the current deployment for the associated device group. */
   deploymentName: string;
 }
-export interface DeleteDeploymentResponse {}
+export interface DeleteDeploymentResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDeviceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -149,7 +166,12 @@ export interface DeleteDeviceRequest {
   /** Device name */
   deviceName: string;
 }
-export interface DeleteDeviceResponse {}
+export interface DeleteDeviceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDeviceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -162,7 +184,12 @@ export interface DeleteDeviceGroupRequest {
   /** Name of device group. */
   deviceGroupName: string;
 }
-export interface DeleteDeviceGroupResponse {}
+export interface DeleteDeviceGroupResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteImageRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -173,7 +200,12 @@ export interface DeleteImageRequest {
   /** Image name. Use an image GUID for GA versions of the API. */
   imageName: string;
 }
-export interface DeleteImageResponse {}
+export interface DeleteImageResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteProductRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -184,7 +216,12 @@ export interface DeleteProductRequest {
   /** Name of product. */
   productName: string;
 }
-export interface DeleteProductResponse {}
+export interface DeleteProductResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Regional data boundary values. */
 export type RegionalDataBoundary = "None" | "EU";
 /** The properties of image */
@@ -310,6 +347,8 @@ export interface DeploymentsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: DeploymentProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeviceGroupsCountDevicesRequest {
   /** The ID of the target subscription. */
@@ -388,6 +427,8 @@ export interface DeviceGroupsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: DeviceGroupProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The properties of device */
 export interface DevicePropertiesInput {
@@ -438,6 +479,8 @@ export interface DevicesCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: DeviceProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Capability image type */
 export type CapabilityType = "ApplicationDevelopment" | "FieldServicing";
@@ -465,6 +508,10 @@ export interface GenerateDeviceCapabilityImageRequest {
 export interface SignedCapabilityImageResponse {
   /** The signed device capability image as a UTF-8 encoded base 64 string. */
   image?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GenerateProductDefaultDeviceGroupsRequest {
   /** The ID of the target subscription. */
@@ -758,6 +805,8 @@ export interface ImagesCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: ImageProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ListCatalogByResourceGroupRequest {
   /** The ID of the target subscription. */
@@ -1152,6 +1201,8 @@ export interface ProductsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: ProductProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateCatalogRequestTagsMap = { [key: string]: string | undefined };
@@ -1215,6 +1266,10 @@ export interface UpdateDeviceResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: DeviceProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The updatable properties of the DeviceGroup. */
 export type DeviceGroupUpdateProperties = DeviceGroupPropertiesInput;
@@ -1243,6 +1298,10 @@ export interface UpdateDeviceGroupResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: DeviceGroupProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The updatable properties of the Product. */
 export interface ProductUpdateProperties {
@@ -1272,6 +1331,10 @@ export interface UpdateProductResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: ProductProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface UploadCatalogImageRequest {
   /** The ID of the target subscription. */
@@ -1283,7 +1346,12 @@ export interface UploadCatalogImageRequest {
   /** The resource-specific properties for this resource. */
   properties?: ImagePropertiesInput;
 }
-export interface UploadCatalogImageResponse {}
+export interface UploadCatalogImageResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export type CatalogsCountDevicesError = AzureOpError;
 /** Counts devices in catalog. */
 export const CatalogsCountDevices: API.OperationMethod<
@@ -1307,8 +1375,8 @@ export const CatalogsCreateOrUpdate: API.OperationMethod<
   CatalogsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CatalogsCreateOrUpdateRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<CatalogsCreateOrUpdateResponse>,
+  input: __S(17, __c2, 1) as any as S.Schema<CatalogsCreateOrUpdateRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<CatalogsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1322,8 +1390,8 @@ export const ClaimDeviceGroupDevices: API.OperationMethod<
   ClaimDeviceGroupDevicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<ClaimDeviceGroupDevicesRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<ClaimDeviceGroupDevicesResponse>,
+  input: __S(193, __c24, 1) as any as S.Schema<ClaimDeviceGroupDevicesRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<ClaimDeviceGroupDevicesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1337,8 +1405,8 @@ export const DeleteCatalog: API.OperationMethod<
   DeleteCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<DeleteCatalogRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteCatalogResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<DeleteCatalogRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<DeleteCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1352,8 +1420,8 @@ export const DeleteDeployment: API.OperationMethod<
   DeleteDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<DeleteDeploymentRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteDeploymentResponse>,
+  input: __S(424, __c53, 0) as any as S.Schema<DeleteDeploymentRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<DeleteDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1367,8 +1435,8 @@ export const DeleteDevice: API.OperationMethod<
   DeleteDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c54, 0) as any as S.Schema<DeleteDeviceRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteDeviceResponse>,
+  input: __S(472, __c59, 0) as any as S.Schema<DeleteDeviceRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<DeleteDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1382,8 +1450,8 @@ export const DeleteDeviceGroup: API.OperationMethod<
   DeleteDeviceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(440, __c55, 0) as any as S.Schema<DeleteDeviceGroupRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteDeviceGroupResponse>,
+  input: __S(480, __c60, 0) as any as S.Schema<DeleteDeviceGroupRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<DeleteDeviceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1397,8 +1465,8 @@ export const DeleteImage: API.OperationMethod<
   DeleteImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c56, 0) as any as S.Schema<DeleteImageRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteImageResponse>,
+  input: __S(488, __c61, 0) as any as S.Schema<DeleteImageRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<DeleteImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1412,8 +1480,8 @@ export const DeleteProduct: API.OperationMethod<
   DeleteProductError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(456, __c57, 0) as any as S.Schema<DeleteProductRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteProductResponse>,
+  input: __S(496, __c62, 0) as any as S.Schema<DeleteProductRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<DeleteProductResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1427,8 +1495,8 @@ export const DeploymentsCreateOrUpdate: API.OperationMethod<
   DeploymentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(467, __c58, 3) as any as S.Schema<DeploymentsCreateOrUpdateRequest>,
-  output: __S(481, __c60, 1) as any as S.Schema<DeploymentsCreateOrUpdateResponse>,
+  input: __S(507, __c63, 3) as any as S.Schema<DeploymentsCreateOrUpdateRequest>,
+  output: __S(508, __c63, 4) as any as S.Schema<DeploymentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1442,7 +1510,7 @@ export const DeviceGroupsCountDevices: API.OperationMethod<
   DeviceGroupsCountDevicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DeviceGroupsCountDevicesRequest>,
+  input: __S(40, __c5, 0) as any as S.Schema<DeviceGroupsCountDevicesRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<DeviceGroupsCountDevicesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1457,8 +1525,8 @@ export const DeviceGroupsCreateOrUpdate: API.OperationMethod<
   DeviceGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeviceGroupsCreateOrUpdateRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<DeviceGroupsCreateOrUpdateResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<DeviceGroupsCreateOrUpdateRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<DeviceGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1472,8 +1540,8 @@ export const DevicesCreateOrUpdate: API.OperationMethod<
   DevicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<DevicesCreateOrUpdateRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DevicesCreateOrUpdateResponse>,
+  input: __S(73, __c9, 1) as any as S.Schema<DevicesCreateOrUpdateRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<DevicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1487,8 +1555,8 @@ export const GenerateDeviceCapabilityImage: API.OperationMethod<
   GenerateDeviceCapabilityImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<GenerateDeviceCapabilityImageRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<SignedCapabilityImageResponse>,
+  input: __S(89, __c11, 1) as any as S.Schema<GenerateDeviceCapabilityImageRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<SignedCapabilityImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1502,7 +1570,7 @@ export const GenerateProductDefaultDeviceGroups: API.OperationMethod<
   GenerateProductDefaultDeviceGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GenerateProductDefaultDeviceGroupsRequest>,
+  input: __S(96, __c12, 0) as any as S.Schema<GenerateProductDefaultDeviceGroupsRequest>,
   output: __S(113, __c14, 1) as any as S.Schema<DeviceGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1518,7 +1586,7 @@ export const GetCatalog: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(120, __c15, 0) as any as S.Schema<GetCatalogRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetCatalogResponse>,
+  output: __S(128, __c16, 0) as any as S.Schema<GetCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1532,8 +1600,8 @@ export const GetCertificate: API.OperationMethod<
   GetCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetCertificateRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<GetCertificateResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetCertificateRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<GetCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1547,8 +1615,8 @@ export const GetCertificateCertChain: API.OperationMethod<
   GetCertificateCertChainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetCertificateCertChainRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<CertificateChainResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetCertificateCertChainRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<CertificateChainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1562,8 +1630,8 @@ export const GetCertificateProofOfPossessionNonce: API.OperationMethod<
   GetCertificateProofOfPossessionNonceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<GetCertificateProofOfPossessionNonceRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<GetCertificateProofOfPossessionNonceResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<GetCertificateProofOfPossessionNonceRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<GetCertificateProofOfPossessionNonceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1577,8 +1645,8 @@ export const GetDeployment: API.OperationMethod<
   GetDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<GetDeploymentRequest>,
-  output: __S(481, __c60, 1) as any as S.Schema<GetDeploymentResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<GetDeploymentRequest>,
+  output: __S(184, __c23, 0) as any as S.Schema<GetDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1592,8 +1660,8 @@ export const GetDevice: API.OperationMethod<
   GetDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<GetDeviceRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<GetDeviceResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<GetDeviceRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<GetDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1607,8 +1675,8 @@ export const GetDeviceGroup: API.OperationMethod<
   GetDeviceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<GetDeviceGroupRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<GetDeviceGroupResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<GetDeviceGroupRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<GetDeviceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1622,8 +1690,8 @@ export const GetImage: API.OperationMethod<
   GetImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<GetImageRequest>,
-  output: __S(473, __c59, 1) as any as S.Schema<GetImageResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<GetImageRequest>,
+  output: __S(520, __c65, 0) as any as S.Schema<GetImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1637,8 +1705,8 @@ export const GetProduct: API.OperationMethod<
   GetProductError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<GetProductRequest>,
-  output: __S(217, __c27, 1) as any as S.Schema<GetProductResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetProductRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<GetProductResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1652,8 +1720,8 @@ export const ImagesCreateOrUpdate: API.OperationMethod<
   ImagesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<ImagesCreateOrUpdateRequest>,
-  output: __S(473, __c59, 1) as any as S.Schema<ImagesCreateOrUpdateResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<ImagesCreateOrUpdateRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<ImagesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1667,8 +1735,8 @@ export const ListCatalogByResourceGroup: API.OperationMethod<
   ListCatalogByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<ListCatalogByResourceGroupRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<CatalogListResult>,
+  input: __S(272, __c34, 0) as any as S.Schema<ListCatalogByResourceGroupRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<CatalogListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1682,8 +1750,8 @@ export const ListCatalogBySubscription: API.OperationMethod<
   ListCatalogBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<ListCatalogBySubscriptionRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<CatalogListResult>,
+  input: __S(288, __c36, 0) as any as S.Schema<ListCatalogBySubscriptionRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<CatalogListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1697,8 +1765,8 @@ export const ListCatalogDeployments: API.OperationMethod<
   ListCatalogDeploymentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<ListCatalogDeploymentsRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<DeploymentListResult>,
+  input: __S(296, __c37, 0) as any as S.Schema<ListCatalogDeploymentsRequest>,
+  output: __S(305, __c38, 1) as any as S.Schema<DeploymentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1712,7 +1780,7 @@ export const ListCatalogDeviceGroups: API.OperationMethod<
   ListCatalogDeviceGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<ListCatalogDeviceGroupsRequest>,
+  input: __S(312, __c39, 0) as any as S.Schema<ListCatalogDeviceGroupsRequest>,
   output: __S(113, __c14, 1) as any as S.Schema<DeviceGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1727,8 +1795,8 @@ export const ListCatalogDeviceInsights: API.OperationMethod<
   ListCatalogDeviceInsightsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<ListCatalogDeviceInsightsRequest>,
-  output: __S(283, __c35, 3) as any as S.Schema<PagedDeviceInsight>,
+  input: __S(320, __c40, 0) as any as S.Schema<ListCatalogDeviceInsightsRequest>,
+  output: __S(323, __c40, 3) as any as S.Schema<PagedDeviceInsight>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1742,8 +1810,8 @@ export const ListCatalogDevices: API.OperationMethod<
   ListCatalogDevicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<ListCatalogDevicesRequest>,
-  output: __S(305, __c38, 1) as any as S.Schema<DeviceListResult>,
+  input: __S(336, __c42, 0) as any as S.Schema<ListCatalogDevicesRequest>,
+  output: __S(345, __c43, 1) as any as S.Schema<DeviceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1757,8 +1825,8 @@ export const ListCertificateByCatalog: API.OperationMethod<
   ListCertificateByCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<ListCertificateByCatalogRequest>,
-  output: __S(314, __c39, 2) as any as S.Schema<CertificateListResult>,
+  input: __S(352, __c44, 0) as any as S.Schema<ListCertificateByCatalogRequest>,
+  output: __S(354, __c44, 2) as any as S.Schema<CertificateListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1772,8 +1840,8 @@ export const ListDeploymentByDeviceGroup: API.OperationMethod<
   ListDeploymentByDeviceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<ListDeploymentByDeviceGroupRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<DeploymentListResult>,
+  input: __S(360, __c45, 0) as any as S.Schema<ListDeploymentByDeviceGroupRequest>,
+  output: __S(305, __c38, 1) as any as S.Schema<DeploymentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1787,8 +1855,8 @@ export const ListDeviceByDeviceGroup: API.OperationMethod<
   ListDeviceByDeviceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<ListDeviceByDeviceGroupRequest>,
-  output: __S(305, __c38, 1) as any as S.Schema<DeviceListResult>,
+  input: __S(368, __c46, 0) as any as S.Schema<ListDeviceByDeviceGroupRequest>,
+  output: __S(345, __c43, 1) as any as S.Schema<DeviceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1802,7 +1870,7 @@ export const ListDeviceGroupByProduct: API.OperationMethod<
   ListDeviceGroupByProductError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<ListDeviceGroupByProductRequest>,
+  input: __S(376, __c47, 0) as any as S.Schema<ListDeviceGroupByProductRequest>,
   output: __S(113, __c14, 1) as any as S.Schema<DeviceGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1817,8 +1885,8 @@ export const ListImageByCatalog: API.OperationMethod<
   ListImageByCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<ListImageByCatalogRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<ImageListResult>,
+  input: __S(384, __c48, 0) as any as S.Schema<ListImageByCatalogRequest>,
+  output: __S(385, __c48, 1) as any as S.Schema<ImageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1832,8 +1900,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(356, __c44, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(396, __c49, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1847,8 +1915,8 @@ export const ListProductByCatalog: API.OperationMethod<
   ListProductByCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<ListProductByCatalogRequest>,
-  output: __S(362, __c45, 2) as any as S.Schema<ProductListResult>,
+  input: __S(400, __c50, 0) as any as S.Schema<ListProductByCatalogRequest>,
+  output: __S(402, __c50, 2) as any as S.Schema<ProductListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1862,7 +1930,7 @@ export const ProductsCountDevices: API.OperationMethod<
   ProductsCountDevicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<ProductsCountDevicesRequest>,
+  input: __S(408, __c51, 0) as any as S.Schema<ProductsCountDevicesRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<ProductsCountDevicesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1877,8 +1945,8 @@ export const ProductsCreateOrUpdate: API.OperationMethod<
   ProductsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<ProductsCreateOrUpdateRequest>,
-  output: __S(217, __c27, 1) as any as S.Schema<ProductsCreateOrUpdateResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<ProductsCreateOrUpdateRequest>,
+  output: __S(417, __c52, 1) as any as S.Schema<ProductsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1892,8 +1960,8 @@ export const UpdateCatalog: API.OperationMethod<
   UpdateCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<UpdateCatalogRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<UpdateCatalogResponse>,
+  input: __S(432, __c54, 0) as any as S.Schema<UpdateCatalogRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<UpdateCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1907,8 +1975,8 @@ export const UpdateDevice: API.OperationMethod<
   UpdateDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401, __c50, 1) as any as S.Schema<UpdateDeviceRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<UpdateDeviceResponse>,
+  input: __S(441, __c55, 1) as any as S.Schema<UpdateDeviceRequest>,
+  output: __S(442, __c55, 2) as any as S.Schema<UpdateDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1922,8 +1990,8 @@ export const UpdateDeviceGroup: API.OperationMethod<
   UpdateDeviceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<UpdateDeviceGroupRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<UpdateDeviceGroupResponse>,
+  input: __S(448, __c56, 0) as any as S.Schema<UpdateDeviceGroupRequest>,
+  output: __S(449, __c56, 1) as any as S.Schema<UpdateDeviceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1937,8 +2005,8 @@ export const UpdateProduct: API.OperationMethod<
   UpdateProductError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(417, __c52, 1) as any as S.Schema<UpdateProductRequest>,
-  output: __S(217, __c27, 1) as any as S.Schema<UpdateProductResponse>,
+  input: __S(457, __c57, 1) as any as S.Schema<UpdateProductRequest>,
+  output: __S(458, __c57, 2) as any as S.Schema<UpdateProductResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1952,8 +2020,8 @@ export const UploadCatalogImage: API.OperationMethod<
   UploadCatalogImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<UploadCatalogImageRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<UploadCatalogImageResponse>,
+  input: __S(464, __c58, 0) as any as S.Schema<UploadCatalogImageRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<UploadCatalogImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1992,6 +2060,8 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "CatalogPropertiesInput" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1999,7 +2069,7 @@ function __c2(j: number): any {
           catalogName: S.String.pipe(T.Label()),
           tags: S.optional(__S(24, __c3, 0)),
           location: S.String,
-          properties: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2009,6 +2079,19 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CatalogsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c4, 0)),
+          tags: S.optional(__S(24, __c3, 0)),
+          location: S.String,
+          properties: S.optional(__S(25, __c3, 1)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CatalogsCreateOrUpdateResponse" });
   }
 }
 function __c3(j: number): any {
@@ -2022,27 +2105,9 @@ function __c3(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "CatalogProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(40, __c5, 0)),
-          tags: S.optional(__S(24, __c3, 0)),
-          location: S.String,
-          properties: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "CatalogsCreateOrUpdateResponse" });
   }
 }
 function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "CatalogPropertiesInput" });
-  }
-}
-function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2057,7 +2122,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c6(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2078,7 +2143,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "DeviceGroupsCountDevicesRequest" });
   }
 }
-function __c7(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2088,7 +2153,7 @@ function __c7(j: number): any {
           catalogName: S.String.pipe(T.Label()),
           productName: S.String.pipe(T.Label()),
           deviceGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(72, __c9, 0)),
+          properties: S.optional(__S(64, __c8, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2098,9 +2163,20 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeviceGroupsCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(56, __c7, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeviceGroupsCreateOrUpdateResponse" });
   }
 }
-function __c8(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2114,19 +2190,9 @@ function __c8(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceGroupProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(40, __c5, 0)),
-          properties: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({ identifier: "DeviceGroupsCreateOrUpdateResponse" });
   }
 }
-function __c9(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2140,7 +2206,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "DeviceGroupPropertiesInput" });
   }
 }
-function __c10(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2157,7 +2223,7 @@ function __c10(j: number): any {
           productName: S.String.pipe(T.Label()),
           deviceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(80, __c10, 0)),
+          properties: S.optional(__S(72, __c9, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2167,9 +2233,20 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DevicesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(80, __c10, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DevicesCreateOrUpdateResponse" });
   }
 }
-function __c11(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2183,19 +2260,9 @@ function __c11(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(40, __c5, 0)),
-          properties: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({ identifier: "DevicesCreateOrUpdateResponse" });
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -2208,7 +2275,7 @@ function __c12(j: number): any {
           productName: S.String.pipe(T.Label()),
           deviceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          capabilities: __S(96, __c12, 0),
+          capabilities: __S(88, __c11, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2222,11 +2289,13 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           image: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "SignedCapabilityImageResponse" });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2246,10 +2315,24 @@ function __c13(j: number): any {
       ).annotate({ identifier: "GenerateProductDefaultDeviceGroupsRequest" });
   }
 }
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(56, __c7, 0)),
+        }),
+      ).annotate({ identifier: "DeviceGroup" });
+  }
+}
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(65, __c8, 1));
+      return S.Array(__S(104, __c13, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2283,6 +2366,22 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c4, 0)),
+          tags: S.optional(__S(24, __c3, 0)),
+          location: S.String,
+          properties: S.optional(__S(25, __c3, 1)),
+        }),
+      ).annotate({ identifier: "GetCatalogResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
@@ -2298,7 +2397,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "GetCertificateRequest" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2314,7 +2413,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "CertificateProperties" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2322,13 +2421,13 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(40, __c5, 0)),
-          properties: S.optional(__S(136, __c17, 0)),
+          systemData: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(144, __c18, 0)),
         }),
       ).annotate({ identifier: "GetCertificateResponse" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2354,7 +2453,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "CertificateChainResponse" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2375,7 +2474,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "GetCertificateProofOfPossessionNonceRequest" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2397,7 +2496,21 @@ function __c21(j: number): any {
       ).annotate({ identifier: "GetDeploymentRequest" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(528, __c66, 0)),
+        }),
+      ).annotate({ identifier: "GetDeploymentResponse" });
+  }
+}
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -2409,7 +2522,7 @@ function __c22(j: number): any {
           catalogName: S.String.pipe(T.Label()),
           productName: S.String.pipe(T.Label()),
           deviceGroupName: S.String.pipe(T.Label()),
-          deviceIdentifiers: __S(176, __c22, 0),
+          deviceIdentifiers: __S(192, __c24, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2421,7 +2534,18 @@ function __c22(j: number): any {
       ).annotate({ identifier: "ClaimDeviceGroupDevicesRequest" });
   }
 }
-function __c23(j: number): any {
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ClaimDeviceGroupDevicesResponse" });
+  }
+}
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2443,7 +2567,21 @@ function __c23(j: number): any {
       ).annotate({ identifier: "GetDeviceRequest" });
   }
 }
-function __c24(j: number): any {
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(80, __c10, 0)),
+        }),
+      ).annotate({ identifier: "GetDeviceResponse" });
+  }
+}
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2464,7 +2602,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "GetDeviceGroupRequest" });
   }
 }
-function __c25(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2484,7 +2622,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "GetImageRequest" });
   }
 }
-function __c26(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2504,7 +2642,21 @@ function __c26(j: number): any {
       ).annotate({ identifier: "GetProductRequest" });
   }
 }
-function __c27(j: number): any {
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(256, __c32, 0)),
+        }),
+      ).annotate({ identifier: "GetProductResponse" });
+  }
+}
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2513,19 +2665,9 @@ function __c27(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(40, __c5, 0)),
-          properties: S.optional(__S(216, __c27, 0)),
-        }),
-      ).annotate({ identifier: "GetProductResponse" });
   }
 }
-function __c28(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2534,7 +2676,7 @@ function __c28(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
           imageName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(496, __c62, 0)),
+          properties: S.optional(__S(544, __c68, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2544,9 +2686,20 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ImagesCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(512, __c64, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ImagesCreateOrUpdateResponse" });
   }
 }
-function __c29(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2564,20 +2717,20 @@ function __c29(j: number): any {
       ).annotate({ identifier: "ListCatalogByResourceGroupRequest" });
   }
 }
-function __c30(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(26, __c3, 2));
+      return S.Array(__S(128, __c16, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(240, __c30, 0),
+          value: __S(280, __c35, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CatalogListResult" });
   }
 }
-function __c31(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2594,7 +2747,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "ListCatalogBySubscriptionRequest" });
   }
 }
-function __c32(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2617,20 +2770,20 @@ function __c32(j: number): any {
       ).annotate({ identifier: "ListCatalogDeploymentsRequest" });
   }
 }
-function __c33(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(481, __c60, 1));
+      return S.Array(__S(184, __c23, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(264, __c33, 0),
+          value: __S(304, __c38, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeploymentListResult" });
   }
 }
-function __c34(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2654,7 +2807,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "ListCatalogDeviceGroupsRequest" });
   }
 }
-function __c35(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2689,17 +2842,17 @@ function __c35(j: number): any {
         }),
       ).annotate({ identifier: "DeviceInsight" });
     case 2:
-      return S.Array(__S(281, __c35, 1));
+      return S.Array(__S(321, __c40, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(282, __c35, 2),
+          value: __S(322, __c40, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagedDeviceInsight" });
   }
 }
-function __c36(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2718,7 +2871,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "DeleteCatalogRequest" });
   }
 }
-function __c37(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2741,20 +2894,20 @@ function __c37(j: number): any {
       ).annotate({ identifier: "ListCatalogDevicesRequest" });
   }
 }
-function __c38(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(89, __c11, 1));
+      return S.Array(__S(216, __c27, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(304, __c38, 0),
+          value: __S(344, __c43, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceListResult" });
   }
 }
-function __c39(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2776,17 +2929,17 @@ function __c39(j: number): any {
         ),
       ).annotate({ identifier: "ListCertificateByCatalogRequest" });
     case 1:
-      return S.Array(__S(144, __c18, 0));
+      return S.Array(__S(152, __c19, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(313, __c39, 1),
+          value: __S(353, __c44, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CertificateListResult" });
   }
 }
-function __c40(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2811,7 +2964,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "ListDeploymentByDeviceGroupRequest" });
   }
 }
-function __c41(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2832,7 +2985,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "ListDeviceByDeviceGroupRequest" });
   }
 }
-function __c42(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2856,7 +3009,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "ListDeviceGroupByProductRequest" });
   }
 }
-function __c43(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2880,13 +3033,13 @@ function __c43(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(488, __c61, 0),
+          value: __S(536, __c67, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageListResult" });
   }
 }
-function __c44(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2913,23 +3066,23 @@ function __c44(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(353, __c44, 1)),
+          display: S.optional(__S(393, __c49, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(354, __c44, 2));
+      return S.Array(__S(394, __c49, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(355, __c44, 3)),
+          value: S.optional(__S(395, __c49, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c45(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2947,17 +3100,17 @@ function __c45(j: number): any {
         ),
       ).annotate({ identifier: "ListProductByCatalogRequest" });
     case 1:
-      return S.Array(__S(217, __c27, 1));
+      return S.Array(__S(248, __c31, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(361, __c45, 1),
+          value: __S(401, __c50, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductListResult" });
   }
 }
-function __c46(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2977,7 +3130,7 @@ function __c46(j: number): any {
       ).annotate({ identifier: "ProductsCountDevicesRequest" });
   }
 }
-function __c47(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2986,7 +3139,7 @@ function __c47(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
           productName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(216, __c27, 0)),
+          properties: S.optional(__S(256, __c32, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2996,9 +3149,20 @@ function __c47(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ProductsCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(256, __c32, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ProductsCreateOrUpdateResponse" });
   }
 }
-function __c48(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3020,7 +3184,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "DeleteDeploymentRequest" });
   }
 }
-function __c49(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3040,7 +3204,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "UpdateCatalogRequest" });
   }
 }
-function __c50(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3057,7 +3221,7 @@ function __c50(j: number): any {
           productName: S.String.pipe(T.Label()),
           deviceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(400, __c50, 0)),
+          properties: S.optional(__S(440, __c55, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3067,9 +3231,21 @@ function __c50(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDeviceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(80, __c10, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateDeviceResponse" });
   }
 }
-function __c51(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3079,7 +3255,7 @@ function __c51(j: number): any {
           catalogName: S.String.pipe(T.Label()),
           productName: S.String.pipe(T.Label()),
           deviceGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(72, __c9, 0)),
+          properties: S.optional(__S(64, __c8, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3089,9 +3265,21 @@ function __c51(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDeviceGroupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(56, __c7, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateDeviceGroupResponse" });
   }
 }
-function __c52(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3106,7 +3294,7 @@ function __c52(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
           productName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(416, __c52, 0)),
+          properties: S.optional(__S(456, __c57, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3116,9 +3304,21 @@ function __c52(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateProductRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(256, __c32, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateProductResponse" });
   }
 }
-function __c53(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3126,7 +3326,7 @@ function __c53(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(496, __c62, 0)),
+          properties: S.optional(__S(544, __c68, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3138,7 +3338,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "UploadCatalogImageRequest" });
   }
 }
-function __c54(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3160,7 +3360,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "DeleteDeviceRequest" });
   }
 }
-function __c55(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3181,7 +3381,7 @@ function __c55(j: number): any {
       ).annotate({ identifier: "DeleteDeviceGroupRequest" });
   }
 }
-function __c56(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3201,7 +3401,7 @@ function __c56(j: number): any {
       ).annotate({ identifier: "DeleteImageRequest" });
   }
 }
-function __c57(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3221,21 +3421,21 @@ function __c57(j: number): any {
       ).annotate({ identifier: "DeleteProductRequest" });
   }
 }
-function __c58(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(496, __c62, 0)),
+          properties: S.optional(__S(544, __c68, 0)),
         }),
       ).annotate({ identifier: "ImageInput" });
     case 1:
-      return S.Array(__S(464, __c58, 0));
+      return S.Array(__S(504, __c63, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           deploymentId: S.optional(S.String),
-          deployedImages: S.optional(__S(465, __c58, 1)),
+          deployedImages: S.optional(__S(505, __c63, 1)),
         }),
       ).annotate({ identifier: "DeploymentPropertiesInput" });
     case 3:
@@ -3247,7 +3447,7 @@ function __c58(j: number): any {
           productName: S.String.pipe(T.Label()),
           deviceGroupName: S.String.pipe(T.Label()),
           deploymentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(466, __c58, 2)),
+          properties: S.optional(__S(506, __c63, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3257,9 +3457,20 @@ function __c58(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeploymentsCreateOrUpdateRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(528, __c66, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeploymentsCreateOrUpdateResponse" });
   }
 }
-function __c59(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3275,48 +3486,42 @@ function __c59(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageProperties" });
-    case 1:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(40, __c5, 0)),
-          properties: S.optional(__S(472, __c59, 0)),
+          systemData: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(512, __c64, 0)),
         }),
       ).annotate({ identifier: "Image" });
   }
 }
-function __c60(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           deploymentId: S.optional(S.String),
-          deployedImages: S.optional(__S(488, __c61, 0)),
+          deployedImages: S.optional(__S(536, __c67, 0)),
           deploymentDateUtc: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeploymentProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(40, __c5, 0)),
-          properties: S.optional(__S(480, __c60, 0)),
-        }),
-      ).annotate({ identifier: "DeploymentsCreateOrUpdateResponse" });
   }
 }
-function __c61(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(473, __c59, 1));
+      return S.Array(__S(520, __c65, 0));
   }
 }
-function __c62(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

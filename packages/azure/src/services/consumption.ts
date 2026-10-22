@@ -234,6 +234,8 @@ export interface OperationStatus {
   status?: OperationStatusType;
   /** The properties of the resource generated. */
   properties?: PricesheetDownloadProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 export interface GetAggregatedCostByManagementGroupRequest {
   /** Order Id of the reservation */
@@ -2788,6 +2790,7 @@ function __c17(j: number): any {
         S.Struct({
           status: S.optional(S.String),
           properties: S.optional(__S(273, __c17, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "OperationStatus" });
   }

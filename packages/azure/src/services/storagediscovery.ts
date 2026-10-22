@@ -61,6 +61,10 @@ export type GetReportResultResultsList = Array<ReportResultSet>;
 export interface GetReportResult {
   /** One or more result sets, in the same order as the queries in the request body */
   results: GetReportResultResultsList;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetReportRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -655,6 +659,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           results: __S(20, __c2, 4),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "GetReportResult" });
   }

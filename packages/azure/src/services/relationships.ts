@@ -17,21 +17,36 @@ export interface DeleteDependencyOfRelationshipRequest {
   /** Name of dependencyOf relationship. */
   name: string;
 }
-export interface DeleteDependencyOfRelationshipResponse {}
+export interface DeleteDependencyOfRelationshipResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDependencyOfRelationshipsByServiceGroupRequest {
   /** The name of the service group. */
   serviceGroupName: string;
   /** Name of dependencyOf relationship. */
   name: string;
 }
-export interface DeleteDependencyOfRelationshipsByServiceGroupResponse {}
+export interface DeleteDependencyOfRelationshipsByServiceGroupResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteServiceGroupMemberRelationshipRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** Name of ServiceGroupMember relationship. */
   name: string;
 }
-export interface DeleteServiceGroupMemberRelationshipResponse {}
+export interface DeleteServiceGroupMemberRelationshipResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** dependencyOf relationship properties. */
 export interface DependencyOfRelationshipPropertiesInput {
   /** The relationship target resource id. */
@@ -121,6 +136,10 @@ export interface DependencyOfRelationshipsByServiceGroupCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: DependencyOfRelationshipProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DependencyOfRelationshipsCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -141,6 +160,10 @@ export interface DependencyOfRelationshipsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: DependencyOfRelationshipProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetDependencyOfRelationshipRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -397,6 +420,10 @@ export interface ServiceGroupMemberRelationshipsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: ServiceGroupMemberRelationshipPropertiesPreview;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type DeleteDependencyOfRelationshipError = AzureOpError;
 /** Delete a DependencyOfRelationship */
@@ -457,9 +484,9 @@ export const DependencyOfRelationshipsByServiceGroupCreateOrUpdate: API.Operatio
     0,
   ) as any as S.Schema<DependencyOfRelationshipsByServiceGroupCreateOrUpdateRequest>,
   output: __S(
-    97,
-    __c12,
-    1,
+    80,
+    __c10,
+    0,
   ) as any as S.Schema<DependencyOfRelationshipsByServiceGroupCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -474,8 +501,8 @@ export const DependencyOfRelationshipsCreateOrUpdate: API.OperationMethod<
   DependencyOfRelationshipsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<DependencyOfRelationshipsCreateOrUpdateRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DependencyOfRelationshipsCreateOrUpdateResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DependencyOfRelationshipsCreateOrUpdateRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DependencyOfRelationshipsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -489,8 +516,8 @@ export const GetDependencyOfRelationship: API.OperationMethod<
   GetDependencyOfRelationshipError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetDependencyOfRelationshipRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<GetDependencyOfRelationshipResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetDependencyOfRelationshipRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<GetDependencyOfRelationshipResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -504,8 +531,8 @@ export const GetDependencyOfRelationshipsByServiceGroup: API.OperationMethod<
   GetDependencyOfRelationshipsByServiceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<GetDependencyOfRelationshipsByServiceGroupRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<GetDependencyOfRelationshipsByServiceGroupResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetDependencyOfRelationshipsByServiceGroupRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<GetDependencyOfRelationshipsByServiceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -519,8 +546,8 @@ export const GetServiceGroupMemberRelationship: API.OperationMethod<
   GetServiceGroupMemberRelationshipError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetServiceGroupMemberRelationshipRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<GetServiceGroupMemberRelationshipResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetServiceGroupMemberRelationshipRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<GetServiceGroupMemberRelationshipResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -534,8 +561,8 @@ export const ListContainsRelationshipByResourceGroup: API.OperationMethod<
   ListContainsRelationshipByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListContainsRelationshipByResourceGroupRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<ContainsRelationshipListResult>,
+  input: __S(160, __c20, 0) as any as S.Schema<ListContainsRelationshipByResourceGroupRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<ContainsRelationshipListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -549,8 +576,8 @@ export const ListContainsRelationshipBySubscription: API.OperationMethod<
   ListContainsRelationshipBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<ListContainsRelationshipBySubscriptionRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<ContainsRelationshipListResult>,
+  input: __S(176, __c22, 0) as any as S.Schema<ListContainsRelationshipBySubscriptionRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<ContainsRelationshipListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -565,7 +592,7 @@ export const ListDependencyOfRelationshipByParent: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(24, __c3, 0) as any as S.Schema<ListDependencyOfRelationshipByParentRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<DependencyOfRelationshipListResult>,
+  output: __S(169, __c21, 1) as any as S.Schema<DependencyOfRelationshipListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -580,7 +607,7 @@ export const ListDependencyOfRelationshipsByServiceGroup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c4, 0) as any as S.Schema<ListDependencyOfRelationshipsByServiceGroupRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<DependencyOfRelationshipListResult>,
+  output: __S(169, __c21, 1) as any as S.Schema<DependencyOfRelationshipListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -657,9 +684,12 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteDependencyOfRelationshipResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteDependencyOfRelationshipResponse" });
   }
 }
 function __c2(j: number): any {
@@ -773,7 +803,7 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "ListServiceGroupMemberRelationshipByParentRequest" });
     case 1:
-      return S.Array(__S(137, __c17, 1));
+      return S.Array(__S(153, __c19, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -790,7 +820,7 @@ function __c7(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(80, __c10, 0)),
+          properties: S.optional(__S(88, __c11, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -806,8 +836,8 @@ function __c7(j: number): any {
           targetId: S.optional(S.String),
           sourceId: S.optional(S.String),
           targetTenant: S.optional(S.String),
-          originInformation: S.optional(__S(89, __c11, 1)),
-          metadata: S.optional(__S(90, __c11, 2)),
+          originInformation: S.optional(__S(97, __c12, 1)),
+          metadata: S.optional(__S(98, __c12, 2)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceGroupMemberRelationshipPropertiesPreview" });
@@ -817,8 +847,10 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(88, __c11, 0)),
+          systemData: S.optional(__S(96, __c12, 0)),
           properties: S.optional(__S(57, __c7, 1)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "ServiceGroupMemberRelationshipsCreateOrUpdateResponse" });
   }
@@ -848,7 +880,7 @@ function __c9(j: number): any {
         S.Struct({
           serviceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(80, __c10, 0)),
+          properties: S.optional(__S(88, __c11, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -865,13 +897,29 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c12, 0)),
+          properties: S.optional(__S(104, __c13, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DependencyOfRelationshipsByServiceGroupCreateOrUpdateResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           targetId: S.String,
           targetTenant: S.optional(S.String),
         }),
       ).annotate({ identifier: "DependencyOfRelationshipPropertiesInput" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -900,7 +948,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "RelationshipMetadata" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -908,31 +956,21 @@ function __c12(j: number): any {
           sourceId: S.optional(S.String),
           targetId: S.String,
           targetTenant: S.optional(S.String),
-          originInformation: S.optional(__S(89, __c11, 1)),
-          metadata: S.optional(__S(90, __c11, 2)),
+          originInformation: S.optional(__S(97, __c12, 1)),
+          metadata: S.optional(__S(98, __c12, 2)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DependencyOfRelationshipProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(88, __c11, 0)),
-          properties: S.optional(__S(96, __c12, 0)),
-        }),
-      ).annotate({ identifier: "DependencyOfRelationshipsByServiceGroupCreateOrUpdateResponse" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(80, __c10, 0)),
+          properties: S.optional(__S(88, __c11, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -944,7 +982,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "DependencyOfRelationshipsCreateOrUpdateRequest" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -962,7 +1000,21 @@ function __c14(j: number): any {
       ).annotate({ identifier: "GetDependencyOfRelationshipRequest" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c12, 0)),
+          properties: S.optional(__S(104, __c13, 0)),
+        }),
+      ).annotate({ identifier: "GetDependencyOfRelationshipResponse" });
+  }
+}
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -980,7 +1032,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "GetDependencyOfRelationshipsByServiceGroupRequest" });
   }
 }
-function __c16(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -998,7 +1050,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "GetServiceGroupMemberRelationshipRequest" });
   }
 }
-function __c17(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1006,8 +1058,8 @@ function __c17(j: number): any {
           sourceId: S.String,
           targetId: S.optional(S.String),
           sourceTenant: S.optional(S.String),
-          originInformation: S.optional(__S(89, __c11, 1)),
-          metadata: S.optional(__S(90, __c11, 2)),
+          originInformation: S.optional(__S(97, __c12, 1)),
+          metadata: S.optional(__S(98, __c12, 2)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceGroupMemberRelationshipPropertiesV2" });
@@ -1017,13 +1069,13 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(88, __c11, 0)),
-          properties: S.optional(__S(136, __c17, 0)),
+          systemData: S.optional(__S(96, __c12, 0)),
+          properties: S.optional(__S(152, __c19, 0)),
         }),
       ).annotate({ identifier: "GetServiceGroupMemberRelationshipResponse" });
   }
 }
-function __c18(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1042,20 +1094,20 @@ function __c18(j: number): any {
       ).annotate({ identifier: "ListContainsRelationshipByResourceGroupRequest" });
   }
 }
-function __c19(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(97, __c12, 1));
+      return S.Array(__S(128, __c16, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(152, __c19, 0),
+          value: __S(168, __c21, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainsRelationshipListResult" });
   }
 }
-function __c20(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

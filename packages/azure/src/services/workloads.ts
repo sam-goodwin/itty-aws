@@ -438,6 +438,10 @@ export interface CreateSapApplicationServerInstanceResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: SAPApplicationServerProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateSAPApplicationServerInstanceRequestTagsMap = {
@@ -814,6 +818,10 @@ export interface CreateSapCentralServerInstanceResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: SAPCentralServerProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateSapDatabaseInstanceRequestTagsMap = { [key: string]: string | undefined };
@@ -886,6 +894,10 @@ export interface CreateSapDatabaseInstanceResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: SAPDatabaseProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateSAPDatabaseInstanceRequestTagsMap = { [key: string]: string | undefined };
@@ -1177,6 +1189,10 @@ export interface CreateSapVirtualInstanceResponse {
   properties?: SAPVirtualInstanceProperties;
   /** The managed service identities assigned to this resource. */
   identity?: SAPVirtualInstanceIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateSAPVirtualInstanceRequestTagsMap = { [key: string]: string | undefined };
@@ -1407,7 +1423,12 @@ export interface DeleteSapApplicationServerInstanceRequest {
   /** The name of SAP Application Server instance resource. */
   applicationInstanceName: string;
 }
-export interface DeleteSapApplicationServerInstanceResponse {}
+export interface DeleteSapApplicationServerInstanceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSAPApplicationServerInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1500,7 +1521,12 @@ export interface DeleteSapCentralServerInstanceRequest {
   /** Central Services Instance resource name string modeled as parameter for auto generation to work correctly. */
   centralInstanceName: string;
 }
-export interface DeleteSapCentralServerInstanceResponse {}
+export interface DeleteSapCentralServerInstanceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSapDatabaseInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1511,7 +1537,12 @@ export interface DeleteSapDatabaseInstanceRequest {
   /** Database resource name string modeled as parameter for auto generation to work correctly. */
   databaseInstanceName: string;
 }
-export interface DeleteSapDatabaseInstanceResponse {}
+export interface DeleteSapDatabaseInstanceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSAPDatabaseInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1559,7 +1590,12 @@ export interface DeleteSapVirtualInstanceRequest {
   /** The name of the Virtual Instances for SAP solutions resource */
   sapVirtualInstanceName: string;
 }
-export interface DeleteSapVirtualInstanceResponse {}
+export interface DeleteSapVirtualInstanceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSAPVirtualInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2721,6 +2757,10 @@ export interface StartSapApplicationServerInstanceResponse {
   operations?: StartSapApplicationServerInstanceResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface StartSAPApplicationServerInstanceInstanceRequest {
   /** The ID of the target subscription. */
@@ -2816,6 +2856,10 @@ export interface StartSapCentralServerInstanceResponse {
   operations?: StartSapCentralServerInstanceResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface StartSapDatabaseInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2850,6 +2894,10 @@ export interface StartSapDatabaseInstanceResponse {
   operations?: StartSapDatabaseInstanceResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface StartSAPDatabaseInstanceInstanceRequest {
   /** The ID of the target subscription. */
@@ -2912,6 +2960,10 @@ export interface StartSapVirtualInstanceResponse {
   operations?: StartSapVirtualInstanceResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface StartSAPVirtualInstanceRequest {
   /** The ID of the target subscription. */
@@ -2976,6 +3028,10 @@ export interface StopSapApplicationServerInstanceResponse {
   operations?: StopSapApplicationServerInstanceResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface StopSAPApplicationServerInstanceInstanceRequest {
   /** The ID of the target subscription. */
@@ -3077,6 +3133,10 @@ export interface StopSapCentralServerInstanceResponse {
   operations?: StopSapCentralServerInstanceResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface StopSapDatabaseInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3113,6 +3173,10 @@ export interface StopSapDatabaseInstanceResponse {
   operations?: StopSapDatabaseInstanceResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface StopSAPDatabaseInstanceInstanceRequest {
   /** The ID of the target subscription. */
@@ -3179,6 +3243,10 @@ export interface StopSapVirtualInstanceResponse {
   operations?: StopSapVirtualInstanceResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface StopSAPVirtualInstanceRequest {
   /** The ID of the target subscription. */
@@ -3525,6 +3593,10 @@ export interface UpdateSapVirtualInstanceResponse {
   properties?: SAPVirtualInstanceProperties;
   /** The managed service identities assigned to this resource. */
   identity?: SAPVirtualInstanceIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Gets or sets the Resource tags. */
 export type UpdateSAPVirtualInstanceRequestTagsMap = { [key: string]: string | undefined };
@@ -3619,7 +3691,7 @@ export const CreateSapApplicationServerInstance: API.OperationMethod<
   CreateSapApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<CreateSapApplicationServerInstanceRequest>,
+  input: __S(232, __c29, 0) as any as S.Schema<CreateSapApplicationServerInstanceRequest>,
   output: __S(233, __c29, 1) as any as S.Schema<CreateSapApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3634,8 +3706,8 @@ export const CreateSAPApplicationServerInstance: API.OperationMethod<
   CreateSAPApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<CreateSAPApplicationServerInstanceRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<CreateSAPApplicationServerInstanceResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<CreateSAPApplicationServerInstanceRequest>,
+  output: __S(377, __c47, 1) as any as S.Schema<CreateSAPApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3649,8 +3721,8 @@ export const CreateSAPCentralInstance: API.OperationMethod<
   CreateSAPCentralInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c60, 0) as any as S.Schema<CreateSAPCentralInstanceRequest>,
-  output: __S(492, __c61, 4) as any as S.Schema<CreateSAPCentralInstanceResponse>,
+  input: __S(512, __c64, 0) as any as S.Schema<CreateSAPCentralInstanceRequest>,
+  output: __S(524, __c65, 4) as any as S.Schema<CreateSAPCentralInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3664,8 +3736,8 @@ export const CreateSapCentralServerInstance: API.OperationMethod<
   CreateSapCentralServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(616, __c77, 0) as any as S.Schema<CreateSapCentralServerInstanceRequest>,
-  output: __S(628, __c78, 4) as any as S.Schema<CreateSapCentralServerInstanceResponse>,
+  input: __S(648, __c81, 0) as any as S.Schema<CreateSapCentralServerInstanceRequest>,
+  output: __S(649, __c81, 1) as any as S.Schema<CreateSapCentralServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3679,8 +3751,8 @@ export const CreateSapDatabaseInstance: API.OperationMethod<
   CreateSapDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c90, 0) as any as S.Schema<CreateSapDatabaseInstanceRequest>,
-  output: __S(731, __c91, 3) as any as S.Schema<CreateSapDatabaseInstanceResponse>,
+  input: __S(752, __c94, 0) as any as S.Schema<CreateSapDatabaseInstanceRequest>,
+  output: __S(753, __c94, 1) as any as S.Schema<CreateSapDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3694,8 +3766,8 @@ export const CreateSAPDatabaseInstance: API.OperationMethod<
   CreateSAPDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(816, __c102, 0) as any as S.Schema<CreateSAPDatabaseInstanceRequest>,
-  output: __S(731, __c91, 3) as any as S.Schema<CreateSAPDatabaseInstanceResponse>,
+  input: __S(848, __c106, 0) as any as S.Schema<CreateSAPDatabaseInstanceRequest>,
+  output: __S(856, __c107, 0) as any as S.Schema<CreateSAPDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3709,8 +3781,8 @@ export const CreateSapLandscapeMonitor: API.OperationMethod<
   CreateSapLandscapeMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(904, __c113, 0) as any as S.Schema<CreateSapLandscapeMonitorRequest>,
-  output: __S(918, __c114, 6) as any as S.Schema<CreateSapLandscapeMonitorResponse>,
+  input: __S(944, __c118, 0) as any as S.Schema<CreateSapLandscapeMonitorRequest>,
+  output: __S(958, __c119, 6) as any as S.Schema<CreateSapLandscapeMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3724,8 +3796,8 @@ export const CreateSapVirtualInstance: API.OperationMethod<
   CreateSapVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(945, __c118, 1) as any as S.Schema<CreateSapVirtualInstanceRequest>,
-  output: __S(955, __c119, 3) as any as S.Schema<CreateSapVirtualInstanceResponse>,
+  input: __S(985, __c123, 1) as any as S.Schema<CreateSapVirtualInstanceRequest>,
+  output: __S(986, __c123, 2) as any as S.Schema<CreateSapVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3785,7 +3857,7 @@ export const DeleteSapApplicationServerInstance: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c20, 0) as any as S.Schema<DeleteSapApplicationServerInstanceRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteSapApplicationServerInstanceResponse>,
+  output: __S(168, __c21, 0) as any as S.Schema<DeleteSapApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3799,8 +3871,8 @@ export const DeleteSAPApplicationServerInstance: API.OperationMethod<
   DeleteSAPApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<DeleteSAPApplicationServerInstanceRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<DeleteSAPApplicationServerInstanceResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<DeleteSAPApplicationServerInstanceRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<DeleteSAPApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3814,8 +3886,8 @@ export const DeleteSAPCentralInstance: API.OperationMethod<
   DeleteSAPCentralInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DeleteSAPCentralInstanceRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<DeleteSAPCentralInstanceResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<DeleteSAPCentralInstanceRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<DeleteSAPCentralInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3829,8 +3901,8 @@ export const DeleteSapCentralServerInstance: API.OperationMethod<
   DeleteSapCentralServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<DeleteSapCentralServerInstanceRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteSapCentralServerInstanceResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<DeleteSapCentralServerInstanceRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<DeleteSapCentralServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3844,8 +3916,8 @@ export const DeleteSapDatabaseInstance: API.OperationMethod<
   DeleteSapDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<DeleteSapDatabaseInstanceRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteSapDatabaseInstanceResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<DeleteSapDatabaseInstanceRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<DeleteSapDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3859,8 +3931,8 @@ export const DeleteSAPDatabaseInstance: API.OperationMethod<
   DeleteSAPDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<DeleteSAPDatabaseInstanceRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<DeleteSAPDatabaseInstanceResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<DeleteSAPDatabaseInstanceRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<DeleteSAPDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3874,7 +3946,7 @@ export const DeleteSapLandscapeMonitor: API.OperationMethod<
   DeleteSapLandscapeMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<DeleteSapLandscapeMonitorRequest>,
+  input: __S(224, __c28, 0) as any as S.Schema<DeleteSapLandscapeMonitorRequest>,
   output: __S(32, __c4, 0) as any as S.Schema<DeleteSapLandscapeMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3889,8 +3961,8 @@ export const DeleteSapVirtualInstance: API.OperationMethod<
   DeleteSapVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<DeleteSapVirtualInstanceRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteSapVirtualInstanceResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<DeleteSapVirtualInstanceRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<DeleteSapVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3904,8 +3976,8 @@ export const DeleteSAPVirtualInstance: API.OperationMethod<
   DeleteSAPVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<DeleteSAPVirtualInstanceRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<DeleteSAPVirtualInstanceResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<DeleteSAPVirtualInstanceRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<DeleteSAPVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3919,7 +3991,7 @@ export const GetMonitor: API.OperationMethod<
   GetMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<GetMonitorRequest>,
+  input: __S(288, __c36, 0) as any as S.Schema<GetMonitorRequest>,
   output: __S(73, __c9, 1) as any as S.Schema<GetMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3934,7 +4006,7 @@ export const GetProviderInstance: API.OperationMethod<
   GetProviderInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<GetProviderInstanceRequest>,
+  input: __S(296, __c37, 0) as any as S.Schema<GetProviderInstanceRequest>,
   output: __S(98, __c12, 2) as any as S.Schema<GetProviderInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3949,8 +4021,8 @@ export const GetSapApplicationServerInstance: API.OperationMethod<
   GetSapApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<GetSapApplicationServerInstanceRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<GetSapApplicationServerInstanceResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<GetSapApplicationServerInstanceRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<GetSapApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3964,8 +4036,8 @@ export const GetSAPApplicationServerInstance: API.OperationMethod<
   GetSAPApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<GetSAPApplicationServerInstanceRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<GetSAPApplicationServerInstanceResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<GetSAPApplicationServerInstanceRequest>,
+  output: __S(377, __c47, 1) as any as S.Schema<GetSAPApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3979,8 +4051,8 @@ export const GetSAPCentralInstance: API.OperationMethod<
   GetSAPCentralInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<GetSAPCentralInstanceRequest>,
-  output: __S(492, __c61, 4) as any as S.Schema<GetSAPCentralInstanceResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<GetSAPCentralInstanceRequest>,
+  output: __S(524, __c65, 4) as any as S.Schema<GetSAPCentralInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3994,8 +4066,8 @@ export const GetSapCentralServerInstance: API.OperationMethod<
   GetSapCentralServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<GetSapCentralServerInstanceRequest>,
-  output: __S(628, __c78, 4) as any as S.Schema<GetSapCentralServerInstanceResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<GetSapCentralServerInstanceRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<GetSapCentralServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4009,8 +4081,8 @@ export const GetSapDatabaseInstance: API.OperationMethod<
   GetSapDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<GetSapDatabaseInstanceRequest>,
-  output: __S(731, __c91, 3) as any as S.Schema<GetSapDatabaseInstanceResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<GetSapDatabaseInstanceRequest>,
+  output: __S(856, __c107, 0) as any as S.Schema<GetSapDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4024,8 +4096,8 @@ export const GetSAPDatabaseInstance: API.OperationMethod<
   GetSAPDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<GetSAPDatabaseInstanceRequest>,
-  output: __S(731, __c91, 3) as any as S.Schema<GetSAPDatabaseInstanceResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<GetSAPDatabaseInstanceRequest>,
+  output: __S(856, __c107, 0) as any as S.Schema<GetSAPDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4039,8 +4111,8 @@ export const GetSapLandscapeMonitor: API.OperationMethod<
   GetSapLandscapeMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<GetSapLandscapeMonitorRequest>,
-  output: __S(918, __c114, 6) as any as S.Schema<GetSapLandscapeMonitorResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<GetSapLandscapeMonitorRequest>,
+  output: __S(958, __c119, 6) as any as S.Schema<GetSapLandscapeMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4054,8 +4126,8 @@ export const GetSapVirtualInstance: API.OperationMethod<
   GetSapVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<GetSapVirtualInstanceRequest>,
-  output: __S(955, __c119, 3) as any as S.Schema<GetSapVirtualInstanceResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<GetSapVirtualInstanceRequest>,
+  output: __S(400, __c50, 0) as any as S.Schema<GetSapVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4069,7 +4141,7 @@ export const GetSAPVirtualInstance: API.OperationMethod<
   GetSAPVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<GetSAPVirtualInstanceRequest>,
+  input: __S(408, __c51, 0) as any as S.Schema<GetSAPVirtualInstanceRequest>,
   output: __S(122, __c15, 2) as any as S.Schema<GetSAPVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4085,11 +4157,11 @@ export const InvokeSapVirtualInstanceAvailabilityZoneDetails: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    384,
-    __c48,
+    416,
+    __c52,
     0,
   ) as any as S.Schema<InvokeSapVirtualInstanceAvailabilityZoneDetailsRequest>,
-  output: __S(394, __c49, 2) as any as S.Schema<SAPAvailabilityZoneDetailsResult>,
+  output: __S(426, __c53, 2) as any as S.Schema<SAPAvailabilityZoneDetailsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4103,8 +4175,8 @@ export const InvokeSapVirtualInstanceDiskConfigurations: API.OperationMethod<
   InvokeSapVirtualInstanceDiskConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c50, 0) as any as S.Schema<InvokeSapVirtualInstanceDiskConfigurationsRequest>,
-  output: __S(414, __c51, 6) as any as S.Schema<SAPDiskConfigurationsResult>,
+  input: __S(432, __c54, 0) as any as S.Schema<InvokeSapVirtualInstanceDiskConfigurationsRequest>,
+  output: __S(446, __c55, 6) as any as S.Schema<SAPDiskConfigurationsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4118,8 +4190,8 @@ export const InvokeSapVirtualInstanceSapSupportedSku: API.OperationMethod<
   InvokeSapVirtualInstanceSapSupportedSkuError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<InvokeSapVirtualInstanceSapSupportedSkuRequest>,
-  output: __S(426, __c53, 2) as any as S.Schema<SAPSupportedResourceSkusResult>,
+  input: __S(448, __c56, 0) as any as S.Schema<InvokeSapVirtualInstanceSapSupportedSkuRequest>,
+  output: __S(458, __c57, 2) as any as S.Schema<SAPSupportedResourceSkusResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4134,11 +4206,11 @@ export const InvokeSapVirtualInstanceSizingRecommendations: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    432,
-    __c54,
+    464,
+    __c58,
     0,
   ) as any as S.Schema<InvokeSapVirtualInstanceSizingRecommendationsRequest>,
-  output: __S(440, __c55, 0) as any as S.Schema<SAPSizingRecommendationResult>,
+  output: __S(472, __c59, 0) as any as S.Schema<SAPSizingRecommendationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4152,8 +4224,8 @@ export const ListMonitorByResourceGroup: API.OperationMethod<
   ListMonitorByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c56, 0) as any as S.Schema<ListMonitorByResourceGroupRequest>,
-  output: __S(457, __c57, 1) as any as S.Schema<MonitorListResult>,
+  input: __S(480, __c60, 0) as any as S.Schema<ListMonitorByResourceGroupRequest>,
+  output: __S(489, __c61, 1) as any as S.Schema<MonitorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4167,8 +4239,8 @@ export const ListMonitors: API.OperationMethod<
   ListMonitorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c58, 0) as any as S.Schema<ListMonitorsRequest>,
-  output: __S(457, __c57, 1) as any as S.Schema<MonitorListResult>,
+  input: __S(496, __c62, 0) as any as S.Schema<ListMonitorsRequest>,
+  output: __S(489, __c61, 1) as any as S.Schema<MonitorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4182,8 +4254,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(472, __c59, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(476, __c59, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(504, __c63, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(508, __c63, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4197,8 +4269,8 @@ export const ListProviderInstances: API.OperationMethod<
   ListProviderInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c64, 0) as any as S.Schema<ListProviderInstancesRequest>,
-  output: __S(514, __c64, 2) as any as S.Schema<ProviderInstanceListResult>,
+  input: __S(544, __c68, 0) as any as S.Schema<ListProviderInstancesRequest>,
+  output: __S(546, __c68, 2) as any as S.Schema<ProviderInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4212,8 +4284,8 @@ export const ListSapApplicationServerInstances: API.OperationMethod<
   ListSapApplicationServerInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(520, __c65, 0) as any as S.Schema<ListSapApplicationServerInstancesRequest>,
-  output: __S(522, __c65, 2) as any as S.Schema<SAPApplicationServerInstanceListResult>,
+  input: __S(552, __c69, 0) as any as S.Schema<ListSapApplicationServerInstancesRequest>,
+  output: __S(554, __c69, 2) as any as S.Schema<SAPApplicationServerInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4227,8 +4299,8 @@ export const ListSAPApplicationServerInstances: API.OperationMethod<
   ListSAPApplicationServerInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c66, 0) as any as S.Schema<ListSAPApplicationServerInstancesRequest>,
-  output: __S(530, __c66, 2) as any as S.Schema<SAPApplicationServerInstanceList>,
+  input: __S(560, __c70, 0) as any as S.Schema<ListSAPApplicationServerInstancesRequest>,
+  output: __S(562, __c70, 2) as any as S.Schema<SAPApplicationServerInstanceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4242,8 +4314,8 @@ export const ListSAPCentralInstances: API.OperationMethod<
   ListSAPCentralInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(536, __c67, 0) as any as S.Schema<ListSAPCentralInstancesRequest>,
-  output: __S(538, __c67, 2) as any as S.Schema<SAPCentralInstanceList>,
+  input: __S(568, __c71, 0) as any as S.Schema<ListSAPCentralInstancesRequest>,
+  output: __S(570, __c71, 2) as any as S.Schema<SAPCentralInstanceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4257,8 +4329,8 @@ export const ListSapCentralServerInstances: API.OperationMethod<
   ListSapCentralServerInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c68, 0) as any as S.Schema<ListSapCentralServerInstancesRequest>,
-  output: __S(546, __c68, 2) as any as S.Schema<SAPCentralServerInstanceListResult>,
+  input: __S(576, __c72, 0) as any as S.Schema<ListSapCentralServerInstancesRequest>,
+  output: __S(578, __c72, 2) as any as S.Schema<SAPCentralServerInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4272,8 +4344,8 @@ export const ListSapDatabaseInstances: API.OperationMethod<
   ListSapDatabaseInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(552, __c69, 0) as any as S.Schema<ListSapDatabaseInstancesRequest>,
-  output: __S(553, __c69, 1) as any as S.Schema<SAPDatabaseInstanceListResult>,
+  input: __S(584, __c73, 0) as any as S.Schema<ListSapDatabaseInstancesRequest>,
+  output: __S(585, __c73, 1) as any as S.Schema<SAPDatabaseInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4287,8 +4359,8 @@ export const ListSAPDatabaseInstances: API.OperationMethod<
   ListSAPDatabaseInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(568, __c71, 0) as any as S.Schema<ListSAPDatabaseInstancesRequest>,
-  output: __S(569, __c71, 1) as any as S.Schema<SAPDatabaseInstanceList>,
+  input: __S(600, __c75, 0) as any as S.Schema<ListSAPDatabaseInstancesRequest>,
+  output: __S(601, __c75, 1) as any as S.Schema<SAPDatabaseInstanceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4302,8 +4374,8 @@ export const ListSapLandscapeMonitor: API.OperationMethod<
   ListSapLandscapeMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c72, 0) as any as S.Schema<ListSapLandscapeMonitorRequest>,
-  output: __S(578, __c72, 2) as any as S.Schema<SapLandscapeMonitorListResult>,
+  input: __S(608, __c76, 0) as any as S.Schema<ListSapLandscapeMonitorRequest>,
+  output: __S(610, __c76, 2) as any as S.Schema<SapLandscapeMonitorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4317,8 +4389,8 @@ export const ListSapVirtualInstanceByResourceGroup: API.OperationMethod<
   ListSapVirtualInstanceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(584, __c73, 0) as any as S.Schema<ListSapVirtualInstanceByResourceGroupRequest>,
-  output: __S(593, __c74, 1) as any as S.Schema<SAPVirtualInstanceListResult>,
+  input: __S(616, __c77, 0) as any as S.Schema<ListSapVirtualInstanceByResourceGroupRequest>,
+  output: __S(625, __c78, 1) as any as S.Schema<SAPVirtualInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4332,8 +4404,8 @@ export const ListSAPVirtualInstanceByResourceGroup: API.OperationMethod<
   ListSAPVirtualInstanceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(600, __c75, 0) as any as S.Schema<ListSAPVirtualInstanceByResourceGroupRequest>,
-  output: __S(609, __c76, 1) as any as S.Schema<SAPVirtualInstanceList>,
+  input: __S(632, __c79, 0) as any as S.Schema<ListSAPVirtualInstanceByResourceGroupRequest>,
+  output: __S(641, __c80, 1) as any as S.Schema<SAPVirtualInstanceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4347,8 +4419,8 @@ export const ListSapVirtualInstanceBySubscription: API.OperationMethod<
   ListSapVirtualInstanceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(632, __c79, 0) as any as S.Schema<ListSapVirtualInstanceBySubscriptionRequest>,
-  output: __S(593, __c74, 1) as any as S.Schema<SAPVirtualInstanceListResult>,
+  input: __S(664, __c83, 0) as any as S.Schema<ListSapVirtualInstanceBySubscriptionRequest>,
+  output: __S(625, __c78, 1) as any as S.Schema<SAPVirtualInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4362,8 +4434,8 @@ export const ListSAPVirtualInstanceBySubscription: API.OperationMethod<
   ListSAPVirtualInstanceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c80, 0) as any as S.Schema<ListSAPVirtualInstanceBySubscriptionRequest>,
-  output: __S(609, __c76, 1) as any as S.Schema<SAPVirtualInstanceList>,
+  input: __S(672, __c84, 0) as any as S.Schema<ListSAPVirtualInstanceBySubscriptionRequest>,
+  output: __S(641, __c80, 1) as any as S.Schema<SAPVirtualInstanceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4377,8 +4449,8 @@ export const SAPAvailabilityZoneDetails: API.OperationMethod<
   SAPAvailabilityZoneDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(648, __c81, 0) as any as S.Schema<SAPAvailabilityZoneDetailsRequest>,
-  output: __S(394, __c49, 2) as any as S.Schema<SAPAvailabilityZoneDetailsResult>,
+  input: __S(680, __c85, 0) as any as S.Schema<SAPAvailabilityZoneDetailsRequest>,
+  output: __S(426, __c53, 2) as any as S.Schema<SAPAvailabilityZoneDetailsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4392,8 +4464,8 @@ export const SAPDiskConfigurations: API.OperationMethod<
   SAPDiskConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c82, 0) as any as S.Schema<SAPDiskConfigurationsRequest>,
-  output: __S(414, __c51, 6) as any as S.Schema<SAPDiskConfigurationsResult_2>,
+  input: __S(688, __c86, 0) as any as S.Schema<SAPDiskConfigurationsRequest>,
+  output: __S(446, __c55, 6) as any as S.Schema<SAPDiskConfigurationsResult_2>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4407,8 +4479,8 @@ export const SAPSizingRecommendations: API.OperationMethod<
   SAPSizingRecommendationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(664, __c83, 0) as any as S.Schema<SAPSizingRecommendationsRequest>,
-  output: __S(440, __c55, 0) as any as S.Schema<SAPSizingRecommendationResult_2>,
+  input: __S(696, __c87, 0) as any as S.Schema<SAPSizingRecommendationsRequest>,
+  output: __S(472, __c59, 0) as any as S.Schema<SAPSizingRecommendationResult_2>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4422,8 +4494,8 @@ export const SAPSupportedSku2: API.OperationMethod<
   SAPSupportedSku2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c84, 0) as any as S.Schema<SAPSupportedSkuRequest>,
-  output: __S(426, __c53, 2) as any as S.Schema<SAPSupportedResourceSkusResult>,
+  input: __S(704, __c88, 0) as any as S.Schema<SAPSupportedSkuRequest>,
+  output: __S(458, __c57, 2) as any as S.Schema<SAPSupportedResourceSkusResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4437,8 +4509,8 @@ export const StartSapApplicationServerInstance: API.OperationMethod<
   StartSapApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(680, __c85, 0) as any as S.Schema<StartSapApplicationServerInstanceRequest>,
-  output: __S(691, __c86, 3) as any as S.Schema<StartSapApplicationServerInstanceResponse>,
+  input: __S(712, __c89, 0) as any as S.Schema<StartSapApplicationServerInstanceRequest>,
+  output: __S(723, __c90, 3) as any as S.Schema<StartSapApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4452,8 +4524,8 @@ export const StartSAPApplicationServerInstanceInstance: API.OperationMethod<
   StartSAPApplicationServerInstanceInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(696, __c87, 0) as any as S.Schema<StartSAPApplicationServerInstanceInstanceRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<StartSAPApplicationServerInstanceInstanceResponse>,
+  input: __S(728, __c91, 0) as any as S.Schema<StartSAPApplicationServerInstanceInstanceRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<StartSAPApplicationServerInstanceInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4467,8 +4539,8 @@ export const StartSAPCentralInstanceInstance: API.OperationMethod<
   StartSAPCentralInstanceInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c88, 0) as any as S.Schema<StartSAPCentralInstanceInstanceRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<StartSAPCentralInstanceInstanceResponse>,
+  input: __S(736, __c92, 0) as any as S.Schema<StartSAPCentralInstanceInstanceRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<StartSAPCentralInstanceInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4482,8 +4554,8 @@ export const StartSapCentralServerInstance: API.OperationMethod<
   StartSapCentralServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(712, __c89, 0) as any as S.Schema<StartSapCentralServerInstanceRequest>,
-  output: __S(691, __c86, 3) as any as S.Schema<StartSapCentralServerInstanceResponse>,
+  input: __S(744, __c93, 0) as any as S.Schema<StartSapCentralServerInstanceRequest>,
+  output: __S(723, __c90, 3) as any as S.Schema<StartSapCentralServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4497,8 +4569,8 @@ export const StartSapDatabaseInstance: API.OperationMethod<
   StartSapDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c92, 0) as any as S.Schema<StartSapDatabaseInstanceRequest>,
-  output: __S(691, __c86, 3) as any as S.Schema<StartSapDatabaseInstanceResponse>,
+  input: __S(768, __c96, 0) as any as S.Schema<StartSapDatabaseInstanceRequest>,
+  output: __S(723, __c90, 3) as any as S.Schema<StartSapDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4512,8 +4584,8 @@ export const StartSAPDatabaseInstanceInstance: API.OperationMethod<
   StartSAPDatabaseInstanceInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(744, __c93, 0) as any as S.Schema<StartSAPDatabaseInstanceInstanceRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<StartSAPDatabaseInstanceInstanceResponse>,
+  input: __S(776, __c97, 0) as any as S.Schema<StartSAPDatabaseInstanceInstanceRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<StartSAPDatabaseInstanceInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4527,8 +4599,8 @@ export const StartSapVirtualInstance: API.OperationMethod<
   StartSapVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c94, 0) as any as S.Schema<StartSapVirtualInstanceRequest>,
-  output: __S(691, __c86, 3) as any as S.Schema<StartSapVirtualInstanceResponse>,
+  input: __S(784, __c98, 0) as any as S.Schema<StartSapVirtualInstanceRequest>,
+  output: __S(723, __c90, 3) as any as S.Schema<StartSapVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4542,8 +4614,8 @@ export const StartSAPVirtualInstance: API.OperationMethod<
   StartSAPVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(760, __c95, 0) as any as S.Schema<StartSAPVirtualInstanceRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<StartSAPVirtualInstanceResponse>,
+  input: __S(792, __c99, 0) as any as S.Schema<StartSAPVirtualInstanceRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<StartSAPVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4557,8 +4629,8 @@ export const StopSapApplicationServerInstance: API.OperationMethod<
   StopSapApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c96, 0) as any as S.Schema<StopSapApplicationServerInstanceRequest>,
-  output: __S(691, __c86, 3) as any as S.Schema<StopSapApplicationServerInstanceResponse>,
+  input: __S(800, __c100, 0) as any as S.Schema<StopSapApplicationServerInstanceRequest>,
+  output: __S(723, __c90, 3) as any as S.Schema<StopSapApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4572,8 +4644,8 @@ export const StopSAPApplicationServerInstanceInstance: API.OperationMethod<
   StopSAPApplicationServerInstanceInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(776, __c97, 0) as any as S.Schema<StopSAPApplicationServerInstanceInstanceRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<StopSAPApplicationServerInstanceInstanceResponse>,
+  input: __S(808, __c101, 0) as any as S.Schema<StopSAPApplicationServerInstanceInstanceRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<StopSAPApplicationServerInstanceInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4587,8 +4659,8 @@ export const StopSAPCentralInstanceInstance: API.OperationMethod<
   StopSAPCentralInstanceInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c98, 0) as any as S.Schema<StopSAPCentralInstanceInstanceRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<StopSAPCentralInstanceInstanceResponse>,
+  input: __S(816, __c102, 0) as any as S.Schema<StopSAPCentralInstanceInstanceRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<StopSAPCentralInstanceInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4602,8 +4674,8 @@ export const StopSapCentralServerInstance: API.OperationMethod<
   StopSapCentralServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(792, __c99, 0) as any as S.Schema<StopSapCentralServerInstanceRequest>,
-  output: __S(691, __c86, 3) as any as S.Schema<StopSapCentralServerInstanceResponse>,
+  input: __S(824, __c103, 0) as any as S.Schema<StopSapCentralServerInstanceRequest>,
+  output: __S(723, __c90, 3) as any as S.Schema<StopSapCentralServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4617,8 +4689,8 @@ export const StopSapDatabaseInstance: API.OperationMethod<
   StopSapDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c100, 0) as any as S.Schema<StopSapDatabaseInstanceRequest>,
-  output: __S(691, __c86, 3) as any as S.Schema<StopSapDatabaseInstanceResponse>,
+  input: __S(832, __c104, 0) as any as S.Schema<StopSapDatabaseInstanceRequest>,
+  output: __S(723, __c90, 3) as any as S.Schema<StopSapDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4632,8 +4704,8 @@ export const StopSAPDatabaseInstanceInstance: API.OperationMethod<
   StopSAPDatabaseInstanceInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(808, __c101, 0) as any as S.Schema<StopSAPDatabaseInstanceInstanceRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<StopSAPDatabaseInstanceInstanceResponse>,
+  input: __S(840, __c105, 0) as any as S.Schema<StopSAPDatabaseInstanceInstanceRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<StopSAPDatabaseInstanceInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4647,8 +4719,8 @@ export const StopSapVirtualInstance: API.OperationMethod<
   StopSapVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(824, __c103, 0) as any as S.Schema<StopSapVirtualInstanceRequest>,
-  output: __S(691, __c86, 3) as any as S.Schema<StopSapVirtualInstanceResponse>,
+  input: __S(864, __c108, 0) as any as S.Schema<StopSapVirtualInstanceRequest>,
+  output: __S(723, __c90, 3) as any as S.Schema<StopSapVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4662,8 +4734,8 @@ export const StopSAPVirtualInstance: API.OperationMethod<
   StopSAPVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c104, 0) as any as S.Schema<StopSAPVirtualInstanceRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<StopSAPVirtualInstanceResponse>,
+  input: __S(872, __c109, 0) as any as S.Schema<StopSAPVirtualInstanceRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<StopSAPVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4677,7 +4749,7 @@ export const UpdateMonitor: API.OperationMethod<
   UpdateMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(840, __c105, 0) as any as S.Schema<UpdateMonitorRequest>,
+  input: __S(880, __c110, 0) as any as S.Schema<UpdateMonitorRequest>,
   output: __S(73, __c9, 1) as any as S.Schema<UpdateMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4692,8 +4764,8 @@ export const UpdateSapApplicationServerInstance: API.OperationMethod<
   UpdateSapApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(848, __c106, 0) as any as S.Schema<UpdateSapApplicationServerInstanceRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<UpdateSapApplicationServerInstanceResponse>,
+  input: __S(888, __c111, 0) as any as S.Schema<UpdateSapApplicationServerInstanceRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<UpdateSapApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4707,8 +4779,8 @@ export const UpdateSAPApplicationServerInstance: API.OperationMethod<
   UpdateSAPApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(856, __c107, 0) as any as S.Schema<UpdateSAPApplicationServerInstanceRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<UpdateSAPApplicationServerInstanceResponse>,
+  input: __S(896, __c112, 0) as any as S.Schema<UpdateSAPApplicationServerInstanceRequest>,
+  output: __S(377, __c47, 1) as any as S.Schema<UpdateSAPApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4722,8 +4794,8 @@ export const UpdateSAPCentralInstance: API.OperationMethod<
   UpdateSAPCentralInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c108, 0) as any as S.Schema<UpdateSAPCentralInstanceRequest>,
-  output: __S(492, __c61, 4) as any as S.Schema<UpdateSAPCentralInstanceResponse>,
+  input: __S(904, __c113, 0) as any as S.Schema<UpdateSAPCentralInstanceRequest>,
+  output: __S(524, __c65, 4) as any as S.Schema<UpdateSAPCentralInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4737,8 +4809,8 @@ export const UpdateSapCentralServerInstance: API.OperationMethod<
   UpdateSapCentralServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(872, __c109, 0) as any as S.Schema<UpdateSapCentralServerInstanceRequest>,
-  output: __S(628, __c78, 4) as any as S.Schema<UpdateSapCentralServerInstanceResponse>,
+  input: __S(912, __c114, 0) as any as S.Schema<UpdateSapCentralServerInstanceRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<UpdateSapCentralServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4752,8 +4824,8 @@ export const UpdateSapDatabaseInstance: API.OperationMethod<
   UpdateSapDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(880, __c110, 0) as any as S.Schema<UpdateSapDatabaseInstanceRequest>,
-  output: __S(731, __c91, 3) as any as S.Schema<UpdateSapDatabaseInstanceResponse>,
+  input: __S(920, __c115, 0) as any as S.Schema<UpdateSapDatabaseInstanceRequest>,
+  output: __S(856, __c107, 0) as any as S.Schema<UpdateSapDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4767,8 +4839,8 @@ export const UpdateSAPDatabaseInstance: API.OperationMethod<
   UpdateSAPDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(888, __c111, 0) as any as S.Schema<UpdateSAPDatabaseInstanceRequest>,
-  output: __S(731, __c91, 3) as any as S.Schema<UpdateSAPDatabaseInstanceResponse>,
+  input: __S(928, __c116, 0) as any as S.Schema<UpdateSAPDatabaseInstanceRequest>,
+  output: __S(856, __c107, 0) as any as S.Schema<UpdateSAPDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4782,8 +4854,8 @@ export const UpdateSapLandscapeMonitor: API.OperationMethod<
   UpdateSapLandscapeMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c112, 0) as any as S.Schema<UpdateSapLandscapeMonitorRequest>,
-  output: __S(918, __c114, 6) as any as S.Schema<UpdateSapLandscapeMonitorResponse>,
+  input: __S(936, __c117, 0) as any as S.Schema<UpdateSapLandscapeMonitorRequest>,
+  output: __S(958, __c119, 6) as any as S.Schema<UpdateSapLandscapeMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4797,8 +4869,8 @@ export const UpdateSapVirtualInstance: API.OperationMethod<
   UpdateSapVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(929, __c116, 1) as any as S.Schema<UpdateSapVirtualInstanceRequest>,
-  output: __S(955, __c119, 3) as any as S.Schema<UpdateSapVirtualInstanceResponse>,
+  input: __S(969, __c121, 1) as any as S.Schema<UpdateSapVirtualInstanceRequest>,
+  output: __S(970, __c121, 2) as any as S.Schema<UpdateSapVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4812,7 +4884,7 @@ export const UpdateSAPVirtualInstance: API.OperationMethod<
   UpdateSAPVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(936, __c117, 0) as any as S.Schema<UpdateSAPVirtualInstanceRequest>,
+  input: __S(976, __c122, 0) as any as S.Schema<UpdateSAPVirtualInstanceRequest>,
   output: __S(122, __c15, 2) as any as S.Schema<UpdateSAPVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5129,7 +5201,7 @@ function __c15(j: number): any {
           health: S.optional(S.String),
           state: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          errors: S.optional(__S(258, __c32, 2)),
+          errors: S.optional(__S(266, __c33, 2)),
         }),
       ).annotate({ identifier: "SAPVirtualInstanceProperties_2" });
     case 2:
@@ -5270,6 +5342,17 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteSapApplicationServerInstanceResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
@@ -5285,10 +5368,10 @@ function __c21(j: number): any {
       ).annotate({ identifier: "DeleteSAPApplicationServerInstanceRequest" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(177, __c22, 1)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(185, __c23, 1)));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5298,12 +5381,12 @@ function __c22(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(176, __c22, 0)),
+          operations: S.optional(__S(184, __c23, 0)),
           error: S.optional(__S(147, __c18, 3)),
         }),
       ).annotate({ identifier: "OperationStatusResult_2" });
     case 2:
-      return S.Array(__S(177, __c22, 1));
+      return S.Array(__S(185, __c23, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5313,13 +5396,13 @@ function __c22(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(178, __c22, 2)),
+          operations: S.optional(__S(186, __c23, 2)),
           error: S.optional(__S(147, __c18, 3)),
         }),
       ).annotate({ identifier: "DeleteSAPApplicationServerInstanceResponse" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5339,7 +5422,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "DeleteSAPCentralInstanceRequest" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5359,7 +5442,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "DeleteSapCentralServerInstanceRequest" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5379,7 +5462,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "DeleteSapDatabaseInstanceRequest" });
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5399,7 +5482,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "DeleteSAPDatabaseInstanceRequest" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5418,7 +5501,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "DeleteSapLandscapeMonitorRequest" });
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5439,9 +5522,23 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateSapApplicationServerInstanceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          tags: S.optional(__S(64, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(240, __c30, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateSapApplicationServerInstanceResponse" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5456,43 +5553,31 @@ function __c29(j: number): any {
           icmHttpPort: S.optional(S.Number),
           icmHttpsPort: S.optional(S.Number),
           dispatcherStatus: S.optional(S.String),
-          loadBalancerDetails: S.optional(__S(248, __c31, 0)),
-          vmDetails: S.optional(__S(241, __c30, 1)),
+          loadBalancerDetails: S.optional(__S(256, __c32, 0)),
+          vmDetails: S.optional(__S(249, __c31, 1)),
           status: S.optional(S.String),
           health: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          errors: S.optional(__S(258, __c32, 2)),
+          errors: S.optional(__S(266, __c33, 2)),
         }),
       ).annotate({ identifier: "SAPApplicationServerProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(24, __c3, 0)),
-          tags: S.optional(__S(64, __c8, 0)),
-          location: S.String,
-          properties: S.optional(__S(232, __c29, 0)),
-        }),
-      ).annotate({ identifier: "CreateSapApplicationServerInstanceResponse" });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           virtualMachineId: S.optional(S.String),
-          storageDetails: S.optional(__S(249, __c31, 1)),
+          storageDetails: S.optional(__S(257, __c32, 1)),
         }),
       ).annotate({ identifier: "ApplicationServerVmDetails" });
     case 1:
-      return S.Array(__S(240, __c30, 0));
+      return S.Array(__S(248, __c31, 0));
   }
 }
-function __c31(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5501,30 +5586,30 @@ function __c31(j: number): any {
         }),
       ).annotate({ identifier: "LoadBalancerDetails" });
     case 1:
-      return S.Array(__S(248, __c31, 0));
+      return S.Array(__S(256, __c32, 0));
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(257, __c32, 1)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(265, __c33, 1)));
     case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
-          details: S.optional(__S(256, __c32, 0)),
+          details: S.optional(__S(264, __c33, 0)),
         }),
       ).annotate({ identifier: "ErrorDefinition" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(257, __c32, 1)),
+          properties: S.optional(__S(265, __c33, 1)),
         }),
       ).annotate({ identifier: "SAPVirtualInstanceError" });
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5543,7 +5628,7 @@ function __c33(j: number): any {
       ).annotate({ identifier: "DeleteSapVirtualInstanceRequest" });
   }
 }
-function __c34(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5562,7 +5647,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "DeleteSAPVirtualInstanceRequest" });
   }
 }
-function __c35(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5581,7 +5666,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "GetMonitorRequest" });
   }
 }
-function __c36(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5601,7 +5686,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "GetProviderInstanceRequest" });
   }
 }
-function __c37(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5621,7 +5706,23 @@ function __c37(j: number): any {
       ).annotate({ identifier: "GetSapApplicationServerInstanceRequest" });
   }
 }
-function __c38(j: number): any {
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          tags: S.optional(__S(64, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(240, __c30, 0)),
+        }),
+      ).annotate({ identifier: "GetSapApplicationServerInstanceResponse" });
+  }
+}
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5641,7 +5742,7 @@ function __c38(j: number): any {
       ).annotate({ identifier: "GetSAPApplicationServerInstanceRequest" });
   }
 }
-function __c39(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5661,7 +5762,7 @@ function __c39(j: number): any {
       ).annotate({ identifier: "GetSAPCentralInstanceRequest" });
   }
 }
-function __c40(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5681,7 +5782,23 @@ function __c40(j: number): any {
       ).annotate({ identifier: "GetSapCentralServerInstanceRequest" });
   }
 }
-function __c41(j: number): any {
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          tags: S.optional(__S(64, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(659, __c82, 3)),
+        }),
+      ).annotate({ identifier: "GetSapCentralServerInstanceResponse" });
+  }
+}
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5701,7 +5818,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "GetSapDatabaseInstanceRequest" });
   }
 }
-function __c42(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5721,7 +5838,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "GetSAPDatabaseInstanceRequest" });
   }
 }
-function __c43(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5744,7 +5861,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "CreateSAPApplicationServerInstanceRequest" });
   }
 }
-function __c44(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5758,12 +5875,12 @@ function __c44(j: number): any {
           gatewayPort: S.optional(S.NullOr(S.Number)),
           icmHttpPort: S.optional(S.NullOr(S.Number)),
           icmHttpsPort: S.optional(S.NullOr(S.Number)),
-          loadBalancerDetails: S.optional(__S(248, __c31, 0)),
-          vmDetails: S.optional(__S(241, __c30, 1)),
+          loadBalancerDetails: S.optional(__S(256, __c32, 0)),
+          vmDetails: S.optional(__S(249, __c31, 1)),
           status: S.optional(S.String),
           health: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          errors: S.optional(__S(258, __c32, 2)),
+          errors: S.optional(__S(266, __c33, 2)),
         }),
       ).annotate({ identifier: "SAPApplicationServerProperties_2" });
     case 1:
@@ -5775,12 +5892,12 @@ function __c44(j: number): any {
           systemData: S.optional(__S(24, __c3, 0)),
           tags: S.optional(__S(64, __c8, 0)),
           location: S.String,
-          properties: S.optional(__S(352, __c44, 0)),
+          properties: S.optional(__S(376, __c47, 0)),
         }),
       ).annotate({ identifier: "CreateSAPApplicationServerInstanceResponse" });
   }
 }
-function __c45(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5799,7 +5916,7 @@ function __c45(j: number): any {
       ).annotate({ identifier: "GetSapLandscapeMonitorRequest" });
   }
 }
-function __c46(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5818,7 +5935,24 @@ function __c46(j: number): any {
       ).annotate({ identifier: "GetSapVirtualInstanceRequest" });
   }
 }
-function __c47(j: number): any {
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          tags: S.optional(__S(64, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(993, __c124, 1)),
+          identity: S.optional(__S(994, __c124, 2)),
+        }),
+      ).annotate({ identifier: "GetSapVirtualInstanceResponse" });
+  }
+}
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5837,7 +5971,7 @@ function __c47(j: number): any {
       ).annotate({ identifier: "GetSAPVirtualInstanceRequest" });
   }
 }
-function __c48(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5858,7 +5992,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "InvokeSapVirtualInstanceAvailabilityZoneDetailsRequest" });
   }
 }
-function __c49(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5868,16 +6002,16 @@ function __c49(j: number): any {
         }),
       ).annotate({ identifier: "SAPAvailabilityZonePair" });
     case 1:
-      return S.Array(__S(392, __c49, 0));
+      return S.Array(__S(424, __c53, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          availabilityZonePairs: S.optional(__S(393, __c49, 1)),
+          availabilityZonePairs: S.optional(__S(425, __c53, 1)),
         }),
       ).annotate({ identifier: "SAPAvailabilityZoneDetailsResult" });
   }
 }
-function __c50(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5901,7 +6035,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "InvokeSapVirtualInstanceDiskConfigurationsRequest" });
   }
 }
-function __c51(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5914,13 +6048,13 @@ function __c51(j: number): any {
         S.Struct({
           count: S.optional(S.Number),
           sizeGB: S.optional(S.Number),
-          sku: S.optional(__S(408, __c51, 0)),
+          sku: S.optional(__S(440, __c55, 0)),
         }),
       ).annotate({ identifier: "DiskVolumeConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(__S(408, __c51, 0)),
+          sku: S.optional(__S(440, __c55, 0)),
           sizeGB: S.optional(S.Number),
           minimumSupportedDiskCount: S.optional(S.Number),
           maximumSupportedDiskCount: S.optional(S.Number),
@@ -5930,25 +6064,25 @@ function __c51(j: number): any {
         }),
       ).annotate({ identifier: "DiskDetails" });
     case 3:
-      return S.Array(__S(410, __c51, 2));
+      return S.Array(__S(442, __c55, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          recommendedConfiguration: S.optional(__S(409, __c51, 1)),
-          supportedConfigurations: S.optional(__S(411, __c51, 3)),
+          recommendedConfiguration: S.optional(__S(441, __c55, 1)),
+          supportedConfigurations: S.optional(__S(443, __c55, 3)),
         }),
       ).annotate({ identifier: "SAPDiskConfiguration" });
     case 5:
-      return S.Record(S.String, __S(412, __c51, 4));
+      return S.Record(S.String, __S(444, __c55, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          volumeConfigurations: S.optional(__S(413, __c51, 5)),
+          volumeConfigurations: S.optional(__S(445, __c55, 5)),
         }),
       ).annotate({ identifier: "SAPDiskConfigurationsResult" });
   }
 }
-function __c52(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5972,7 +6106,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "InvokeSapVirtualInstanceSapSupportedSkuRequest" });
   }
 }
-function __c53(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5983,16 +6117,16 @@ function __c53(j: number): any {
         }),
       ).annotate({ identifier: "SAPSupportedSku" });
     case 1:
-      return S.Array(__S(424, __c53, 0));
+      return S.Array(__S(456, __c57, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          supportedSkus: S.optional(__S(425, __c53, 1)),
+          supportedSkus: S.optional(__S(457, __c57, 1)),
         }),
       ).annotate({ identifier: "SAPSupportedResourceSkusResult" });
   }
 }
-function __c54(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6019,7 +6153,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "InvokeSapVirtualInstanceSizingRecommendationsRequest" });
   }
 }
-function __c55(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6029,7 +6163,7 @@ function __c55(j: number): any {
       ).annotate({ identifier: "SAPSizingRecommendationResult" });
   }
 }
-function __c56(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6047,20 +6181,20 @@ function __c56(j: number): any {
       ).annotate({ identifier: "ListMonitorByResourceGroupRequest" });
   }
 }
-function __c57(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(73, __c9, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(456, __c57, 0)),
+          value: S.optional(__S(488, __c61, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MonitorListResult" });
   }
 }
-function __c58(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6077,7 +6211,7 @@ function __c58(j: number): any {
       ).annotate({ identifier: "ListMonitorsRequest" });
   }
 }
-function __c59(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6104,23 +6238,23 @@ function __c59(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(473, __c59, 1)),
+          display: S.optional(__S(505, __c63, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(474, __c59, 2));
+      return S.Array(__S(506, __c63, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(475, __c59, 3)),
+          value: S.optional(__S(507, __c63, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c60(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6131,7 +6265,7 @@ function __c60(j: number): any {
           centralInstanceName: S.String.pipe(T.Label()),
           tags: S.optional(__S(64, __c8, 0)),
           location: S.String,
-          properties: S.optional(__S(496, __c62, 0)),
+          properties: S.optional(__S(528, __c66, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6143,7 +6277,7 @@ function __c60(j: number): any {
       ).annotate({ identifier: "CreateSAPCentralInstanceRequest" });
   }
 }
-function __c61(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6178,18 +6312,18 @@ function __c61(j: number): any {
         S.Struct({
           instanceNo: S.optional(S.String),
           subnet: S.optional(S.String),
-          messageServerProperties: S.optional(__S(488, __c61, 0)),
-          enqueueServerProperties: S.optional(__S(489, __c61, 1)),
-          gatewayServerProperties: S.optional(__S(490, __c61, 2)),
-          enqueueReplicationServerProperties: S.optional(__S(504, __c63, 0)),
+          messageServerProperties: S.optional(__S(520, __c65, 0)),
+          enqueueServerProperties: S.optional(__S(521, __c65, 1)),
+          gatewayServerProperties: S.optional(__S(522, __c65, 2)),
+          enqueueReplicationServerProperties: S.optional(__S(536, __c67, 0)),
           kernelVersion: S.optional(S.NullOr(S.String)),
           kernelPatch: S.optional(S.NullOr(S.String)),
-          loadBalancerDetails: S.optional(__S(248, __c31, 0)),
-          vmDetails: S.optional(__S(241, __c30, 1)),
+          loadBalancerDetails: S.optional(__S(256, __c32, 0)),
+          vmDetails: S.optional(__S(249, __c31, 1)),
           status: S.optional(S.String),
           health: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          errors: S.optional(__S(258, __c32, 2)),
+          errors: S.optional(__S(266, __c33, 2)),
         }),
       ).annotate({ identifier: "SAPCentralServerProperties_2" });
     case 4:
@@ -6201,12 +6335,12 @@ function __c61(j: number): any {
           systemData: S.optional(__S(24, __c3, 0)),
           tags: S.optional(__S(64, __c8, 0)),
           location: S.String,
-          properties: S.optional(__S(491, __c61, 3)),
+          properties: S.optional(__S(523, __c65, 3)),
         }),
       ).annotate({ identifier: "CreateSAPCentralInstanceResponse" });
   }
 }
-function __c62(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6219,7 +6353,7 @@ function __c62(j: number): any {
       ).annotate({ identifier: "SAPCentralServerPropertiesInput_2" });
   }
 }
-function __c63(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6235,7 +6369,7 @@ function __c63(j: number): any {
       ).annotate({ identifier: "EnqueueReplicationServerProperties_2" });
   }
 }
-function __c64(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6257,13 +6391,13 @@ function __c64(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(513, __c64, 1)),
+          value: S.optional(__S(545, __c68, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProviderInstanceListResult" });
   }
 }
-function __c65(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6281,17 +6415,17 @@ function __c65(j: number): any {
         ),
       ).annotate({ identifier: "ListSapApplicationServerInstancesRequest" });
     case 1:
-      return S.Array(__S(233, __c29, 1));
+      return S.Array(__S(312, __c39, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(521, __c65, 1),
+          value: __S(553, __c69, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SAPApplicationServerInstanceListResult" });
   }
 }
-function __c66(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6309,17 +6443,17 @@ function __c66(j: number): any {
         ),
       ).annotate({ identifier: "ListSAPApplicationServerInstancesRequest" });
     case 1:
-      return S.Array(__S(353, __c44, 1));
+      return S.Array(__S(377, __c47, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(529, __c66, 1)),
+          value: S.optional(__S(561, __c70, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SAPApplicationServerInstanceList" });
   }
 }
-function __c67(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6337,17 +6471,17 @@ function __c67(j: number): any {
         ),
       ).annotate({ identifier: "ListSAPCentralInstancesRequest" });
     case 1:
-      return S.Array(__S(492, __c61, 4));
+      return S.Array(__S(524, __c65, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(537, __c67, 1)),
+          value: S.optional(__S(569, __c71, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SAPCentralInstanceList" });
   }
 }
-function __c68(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6365,17 +6499,17 @@ function __c68(j: number): any {
         ),
       ).annotate({ identifier: "ListSapCentralServerInstancesRequest" });
     case 1:
-      return S.Array(__S(628, __c78, 4));
+      return S.Array(__S(344, __c43, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(545, __c68, 1),
+          value: __S(577, __c72, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SAPCentralServerInstanceListResult" });
   }
 }
-function __c69(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6395,19 +6529,19 @@ function __c69(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(560, __c70, 0),
+          value: __S(592, __c74, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SAPDatabaseInstanceListResult" });
   }
 }
-function __c70(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(731, __c91, 3));
+      return S.Array(__S(856, __c107, 0));
   }
 }
-function __c71(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6427,13 +6561,13 @@ function __c71(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(560, __c70, 0)),
+          value: S.optional(__S(592, __c74, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SAPDatabaseInstanceList" });
   }
 }
-function __c72(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6451,17 +6585,17 @@ function __c72(j: number): any {
         ),
       ).annotate({ identifier: "ListSapLandscapeMonitorRequest" });
     case 1:
-      return S.Array(__S(918, __c114, 6));
+      return S.Array(__S(958, __c119, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(577, __c72, 1)),
+          value: S.optional(__S(609, __c76, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SapLandscapeMonitorListResult" });
   }
 }
-function __c73(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6479,20 +6613,20 @@ function __c73(j: number): any {
       ).annotate({ identifier: "ListSapVirtualInstanceByResourceGroupRequest" });
   }
 }
-function __c74(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(955, __c119, 3));
+      return S.Array(__S(400, __c50, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(592, __c74, 0),
+          value: __S(624, __c78, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SAPVirtualInstanceListResult" });
   }
 }
-function __c75(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6510,20 +6644,20 @@ function __c75(j: number): any {
       ).annotate({ identifier: "ListSAPVirtualInstanceByResourceGroupRequest" });
   }
 }
-function __c76(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(122, __c15, 2));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(608, __c76, 0)),
+          value: S.optional(__S(640, __c80, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SAPVirtualInstanceList" });
   }
 }
-function __c77(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6534,7 +6668,7 @@ function __c77(j: number): any {
           centralInstanceName: S.String.pipe(T.Label()),
           tags: S.optional(__S(64, __c8, 0)),
           location: S.String,
-          properties: S.optional(__S(496, __c62, 0)),
+          properties: S.optional(__S(528, __c66, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6544,9 +6678,23 @@ function __c77(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateSapCentralServerInstanceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          tags: S.optional(__S(64, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(659, __c82, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateSapCentralServerInstanceResponse" });
   }
 }
-function __c78(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6581,35 +6729,23 @@ function __c78(j: number): any {
         S.Struct({
           instanceNo: S.optional(S.String),
           subnet: S.optional(S.String),
-          messageServerProperties: S.optional(__S(624, __c78, 0)),
-          enqueueServerProperties: S.optional(__S(625, __c78, 1)),
-          gatewayServerProperties: S.optional(__S(626, __c78, 2)),
-          enqueueReplicationServerProperties: S.optional(__S(504, __c63, 0)),
+          messageServerProperties: S.optional(__S(656, __c82, 0)),
+          enqueueServerProperties: S.optional(__S(657, __c82, 1)),
+          gatewayServerProperties: S.optional(__S(658, __c82, 2)),
+          enqueueReplicationServerProperties: S.optional(__S(536, __c67, 0)),
           kernelVersion: S.optional(S.String),
           kernelPatch: S.optional(S.String),
-          loadBalancerDetails: S.optional(__S(248, __c31, 0)),
-          vmDetails: S.optional(__S(241, __c30, 1)),
+          loadBalancerDetails: S.optional(__S(256, __c32, 0)),
+          vmDetails: S.optional(__S(249, __c31, 1)),
           status: S.optional(S.String),
           health: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          errors: S.optional(__S(258, __c32, 2)),
+          errors: S.optional(__S(266, __c33, 2)),
         }),
       ).annotate({ identifier: "SAPCentralServerProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(24, __c3, 0)),
-          tags: S.optional(__S(64, __c8, 0)),
-          location: S.String,
-          properties: S.optional(__S(627, __c78, 3)),
-        }),
-      ).annotate({ identifier: "CreateSapCentralServerInstanceResponse" });
   }
 }
-function __c79(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6626,7 +6762,7 @@ function __c79(j: number): any {
       ).annotate({ identifier: "ListSapVirtualInstanceBySubscriptionRequest" });
   }
 }
-function __c80(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6643,7 +6779,7 @@ function __c80(j: number): any {
       ).annotate({ identifier: "ListSAPVirtualInstanceBySubscriptionRequest" });
   }
 }
-function __c81(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6664,7 +6800,7 @@ function __c81(j: number): any {
       ).annotate({ identifier: "SAPAvailabilityZoneDetailsRequest" });
   }
 }
-function __c82(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6688,7 +6824,7 @@ function __c82(j: number): any {
       ).annotate({ identifier: "SAPDiskConfigurationsRequest" });
   }
 }
-function __c83(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6715,7 +6851,7 @@ function __c83(j: number): any {
       ).annotate({ identifier: "SAPSizingRecommendationsRequest" });
   }
 }
-function __c84(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6739,7 +6875,7 @@ function __c84(j: number): any {
       ).annotate({ identifier: "SAPSupportedSkuRequest" });
   }
 }
-function __c85(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6760,10 +6896,10 @@ function __c85(j: number): any {
       ).annotate({ identifier: "StartSapApplicationServerInstanceRequest" });
   }
 }
-function __c86(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(689, __c86, 1)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(721, __c90, 1)));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6774,12 +6910,12 @@ function __c86(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(688, __c86, 0)),
+          operations: S.optional(__S(720, __c90, 0)),
           error: S.optional(__S(147, __c18, 3)),
         }),
       ).annotate({ identifier: "OperationStatusResult" });
     case 2:
-      return S.Array(__S(689, __c86, 1));
+      return S.Array(__S(721, __c90, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6790,13 +6926,15 @@ function __c86(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(690, __c86, 2)),
+          operations: S.optional(__S(722, __c90, 2)),
           error: S.optional(__S(147, __c18, 3)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "StartSapApplicationServerInstanceResponse" });
   }
 }
-function __c87(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6816,7 +6954,7 @@ function __c87(j: number): any {
       ).annotate({ identifier: "StartSAPApplicationServerInstanceInstanceRequest" });
   }
 }
-function __c88(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6836,7 +6974,7 @@ function __c88(j: number): any {
       ).annotate({ identifier: "StartSAPCentralInstanceInstanceRequest" });
   }
 }
-function __c89(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6857,7 +6995,7 @@ function __c89(j: number): any {
       ).annotate({ identifier: "StartSapCentralServerInstanceRequest" });
   }
 }
-function __c90(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6878,35 +7016,7 @@ function __c90(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateSapDatabaseInstanceRequest" });
-  }
-}
-function __c91(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          virtualMachineId: S.optional(S.String),
-          status: S.optional(S.String),
-          storageDetails: S.optional(__S(249, __c31, 1)),
-        }),
-      ).annotate({ identifier: "DatabaseVmDetails" });
     case 1:
-      return S.Array(__S(728, __c91, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subnet: S.optional(S.String),
-          databaseSid: S.optional(S.String),
-          databaseType: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          loadBalancerDetails: S.optional(__S(248, __c31, 0)),
-          vmDetails: S.optional(__S(729, __c91, 1)),
-          status: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          errors: S.optional(__S(258, __c32, 2)),
-        }),
-      ).annotate({ identifier: "SAPDatabaseProperties" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -6915,12 +7025,42 @@ function __c91(j: number): any {
           systemData: S.optional(__S(24, __c3, 0)),
           tags: S.optional(__S(64, __c8, 0)),
           location: S.String,
-          properties: S.optional(__S(730, __c91, 2)),
+          properties: S.optional(__S(762, __c95, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CreateSapDatabaseInstanceResponse" });
   }
 }
-function __c92(j: number): any {
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          virtualMachineId: S.optional(S.String),
+          status: S.optional(S.String),
+          storageDetails: S.optional(__S(257, __c32, 1)),
+        }),
+      ).annotate({ identifier: "DatabaseVmDetails" });
+    case 1:
+      return S.Array(__S(760, __c95, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subnet: S.optional(S.String),
+          databaseSid: S.optional(S.String),
+          databaseType: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          loadBalancerDetails: S.optional(__S(256, __c32, 0)),
+          vmDetails: S.optional(__S(761, __c95, 1)),
+          status: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          errors: S.optional(__S(266, __c33, 2)),
+        }),
+      ).annotate({ identifier: "SAPDatabaseProperties" });
+  }
+}
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6941,7 +7081,7 @@ function __c92(j: number): any {
       ).annotate({ identifier: "StartSapDatabaseInstanceRequest" });
   }
 }
-function __c93(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6961,7 +7101,7 @@ function __c93(j: number): any {
       ).annotate({ identifier: "StartSAPDatabaseInstanceInstanceRequest" });
   }
 }
-function __c94(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6981,7 +7121,7 @@ function __c94(j: number): any {
       ).annotate({ identifier: "StartSapVirtualInstanceRequest" });
   }
 }
-function __c95(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7000,7 +7140,7 @@ function __c95(j: number): any {
       ).annotate({ identifier: "StartSAPVirtualInstanceRequest" });
   }
 }
-function __c96(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7022,7 +7162,7 @@ function __c96(j: number): any {
       ).annotate({ identifier: "StopSapApplicationServerInstanceRequest" });
   }
 }
-function __c97(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7043,7 +7183,7 @@ function __c97(j: number): any {
       ).annotate({ identifier: "StopSAPApplicationServerInstanceInstanceRequest" });
   }
 }
-function __c98(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7064,7 +7204,7 @@ function __c98(j: number): any {
       ).annotate({ identifier: "StopSAPCentralInstanceInstanceRequest" });
   }
 }
-function __c99(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7086,7 +7226,7 @@ function __c99(j: number): any {
       ).annotate({ identifier: "StopSapCentralServerInstanceRequest" });
   }
 }
-function __c100(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7108,7 +7248,7 @@ function __c100(j: number): any {
       ).annotate({ identifier: "StopSapDatabaseInstanceRequest" });
   }
 }
-function __c101(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7129,7 +7269,7 @@ function __c101(j: number): any {
       ).annotate({ identifier: "StopSAPDatabaseInstanceInstanceRequest" });
   }
 }
-function __c102(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7152,7 +7292,23 @@ function __c102(j: number): any {
       ).annotate({ identifier: "CreateSAPDatabaseInstanceRequest" });
   }
 }
-function __c103(j: number): any {
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          tags: S.optional(__S(64, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(762, __c95, 2)),
+        }),
+      ).annotate({ identifier: "CreateSAPDatabaseInstanceResponse" });
+  }
+}
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7173,7 +7329,7 @@ function __c103(j: number): any {
       ).annotate({ identifier: "StopSapVirtualInstanceRequest" });
   }
 }
-function __c104(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7193,7 +7349,7 @@ function __c104(j: number): any {
       ).annotate({ identifier: "StopSAPVirtualInstanceRequest" });
   }
 }
-function __c105(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7214,7 +7370,7 @@ function __c105(j: number): any {
       ).annotate({ identifier: "UpdateMonitorRequest" });
   }
 }
-function __c106(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7235,7 +7391,7 @@ function __c106(j: number): any {
       ).annotate({ identifier: "UpdateSapApplicationServerInstanceRequest" });
   }
 }
-function __c107(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7256,7 +7412,7 @@ function __c107(j: number): any {
       ).annotate({ identifier: "UpdateSAPApplicationServerInstanceRequest" });
   }
 }
-function __c108(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7277,7 +7433,7 @@ function __c108(j: number): any {
       ).annotate({ identifier: "UpdateSAPCentralInstanceRequest" });
   }
 }
-function __c109(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7298,7 +7454,7 @@ function __c109(j: number): any {
       ).annotate({ identifier: "UpdateSapCentralServerInstanceRequest" });
   }
 }
-function __c110(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7319,7 +7475,7 @@ function __c110(j: number): any {
       ).annotate({ identifier: "UpdateSapDatabaseInstanceRequest" });
   }
 }
-function __c111(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7340,7 +7496,7 @@ function __c111(j: number): any {
       ).annotate({ identifier: "UpdateSAPDatabaseInstanceRequest" });
   }
 }
-function __c112(j: number): any {
+function __c117(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7348,7 +7504,7 @@ function __c112(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(920, __c115, 0)),
+          properties: S.optional(__S(960, __c120, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7360,7 +7516,7 @@ function __c112(j: number): any {
       ).annotate({ identifier: "UpdateSapLandscapeMonitorRequest" });
   }
 }
-function __c113(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7368,7 +7524,7 @@ function __c113(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(920, __c115, 0)),
+          properties: S.optional(__S(960, __c120, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7380,7 +7536,7 @@ function __c113(j: number): any {
       ).annotate({ identifier: "CreateSapLandscapeMonitorRequest" });
   }
 }
-function __c114(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7390,12 +7546,12 @@ function __c114(j: number): any {
         }),
       ).annotate({ identifier: "SapLandscapeMonitorSidMapping" });
     case 1:
-      return S.Array(__S(912, __c114, 0));
+      return S.Array(__S(952, __c119, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          landscape: S.optional(__S(913, __c114, 1)),
-          sapApplication: S.optional(__S(913, __c114, 1)),
+          landscape: S.optional(__S(953, __c119, 1)),
+          sapApplication: S.optional(__S(953, __c119, 1)),
         }),
       ).annotate({ identifier: "SapLandscapeMonitorPropertiesInputGrouping" });
     case 3:
@@ -7408,13 +7564,13 @@ function __c114(j: number): any {
         }),
       ).annotate({ identifier: "SapLandscapeMonitorMetricThresholds" });
     case 4:
-      return S.Array(__S(915, __c114, 3));
+      return S.Array(__S(955, __c119, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          grouping: S.optional(__S(914, __c114, 2)),
-          topMetricsThresholds: S.optional(__S(916, __c114, 4)),
+          grouping: S.optional(__S(954, __c119, 2)),
+          topMetricsThresholds: S.optional(__S(956, __c119, 4)),
         }),
       ).annotate({ identifier: "SapLandscapeMonitorProperties" });
     case 6:
@@ -7424,23 +7580,23 @@ function __c114(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(24, __c3, 0)),
-          properties: S.optional(__S(917, __c114, 5)),
+          properties: S.optional(__S(957, __c119, 5)),
         }),
       ).annotate({ identifier: "CreateSapLandscapeMonitorResponse" });
   }
 }
-function __c115(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          grouping: S.optional(__S(914, __c114, 2)),
-          topMetricsThresholds: S.optional(__S(916, __c114, 4)),
+          grouping: S.optional(__S(954, __c119, 2)),
+          topMetricsThresholds: S.optional(__S(956, __c119, 4)),
         }),
       ).annotate({ identifier: "SapLandscapeMonitorPropertiesInput" });
   }
 }
-function __c116(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7455,8 +7611,8 @@ function __c116(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
           tags: S.optional(__S(64, __c8, 0)),
-          identity: S.optional(__S(960, __c120, 0)),
-          properties: S.optional(__S(928, __c116, 0)),
+          identity: S.optional(__S(1000, __c125, 0)),
+          properties: S.optional(__S(968, __c121, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7466,9 +7622,24 @@ function __c116(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSapVirtualInstanceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          tags: S.optional(__S(64, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(993, __c124, 1)),
+          identity: S.optional(__S(994, __c124, 2)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateSapVirtualInstanceResponse" });
   }
 }
-function __c117(j: number): any {
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7489,7 +7660,7 @@ function __c117(j: number): any {
       ).annotate({ identifier: "UpdateSAPVirtualInstanceRequest" });
   }
 }
-function __c118(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7497,7 +7668,7 @@ function __c118(j: number): any {
           environment: S.String,
           sapProduct: S.String,
           managedResourcesNetworkAccessType: S.optional(S.String),
-          configuration: __S(952, __c119, 0),
+          configuration: __S(992, __c124, 0),
           managedResourceGroupConfiguration: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({ identifier: "SAPVirtualInstancePropertiesInput" });
@@ -7509,8 +7680,8 @@ function __c118(j: number): any {
           sapVirtualInstanceName: S.String.pipe(T.Label()),
           tags: S.optional(__S(64, __c8, 0)),
           location: S.String,
-          properties: S.optional(__S(944, __c118, 0)),
-          identity: S.optional(__S(960, __c120, 0)),
+          properties: S.optional(__S(984, __c123, 0)),
+          identity: S.optional(__S(1000, __c125, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7520,9 +7691,24 @@ function __c118(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateSapVirtualInstanceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          tags: S.optional(__S(64, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(993, __c124, 1)),
+          identity: S.optional(__S(994, __c124, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateSapVirtualInstanceResponse" });
   }
 }
-function __c119(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7536,13 +7722,13 @@ function __c119(j: number): any {
           environment: S.String,
           sapProduct: S.String,
           managedResourcesNetworkAccessType: S.optional(S.String),
-          configuration: __S(952, __c119, 0),
+          configuration: __S(992, __c124, 0),
           managedResourceGroupConfiguration: S.optional(__S(80, __c10, 0)),
           status: S.optional(S.String),
           health: S.optional(S.String),
           state: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          errors: S.optional(__S(258, __c32, 2)),
+          errors: S.optional(__S(266, __c33, 2)),
         }),
       ).annotate({ identifier: "SAPVirtualInstanceProperties" });
     case 2:
@@ -7552,22 +7738,9 @@ function __c119(j: number): any {
           userAssignedIdentities: S.optional(__S(49, __c6, 1)),
         }),
       ).annotate({ identifier: "SAPVirtualInstanceIdentity" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(24, __c3, 0)),
-          tags: S.optional(__S(64, __c8, 0)),
-          location: S.String,
-          properties: S.optional(__S(953, __c119, 1)),
-          identity: S.optional(__S(954, __c119, 2)),
-        }),
-      ).annotate({ identifier: "CreateSapVirtualInstanceResponse" });
   }
 }
-function __c120(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

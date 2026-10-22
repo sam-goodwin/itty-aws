@@ -163,6 +163,10 @@ export interface CreateMonitorResponse {
   properties?: MonitorProperties;
   sku?: ResourceSku;
   identity?: IdentityProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteMonitorRequest {
   /** The ID of the target subscription. */
@@ -172,7 +176,12 @@ export interface DeleteMonitorRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export interface DeleteMonitorResponse {}
+export interface DeleteMonitorResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteMonitoredSubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -183,7 +192,12 @@ export interface DeleteMonitoredSubscriptionRequest {
   /** The configuration name. Only 'default' value is supported. */
   configurationName: string;
 }
-export interface DeleteMonitoredSubscriptionResponse {}
+export interface DeleteMonitoredSubscriptionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetBillingInfoRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -841,6 +855,10 @@ export interface OrganizationsResubscribeResponse {
   properties?: MonitorProperties;
   sku?: ResourceSku;
   identity?: IdentityProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface RefreshMonitorSetPasswordLinkRequest {
   /** The ID of the target subscription. */
@@ -897,6 +915,10 @@ export interface SingleSignOnConfigurationsCreateOrUpdateResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   properties?: DatadogSingleSignOnProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Definition of the properties for a TagRules resource. */
 export interface MonitoringTagRulesPropertiesInput {
@@ -980,6 +1002,10 @@ export interface UpdateMonitorResponse {
   properties?: MonitorProperties;
   sku?: ResourceSku;
   identity?: IdentityProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The list of subscriptions and it's monitoring status by current Datadog monitor. */
 export interface MonitoredSubscriptionInput {
@@ -1024,6 +1050,10 @@ export interface UpdateMonitoredSubscriptionResponse {
   systemData?: SystemData;
   /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
   properties?: SubscriptionList;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface UpdateMonitoredSubscriptionsCreateorRequest {
   /** The ID of the target subscription. */
@@ -1048,6 +1078,10 @@ export interface UpdateMonitoredSubscriptionsCreateorResponse {
   systemData?: SystemData;
   /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
   properties?: SubscriptionList;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type CreateMonitorError = AzureOpError;
 /** Create a monitor resource. Create a monitor resource. */
@@ -1058,7 +1092,7 @@ export const CreateMonitor: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2, __c0, 2) as any as S.Schema<CreateMonitorRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateMonitorResponse>,
+  output: __S(3, __c0, 3) as any as S.Schema<CreateMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1102,8 +1136,8 @@ export const GetBillingInfo: API.OperationMethod<
   GetBillingInfoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<GetBillingInfoRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<BillingInfoResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<GetBillingInfoRequest>,
+  output: __S(251, __c31, 3) as any as S.Schema<BillingInfoResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1117,8 +1151,8 @@ export const GetCreationSupported: API.OperationMethod<
   GetCreationSupportedError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<GetCreationSupportedRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<CreateResourceSupportedResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<GetCreationSupportedRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<CreateResourceSupportedResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1132,8 +1166,8 @@ export const GetMonitor: API.OperationMethod<
   GetMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<GetMonitorRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetMonitorResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<GetMonitorRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<GetMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1147,8 +1181,8 @@ export const GetMonitorDefaultKey: API.OperationMethod<
   GetMonitorDefaultKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<GetMonitorDefaultKeyRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<DatadogApiKey>,
+  input: __S(296, __c37, 0) as any as S.Schema<GetMonitorDefaultKeyRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<DatadogApiKey>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1162,8 +1196,8 @@ export const GetMonitoredSubscription: API.OperationMethod<
   GetMonitoredSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<GetMonitoredSubscriptionRequest>,
-  output: __S(307, __c38, 3) as any as S.Schema<GetMonitoredSubscriptionResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<GetMonitoredSubscriptionRequest>,
+  output: __S(320, __c40, 0) as any as S.Schema<GetMonitoredSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1177,8 +1211,8 @@ export const GetSingleSignOnConfiguration: API.OperationMethod<
   GetSingleSignOnConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<GetSingleSignOnConfigurationRequest>,
-  output: __S(329, __c41, 1) as any as S.Schema<GetSingleSignOnConfigurationResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<GetSingleSignOnConfigurationRequest>,
+  output: __S(352, __c44, 0) as any as S.Schema<GetSingleSignOnConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1192,8 +1226,8 @@ export const GetTagRule: API.OperationMethod<
   GetTagRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<GetTagRuleRequest>,
-  output: __S(344, __c43, 0) as any as S.Schema<GetTagRuleResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<GetTagRuleRequest>,
+  output: __S(376, __c47, 0) as any as S.Schema<GetTagRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1403,7 +1437,7 @@ export const OrganizationsResubscribe: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(168, __c21, 0) as any as S.Schema<OrganizationsResubscribeRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<OrganizationsResubscribeResponse>,
+  output: __S(176, __c22, 0) as any as S.Schema<OrganizationsResubscribeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1417,8 +1451,8 @@ export const RefreshMonitorSetPasswordLink: API.OperationMethod<
   RefreshMonitorSetPasswordLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<RefreshMonitorSetPasswordLinkRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<DatadogSetPasswordLink>,
+  input: __S(184, __c23, 0) as any as S.Schema<RefreshMonitorSetPasswordLinkRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<DatadogSetPasswordLink>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1432,8 +1466,8 @@ export const SetMonitorDefaultKey: API.OperationMethod<
   SetMonitorDefaultKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<SetMonitorDefaultKeyRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<SetMonitorDefaultKeyResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<SetMonitorDefaultKeyRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<SetMonitorDefaultKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1447,8 +1481,8 @@ export const SingleSignOnConfigurationsCreateOrUpdate: API.OperationMethod<
   SingleSignOnConfigurationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<SingleSignOnConfigurationsCreateOrUpdateRequest>,
-  output: __S(329, __c41, 1) as any as S.Schema<SingleSignOnConfigurationsCreateOrUpdateResponse>,
+  input: __S(201, __c25, 1) as any as S.Schema<SingleSignOnConfigurationsCreateOrUpdateRequest>,
+  output: __S(202, __c25, 2) as any as S.Schema<SingleSignOnConfigurationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1462,8 +1496,8 @@ export const TagRulesCreateOrUpdate: API.OperationMethod<
   TagRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<TagRulesCreateOrUpdateRequest>,
-  output: __S(344, __c43, 0) as any as S.Schema<TagRulesCreateOrUpdateResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<TagRulesCreateOrUpdateRequest>,
+  output: __S(376, __c47, 0) as any as S.Schema<TagRulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1477,8 +1511,8 @@ export const UpdateMonitor: API.OperationMethod<
   UpdateMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<UpdateMonitorRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<UpdateMonitorResponse>,
+  input: __S(225, __c28, 1) as any as S.Schema<UpdateMonitorRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<UpdateMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1492,8 +1526,8 @@ export const UpdateMonitoredSubscription: API.OperationMethod<
   UpdateMonitoredSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<UpdateMonitoredSubscriptionRequest>,
-  output: __S(307, __c38, 3) as any as S.Schema<UpdateMonitoredSubscriptionResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<UpdateMonitoredSubscriptionRequest>,
+  output: __S(243, __c30, 3) as any as S.Schema<UpdateMonitoredSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1507,8 +1541,8 @@ export const UpdateMonitoredSubscriptionsCreateor: API.OperationMethod<
   UpdateMonitoredSubscriptionsCreateorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<UpdateMonitoredSubscriptionsCreateorRequest>,
-  output: __S(307, __c38, 3) as any as S.Schema<UpdateMonitoredSubscriptionsCreateorResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<UpdateMonitoredSubscriptionsCreateorRequest>,
+  output: __S(243, __c30, 3) as any as S.Schema<UpdateMonitoredSubscriptionsCreateorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1551,6 +1585,22 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateMonitorRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(12, __c1, 4)),
+          sku: S.optional(__S(11, __c1, 3)),
+          identity: S.optional(__S(13, __c1, 5)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateMonitorResponse" });
   }
 }
 function __c1(j: number): any {
@@ -1606,20 +1656,6 @@ function __c1(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdentityProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(12, __c1, 4)),
-          sku: S.optional(__S(11, __c1, 3)),
-          identity: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "CreateMonitorResponse" });
   }
 }
 function __c2(j: number): any {
@@ -1659,7 +1695,12 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteMonitorResponse" });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteMonitorResponse" });
   }
 }
 function __c5(j: number): any {
@@ -1679,7 +1720,7 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListCreationSupportedRequest" });
     case 1:
-      return S.Array(__S(265, __c33, 1));
+      return S.Array(__S(273, __c34, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1760,7 +1801,7 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "ListMonitorApiKeysRequest" });
     case 1:
-      return S.Array(__S(288, __c36, 0));
+      return S.Array(__S(304, __c38, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1791,7 +1832,7 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(14, __c1, 6));
+      return S.Array(__S(288, __c36, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1819,7 +1860,7 @@ function __c11(j: number): any {
         ),
       ).annotate({ identifier: "ListMonitoredSubscriptionsRequest" });
     case 1:
-      return S.Array(__S(307, __c38, 3));
+      return S.Array(__S(320, __c40, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2059,7 +2100,7 @@ function __c18(j: number): any {
         ),
       ).annotate({ identifier: "ListSingleSignOnConfigurationsRequest" });
     case 1:
-      return S.Array(__S(329, __c41, 1));
+      return S.Array(__S(352, __c44, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2087,7 +2128,7 @@ function __c19(j: number): any {
         ),
       ).annotate({ identifier: "ListTagRulesRequest" });
     case 1:
-      return S.Array(__S(344, __c43, 0));
+      return S.Array(__S(376, __c47, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2142,6 +2183,26 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(12, __c1, 4)),
+          sku: S.optional(__S(11, __c1, 3)),
+          identity: S.optional(__S(13, __c1, 5)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "OrganizationsResubscribeResponse" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
@@ -2162,7 +2223,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "DatadogSetPasswordLink" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2183,9 +2244,11 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SetMonitorDefaultKeyRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "SetMonitorDefaultKeyResponse" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2201,7 +2264,7 @@ function __c24(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(200, __c25, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2211,9 +2274,21 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SingleSignOnConfigurationsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(360, __c45, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SingleSignOnConfigurationsCreateOrUpdateResponse" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2222,7 +2297,7 @@ function __c25(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
           ruleSetName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(208, __c26, 0)),
+          properties: S.optional(__S(216, __c27, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2234,21 +2309,21 @@ function __c25(j: number): any {
       ).annotate({ identifier: "TagRulesCreateOrUpdateRequest" });
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          logRules: S.optional(__S(314, __c39, 2)),
-          metricRules: S.optional(__S(315, __c39, 3)),
-          agentRules: S.optional(__S(316, __c39, 4)),
+          logRules: S.optional(__S(338, __c42, 2)),
+          metricRules: S.optional(__S(339, __c42, 3)),
+          agentRules: S.optional(__S(340, __c42, 4)),
           automuting: S.optional(S.Boolean),
           customMetrics: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MonitoringTagRulesPropertiesInput" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2264,7 +2339,7 @@ function __c27(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(216, __c27, 0)),
+          properties: S.optional(__S(224, __c28, 0)),
           tags: S.optional(__S(8, __c1, 0)),
           sku: S.optional(__S(11, __c1, 3)),
         }).pipe(
@@ -2278,7 +2353,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "UpdateMonitorRequest" });
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2287,7 +2362,7 @@ function __c28(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(234, __c29, 2)),
+          properties: S.optional(__S(242, __c30, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2299,7 +2374,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "UpdateMonitoredSubscriptionRequest" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2307,21 +2382,33 @@ function __c29(j: number): any {
           subscriptionId: S.optional(S.String),
           status: S.optional(S.String),
           error: S.optional(S.String),
-          tagRules: S.optional(__S(208, __c26, 0)),
+          tagRules: S.optional(__S(216, __c27, 0)),
         }),
       ).annotate({ identifier: "MonitoredSubscriptionInput" });
     case 1:
-      return S.Array(__S(232, __c29, 0));
+      return S.Array(__S(240, __c30, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           operation: S.optional(S.String),
-          monitoredSubscriptionList: S.optional(__S(233, __c29, 1)),
+          monitoredSubscriptionList: S.optional(__S(241, __c30, 1)),
         }),
       ).annotate({ identifier: "SubscriptionListInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(330, __c41, 2)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateMonitoredSubscriptionResponse" });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2359,13 +2446,13 @@ function __c30(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          marketplaceSaasInfo: S.optional(__S(241, __c30, 1)),
-          partnerBillingEntity: S.optional(__S(242, __c30, 2)),
+          marketplaceSaasInfo: S.optional(__S(249, __c31, 1)),
+          partnerBillingEntity: S.optional(__S(250, __c31, 2)),
         }),
       ).annotate({ identifier: "BillingInfoResponse" });
   }
 }
-function __c31(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2374,7 +2461,7 @@ function __c31(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(234, __c29, 2)),
+          properties: S.optional(__S(242, __c30, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2386,7 +2473,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "UpdateMonitoredSubscriptionsCreateorRequest" });
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2404,7 +2491,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "GetCreationSupportedRequest" });
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2416,12 +2503,12 @@ function __c33(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(264, __c33, 0)),
+          properties: S.optional(__S(272, __c34, 0)),
         }),
       ).annotate({ identifier: "CreateResourceSupportedResponse" });
   }
 }
-function __c34(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2440,7 +2527,25 @@ function __c34(j: number): any {
       ).annotate({ identifier: "GetMonitorRequest" });
   }
 }
-function __c35(j: number): any {
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(12, __c1, 4)),
+          sku: S.optional(__S(11, __c1, 3)),
+          identity: S.optional(__S(13, __c1, 5)),
+        }),
+      ).annotate({ identifier: "GetMonitorResponse" });
+  }
+}
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2459,7 +2564,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "GetMonitorDefaultKeyRequest" });
   }
 }
-function __c36(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2472,7 +2577,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "DatadogApiKey" });
   }
 }
-function __c37(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2492,7 +2597,21 @@ function __c37(j: number): any {
       ).annotate({ identifier: "GetMonitoredSubscriptionRequest" });
   }
 }
-function __c38(j: number): any {
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(330, __c41, 2)),
+        }),
+      ).annotate({ identifier: "GetMonitoredSubscriptionResponse" });
+  }
+}
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2500,31 +2619,21 @@ function __c38(j: number): any {
           subscriptionId: S.optional(S.String),
           status: S.optional(S.String),
           error: S.optional(S.String),
-          tagRules: S.optional(__S(317, __c39, 5)),
+          tagRules: S.optional(__S(341, __c42, 5)),
         }),
       ).annotate({ identifier: "MonitoredSubscription" });
     case 1:
-      return S.Array(__S(304, __c38, 0));
+      return S.Array(__S(328, __c41, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           operation: S.optional(S.String),
-          monitoredSubscriptionList: S.optional(__S(305, __c38, 1)),
+          monitoredSubscriptionList: S.optional(__S(329, __c41, 1)),
         }),
       ).annotate({ identifier: "SubscriptionList" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(306, __c38, 2)),
-        }),
-      ).annotate({ identifier: "GetMonitoredSubscriptionResponse" });
   }
 }
-function __c39(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2535,43 +2644,43 @@ function __c39(j: number): any {
         }),
       ).annotate({ identifier: "FilteringTag" });
     case 1:
-      return S.Array(__S(312, __c39, 0));
+      return S.Array(__S(336, __c42, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           sendAadLogs: S.optional(S.Boolean),
           sendSubscriptionLogs: S.optional(S.Boolean),
           sendResourceLogs: S.optional(S.Boolean),
-          filteringTags: S.optional(__S(313, __c39, 1)),
+          filteringTags: S.optional(__S(337, __c42, 1)),
         }),
       ).annotate({ identifier: "LogRules" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          filteringTags: S.optional(__S(313, __c39, 1)),
+          filteringTags: S.optional(__S(337, __c42, 1)),
         }),
       ).annotate({ identifier: "MetricRules" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           enableAgentMonitoring: S.optional(S.Boolean),
-          filteringTags: S.optional(__S(313, __c39, 1)),
+          filteringTags: S.optional(__S(337, __c42, 1)),
         }),
       ).annotate({ identifier: "AgentRules" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          logRules: S.optional(__S(314, __c39, 2)),
-          metricRules: S.optional(__S(315, __c39, 3)),
-          agentRules: S.optional(__S(316, __c39, 4)),
+          logRules: S.optional(__S(338, __c42, 2)),
+          metricRules: S.optional(__S(339, __c42, 3)),
+          agentRules: S.optional(__S(340, __c42, 4)),
           automuting: S.optional(S.Boolean),
           customMetrics: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MonitoringTagRulesProperties" });
   }
 }
-function __c40(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2591,7 +2700,21 @@ function __c40(j: number): any {
       ).annotate({ identifier: "GetSingleSignOnConfigurationRequest" });
   }
 }
-function __c41(j: number): any {
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(360, __c45, 0)),
+        }),
+      ).annotate({ identifier: "GetSingleSignOnConfigurationResponse" });
+  }
+}
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2602,19 +2725,9 @@ function __c41(j: number): any {
           singleSignOnUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatadogSingleSignOnProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(328, __c41, 0)),
-        }),
-      ).annotate({ identifier: "GetSingleSignOnConfigurationResponse" });
   }
 }
-function __c42(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2634,7 +2747,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "GetTagRuleRequest" });
   }
 }
-function __c43(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2643,7 +2756,7 @@ function __c43(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(317, __c39, 5)),
+          properties: S.optional(__S(341, __c42, 5)),
         }),
       ).annotate({ identifier: "GetTagRuleResponse" });
   }

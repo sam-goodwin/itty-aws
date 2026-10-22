@@ -329,6 +329,7 @@ export interface IntegrationRuntime {
   managedVirtualNetwork?: unknown;
   /** Integration runtime state (read-only, Managed integration runtimes). */
   state?: string;
+  [key: string]: unknown;
 }
 export interface CreateIntegrationRuntimeRequest {
   /** The ID of the target subscription. */
@@ -1552,6 +1553,7 @@ export interface IntegrationRuntimeConnectionInfo {
   publicKey?: string;
   /** Whether the identity certificate is expired. */
   isIdentityCertExprired?: boolean;
+  [key: string]: unknown;
 }
 export interface GetIntegrationRuntimeNodeRequest {
   /** The ID of the target subscription. */
@@ -1616,6 +1618,7 @@ export interface SelfHostedIntegrationRuntimeNode {
   concurrentJobsLimit?: number;
   /** The maximum concurrent jobs in this integration runtime. */
   maxConcurrentJobs?: number;
+  [key: string]: unknown;
 }
 export interface GetIntegrationRuntimeNodeIpAddressRequest {
   /** The ID of the target subscription. */
@@ -1664,6 +1667,7 @@ export interface IntegrationRuntimeStatus {
   dataFactoryName?: string;
   /** The state of integration runtime. */
   state?: IntegrationRuntimeState;
+  [key: string]: unknown;
 }
 /** Integration runtime status response. */
 export interface IntegrationRuntimeStatusResponse {
@@ -3501,6 +3505,7 @@ export interface IntegrationRuntimeNodeMonitoringData {
   sentBytes?: number;
   /** Received bytes on the integration runtime node. */
   receivedBytes?: number;
+  [key: string]: unknown;
 }
 /** Integration runtime node monitoring data. */
 export type IntegrationRuntimeMonitoringDataNodesList = Array<IntegrationRuntimeNodeMonitoringData>;
@@ -11907,13 +11912,16 @@ function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          description: S.optional(S.String),
-          typeProperties: S.optional(S.Unknown),
-          managedVirtualNetwork: S.optional(S.Unknown),
-          state: S.optional(S.String),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            type: S.String,
+            description: S.optional(S.String),
+            typeProperties: S.optional(S.Unknown),
+            managedVirtualNetwork: S.optional(S.Unknown),
+            state: S.optional(S.String),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "IntegrationRuntime" });
     case 1:
       return S.suspend(() =>
@@ -12182,14 +12190,17 @@ function __c129(j: number): any {
       ).annotate({ identifier: "GetIntegrationRuntimeConnectionInfosRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          serviceToken: S.optional(S.String),
-          identityCertThumbprint: S.optional(S.String),
-          hostServiceUri: S.optional(S.String),
-          version: S.optional(S.String),
-          publicKey: S.optional(S.String),
-          isIdentityCertExprired: S.optional(S.Boolean),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            serviceToken: S.optional(S.String),
+            identityCertThumbprint: S.optional(S.String),
+            hostServiceUri: S.optional(S.String),
+            version: S.optional(S.String),
+            publicKey: S.optional(S.String),
+            isIdentityCertExprired: S.optional(S.Boolean),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "IntegrationRuntimeConnectionInfo" });
   }
 }
@@ -12302,26 +12313,29 @@ function __c136(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          nodeName: S.optional(S.String),
-          machineName: S.optional(S.String),
-          hostServiceUri: S.optional(S.String),
-          status: S.optional(S.String),
-          capabilities: S.optional(__S(16, __c1, 0)),
-          versionStatus: S.optional(S.String),
-          version: S.optional(S.String),
-          registerTime: S.optional(S.String),
-          lastConnectTime: S.optional(S.String),
-          expiryTime: S.optional(S.String),
-          lastStartTime: S.optional(S.String),
-          lastStopTime: S.optional(S.String),
-          lastUpdateResult: S.optional(S.String),
-          lastStartUpdateTime: S.optional(S.String),
-          lastEndUpdateTime: S.optional(S.String),
-          isActiveDispatcher: S.optional(S.Boolean),
-          concurrentJobsLimit: S.optional(S.Number),
-          maxConcurrentJobs: S.optional(S.Number),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            nodeName: S.optional(S.String),
+            machineName: S.optional(S.String),
+            hostServiceUri: S.optional(S.String),
+            status: S.optional(S.String),
+            capabilities: S.optional(__S(16, __c1, 0)),
+            versionStatus: S.optional(S.String),
+            version: S.optional(S.String),
+            registerTime: S.optional(S.String),
+            lastConnectTime: S.optional(S.String),
+            expiryTime: S.optional(S.String),
+            lastStartTime: S.optional(S.String),
+            lastStopTime: S.optional(S.String),
+            lastUpdateResult: S.optional(S.String),
+            lastStartUpdateTime: S.optional(S.String),
+            lastEndUpdateTime: S.optional(S.String),
+            isActiveDispatcher: S.optional(S.Boolean),
+            concurrentJobsLimit: S.optional(S.Number),
+            maxConcurrentJobs: S.optional(S.Number),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "SelfHostedIntegrationRuntimeNode" });
   }
 }
@@ -12376,11 +12390,14 @@ function __c139(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          dataFactoryName: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            type: S.String,
+            dataFactoryName: S.optional(S.String),
+            state: S.optional(S.String),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "IntegrationRuntimeStatus" });
     case 1:
       return S.suspend(() =>
@@ -14542,16 +14559,19 @@ function __c232(j: number): any {
       ).annotate({ identifier: "ListIntegrationRuntimeMonitoringDataRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          nodeName: S.optional(S.String),
-          availableMemoryInMB: S.optional(S.Number),
-          cpuUtilization: S.optional(S.Number),
-          concurrentJobsLimit: S.optional(S.Number),
-          concurrentJobsRunning: S.optional(S.Number),
-          maxConcurrentJobs: S.optional(S.Number),
-          sentBytes: S.optional(S.Number),
-          receivedBytes: S.optional(S.Number),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            nodeName: S.optional(S.String),
+            availableMemoryInMB: S.optional(S.Number),
+            cpuUtilization: S.optional(S.Number),
+            concurrentJobsLimit: S.optional(S.Number),
+            concurrentJobsRunning: S.optional(S.Number),
+            maxConcurrentJobs: S.optional(S.Number),
+            sentBytes: S.optional(S.Number),
+            receivedBytes: S.optional(S.Number),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "IntegrationRuntimeNodeMonitoringData" });
     case 2:
       return S.Array(__S(3713, __c232, 1));

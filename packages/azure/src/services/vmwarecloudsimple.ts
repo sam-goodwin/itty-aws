@@ -97,7 +97,7 @@ export interface DedicatedCloudNodeProperties {
   vmwareClusterName?: string;
 }
 /** Dedicated cloud node model */
-export interface DedicatedCloudNode {
+export interface DedicatedCloudNodesCreateOrUpdateResponse {
   /** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/dedicatedCloudNodes/{dedicatedCloudNodeName} */
   id?: string;
   /** Azure region */
@@ -112,6 +112,9 @@ export interface DedicatedCloudNode {
   tags?: Tags;
   /** {resourceProviderNamespace}/{resourceType} */
   type?: string;
+  azureAsyncOperation?: string;
+  locationHeader?: string;
+  retryAfter?: number;
 }
 /** Properties of dedicated cloud service */
 export interface DedicatedCloudServicePropertiesInput {
@@ -190,7 +193,11 @@ export interface DeleteVirtualMachineRequest {
   /** virtual machine name */
   virtualMachineName: string;
 }
-export interface DeleteVirtualMachineResponse {}
+export interface DeleteVirtualMachineResponse {
+  azureAsyncOperation?: string;
+  location?: string;
+  retryAfter?: number;
+}
 export interface GetCustomizationPolicyRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -302,6 +309,23 @@ export interface GetDedicatedCloudNodeRequest {
   /** dedicated cloud node name */
   dedicatedCloudNodeName: string;
 }
+/** Dedicated cloud node model */
+export interface DedicatedCloudNode {
+  /** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/dedicatedCloudNodes/{dedicatedCloudNodeName} */
+  id?: string;
+  /** Azure region */
+  location: string;
+  /** {dedicatedCloudNodeName} */
+  name?: string;
+  /** Dedicated Cloud Nodes properties */
+  properties?: DedicatedCloudNodeProperties;
+  /** Dedicated Cloud Nodes SKU */
+  sku?: Sku;
+  /** Dedicated Cloud Nodes tags */
+  tags?: Tags;
+  /** {resourceProviderNamespace}/{resourceType} */
+  type?: string;
+}
 export interface GetDedicatedCloudServiceRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -339,6 +363,8 @@ export interface OperationResource {
   startTime?: string;
   /** Operation status */
   status?: string;
+  location?: string;
+  retryAfter?: number;
 }
 export interface GetPrivateCloudRequest {
   /** The subscription ID. */
@@ -1059,7 +1085,11 @@ export interface StartVirtualMachineRequest {
   /** virtual machine name */
   virtualMachineName: string;
 }
-export interface StartVirtualMachineResponse {}
+export interface StartVirtualMachineResponse {
+  azureAsyncOperation?: string;
+  location?: string;
+  retryAfter?: number;
+}
 export type StopVirtualMachineRequestMode = "reboot" | "suspend" | "shutdown" | "poweroff";
 export interface StopVirtualMachineRequest {
   /** The subscription ID. */
@@ -1071,7 +1101,11 @@ export interface StopVirtualMachineRequest {
   /** query stop mode parameter (reboot, shutdown, etc...) */
   mode?: StopVirtualMachineRequestMode | (string & {});
 }
-export interface StopVirtualMachineResponse {}
+export interface StopVirtualMachineResponse {
+  azureAsyncOperation?: string;
+  location?: string;
+  retryAfter?: number;
+}
 export interface UpdateDedicatedCloudNodeRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -1210,16 +1244,32 @@ export interface VirtualMachinesCreateOrUpdateRequest {
   /** The list of tags */
   tags?: Tags;
 }
+/** Virtual machine model */
+export interface VirtualMachinesCreateOrUpdateResponse {
+  /** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/virtualMachines/{virtualMachineName} */
+  id?: string;
+  /** Azure region */
+  location: string;
+  /** {virtualMachineName} */
+  name?: string;
+  /** Virtual machine properties */
+  properties?: VirtualMachineProperties;
+  /** The list of tags */
+  tags?: Tags;
+  /** {resourceProviderNamespace}/{resourceType} */
+  type?: string;
+  azureAsyncOperation?: string;
+}
 export type DedicatedCloudNodesCreateOrUpdateError = AzureOpError;
 /** Implements dedicated cloud node PUT method Returns dedicated cloud node by its name */
 export const DedicatedCloudNodesCreateOrUpdate: API.OperationMethod<
   DedicatedCloudNodesCreateOrUpdateRequest,
-  DedicatedCloudNode,
+  DedicatedCloudNodesCreateOrUpdateResponse,
   DedicatedCloudNodesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<DedicatedCloudNodesCreateOrUpdateRequest>,
-  output: __S(35, __c2, 3) as any as S.Schema<DedicatedCloudNode>,
+  output: __S(2, __c0, 2) as any as S.Schema<DedicatedCloudNodesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1248,8 +1298,8 @@ export const DeleteDedicatedCloudNode: API.OperationMethod<
   DeleteDedicatedCloudNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<DeleteDedicatedCloudNodeRequest>,
-  output: __S(304, __c19, 0) as any as S.Schema<DeleteDedicatedCloudNodeResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<DeleteDedicatedCloudNodeRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<DeleteDedicatedCloudNodeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1263,8 +1313,8 @@ export const DeleteDedicatedCloudService: API.OperationMethod<
   DeleteDedicatedCloudServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<DeleteDedicatedCloudServiceRequest>,
-  output: __S(304, __c19, 0) as any as S.Schema<DeleteDedicatedCloudServiceResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<DeleteDedicatedCloudServiceRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<DeleteDedicatedCloudServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1278,8 +1328,8 @@ export const DeleteVirtualMachine: API.OperationMethod<
   DeleteVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<DeleteVirtualMachineRequest>,
-  output: __S(304, __c19, 0) as any as S.Schema<DeleteVirtualMachineResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<DeleteVirtualMachineRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<DeleteVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1293,8 +1343,8 @@ export const GetCustomizationPolicy: API.OperationMethod<
   GetCustomizationPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<GetCustomizationPolicyRequest>,
-  output: __S(617, __c38, 9) as any as S.Schema<CustomizationPolicy>,
+  input: __S(624, __c39, 0) as any as S.Schema<GetCustomizationPolicyRequest>,
+  output: __S(649, __c40, 9) as any as S.Schema<CustomizationPolicy>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1308,8 +1358,8 @@ export const GetDedicatedCloudNode: API.OperationMethod<
   GetDedicatedCloudNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<GetDedicatedCloudNodeRequest>,
-  output: __S(35, __c2, 3) as any as S.Schema<DedicatedCloudNode>,
+  input: __S(672, __c42, 0) as any as S.Schema<GetDedicatedCloudNodeRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<DedicatedCloudNode>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1323,7 +1373,7 @@ export const GetDedicatedCloudService: API.OperationMethod<
   GetDedicatedCloudServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<GetDedicatedCloudServiceRequest>,
+  input: __S(704, __c44, 0) as any as S.Schema<GetDedicatedCloudServiceRequest>,
   output: __S(65, __c4, 1) as any as S.Schema<DedicatedCloudService>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1338,8 +1388,8 @@ export const GetOperation: API.OperationMethod<
   GetOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<GetOperationRequest>,
-  output: __S(674, __c42, 2) as any as S.Schema<OperationResource>,
+  input: __S(720, __c45, 0) as any as S.Schema<GetOperationRequest>,
+  output: __S(722, __c45, 2) as any as S.Schema<OperationResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1353,8 +1403,8 @@ export const GetPrivateCloud: API.OperationMethod<
   GetPrivateCloudError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c43, 0) as any as S.Schema<GetPrivateCloudRequest>,
-  output: __S(769, __c48, 1) as any as S.Schema<PrivateCloud>,
+  input: __S(736, __c46, 0) as any as S.Schema<GetPrivateCloudRequest>,
+  output: __S(817, __c51, 1) as any as S.Schema<PrivateCloud>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1369,7 +1419,7 @@ export const GetResourcePool: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(80, __c5, 0) as any as S.Schema<GetResourcePoolRequest>,
-  output: __S(705, __c44, 1) as any as S.Schema<ResourcePool>,
+  output: __S(753, __c47, 1) as any as S.Schema<ResourcePool>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1384,7 +1434,7 @@ export const GetVirtualMachine: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c6, 0) as any as S.Schema<GetVirtualMachineRequest>,
-  output: __S(114, __c7, 2) as any as S.Schema<VirtualMachine>,
+  output: __S(112, __c7, 0) as any as S.Schema<VirtualMachine>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1398,8 +1448,8 @@ export const GetVirtualMachineTemplate: API.OperationMethod<
   GetVirtualMachineTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c8, 0) as any as S.Schema<GetVirtualMachineTemplateRequest>,
-  output: __S(753, __c47, 1) as any as S.Schema<VirtualMachineTemplate>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetVirtualMachineTemplateRequest>,
+  output: __S(801, __c50, 1) as any as S.Schema<VirtualMachineTemplate>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1413,8 +1463,8 @@ export const GetVirtualNetwork: API.OperationMethod<
   GetVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c9, 0) as any as S.Schema<GetVirtualNetworkRequest>,
-  output: __S(721, __c45, 1) as any as S.Schema<VirtualNetwork>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetVirtualNetworkRequest>,
+  output: __S(769, __c48, 1) as any as S.Schema<VirtualNetwork>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1428,8 +1478,8 @@ export const ListCustomizationPolicies: API.OperationMethod<
   ListCustomizationPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c10, 0) as any as S.Schema<ListCustomizationPoliciesRequest>,
-  output: __S(162, __c10, 2) as any as S.Schema<CustomizationPoliciesListResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListCustomizationPoliciesRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<CustomizationPoliciesListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1443,8 +1493,8 @@ export const ListDedicatedCloudNodeByResourceGroup: API.OperationMethod<
   ListDedicatedCloudNodeByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c11, 0) as any as S.Schema<ListDedicatedCloudNodeByResourceGroupRequest>,
-  output: __S(193, __c12, 1) as any as S.Schema<DedicatedCloudNodeListResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListDedicatedCloudNodeByResourceGroupRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<DedicatedCloudNodeListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1458,8 +1508,8 @@ export const ListDedicatedCloudNodeBySubscription: API.OperationMethod<
   ListDedicatedCloudNodeBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<ListDedicatedCloudNodeBySubscriptionRequest>,
-  output: __S(193, __c12, 1) as any as S.Schema<DedicatedCloudNodeListResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListDedicatedCloudNodeBySubscriptionRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<DedicatedCloudNodeListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1473,8 +1523,8 @@ export const ListDedicatedCloudServiceByResourceGroup: API.OperationMethod<
   ListDedicatedCloudServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<ListDedicatedCloudServiceByResourceGroupRequest>,
-  output: __S(241, __c15, 1) as any as S.Schema<DedicatedCloudServiceListResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListDedicatedCloudServiceByResourceGroupRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<DedicatedCloudServiceListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1488,8 +1538,8 @@ export const ListDedicatedCloudServiceBySubscription: API.OperationMethod<
   ListDedicatedCloudServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<ListDedicatedCloudServiceBySubscriptionRequest>,
-  output: __S(241, __c15, 1) as any as S.Schema<DedicatedCloudServiceListResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListDedicatedCloudServiceBySubscriptionRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<DedicatedCloudServiceListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1503,8 +1553,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(280, __c17, 8) as any as S.Schema<AvailableOperationsListResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(296, __c18, 8) as any as S.Schema<AvailableOperationsListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1518,8 +1568,8 @@ export const ListPrivateClouds: API.OperationMethod<
   ListPrivateCloudsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<ListPrivateCloudsRequest>,
-  output: __S(322, __c20, 2) as any as S.Schema<PrivateCloudList>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListPrivateCloudsRequest>,
+  output: __S(338, __c21, 2) as any as S.Schema<PrivateCloudList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1533,8 +1583,8 @@ export const ListResourcePools: API.OperationMethod<
   ListResourcePoolsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<ListResourcePoolsRequest>,
-  output: __S(337, __c21, 1) as any as S.Schema<ResourcePoolsListResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListResourcePoolsRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<ResourcePoolsListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1548,8 +1598,8 @@ export const ListSkusAvailability: API.OperationMethod<
   ListSkusAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<ListSkusAvailabilityRequest>,
-  output: __S(355, __c22, 3) as any as S.Schema<SkuAvailabilityListResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListSkusAvailabilityRequest>,
+  output: __S(371, __c23, 3) as any as S.Schema<SkuAvailabilityListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1563,8 +1613,8 @@ export const ListUsages: API.OperationMethod<
   ListUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<ListUsagesRequest>,
-  output: __S(372, __c23, 4) as any as S.Schema<UsageListResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListUsagesRequest>,
+  output: __S(388, __c24, 4) as any as S.Schema<UsageListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1578,8 +1628,8 @@ export const ListVirtualMachineByResourceGroup: API.OperationMethod<
   ListVirtualMachineByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<ListVirtualMachineByResourceGroupRequest>,
-  output: __S(401, __c25, 1) as any as S.Schema<VirtualMachineListResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListVirtualMachineByResourceGroupRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<VirtualMachineListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1593,8 +1643,8 @@ export const ListVirtualMachineBySubscription: API.OperationMethod<
   ListVirtualMachineBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<ListVirtualMachineBySubscriptionRequest>,
-  output: __S(401, __c25, 1) as any as S.Schema<VirtualMachineListResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListVirtualMachineBySubscriptionRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<VirtualMachineListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1608,8 +1658,8 @@ export const ListVirtualMachineTemplates: API.OperationMethod<
   ListVirtualMachineTemplatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c27, 0) as any as S.Schema<ListVirtualMachineTemplatesRequest>,
-  output: __S(433, __c27, 1) as any as S.Schema<VirtualMachineTemplateListResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListVirtualMachineTemplatesRequest>,
+  output: __S(449, __c28, 1) as any as S.Schema<VirtualMachineTemplateListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1623,8 +1673,8 @@ export const ListVirtualNetworks: API.OperationMethod<
   ListVirtualNetworksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<ListVirtualNetworksRequest>,
-  output: __S(449, __c28, 1) as any as S.Schema<VirtualNetworkListResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListVirtualNetworksRequest>,
+  output: __S(465, __c29, 1) as any as S.Schema<VirtualNetworkListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1638,8 +1688,8 @@ export const StartVirtualMachine: API.OperationMethod<
   StartVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<StartVirtualMachineRequest>,
-  output: __S(304, __c19, 0) as any as S.Schema<StartVirtualMachineResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<StartVirtualMachineRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<StartVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1653,8 +1703,8 @@ export const StopVirtualMachine: API.OperationMethod<
   StopVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<StopVirtualMachineRequest>,
-  output: __S(304, __c19, 0) as any as S.Schema<StopVirtualMachineResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<StopVirtualMachineRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<StopVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1668,8 +1718,8 @@ export const UpdateDedicatedCloudNode: API.OperationMethod<
   UpdateDedicatedCloudNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<UpdateDedicatedCloudNodeRequest>,
-  output: __S(35, __c2, 3) as any as S.Schema<DedicatedCloudNode>,
+  input: __S(528, __c33, 0) as any as S.Schema<UpdateDedicatedCloudNodeRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<DedicatedCloudNode>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1683,7 +1733,7 @@ export const UpdateDedicatedCloudService: API.OperationMethod<
   UpdateDedicatedCloudServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<UpdateDedicatedCloudServiceRequest>,
+  input: __S(544, __c34, 0) as any as S.Schema<UpdateDedicatedCloudServiceRequest>,
   output: __S(65, __c4, 1) as any as S.Schema<DedicatedCloudService>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1698,8 +1748,8 @@ export const UpdateVirtualMachine: API.OperationMethod<
   UpdateVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<UpdateVirtualMachineRequest>,
-  output: __S(114, __c7, 2) as any as S.Schema<VirtualMachine>,
+  input: __S(560, __c35, 0) as any as S.Schema<UpdateVirtualMachineRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<VirtualMachine>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1709,12 +1759,12 @@ export type VirtualMachinesCreateOrUpdateError = AzureOpError;
 /** Implements virtual machine PUT method Create Or Update Virtual Machine */
 export const VirtualMachinesCreateOrUpdate: API.OperationMethod<
   VirtualMachinesCreateOrUpdateRequest,
-  VirtualMachine,
+  VirtualMachinesCreateOrUpdateResponse,
   VirtualMachinesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(566, __c35, 6) as any as S.Schema<VirtualMachinesCreateOrUpdateRequest>,
-  output: __S(114, __c7, 2) as any as S.Schema<VirtualMachine>,
+  input: __S(582, __c36, 6) as any as S.Schema<VirtualMachinesCreateOrUpdateRequest>,
+  output: __S(583, __c36, 7) as any as S.Schema<VirtualMachinesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1752,6 +1802,21 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DedicatedCloudNodesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          location: S.String,
+          name: S.optional(S.String),
+          properties: S.optional(__S(34, __c2, 2)),
+          sku: S.optional(__S(33, __c2, 1)),
+          tags: S.optional(__S(16, __c1, 0)),
+          type: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DedicatedCloudNodesCreateOrUpdateResponse" });
   }
 }
 function __c1(j: number): any {
@@ -1798,18 +1863,6 @@ function __c2(j: number): any {
           vmwareClusterName: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedCloudNodeProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          location: S.String,
-          name: S.optional(S.String),
-          properties: S.optional(__S(34, __c2, 2)),
-          sku: S.optional(__S(33, __c2, 1)),
-          tags: S.optional(__S(16, __c1, 0)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DedicatedCloudNode" });
   }
 }
 function __c3(j: number): any {
@@ -1908,7 +1961,22 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dnsServers: S.optional(__S(624, __c39, 0)),
+          id: S.optional(S.String),
+          location: S.String,
+          name: S.optional(S.String),
+          properties: S.optional(__S(129, __c8, 1)),
+          tags: S.optional(__S(16, __c1, 0)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VirtualMachine" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dnsServers: S.optional(__S(656, __c41, 0)),
           hostName: S.optional(S.String),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           policyId: S.optional(S.String),
@@ -1919,43 +1987,32 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           amountOfRam: S.Number,
-          controllers: S.optional(__S(737, __c46, 1)),
-          customization: S.optional(__S(112, __c7, 0)),
-          disks: S.optional(__S(739, __c46, 3)),
+          controllers: S.optional(__S(785, __c49, 1)),
+          customization: S.optional(__S(128, __c8, 0)),
+          disks: S.optional(__S(787, __c49, 3)),
           dnsname: S.optional(S.String),
           exposeToGuestVM: S.optional(S.Boolean),
           folder: S.optional(S.String),
           guestOS: S.optional(S.String),
           guestOSType: S.optional(S.String),
-          nics: S.optional(__S(742, __c46, 6)),
+          nics: S.optional(__S(790, __c49, 6)),
           numberOfCores: S.Number,
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           privateCloudId: S.String,
           provisioningState: S.optional(S.String),
           publicIP: S.optional(S.String),
-          resourcePool: S.optional(__S(705, __c44, 1)),
+          resourcePool: S.optional(__S(753, __c47, 1)),
           status: S.optional(S.String),
           templateId: S.optional(S.String),
           username: S.optional(S.String),
-          vSphereNetworks: S.optional(__S(624, __c39, 0)),
+          vSphereNetworks: S.optional(__S(656, __c41, 0)),
           vmId: S.optional(S.String),
           vmwaretools: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualMachineProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          location: S.String,
-          name: S.optional(S.String),
-          properties: S.optional(__S(113, __c7, 1)),
-          tags: S.optional(__S(16, __c1, 0)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VirtualMachine" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1975,7 +2032,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "GetVirtualMachineTemplateRequest" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1995,7 +2052,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "GetVirtualNetworkRequest" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2014,17 +2071,17 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "ListCustomizationPoliciesRequest" });
     case 1:
-      return S.Array(__S(617, __c38, 9));
+      return S.Array(__S(649, __c40, 9));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(161, __c10, 1)),
+          value: S.optional(__S(177, __c11, 1)),
         }),
       ).annotate({ identifier: "CustomizationPoliciesListResponse" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2045,20 +2102,20 @@ function __c11(j: number): any {
       ).annotate({ identifier: "ListDedicatedCloudNodeByResourceGroupRequest" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(35, __c2, 3));
+      return S.Array(__S(688, __c43, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(192, __c12, 0)),
+          value: S.optional(__S(208, __c13, 0)),
         }),
       ).annotate({ identifier: "DedicatedCloudNodeListResponse" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2078,7 +2135,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "ListDedicatedCloudNodeBySubscriptionRequest" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2099,7 +2156,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "ListDedicatedCloudServiceByResourceGroupRequest" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(65, __c4, 1));
@@ -2107,12 +2164,12 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(240, __c15, 0)),
+          value: S.optional(__S(256, __c16, 0)),
         }),
       ).annotate({ identifier: "DedicatedCloudServiceListResponse" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2132,7 +2189,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "ListDedicatedCloudServiceBySubscriptionRequest" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2167,11 +2224,11 @@ function __c17(j: number): any {
         identifier: "AvailableOperationDisplayPropertyServiceSpecificationMetricsItem",
       });
     case 3:
-      return S.Array(__S(274, __c17, 2));
+      return S.Array(__S(290, __c18, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(__S(275, __c17, 3)),
+          metricSpecifications: S.optional(__S(291, __c18, 3)),
         }),
       ).annotate({
         identifier: "AvailableOperationDisplayPropertyServiceSpecificationMetricsList",
@@ -2179,31 +2236,31 @@ function __c17(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(276, __c17, 4)),
+          serviceSpecification: S.optional(__S(292, __c18, 4)),
         }),
       ).annotate({ identifier: "AvailableOperationDisplayPropertyServiceSpecification" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          display: S.optional(__S(273, __c17, 1)),
+          display: S.optional(__S(289, __c18, 1)),
           isDataAction: S.optional(S.Boolean),
           name: S.optional(S.String),
           origin: S.optional(S.String),
-          properties: S.optional(__S(277, __c17, 5)),
+          properties: S.optional(__S(293, __c18, 5)),
         }),
       ).annotate({ identifier: "AvailableOperation" });
     case 7:
-      return S.Array(__S(278, __c17, 6));
+      return S.Array(__S(294, __c18, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(279, __c17, 7)),
+          value: S.optional(__S(295, __c18, 7)),
         }),
       ).annotate({ identifier: "AvailableOperationsListResponse" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2222,7 +2279,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "DeleteDedicatedCloudNodeRequest" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
@@ -2230,7 +2287,7 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2247,17 +2304,17 @@ function __c20(j: number): any {
         ),
       ).annotate({ identifier: "ListPrivateCloudsRequest" });
     case 1:
-      return S.Array(__S(769, __c48, 1));
+      return S.Array(__S(817, __c51, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(321, __c20, 1)),
+          value: S.optional(__S(337, __c21, 1)),
         }),
       ).annotate({ identifier: "PrivateCloudList" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2278,12 +2335,12 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(784, __c49, 0)),
+          value: S.optional(__S(832, __c52, 0)),
         }),
       ).annotate({ identifier: "ResourcePoolsListResponse" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2314,17 +2371,17 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "SkuAvailability" });
     case 2:
-      return S.Array(__S(353, __c22, 1));
+      return S.Array(__S(369, __c23, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(354, __c22, 2)),
+          value: S.optional(__S(370, __c23, 2)),
         }),
       ).annotate({ identifier: "SkuAvailabilityListResponse" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2353,22 +2410,22 @@ function __c23(j: number): any {
         S.Struct({
           currentValue: S.Number,
           limit: S.Number,
-          name: S.optional(__S(369, __c23, 1)),
+          name: S.optional(__S(385, __c24, 1)),
           unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "Usage" });
     case 3:
-      return S.Array(__S(370, __c23, 2));
+      return S.Array(__S(386, __c24, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(371, __c23, 3)),
+          value: S.optional(__S(387, __c24, 3)),
         }),
       ).annotate({ identifier: "UsageListResponse" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2389,20 +2446,20 @@ function __c24(j: number): any {
       ).annotate({ identifier: "ListVirtualMachineByResourceGroupRequest" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(114, __c7, 2));
+      return S.Array(__S(112, __c7, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(400, __c25, 0)),
+          value: S.optional(__S(416, __c26, 0)),
         }),
       ).annotate({ identifier: "VirtualMachineListResponse" });
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2422,7 +2479,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "ListVirtualMachineBySubscriptionRequest" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2444,12 +2501,12 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(800, __c50, 0)),
+          value: S.optional(__S(848, __c53, 0)),
         }),
       ).annotate({ identifier: "VirtualMachineTemplateListResponse" });
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2471,12 +2528,12 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(816, __c51, 0)),
+          value: S.optional(__S(864, __c54, 0)),
         }),
       ).annotate({ identifier: "VirtualNetworkListResponse" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2495,7 +2552,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "StartVirtualMachineRequest" });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2515,7 +2572,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "StopVirtualMachineRequest" });
   }
 }
-function __c31(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2534,7 +2591,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "DeleteDedicatedCloudServiceRequest" });
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2554,7 +2611,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "UpdateDedicatedCloudNodeRequest" });
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2574,7 +2631,7 @@ function __c33(j: number): any {
       ).annotate({ identifier: "UpdateDedicatedCloudServiceRequest" });
   }
 }
-function __c34(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2594,7 +2651,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "UpdateVirtualMachineRequest" });
   }
 }
-function __c35(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2606,43 +2663,43 @@ function __c35(j: number): any {
         }),
       ).annotate({ identifier: "VirtualDiskInput" });
     case 1:
-      return S.Array(__S(560, __c35, 0));
+      return S.Array(__S(576, __c36, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          properties: S.optional(__S(304, __c19, 0)),
+          properties: S.optional(__S(320, __c20, 0)),
         }),
       ).annotate({ identifier: "VirtualNetworkInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          customization: S.optional(__S(740, __c46, 4)),
-          ipAddresses: S.optional(__S(624, __c39, 0)),
+          customization: S.optional(__S(788, __c49, 4)),
+          ipAddresses: S.optional(__S(656, __c41, 0)),
           macAddress: S.optional(S.String),
-          network: __S(562, __c35, 2),
+          network: __S(578, __c36, 2),
           nicType: S.String,
           powerOnBoot: S.optional(S.Boolean),
           virtualNicId: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualNicInput" });
     case 4:
-      return S.Array(__S(563, __c35, 3));
+      return S.Array(__S(579, __c36, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           amountOfRam: S.Number,
-          customization: S.optional(__S(112, __c7, 0)),
-          disks: S.optional(__S(561, __c35, 1)),
+          customization: S.optional(__S(128, __c8, 0)),
+          disks: S.optional(__S(577, __c36, 1)),
           exposeToGuestVM: S.optional(S.Boolean),
-          nics: S.optional(__S(564, __c35, 4)),
+          nics: S.optional(__S(580, __c36, 4)),
           numberOfCores: S.Number,
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           privateCloudId: S.String,
-          resourcePool: S.optional(__S(562, __c35, 2)),
+          resourcePool: S.optional(__S(578, __c36, 2)),
           templateId: S.optional(S.String),
           username: S.optional(S.String),
-          vSphereNetworks: S.optional(__S(624, __c39, 0)),
+          vSphereNetworks: S.optional(__S(656, __c41, 0)),
         }),
       ).annotate({ identifier: "VirtualMachinePropertiesInput" });
     case 6:
@@ -2652,7 +2709,7 @@ function __c35(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           virtualMachineName: S.String.pipe(T.Label()),
           location: S.String,
-          properties: S.optional(__S(565, __c35, 5)),
+          properties: S.optional(__S(581, __c36, 5)),
           tags: S.optional(__S(16, __c1, 0)),
         }).pipe(
           T.Http({
@@ -2663,9 +2720,21 @@ function __c35(j: number): any {
           }),
         ),
       ).annotate({ identifier: "VirtualMachinesCreateOrUpdateRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          location: S.String,
+          name: S.optional(S.String),
+          properties: S.optional(__S(129, __c8, 1)),
+          tags: S.optional(__S(16, __c1, 0)),
+          type: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+        }),
+      ).annotate({ identifier: "VirtualMachinesCreateOrUpdateResponse" });
   }
 }
-function __c36(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2684,7 +2753,19 @@ function __c36(j: number): any {
       ).annotate({ identifier: "DeleteVirtualMachineRequest" });
   }
 }
-function __c37(j: number): any {
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteVirtualMachineResponse" });
+  }
+}
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2704,7 +2785,7 @@ function __c37(j: number): any {
       ).annotate({ identifier: "GetCustomizationPolicyRequest" });
   }
 }
-function __c38(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2723,9 +2804,9 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           data: S.optional(S.String),
-          hostName: S.optional(__S(608, __c38, 0)),
+          hostName: S.optional(__S(640, __c40, 0)),
           type: S.optional(S.String),
-          userData: S.optional(__S(609, __c38, 1)),
+          userData: S.optional(__S(641, __c40, 1)),
         }),
       ).annotate({ identifier: "CustomizationIdentity" });
     case 3:
@@ -2739,25 +2820,25 @@ function __c38(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          gateway: S.optional(__S(624, __c39, 0)),
-          ip: S.optional(__S(611, __c38, 3)),
+          gateway: S.optional(__S(656, __c41, 0)),
+          ip: S.optional(__S(643, __c40, 3)),
           subnetMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomizationIPSettings" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          adapter: S.optional(__S(612, __c38, 4)),
+          adapter: S.optional(__S(644, __c40, 4)),
           macAddress: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomizationNicSetting" });
     case 6:
-      return S.Array(__S(613, __c38, 5));
+      return S.Array(__S(645, __c40, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          identity: S.optional(__S(610, __c38, 2)),
-          nicSettings: S.optional(__S(614, __c38, 6)),
+          identity: S.optional(__S(642, __c40, 2)),
+          nicSettings: S.optional(__S(646, __c40, 6)),
         }),
       ).annotate({ identifier: "CustomizationSpecification" });
     case 8:
@@ -2765,7 +2846,7 @@ function __c38(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           privateCloudId: S.optional(S.String),
-          specification: S.optional(__S(615, __c38, 7)),
+          specification: S.optional(__S(647, __c40, 7)),
           type: S.optional(S.String),
           version: S.optional(S.String),
         }),
@@ -2776,19 +2857,19 @@ function __c38(j: number): any {
           id: S.optional(S.String),
           location: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(616, __c38, 8)),
+          properties: S.optional(__S(648, __c40, 8)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomizationPolicy" });
   }
 }
-function __c39(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c40(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2807,7 +2888,23 @@ function __c40(j: number): any {
       ).annotate({ identifier: "GetDedicatedCloudNodeRequest" });
   }
 }
-function __c41(j: number): any {
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          location: S.String,
+          name: S.optional(S.String),
+          properties: S.optional(__S(34, __c2, 2)),
+          sku: S.optional(__S(33, __c2, 1)),
+          tags: S.optional(__S(16, __c1, 0)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DedicatedCloudNode" });
+  }
+}
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2826,7 +2923,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "GetDedicatedCloudServiceRequest" });
   }
 }
-function __c42(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2854,16 +2951,18 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
-          error: S.optional(__S(673, __c42, 1)),
+          error: S.optional(__S(721, __c45, 1)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           startTime: S.optional(S.String),
           status: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "OperationResource" });
   }
 }
-function __c43(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2882,7 +2981,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "GetPrivateCloudRequest" });
   }
 }
-function __c44(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2897,13 +2996,13 @@ function __c44(j: number): any {
           location: S.optional(S.String),
           name: S.optional(S.String),
           privateCloudId: S.optional(S.String),
-          properties: S.optional(__S(704, __c44, 0)),
+          properties: S.optional(__S(752, __c47, 0)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourcePool" });
   }
 }
-function __c45(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2918,13 +3017,13 @@ function __c45(j: number): any {
           id: S.String,
           location: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(720, __c45, 0)),
+          properties: S.optional(__S(768, __c48, 0)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualNetwork" });
   }
 }
-function __c46(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2936,7 +3035,7 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "VirtualDiskController" });
     case 1:
-      return S.Array(__S(736, __c46, 0));
+      return S.Array(__S(784, __c49, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2948,13 +3047,13 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "VirtualDisk" });
     case 3:
-      return S.Array(__S(738, __c46, 2));
+      return S.Array(__S(786, __c49, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           allocation: S.optional(S.String),
-          dnsServers: S.optional(__S(624, __c39, 0)),
-          gateway: S.optional(__S(624, __c39, 0)),
+          dnsServers: S.optional(__S(656, __c41, 0)),
+          gateway: S.optional(__S(656, __c41, 0)),
           ipAddress: S.optional(S.String),
           mask: S.optional(S.String),
           primaryWinsServer: S.optional(S.String),
@@ -2964,10 +3063,10 @@ function __c46(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          customization: S.optional(__S(740, __c46, 4)),
-          ipAddresses: S.optional(__S(624, __c39, 0)),
+          customization: S.optional(__S(788, __c49, 4)),
+          ipAddresses: S.optional(__S(656, __c41, 0)),
           macAddress: S.optional(S.String),
-          network: __S(721, __c45, 1),
+          network: __S(769, __c48, 1),
           nicType: S.String,
           powerOnBoot: S.optional(S.Boolean),
           virtualNicId: S.optional(S.String),
@@ -2975,27 +3074,27 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "VirtualNic" });
     case 6:
-      return S.Array(__S(741, __c46, 5));
+      return S.Array(__S(789, __c49, 5));
   }
 }
-function __c47(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           amountOfRam: S.optional(S.Number),
-          controllers: S.optional(__S(737, __c46, 1)),
+          controllers: S.optional(__S(785, __c49, 1)),
           description: S.optional(S.String),
-          disks: S.optional(__S(739, __c46, 3)),
+          disks: S.optional(__S(787, __c49, 3)),
           exposeToGuestVM: S.optional(S.Boolean),
           guestOS: S.optional(S.String),
           guestOSType: S.optional(S.String),
-          nics: S.optional(__S(742, __c46, 6)),
+          nics: S.optional(__S(790, __c49, 6)),
           numberOfCores: S.optional(S.Number),
           path: S.optional(S.String),
           privateCloudId: S.String,
-          vSphereNetworks: S.optional(__S(624, __c39, 0)),
-          vSphereTags: S.optional(__S(624, __c39, 0)),
+          vSphereNetworks: S.optional(__S(656, __c41, 0)),
+          vSphereTags: S.optional(__S(656, __c41, 0)),
           vmwaretools: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualMachineTemplateProperties" });
@@ -3005,13 +3104,13 @@ function __c47(j: number): any {
           id: S.optional(S.String),
           location: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(752, __c47, 0)),
+          properties: S.optional(__S(800, __c50, 0)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualMachineTemplate" });
   }
 }
-function __c48(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3021,13 +3120,13 @@ function __c48(j: number): any {
           clustersNumber: S.optional(S.Number),
           createdBy: S.optional(S.String),
           createdOn: S.optional(S.String),
-          dnsServers: S.optional(__S(624, __c39, 0)),
+          dnsServers: S.optional(__S(656, __c41, 0)),
           expires: S.optional(S.String),
           nsxType: S.optional(S.String),
           placementGroupId: S.optional(S.String),
           placementGroupName: S.optional(S.String),
           privateCloudId: S.optional(S.String),
-          resourcePools: S.optional(__S(784, __c49, 0)),
+          resourcePools: S.optional(__S(832, __c52, 0)),
           state: S.optional(S.String),
           totalCpuCores: S.optional(S.Number),
           totalNodes: S.optional(S.Number),
@@ -3037,8 +3136,8 @@ function __c48(j: number): any {
           vSphereVersion: S.optional(S.String),
           vcenterFqdn: S.optional(S.String),
           vcenterRefid: S.optional(S.String),
-          virtualMachineTemplates: S.optional(__S(800, __c50, 0)),
-          virtualNetworks: S.optional(__S(816, __c51, 0)),
+          virtualMachineTemplates: S.optional(__S(848, __c53, 0)),
+          virtualNetworks: S.optional(__S(864, __c54, 0)),
           vrOpsEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PrivateCloudProperties" });
@@ -3048,28 +3147,28 @@ function __c48(j: number): any {
           id: S.optional(S.String),
           location: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(768, __c48, 0)),
+          properties: S.optional(__S(816, __c51, 0)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateCloud" });
   }
 }
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(705, __c44, 1));
-  }
-}
-function __c50(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(753, __c47, 1));
   }
 }
-function __c51(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(721, __c45, 1));
+      return S.Array(__S(801, __c50, 1));
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(769, __c48, 1));
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

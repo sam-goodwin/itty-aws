@@ -161,6 +161,10 @@ export interface ApprovalCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: ApprovalProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Subnet Configuration */
 export interface SubnetConfigurationInput {
@@ -557,6 +561,10 @@ export interface CommunityCreateOrUpdateResponse {
   properties?: CommunityProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunityCreateOrUpdateResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CommunityEndpointsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -651,6 +659,10 @@ export interface CommunityEndpointsCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: CommunityEndpointProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource request action indicating action which needed to be performed upon calling approval-callback post action */
 export type CommunityEndpointsHandleApprovalCreationRequestResourceRequestAction =
@@ -682,6 +694,10 @@ export interface CommunityEndpointsHandleApprovalCreationRequest {
 export interface ApprovalActionResponse {
   /** Confirmation message indicating the result of the operation. */
   message: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource request action indicating action which needed to be performed upon calling approval-deletion-callback post action */
 export type CommunityEndpointsHandleApprovalDeletionRequestResourceRequestAction =
@@ -742,6 +758,10 @@ export interface DedicatedHubCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: DedicatedHubProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteApprovalRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -749,7 +769,12 @@ export interface DeleteApprovalRequest {
   /** The name of the approvals resource. */
   approvalName: string;
 }
-export interface DeleteApprovalResponse {}
+export interface DeleteApprovalResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteCommunityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -758,7 +783,12 @@ export interface DeleteCommunityRequest {
   /** The name of the communityResource Resource */
   communityName: string;
 }
-export interface DeleteCommunityResponse {}
+export interface DeleteCommunityResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteCommunityEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -769,7 +799,12 @@ export interface DeleteCommunityEndpointRequest {
   /** The name of the Community Endpoint Resource */
   communityEndpointName: string;
 }
-export interface DeleteCommunityEndpointResponse {}
+export interface DeleteCommunityEndpointResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDedicatedHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -780,7 +815,12 @@ export interface DeleteDedicatedHubRequest {
   /** The name of the Dedicated Hub Resource */
   dedicatedHubName: string;
 }
-export interface DeleteDedicatedHubResponse {}
+export interface DeleteDedicatedHubResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteEnclaveConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -789,7 +829,12 @@ export interface DeleteEnclaveConnectionRequest {
   /** The name of the Enclave Connection Resource */
   enclaveConnectionName: string;
 }
-export interface DeleteEnclaveConnectionResponse {}
+export interface DeleteEnclaveConnectionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteEnclaveEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -800,7 +845,12 @@ export interface DeleteEnclaveEndpointRequest {
   /** The name of the Enclave Endpoint Resource */
   enclaveEndpointName: string;
 }
-export interface DeleteEnclaveEndpointResponse {}
+export interface DeleteEnclaveEndpointResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteTransitHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -811,7 +861,12 @@ export interface DeleteTransitHubRequest {
   /** The name of the TransitHub Resource */
   transitHubName: string;
 }
-export interface DeleteTransitHubResponse {}
+export interface DeleteTransitHubResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteVirtualEnclaveRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -820,7 +875,12 @@ export interface DeleteVirtualEnclaveRequest {
   /** The name of the enclaveResource Resource */
   virtualEnclaveName: string;
 }
-export interface DeleteVirtualEnclaveResponse {}
+export interface DeleteVirtualEnclaveResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteWorkloadRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -831,7 +891,12 @@ export interface DeleteWorkloadRequest {
   /** The name of the workloadResource Resource */
   workloadName: string;
 }
-export interface DeleteWorkloadResponse {}
+export interface DeleteWorkloadResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Resource tags. */
 export type EnclaveConnectionCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
 /** Enclave Connection Resource properties */
@@ -906,6 +971,10 @@ export interface EnclaveConnectionCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: EnclaveConnectionProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource request action indicating action which needed to be performed upon calling approval-callback post action */
 export type EnclaveConnectionHandleApprovalCreationRequestResourceRequestAction =
@@ -1025,6 +1094,10 @@ export interface EnclaveEndpointsCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: EnclaveEndpointProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource request action indicating action which needed to be performed upon calling approval-callback post action */
 export type EnclaveEndpointsHandleApprovalCreationRequestResourceRequestAction =
@@ -1929,6 +2002,10 @@ export interface TransitHubCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: TransitHubProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** List of approvers for the approval request */
 export type ApprovalPatchPropertiesInputApproversList = Array<ApproverInput>;
@@ -1981,6 +2058,10 @@ export interface UpdateApprovalResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: ApprovalProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** DNS Servers. */
 export type CommunityPatchPropertiesInputDnsServersList = Array<string>;
@@ -2129,6 +2210,10 @@ export interface UpdateCommunityResponse {
   properties?: CommunityProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunityCreateOrUpdateResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Community Endpoint Rule Collection. */
 export type CommunityEndpointPatchPropertiesRuleCollectionList =
@@ -2173,6 +2258,10 @@ export interface UpdateCommunityEndpointResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: CommunityEndpointProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Dedicated Hub patchable Properties */
 export type DedicatedHubPatchProperties = DedicatedHubPropertiesInput;
@@ -2209,6 +2298,10 @@ export interface UpdateDedicatedHubResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: DedicatedHubProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Enclave Connection patchable Properties */
 export interface EnclaveConnectionPatchProperties {
@@ -2246,6 +2339,10 @@ export interface UpdateEnclaveConnectionResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: EnclaveConnectionProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Enclave Endpoint Rule Collection. */
 export type EnclaveEndpointPatchPropertiesRuleCollectionList =
@@ -2290,6 +2387,10 @@ export interface UpdateEnclaveEndpointResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: EnclaveEndpointProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Transit Hub patchable Properties */
 export type TransitHubPatchProperties = TransitHubPropertiesInput;
@@ -2326,6 +2427,10 @@ export interface UpdateTransitHubResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: TransitHubProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource Visibility Mode */
 export type ResourceVisibilityMode = "Enabled" | "Disabled";
@@ -2413,6 +2518,10 @@ export interface UpdateVirtualEnclaveResponse {
   properties?: VirtualEnclaveProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunityCreateOrUpdateResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** List of resource group ids. */
 export type WorkloadPatchPropertiesResourceGroupCollectionList = Array<string>;
@@ -2454,6 +2563,10 @@ export interface UpdateWorkloadResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: WorkloadProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type VirtualEnclaveCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -2547,6 +2660,10 @@ export interface VirtualEnclaveCreateOrUpdateResponse {
   properties?: VirtualEnclaveProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CommunityCreateOrUpdateResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource request action indicating action which needed to be performed upon calling approval-callback post action */
 export type VirtualEnclaveHandleApprovalCreationRequestResourceRequestAction =
@@ -2631,6 +2748,10 @@ export interface WorkloadCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: WorkloadProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type ApprovalCreateOrUpdateError = AzureOpError;
 /** Create a ApprovalResource */
@@ -2641,7 +2762,7 @@ export const ApprovalCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<ApprovalCreateOrUpdateRequest>,
-  output: __S(68, __c4, 4) as any as S.Schema<ApprovalCreateOrUpdateResponse>,
+  output: __S(2, __c0, 2) as any as S.Schema<ApprovalCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2671,7 +2792,7 @@ export const CommunityCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(321, __c20, 1) as any as S.Schema<CommunityCreateOrUpdateRequest>,
-  output: __S(386, __c24, 2) as any as S.Schema<CommunityCreateOrUpdateResponse>,
+  output: __S(322, __c20, 2) as any as S.Schema<CommunityCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2685,8 +2806,8 @@ export const CommunityEndpointsCreateOrUpdate: API.OperationMethod<
   CommunityEndpointsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(673, __c42, 1) as any as S.Schema<CommunityEndpointsCreateOrUpdateRequest>,
-  output: __S(707, __c44, 3) as any as S.Schema<CommunityEndpointsCreateOrUpdateResponse>,
+  input: __S(785, __c49, 1) as any as S.Schema<CommunityEndpointsCreateOrUpdateRequest>,
+  output: __S(786, __c49, 2) as any as S.Schema<CommunityEndpointsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2700,8 +2821,8 @@ export const CommunityEndpointsHandleApprovalCreation: API.OperationMethod<
   CommunityEndpointsHandleApprovalCreationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c60, 0) as any as S.Schema<CommunityEndpointsHandleApprovalCreationRequest>,
-  output: __S(976, __c61, 0) as any as S.Schema<ApprovalActionResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<CommunityEndpointsHandleApprovalCreationRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2715,8 +2836,8 @@ export const CommunityEndpointsHandleApprovalDeletion: API.OperationMethod<
   CommunityEndpointsHandleApprovalDeletionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c76, 0) as any as S.Schema<CommunityEndpointsHandleApprovalDeletionRequest>,
-  output: __S(976, __c61, 0) as any as S.Schema<ApprovalActionResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<CommunityEndpointsHandleApprovalDeletionRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2730,8 +2851,8 @@ export const DedicatedHubCreateOrUpdate: API.OperationMethod<
   DedicatedHubCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1456, __c91, 0) as any as S.Schema<DedicatedHubCreateOrUpdateRequest>,
-  output: __S(433, __c27, 1) as any as S.Schema<DedicatedHubCreateOrUpdateResponse>,
+  input: __S(1584, __c99, 0) as any as S.Schema<DedicatedHubCreateOrUpdateRequest>,
+  output: __S(1585, __c99, 1) as any as S.Schema<DedicatedHubCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2745,8 +2866,8 @@ export const DeleteApproval: API.OperationMethod<
   DeleteApprovalError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1552, __c97, 0) as any as S.Schema<DeleteApprovalRequest>,
-  output: __S(464, __c29, 0) as any as S.Schema<DeleteApprovalResponse>,
+  input: __S(1680, __c105, 0) as any as S.Schema<DeleteApprovalRequest>,
+  output: __S(1696, __c106, 0) as any as S.Schema<DeleteApprovalResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2760,8 +2881,8 @@ export const DeleteCommunity: API.OperationMethod<
   DeleteCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c98, 0) as any as S.Schema<DeleteCommunityRequest>,
-  output: __S(464, __c29, 0) as any as S.Schema<DeleteCommunityResponse>,
+  input: __S(1712, __c107, 0) as any as S.Schema<DeleteCommunityRequest>,
+  output: __S(1696, __c106, 0) as any as S.Schema<DeleteCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2775,8 +2896,8 @@ export const DeleteCommunityEndpoint: API.OperationMethod<
   DeleteCommunityEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1584, __c99, 0) as any as S.Schema<DeleteCommunityEndpointRequest>,
-  output: __S(464, __c29, 0) as any as S.Schema<DeleteCommunityEndpointResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<DeleteCommunityEndpointRequest>,
+  output: __S(1696, __c106, 0) as any as S.Schema<DeleteCommunityEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2791,7 +2912,7 @@ export const DeleteDedicatedHub: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(128, __c8, 0) as any as S.Schema<DeleteDedicatedHubRequest>,
-  output: __S(464, __c29, 0) as any as S.Schema<DeleteDedicatedHubResponse>,
+  output: __S(1696, __c106, 0) as any as S.Schema<DeleteDedicatedHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2806,7 +2927,7 @@ export const DeleteEnclaveConnection: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(144, __c9, 0) as any as S.Schema<DeleteEnclaveConnectionRequest>,
-  output: __S(464, __c29, 0) as any as S.Schema<DeleteEnclaveConnectionResponse>,
+  output: __S(1696, __c106, 0) as any as S.Schema<DeleteEnclaveConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2821,7 +2942,7 @@ export const DeleteEnclaveEndpoint: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c10, 0) as any as S.Schema<DeleteEnclaveEndpointRequest>,
-  output: __S(464, __c29, 0) as any as S.Schema<DeleteEnclaveEndpointResponse>,
+  output: __S(1696, __c106, 0) as any as S.Schema<DeleteEnclaveEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2836,7 +2957,7 @@ export const DeleteTransitHub: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(176, __c11, 0) as any as S.Schema<DeleteTransitHubRequest>,
-  output: __S(464, __c29, 0) as any as S.Schema<DeleteTransitHubResponse>,
+  output: __S(1696, __c106, 0) as any as S.Schema<DeleteTransitHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2851,7 +2972,7 @@ export const DeleteVirtualEnclave: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<DeleteVirtualEnclaveRequest>,
-  output: __S(464, __c29, 0) as any as S.Schema<DeleteVirtualEnclaveResponse>,
+  output: __S(1696, __c106, 0) as any as S.Schema<DeleteVirtualEnclaveResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2866,7 +2987,7 @@ export const DeleteWorkload: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(208, __c13, 0) as any as S.Schema<DeleteWorkloadRequest>,
-  output: __S(464, __c29, 0) as any as S.Schema<DeleteWorkloadResponse>,
+  output: __S(1696, __c106, 0) as any as S.Schema<DeleteWorkloadResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2881,7 +3002,7 @@ export const EnclaveConnectionCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(225, __c14, 1) as any as S.Schema<EnclaveConnectionCreateOrUpdateRequest>,
-  output: __S(241, __c15, 1) as any as S.Schema<EnclaveConnectionCreateOrUpdateResponse>,
+  output: __S(226, __c14, 2) as any as S.Schema<EnclaveConnectionCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2896,7 +3017,7 @@ export const EnclaveConnectionHandleApprovalCreation: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(256, __c16, 0) as any as S.Schema<EnclaveConnectionHandleApprovalCreationRequest>,
-  output: __S(976, __c61, 0) as any as S.Schema<ApprovalActionResponse>,
+  output: __S(1104, __c69, 0) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2911,7 +3032,7 @@ export const EnclaveConnectionHandleApprovalDeletion: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(272, __c17, 0) as any as S.Schema<EnclaveConnectionHandleApprovalDeletionRequest>,
-  output: __S(976, __c61, 0) as any as S.Schema<ApprovalActionResponse>,
+  output: __S(1104, __c69, 0) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2926,7 +3047,7 @@ export const EnclaveEndpointsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(289, __c18, 1) as any as S.Schema<EnclaveEndpointsCreateOrUpdateRequest>,
-  output: __S(307, __c19, 3) as any as S.Schema<EnclaveEndpointsCreateOrUpdateResponse>,
+  output: __S(290, __c18, 2) as any as S.Schema<EnclaveEndpointsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2941,7 +3062,7 @@ export const EnclaveEndpointsHandleApprovalCreation: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(480, __c30, 0) as any as S.Schema<EnclaveEndpointsHandleApprovalCreationRequest>,
-  output: __S(976, __c61, 0) as any as S.Schema<ApprovalActionResponse>,
+  output: __S(1104, __c69, 0) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2956,7 +3077,7 @@ export const EnclaveEndpointsHandleApprovalDeletion: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(496, __c31, 0) as any as S.Schema<EnclaveEndpointsHandleApprovalDeletionRequest>,
-  output: __S(976, __c61, 0) as any as S.Schema<ApprovalActionResponse>,
+  output: __S(1104, __c69, 0) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2971,7 +3092,7 @@ export const GetApproval: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(512, __c32, 0) as any as S.Schema<GetApprovalRequest>,
-  output: __S(68, __c4, 4) as any as S.Schema<GetApprovalResponse>,
+  output: __S(528, __c33, 0) as any as S.Schema<GetApprovalResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2985,8 +3106,8 @@ export const GetCommunity: API.OperationMethod<
   GetCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<GetCommunityRequest>,
-  output: __S(386, __c24, 2) as any as S.Schema<GetCommunityResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetCommunityRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<GetCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3000,8 +3121,8 @@ export const GetCommunityEndpoint: API.OperationMethod<
   GetCommunityEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<GetCommunityEndpointRequest>,
-  output: __S(707, __c44, 3) as any as S.Schema<GetCommunityEndpointResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<GetCommunityEndpointRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<GetCommunityEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3015,8 +3136,8 @@ export const GetDedicatedHub: API.OperationMethod<
   GetDedicatedHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c35, 0) as any as S.Schema<GetDedicatedHubRequest>,
-  output: __S(433, __c27, 1) as any as S.Schema<GetDedicatedHubResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<GetDedicatedHubRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<GetDedicatedHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3030,8 +3151,8 @@ export const GetEnclaveConnection: API.OperationMethod<
   GetEnclaveConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<GetEnclaveConnectionRequest>,
-  output: __S(241, __c15, 1) as any as S.Schema<GetEnclaveConnectionResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<GetEnclaveConnectionRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<GetEnclaveConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3045,8 +3166,8 @@ export const GetEnclaveEndpoint: API.OperationMethod<
   GetEnclaveEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<GetEnclaveEndpointRequest>,
-  output: __S(307, __c19, 3) as any as S.Schema<GetEnclaveEndpointResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<GetEnclaveEndpointRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<GetEnclaveEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3060,8 +3181,8 @@ export const GetTransitHub: API.OperationMethod<
   GetTransitHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<GetTransitHubRequest>,
-  output: __S(627, __c39, 3) as any as S.Schema<GetTransitHubResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetTransitHubRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<GetTransitHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3075,8 +3196,8 @@ export const GetVirtualEnclave: API.OperationMethod<
   GetVirtualEnclaveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<GetVirtualEnclaveRequest>,
-  output: __S(663, __c41, 7) as any as S.Schema<GetVirtualEnclaveResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<GetVirtualEnclaveRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<GetVirtualEnclaveResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3090,8 +3211,8 @@ export const GetWorkload: API.OperationMethod<
   GetWorkloadError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<GetWorkloadRequest>,
-  output: __S(737, __c46, 1) as any as S.Schema<GetWorkloadResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<GetWorkloadRequest>,
+  output: __S(848, __c53, 0) as any as S.Schema<GetWorkloadResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3105,8 +3226,8 @@ export const ListApprovalByParent: API.OperationMethod<
   ListApprovalByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c47, 0) as any as S.Schema<ListApprovalByParentRequest>,
-  output: __S(754, __c47, 2) as any as S.Schema<ApprovalResourceListResult>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListApprovalByParentRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<ApprovalResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3120,8 +3241,8 @@ export const ListCommunityByResourceGroup: API.OperationMethod<
   ListCommunityByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c48, 0) as any as S.Schema<ListCommunityByResourceGroupRequest>,
-  output: __S(785, __c49, 1) as any as S.Schema<CommunityResourceListResult>,
+  input: __S(896, __c56, 0) as any as S.Schema<ListCommunityByResourceGroupRequest>,
+  output: __S(913, __c57, 1) as any as S.Schema<CommunityResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3135,8 +3256,8 @@ export const ListCommunityBySubscription: API.OperationMethod<
   ListCommunityBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c50, 0) as any as S.Schema<ListCommunityBySubscriptionRequest>,
-  output: __S(785, __c49, 1) as any as S.Schema<CommunityResourceListResult>,
+  input: __S(928, __c58, 0) as any as S.Schema<ListCommunityBySubscriptionRequest>,
+  output: __S(913, __c57, 1) as any as S.Schema<CommunityResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3150,8 +3271,8 @@ export const ListCommunityEndpointByCommunityResource: API.OperationMethod<
   ListCommunityEndpointByCommunityResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(816, __c51, 0) as any as S.Schema<ListCommunityEndpointByCommunityResourceRequest>,
-  output: __S(833, __c52, 1) as any as S.Schema<CommunityEndpointResourceListResult>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListCommunityEndpointByCommunityResourceRequest>,
+  output: __S(961, __c60, 1) as any as S.Schema<CommunityEndpointResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3165,8 +3286,8 @@ export const ListCommunityEndpointBySubscription: API.OperationMethod<
   ListCommunityEndpointBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(848, __c53, 0) as any as S.Schema<ListCommunityEndpointBySubscriptionRequest>,
-  output: __S(833, __c52, 1) as any as S.Schema<CommunityEndpointResourceListResult>,
+  input: __S(976, __c61, 0) as any as S.Schema<ListCommunityEndpointBySubscriptionRequest>,
+  output: __S(961, __c60, 1) as any as S.Schema<CommunityEndpointResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3180,8 +3301,8 @@ export const ListDedicatedHubByCommunityResource: API.OperationMethod<
   ListDedicatedHubByCommunityResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c54, 0) as any as S.Schema<ListDedicatedHubByCommunityResourceRequest>,
-  output: __S(880, __c55, 0) as any as S.Schema<DedicatedHubResourceListResult>,
+  input: __S(992, __c62, 0) as any as S.Schema<ListDedicatedHubByCommunityResourceRequest>,
+  output: __S(1008, __c63, 0) as any as S.Schema<DedicatedHubResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3195,8 +3316,8 @@ export const ListDedicatedHubBySubscription: API.OperationMethod<
   ListDedicatedHubBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c56, 0) as any as S.Schema<ListDedicatedHubBySubscriptionRequest>,
-  output: __S(880, __c55, 0) as any as S.Schema<DedicatedHubResourceListResult>,
+  input: __S(1024, __c64, 0) as any as S.Schema<ListDedicatedHubBySubscriptionRequest>,
+  output: __S(1008, __c63, 0) as any as S.Schema<DedicatedHubResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3210,8 +3331,8 @@ export const ListEnclaveConnectionByResourceGroup: API.OperationMethod<
   ListEnclaveConnectionByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(912, __c57, 0) as any as S.Schema<ListEnclaveConnectionByResourceGroupRequest>,
-  output: __S(929, __c58, 1) as any as S.Schema<EnclaveConnectionResourceListResult>,
+  input: __S(1040, __c65, 0) as any as S.Schema<ListEnclaveConnectionByResourceGroupRequest>,
+  output: __S(1057, __c66, 1) as any as S.Schema<EnclaveConnectionResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3225,8 +3346,8 @@ export const ListEnclaveConnectionBySubscription: API.OperationMethod<
   ListEnclaveConnectionBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(944, __c59, 0) as any as S.Schema<ListEnclaveConnectionBySubscriptionRequest>,
-  output: __S(929, __c58, 1) as any as S.Schema<EnclaveConnectionResourceListResult>,
+  input: __S(1072, __c67, 0) as any as S.Schema<ListEnclaveConnectionBySubscriptionRequest>,
+  output: __S(1057, __c66, 1) as any as S.Schema<EnclaveConnectionResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3240,8 +3361,8 @@ export const ListEnclaveEndpointByEnclaveResource: API.OperationMethod<
   ListEnclaveEndpointByEnclaveResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c62, 0) as any as S.Schema<ListEnclaveEndpointByEnclaveResourceRequest>,
-  output: __S(1009, __c63, 1) as any as S.Schema<EnclaveEndpointResourceListResult>,
+  input: __S(1120, __c70, 0) as any as S.Schema<ListEnclaveEndpointByEnclaveResourceRequest>,
+  output: __S(1137, __c71, 1) as any as S.Schema<EnclaveEndpointResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3255,8 +3376,8 @@ export const ListEnclaveEndpointBySubscription: API.OperationMethod<
   ListEnclaveEndpointBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c64, 0) as any as S.Schema<ListEnclaveEndpointBySubscriptionRequest>,
-  output: __S(1009, __c63, 1) as any as S.Schema<EnclaveEndpointResourceListResult>,
+  input: __S(1152, __c72, 0) as any as S.Schema<ListEnclaveEndpointBySubscriptionRequest>,
+  output: __S(1137, __c71, 1) as any as S.Schema<EnclaveEndpointResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3270,8 +3391,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1040, __c65, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(1044, __c65, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1172, __c73, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3285,8 +3406,8 @@ export const ListTransitHubByCommunityResource: API.OperationMethod<
   ListTransitHubByCommunityResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c66, 0) as any as S.Schema<ListTransitHubByCommunityResourceRequest>,
-  output: __S(1073, __c67, 1) as any as S.Schema<TransitHubResourceListResult>,
+  input: __S(1184, __c74, 0) as any as S.Schema<ListTransitHubByCommunityResourceRequest>,
+  output: __S(1201, __c75, 1) as any as S.Schema<TransitHubResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3300,8 +3421,8 @@ export const ListTransitHubBySubscription: API.OperationMethod<
   ListTransitHubBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c68, 0) as any as S.Schema<ListTransitHubBySubscriptionRequest>,
-  output: __S(1073, __c67, 1) as any as S.Schema<TransitHubResourceListResult>,
+  input: __S(1216, __c76, 0) as any as S.Schema<ListTransitHubBySubscriptionRequest>,
+  output: __S(1201, __c75, 1) as any as S.Schema<TransitHubResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3315,8 +3436,8 @@ export const ListVirtualEnclaveByResourceGroup: API.OperationMethod<
   ListVirtualEnclaveByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1104, __c69, 0) as any as S.Schema<ListVirtualEnclaveByResourceGroupRequest>,
-  output: __S(1121, __c70, 1) as any as S.Schema<EnclaveResourceListResult>,
+  input: __S(1232, __c77, 0) as any as S.Schema<ListVirtualEnclaveByResourceGroupRequest>,
+  output: __S(1249, __c78, 1) as any as S.Schema<EnclaveResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3330,8 +3451,8 @@ export const ListVirtualEnclaveBySubscription: API.OperationMethod<
   ListVirtualEnclaveBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1136, __c71, 0) as any as S.Schema<ListVirtualEnclaveBySubscriptionRequest>,
-  output: __S(1121, __c70, 1) as any as S.Schema<EnclaveResourceListResult>,
+  input: __S(1264, __c79, 0) as any as S.Schema<ListVirtualEnclaveBySubscriptionRequest>,
+  output: __S(1249, __c78, 1) as any as S.Schema<EnclaveResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3345,8 +3466,8 @@ export const ListWorkloadByEnclaveResource: API.OperationMethod<
   ListWorkloadByEnclaveResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1152, __c72, 0) as any as S.Schema<ListWorkloadByEnclaveResourceRequest>,
-  output: __S(1169, __c73, 1) as any as S.Schema<WorkloadResourceListResult>,
+  input: __S(1280, __c80, 0) as any as S.Schema<ListWorkloadByEnclaveResourceRequest>,
+  output: __S(1297, __c81, 1) as any as S.Schema<WorkloadResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3360,8 +3481,8 @@ export const ListWorkloadBySubscription: API.OperationMethod<
   ListWorkloadBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c74, 0) as any as S.Schema<ListWorkloadBySubscriptionRequest>,
-  output: __S(1169, __c73, 1) as any as S.Schema<WorkloadResourceListResult>,
+  input: __S(1312, __c82, 0) as any as S.Schema<ListWorkloadBySubscriptionRequest>,
+  output: __S(1297, __c81, 1) as any as S.Schema<WorkloadResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3375,8 +3496,8 @@ export const NotifyApprovalInitiator: API.OperationMethod<
   NotifyApprovalInitiatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1200, __c75, 0) as any as S.Schema<NotifyApprovalInitiatorRequest>,
-  output: __S(976, __c61, 0) as any as S.Schema<ApprovalActionResponse>,
+  input: __S(1328, __c83, 0) as any as S.Schema<NotifyApprovalInitiatorRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3390,8 +3511,8 @@ export const TransitHubCreateOrUpdate: API.OperationMethod<
   TransitHubCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1232, __c77, 0) as any as S.Schema<TransitHubCreateOrUpdateRequest>,
-  output: __S(627, __c39, 3) as any as S.Schema<TransitHubCreateOrUpdateResponse>,
+  input: __S(1360, __c85, 0) as any as S.Schema<TransitHubCreateOrUpdateRequest>,
+  output: __S(1361, __c85, 1) as any as S.Schema<TransitHubCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3405,8 +3526,8 @@ export const UpdateApproval: API.OperationMethod<
   UpdateApprovalError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1266, __c79, 2) as any as S.Schema<UpdateApprovalRequest>,
-  output: __S(68, __c4, 4) as any as S.Schema<UpdateApprovalResponse>,
+  input: __S(1394, __c87, 2) as any as S.Schema<UpdateApprovalRequest>,
+  output: __S(1395, __c87, 3) as any as S.Schema<UpdateApprovalResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3420,8 +3541,8 @@ export const UpdateCommunity: API.OperationMethod<
   UpdateCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1281, __c80, 1) as any as S.Schema<UpdateCommunityRequest>,
-  output: __S(386, __c24, 2) as any as S.Schema<UpdateCommunityResponse>,
+  input: __S(1409, __c88, 1) as any as S.Schema<UpdateCommunityRequest>,
+  output: __S(1410, __c88, 2) as any as S.Schema<UpdateCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3435,8 +3556,8 @@ export const UpdateCommunityEndpoint: API.OperationMethod<
   UpdateCommunityEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1313, __c82, 1) as any as S.Schema<UpdateCommunityEndpointRequest>,
-  output: __S(707, __c44, 3) as any as S.Schema<UpdateCommunityEndpointResponse>,
+  input: __S(1441, __c90, 1) as any as S.Schema<UpdateCommunityEndpointRequest>,
+  output: __S(1442, __c90, 2) as any as S.Schema<UpdateCommunityEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3450,8 +3571,8 @@ export const UpdateDedicatedHub: API.OperationMethod<
   UpdateDedicatedHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1328, __c83, 0) as any as S.Schema<UpdateDedicatedHubRequest>,
-  output: __S(433, __c27, 1) as any as S.Schema<UpdateDedicatedHubResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<UpdateDedicatedHubRequest>,
+  output: __S(1457, __c91, 1) as any as S.Schema<UpdateDedicatedHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3465,8 +3586,8 @@ export const UpdateEnclaveConnection: API.OperationMethod<
   UpdateEnclaveConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1345, __c84, 1) as any as S.Schema<UpdateEnclaveConnectionRequest>,
-  output: __S(241, __c15, 1) as any as S.Schema<UpdateEnclaveConnectionResponse>,
+  input: __S(1473, __c92, 1) as any as S.Schema<UpdateEnclaveConnectionRequest>,
+  output: __S(1474, __c92, 2) as any as S.Schema<UpdateEnclaveConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3480,8 +3601,8 @@ export const UpdateEnclaveEndpoint: API.OperationMethod<
   UpdateEnclaveEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1361, __c85, 1) as any as S.Schema<UpdateEnclaveEndpointRequest>,
-  output: __S(307, __c19, 3) as any as S.Schema<UpdateEnclaveEndpointResponse>,
+  input: __S(1489, __c93, 1) as any as S.Schema<UpdateEnclaveEndpointRequest>,
+  output: __S(1490, __c93, 2) as any as S.Schema<UpdateEnclaveEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3495,8 +3616,8 @@ export const UpdateTransitHub: API.OperationMethod<
   UpdateTransitHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c86, 0) as any as S.Schema<UpdateTransitHubRequest>,
-  output: __S(627, __c39, 3) as any as S.Schema<UpdateTransitHubResponse>,
+  input: __S(1504, __c94, 0) as any as S.Schema<UpdateTransitHubRequest>,
+  output: __S(1505, __c94, 1) as any as S.Schema<UpdateTransitHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3510,8 +3631,8 @@ export const UpdateVirtualEnclave: API.OperationMethod<
   UpdateVirtualEnclaveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1393, __c87, 1) as any as S.Schema<UpdateVirtualEnclaveRequest>,
-  output: __S(663, __c41, 7) as any as S.Schema<UpdateVirtualEnclaveResponse>,
+  input: __S(1521, __c95, 1) as any as S.Schema<UpdateVirtualEnclaveRequest>,
+  output: __S(1522, __c95, 2) as any as S.Schema<UpdateVirtualEnclaveResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3525,8 +3646,8 @@ export const UpdateWorkload: API.OperationMethod<
   UpdateWorkloadError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1424, __c89, 0) as any as S.Schema<UpdateWorkloadRequest>,
-  output: __S(737, __c46, 1) as any as S.Schema<UpdateWorkloadResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<UpdateWorkloadRequest>,
+  output: __S(1553, __c97, 1) as any as S.Schema<UpdateWorkloadResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3540,8 +3661,8 @@ export const VirtualEnclaveCreateOrUpdate: API.OperationMethod<
   VirtualEnclaveCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1489, __c93, 1) as any as S.Schema<VirtualEnclaveCreateOrUpdateRequest>,
-  output: __S(663, __c41, 7) as any as S.Schema<VirtualEnclaveCreateOrUpdateResponse>,
+  input: __S(1617, __c101, 1) as any as S.Schema<VirtualEnclaveCreateOrUpdateRequest>,
+  output: __S(1618, __c101, 2) as any as S.Schema<VirtualEnclaveCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3555,8 +3676,8 @@ export const VirtualEnclaveHandleApprovalCreation: API.OperationMethod<
   VirtualEnclaveHandleApprovalCreationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c94, 0) as any as S.Schema<VirtualEnclaveHandleApprovalCreationRequest>,
-  output: __S(976, __c61, 0) as any as S.Schema<ApprovalActionResponse>,
+  input: __S(1632, __c102, 0) as any as S.Schema<VirtualEnclaveHandleApprovalCreationRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3570,8 +3691,8 @@ export const VirtualEnclaveHandleApprovalDeletion: API.OperationMethod<
   VirtualEnclaveHandleApprovalDeletionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1520, __c95, 0) as any as S.Schema<VirtualEnclaveHandleApprovalDeletionRequest>,
-  output: __S(976, __c61, 0) as any as S.Schema<ApprovalActionResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<VirtualEnclaveHandleApprovalDeletionRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3585,8 +3706,8 @@ export const WorkloadCreateOrUpdate: API.OperationMethod<
   WorkloadCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c96, 0) as any as S.Schema<WorkloadCreateOrUpdateRequest>,
-  output: __S(737, __c46, 1) as any as S.Schema<WorkloadCreateOrUpdateResponse>,
+  input: __S(1664, __c104, 0) as any as S.Schema<WorkloadCreateOrUpdateRequest>,
+  output: __S(1665, __c104, 1) as any as S.Schema<WorkloadCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3622,6 +3743,18 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ApprovalCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(67, __c4, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ApprovalCreateOrUpdateResponse" });
   }
 }
 function __c1(j: number): any {
@@ -3697,16 +3830,6 @@ function __c4(j: number): any {
           requestMetadata: __S(64, __c4, 0),
         }),
       ).annotate({ identifier: "ApprovalProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
-          properties: S.optional(__S(67, __c4, 3)),
-        }),
-      ).annotate({ identifier: "ApprovalCreateOrUpdateResponse" });
   }
 }
 function __c5(j: number): any {
@@ -3909,7 +4032,7 @@ function __c14(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           enclaveConnectionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(400, __c25, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
           location: S.String,
           properties: S.optional(__S(224, __c14, 0)),
         }).pipe(
@@ -3921,6 +4044,20 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "EnclaveConnectionCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(240, __c15, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "EnclaveConnectionCreateOrUpdateResponse" });
   }
 }
 function __c15(j: number): any {
@@ -3938,18 +4075,6 @@ function __c15(j: number): any {
           updateMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnclaveConnectionProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
-          tags: S.optional(__S(400, __c25, 0)),
-          location: S.String,
-          properties: S.optional(__S(240, __c15, 0)),
-        }),
-      ).annotate({ identifier: "EnclaveConnectionCreateOrUpdateResponse" });
   }
 }
 function __c16(j: number): any {
@@ -4010,7 +4135,7 @@ function __c18(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           virtualEnclaveName: S.String.pipe(T.Label()),
           enclaveEndpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(400, __c25, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
           location: S.String,
           properties: S.optional(__S(288, __c18, 0)),
         }).pipe(
@@ -4022,6 +4147,20 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "EnclaveEndpointsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(306, __c19, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "EnclaveEndpointsCreateOrUpdateResponse" });
   }
 }
 function __c19(j: number): any {
@@ -4029,7 +4168,7 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          protocols: S.optional(__S(688, __c43, 0)),
+          protocols: S.optional(__S(800, __c50, 0)),
           endpointRuleName: S.optional(S.String),
           destination: S.optional(S.String),
           ports: S.optional(S.String),
@@ -4046,18 +4185,6 @@ function __c19(j: number): any {
           updateMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnclaveEndpointProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
-          tags: S.optional(__S(400, __c25, 0)),
-          location: S.String,
-          properties: S.optional(__S(306, __c19, 2)),
-        }),
-      ).annotate({ identifier: "EnclaveEndpointsCreateOrUpdateResponse" });
   }
 }
 function __c20(j: number): any {
@@ -4067,13 +4194,13 @@ function __c20(j: number): any {
         S.Struct({
           addressSpace: S.optional(S.String),
           dnsServers: S.optional(__S(32, __c2, 0)),
-          governedServiceList: S.optional(__S(417, __c26, 1)),
+          governedServiceList: S.optional(__S(433, __c27, 1)),
           policyOverride: S.optional(S.String),
-          communityRoleAssignments: S.optional(__S(355, __c22, 3)),
+          communityRoleAssignments: S.optional(__S(371, __c23, 3)),
           firewallSku: S.optional(S.String),
-          approvalSettings: S.optional(__S(384, __c24, 0)),
-          maintenanceModeConfiguration: S.optional(__S(357, __c22, 5)),
-          monitoringSettings: S.optional(__S(360, __c22, 8)),
+          approvalSettings: S.optional(__S(400, __c25, 0)),
+          maintenanceModeConfiguration: S.optional(__S(373, __c23, 5)),
+          monitoringSettings: S.optional(__S(376, __c23, 8)),
           addressSpaces: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "CommunityPropertiesInput" });
@@ -4083,10 +4210,10 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(400, __c25, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
           location: S.String,
           properties: S.optional(__S(320, __c20, 0)),
-          identity: S.optional(__S(449, __c28, 1)),
+          identity: S.optional(__S(465, __c29, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4096,6 +4223,21 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CommunityCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(401, __c25, 1)),
+          identity: S.optional(__S(381, __c23, 13)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CommunityCreateOrUpdateResponse" });
   }
 }
 function __c21(j: number): any {
@@ -4104,19 +4246,35 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(448, __c28, 0)),
+        }),
+      ).annotate({ identifier: "DedicatedHubResource" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
         }),
       ).annotate({ identifier: "MoboBrokerResource" });
     case 1:
-      return S.Array(__S(336, __c21, 0));
+      return S.Array(__S(352, __c22, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          moboBrokerResources: S.optional(__S(337, __c21, 1)),
+          moboBrokerResources: S.optional(__S(353, __c22, 1)),
         }),
       ).annotate({ identifier: "CommunityPropertiesManagedOnBehalfOfConfiguration" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4126,17 +4284,17 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "Principal" });
     case 1:
-      return S.Array(__S(352, __c22, 0));
+      return S.Array(__S(368, __c23, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           roleDefinitionId: S.String,
-          principals: S.optional(__S(353, __c22, 1)),
+          principals: S.optional(__S(369, __c23, 1)),
           condition: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoleAssignmentItem" });
     case 3:
-      return S.Array(__S(354, __c22, 2));
+      return S.Array(__S(370, __c23, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4149,7 +4307,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           mode: S.String,
-          principals: S.optional(__S(353, __c22, 1)),
+          principals: S.optional(__S(369, __c23, 1)),
           justification: S.optional(S.String),
         }),
       ).annotate({ identifier: "MaintenanceModeConfigurationModel" });
@@ -4162,12 +4320,12 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "MonitoringDestination" });
     case 7:
-      return S.Array(__S(358, __c22, 6));
+      return S.Array(__S(374, __c23, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
-          diagnosticDestinations: S.optional(__S(359, __c22, 7)),
-          flowLogDestination: S.optional(__S(358, __c22, 6)),
+          diagnosticDestinations: S.optional(__S(375, __c23, 7)),
+          flowLogDestination: S.optional(__S(374, __c23, 6)),
         }),
       ).annotate({ identifier: "MonitoringSettingsModel" });
     case 9:
@@ -4182,7 +4340,7 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "GovernedServiceItem" });
     case 10:
-      return S.Array(__S(361, __c22, 9));
+      return S.Array(__S(377, __c23, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
@@ -4191,36 +4349,36 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 12:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(363, __c22, 11)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(379, __c23, 11)));
     case 13:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(364, __c22, 12)),
+          userAssignedIdentities: S.optional(__S(380, __c23, 12)),
         }),
       ).annotate({ identifier: "CommunityCreateOrUpdateResponseIdentity" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(433, __c27, 1));
   }
 }
 function __c24(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(336, __c21, 0));
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          communityEndpointUpdate: S.optional(__S(356, __c22, 4)),
-          enclaveEndpointUpdate: S.optional(__S(356, __c22, 4)),
-          enclaveCreation: S.optional(__S(356, __c22, 4)),
-          connectionCreation: S.optional(__S(356, __c22, 4)),
-          connectionUpdate: S.optional(__S(356, __c22, 4)),
-          communityMaintenanceMode: S.optional(__S(356, __c22, 4)),
-          enclaveMaintenanceMode: S.optional(__S(356, __c22, 4)),
+          communityEndpointUpdate: S.optional(__S(372, __c23, 4)),
+          enclaveEndpointUpdate: S.optional(__S(372, __c23, 4)),
+          enclaveCreation: S.optional(__S(372, __c23, 4)),
+          connectionCreation: S.optional(__S(372, __c23, 4)),
+          connectionUpdate: S.optional(__S(372, __c23, 4)),
+          communityMaintenanceMode: S.optional(__S(372, __c23, 4)),
+          enclaveMaintenanceMode: S.optional(__S(372, __c23, 4)),
         }),
       ).annotate({ identifier: "ApprovalSettings" });
     case 1:
@@ -4231,40 +4389,27 @@ function __c24(j: number): any {
           provisioningState: S.optional(S.String),
           resourceCollection: S.optional(__S(32, __c2, 0)),
           managedResourceGroupName: S.optional(S.String),
-          managedOnBehalfOfConfiguration: S.optional(__S(338, __c21, 2)),
-          governedServiceList: S.optional(__S(362, __c22, 10)),
+          managedOnBehalfOfConfiguration: S.optional(__S(354, __c22, 2)),
+          governedServiceList: S.optional(__S(378, __c23, 10)),
           policyOverride: S.optional(S.String),
-          communityRoleAssignments: S.optional(__S(355, __c22, 3)),
+          communityRoleAssignments: S.optional(__S(371, __c23, 3)),
           firewallSku: S.optional(S.String),
-          approvalSettings: S.optional(__S(384, __c24, 0)),
-          maintenanceModeConfiguration: S.optional(__S(357, __c22, 5)),
-          dedicatedHubList: S.optional(__S(368, __c23, 0)),
-          monitoringSettings: S.optional(__S(360, __c22, 8)),
+          approvalSettings: S.optional(__S(400, __c25, 0)),
+          maintenanceModeConfiguration: S.optional(__S(373, __c23, 5)),
+          dedicatedHubList: S.optional(__S(384, __c24, 0)),
+          monitoringSettings: S.optional(__S(376, __c23, 8)),
           addressSpaces: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "CommunityProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
-          tags: S.optional(__S(400, __c25, 0)),
-          location: S.String,
-          properties: S.optional(__S(385, __c24, 1)),
-          identity: S.optional(__S(365, __c22, 13)),
-        }),
-      ).annotate({ identifier: "CommunityCreateOrUpdateResponse" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4276,10 +4421,12 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "GovernedServiceItemInput" });
     case 1:
-      return S.Array(__S(416, __c26, 0));
+      return S.Array(__S(432, __c27, 0));
+    case 2:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "UserAssignedIdentityInput" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4291,37 +4438,19 @@ function __c27(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedHubProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
-          tags: S.optional(__S(400, __c25, 0)),
-          location: S.String,
-          properties: S.optional(__S(432, __c27, 0)),
-        }),
-      ).annotate({ identifier: "DedicatedHubResource" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(464, __c29, 0)));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(448, __c28, 0)),
-        }),
-      ).annotate({ identifier: "CommunityCreateOrUpdateRequestIdentity" });
   }
 }
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "UserAssignedIdentityInput" });
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(434, __c27, 2)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(464, __c29, 0)),
+        }),
+      ).annotate({ identifier: "CommunityCreateOrUpdateRequestIdentity" });
   }
 }
 function __c30(j: number): any {
@@ -4391,6 +4520,20 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(67, __c4, 3)),
+        }),
+      ).annotate({ identifier: "GetApprovalResponse" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
@@ -4405,7 +4548,24 @@ function __c33(j: number): any {
       ).annotate({ identifier: "GetCommunityRequest" });
   }
 }
-function __c34(j: number): any {
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(401, __c25, 1)),
+          identity: S.optional(__S(381, __c23, 13)),
+        }),
+      ).annotate({ identifier: "GetCommunityResponse" });
+  }
+}
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4425,7 +4585,23 @@ function __c34(j: number): any {
       ).annotate({ identifier: "GetCommunityEndpointRequest" });
   }
 }
-function __c35(j: number): any {
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(818, __c51, 2)),
+        }),
+      ).annotate({ identifier: "GetCommunityEndpointResponse" });
+  }
+}
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4445,7 +4621,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "GetDedicatedHubRequest" });
   }
 }
-function __c36(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4464,7 +4640,23 @@ function __c36(j: number): any {
       ).annotate({ identifier: "GetEnclaveConnectionRequest" });
   }
 }
-function __c37(j: number): any {
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(240, __c15, 0)),
+        }),
+      ).annotate({ identifier: "GetEnclaveConnectionResponse" });
+  }
+}
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4484,7 +4676,23 @@ function __c37(j: number): any {
       ).annotate({ identifier: "GetEnclaveEndpointRequest" });
   }
 }
-function __c38(j: number): any {
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(306, __c19, 2)),
+        }),
+      ).annotate({ identifier: "GetEnclaveEndpointResponse" });
+  }
+}
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4504,7 +4712,23 @@ function __c38(j: number): any {
       ).annotate({ identifier: "GetTransitHubRequest" });
   }
 }
-function __c39(j: number): any {
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(722, __c45, 2)),
+        }),
+      ).annotate({ identifier: "GetTransitHubResponse" });
+  }
+}
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4517,7 +4741,7 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          params: S.optional(__S(624, __c39, 0)),
+          params: S.optional(__S(720, __c45, 0)),
         }),
       ).annotate({ identifier: "TransitOption" });
     case 2:
@@ -4525,26 +4749,14 @@ function __c39(j: number): any {
         S.Struct({
           provisioningState: S.optional(S.String),
           state: S.optional(S.String),
-          transitOption: S.optional(__S(625, __c39, 1)),
+          transitOption: S.optional(__S(721, __c45, 1)),
           resourceCollection: S.optional(__S(32, __c2, 0)),
           securityProvider: S.optional(S.String),
         }),
       ).annotate({ identifier: "TransitHubProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
-          tags: S.optional(__S(400, __c25, 0)),
-          location: S.String,
-          properties: S.optional(__S(626, __c39, 2)),
-        }),
-      ).annotate({ identifier: "GetTransitHubResponse" });
   }
 }
-function __c40(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4563,7 +4775,24 @@ function __c40(j: number): any {
       ).annotate({ identifier: "GetVirtualEnclaveRequest" });
   }
 }
-function __c41(j: number): any {
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(774, __c48, 6)),
+          identity: S.optional(__S(381, __c23, 13)),
+        }),
+      ).annotate({ identifier: "GetVirtualEnclaveResponse" });
+  }
+}
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4577,14 +4806,14 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "SubnetConfiguration" });
     case 1:
-      return S.Array(__S(656, __c41, 0));
+      return S.Array(__S(768, __c48, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           networkName: S.optional(S.String),
           networkSize: S.optional(S.String),
           customCidrRange: S.optional(S.String),
-          subnetConfigurations: S.optional(__S(657, __c41, 1)),
+          subnetConfigurations: S.optional(__S(769, __c48, 1)),
           allowSubnetCommunication: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EnclaveVirtualNetworkModel" });
@@ -4607,56 +4836,43 @@ function __c41(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          enclaveEndpointUpdate: S.optional(__S(356, __c22, 4)),
-          connectionCreation: S.optional(__S(356, __c22, 4)),
-          connectionUpdate: S.optional(__S(356, __c22, 4)),
-          enclaveMaintenanceMode: S.optional(__S(356, __c22, 4)),
+          enclaveEndpointUpdate: S.optional(__S(372, __c23, 4)),
+          connectionCreation: S.optional(__S(372, __c23, 4)),
+          connectionUpdate: S.optional(__S(372, __c23, 4)),
+          enclaveMaintenanceMode: S.optional(__S(372, __c23, 4)),
         }),
       ).annotate({ identifier: "VirtualEnclaveApprovalSettings" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          enclaveVirtualNetwork: __S(658, __c41, 2),
-          enclaveAddressSpaces: S.optional(__S(659, __c41, 3)),
+          enclaveVirtualNetwork: __S(770, __c48, 2),
+          enclaveAddressSpaces: S.optional(__S(771, __c48, 3)),
           communityResourceId: S.String,
           resourceCollection: S.optional(__S(32, __c2, 0)),
           managedResourceGroupName: S.optional(S.String),
-          managedOnBehalfOfConfiguration: S.optional(__S(338, __c21, 2)),
+          managedOnBehalfOfConfiguration: S.optional(__S(354, __c22, 2)),
           bastionEnabled: S.optional(S.Boolean),
           workloadResourceVisibility: S.optional(S.String),
           rbacInheritance: S.optional(S.String),
-          enclaveRoleAssignments: S.optional(__S(355, __c22, 3)),
-          workloadRoleAssignments: S.optional(__S(355, __c22, 3)),
-          governedServiceList: S.optional(__S(362, __c22, 10)),
-          enclaveDefaultSettings: S.optional(__S(660, __c41, 4)),
-          maintenanceModeConfiguration: S.optional(__S(357, __c22, 5)),
+          enclaveRoleAssignments: S.optional(__S(371, __c23, 3)),
+          workloadRoleAssignments: S.optional(__S(371, __c23, 3)),
+          governedServiceList: S.optional(__S(378, __c23, 10)),
+          enclaveDefaultSettings: S.optional(__S(772, __c48, 4)),
+          maintenanceModeConfiguration: S.optional(__S(373, __c23, 5)),
           dedicatedHubResourceId: S.optional(S.String),
-          approvalSettings: S.optional(__S(661, __c41, 5)),
-          monitoringSettings: S.optional(__S(360, __c22, 8)),
+          approvalSettings: S.optional(__S(773, __c48, 5)),
+          monitoringSettings: S.optional(__S(376, __c23, 8)),
         }),
       ).annotate({ identifier: "VirtualEnclaveProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
-          tags: S.optional(__S(400, __c25, 0)),
-          location: S.String,
-          properties: S.optional(__S(662, __c41, 6)),
-          identity: S.optional(__S(365, __c22, 13)),
-        }),
-      ).annotate({ identifier: "GetVirtualEnclaveResponse" });
   }
 }
-function __c42(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ruleCollection: __S(705, __c44, 1),
+          ruleCollection: __S(817, __c51, 1),
           updateMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommunityEndpointPropertiesInput" });
@@ -4667,9 +4883,9 @@ function __c42(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
           communityEndpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(400, __c25, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
           location: S.String,
-          properties: S.optional(__S(672, __c42, 0)),
+          properties: S.optional(__S(784, __c49, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4679,21 +4895,35 @@ function __c42(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CommunityEndpointsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(818, __c51, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CommunityEndpointsCreateOrUpdateResponse" });
   }
 }
-function __c43(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c44(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           destinationType: S.optional(S.String),
-          protocols: S.optional(__S(688, __c43, 0)),
+          protocols: S.optional(__S(800, __c50, 0)),
           transitHubResourceId: S.optional(S.String),
           endpointRuleName: S.optional(S.String),
           destination: S.optional(S.String),
@@ -4701,31 +4931,19 @@ function __c44(j: number): any {
         }),
       ).annotate({ identifier: "CommunityEndpointDestinationRule" });
     case 1:
-      return S.Array(__S(704, __c44, 0));
+      return S.Array(__S(816, __c51, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ruleCollection: __S(705, __c44, 1),
+          ruleCollection: __S(817, __c51, 1),
           resourceCollection: S.optional(__S(32, __c2, 0)),
           provisioningState: S.optional(S.String),
           updateMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommunityEndpointProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
-          tags: S.optional(__S(400, __c25, 0)),
-          location: S.String,
-          properties: S.optional(__S(706, __c44, 2)),
-        }),
-      ).annotate({ identifier: "CommunityEndpointsCreateOrUpdateResponse" });
   }
 }
-function __c45(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4745,31 +4963,35 @@ function __c45(j: number): any {
       ).annotate({ identifier: "GetWorkloadRequest" });
   }
 }
-function __c46(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          resourceGroupCollection: S.optional(__S(32, __c2, 0)),
-          managedOnBehalfOfConfiguration: S.optional(__S(338, __c21, 2)),
-        }),
-      ).annotate({ identifier: "WorkloadProperties" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(48, __c3, 0)),
-          tags: S.optional(__S(400, __c25, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
           location: S.String,
-          properties: S.optional(__S(736, __c46, 0)),
+          properties: S.optional(__S(864, __c54, 0)),
         }),
       ).annotate({ identifier: "GetWorkloadResponse" });
   }
 }
-function __c47(j: number): any {
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          resourceGroupCollection: S.optional(__S(32, __c2, 0)),
+          managedOnBehalfOfConfiguration: S.optional(__S(354, __c22, 2)),
+        }),
+      ).annotate({ identifier: "WorkloadProperties" });
+  }
+}
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4785,17 +5007,17 @@ function __c47(j: number): any {
         ),
       ).annotate({ identifier: "ListApprovalByParentRequest" });
     case 1:
-      return S.Array(__S(68, __c4, 4));
+      return S.Array(__S(528, __c33, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(753, __c47, 1),
+          value: __S(881, __c55, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApprovalResourceListResult" });
   }
 }
-function __c48(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4813,20 +5035,20 @@ function __c48(j: number): any {
       ).annotate({ identifier: "ListCommunityByResourceGroupRequest" });
   }
 }
-function __c49(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(386, __c24, 2));
+      return S.Array(__S(560, __c35, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(784, __c49, 0),
+          value: __S(912, __c57, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommunityResourceListResult" });
   }
 }
-function __c50(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4843,7 +5065,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "ListCommunityBySubscriptionRequest" });
   }
 }
-function __c51(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4862,20 +5084,20 @@ function __c51(j: number): any {
       ).annotate({ identifier: "ListCommunityEndpointByCommunityResourceRequest" });
   }
 }
-function __c52(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(707, __c44, 3));
+      return S.Array(__S(592, __c37, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(832, __c52, 0),
+          value: __S(960, __c60, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommunityEndpointResourceListResult" });
   }
 }
-function __c53(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4893,7 +5115,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "ListCommunityEndpointBySubscriptionRequest" });
   }
 }
-function __c54(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4912,18 +5134,18 @@ function __c54(j: number): any {
       ).annotate({ identifier: "ListDedicatedHubByCommunityResourceRequest" });
   }
 }
-function __c55(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(368, __c23, 0),
+          value: __S(384, __c24, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedHubResourceListResult" });
   }
 }
-function __c56(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4941,7 +5163,7 @@ function __c56(j: number): any {
       ).annotate({ identifier: "ListDedicatedHubBySubscriptionRequest" });
   }
 }
-function __c57(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4959,20 +5181,20 @@ function __c57(j: number): any {
       ).annotate({ identifier: "ListEnclaveConnectionByResourceGroupRequest" });
   }
 }
-function __c58(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(241, __c15, 1));
+      return S.Array(__S(640, __c40, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(928, __c58, 0),
+          value: __S(1056, __c66, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnclaveConnectionResourceListResult" });
   }
 }
-function __c59(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4989,7 +5211,7 @@ function __c59(j: number): any {
       ).annotate({ identifier: "ListEnclaveConnectionBySubscriptionRequest" });
   }
 }
-function __c60(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5012,17 +5234,19 @@ function __c60(j: number): any {
       ).annotate({ identifier: "CommunityEndpointsHandleApprovalCreationRequest" });
   }
 }
-function __c61(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           message: S.String,
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "ApprovalActionResponse" });
   }
 }
-function __c62(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5041,20 +5265,20 @@ function __c62(j: number): any {
       ).annotate({ identifier: "ListEnclaveEndpointByEnclaveResourceRequest" });
   }
 }
-function __c63(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(307, __c19, 3));
+      return S.Array(__S(672, __c42, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1008, __c63, 0),
+          value: __S(1136, __c71, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnclaveEndpointResourceListResult" });
   }
 }
-function __c64(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5072,7 +5296,7 @@ function __c64(j: number): any {
       ).annotate({ identifier: "ListEnclaveEndpointBySubscriptionRequest" });
   }
 }
-function __c65(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5099,23 +5323,23 @@ function __c65(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(1041, __c65, 1)),
+          display: S.optional(__S(1169, __c73, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(1042, __c65, 2));
+      return S.Array(__S(1170, __c73, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1043, __c65, 3)),
+          value: S.optional(__S(1171, __c73, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c66(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5134,20 +5358,20 @@ function __c66(j: number): any {
       ).annotate({ identifier: "ListTransitHubByCommunityResourceRequest" });
   }
 }
-function __c67(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(627, __c39, 3));
+      return S.Array(__S(704, __c44, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1072, __c67, 0),
+          value: __S(1200, __c75, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TransitHubResourceListResult" });
   }
 }
-function __c68(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5165,7 +5389,7 @@ function __c68(j: number): any {
       ).annotate({ identifier: "ListTransitHubBySubscriptionRequest" });
   }
 }
-function __c69(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5183,20 +5407,20 @@ function __c69(j: number): any {
       ).annotate({ identifier: "ListVirtualEnclaveByResourceGroupRequest" });
   }
 }
-function __c70(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(663, __c41, 7));
+      return S.Array(__S(752, __c47, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1120, __c70, 0),
+          value: __S(1248, __c78, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnclaveResourceListResult" });
   }
 }
-function __c71(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5213,7 +5437,7 @@ function __c71(j: number): any {
       ).annotate({ identifier: "ListVirtualEnclaveBySubscriptionRequest" });
   }
 }
-function __c72(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5232,20 +5456,20 @@ function __c72(j: number): any {
       ).annotate({ identifier: "ListWorkloadByEnclaveResourceRequest" });
   }
 }
-function __c73(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(737, __c46, 1));
+      return S.Array(__S(848, __c53, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1168, __c73, 0),
+          value: __S(1296, __c81, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkloadResourceListResult" });
   }
 }
-function __c74(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5263,7 +5487,7 @@ function __c74(j: number): any {
       ).annotate({ identifier: "ListWorkloadBySubscriptionRequest" });
   }
 }
-function __c75(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5282,7 +5506,7 @@ function __c75(j: number): any {
       ).annotate({ identifier: "NotifyApprovalInitiatorRequest" });
   }
 }
-function __c76(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5303,7 +5527,7 @@ function __c76(j: number): any {
       ).annotate({ identifier: "CommunityEndpointsHandleApprovalDeletionRequest" });
   }
 }
-function __c77(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5312,9 +5536,9 @@ function __c77(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
           transitHubName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(400, __c25, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
           location: S.String,
-          properties: S.optional(__S(1248, __c78, 0)),
+          properties: S.optional(__S(1376, __c86, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5324,21 +5548,35 @@ function __c77(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TransitHubCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(722, __c45, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "TransitHubCreateOrUpdateResponse" });
   }
 }
-function __c78(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
-          transitOption: S.optional(__S(625, __c39, 1)),
+          transitOption: S.optional(__S(721, __c45, 1)),
           securityProvider: S.optional(S.String),
         }),
       ).annotate({ identifier: "TransitHubPropertiesInput" });
   }
 }
-function __c79(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5358,7 +5596,7 @@ function __c79(j: number): any {
           ticketId: S.optional(S.String),
           createdAt: S.optional(S.String),
           stateChangedAt: S.optional(S.String),
-          requestMetadata: S.optional(__S(1264, __c79, 0)),
+          requestMetadata: S.optional(__S(1392, __c87, 0)),
         }),
       ).annotate({ identifier: "ApprovalPatchPropertiesInput" });
     case 2:
@@ -5366,7 +5604,7 @@ function __c79(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           approvalName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1265, __c79, 1)),
+          properties: S.optional(__S(1393, __c87, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5376,21 +5614,33 @@ function __c79(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateApprovalRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(67, __c4, 3)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateApprovalResponse" });
   }
 }
-function __c80(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           dnsServers: S.optional(__S(32, __c2, 0)),
-          governedServiceList: S.optional(__S(417, __c26, 1)),
+          governedServiceList: S.optional(__S(433, __c27, 1)),
           policyOverride: S.optional(S.String),
-          communityRoleAssignments: S.optional(__S(355, __c22, 3)),
+          communityRoleAssignments: S.optional(__S(371, __c23, 3)),
           firewallSku: S.optional(S.String),
-          approvalSettings: S.optional(__S(384, __c24, 0)),
-          maintenanceModeConfiguration: S.optional(__S(1296, __c81, 0)),
-          monitoringSettings: S.optional(__S(1298, __c81, 2)),
+          approvalSettings: S.optional(__S(400, __c25, 0)),
+          maintenanceModeConfiguration: S.optional(__S(1424, __c89, 0)),
+          monitoringSettings: S.optional(__S(1426, __c89, 2)),
           addressSpaces: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "CommunityPatchPropertiesInput" });
@@ -5400,9 +5650,9 @@ function __c80(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1280, __c80, 0)),
-          tags: S.optional(__S(400, __c25, 0)),
-          identity: S.optional(__S(1300, __c81, 4)),
+          properties: S.optional(__S(1408, __c88, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          identity: S.optional(__S(1428, __c89, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5412,15 +5662,30 @@ function __c80(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateCommunityRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(401, __c25, 1)),
+          identity: S.optional(__S(381, __c23, 13)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateCommunityResponse" });
   }
 }
-function __c81(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
-          principals: S.optional(__S(353, __c22, 1)),
+          principals: S.optional(__S(369, __c23, 1)),
           justification: S.optional(S.String),
         }),
       ).annotate({ identifier: "MaintenanceModeConfigurationPatchModel" });
@@ -5435,29 +5700,29 @@ function __c81(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          diagnosticDestinations: S.optional(__S(359, __c22, 7)),
-          flowLogDestination: S.optional(__S(1297, __c81, 1)),
+          diagnosticDestinations: S.optional(__S(375, __c23, 7)),
+          flowLogDestination: S.optional(__S(1425, __c89, 1)),
         }),
       ).annotate({ identifier: "MonitoringSettingsPatchModel" });
     case 3:
-      return S.Record(S.String, __S(464, __c29, 0));
+      return S.Record(S.String, __S(434, __c27, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(1299, __c81, 3)),
+          userAssignedIdentities: S.optional(__S(1427, __c89, 3)),
         }),
       ).annotate({
         identifier: "AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput",
       });
   }
 }
-function __c82(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ruleCollection: S.optional(__S(705, __c44, 1)),
+          ruleCollection: S.optional(__S(817, __c51, 1)),
           updateMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommunityEndpointPatchProperties" });
@@ -5468,8 +5733,8 @@ function __c82(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
           communityEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1312, __c82, 0)),
-          tags: S.optional(__S(400, __c25, 0)),
+          properties: S.optional(__S(1440, __c90, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5479,9 +5744,23 @@ function __c82(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateCommunityEndpointRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(818, __c51, 2)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateCommunityEndpointResponse" });
   }
 }
-function __c83(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5490,8 +5769,8 @@ function __c83(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
           dedicatedHubName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1472, __c92, 0)),
-          tags: S.optional(__S(400, __c25, 0)),
+          properties: S.optional(__S(1600, __c100, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5501,9 +5780,23 @@ function __c83(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDedicatedHubRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(448, __c28, 0)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateDedicatedHubResponse" });
   }
 }
-function __c84(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5517,8 +5810,8 @@ function __c84(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           enclaveConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1344, __c84, 0)),
-          tags: S.optional(__S(400, __c25, 0)),
+          properties: S.optional(__S(1472, __c92, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5528,9 +5821,23 @@ function __c84(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateEnclaveConnectionRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(240, __c15, 0)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateEnclaveConnectionResponse" });
   }
 }
-function __c85(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5546,8 +5853,8 @@ function __c85(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           virtualEnclaveName: S.String.pipe(T.Label()),
           enclaveEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1360, __c85, 0)),
-          tags: S.optional(__S(400, __c25, 0)),
+          properties: S.optional(__S(1488, __c93, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5557,9 +5864,23 @@ function __c85(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateEnclaveEndpointRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(306, __c19, 2)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateEnclaveEndpointResponse" });
   }
 }
-function __c86(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5568,8 +5889,8 @@ function __c86(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
           transitHubName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1248, __c78, 0)),
-          tags: S.optional(__S(400, __c25, 0)),
+          properties: S.optional(__S(1376, __c86, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5579,9 +5900,23 @@ function __c86(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateTransitHubRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(722, __c45, 2)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateTransitHubResponse" });
   }
 }
-function __c87(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5590,14 +5925,14 @@ function __c87(j: number): any {
           bastionEnabled: S.optional(S.Boolean),
           workloadResourceVisibility: S.optional(S.String),
           rbacInheritance: S.optional(S.String),
-          enclaveRoleAssignments: S.optional(__S(355, __c22, 3)),
-          workloadRoleAssignments: S.optional(__S(355, __c22, 3)),
-          governedServiceList: S.optional(__S(417, __c26, 1)),
-          enclaveDefaultSettings: S.optional(__S(1408, __c88, 0)),
-          maintenanceModeConfiguration: S.optional(__S(1296, __c81, 0)),
+          enclaveRoleAssignments: S.optional(__S(371, __c23, 3)),
+          workloadRoleAssignments: S.optional(__S(371, __c23, 3)),
+          governedServiceList: S.optional(__S(433, __c27, 1)),
+          enclaveDefaultSettings: S.optional(__S(1536, __c96, 0)),
+          maintenanceModeConfiguration: S.optional(__S(1424, __c89, 0)),
           dedicatedHubResourceId: S.optional(S.String),
-          approvalSettings: S.optional(__S(661, __c41, 5)),
-          monitoringSettings: S.optional(__S(1298, __c81, 2)),
+          approvalSettings: S.optional(__S(773, __c48, 5)),
+          monitoringSettings: S.optional(__S(1426, __c89, 2)),
         }),
       ).annotate({ identifier: "VirtualEnclavePatchPropertiesInput" });
     case 1:
@@ -5606,9 +5941,9 @@ function __c87(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualEnclaveName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1392, __c87, 0)),
-          identity: S.optional(__S(1300, __c81, 4)),
-          tags: S.optional(__S(400, __c25, 0)),
+          properties: S.optional(__S(1520, __c95, 0)),
+          identity: S.optional(__S(1428, __c89, 4)),
+          tags: S.optional(__S(416, __c26, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5618,9 +5953,24 @@ function __c87(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateVirtualEnclaveRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(774, __c48, 6)),
+          identity: S.optional(__S(381, __c23, 13)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateVirtualEnclaveResponse" });
   }
 }
-function __c88(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5630,7 +5980,7 @@ function __c88(j: number): any {
       ).annotate({ identifier: "EnclaveDefaultSettingsPatchModel" });
   }
 }
-function __c89(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5639,8 +5989,8 @@ function __c89(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           virtualEnclaveName: S.String.pipe(T.Label()),
           workloadName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1440, __c90, 0)),
-          tags: S.optional(__S(400, __c25, 0)),
+          properties: S.optional(__S(1568, __c98, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5650,9 +6000,23 @@ function __c89(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWorkloadRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(864, __c54, 0)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateWorkloadResponse" });
   }
 }
-function __c90(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5662,7 +6026,7 @@ function __c90(j: number): any {
       ).annotate({ identifier: "WorkloadPatchProperties" });
   }
 }
-function __c91(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5671,9 +6035,9 @@ function __c91(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
           dedicatedHubName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(400, __c25, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
           location: S.String,
-          properties: S.optional(__S(1472, __c92, 0)),
+          properties: S.optional(__S(1600, __c100, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5683,9 +6047,23 @@ function __c91(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DedicatedHubCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(448, __c28, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DedicatedHubCreateOrUpdateResponse" });
   }
 }
-function __c92(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5695,7 +6073,7 @@ function __c92(j: number): any {
       ).annotate({ identifier: "DedicatedHubPropertiesInput" });
   }
 }
-function __c93(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5705,14 +6083,14 @@ function __c93(j: number): any {
           bastionEnabled: S.optional(S.Boolean),
           workloadResourceVisibility: S.optional(S.String),
           rbacInheritance: S.optional(S.String),
-          enclaveRoleAssignments: S.optional(__S(355, __c22, 3)),
-          workloadRoleAssignments: S.optional(__S(355, __c22, 3)),
-          governedServiceList: S.optional(__S(417, __c26, 1)),
-          enclaveDefaultSettings: S.optional(__S(1408, __c88, 0)),
-          maintenanceModeConfiguration: S.optional(__S(357, __c22, 5)),
+          enclaveRoleAssignments: S.optional(__S(371, __c23, 3)),
+          workloadRoleAssignments: S.optional(__S(371, __c23, 3)),
+          governedServiceList: S.optional(__S(433, __c27, 1)),
+          enclaveDefaultSettings: S.optional(__S(1536, __c96, 0)),
+          maintenanceModeConfiguration: S.optional(__S(373, __c23, 5)),
           dedicatedHubResourceId: S.optional(S.String),
-          approvalSettings: S.optional(__S(661, __c41, 5)),
-          monitoringSettings: S.optional(__S(360, __c22, 8)),
+          approvalSettings: S.optional(__S(773, __c48, 5)),
+          monitoringSettings: S.optional(__S(376, __c23, 8)),
         }),
       ).annotate({ identifier: "VirtualEnclavePropertiesInput" });
     case 1:
@@ -5721,10 +6099,10 @@ function __c93(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualEnclaveName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(400, __c25, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
           location: S.String,
-          properties: S.optional(__S(1488, __c93, 0)),
-          identity: S.optional(__S(449, __c28, 1)),
+          properties: S.optional(__S(1616, __c101, 0)),
+          identity: S.optional(__S(465, __c29, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5734,9 +6112,24 @@ function __c93(j: number): any {
           }),
         ),
       ).annotate({ identifier: "VirtualEnclaveCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(774, __c48, 6)),
+          identity: S.optional(__S(381, __c23, 13)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "VirtualEnclaveCreateOrUpdateResponse" });
   }
 }
-function __c94(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5758,7 +6151,7 @@ function __c94(j: number): any {
       ).annotate({ identifier: "VirtualEnclaveHandleApprovalCreationRequest" });
   }
 }
-function __c95(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5778,7 +6171,7 @@ function __c95(j: number): any {
       ).annotate({ identifier: "VirtualEnclaveHandleApprovalDeletionRequest" });
   }
 }
-function __c96(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5787,9 +6180,9 @@ function __c96(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           virtualEnclaveName: S.String.pipe(T.Label()),
           workloadName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(400, __c25, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
           location: S.String,
-          properties: S.optional(__S(1440, __c90, 0)),
+          properties: S.optional(__S(1568, __c98, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5799,9 +6192,23 @@ function __c96(j: number): any {
           }),
         ),
       ).annotate({ identifier: "WorkloadCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(416, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(864, __c54, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "WorkloadCreateOrUpdateResponse" });
   }
 }
-function __c97(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5819,7 +6226,18 @@ function __c97(j: number): any {
       ).annotate({ identifier: "DeleteApprovalRequest" });
   }
 }
-function __c98(j: number): any {
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteApprovalResponse" });
+  }
+}
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5838,7 +6256,7 @@ function __c98(j: number): any {
       ).annotate({ identifier: "DeleteCommunityRequest" });
   }
 }
-function __c99(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

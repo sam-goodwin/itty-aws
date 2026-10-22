@@ -101,6 +101,8 @@ export interface AssociationsInterfaceCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: AssociationProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteAssociationsInterfaceRequest {
   /** The ID of the target subscription. */
@@ -112,7 +114,12 @@ export interface DeleteAssociationsInterfaceRequest {
   /** Name of Association */
   associationName: string;
 }
-export interface DeleteAssociationsInterfaceResponse {}
+export interface DeleteAssociationsInterfaceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteFrontendsInterfaceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -123,7 +130,12 @@ export interface DeleteFrontendsInterfaceRequest {
   /** Frontends */
   frontendName: string;
 }
-export interface DeleteFrontendsInterfaceResponse {}
+export interface DeleteFrontendsInterfaceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeletePrivateEndpointConnectionsInterfaceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -134,7 +146,12 @@ export interface DeletePrivateEndpointConnectionsInterfaceRequest {
   /** Private Endpoint Connection */
   privateEndpointConnectionName: string;
 }
-export interface DeletePrivateEndpointConnectionsInterfaceResponse {}
+export interface DeletePrivateEndpointConnectionsInterfaceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSecurityPoliciesInterfaceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -145,7 +162,12 @@ export interface DeleteSecurityPoliciesInterfaceRequest {
   /** SecurityPolicy */
   securityPolicyName: string;
 }
-export interface DeleteSecurityPoliciesInterfaceResponse {}
+export interface DeleteSecurityPoliciesInterfaceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteTrafficControllerInterfaceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -154,7 +176,12 @@ export interface DeleteTrafficControllerInterfaceRequest {
   /** traffic controller name for path */
   trafficControllerName: string;
 }
-export interface DeleteTrafficControllerInterfaceResponse {}
+export interface DeleteTrafficControllerInterfaceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Resource tags. */
 export type FrontendsInterfaceCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
 /** Whether public network access is allowed for the frontend. */
@@ -236,6 +263,8 @@ export interface FrontendsInterfaceCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: FrontendProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetAssociationsInterfaceRequest {
   /** The ID of the target subscription. */
@@ -796,6 +825,8 @@ export interface SecurityPoliciesInterfaceCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: SecurityPolicyProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type TrafficControllerInterfaceCreateOrUpdateRequestTagsMap = {
@@ -839,6 +870,8 @@ export interface TrafficControllerInterfaceCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: TrafficControllerProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateAssociationsInterfaceRequestTagsMap = { [key: string]: string | undefined };
@@ -979,6 +1012,10 @@ export interface UpdatePrivateEndpointConnectionsInterfaceResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: PrivateEndpointConnectionProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateSecurityPoliciesInterfaceRequestTagsMap = { [key: string]: string | undefined };
@@ -1072,7 +1109,7 @@ export const AssociationsInterfaceCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<AssociationsInterfaceCreateOrUpdateRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<AssociationsInterfaceCreateOrUpdateResponse>,
+  output: __S(2, __c0, 2) as any as S.Schema<AssociationsInterfaceCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1101,7 +1138,7 @@ export const DeleteFrontendsInterface: API.OperationMethod<
   DeleteFrontendsInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<DeleteFrontendsInterfaceRequest>,
+  input: __S(184, __c23, 0) as any as S.Schema<DeleteFrontendsInterfaceRequest>,
   output: __S(40, __c5, 0) as any as S.Schema<DeleteFrontendsInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1116,7 +1153,7 @@ export const DeletePrivateEndpointConnectionsInterface: API.OperationMethod<
   DeletePrivateEndpointConnectionsInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<DeletePrivateEndpointConnectionsInterfaceRequest>,
+  input: __S(264, __c33, 0) as any as S.Schema<DeletePrivateEndpointConnectionsInterfaceRequest>,
   output: __S(40, __c5, 0) as any as S.Schema<DeletePrivateEndpointConnectionsInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1131,7 +1168,7 @@ export const DeleteSecurityPoliciesInterface: API.OperationMethod<
   DeleteSecurityPoliciesInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<DeleteSecurityPoliciesInterfaceRequest>,
+  input: __S(272, __c34, 0) as any as S.Schema<DeleteSecurityPoliciesInterfaceRequest>,
   output: __S(40, __c5, 0) as any as S.Schema<DeleteSecurityPoliciesInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1146,7 +1183,7 @@ export const DeleteTrafficControllerInterface: API.OperationMethod<
   DeleteTrafficControllerInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<DeleteTrafficControllerInterfaceRequest>,
+  input: __S(280, __c35, 0) as any as S.Schema<DeleteTrafficControllerInterfaceRequest>,
   output: __S(40, __c5, 0) as any as S.Schema<DeleteTrafficControllerInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1161,8 +1198,8 @@ export const FrontendsInterfaceCreateOrUpdate: API.OperationMethod<
   FrontendsInterfaceCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<FrontendsInterfaceCreateOrUpdateRequest>,
-  output: __S(289, __c36, 1) as any as S.Schema<FrontendsInterfaceCreateOrUpdateResponse>,
+  input: __S(289, __c36, 1) as any as S.Schema<FrontendsInterfaceCreateOrUpdateRequest>,
+  output: __S(290, __c36, 2) as any as S.Schema<FrontendsInterfaceCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1176,8 +1213,8 @@ export const GetAssociationsInterface: API.OperationMethod<
   GetAssociationsInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<GetAssociationsInterfaceRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetAssociationsInterfaceResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<GetAssociationsInterfaceRequest>,
+  output: __S(320, __c40, 0) as any as S.Schema<GetAssociationsInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1191,8 +1228,8 @@ export const GetFrontendsInterface: API.OperationMethod<
   GetFrontendsInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<GetFrontendsInterfaceRequest>,
-  output: __S(289, __c36, 1) as any as S.Schema<GetFrontendsInterfaceResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<GetFrontendsInterfaceRequest>,
+  output: __S(336, __c42, 0) as any as S.Schema<GetFrontendsInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1206,8 +1243,8 @@ export const GetPrivateEndpointConnectionsInterface: API.OperationMethod<
   GetPrivateEndpointConnectionsInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<GetPrivateEndpointConnectionsInterfaceRequest>,
-  output: __S(330, __c41, 2) as any as S.Schema<GetPrivateEndpointConnectionsInterfaceResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<GetPrivateEndpointConnectionsInterfaceRequest>,
+  output: __S(352, __c44, 0) as any as S.Schema<GetPrivateEndpointConnectionsInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1237,7 +1274,7 @@ export const GetSecurityPoliciesInterface: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(72, __c9, 0) as any as S.Schema<GetSecurityPoliciesInterfaceRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<GetSecurityPoliciesInterfaceResponse>,
+  output: __S(88, __c11, 0) as any as S.Schema<GetSecurityPoliciesInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1251,8 +1288,8 @@ export const GetTrafficControllerInterface: API.OperationMethod<
   GetTrafficControllerInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetTrafficControllerInterfaceRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<GetTrafficControllerInterfaceResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetTrafficControllerInterfaceRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<GetTrafficControllerInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1266,8 +1303,8 @@ export const ListAssociationsInterfaceByTrafficController: API.OperationMethod<
   ListAssociationsInterfaceByTrafficControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListAssociationsInterfaceByTrafficControllerRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<AssociationListResult>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListAssociationsInterfaceByTrafficControllerRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<AssociationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1281,8 +1318,8 @@ export const ListFrontendsInterfaceByTrafficController: API.OperationMethod<
   ListFrontendsInterfaceByTrafficControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListFrontendsInterfaceByTrafficControllerRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<FrontendListResult>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListFrontendsInterfaceByTrafficControllerRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<FrontendListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1296,8 +1333,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(140, __c17, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1312,11 +1349,11 @@ export const ListPrivateEndpointConnectionsInterfaceByTrafficController: API.Ope
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    128,
-    __c16,
+    144,
+    __c18,
     0,
   ) as any as S.Schema<ListPrivateEndpointConnectionsInterfaceByTrafficControllerRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  output: __S(146, __c18, 2) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1331,11 +1368,11 @@ export const ListPrivateLinkResourcesInterfaceByTrafficController: API.Operation
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    136,
-    __c17,
+    152,
+    __c19,
     0,
   ) as any as S.Schema<ListPrivateLinkResourcesInterfaceByTrafficControllerRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<PrivateLinkResourceListResult>,
+  output: __S(154, __c19, 2) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1350,11 +1387,11 @@ export const ListSecurityPoliciesInterfaceByTrafficController: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    144,
-    __c18,
+    160,
+    __c20,
     0,
   ) as any as S.Schema<ListSecurityPoliciesInterfaceByTrafficControllerRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<SecurityPolicyListResult>,
+  output: __S(162, __c20, 2) as any as S.Schema<SecurityPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1369,11 +1406,11 @@ export const ListTrafficControllerInterfaceByResourceGroup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    152,
-    __c19,
+    168,
+    __c21,
     0,
   ) as any as S.Schema<ListTrafficControllerInterfaceByResourceGroupRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<TrafficControllerListResult>,
+  output: __S(177, __c22, 1) as any as S.Schema<TrafficControllerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1387,8 +1424,8 @@ export const ListTrafficControllerInterfaceBySubscription: API.OperationMethod<
   ListTrafficControllerInterfaceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<ListTrafficControllerInterfaceBySubscriptionRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<TrafficControllerListResult>,
+  input: __S(192, __c24, 0) as any as S.Schema<ListTrafficControllerInterfaceBySubscriptionRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<TrafficControllerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1402,8 +1439,8 @@ export const SecurityPoliciesInterfaceCreateOrUpdate: API.OperationMethod<
   SecurityPoliciesInterfaceCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<SecurityPoliciesInterfaceCreateOrUpdateRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<SecurityPoliciesInterfaceCreateOrUpdateResponse>,
+  input: __S(201, __c25, 1) as any as S.Schema<SecurityPoliciesInterfaceCreateOrUpdateRequest>,
+  output: __S(202, __c25, 2) as any as S.Schema<SecurityPoliciesInterfaceCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1417,8 +1454,8 @@ export const TrafficControllerInterfaceCreateOrUpdate: API.OperationMethod<
   TrafficControllerInterfaceCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<TrafficControllerInterfaceCreateOrUpdateRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<TrafficControllerInterfaceCreateOrUpdateResponse>,
+  input: __S(209, __c26, 1) as any as S.Schema<TrafficControllerInterfaceCreateOrUpdateRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<TrafficControllerInterfaceCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1432,8 +1469,8 @@ export const UpdateAssociationsInterface: API.OperationMethod<
   UpdateAssociationsInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<UpdateAssociationsInterfaceRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<UpdateAssociationsInterfaceResponse>,
+  input: __S(217, __c27, 1) as any as S.Schema<UpdateAssociationsInterfaceRequest>,
+  output: __S(320, __c40, 0) as any as S.Schema<UpdateAssociationsInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1447,8 +1484,8 @@ export const UpdateFrontendsInterface: API.OperationMethod<
   UpdateFrontendsInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<UpdateFrontendsInterfaceRequest>,
-  output: __S(289, __c36, 1) as any as S.Schema<UpdateFrontendsInterfaceResponse>,
+  input: __S(225, __c28, 1) as any as S.Schema<UpdateFrontendsInterfaceRequest>,
+  output: __S(336, __c42, 0) as any as S.Schema<UpdateFrontendsInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1462,8 +1499,8 @@ export const UpdatePrivateEndpointConnectionsInterface: API.OperationMethod<
   UpdatePrivateEndpointConnectionsInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<UpdatePrivateEndpointConnectionsInterfaceRequest>,
-  output: __S(330, __c41, 2) as any as S.Schema<UpdatePrivateEndpointConnectionsInterfaceResponse>,
+  input: __S(241, __c30, 1) as any as S.Schema<UpdatePrivateEndpointConnectionsInterfaceRequest>,
+  output: __S(242, __c30, 2) as any as S.Schema<UpdatePrivateEndpointConnectionsInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1477,8 +1514,8 @@ export const UpdateSecurityPoliciesInterface: API.OperationMethod<
   UpdateSecurityPoliciesInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<UpdateSecurityPoliciesInterfaceRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<UpdateSecurityPoliciesInterfaceResponse>,
+  input: __S(249, __c31, 1) as any as S.Schema<UpdateSecurityPoliciesInterfaceRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<UpdateSecurityPoliciesInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1492,8 +1529,8 @@ export const UpdateTrafficControllerInterface: API.OperationMethod<
   UpdateTrafficControllerInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<UpdateTrafficControllerInterfaceRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<UpdateTrafficControllerInterfaceResponse>,
+  input: __S(257, __c32, 1) as any as S.Schema<UpdateTrafficControllerInterfaceRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<UpdateTrafficControllerInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1528,6 +1565,19 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AssociationsInterfaceCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(24, __c3, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AssociationsInterfaceCreateOrUpdateResponse" });
   }
 }
 function __c1(j: number): any {
@@ -1567,18 +1617,6 @@ function __c3(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssociationProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "AssociationsInterfaceCreateOrUpdateResponse" });
   }
 }
 function __c4(j: number): any {
@@ -1604,9 +1642,12 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAssociationsInterfaceResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteAssociationsInterfaceResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1706,7 +1747,11 @@ function __c10(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecurityPolicyProperties" });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1720,7 +1765,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "GetSecurityPoliciesInterfaceResponse" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1739,7 +1784,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "GetTrafficControllerInterfaceRequest" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(9, __c1, 1));
@@ -1747,15 +1792,19 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           configurationEndpoints: S.optional(__S(56, __c7, 0)),
-          frontends: S.optional(__S(96, __c12, 0)),
-          associations: S.optional(__S(96, __c12, 0)),
-          securityPolicies: S.optional(__S(96, __c12, 0)),
-          privateEndpointConnections: S.optional(__S(96, __c12, 0)),
-          securityPolicyConfigurations: S.optional(__S(280, __c35, 0)),
+          frontends: S.optional(__S(104, __c13, 0)),
+          associations: S.optional(__S(104, __c13, 0)),
+          securityPolicies: S.optional(__S(104, __c13, 0)),
+          privateEndpointConnections: S.optional(__S(104, __c13, 0)),
+          securityPolicyConfigurations: S.optional(__S(296, __c37, 0)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "TrafficControllerProperties" });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1764,12 +1813,12 @@ function __c12(j: number): any {
           systemData: S.optional(__S(16, __c2, 0)),
           tags: S.optional(__S(8, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(97, __c12, 1)),
+          properties: S.optional(__S(105, __c13, 1)),
         }),
       ).annotate({ identifier: "GetTrafficControllerInterfaceResponse" });
   }
 }
-function __c13(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1787,17 +1836,17 @@ function __c13(j: number): any {
         ),
       ).annotate({ identifier: "ListAssociationsInterfaceByTrafficControllerRequest" });
     case 1:
-      return S.Array(__S(25, __c3, 1));
+      return S.Array(__S(320, __c40, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(105, __c13, 1),
+          value: __S(121, __c15, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssociationListResult" });
   }
 }
-function __c14(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1815,17 +1864,17 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "ListFrontendsInterfaceByTrafficControllerRequest" });
     case 1:
-      return S.Array(__S(289, __c36, 1));
+      return S.Array(__S(336, __c42, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(113, __c14, 1),
+          value: __S(129, __c16, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FrontendListResult" });
   }
 }
-function __c15(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1852,23 +1901,23 @@ function __c15(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(121, __c15, 1)),
+          display: S.optional(__S(137, __c17, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(122, __c15, 2));
+      return S.Array(__S(138, __c17, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(123, __c15, 3)),
+          value: S.optional(__S(139, __c17, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c16(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1888,17 +1937,17 @@ function __c16(j: number): any {
         identifier: "ListPrivateEndpointConnectionsInterfaceByTrafficControllerRequest",
       });
     case 1:
-      return S.Array(__S(330, __c41, 2));
+      return S.Array(__S(352, __c44, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(129, __c16, 1),
+          value: __S(145, __c18, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
   }
 }
-function __c17(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1920,13 +1969,13 @@ function __c17(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(137, __c17, 1),
+          value: __S(153, __c19, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResourceListResult" });
   }
 }
-function __c18(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1944,17 +1993,17 @@ function __c18(j: number): any {
         ),
       ).annotate({ identifier: "ListSecurityPoliciesInterfaceByTrafficControllerRequest" });
     case 1:
-      return S.Array(__S(84, __c10, 4));
+      return S.Array(__S(88, __c11, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(145, __c18, 1),
+          value: __S(161, __c20, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecurityPolicyListResult" });
   }
 }
-function __c19(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1972,20 +2021,20 @@ function __c19(j: number): any {
       ).annotate({ identifier: "ListTrafficControllerInterfaceByResourceGroupRequest" });
   }
 }
-function __c20(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(98, __c12, 2));
+      return S.Array(__S(112, __c14, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(160, __c20, 0),
+          value: __S(176, __c22, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TrafficControllerListResult" });
   }
 }
-function __c21(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2005,7 +2054,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "DeleteFrontendsInterfaceRequest" });
   }
 }
-function __c22(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2022,7 +2071,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "ListTrafficControllerInterfaceBySubscriptionRequest" });
   }
 }
-function __c23(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2040,7 +2089,7 @@ function __c23(j: number): any {
           securityPolicyName: S.String.pipe(T.Label()),
           tags: S.optional(__S(8, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(184, __c23, 0)),
+          properties: S.optional(__S(200, __c25, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2050,14 +2099,27 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SecurityPoliciesInterfaceCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(83, __c10, 3)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SecurityPoliciesInterfaceCreateOrUpdateResponse" });
   }
 }
-function __c24(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          securityPolicyConfigurations: S.optional(__S(280, __c35, 0)),
+          securityPolicyConfigurations: S.optional(__S(296, __c37, 0)),
         }),
       ).annotate({ identifier: "TrafficControllerPropertiesInput" });
     case 1:
@@ -2068,7 +2130,7 @@ function __c24(j: number): any {
           trafficControllerName: S.String.pipe(T.Label()),
           tags: S.optional(__S(8, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(208, __c26, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2078,15 +2140,28 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TrafficControllerInterfaceCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(105, __c13, 1)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "TrafficControllerInterfaceCreateOrUpdateResponse" });
   }
 }
-function __c25(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           associationType: S.optional(S.String),
-          subnet: S.optional(__S(320, __c40, 0)),
+          subnet: S.optional(__S(360, __c45, 0)),
         }),
       ).annotate({ identifier: "AssociationUpdateProperties" });
     case 1:
@@ -2097,7 +2172,7 @@ function __c25(j: number): any {
           trafficControllerName: S.String.pipe(T.Label()),
           associationName: S.String.pipe(T.Label()),
           tags: S.optional(__S(8, __c1, 0)),
-          properties: S.optional(__S(200, __c25, 0)),
+          properties: S.optional(__S(216, __c27, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2109,14 +2184,14 @@ function __c25(j: number): any {
       ).annotate({ identifier: "UpdateAssociationsInterfaceRequest" });
   }
 }
-function __c26(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           publicNetworkAccess: S.optional(S.String),
-          association: S.optional(__S(320, __c40, 0)),
-          securityPolicyConfigurations: S.optional(__S(216, __c27, 0)),
+          association: S.optional(__S(360, __c45, 0)),
+          securityPolicyConfigurations: S.optional(__S(232, __c29, 0)),
         }),
       ).annotate({ identifier: "FrontendUpdateProperties" });
     case 1:
@@ -2127,7 +2202,7 @@ function __c26(j: number): any {
           trafficControllerName: S.String.pipe(T.Label()),
           frontendName: S.String.pipe(T.Label()),
           tags: S.optional(__S(8, __c1, 0)),
-          properties: S.optional(__S(208, __c26, 0)),
+          properties: S.optional(__S(224, __c28, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2139,23 +2214,23 @@ function __c26(j: number): any {
       ).annotate({ identifier: "UpdateFrontendsInterfaceRequest" });
   }
 }
-function __c27(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          wafSecurityPolicy: S.optional(__S(320, __c40, 0)),
-          ipAccessRulesSecurityPolicy: S.optional(__S(320, __c40, 0)),
+          wafSecurityPolicy: S.optional(__S(360, __c45, 0)),
+          ipAccessRulesSecurityPolicy: S.optional(__S(360, __c45, 0)),
         }),
       ).annotate({ identifier: "SecurityPolicyConfigurationsUpdate" });
   }
 }
-function __c28(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateLinkServiceConnectionState: __S(328, __c41, 0),
+          privateLinkServiceConnectionState: __S(368, __c46, 0),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionPropertiesInput" });
     case 1:
@@ -2165,7 +2240,7 @@ function __c28(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           trafficControllerName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(224, __c28, 0)),
+          properties: S.optional(__S(240, __c30, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2175,14 +2250,26 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdatePrivateEndpointConnectionsInterfaceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(369, __c46, 1)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdatePrivateEndpointConnectionsInterfaceResponse" });
   }
 }
-function __c29(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          wafPolicy: S.optional(__S(320, __c40, 0)),
+          wafPolicy: S.optional(__S(360, __c45, 0)),
           ipAccessRulesPolicy: S.optional(__S(82, __c10, 2)),
         }),
       ).annotate({ identifier: "SecurityPolicyUpdateProperties" });
@@ -2194,7 +2281,7 @@ function __c29(j: number): any {
           trafficControllerName: S.String.pipe(T.Label()),
           securityPolicyName: S.String.pipe(T.Label()),
           tags: S.optional(__S(8, __c1, 0)),
-          properties: S.optional(__S(232, __c29, 0)),
+          properties: S.optional(__S(248, __c31, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2206,12 +2293,12 @@ function __c29(j: number): any {
       ).annotate({ identifier: "UpdateSecurityPoliciesInterfaceRequest" });
   }
 }
-function __c30(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          securityPolicyConfigurations: S.optional(__S(216, __c27, 0)),
+          securityPolicyConfigurations: S.optional(__S(232, __c29, 0)),
         }),
       ).annotate({ identifier: "TrafficControllerUpdateProperties" });
     case 1:
@@ -2221,7 +2308,7 @@ function __c30(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           trafficControllerName: S.String.pipe(T.Label()),
           tags: S.optional(__S(8, __c1, 0)),
-          properties: S.optional(__S(240, __c30, 0)),
+          properties: S.optional(__S(256, __c32, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2233,7 +2320,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "UpdateTrafficControllerInterfaceRequest" });
   }
 }
-function __c31(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2253,7 +2340,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "DeletePrivateEndpointConnectionsInterfaceRequest" });
   }
 }
-function __c32(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2273,7 +2360,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "DeleteSecurityPoliciesInterfaceRequest" });
   }
 }
-function __c33(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2292,14 +2379,14 @@ function __c33(j: number): any {
       ).annotate({ identifier: "DeleteTrafficControllerInterfaceRequest" });
   }
 }
-function __c34(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           publicNetworkAccess: S.optional(S.String),
           association: S.optional(__S(9, __c1, 1)),
-          securityPolicyConfigurations: S.optional(__S(280, __c35, 0)),
+          securityPolicyConfigurations: S.optional(__S(296, __c37, 0)),
         }),
       ).annotate({ identifier: "FrontendPropertiesInput" });
     case 1:
@@ -2311,7 +2398,7 @@ function __c34(j: number): any {
           frontendName: S.String.pipe(T.Label()),
           tags: S.optional(__S(8, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(272, __c34, 0)),
+          properties: S.optional(__S(288, __c36, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2321,9 +2408,22 @@ function __c34(j: number): any {
           }),
         ),
       ).annotate({ identifier: "FrontendsInterfaceCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(304, __c38, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "FrontendsInterfaceCreateOrUpdateResponse" });
   }
 }
-function __c35(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2334,7 +2434,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "SecurityPolicyConfigurations" });
   }
 }
-function __c36(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2342,25 +2442,13 @@ function __c36(j: number): any {
           fqdn: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
           association: S.optional(__S(9, __c1, 1)),
-          securityPolicyConfigurations: S.optional(__S(280, __c35, 0)),
+          securityPolicyConfigurations: S.optional(__S(296, __c37, 0)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "FrontendProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(288, __c36, 0)),
-        }),
-      ).annotate({ identifier: "FrontendsInterfaceCreateOrUpdateResponse" });
   }
 }
-function __c37(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2380,7 +2468,23 @@ function __c37(j: number): any {
       ).annotate({ identifier: "GetAssociationsInterfaceRequest" });
   }
 }
-function __c38(j: number): any {
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(24, __c3, 0)),
+        }),
+      ).annotate({ identifier: "GetAssociationsInterfaceResponse" });
+  }
+}
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2400,7 +2504,23 @@ function __c38(j: number): any {
       ).annotate({ identifier: "GetFrontendsInterfaceRequest" });
   }
 }
-function __c39(j: number): any {
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(304, __c38, 0)),
+        }),
+      ).annotate({ identifier: "GetFrontendsInterfaceResponse" });
+  }
+}
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2420,7 +2540,21 @@ function __c39(j: number): any {
       ).annotate({ identifier: "GetPrivateEndpointConnectionsInterfaceRequest" });
   }
 }
-function __c40(j: number): any {
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(369, __c46, 1)),
+        }),
+      ).annotate({ identifier: "GetPrivateEndpointConnectionsInterfaceResponse" });
+  }
+}
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2430,7 +2564,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "PrivateEndpointReference" });
   }
 }
-function __c41(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2443,21 +2577,11 @@ function __c41(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(320, __c40, 0)),
-          privateLinkServiceConnectionState: __S(328, __c41, 0),
+          privateEndpoint: S.optional(__S(360, __c45, 0)),
+          privateLinkServiceConnectionState: __S(368, __c46, 0),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(329, __c41, 1)),
-        }),
-      ).annotate({ identifier: "GetPrivateEndpointConnectionsInterfaceResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

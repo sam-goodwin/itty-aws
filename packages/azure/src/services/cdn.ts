@@ -19,7 +19,10 @@ export interface AbortProfilesMigrationRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
-export interface AbortProfilesMigrationResponse {}
+export interface AbortProfilesMigrationResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 /** Reference to another resource. */
 export interface ResourceReference {
   /** Resource ID. */
@@ -199,6 +202,8 @@ export interface AFDProfilesUpgradeResponse {
   kind?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AFDProfilesUpgradeResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 /** Type of CDN resource used in CheckNameAvailability. */
 export type ResourceType =
@@ -288,7 +293,14 @@ export interface CommitProfilesMigrationRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
-export interface CommitProfilesMigrationResponse {}
+export interface CommitProfilesMigrationResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Defines the source of the SSL certificate. */
 export type AfdCertificateType =
   | "CustomerCertificate"
@@ -449,6 +461,10 @@ export interface CreateAFDCustomDomainResponse {
   systemData?: SystemData;
   /** The JSON object that contains the properties of the domain to create. */
   properties?: AFDDomainProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
 }
 /** Resource tags. */
 export type CreateAFDEndpointRequestTagsMap = { [key: string]: string | undefined };
@@ -514,6 +530,12 @@ export interface CreateAFDEndpointResponse {
   location: string;
   /** The JSON object that contains the properties required to create an endpoint. */
   properties?: AFDEndpointProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 /** Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout. */
 export type SharedPrivateLinkResourceStatus =
@@ -628,6 +650,10 @@ export interface CreateAFDOriginResponse {
   systemData?: SystemData;
   /** The JSON object that contains the properties of the origin. */
   properties?: AFDOriginProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** Round-Robin load balancing settings for a backend pool */
 export interface LoadBalancingSettingsParameters {
@@ -722,6 +748,12 @@ export interface CreateAFDOriginGroupResponse {
   systemData?: SystemData;
   /** The JSON object that contains the properties of the origin group. */
   properties?: AFDOriginGroupProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** The JSON object that contains the properties of the custom domain to create. */
 export interface CustomDomainPropertiesParameters {
@@ -806,6 +838,10 @@ export interface CreateCustomDomainResponse {
   systemData?: SystemData;
   /** The JSON object that contains the properties of the custom domain to create. */
   properties?: CustomDomainProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateEndpointRequestTagsMap = { [key: string]: string | undefined };
@@ -1181,6 +1217,10 @@ export interface CreateEndpointResponse {
   location: string;
   /** The JSON object that contains the properties required to create an endpoint. */
   properties?: EndpointProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 /** Resource status of the origin. */
 export type OriginResourceState = "Creating" | "Active" | "Deleting";
@@ -1242,6 +1282,10 @@ export interface CreateOriginResponse {
   systemData?: SystemData;
   /** The JSON object that contains the properties of the origin. */
   properties?: OriginProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The source of the content being delivered via CDN within given origin group. */
 export type OriginGroupPropertiesOriginsList = Array<ResourceReference>;
@@ -1294,6 +1338,10 @@ export interface CreateOriginGroupResponse {
   systemData?: SystemData;
   /** The JSON object that contains the properties of the origin group. */
   properties?: OriginGroupProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateProfileRequestTagsMap = { [key: string]: string | undefined };
@@ -1371,6 +1419,10 @@ export interface CreateProfileResponse {
   kind?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateProfileResponseIdentity;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 /** Reference to another resource along with its state. */
 export type ActivatedResourceReferenceInput = ResourceReference;
@@ -1517,6 +1569,12 @@ export interface CreateRouteResponse {
   systemData?: SystemData;
   /** The JSON object that contains the properties of the Routes to create. */
   properties?: RouteProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** A list of conditions that must be matched for the actions to be executed */
 export type RulePropertiesInputConditionsList = Array<DeliveryRuleCondition>;
@@ -1582,6 +1640,12 @@ export interface CreateRuleResponse {
   systemData?: SystemData;
   /** The JSON object that contains the properties of the Rules to create. */
   properties?: RuleProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** A list of conditions that must be matched for the actions to be executed */
 export type BatchRulePropertiesInputConditionsList = Array<DeliveryRuleCondition>;
@@ -1669,6 +1733,12 @@ export interface CreateRuleSetResponse {
   systemData?: SystemData;
   /** The JSON object that contains the properties of the Rule Set to create. */
   properties?: RuleSetProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The type of the secret resource. */
 export type SecretType =
@@ -1738,6 +1808,12 @@ export interface CreateSecretResponse {
   systemData?: SystemData;
   /** The JSON object that contains the properties of the Secret to create. */
   properties?: SecretProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** The type of the Security policy to create. */
 export type SecurityPolicyType = "WebApplicationFirewall";
@@ -1788,6 +1864,12 @@ export interface CreateSecurityPolicyResponse {
   systemData?: SystemData;
   /** The json object that contains properties required to create a security policy */
   properties?: SecurityPolicyProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 export interface DeleteAFDCustomDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1799,7 +1881,14 @@ export interface DeleteAFDCustomDomainRequest {
   /** Name of the domain under the profile which is unique globally. */
   customDomainName: string;
 }
-export interface DeleteAFDCustomDomainResponse {}
+export interface DeleteAFDCustomDomainResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteAFDEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1810,7 +1899,12 @@ export interface DeleteAFDEndpointRequest {
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
 }
-export interface DeleteAFDEndpointResponse {}
+export interface DeleteAFDEndpointResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteAFDOriginRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1823,7 +1917,14 @@ export interface DeleteAFDOriginRequest {
   /** Name of the origin which is unique within the profile. */
   originName: string;
 }
-export interface DeleteAFDOriginResponse {}
+export interface DeleteAFDOriginResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteAFDOriginGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1834,7 +1935,12 @@ export interface DeleteAFDOriginGroupRequest {
   /** Name of the origin group which is unique within the endpoint. */
   originGroupName: string;
 }
-export interface DeleteAFDOriginGroupResponse {}
+export interface DeleteAFDOriginGroupResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteCustomDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1847,7 +1953,10 @@ export interface DeleteCustomDomainRequest {
   /** Name of the custom domain within an endpoint. */
   customDomainName: string;
 }
-export interface DeleteCustomDomainResponse {}
+export interface DeleteCustomDomainResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1858,7 +1967,10 @@ export interface DeleteEndpointRequest {
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
 }
-export interface DeleteEndpointResponse {}
+export interface DeleteEndpointResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteOriginRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1871,7 +1983,10 @@ export interface DeleteOriginRequest {
   /** Name of the origin which is unique within the endpoint. */
   originName: string;
 }
-export interface DeleteOriginResponse {}
+export interface DeleteOriginResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteOriginGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1884,7 +1999,10 @@ export interface DeleteOriginGroupRequest {
   /** Name of the origin group which is unique within the endpoint. */
   originGroupName: string;
 }
-export interface DeleteOriginGroupResponse {}
+export interface DeleteOriginGroupResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeletePolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1902,7 +2020,10 @@ export interface DeleteProfileRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
-export interface DeleteProfileResponse {}
+export interface DeleteProfileResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteRouteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1915,7 +2036,14 @@ export interface DeleteRouteRequest {
   /** Name of the routing rule. */
   routeName: string;
 }
-export interface DeleteRouteResponse {}
+export interface DeleteRouteResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1928,7 +2056,14 @@ export interface DeleteRuleRequest {
   /** Name of the delivery rule which is unique within the endpoint. */
   ruleName: string;
 }
-export interface DeleteRuleResponse {}
+export interface DeleteRuleResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteRuleSetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1939,7 +2074,14 @@ export interface DeleteRuleSetRequest {
   /** Name of the rule set under the profile which is unique globally. */
   ruleSetName: string;
 }
-export interface DeleteRuleSetResponse {}
+export interface DeleteRuleSetResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSecretRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1950,7 +2092,14 @@ export interface DeleteSecretRequest {
   /** Name of the Secret under the profile. */
   secretName: string;
 }
-export interface DeleteSecretResponse {}
+export interface DeleteSecretResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSecurityPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1961,7 +2110,14 @@ export interface DeleteSecurityPolicyRequest {
   /** Name of the security policy under the profile. */
   securityPolicyName: string;
 }
-export interface DeleteSecurityPolicyResponse {}
+export interface DeleteSecurityPolicyResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DisableCustomDomainCustomHttpsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1985,6 +2141,8 @@ export interface DisableCustomDomainCustomHttpsResponse {
   systemData?: SystemData;
   /** The JSON object that contains the properties of the custom domain to create. */
   properties?: CustomDomainProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 export interface EnableCustomDomainCustomHttpsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2015,6 +2173,8 @@ export interface EnableCustomDomainCustomHttpsResponse {
   systemData?: SystemData;
   /** The JSON object that contains the properties of the custom domain to create. */
   properties?: CustomDomainProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** The path to the content to be loaded. Path should be a relative file URL of the origin. */
 export type EndpointsLoadContentRequestContentPathsList = Array<string>;
@@ -2030,7 +2190,12 @@ export interface EndpointsLoadContentRequest {
   /** The path to the content to be loaded. Path should be a relative file URL of the origin. */
   contentPaths: EndpointsLoadContentRequestContentPathsList;
 }
-export interface EndpointsLoadContentResponse {}
+export interface EndpointsLoadContentResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GenerateProfileSsoUriRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3830,6 +3995,10 @@ export interface MigrateResult {
   /** Resource type. */
   type?: string;
   properties?: MigrateResultProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MigrateProfilesCanRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3867,6 +4036,10 @@ export interface CanMigrateResult {
   /** Resource type. */
   type?: string;
   properties?: CanMigrateProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The json object that contains properties required to update a security policy */
 export type SecurityPolicyUpdateProperties = SecurityPolicyPropertiesInput;
@@ -3893,6 +4066,10 @@ export interface PatchSecurityPolicyResponse {
   systemData?: SystemData;
   /** The json object that contains properties required to create a security policy */
   properties?: SecurityPolicyProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** Resource tags. */
 export type PoliciesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -3952,6 +4129,10 @@ export interface PoliciesCreateOrUpdateResponse {
   etag?: string;
   /** The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy. */
   sku: Sku;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 export interface ProfilesCdnCanMigrateToAfdRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4001,7 +4182,14 @@ export interface PurgeAFDEndpointContentRequest {
   /** List of domains. */
   domains?: PurgeAFDEndpointContentRequestDomainsList;
 }
-export interface PurgeAFDEndpointContentResponse {}
+export interface PurgeAFDEndpointContentResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** The path to the content to be purged. Can describe a file path or a wild card directory. */
 export type PurgeEndpointContentRequestContentPathsList = Array<string>;
 export interface PurgeEndpointContentRequest {
@@ -4016,7 +4204,12 @@ export interface PurgeEndpointContentRequest {
   /** The path to the content to be purged. Can describe a file path or a wild card directory. */
   contentPaths: PurgeEndpointContentRequestContentPathsList;
 }
-export interface PurgeEndpointContentResponse {}
+export interface PurgeEndpointContentResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface RefreshAFDCustomDomainValidationTokenRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4027,7 +4220,14 @@ export interface RefreshAFDCustomDomainValidationTokenRequest {
   /** Name of the domain under the profile which is unique globally. */
   customDomainName: string;
 }
-export interface RefreshAFDCustomDomainValidationTokenResponse {}
+export interface RefreshAFDCustomDomainValidationTokenResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface StartEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4055,6 +4255,8 @@ export interface StartEndpointResponse {
   location: string;
   /** The JSON object that contains the properties required to create an endpoint. */
   properties?: EndpointProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 export interface StopEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4083,6 +4285,8 @@ export interface StopEndpointResponse {
   location: string;
   /** The JSON object that contains the properties required to create an endpoint. */
   properties?: EndpointProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 /** The JSON object that contains the properties of the domain to create. */
 export interface AFDDomainUpdatePropertiesParametersInput {
@@ -4118,6 +4322,12 @@ export interface UpdateAFDCustomDomainResponse {
   systemData?: SystemData;
   /** The JSON object that contains the properties of the domain to create. */
   properties?: AFDDomainProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Endpoint tags. */
 export type UpdateAFDEndpointRequestTagsMap = { [key: string]: string | undefined };
@@ -4159,6 +4369,10 @@ export interface UpdateAFDEndpointResponse {
   location: string;
   /** The JSON object that contains the properties required to create an endpoint. */
   properties?: AFDEndpointProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 /** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
 export type AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList = Array<string>;
@@ -4214,6 +4428,10 @@ export interface UpdateAFDOriginResponse {
   systemData?: SystemData;
   /** The JSON object that contains the properties of the origin. */
   properties?: AFDOriginProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** The JSON object that contains the properties of the origin group. */
 export type AFDOriginGroupUpdatePropertiesParametersInput = AFDOriginGroupPropertiesInput;
@@ -4240,6 +4458,12 @@ export interface UpdateAFDOriginGroupResponse {
   systemData?: SystemData;
   /** The JSON object that contains the properties of the origin group. */
   properties?: AFDOriginGroupProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Endpoint tags. */
 export type UpdateEndpointRequestTagsMap = { [key: string]: string | undefined };
@@ -4319,6 +4543,8 @@ export interface UpdateEndpointResponse {
   location: string;
   /** The JSON object that contains the properties required to create an endpoint. */
   properties?: EndpointProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 /** The JSON object that contains the properties of the origin. */
 export interface OriginUpdatePropertiesParameters {
@@ -4370,6 +4596,8 @@ export interface UpdateOriginResponse {
   systemData?: SystemData;
   /** The JSON object that contains the properties of the origin. */
   properties?: OriginProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** The source of the content being delivered via CDN within given origin group. */
 export type OriginGroupUpdatePropertiesParametersOriginsList = Array<ResourceReference>;
@@ -4409,6 +4637,8 @@ export interface UpdateOriginGroupResponse {
   systemData?: SystemData;
   /** The JSON object that contains the properties of the origin group. */
   properties?: OriginGroupProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** CdnWebApplicationFirewallPolicy tags */
 export type UpdatePolicyRequestTagsMap = { [key: string]: string | undefined };
@@ -4443,6 +4673,8 @@ export interface UpdatePolicyResponse {
   etag?: string;
   /** The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy. */
   sku: Sku;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 /** Profile tags */
 export type UpdateProfileRequestTagsMap = { [key: string]: string | undefined };
@@ -4514,6 +4746,8 @@ export interface UpdateProfileResponse {
   kind?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdateProfileResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 /** Domains referenced by this endpoint. */
 export type RouteUpdatePropertiesParametersInputCustomDomainsList = Array<ResourceReference>;
@@ -4584,6 +4818,12 @@ export interface UpdateRouteResponse {
   systemData?: SystemData;
   /** The JSON object that contains the properties of the Routes to create. */
   properties?: RouteProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** A list of conditions that must be matched for the actions to be executed */
 export type RuleUpdatePropertiesParametersInputConditionsList = Array<DeliveryRuleCondition>;
@@ -4629,6 +4869,10 @@ export interface UpdateRuleResponse {
   systemData?: SystemData;
   /** The JSON object that contains the properties of the Rules to create. */
   properties?: RuleProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 export interface ValidateAFDEndpointCustomDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4725,7 +4969,7 @@ export const AFDProfilesUpgrade: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(66, __c2, 2) as any as S.Schema<AFDProfilesUpgradeRequest>,
-  output: __S(135, __c4, 7) as any as S.Schema<AFDProfilesUpgradeResponse>,
+  output: __S(96, __c3, 0) as any as S.Schema<AFDProfilesUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4739,8 +4983,8 @@ export const CheckAFDProfileEndpointNameAvailability: API.OperationMethod<
   CheckAFDProfileEndpointNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<CheckAFDProfileEndpointNameAvailabilityRequest>,
-  output: __S(1728, __c54, 0) as any as S.Schema<CheckEndpointNameAvailabilityOutput>,
+  input: __S(1760, __c55, 0) as any as S.Schema<CheckAFDProfileEndpointNameAvailabilityRequest>,
+  output: __S(1792, __c56, 0) as any as S.Schema<CheckEndpointNameAvailabilityOutput>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4754,8 +4998,8 @@ export const CheckAFDProfileHostNameAvailability: API.OperationMethod<
   CheckAFDProfileHostNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2176, __c68, 0) as any as S.Schema<CheckAFDProfileHostNameAvailabilityRequest>,
-  output: __S(2208, __c69, 0) as any as S.Schema<CheckNameAvailabilityOutput>,
+  input: __S(2272, __c71, 0) as any as S.Schema<CheckAFDProfileHostNameAvailabilityRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<CheckNameAvailabilityOutput>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4769,8 +5013,8 @@ export const CheckEndpointNameAvailability: API.OperationMethod<
   CheckEndpointNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2560, __c80, 0) as any as S.Schema<CheckEndpointNameAvailabilityRequest>,
-  output: __S(1728, __c54, 0) as any as S.Schema<CheckEndpointNameAvailabilityOutput>,
+  input: __S(2720, __c85, 0) as any as S.Schema<CheckEndpointNameAvailabilityRequest>,
+  output: __S(1792, __c56, 0) as any as S.Schema<CheckEndpointNameAvailabilityOutput>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4784,8 +5028,8 @@ export const CheckNameAvailability: API.OperationMethod<
   CheckNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2976, __c93, 0) as any as S.Schema<CheckNameAvailabilityRequest>,
-  output: __S(2208, __c69, 0) as any as S.Schema<CheckNameAvailabilityOutput>,
+  input: __S(3328, __c104, 0) as any as S.Schema<CheckNameAvailabilityRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<CheckNameAvailabilityOutput>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4799,8 +5043,8 @@ export const CheckNameAvailabilityWithSubscription: API.OperationMethod<
   CheckNameAvailabilityWithSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3360, __c105, 0) as any as S.Schema<CheckNameAvailabilityWithSubscriptionRequest>,
-  output: __S(2208, __c69, 0) as any as S.Schema<CheckNameAvailabilityOutput>,
+  input: __S(3936, __c123, 0) as any as S.Schema<CheckNameAvailabilityWithSubscriptionRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<CheckNameAvailabilityOutput>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4814,8 +5058,8 @@ export const CommitProfilesMigration: API.OperationMethod<
   CommitProfilesMigrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3744, __c117, 0) as any as S.Schema<CommitProfilesMigrationRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<CommitProfilesMigrationResponse>,
+  input: __S(4384, __c137, 0) as any as S.Schema<CommitProfilesMigrationRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<CommitProfilesMigrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4829,8 +5073,8 @@ export const CreateAFDCustomDomain: API.OperationMethod<
   CreateAFDCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4161, __c130, 1) as any as S.Schema<CreateAFDCustomDomainRequest>,
-  output: __S(4229, __c132, 5) as any as S.Schema<CreateAFDCustomDomainResponse>,
+  input: __S(4833, __c151, 1) as any as S.Schema<CreateAFDCustomDomainRequest>,
+  output: __S(4834, __c151, 2) as any as S.Schema<CreateAFDCustomDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4844,8 +5088,8 @@ export const CreateAFDEndpoint: API.OperationMethod<
   CreateAFDEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4609, __c144, 1) as any as S.Schema<CreateAFDEndpointRequest>,
-  output: __S(4641, __c145, 1) as any as S.Schema<CreateAFDEndpointResponse>,
+  input: __S(5281, __c165, 1) as any as S.Schema<CreateAFDEndpointRequest>,
+  output: __S(5282, __c165, 2) as any as S.Schema<CreateAFDEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4859,8 +5103,8 @@ export const CreateAFDOrigin: API.OperationMethod<
   CreateAFDOriginError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c8, 0) as any as S.Schema<CreateAFDOriginRequest>,
-  output: __S(354, __c11, 2) as any as S.Schema<CreateAFDOriginResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<CreateAFDOriginRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<CreateAFDOriginResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4874,8 +5118,8 @@ export const CreateAFDOriginGroup: API.OperationMethod<
   CreateAFDOriginGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c22, 0) as any as S.Schema<CreateAFDOriginGroupRequest>,
-  output: __S(803, __c25, 3) as any as S.Schema<CreateAFDOriginGroupResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<CreateAFDOriginGroupRequest>,
+  output: __S(737, __c23, 1) as any as S.Schema<CreateAFDOriginGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4889,7 +5133,7 @@ export const CreateCustomDomain: API.OperationMethod<
   CreateCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1025, __c32, 1) as any as S.Schema<CreateCustomDomainRequest>,
+  input: __S(1057, __c33, 1) as any as S.Schema<CreateCustomDomainRequest>,
   output: __S(1058, __c33, 2) as any as S.Schema<CreateCustomDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4904,8 +5148,8 @@ export const CreateEndpoint: API.OperationMethod<
   CreateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1089, __c34, 1) as any as S.Schema<CreateEndpointRequest>,
-  output: __S(1234, __c38, 18) as any as S.Schema<CreateEndpointResponse>,
+  input: __S(1121, __c35, 1) as any as S.Schema<CreateEndpointRequest>,
+  output: __S(1122, __c35, 2) as any as S.Schema<CreateEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4919,7 +5163,7 @@ export const CreateOrigin: API.OperationMethod<
   CreateOriginError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c39, 0) as any as S.Schema<CreateOriginRequest>,
+  input: __S(1280, __c40, 0) as any as S.Schema<CreateOriginRequest>,
   output: __S(1281, __c40, 1) as any as S.Schema<CreateOriginResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4934,7 +5178,7 @@ export const CreateOriginGroup: API.OperationMethod<
   CreateOriginGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c41, 0) as any as S.Schema<CreateOriginGroupRequest>,
+  input: __S(1344, __c42, 0) as any as S.Schema<CreateOriginGroupRequest>,
   output: __S(1345, __c42, 1) as any as S.Schema<CreateOriginGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4949,8 +5193,8 @@ export const CreateProfile: API.OperationMethod<
   CreateProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c43, 0) as any as S.Schema<CreateProfileRequest>,
-  output: __S(135, __c4, 7) as any as S.Schema<CreateProfileResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<CreateProfileRequest>,
+  output: __S(1409, __c44, 1) as any as S.Schema<CreateProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4964,8 +5208,8 @@ export const CreateRoute: API.OperationMethod<
   CreateRouteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c45, 0) as any as S.Schema<CreateRouteRequest>,
-  output: __S(1509, __c47, 5) as any as S.Schema<CreateRouteResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<CreateRouteRequest>,
+  output: __S(1505, __c47, 1) as any as S.Schema<CreateRouteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4979,7 +5223,7 @@ export const CreateRule: API.OperationMethod<
   CreateRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c48, 0) as any as S.Schema<CreateRuleRequest>,
+  input: __S(1600, __c50, 0) as any as S.Schema<CreateRuleRequest>,
   output: __S(1601, __c50, 1) as any as S.Schema<CreateRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4994,8 +5238,8 @@ export const CreateRuleSet: API.OperationMethod<
   CreateRuleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1635, __c51, 3) as any as S.Schema<CreateRuleSetRequest>,
-  output: __S(1667, __c52, 3) as any as S.Schema<CreateRuleSetResponse>,
+  input: __S(1699, __c53, 3) as any as S.Schema<CreateRuleSetRequest>,
+  output: __S(1700, __c53, 4) as any as S.Schema<CreateRuleSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5009,8 +5253,8 @@ export const CreateSecret: API.OperationMethod<
   CreateSecretError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1761, __c55, 1) as any as S.Schema<CreateSecretRequest>,
-  output: __S(1794, __c56, 2) as any as S.Schema<CreateSecretResponse>,
+  input: __S(1825, __c57, 1) as any as S.Schema<CreateSecretRequest>,
+  output: __S(1826, __c57, 2) as any as S.Schema<CreateSecretResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5024,8 +5268,8 @@ export const CreateSecurityPolicy: API.OperationMethod<
   CreateSecurityPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1824, __c57, 0) as any as S.Schema<CreateSecurityPolicyRequest>,
-  output: __S(1858, __c58, 2) as any as S.Schema<CreateSecurityPolicyResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<CreateSecurityPolicyRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<CreateSecurityPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5039,8 +5283,8 @@ export const DeleteAFDCustomDomain: API.OperationMethod<
   DeleteAFDCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1920, __c60, 0) as any as S.Schema<DeleteAFDCustomDomainRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteAFDCustomDomainResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<DeleteAFDCustomDomainRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<DeleteAFDCustomDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5054,8 +5298,8 @@ export const DeleteAFDEndpoint: API.OperationMethod<
   DeleteAFDEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1952, __c61, 0) as any as S.Schema<DeleteAFDEndpointRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteAFDEndpointResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<DeleteAFDEndpointRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DeleteAFDEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5069,8 +5313,8 @@ export const DeleteAFDOrigin: API.OperationMethod<
   DeleteAFDOriginError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1984, __c62, 0) as any as S.Schema<DeleteAFDOriginRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteAFDOriginResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<DeleteAFDOriginRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<DeleteAFDOriginResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5084,8 +5328,8 @@ export const DeleteAFDOriginGroup: API.OperationMethod<
   DeleteAFDOriginGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2016, __c63, 0) as any as S.Schema<DeleteAFDOriginGroupRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteAFDOriginGroupResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<DeleteAFDOriginGroupRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DeleteAFDOriginGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5099,7 +5343,7 @@ export const DeleteCustomDomain: API.OperationMethod<
   DeleteCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2048, __c64, 0) as any as S.Schema<DeleteCustomDomainRequest>,
+  input: __S(2144, __c67, 0) as any as S.Schema<DeleteCustomDomainRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<DeleteCustomDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5114,7 +5358,7 @@ export const DeleteEndpoint: API.OperationMethod<
   DeleteEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2080, __c65, 0) as any as S.Schema<DeleteEndpointRequest>,
+  input: __S(2176, __c68, 0) as any as S.Schema<DeleteEndpointRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<DeleteEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5129,7 +5373,7 @@ export const DeleteOrigin: API.OperationMethod<
   DeleteOriginError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2112, __c66, 0) as any as S.Schema<DeleteOriginRequest>,
+  input: __S(2208, __c69, 0) as any as S.Schema<DeleteOriginRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<DeleteOriginResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5144,7 +5388,7 @@ export const DeleteOriginGroup: API.OperationMethod<
   DeleteOriginGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2144, __c67, 0) as any as S.Schema<DeleteOriginGroupRequest>,
+  input: __S(2240, __c70, 0) as any as S.Schema<DeleteOriginGroupRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<DeleteOriginGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5159,8 +5403,8 @@ export const DeletePolicy: API.OperationMethod<
   DeletePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2240, __c70, 0) as any as S.Schema<DeletePolicyRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeletePolicyResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<DeletePolicyRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<DeletePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5174,7 +5418,7 @@ export const DeleteProfile: API.OperationMethod<
   DeleteProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2272, __c71, 0) as any as S.Schema<DeleteProfileRequest>,
+  input: __S(2368, __c74, 0) as any as S.Schema<DeleteProfileRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<DeleteProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5189,8 +5433,8 @@ export const DeleteRoute: API.OperationMethod<
   DeleteRouteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c72, 0) as any as S.Schema<DeleteRouteRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteRouteResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<DeleteRouteRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<DeleteRouteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5204,8 +5448,8 @@ export const DeleteRule: API.OperationMethod<
   DeleteRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2336, __c73, 0) as any as S.Schema<DeleteRuleRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteRuleResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<DeleteRuleRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<DeleteRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5219,8 +5463,8 @@ export const DeleteRuleSet: API.OperationMethod<
   DeleteRuleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2368, __c74, 0) as any as S.Schema<DeleteRuleSetRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteRuleSetResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<DeleteRuleSetRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<DeleteRuleSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5234,8 +5478,8 @@ export const DeleteSecret: API.OperationMethod<
   DeleteSecretError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2400, __c75, 0) as any as S.Schema<DeleteSecretRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteSecretResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<DeleteSecretRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<DeleteSecretResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5249,8 +5493,8 @@ export const DeleteSecurityPolicy: API.OperationMethod<
   DeleteSecurityPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2432, __c76, 0) as any as S.Schema<DeleteSecurityPolicyRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteSecurityPolicyResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<DeleteSecurityPolicyRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<DeleteSecurityPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5264,8 +5508,8 @@ export const DisableCustomDomainCustomHttps: API.OperationMethod<
   DisableCustomDomainCustomHttpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2464, __c77, 0) as any as S.Schema<DisableCustomDomainCustomHttpsRequest>,
-  output: __S(1058, __c33, 2) as any as S.Schema<DisableCustomDomainCustomHttpsResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<DisableCustomDomainCustomHttpsRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<DisableCustomDomainCustomHttpsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5279,8 +5523,8 @@ export const EnableCustomDomainCustomHttps: API.OperationMethod<
   EnableCustomDomainCustomHttpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2496, __c78, 0) as any as S.Schema<EnableCustomDomainCustomHttpsRequest>,
-  output: __S(1058, __c33, 2) as any as S.Schema<EnableCustomDomainCustomHttpsResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<EnableCustomDomainCustomHttpsRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<EnableCustomDomainCustomHttpsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5294,8 +5538,8 @@ export const EndpointsLoadContent: API.OperationMethod<
   EndpointsLoadContentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2528, __c79, 0) as any as S.Schema<EndpointsLoadContentRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<EndpointsLoadContentResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<EndpointsLoadContentRequest>,
+  output: __S(2688, __c84, 0) as any as S.Schema<EndpointsLoadContentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5309,8 +5553,8 @@ export const GenerateProfileSsoUri: API.OperationMethod<
   GenerateProfileSsoUriError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2592, __c81, 0) as any as S.Schema<GenerateProfileSsoUriRequest>,
-  output: __S(2593, __c81, 1) as any as S.Schema<SsoUri>,
+  input: __S(2752, __c86, 0) as any as S.Schema<GenerateProfileSsoUriRequest>,
+  output: __S(2753, __c86, 1) as any as S.Schema<SsoUri>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5324,8 +5568,8 @@ export const GetAFDCustomDomain: API.OperationMethod<
   GetAFDCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2624, __c82, 0) as any as S.Schema<GetAFDCustomDomainRequest>,
-  output: __S(4229, __c132, 5) as any as S.Schema<GetAFDCustomDomainResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<GetAFDCustomDomainRequest>,
+  output: __S(2816, __c88, 0) as any as S.Schema<GetAFDCustomDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5339,8 +5583,8 @@ export const GetAFDEndpoint: API.OperationMethod<
   GetAFDEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2656, __c83, 0) as any as S.Schema<GetAFDEndpointRequest>,
-  output: __S(4641, __c145, 1) as any as S.Schema<GetAFDEndpointResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<GetAFDEndpointRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<GetAFDEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5354,8 +5598,8 @@ export const GetAFDOrigin: API.OperationMethod<
   GetAFDOriginError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2688, __c84, 0) as any as S.Schema<GetAFDOriginRequest>,
-  output: __S(354, __c11, 2) as any as S.Schema<GetAFDOriginResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<GetAFDOriginRequest>,
+  output: __S(2944, __c92, 0) as any as S.Schema<GetAFDOriginResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5369,8 +5613,8 @@ export const GetAFDOriginGroup: API.OperationMethod<
   GetAFDOriginGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2720, __c85, 0) as any as S.Schema<GetAFDOriginGroupRequest>,
-  output: __S(803, __c25, 3) as any as S.Schema<GetAFDOriginGroupResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<GetAFDOriginGroupRequest>,
+  output: __S(3008, __c94, 0) as any as S.Schema<GetAFDOriginGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5384,8 +5628,8 @@ export const GetCustomDomain: API.OperationMethod<
   GetCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2752, __c86, 0) as any as S.Schema<GetCustomDomainRequest>,
-  output: __S(1058, __c33, 2) as any as S.Schema<GetCustomDomainResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<GetCustomDomainRequest>,
+  output: __S(3072, __c96, 0) as any as S.Schema<GetCustomDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5399,8 +5643,8 @@ export const GetEndpoint: API.OperationMethod<
   GetEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2784, __c87, 0) as any as S.Schema<GetEndpointRequest>,
-  output: __S(1234, __c38, 18) as any as S.Schema<GetEndpointResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<GetEndpointRequest>,
+  output: __S(3136, __c98, 0) as any as S.Schema<GetEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5414,8 +5658,8 @@ export const GetLogAnalyticsLogAnalyticsLocations: API.OperationMethod<
   GetLogAnalyticsLogAnalyticsLocationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2816, __c88, 0) as any as S.Schema<GetLogAnalyticsLogAnalyticsLocationsRequest>,
-  output: __S(2819, __c88, 3) as any as S.Schema<ContinentsResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<GetLogAnalyticsLogAnalyticsLocationsRequest>,
+  output: __S(3171, __c99, 3) as any as S.Schema<ContinentsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5429,8 +5673,8 @@ export const GetLogAnalyticsLogAnalyticsMetrics: API.OperationMethod<
   GetLogAnalyticsLogAnalyticsMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2848, __c89, 0) as any as S.Schema<GetLogAnalyticsLogAnalyticsMetricsRequest>,
-  output: __S(2886, __c90, 6) as any as S.Schema<MetricsResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<GetLogAnalyticsLogAnalyticsMetricsRequest>,
+  output: __S(3238, __c101, 6) as any as S.Schema<MetricsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5444,8 +5688,8 @@ export const GetLogAnalyticsLogAnalyticsRankings: API.OperationMethod<
   GetLogAnalyticsLogAnalyticsRankingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2912, __c91, 0) as any as S.Schema<GetLogAnalyticsLogAnalyticsRankingsRequest>,
-  output: __S(2917, __c91, 5) as any as S.Schema<RankingsResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<GetLogAnalyticsLogAnalyticsRankingsRequest>,
+  output: __S(3269, __c102, 5) as any as S.Schema<RankingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5459,8 +5703,8 @@ export const GetLogAnalyticsLogAnalyticsResources: API.OperationMethod<
   GetLogAnalyticsLogAnalyticsResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3008, __c94, 0) as any as S.Schema<GetLogAnalyticsLogAnalyticsResourcesRequest>,
-  output: __S(3013, __c94, 5) as any as S.Schema<ResourcesResponse>,
+  input: __S(3360, __c105, 0) as any as S.Schema<GetLogAnalyticsLogAnalyticsResourcesRequest>,
+  output: __S(3365, __c105, 5) as any as S.Schema<ResourcesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5474,8 +5718,8 @@ export const GetLogAnalyticsWafLogAnalyticsMetrics: API.OperationMethod<
   GetLogAnalyticsWafLogAnalyticsMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3040, __c95, 0) as any as S.Schema<GetLogAnalyticsWafLogAnalyticsMetricsRequest>,
-  output: __S(2886, __c90, 6) as any as S.Schema<WafMetricsResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<GetLogAnalyticsWafLogAnalyticsMetricsRequest>,
+  output: __S(3238, __c101, 6) as any as S.Schema<WafMetricsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5489,8 +5733,8 @@ export const GetLogAnalyticsWafLogAnalyticsRankings: API.OperationMethod<
   GetLogAnalyticsWafLogAnalyticsRankingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3072, __c96, 0) as any as S.Schema<GetLogAnalyticsWafLogAnalyticsRankingsRequest>,
-  output: __S(3075, __c96, 3) as any as S.Schema<WafRankingsResponse>,
+  input: __S(3424, __c107, 0) as any as S.Schema<GetLogAnalyticsWafLogAnalyticsRankingsRequest>,
+  output: __S(3427, __c107, 3) as any as S.Schema<WafRankingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5504,8 +5748,8 @@ export const GetOrigin: API.OperationMethod<
   GetOriginError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3104, __c97, 0) as any as S.Schema<GetOriginRequest>,
-  output: __S(1281, __c40, 1) as any as S.Schema<GetOriginResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<GetOriginRequest>,
+  output: __S(3488, __c109, 0) as any as S.Schema<GetOriginResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5519,8 +5763,8 @@ export const GetOriginGroup: API.OperationMethod<
   GetOriginGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3136, __c98, 0) as any as S.Schema<GetOriginGroupRequest>,
-  output: __S(1345, __c42, 1) as any as S.Schema<GetOriginGroupResponse>,
+  input: __S(3520, __c110, 0) as any as S.Schema<GetOriginGroupRequest>,
+  output: __S(3552, __c111, 0) as any as S.Schema<GetOriginGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5534,8 +5778,8 @@ export const GetPolicy: API.OperationMethod<
   GetPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3168, __c99, 0) as any as S.Schema<GetPolicyRequest>,
-  output: __S(3217, __c100, 17) as any as S.Schema<GetPolicyResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<GetPolicyRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<GetPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5549,8 +5793,8 @@ export const GetProfile: API.OperationMethod<
   GetProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3232, __c101, 0) as any as S.Schema<GetProfileRequest>,
-  output: __S(135, __c4, 7) as any as S.Schema<GetProfileResponse>,
+  input: __S(3680, __c115, 0) as any as S.Schema<GetProfileRequest>,
+  output: __S(3712, __c116, 0) as any as S.Schema<GetProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5564,8 +5808,8 @@ export const GetRoute: API.OperationMethod<
   GetRouteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3264, __c102, 0) as any as S.Schema<GetRouteRequest>,
-  output: __S(1509, __c47, 5) as any as S.Schema<GetRouteResponse>,
+  input: __S(3744, __c117, 0) as any as S.Schema<GetRouteRequest>,
+  output: __S(3776, __c118, 0) as any as S.Schema<GetRouteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5579,8 +5823,8 @@ export const GetRule: API.OperationMethod<
   GetRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3296, __c103, 0) as any as S.Schema<GetRuleRequest>,
-  output: __S(1601, __c50, 1) as any as S.Schema<GetRuleResponse>,
+  input: __S(3808, __c119, 0) as any as S.Schema<GetRuleRequest>,
+  output: __S(3840, __c120, 0) as any as S.Schema<GetRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5594,8 +5838,8 @@ export const GetRuleSet: API.OperationMethod<
   GetRuleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3328, __c104, 0) as any as S.Schema<GetRuleSetRequest>,
-  output: __S(1667, __c52, 3) as any as S.Schema<GetRuleSetResponse>,
+  input: __S(3872, __c121, 0) as any as S.Schema<GetRuleSetRequest>,
+  output: __S(3904, __c122, 0) as any as S.Schema<GetRuleSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5609,8 +5853,8 @@ export const GetSecret: API.OperationMethod<
   GetSecretError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3392, __c106, 0) as any as S.Schema<GetSecretRequest>,
-  output: __S(1794, __c56, 2) as any as S.Schema<GetSecretResponse>,
+  input: __S(3968, __c124, 0) as any as S.Schema<GetSecretRequest>,
+  output: __S(4000, __c125, 0) as any as S.Schema<GetSecretResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5624,8 +5868,8 @@ export const GetSecurityPolicy: API.OperationMethod<
   GetSecurityPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3424, __c107, 0) as any as S.Schema<GetSecurityPolicyRequest>,
-  output: __S(1858, __c58, 2) as any as S.Schema<GetSecurityPolicyResponse>,
+  input: __S(4032, __c126, 0) as any as S.Schema<GetSecurityPolicyRequest>,
+  output: __S(4064, __c127, 0) as any as S.Schema<GetSecurityPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5639,8 +5883,8 @@ export const ListAFDCustomDomainByProfile: API.OperationMethod<
   ListAFDCustomDomainByProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3456, __c108, 0) as any as S.Schema<ListAFDCustomDomainByProfileRequest>,
-  output: __S(3458, __c108, 2) as any as S.Schema<AFDDomainListResult>,
+  input: __S(4096, __c128, 0) as any as S.Schema<ListAFDCustomDomainByProfileRequest>,
+  output: __S(4098, __c128, 2) as any as S.Schema<AFDDomainListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5654,8 +5898,8 @@ export const ListAFDEndpointByProfile: API.OperationMethod<
   ListAFDEndpointByProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3488, __c109, 0) as any as S.Schema<ListAFDEndpointByProfileRequest>,
-  output: __S(3490, __c109, 2) as any as S.Schema<AFDEndpointListResult>,
+  input: __S(4128, __c129, 0) as any as S.Schema<ListAFDEndpointByProfileRequest>,
+  output: __S(4130, __c129, 2) as any as S.Schema<AFDEndpointListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5669,8 +5913,8 @@ export const ListAFDEndpointResourceUsage: API.OperationMethod<
   ListAFDEndpointResourceUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3520, __c110, 0) as any as S.Schema<ListAFDEndpointResourceUsageRequest>,
-  output: __S(3555, __c111, 3) as any as S.Schema<UsagesListResult>,
+  input: __S(4160, __c130, 0) as any as S.Schema<ListAFDEndpointResourceUsageRequest>,
+  output: __S(4195, __c131, 3) as any as S.Schema<UsagesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5684,8 +5928,8 @@ export const ListAFDOriginByOriginGroup: API.OperationMethod<
   ListAFDOriginByOriginGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3584, __c112, 0) as any as S.Schema<ListAFDOriginByOriginGroupRequest>,
-  output: __S(3586, __c112, 2) as any as S.Schema<AFDOriginListResult>,
+  input: __S(4224, __c132, 0) as any as S.Schema<ListAFDOriginByOriginGroupRequest>,
+  output: __S(4226, __c132, 2) as any as S.Schema<AFDOriginListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5699,8 +5943,8 @@ export const ListAFDOriginGroupByProfile: API.OperationMethod<
   ListAFDOriginGroupByProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3616, __c113, 0) as any as S.Schema<ListAFDOriginGroupByProfileRequest>,
-  output: __S(3618, __c113, 2) as any as S.Schema<AFDOriginGroupListResult>,
+  input: __S(4256, __c133, 0) as any as S.Schema<ListAFDOriginGroupByProfileRequest>,
+  output: __S(4258, __c133, 2) as any as S.Schema<AFDOriginGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5714,8 +5958,8 @@ export const ListAFDOriginGroupResourceUsage: API.OperationMethod<
   ListAFDOriginGroupResourceUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3648, __c114, 0) as any as S.Schema<ListAFDOriginGroupResourceUsageRequest>,
-  output: __S(3555, __c111, 3) as any as S.Schema<UsagesListResult>,
+  input: __S(4288, __c134, 0) as any as S.Schema<ListAFDOriginGroupResourceUsageRequest>,
+  output: __S(4195, __c131, 3) as any as S.Schema<UsagesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5729,8 +5973,8 @@ export const ListAFDProfileResourceUsage: API.OperationMethod<
   ListAFDProfileResourceUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3680, __c115, 0) as any as S.Schema<ListAFDProfileResourceUsageRequest>,
-  output: __S(3555, __c111, 3) as any as S.Schema<UsagesListResult>,
+  input: __S(4320, __c135, 0) as any as S.Schema<ListAFDProfileResourceUsageRequest>,
+  output: __S(4195, __c131, 3) as any as S.Schema<UsagesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5744,8 +5988,8 @@ export const ListCustomDomainByEndpoint: API.OperationMethod<
   ListCustomDomainByEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3712, __c116, 0) as any as S.Schema<ListCustomDomainByEndpointRequest>,
-  output: __S(3714, __c116, 2) as any as S.Schema<CustomDomainListResult>,
+  input: __S(4352, __c136, 0) as any as S.Schema<ListCustomDomainByEndpointRequest>,
+  output: __S(4354, __c136, 2) as any as S.Schema<CustomDomainListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5759,8 +6003,8 @@ export const ListEdgeNodes: API.OperationMethod<
   ListEdgeNodesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3776, __c118, 0) as any as S.Schema<ListEdgeNodesRequest>,
-  output: __S(3784, __c118, 8) as any as S.Schema<EdgenodeResult>,
+  input: __S(4448, __c139, 0) as any as S.Schema<ListEdgeNodesRequest>,
+  output: __S(4456, __c139, 8) as any as S.Schema<EdgenodeResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5774,8 +6018,8 @@ export const ListEndpointByProfile: API.OperationMethod<
   ListEndpointByProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3808, __c119, 0) as any as S.Schema<ListEndpointByProfileRequest>,
-  output: __S(3810, __c119, 2) as any as S.Schema<EndpointListResult>,
+  input: __S(4480, __c140, 0) as any as S.Schema<ListEndpointByProfileRequest>,
+  output: __S(4482, __c140, 2) as any as S.Schema<EndpointListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5789,8 +6033,8 @@ export const ListEndpointResourceUsage: API.OperationMethod<
   ListEndpointResourceUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3840, __c120, 0) as any as S.Schema<ListEndpointResourceUsageRequest>,
-  output: __S(3874, __c121, 2) as any as S.Schema<ResourceUsageListResult>,
+  input: __S(4512, __c141, 0) as any as S.Schema<ListEndpointResourceUsageRequest>,
+  output: __S(4546, __c142, 2) as any as S.Schema<ResourceUsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5804,8 +6048,8 @@ export const ListManagedRuleSets: API.OperationMethod<
   ListManagedRuleSetsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3904, __c122, 0) as any as S.Schema<ListManagedRuleSetsRequest>,
-  output: __S(3912, __c122, 8) as any as S.Schema<ManagedRuleSetDefinitionList>,
+  input: __S(4576, __c143, 0) as any as S.Schema<ListManagedRuleSetsRequest>,
+  output: __S(4584, __c143, 8) as any as S.Schema<ManagedRuleSetDefinitionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5819,8 +6063,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3936, __c123, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(3950, __c123, 14) as any as S.Schema<OperationsListResult>,
+  input: __S(4608, __c144, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(4622, __c144, 14) as any as S.Schema<OperationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5834,8 +6078,8 @@ export const ListOriginByEndpoint: API.OperationMethod<
   ListOriginByEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3968, __c124, 0) as any as S.Schema<ListOriginByEndpointRequest>,
-  output: __S(3970, __c124, 2) as any as S.Schema<OriginListResult>,
+  input: __S(4640, __c145, 0) as any as S.Schema<ListOriginByEndpointRequest>,
+  output: __S(4642, __c145, 2) as any as S.Schema<OriginListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5849,8 +6093,8 @@ export const ListOriginGroupByEndpoint: API.OperationMethod<
   ListOriginGroupByEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4000, __c125, 0) as any as S.Schema<ListOriginGroupByEndpointRequest>,
-  output: __S(4002, __c125, 2) as any as S.Schema<OriginGroupListResult>,
+  input: __S(4672, __c146, 0) as any as S.Schema<ListOriginGroupByEndpointRequest>,
+  output: __S(4674, __c146, 2) as any as S.Schema<OriginGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5864,8 +6108,8 @@ export const ListPolicies: API.OperationMethod<
   ListPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4032, __c126, 0) as any as S.Schema<ListPoliciesRequest>,
-  output: __S(4034, __c126, 2) as any as S.Schema<CdnWebApplicationFirewallPolicyList>,
+  input: __S(4704, __c147, 0) as any as S.Schema<ListPoliciesRequest>,
+  output: __S(4706, __c147, 2) as any as S.Schema<CdnWebApplicationFirewallPolicyList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5879,8 +6123,8 @@ export const ListProfileByResourceGroup: API.OperationMethod<
   ListProfileByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4064, __c127, 0) as any as S.Schema<ListProfileByResourceGroupRequest>,
-  output: __S(4097, __c128, 1) as any as S.Schema<ProfileListResult>,
+  input: __S(4736, __c148, 0) as any as S.Schema<ListProfileByResourceGroupRequest>,
+  output: __S(4769, __c149, 1) as any as S.Schema<ProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5894,8 +6138,8 @@ export const ListProfileResourceUsage: API.OperationMethod<
   ListProfileResourceUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4128, __c129, 0) as any as S.Schema<ListProfileResourceUsageRequest>,
-  output: __S(3874, __c121, 2) as any as S.Schema<ResourceUsageListResult>,
+  input: __S(4800, __c150, 0) as any as S.Schema<ListProfileResourceUsageRequest>,
+  output: __S(4546, __c142, 2) as any as S.Schema<ResourceUsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5909,8 +6153,8 @@ export const ListProfiles: API.OperationMethod<
   ListProfilesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4256, __c133, 0) as any as S.Schema<ListProfilesRequest>,
-  output: __S(4097, __c128, 1) as any as S.Schema<ProfileListResult>,
+  input: __S(4928, __c154, 0) as any as S.Schema<ListProfilesRequest>,
+  output: __S(4769, __c149, 1) as any as S.Schema<ProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5924,8 +6168,8 @@ export const ListProfileSupportedOptimizationTypes: API.OperationMethod<
   ListProfileSupportedOptimizationTypesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4288, __c134, 0) as any as S.Schema<ListProfileSupportedOptimizationTypesRequest>,
-  output: __S(4289, __c134, 1) as any as S.Schema<SupportedOptimizationTypesListResult>,
+  input: __S(4960, __c155, 0) as any as S.Schema<ListProfileSupportedOptimizationTypesRequest>,
+  output: __S(4961, __c155, 1) as any as S.Schema<SupportedOptimizationTypesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5939,8 +6183,8 @@ export const ListResourceUsage: API.OperationMethod<
   ListResourceUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4320, __c135, 0) as any as S.Schema<ListResourceUsageRequest>,
-  output: __S(3874, __c121, 2) as any as S.Schema<ResourceUsageListResult>,
+  input: __S(4992, __c156, 0) as any as S.Schema<ListResourceUsageRequest>,
+  output: __S(4546, __c142, 2) as any as S.Schema<ResourceUsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5954,8 +6198,8 @@ export const ListRouteByEndpoint: API.OperationMethod<
   ListRouteByEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4352, __c136, 0) as any as S.Schema<ListRouteByEndpointRequest>,
-  output: __S(4354, __c136, 2) as any as S.Schema<RouteListResult>,
+  input: __S(5024, __c157, 0) as any as S.Schema<ListRouteByEndpointRequest>,
+  output: __S(5026, __c157, 2) as any as S.Schema<RouteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5969,8 +6213,8 @@ export const ListRuleByRuleSet: API.OperationMethod<
   ListRuleByRuleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4384, __c137, 0) as any as S.Schema<ListRuleByRuleSetRequest>,
-  output: __S(4386, __c137, 2) as any as S.Schema<RuleListResult>,
+  input: __S(5056, __c158, 0) as any as S.Schema<ListRuleByRuleSetRequest>,
+  output: __S(5058, __c158, 2) as any as S.Schema<RuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5984,8 +6228,8 @@ export const ListRuleSetByProfile: API.OperationMethod<
   ListRuleSetByProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4416, __c138, 0) as any as S.Schema<ListRuleSetByProfileRequest>,
-  output: __S(4418, __c138, 2) as any as S.Schema<RuleSetListResult>,
+  input: __S(5088, __c159, 0) as any as S.Schema<ListRuleSetByProfileRequest>,
+  output: __S(5090, __c159, 2) as any as S.Schema<RuleSetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5999,8 +6243,8 @@ export const ListRuleSetResourceUsage: API.OperationMethod<
   ListRuleSetResourceUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4448, __c139, 0) as any as S.Schema<ListRuleSetResourceUsageRequest>,
-  output: __S(3555, __c111, 3) as any as S.Schema<UsagesListResult>,
+  input: __S(5120, __c160, 0) as any as S.Schema<ListRuleSetResourceUsageRequest>,
+  output: __S(4195, __c131, 3) as any as S.Schema<UsagesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6014,8 +6258,8 @@ export const ListSecretByProfile: API.OperationMethod<
   ListSecretByProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4480, __c140, 0) as any as S.Schema<ListSecretByProfileRequest>,
-  output: __S(4482, __c140, 2) as any as S.Schema<SecretListResult>,
+  input: __S(5152, __c161, 0) as any as S.Schema<ListSecretByProfileRequest>,
+  output: __S(5154, __c161, 2) as any as S.Schema<SecretListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6029,8 +6273,8 @@ export const ListSecurityPolicyByProfile: API.OperationMethod<
   ListSecurityPolicyByProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4512, __c141, 0) as any as S.Schema<ListSecurityPolicyByProfileRequest>,
-  output: __S(4514, __c141, 2) as any as S.Schema<SecurityPolicyListResult>,
+  input: __S(5184, __c162, 0) as any as S.Schema<ListSecurityPolicyByProfileRequest>,
+  output: __S(5186, __c162, 2) as any as S.Schema<SecurityPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6044,8 +6288,8 @@ export const MigrateProfile: API.OperationMethod<
   MigrateProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4546, __c142, 2) as any as S.Schema<MigrateProfileRequest>,
-  output: __S(4577, __c143, 1) as any as S.Schema<MigrateResult>,
+  input: __S(5218, __c163, 2) as any as S.Schema<MigrateProfileRequest>,
+  output: __S(5249, __c164, 1) as any as S.Schema<MigrateResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6059,8 +6303,8 @@ export const MigrateProfilesCan: API.OperationMethod<
   MigrateProfilesCanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4672, __c146, 0) as any as S.Schema<MigrateProfilesCanRequest>,
-  output: __S(4707, __c147, 3) as any as S.Schema<CanMigrateResult>,
+  input: __S(5344, __c167, 0) as any as S.Schema<MigrateProfilesCanRequest>,
+  output: __S(5379, __c168, 3) as any as S.Schema<CanMigrateResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6074,8 +6318,8 @@ export const PatchSecurityPolicy: API.OperationMethod<
   PatchSecurityPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4736, __c148, 0) as any as S.Schema<PatchSecurityPolicyRequest>,
-  output: __S(1858, __c58, 2) as any as S.Schema<PatchSecurityPolicyResponse>,
+  input: __S(5408, __c169, 0) as any as S.Schema<PatchSecurityPolicyRequest>,
+  output: __S(5409, __c169, 1) as any as S.Schema<PatchSecurityPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6089,8 +6333,8 @@ export const PoliciesCreateOrUpdate: API.OperationMethod<
   PoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4769, __c149, 1) as any as S.Schema<PoliciesCreateOrUpdateRequest>,
-  output: __S(3217, __c100, 17) as any as S.Schema<PoliciesCreateOrUpdateResponse>,
+  input: __S(5441, __c170, 1) as any as S.Schema<PoliciesCreateOrUpdateRequest>,
+  output: __S(5442, __c170, 2) as any as S.Schema<PoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6104,8 +6348,8 @@ export const ProfilesCdnCanMigrateToAfd: API.OperationMethod<
   ProfilesCdnCanMigrateToAfdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4800, __c150, 0) as any as S.Schema<ProfilesCdnCanMigrateToAfdRequest>,
-  output: __S(4707, __c147, 3) as any as S.Schema<CanMigrateResult>,
+  input: __S(5472, __c171, 0) as any as S.Schema<ProfilesCdnCanMigrateToAfdRequest>,
+  output: __S(5379, __c168, 3) as any as S.Schema<CanMigrateResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6119,8 +6363,8 @@ export const ProfilesCdnMigrateToAfd: API.OperationMethod<
   ProfilesCdnMigrateToAfdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4834, __c151, 2) as any as S.Schema<ProfilesCdnMigrateToAfdRequest>,
-  output: __S(4577, __c143, 1) as any as S.Schema<MigrateResult>,
+  input: __S(5506, __c172, 2) as any as S.Schema<ProfilesCdnMigrateToAfdRequest>,
+  output: __S(5249, __c164, 1) as any as S.Schema<MigrateResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6134,8 +6378,8 @@ export const PurgeAFDEndpointContent: API.OperationMethod<
   PurgeAFDEndpointContentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4864, __c152, 0) as any as S.Schema<PurgeAFDEndpointContentRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<PurgeAFDEndpointContentResponse>,
+  input: __S(5536, __c173, 0) as any as S.Schema<PurgeAFDEndpointContentRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<PurgeAFDEndpointContentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6149,8 +6393,8 @@ export const PurgeEndpointContent: API.OperationMethod<
   PurgeEndpointContentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4896, __c153, 0) as any as S.Schema<PurgeEndpointContentRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<PurgeEndpointContentResponse>,
+  input: __S(5568, __c174, 0) as any as S.Schema<PurgeEndpointContentRequest>,
+  output: __S(2688, __c84, 0) as any as S.Schema<PurgeEndpointContentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6164,8 +6408,8 @@ export const RefreshAFDCustomDomainValidationToken: API.OperationMethod<
   RefreshAFDCustomDomainValidationTokenError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4928, __c154, 0) as any as S.Schema<RefreshAFDCustomDomainValidationTokenRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<RefreshAFDCustomDomainValidationTokenResponse>,
+  input: __S(5600, __c175, 0) as any as S.Schema<RefreshAFDCustomDomainValidationTokenRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<RefreshAFDCustomDomainValidationTokenResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6179,8 +6423,8 @@ export const StartEndpoint: API.OperationMethod<
   StartEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4960, __c155, 0) as any as S.Schema<StartEndpointRequest>,
-  output: __S(1234, __c38, 18) as any as S.Schema<StartEndpointResponse>,
+  input: __S(5632, __c176, 0) as any as S.Schema<StartEndpointRequest>,
+  output: __S(5664, __c177, 0) as any as S.Schema<StartEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6194,8 +6438,8 @@ export const StopEndpoint: API.OperationMethod<
   StopEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4992, __c156, 0) as any as S.Schema<StopEndpointRequest>,
-  output: __S(1234, __c38, 18) as any as S.Schema<StopEndpointResponse>,
+  input: __S(5696, __c178, 0) as any as S.Schema<StopEndpointRequest>,
+  output: __S(5664, __c177, 0) as any as S.Schema<StopEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6209,8 +6453,8 @@ export const UpdateAFDCustomDomain: API.OperationMethod<
   UpdateAFDCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385, __c12, 1) as any as S.Schema<UpdateAFDCustomDomainRequest>,
-  output: __S(4229, __c132, 5) as any as S.Schema<UpdateAFDCustomDomainResponse>,
+  input: __S(417, __c13, 1) as any as S.Schema<UpdateAFDCustomDomainRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<UpdateAFDCustomDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6224,8 +6468,8 @@ export const UpdateAFDEndpoint: API.OperationMethod<
   UpdateAFDEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(417, __c13, 1) as any as S.Schema<UpdateAFDEndpointRequest>,
-  output: __S(4641, __c145, 1) as any as S.Schema<UpdateAFDEndpointResponse>,
+  input: __S(449, __c14, 1) as any as S.Schema<UpdateAFDEndpointRequest>,
+  output: __S(450, __c14, 2) as any as S.Schema<UpdateAFDEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6239,8 +6483,8 @@ export const UpdateAFDOrigin: API.OperationMethod<
   UpdateAFDOriginError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c14, 0) as any as S.Schema<UpdateAFDOriginRequest>,
-  output: __S(354, __c11, 2) as any as S.Schema<UpdateAFDOriginResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<UpdateAFDOriginRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<UpdateAFDOriginResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6254,8 +6498,8 @@ export const UpdateAFDOriginGroup: API.OperationMethod<
   UpdateAFDOriginGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c15, 0) as any as S.Schema<UpdateAFDOriginGroupRequest>,
-  output: __S(803, __c25, 3) as any as S.Schema<UpdateAFDOriginGroupResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<UpdateAFDOriginGroupRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<UpdateAFDOriginGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6269,8 +6513,8 @@ export const UpdateEndpoint: API.OperationMethod<
   UpdateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(513, __c16, 1) as any as S.Schema<UpdateEndpointRequest>,
-  output: __S(1234, __c38, 18) as any as S.Schema<UpdateEndpointResponse>,
+  input: __S(545, __c17, 1) as any as S.Schema<UpdateEndpointRequest>,
+  output: __S(5664, __c177, 0) as any as S.Schema<UpdateEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6284,8 +6528,8 @@ export const UpdateOrigin: API.OperationMethod<
   UpdateOriginError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(545, __c17, 1) as any as S.Schema<UpdateOriginRequest>,
-  output: __S(1281, __c40, 1) as any as S.Schema<UpdateOriginResponse>,
+  input: __S(577, __c18, 1) as any as S.Schema<UpdateOriginRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<UpdateOriginResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6299,8 +6543,8 @@ export const UpdateOriginGroup: API.OperationMethod<
   UpdateOriginGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(577, __c18, 1) as any as S.Schema<UpdateOriginGroupRequest>,
-  output: __S(1345, __c42, 1) as any as S.Schema<UpdateOriginGroupResponse>,
+  input: __S(609, __c19, 1) as any as S.Schema<UpdateOriginGroupRequest>,
+  output: __S(610, __c19, 2) as any as S.Schema<UpdateOriginGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6314,8 +6558,8 @@ export const UpdatePolicy: API.OperationMethod<
   UpdatePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c19, 0) as any as S.Schema<UpdatePolicyRequest>,
-  output: __S(3217, __c100, 17) as any as S.Schema<UpdatePolicyResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<UpdatePolicyRequest>,
+  output: __S(641, __c20, 1) as any as S.Schema<UpdatePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6329,8 +6573,8 @@ export const UpdateProfile: API.OperationMethod<
   UpdateProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c20, 0) as any as S.Schema<UpdateProfileRequest>,
-  output: __S(135, __c4, 7) as any as S.Schema<UpdateProfileResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<UpdateProfileRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<UpdateProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6344,8 +6588,8 @@ export const UpdateRoute: API.OperationMethod<
   UpdateRouteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<UpdateRouteRequest>,
-  output: __S(1509, __c47, 5) as any as S.Schema<UpdateRouteResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<UpdateRouteRequest>,
+  output: __S(705, __c22, 1) as any as S.Schema<UpdateRouteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6359,8 +6603,8 @@ export const UpdateRule: API.OperationMethod<
   UpdateRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c26, 0) as any as S.Schema<UpdateRuleRequest>,
-  output: __S(1601, __c50, 1) as any as S.Schema<UpdateRuleResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<UpdateRuleRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<UpdateRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6374,8 +6618,8 @@ export const ValidateAFDEndpointCustomDomain: API.OperationMethod<
   ValidateAFDEndpointCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<ValidateAFDEndpointCustomDomainRequest>,
-  output: __S(896, __c28, 0) as any as S.Schema<ValidateCustomDomainOutput>,
+  input: __S(896, __c28, 0) as any as S.Schema<ValidateAFDEndpointCustomDomainRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<ValidateCustomDomainOutput>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6389,8 +6633,8 @@ export const ValidateAFDProfileSecret: API.OperationMethod<
   ValidateAFDProfileSecretError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<ValidateAFDProfileSecretRequest>,
-  output: __S(929, __c29, 1) as any as S.Schema<ValidateSecretOutput>,
+  input: __S(960, __c30, 0) as any as S.Schema<ValidateAFDProfileSecretRequest>,
+  output: __S(961, __c30, 1) as any as S.Schema<ValidateSecretOutput>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6404,8 +6648,8 @@ export const ValidateEndpointCustomDomain: API.OperationMethod<
   ValidateEndpointCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c30, 0) as any as S.Schema<ValidateEndpointCustomDomainRequest>,
-  output: __S(896, __c28, 0) as any as S.Schema<ValidateCustomDomainOutput>,
+  input: __S(992, __c31, 0) as any as S.Schema<ValidateEndpointCustomDomainRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<ValidateCustomDomainOutput>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6419,8 +6663,8 @@ export const ValidateProbe: API.OperationMethod<
   ValidateProbeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<ValidateProbeRequest>,
-  output: __S(993, __c31, 1) as any as S.Schema<ValidateProbeOutput>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ValidateProbeRequest>,
+  output: __S(1025, __c32, 1) as any as S.Schema<ValidateProbeOutput>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6449,9 +6693,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AbortProfilesMigrationResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "AbortProfilesMigrationResponse" });
   }
 }
 function __c2(j: number): any {
@@ -6460,7 +6706,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           securityPolicyName: S.String,
-          changeToWafPolicy: __S(160, __c5, 0),
+          changeToWafPolicy: __S(192, __c6, 0),
         }),
       ).annotate({ identifier: "ProfileChangeSkuWafMapping" });
     case 1:
@@ -6488,12 +6734,32 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(163, __c5, 3)),
+          sku: __S(128, __c4, 0),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(166, __c5, 6)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "AFDProfilesUpgradeResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Sku" });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6505,12 +6771,12 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ProfileScrubbingRules" });
     case 1:
-      return S.Array(__S(128, __c4, 0));
+      return S.Array(__S(160, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
-          scrubbingRules: S.optional(__S(129, __c4, 1)),
+          scrubbingRules: S.optional(__S(161, __c5, 1)),
         }),
       ).annotate({ identifier: "ProfileLogScrubbing" });
     case 3:
@@ -6518,10 +6784,10 @@ function __c4(j: number): any {
         S.Struct({
           resourceState: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          extendedProperties: S.optional(__S(224, __c7, 0)),
+          extendedProperties: S.optional(__S(256, __c8, 0)),
           frontDoorId: S.optional(S.String),
           originResponseTimeoutSeconds: S.optional(S.Number),
-          logScrubbing: S.optional(__S(130, __c4, 2)),
+          logScrubbing: S.optional(__S(162, __c5, 2)),
         }),
       ).annotate({ identifier: "ProfileProperties" });
     case 4:
@@ -6532,34 +6798,19 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(132, __c4, 4)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(164, __c5, 4)));
     case 6:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(133, __c4, 5)),
+          userAssignedIdentities: S.optional(__S(165, __c5, 5)),
         }),
       ).annotate({ identifier: "AFDProfilesUpgradeResponseIdentity" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(192, __c6, 0)),
-          tags: S.optional(__S(224, __c7, 0)),
-          location: S.String,
-          properties: S.optional(__S(131, __c4, 3)),
-          sku: __S(96, __c3, 0),
-          kind: S.optional(S.String),
-          identity: S.optional(__S(134, __c4, 6)),
-        }),
-      ).annotate({ identifier: "AFDProfilesUpgradeResponse" });
   }
 }
-function __c5(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6569,7 +6820,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "ResourceReference" });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6584,13 +6835,13 @@ function __c6(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6600,7 +6851,7 @@ function __c8(j: number): any {
           profileName: S.String.pipe(T.Label()),
           originGroupName: S.String.pipe(T.Label()),
           originName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(288, __c9, 0)),
+          properties: S.optional(__S(320, __c10, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6610,41 +6861,53 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateAFDOriginRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(385, __c12, 1)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "CreateAFDOriginResponse" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          azureOrigin: S.optional(__S(160, __c5, 0)),
+          azureOrigin: S.optional(__S(192, __c6, 0)),
           hostName: S.optional(S.String),
           httpPort: S.optional(S.Number),
           httpsPort: S.optional(S.Number),
           originHostHeader: S.optional(S.String),
           priority: S.optional(S.Number),
           weight: S.optional(S.Number),
-          sharedPrivateLinkResource: S.optional(__S(352, __c11, 0)),
+          sharedPrivateLinkResource: S.optional(__S(384, __c12, 0)),
           enabledState: S.optional(S.String),
           enforceCertificateNameCheck: S.optional(S.Boolean),
           certificateNameCheckValidationMode: S.optional(S.String),
-          customCertificateSubjects: S.optional(__S(320, __c10, 0)),
+          customCertificateSubjects: S.optional(__S(352, __c11, 0)),
         }),
       ).annotate({ identifier: "AFDOriginPropertiesInput" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
   }
 }
 function __c11(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          privateLink: S.optional(__S(160, __c5, 0)),
+          privateLink: S.optional(__S(192, __c6, 0)),
           privateLinkLocation: S.optional(S.String),
           groupId: S.optional(S.String),
           requestMessage: S.optional(S.String),
@@ -6655,43 +6918,33 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           originGroupName: S.optional(S.String),
-          azureOrigin: S.optional(__S(160, __c5, 0)),
+          azureOrigin: S.optional(__S(192, __c6, 0)),
           hostName: S.optional(S.String),
           httpPort: S.optional(S.Number),
           httpsPort: S.optional(S.Number),
           originHostHeader: S.optional(S.String),
           priority: S.optional(S.Number),
           weight: S.optional(S.Number),
-          sharedPrivateLinkResource: S.optional(__S(352, __c11, 0)),
+          sharedPrivateLinkResource: S.optional(__S(384, __c12, 0)),
           enabledState: S.optional(S.String),
           enforceCertificateNameCheck: S.optional(S.Boolean),
           certificateNameCheckValidationMode: S.optional(S.String),
-          customCertificateSubjects: S.optional(__S(320, __c10, 0)),
+          customCertificateSubjects: S.optional(__S(352, __c11, 0)),
           provisioningState: S.optional(S.String),
           deploymentStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "AFDOriginProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(192, __c6, 0)),
-          properties: S.optional(__S(353, __c11, 1)),
-        }),
-      ).annotate({ identifier: "CreateAFDOriginResponse" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tlsSettings: S.optional(__S(4225, __c132, 1)),
-          mtlsSettings: S.optional(__S(4226, __c132, 2)),
-          azureDnsZone: S.optional(__S(160, __c5, 0)),
-          preValidatedCustomDomainResourceId: S.optional(__S(160, __c5, 0)),
+          tlsSettings: S.optional(__S(4897, __c153, 1)),
+          mtlsSettings: S.optional(__S(4898, __c153, 2)),
+          azureDnsZone: S.optional(__S(192, __c6, 0)),
+          preValidatedCustomDomainResourceId: S.optional(__S(192, __c6, 0)),
         }),
       ).annotate({ identifier: "AFDDomainUpdatePropertiesParametersInput" });
     case 1:
@@ -6701,7 +6954,7 @@ function __c12(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           customDomainName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(384, __c12, 0)),
+          properties: S.optional(__S(416, __c13, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6711,9 +6964,22 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAFDCustomDomainRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(4900, __c153, 4)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateAFDCustomDomainResponse" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6729,8 +6995,8 @@ function __c13(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(224, __c7, 0)),
-          properties: S.optional(__S(416, __c13, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          properties: S.optional(__S(448, __c14, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6740,28 +7006,20 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAFDEndpointRequest" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          profileName: S.String.pipe(T.Label()),
-          originGroupName: S.String.pipe(T.Label()),
-          originName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(288, __c9, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateAFDOriginRequest" });
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(5312, __c166, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateAFDEndpointResponse" });
   }
 }
 function __c15(j: number): any {
@@ -6773,7 +7031,41 @@ function __c15(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           originGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(736, __c23, 0)),
+          originName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(320, __c10, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateAFDOriginRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(385, __c12, 1)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateAFDOriginResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          profileName: S.String.pipe(T.Label()),
+          originGroupName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(768, __c24, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6783,15 +7075,28 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAFDOriginGroupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(834, __c26, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateAFDOriginGroupResponse" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           originPath: S.optional(S.String),
-          contentTypesToCompress: S.optional(__S(320, __c10, 0)),
+          contentTypesToCompress: S.optional(__S(352, __c11, 0)),
           originHostHeader: S.optional(S.String),
           isCompressionEnabled: S.optional(S.Boolean),
           isHttpAllowed: S.optional(S.Boolean),
@@ -6799,11 +7104,11 @@ function __c16(j: number): any {
           queryStringCachingBehavior: S.optional(S.String),
           optimizationType: S.optional(S.String),
           probePath: S.optional(S.String),
-          geoFilters: S.optional(__S(1217, __c38, 1)),
-          defaultOriginGroup: S.optional(__S(160, __c5, 0)),
-          urlSigningKeys: S.optional(__S(1220, __c38, 4)),
-          deliveryPolicy: S.optional(__S(1223, __c38, 7)),
-          webApplicationFirewallPolicyLink: S.optional(__S(160, __c5, 0)),
+          geoFilters: S.optional(__S(1249, __c39, 1)),
+          defaultOriginGroup: S.optional(__S(192, __c6, 0)),
+          urlSigningKeys: S.optional(__S(1252, __c39, 4)),
+          deliveryPolicy: S.optional(__S(1255, __c39, 7)),
+          webApplicationFirewallPolicyLink: S.optional(__S(192, __c6, 0)),
         }),
       ).annotate({ identifier: "EndpointPropertiesUpdateParameters" });
     case 1:
@@ -6813,8 +7118,8 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(224, __c7, 0)),
-          properties: S.optional(__S(512, __c16, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          properties: S.optional(__S(544, __c17, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6826,7 +7131,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "UpdateEndpointRequest" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6852,7 +7157,7 @@ function __c17(j: number): any {
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           originName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(544, __c17, 0)),
+          properties: S.optional(__S(576, __c18, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6862,17 +7167,28 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateOriginRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1312, __c41, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateOriginResponse" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          healthProbeSettings: S.optional(__S(768, __c24, 0)),
-          origins: S.optional(__S(1120, __c35, 0)),
+          healthProbeSettings: S.optional(__S(800, __c25, 0)),
+          origins: S.optional(__S(1152, __c36, 0)),
           trafficRestorationTimeToHealedOrNewEndpointsInMinutes: S.optional(S.Number),
-          responseBasedOriginErrorDetectionSettings: S.optional(__S(1154, __c36, 2)),
+          responseBasedOriginErrorDetectionSettings: S.optional(__S(1186, __c37, 2)),
         }),
       ).annotate({ identifier: "OriginGroupUpdatePropertiesParameters" });
     case 1:
@@ -6883,7 +7199,7 @@ function __c18(j: number): any {
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           originGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(576, __c18, 0)),
+          properties: S.optional(__S(608, __c19, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6893,26 +7209,17 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateOriginGroupRequest" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          policyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(224, __c7, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdatePolicyRequest" });
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1376, __c43, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateOriginGroupResponse" });
   }
 }
 function __c20(j: number): any {
@@ -6922,10 +7229,45 @@ function __c20(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          policyName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(256, __c8, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdatePolicyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(3664, __c114, 16)),
+          etag: S.optional(S.String),
+          sku: __S(128, __c4, 0),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdatePolicyResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(224, __c7, 0)),
-          identity: S.optional(__S(1410, __c44, 2)),
-          properties: S.optional(__S(1408, __c44, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          identity: S.optional(__S(1442, __c45, 2)),
+          properties: S.optional(__S(1440, __c45, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6937,7 +7279,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "UpdateProfileRequest" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6947,7 +7289,7 @@ function __c21(j: number): any {
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           routeName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1472, __c46, 0)),
+          properties: S.optional(__S(1536, __c48, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6957,9 +7299,22 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateRouteRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1572, __c49, 4)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateRouteResponse" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6968,7 +7323,7 @@ function __c22(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           originGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(736, __c23, 0)),
+          properties: S.optional(__S(768, __c24, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6978,23 +7333,36 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateAFDOriginGroupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(834, __c26, 2)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "CreateAFDOriginGroupResponse" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          loadBalancingSettings: S.optional(__S(800, __c25, 0)),
-          healthProbeSettings: S.optional(__S(768, __c24, 0)),
+          loadBalancingSettings: S.optional(__S(832, __c26, 0)),
+          healthProbeSettings: S.optional(__S(800, __c25, 0)),
           trafficRestorationTimeToHealedOrNewEndpointsInMinutes: S.optional(S.Number),
           sessionAffinityState: S.optional(S.String),
-          authentication: S.optional(__S(801, __c25, 1)),
+          authentication: S.optional(__S(833, __c26, 1)),
         }),
       ).annotate({ identifier: "AFDOriginGroupPropertiesInput" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7007,7 +7375,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "HealthProbeParameters" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7021,7 +7389,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          userAssignedIdentity: S.optional(__S(160, __c5, 0)),
+          userAssignedIdentity: S.optional(__S(192, __c6, 0)),
           scope: S.optional(S.String),
           tokenDestinationHeader: S.optional(S.String),
         }),
@@ -7030,28 +7398,18 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileName: S.optional(S.String),
-          loadBalancingSettings: S.optional(__S(800, __c25, 0)),
-          healthProbeSettings: S.optional(__S(768, __c24, 0)),
+          loadBalancingSettings: S.optional(__S(832, __c26, 0)),
+          healthProbeSettings: S.optional(__S(800, __c25, 0)),
           trafficRestorationTimeToHealedOrNewEndpointsInMinutes: S.optional(S.Number),
           sessionAffinityState: S.optional(S.String),
-          authentication: S.optional(__S(801, __c25, 1)),
+          authentication: S.optional(__S(833, __c26, 1)),
           provisioningState: S.optional(S.String),
           deploymentStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "AFDOriginGroupProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(192, __c6, 0)),
-          properties: S.optional(__S(802, __c25, 2)),
-        }),
-      ).annotate({ identifier: "CreateAFDOriginGroupResponse" });
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7061,7 +7419,7 @@ function __c26(j: number): any {
           profileName: S.String.pipe(T.Label()),
           ruleSetName: S.String.pipe(T.Label()),
           ruleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1568, __c49, 0)),
+          properties: S.optional(__S(1632, __c51, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7071,9 +7429,21 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateRuleRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1664, __c52, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateRuleResponse" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7094,7 +7464,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "ValidateAFDEndpointCustomDomainRequest" });
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7106,7 +7476,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "ValidateCustomDomainOutput" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7115,7 +7485,7 @@ function __c29(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           secretType: S.String,
-          secretSource: __S(160, __c5, 0),
+          secretSource: __S(192, __c6, 0),
           secretVersion: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -7135,7 +7505,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "ValidateSecretOutput" });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7156,7 +7526,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "ValidateEndpointCustomDomainRequest" });
   }
 }
-function __c31(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7182,7 +7552,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "ValidateProbeOutput" });
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7198,7 +7568,7 @@ function __c32(j: number): any {
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           customDomainName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1024, __c32, 0)),
+          properties: S.optional(__S(1056, __c33, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7208,9 +7578,21 @@ function __c32(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateCustomDomainRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1089, __c34, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateCustomDomainResponse" });
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7227,30 +7609,20 @@ function __c33(j: number): any {
           resourceState: S.optional(S.String),
           customHttpsProvisioningState: S.optional(S.String),
           customHttpsProvisioningSubstate: S.optional(S.String),
-          customHttpsParameters: S.optional(__S(1056, __c33, 0)),
+          customHttpsParameters: S.optional(__S(1088, __c34, 0)),
           validationData: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomDomainProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(192, __c6, 0)),
-          properties: S.optional(__S(1057, __c33, 1)),
-        }),
-      ).annotate({ identifier: "CreateCustomDomainResponse" });
   }
 }
-function __c34(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           originPath: S.optional(S.String),
-          contentTypesToCompress: S.optional(__S(320, __c10, 0)),
+          contentTypesToCompress: S.optional(__S(352, __c11, 0)),
           originHostHeader: S.optional(S.String),
           isCompressionEnabled: S.optional(S.Boolean),
           isHttpAllowed: S.optional(S.Boolean),
@@ -7258,13 +7630,13 @@ function __c34(j: number): any {
           queryStringCachingBehavior: S.optional(S.String),
           optimizationType: S.optional(S.String),
           probePath: S.optional(S.String),
-          geoFilters: S.optional(__S(1217, __c38, 1)),
-          defaultOriginGroup: S.optional(__S(160, __c5, 0)),
-          urlSigningKeys: S.optional(__S(1220, __c38, 4)),
-          deliveryPolicy: S.optional(__S(1223, __c38, 7)),
-          webApplicationFirewallPolicyLink: S.optional(__S(160, __c5, 0)),
-          origins: __S(1226, __c38, 10),
-          originGroups: S.optional(__S(1229, __c38, 13)),
+          geoFilters: S.optional(__S(1249, __c39, 1)),
+          defaultOriginGroup: S.optional(__S(192, __c6, 0)),
+          urlSigningKeys: S.optional(__S(1252, __c39, 4)),
+          deliveryPolicy: S.optional(__S(1255, __c39, 7)),
+          webApplicationFirewallPolicyLink: S.optional(__S(192, __c6, 0)),
+          origins: __S(1258, __c39, 10),
+          originGroups: S.optional(__S(1261, __c39, 13)),
         }),
       ).annotate({ identifier: "EndpointPropertiesInput" });
     case 1:
@@ -7274,9 +7646,9 @@ function __c34(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
           location: S.String,
-          properties: S.optional(__S(1088, __c34, 0)),
+          properties: S.optional(__S(1120, __c35, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7286,15 +7658,29 @@ function __c34(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateEndpointRequest" });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(160, __c5, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(1265, __c39, 17)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "CreateEndpointResponse" });
   }
 }
 function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(192, __c6, 0));
+  }
+}
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7304,18 +7690,18 @@ function __c36(j: number): any {
         }),
       ).annotate({ identifier: "HttpErrorRangeParameters" });
     case 1:
-      return S.Array(__S(1152, __c36, 0));
+      return S.Array(__S(1184, __c37, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           responseBasedDetectedErrorTypes: S.optional(S.String),
           responseBasedFailoverThresholdPercentage: S.optional(S.Number),
-          httpErrorRanges: S.optional(__S(1153, __c36, 1)),
+          httpErrorRanges: S.optional(__S(1185, __c37, 1)),
         }),
       ).annotate({ identifier: "ResponseBasedOriginErrorDetectionParameters" });
   }
 }
-function __c37(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7325,21 +7711,21 @@ function __c37(j: number): any {
         }),
       ).annotate({ identifier: "DeliveryRuleCondition" });
     case 1:
-      return S.Array(__S(1184, __c37, 0));
+      return S.Array(__S(1216, __c38, 0));
   }
 }
-function __c38(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           relativePath: S.String,
           action: S.String,
-          countryCodes: __S(320, __c10, 0),
+          countryCodes: __S(352, __c11, 0),
         }),
       ).annotate({ identifier: "GeoFilter" });
     case 1:
-      return S.Array(__S(1216, __c38, 0));
+      return S.Array(__S(1248, __c39, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -7355,27 +7741,27 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           keyId: S.String,
-          keySourceParameters: __S(1218, __c38, 2),
+          keySourceParameters: __S(1250, __c39, 2),
         }),
       ).annotate({ identifier: "UrlSigningKey" });
     case 4:
-      return S.Array(__S(1219, __c38, 3));
+      return S.Array(__S(1251, __c39, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           order: S.Number,
-          conditions: S.optional(__S(1185, __c37, 1)),
-          actions: __S(1185, __c37, 1),
+          conditions: S.optional(__S(1217, __c38, 1)),
+          actions: __S(1217, __c38, 1),
         }),
       ).annotate({ identifier: "DeliveryRule" });
     case 6:
-      return S.Array(__S(1221, __c38, 5));
+      return S.Array(__S(1253, __c39, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          rules: __S(1222, __c38, 6),
+          rules: __S(1254, __c39, 6),
         }),
       ).annotate({ identifier: "EndpointPropertiesUpdateParametersDeliveryPolicy" });
     case 8:
@@ -7399,29 +7785,29 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          properties: S.optional(__S(1224, __c38, 8)),
+          properties: S.optional(__S(1256, __c39, 8)),
         }),
       ).annotate({ identifier: "DeepCreatedOrigin" });
     case 10:
-      return S.Array(__S(1225, __c38, 9));
+      return S.Array(__S(1257, __c39, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
-          healthProbeSettings: S.optional(__S(768, __c24, 0)),
-          origins: __S(1120, __c35, 0),
+          healthProbeSettings: S.optional(__S(800, __c25, 0)),
+          origins: __S(1152, __c36, 0),
           trafficRestorationTimeToHealedOrNewEndpointsInMinutes: S.optional(S.Number),
-          responseBasedOriginErrorDetectionSettings: S.optional(__S(1154, __c36, 2)),
+          responseBasedOriginErrorDetectionSettings: S.optional(__S(1186, __c37, 2)),
         }),
       ).annotate({ identifier: "DeepCreatedOriginGroupProperties" });
     case 12:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          properties: S.optional(__S(1227, __c38, 11)),
+          properties: S.optional(__S(1259, __c39, 11)),
         }),
       ).annotate({ identifier: "DeepCreatedOriginGroup" });
     case 13:
-      return S.Array(__S(1228, __c38, 12));
+      return S.Array(__S(1260, __c39, 12));
     case 14:
       return S.suspend(() =>
         S.Struct({
@@ -7433,16 +7819,16 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          properties: S.optional(__S(1230, __c38, 14)),
+          properties: S.optional(__S(1262, __c39, 14)),
         }),
       ).annotate({ identifier: "DeepCreatedCustomDomain" });
     case 16:
-      return S.Array(__S(1231, __c38, 15));
+      return S.Array(__S(1263, __c39, 15));
     case 17:
       return S.suspend(() =>
         S.Struct({
           originPath: S.optional(S.String),
-          contentTypesToCompress: S.optional(__S(320, __c10, 0)),
+          contentTypesToCompress: S.optional(__S(352, __c11, 0)),
           originHostHeader: S.optional(S.String),
           isCompressionEnabled: S.optional(S.Boolean),
           isHttpAllowed: S.optional(S.Boolean),
@@ -7450,34 +7836,22 @@ function __c38(j: number): any {
           queryStringCachingBehavior: S.optional(S.String),
           optimizationType: S.optional(S.String),
           probePath: S.optional(S.String),
-          geoFilters: S.optional(__S(1217, __c38, 1)),
-          defaultOriginGroup: S.optional(__S(160, __c5, 0)),
-          urlSigningKeys: S.optional(__S(1220, __c38, 4)),
-          deliveryPolicy: S.optional(__S(1223, __c38, 7)),
-          webApplicationFirewallPolicyLink: S.optional(__S(160, __c5, 0)),
+          geoFilters: S.optional(__S(1249, __c39, 1)),
+          defaultOriginGroup: S.optional(__S(192, __c6, 0)),
+          urlSigningKeys: S.optional(__S(1252, __c39, 4)),
+          deliveryPolicy: S.optional(__S(1255, __c39, 7)),
+          webApplicationFirewallPolicyLink: S.optional(__S(192, __c6, 0)),
           hostName: S.optional(S.String),
-          origins: __S(1226, __c38, 10),
-          originGroups: S.optional(__S(1229, __c38, 13)),
-          customDomains: S.optional(__S(1232, __c38, 16)),
+          origins: __S(1258, __c39, 10),
+          originGroups: S.optional(__S(1261, __c39, 13)),
+          customDomains: S.optional(__S(1264, __c39, 16)),
           resourceState: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "EndpointProperties" });
-    case 18:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(192, __c6, 0)),
-          tags: S.optional(__S(224, __c7, 0)),
-          location: S.String,
-          properties: S.optional(__S(1233, __c38, 17)),
-        }),
-      ).annotate({ identifier: "CreateEndpointResponse" });
   }
 }
-function __c39(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7487,7 +7861,7 @@ function __c39(j: number): any {
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           originName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1280, __c40, 0)),
+          properties: S.optional(__S(1312, __c41, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7497,9 +7871,21 @@ function __c39(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateOriginRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1312, __c41, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateOriginResponse" });
   }
 }
-function __c40(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7520,19 +7906,9 @@ function __c40(j: number): any {
           privateEndpointStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "OriginProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(192, __c6, 0)),
-          properties: S.optional(__S(1280, __c40, 0)),
-        }),
-      ).annotate({ identifier: "CreateOriginResponse" });
   }
 }
-function __c41(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7542,7 +7918,7 @@ function __c41(j: number): any {
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           originGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1344, __c42, 0)),
+          properties: S.optional(__S(1376, __c43, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7552,29 +7928,16 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateOriginGroupRequest" });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          healthProbeSettings: S.optional(__S(768, __c24, 0)),
-          origins: S.optional(__S(1120, __c35, 0)),
-          trafficRestorationTimeToHealedOrNewEndpointsInMinutes: S.optional(S.Number),
-          responseBasedOriginErrorDetectionSettings: S.optional(__S(1154, __c36, 2)),
-          resourceState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OriginGroupProperties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(192, __c6, 0)),
-          properties: S.optional(__S(1344, __c42, 0)),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1376, __c43, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CreateOriginGroupResponse" });
   }
@@ -7584,14 +7947,29 @@ function __c43(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          healthProbeSettings: S.optional(__S(800, __c25, 0)),
+          origins: S.optional(__S(1152, __c36, 0)),
+          trafficRestorationTimeToHealedOrNewEndpointsInMinutes: S.optional(S.Number),
+          responseBasedOriginErrorDetectionSettings: S.optional(__S(1186, __c37, 2)),
+          resourceState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OriginGroupProperties" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
           location: S.String,
-          properties: S.optional(__S(1408, __c44, 0)),
-          sku: __S(96, __c3, 0),
-          identity: S.optional(__S(1410, __c44, 2)),
+          properties: S.optional(__S(1440, __c45, 0)),
+          sku: __S(128, __c4, 0),
+          identity: S.optional(__S(1442, __c45, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7601,29 +7979,52 @@ function __c43(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateProfileRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(163, __c5, 3)),
+          sku: __S(128, __c4, 0),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(166, __c5, 6)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "CreateProfileResponse" });
   }
 }
-function __c44(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           originResponseTimeoutSeconds: S.optional(S.Number),
-          logScrubbing: S.optional(__S(130, __c4, 2)),
+          logScrubbing: S.optional(__S(162, __c5, 2)),
         }),
       ).annotate({ identifier: "ProfilePropertiesInput" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(32, __c1, 0)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1472, __c46, 0)));
     case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(1409, __c44, 1)),
+          userAssignedIdentities: S.optional(__S(1441, __c45, 1)),
         }),
       ).annotate({ identifier: "CreateProfileRequestIdentity" });
   }
 }
-function __c45(j: number): any {
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "UserAssignedIdentityInput" });
+  }
+}
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7633,7 +8034,7 @@ function __c45(j: number): any {
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           routeName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1472, __c46, 0)),
+          properties: S.optional(__S(1536, __c48, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7643,20 +8044,33 @@ function __c45(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateRouteRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1572, __c49, 4)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "CreateRouteResponse" });
   }
 }
-function __c46(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          customDomains: S.optional(__S(1120, __c35, 0)),
-          originGroup: S.optional(__S(160, __c5, 0)),
+          customDomains: S.optional(__S(1152, __c36, 0)),
+          originGroup: S.optional(__S(192, __c6, 0)),
           originPath: S.optional(S.String),
-          ruleSets: S.optional(__S(1120, __c35, 0)),
-          supportedProtocols: S.optional(__S(4192, __c131, 0)),
-          patternsToMatch: S.optional(__S(320, __c10, 0)),
-          cacheConfiguration: S.optional(__S(1505, __c47, 1)),
+          ruleSets: S.optional(__S(1152, __c36, 0)),
+          supportedProtocols: S.optional(__S(4864, __c152, 0)),
+          patternsToMatch: S.optional(__S(352, __c11, 0)),
+          cacheConfiguration: S.optional(__S(1569, __c49, 1)),
           forwardingProtocol: S.optional(S.String),
           linkToDefaultDomain: S.optional(S.String),
           httpsRedirect: S.optional(S.String),
@@ -7665,12 +8079,12 @@ function __c46(j: number): any {
       ).annotate({ identifier: "RoutePropertiesInput" });
   }
 }
-function __c47(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          contentTypesToCompress: S.optional(__S(320, __c10, 0)),
+          contentTypesToCompress: S.optional(__S(352, __c11, 0)),
           isCompressionEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CompressionSettings" });
@@ -7679,7 +8093,7 @@ function __c47(j: number): any {
         S.Struct({
           queryStringCachingBehavior: S.optional(S.String),
           queryParameters: S.optional(S.String),
-          compressionSettings: S.optional(__S(1504, __c47, 0)),
+          compressionSettings: S.optional(__S(1568, __c49, 0)),
         }),
       ).annotate({ identifier: "AfdRouteCacheConfiguration" });
     case 2:
@@ -7690,18 +8104,18 @@ function __c47(j: number): any {
         }),
       ).annotate({ identifier: "ActivatedResourceReference" });
     case 3:
-      return S.Array(__S(1506, __c47, 2));
+      return S.Array(__S(1570, __c49, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           endpointName: S.optional(S.String),
-          customDomains: S.optional(__S(1507, __c47, 3)),
-          originGroup: S.optional(__S(160, __c5, 0)),
+          customDomains: S.optional(__S(1571, __c49, 3)),
+          originGroup: S.optional(__S(192, __c6, 0)),
           originPath: S.optional(S.String),
-          ruleSets: S.optional(__S(1120, __c35, 0)),
-          supportedProtocols: S.optional(__S(4192, __c131, 0)),
-          patternsToMatch: S.optional(__S(320, __c10, 0)),
-          cacheConfiguration: S.optional(__S(1505, __c47, 1)),
+          ruleSets: S.optional(__S(1152, __c36, 0)),
+          supportedProtocols: S.optional(__S(4864, __c152, 0)),
+          patternsToMatch: S.optional(__S(352, __c11, 0)),
+          cacheConfiguration: S.optional(__S(1569, __c49, 1)),
           forwardingProtocol: S.optional(S.String),
           linkToDefaultDomain: S.optional(S.String),
           httpsRedirect: S.optional(S.String),
@@ -7710,19 +8124,9 @@ function __c47(j: number): any {
           deploymentStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "RouteProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(192, __c6, 0)),
-          properties: S.optional(__S(1508, __c47, 4)),
-        }),
-      ).annotate({ identifier: "CreateRouteResponse" });
   }
 }
-function __c48(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7732,7 +8136,7 @@ function __c48(j: number): any {
           profileName: S.String.pipe(T.Label()),
           ruleSetName: S.String.pipe(T.Label()),
           ruleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1568, __c49, 0)),
+          properties: S.optional(__S(1632, __c51, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7742,43 +8146,17 @@ function __c48(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateRuleRequest" });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          order: S.optional(S.Number),
-          conditions: S.optional(__S(1185, __c37, 1)),
-          actions: S.optional(__S(1185, __c37, 1)),
-          matchProcessingBehavior: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RulePropertiesInput" });
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ruleSetName: S.optional(S.String),
-          order: S.optional(S.Number),
-          conditions: S.optional(__S(1185, __c37, 1)),
-          actions: S.optional(__S(1185, __c37, 1)),
-          matchProcessingBehavior: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          deploymentStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RuleProperties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(192, __c6, 0)),
-          properties: S.optional(__S(1600, __c50, 0)),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1664, __c52, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "CreateRuleResponse" });
   }
@@ -7788,20 +8166,49 @@ function __c51(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          order: S.optional(S.Number),
+          conditions: S.optional(__S(1217, __c38, 1)),
+          actions: S.optional(__S(1217, __c38, 1)),
+          matchProcessingBehavior: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RulePropertiesInput" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ruleSetName: S.optional(S.String),
+          order: S.optional(S.Number),
+          conditions: S.optional(__S(1217, __c38, 1)),
+          actions: S.optional(__S(1217, __c38, 1)),
+          matchProcessingBehavior: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          deploymentStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RuleProperties" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           ruleName: S.String,
           order: S.optional(S.Number),
-          conditions: S.optional(__S(1185, __c37, 1)),
-          actions: S.optional(__S(1185, __c37, 1)),
+          conditions: S.optional(__S(1217, __c38, 1)),
+          actions: S.optional(__S(1217, __c38, 1)),
           matchProcessingBehavior: S.optional(S.String),
         }),
       ).annotate({ identifier: "BatchRulePropertiesInput" });
     case 1:
-      return S.Array(__S(1632, __c51, 0));
+      return S.Array(__S(1696, __c53, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           batchMode: S.optional(S.Boolean),
-          rules: S.optional(__S(1633, __c51, 1)),
+          rules: S.optional(__S(1697, __c53, 1)),
         }),
       ).annotate({ identifier: "RuleSetPropertiesInput" });
     case 3:
@@ -7811,7 +8218,7 @@ function __c51(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           ruleSetName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1634, __c51, 2)),
+          properties: S.optional(__S(1698, __c53, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7821,9 +8228,22 @@ function __c51(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateRuleSetRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1730, __c54, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateRuleSetResponse" });
   }
 }
-function __c52(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7831,13 +8251,13 @@ function __c52(j: number): any {
           ruleName: S.String,
           ruleSetName: S.optional(S.String),
           order: S.optional(S.Number),
-          conditions: S.optional(__S(1185, __c37, 1)),
-          actions: S.optional(__S(1185, __c37, 1)),
+          conditions: S.optional(__S(1217, __c38, 1)),
+          actions: S.optional(__S(1217, __c38, 1)),
           matchProcessingBehavior: S.optional(S.String),
         }),
       ).annotate({ identifier: "BatchRuleProperties" });
     case 1:
-      return S.Array(__S(1664, __c52, 0));
+      return S.Array(__S(1728, __c54, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -7845,22 +8265,12 @@ function __c52(j: number): any {
           deploymentStatus: S.optional(S.String),
           profileName: S.optional(S.String),
           batchMode: S.optional(S.Boolean),
-          rules: S.optional(__S(1665, __c52, 1)),
+          rules: S.optional(__S(1729, __c54, 1)),
         }),
       ).annotate({ identifier: "RuleSetProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(192, __c6, 0)),
-          properties: S.optional(__S(1666, __c52, 2)),
-        }),
-      ).annotate({ identifier: "CreateRuleSetResponse" });
   }
 }
-function __c53(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7882,7 +8292,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "CheckAFDProfileEndpointNameAvailabilityRequest" });
   }
 }
-function __c54(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7895,12 +8305,12 @@ function __c54(j: number): any {
       ).annotate({ identifier: "CheckEndpointNameAvailabilityOutput" });
   }
 }
-function __c55(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(1792, __c56, 0)),
+          parameters: S.optional(__S(1856, __c58, 0)),
         }),
       ).annotate({ identifier: "SecretPropertiesInput" });
     case 1:
@@ -7910,7 +8320,7 @@ function __c55(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           secretName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1760, __c55, 0)),
+          properties: S.optional(__S(1824, __c57, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7920,15 +8330,28 @@ function __c55(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateSecretRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1857, __c58, 1)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "CreateSecretResponse" });
   }
 }
-function __c56(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          secretSource: S.optional(__S(160, __c5, 0)),
+          secretSource: S.optional(__S(192, __c6, 0)),
           secretVersion: S.optional(S.String),
           useLatestVersion: S.optional(S.Boolean),
           keyId: S.optional(S.String),
@@ -7945,22 +8368,12 @@ function __c56(j: number): any {
           provisioningState: S.optional(S.String),
           deploymentStatus: S.optional(S.String),
           profileName: S.optional(S.String),
-          parameters: S.optional(__S(1792, __c56, 0)),
+          parameters: S.optional(__S(1856, __c58, 0)),
         }),
       ).annotate({ identifier: "SecretProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(192, __c6, 0)),
-          properties: S.optional(__S(1793, __c56, 1)),
-        }),
-      ).annotate({ identifier: "CreateSecretResponse" });
   }
 }
-function __c57(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7969,7 +8382,7 @@ function __c57(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           securityPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1888, __c59, 0)),
+          properties: S.optional(__S(1952, __c61, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7979,15 +8392,28 @@ function __c57(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateSecurityPolicyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1921, __c60, 1)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "CreateSecurityPolicyResponse" });
   }
 }
-function __c58(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          wafPolicy: S.optional(__S(160, __c5, 0)),
+          wafPolicy: S.optional(__S(192, __c6, 0)),
           associations: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "SecurityPolicyPropertiesParameters" });
@@ -7997,32 +8423,22 @@ function __c58(j: number): any {
           provisioningState: S.optional(S.String),
           deploymentStatus: S.optional(S.String),
           profileName: S.optional(S.String),
-          parameters: S.optional(__S(1856, __c58, 0)),
+          parameters: S.optional(__S(1920, __c60, 0)),
         }),
       ).annotate({ identifier: "SecurityPolicyProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(192, __c6, 0)),
-          properties: S.optional(__S(1857, __c58, 1)),
-        }),
-      ).annotate({ identifier: "CreateSecurityPolicyResponse" });
   }
 }
-function __c59(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(1856, __c58, 0)),
+          parameters: S.optional(__S(1920, __c60, 0)),
         }),
       ).annotate({ identifier: "SecurityPolicyPropertiesInput" });
   }
 }
-function __c60(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8042,7 +8458,7 @@ function __c60(j: number): any {
       ).annotate({ identifier: "DeleteAFDCustomDomainRequest" });
   }
 }
-function __c61(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8062,7 +8478,18 @@ function __c61(j: number): any {
       ).annotate({ identifier: "DeleteAFDEndpointRequest" });
   }
 }
-function __c62(j: number): any {
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteAFDEndpointResponse" });
+  }
+}
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8083,7 +8510,7 @@ function __c62(j: number): any {
       ).annotate({ identifier: "DeleteAFDOriginRequest" });
   }
 }
-function __c63(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8103,7 +8530,7 @@ function __c63(j: number): any {
       ).annotate({ identifier: "DeleteAFDOriginGroupRequest" });
   }
 }
-function __c64(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8124,7 +8551,7 @@ function __c64(j: number): any {
       ).annotate({ identifier: "DeleteCustomDomainRequest" });
   }
 }
-function __c65(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8144,7 +8571,7 @@ function __c65(j: number): any {
       ).annotate({ identifier: "DeleteEndpointRequest" });
   }
 }
-function __c66(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8165,7 +8592,7 @@ function __c66(j: number): any {
       ).annotate({ identifier: "DeleteOriginRequest" });
   }
 }
-function __c67(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8186,7 +8613,7 @@ function __c67(j: number): any {
       ).annotate({ identifier: "DeleteOriginGroupRequest" });
   }
 }
-function __c68(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8206,7 +8633,7 @@ function __c68(j: number): any {
       ).annotate({ identifier: "CheckAFDProfileHostNameAvailabilityRequest" });
   }
 }
-function __c69(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8218,7 +8645,7 @@ function __c69(j: number): any {
       ).annotate({ identifier: "CheckNameAvailabilityOutput" });
   }
 }
-function __c70(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8237,7 +8664,7 @@ function __c70(j: number): any {
       ).annotate({ identifier: "DeletePolicyRequest" });
   }
 }
-function __c71(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8256,7 +8683,7 @@ function __c71(j: number): any {
       ).annotate({ identifier: "DeleteProfileRequest" });
   }
 }
-function __c72(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8277,7 +8704,7 @@ function __c72(j: number): any {
       ).annotate({ identifier: "DeleteRouteRequest" });
   }
 }
-function __c73(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8298,7 +8725,7 @@ function __c73(j: number): any {
       ).annotate({ identifier: "DeleteRuleRequest" });
   }
 }
-function __c74(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8318,7 +8745,7 @@ function __c74(j: number): any {
       ).annotate({ identifier: "DeleteRuleSetRequest" });
   }
 }
-function __c75(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8338,7 +8765,7 @@ function __c75(j: number): any {
       ).annotate({ identifier: "DeleteSecretRequest" });
   }
 }
-function __c76(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8358,7 +8785,7 @@ function __c76(j: number): any {
       ).annotate({ identifier: "DeleteSecurityPolicyRequest" });
   }
 }
-function __c77(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8379,7 +8806,22 @@ function __c77(j: number): any {
       ).annotate({ identifier: "DisableCustomDomainCustomHttpsRequest" });
   }
 }
-function __c78(j: number): any {
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1089, __c34, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "DisableCustomDomainCustomHttpsResponse" });
+  }
+}
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8403,7 +8845,7 @@ function __c78(j: number): any {
       ).annotate({ identifier: "EnableCustomDomainCustomHttpsRequest" });
   }
 }
-function __c79(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8412,7 +8854,7 @@ function __c79(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
-          contentPaths: __S(320, __c10, 0),
+          contentPaths: __S(352, __c11, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8424,7 +8866,18 @@ function __c79(j: number): any {
       ).annotate({ identifier: "EndpointsLoadContentRequest" });
   }
 }
-function __c80(j: number): any {
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "EndpointsLoadContentResponse" });
+  }
+}
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8445,7 +8898,7 @@ function __c80(j: number): any {
       ).annotate({ identifier: "CheckEndpointNameAvailabilityRequest" });
   }
 }
-function __c81(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8470,7 +8923,7 @@ function __c81(j: number): any {
       ).annotate({ identifier: "SsoUri" });
   }
 }
-function __c82(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8490,7 +8943,21 @@ function __c82(j: number): any {
       ).annotate({ identifier: "GetAFDCustomDomainRequest" });
   }
 }
-function __c83(j: number): any {
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(4900, __c153, 4)),
+        }),
+      ).annotate({ identifier: "GetAFDCustomDomainResponse" });
+  }
+}
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8510,7 +8977,23 @@ function __c83(j: number): any {
       ).annotate({ identifier: "GetAFDEndpointRequest" });
   }
 }
-function __c84(j: number): any {
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(5312, __c166, 0)),
+        }),
+      ).annotate({ identifier: "GetAFDEndpointResponse" });
+  }
+}
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8531,7 +9014,21 @@ function __c84(j: number): any {
       ).annotate({ identifier: "GetAFDOriginRequest" });
   }
 }
-function __c85(j: number): any {
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(385, __c12, 1)),
+        }),
+      ).annotate({ identifier: "GetAFDOriginResponse" });
+  }
+}
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8551,7 +9048,21 @@ function __c85(j: number): any {
       ).annotate({ identifier: "GetAFDOriginGroupRequest" });
   }
 }
-function __c86(j: number): any {
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(834, __c26, 2)),
+        }),
+      ).annotate({ identifier: "GetAFDOriginGroupResponse" });
+  }
+}
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8572,7 +9083,21 @@ function __c86(j: number): any {
       ).annotate({ identifier: "GetCustomDomainRequest" });
   }
 }
-function __c87(j: number): any {
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1089, __c34, 1)),
+        }),
+      ).annotate({ identifier: "GetCustomDomainResponse" });
+  }
+}
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8592,7 +9117,23 @@ function __c87(j: number): any {
       ).annotate({ identifier: "GetEndpointRequest" });
   }
 }
-function __c88(j: number): any {
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(1265, __c39, 17)),
+        }),
+      ).annotate({ identifier: "GetEndpointResponse" });
+  }
+}
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8617,17 +9158,17 @@ function __c88(j: number): any {
         }),
       ).annotate({ identifier: "ContinentsResponseCountryOrRegionsItem" });
     case 2:
-      return S.Array(__S(2817, __c88, 1));
+      return S.Array(__S(3169, __c99, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          continents: S.optional(__S(1120, __c35, 0)),
-          countryOrRegions: S.optional(__S(2818, __c88, 2)),
+          continents: S.optional(__S(1152, __c36, 0)),
+          countryOrRegions: S.optional(__S(3170, __c99, 2)),
         }),
       ).annotate({ identifier: "ContinentsResponse" });
   }
 }
-function __c89(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8635,15 +9176,15 @@ function __c89(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          metrics: __S(4192, __c131, 0).pipe(T.Query()),
+          metrics: __S(4864, __c152, 0).pipe(T.Query()),
           dateTimeBegin: S.String.pipe(T.Query()),
           dateTimeEnd: S.String.pipe(T.Query()),
           granularity: S.String.pipe(T.Query()),
-          groupBy: S.optional(__S(4192, __c131, 0).pipe(T.Query())),
-          continents: S.optional(__S(320, __c10, 0).pipe(T.Query())),
-          countryOrRegions: S.optional(__S(320, __c10, 0).pipe(T.Query())),
-          customDomains: __S(320, __c10, 0).pipe(T.Query()),
-          protocols: __S(320, __c10, 0).pipe(T.Query()),
+          groupBy: S.optional(__S(4864, __c152, 0).pipe(T.Query())),
+          continents: S.optional(__S(352, __c11, 0).pipe(T.Query())),
+          countryOrRegions: S.optional(__S(352, __c11, 0).pipe(T.Query())),
+          customDomains: __S(352, __c11, 0).pipe(T.Query()),
+          protocols: __S(352, __c11, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8655,7 +9196,7 @@ function __c89(j: number): any {
       ).annotate({ identifier: "GetLogAnalyticsLogAnalyticsMetricsRequest" });
   }
 }
-function __c90(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8665,7 +9206,7 @@ function __c90(j: number): any {
         }),
       ).annotate({ identifier: "MetricsResponseSeriesPropertiesItemsItem" });
     case 1:
-      return S.Array(__S(2880, __c90, 0));
+      return S.Array(__S(3232, __c101, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -8677,30 +9218,30 @@ function __c90(j: number): any {
           "Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems",
       });
     case 3:
-      return S.Array(__S(2882, __c90, 2));
+      return S.Array(__S(3234, __c101, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           metric: S.optional(S.String),
           unit: S.optional(S.String),
-          groups: S.optional(__S(2881, __c90, 1)),
-          data: S.optional(__S(2883, __c90, 3)),
+          groups: S.optional(__S(3233, __c101, 1)),
+          data: S.optional(__S(3235, __c101, 3)),
         }),
       ).annotate({ identifier: "MetricsResponseSeriesItem" });
     case 5:
-      return S.Array(__S(2884, __c90, 4));
+      return S.Array(__S(3236, __c101, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           dateTimeBegin: S.optional(S.String),
           dateTimeEnd: S.optional(S.String),
           granularity: S.optional(S.String),
-          series: S.optional(__S(2885, __c90, 5)),
+          series: S.optional(__S(3237, __c101, 5)),
         }),
       ).annotate({ identifier: "MetricsResponse" });
   }
 }
-function __c91(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8708,12 +9249,12 @@ function __c91(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          rankings: __S(4192, __c131, 0).pipe(T.Query()),
-          metrics: __S(4192, __c131, 0).pipe(T.Query()),
+          rankings: __S(4864, __c152, 0).pipe(T.Query()),
+          metrics: __S(4864, __c152, 0).pipe(T.Query()),
           maxRanking: S.Number.pipe(T.Query()),
           dateTimeBegin: S.String.pipe(T.Query()),
           dateTimeEnd: S.String.pipe(T.Query()),
-          customDomains: S.optional(__S(320, __c10, 0).pipe(T.Query())),
+          customDomains: S.optional(__S(352, __c11, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8727,31 +9268,31 @@ function __c91(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          metrics: S.optional(__S(2945, __c92, 1)),
+          metrics: S.optional(__S(3297, __c103, 1)),
         }),
       ).annotate({ identifier: "RankingsResponseTablesPropertiesItemsItem" });
     case 2:
-      return S.Array(__S(2913, __c91, 1));
+      return S.Array(__S(3265, __c102, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           ranking: S.optional(S.String),
-          data: S.optional(__S(2914, __c91, 2)),
+          data: S.optional(__S(3266, __c102, 2)),
         }),
       ).annotate({ identifier: "RankingsResponseTablesItem" });
     case 4:
-      return S.Array(__S(2915, __c91, 3));
+      return S.Array(__S(3267, __c102, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           dateTimeBegin: S.optional(S.String),
           dateTimeEnd: S.optional(S.String),
-          tables: S.optional(__S(2916, __c91, 4)),
+          tables: S.optional(__S(3268, __c102, 4)),
         }),
       ).annotate({ identifier: "RankingsResponse" });
   }
 }
-function __c92(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8762,10 +9303,10 @@ function __c92(j: number): any {
         }),
       ).annotate({ identifier: "RankingsResponseTablesPropertiesItemsMetricsItem" });
     case 1:
-      return S.Array(__S(2944, __c92, 0));
+      return S.Array(__S(3296, __c103, 0));
   }
 }
-function __c93(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8783,7 +9324,7 @@ function __c93(j: number): any {
       ).annotate({ identifier: "CheckNameAvailabilityRequest" });
   }
 }
-function __c94(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8810,28 +9351,28 @@ function __c94(j: number): any {
         }),
       ).annotate({ identifier: "ResourcesResponseEndpointsPropertiesItemsItem" });
     case 2:
-      return S.Array(__S(3009, __c94, 1));
+      return S.Array(__S(3361, __c105, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           history: S.optional(S.Boolean),
-          customDomains: S.optional(__S(3010, __c94, 2)),
+          customDomains: S.optional(__S(3362, __c105, 2)),
         }),
       ).annotate({ identifier: "ResourcesResponseEndpointsItem" });
     case 4:
-      return S.Array(__S(3011, __c94, 3));
+      return S.Array(__S(3363, __c105, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          endpoints: S.optional(__S(3012, __c94, 4)),
-          customDomains: S.optional(__S(3010, __c94, 2)),
+          endpoints: S.optional(__S(3364, __c105, 4)),
+          customDomains: S.optional(__S(3362, __c105, 2)),
         }),
       ).annotate({ identifier: "ResourcesResponse" });
   }
 }
-function __c95(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8839,13 +9380,13 @@ function __c95(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          metrics: __S(4192, __c131, 0).pipe(T.Query()),
+          metrics: __S(4864, __c152, 0).pipe(T.Query()),
           dateTimeBegin: S.String.pipe(T.Query()),
           dateTimeEnd: S.String.pipe(T.Query()),
           granularity: S.String.pipe(T.Query()),
-          actions: S.optional(__S(4192, __c131, 0).pipe(T.Query())),
-          groupBy: S.optional(__S(4192, __c131, 0).pipe(T.Query())),
-          ruleTypes: S.optional(__S(4192, __c131, 0).pipe(T.Query())),
+          actions: S.optional(__S(4864, __c152, 0).pipe(T.Query())),
+          groupBy: S.optional(__S(4864, __c152, 0).pipe(T.Query())),
+          ruleTypes: S.optional(__S(4864, __c152, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8857,7 +9398,7 @@ function __c95(j: number): any {
       ).annotate({ identifier: "GetLogAnalyticsWafLogAnalyticsMetricsRequest" });
   }
 }
-function __c96(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8865,13 +9406,13 @@ function __c96(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          metrics: __S(4192, __c131, 0).pipe(T.Query()),
+          metrics: __S(4864, __c152, 0).pipe(T.Query()),
           dateTimeBegin: S.String.pipe(T.Query()),
           dateTimeEnd: S.String.pipe(T.Query()),
           maxRanking: S.Number.pipe(T.Query()),
-          rankings: __S(4192, __c131, 0).pipe(T.Query()),
-          actions: S.optional(__S(4192, __c131, 0).pipe(T.Query())),
-          ruleTypes: S.optional(__S(4192, __c131, 0).pipe(T.Query())),
+          rankings: __S(4864, __c152, 0).pipe(T.Query()),
+          actions: S.optional(__S(4864, __c152, 0).pipe(T.Query())),
+          ruleTypes: S.optional(__S(4864, __c152, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8884,24 +9425,24 @@ function __c96(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          groupValues: S.optional(__S(320, __c10, 0)),
-          metrics: S.optional(__S(2945, __c92, 1)),
+          groupValues: S.optional(__S(352, __c11, 0)),
+          metrics: S.optional(__S(3297, __c103, 1)),
         }),
       ).annotate({ identifier: "WafRankingsResponseDataItem" });
     case 2:
-      return S.Array(__S(3073, __c96, 1));
+      return S.Array(__S(3425, __c107, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           dateTimeBegin: S.optional(S.String),
           dateTimeEnd: S.optional(S.String),
-          groups: S.optional(__S(320, __c10, 0)),
-          data: S.optional(__S(3074, __c96, 2)),
+          groups: S.optional(__S(352, __c11, 0)),
+          data: S.optional(__S(3426, __c107, 2)),
         }),
       ).annotate({ identifier: "WafRankingsResponse" });
   }
 }
-function __c97(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8922,7 +9463,21 @@ function __c97(j: number): any {
       ).annotate({ identifier: "GetOriginRequest" });
   }
 }
-function __c98(j: number): any {
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1312, __c41, 0)),
+        }),
+      ).annotate({ identifier: "GetOriginResponse" });
+  }
+}
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8943,7 +9498,21 @@ function __c98(j: number): any {
       ).annotate({ identifier: "GetOriginGroupRequest" });
   }
 }
-function __c99(j: number): any {
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1376, __c43, 0)),
+        }),
+      ).annotate({ identifier: "GetOriginGroupResponse" });
+  }
+}
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8962,7 +9531,25 @@ function __c99(j: number): any {
       ).annotate({ identifier: "GetPolicyRequest" });
   }
 }
-function __c100(j: number): any {
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(3664, __c114, 16)),
+          etag: S.optional(S.String),
+          sku: __S(128, __c4, 0),
+        }),
+      ).annotate({ identifier: "GetPolicyResponse" });
+  }
+}
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8981,30 +9568,30 @@ function __c100(j: number): any {
           selector: S.optional(S.String),
           operator: S.String,
           negateCondition: S.optional(S.Boolean),
-          matchValue: __S(320, __c10, 0),
-          transforms: S.optional(__S(4192, __c131, 0)),
+          matchValue: __S(352, __c11, 0),
+          transforms: S.optional(__S(4864, __c152, 0)),
         }),
       ).annotate({ identifier: "MatchCondition" });
     case 2:
-      return S.Array(__S(3201, __c100, 1));
+      return S.Array(__S(3649, __c114, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           enabledState: S.optional(S.String),
           priority: S.Number,
-          matchConditions: __S(3202, __c100, 2),
+          matchConditions: __S(3650, __c114, 2),
           action: S.String,
           rateLimitThreshold: S.Number,
           rateLimitDurationInMinutes: S.Number,
         }),
       ).annotate({ identifier: "RateLimitRule" });
     case 4:
-      return S.Array(__S(3203, __c100, 3));
+      return S.Array(__S(3651, __c114, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(3204, __c100, 4)),
+          rules: S.optional(__S(3652, __c114, 4)),
         }),
       ).annotate({ identifier: "RateLimitRuleList" });
     case 6:
@@ -9013,16 +9600,16 @@ function __c100(j: number): any {
           name: S.String,
           enabledState: S.optional(S.String),
           priority: S.Number,
-          matchConditions: __S(3202, __c100, 2),
+          matchConditions: __S(3650, __c114, 2),
           action: S.String,
         }),
       ).annotate({ identifier: "CustomRule" });
     case 7:
-      return S.Array(__S(3206, __c100, 6));
+      return S.Array(__S(3654, __c114, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(3207, __c100, 7)),
+          rules: S.optional(__S(3655, __c114, 7)),
         }),
       ).annotate({ identifier: "CustomRuleList" });
     case 9:
@@ -9034,63 +9621,49 @@ function __c100(j: number): any {
         }),
       ).annotate({ identifier: "ManagedRuleOverride" });
     case 10:
-      return S.Array(__S(3209, __c100, 9));
+      return S.Array(__S(3657, __c114, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
           ruleGroupName: S.String,
-          rules: S.optional(__S(3210, __c100, 10)),
+          rules: S.optional(__S(3658, __c114, 10)),
         }),
       ).annotate({ identifier: "ManagedRuleGroupOverride" });
     case 12:
-      return S.Array(__S(3211, __c100, 11));
+      return S.Array(__S(3659, __c114, 11));
     case 13:
       return S.suspend(() =>
         S.Struct({
           ruleSetType: S.String,
           ruleSetVersion: S.String,
           anomalyScore: S.optional(S.Number),
-          ruleGroupOverrides: S.optional(__S(3212, __c100, 12)),
+          ruleGroupOverrides: S.optional(__S(3660, __c114, 12)),
         }),
       ).annotate({ identifier: "ManagedRuleSet" });
     case 14:
-      return S.Array(__S(3213, __c100, 13));
+      return S.Array(__S(3661, __c114, 13));
     case 15:
       return S.suspend(() =>
         S.Struct({
-          managedRuleSets: S.optional(__S(3214, __c100, 14)),
+          managedRuleSets: S.optional(__S(3662, __c114, 14)),
         }),
       ).annotate({ identifier: "ManagedRuleSetList" });
     case 16:
       return S.suspend(() =>
         S.Struct({
-          policySettings: S.optional(__S(3200, __c100, 0)),
-          rateLimitRules: S.optional(__S(3205, __c100, 5)),
-          customRules: S.optional(__S(3208, __c100, 8)),
-          managedRules: S.optional(__S(3215, __c100, 15)),
-          endpointLinks: S.optional(__S(1120, __c35, 0)),
-          extendedProperties: S.optional(__S(224, __c7, 0)),
+          policySettings: S.optional(__S(3648, __c114, 0)),
+          rateLimitRules: S.optional(__S(3653, __c114, 5)),
+          customRules: S.optional(__S(3656, __c114, 8)),
+          managedRules: S.optional(__S(3663, __c114, 15)),
+          endpointLinks: S.optional(__S(1152, __c36, 0)),
+          extendedProperties: S.optional(__S(256, __c8, 0)),
           provisioningState: S.optional(S.String),
           resourceState: S.optional(S.String),
         }),
       ).annotate({ identifier: "CdnWebApplicationFirewallPolicyProperties" });
-    case 17:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(192, __c6, 0)),
-          tags: S.optional(__S(224, __c7, 0)),
-          location: S.String,
-          properties: S.optional(__S(3216, __c100, 16)),
-          etag: S.optional(S.String),
-          sku: __S(96, __c3, 0),
-        }),
-      ).annotate({ identifier: "GetPolicyResponse" });
   }
 }
-function __c101(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9109,7 +9682,26 @@ function __c101(j: number): any {
       ).annotate({ identifier: "GetProfileRequest" });
   }
 }
-function __c102(j: number): any {
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(163, __c5, 3)),
+          sku: __S(128, __c4, 0),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(166, __c5, 6)),
+        }),
+      ).annotate({ identifier: "GetProfileResponse" });
+  }
+}
+function __c117(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9130,7 +9722,21 @@ function __c102(j: number): any {
       ).annotate({ identifier: "GetRouteRequest" });
   }
 }
-function __c103(j: number): any {
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1572, __c49, 4)),
+        }),
+      ).annotate({ identifier: "GetRouteResponse" });
+  }
+}
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9151,7 +9757,21 @@ function __c103(j: number): any {
       ).annotate({ identifier: "GetRuleRequest" });
   }
 }
-function __c104(j: number): any {
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1664, __c52, 0)),
+        }),
+      ).annotate({ identifier: "GetRuleResponse" });
+  }
+}
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9171,7 +9791,21 @@ function __c104(j: number): any {
       ).annotate({ identifier: "GetRuleSetRequest" });
   }
 }
-function __c105(j: number): any {
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1730, __c54, 2)),
+        }),
+      ).annotate({ identifier: "GetRuleSetResponse" });
+  }
+}
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9190,7 +9824,7 @@ function __c105(j: number): any {
       ).annotate({ identifier: "CheckNameAvailabilityWithSubscriptionRequest" });
   }
 }
-function __c106(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9210,7 +9844,21 @@ function __c106(j: number): any {
       ).annotate({ identifier: "GetSecretRequest" });
   }
 }
-function __c107(j: number): any {
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1857, __c58, 1)),
+        }),
+      ).annotate({ identifier: "GetSecretResponse" });
+  }
+}
+function __c126(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9230,7 +9878,21 @@ function __c107(j: number): any {
       ).annotate({ identifier: "GetSecurityPolicyRequest" });
   }
 }
-function __c108(j: number): any {
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1921, __c60, 1)),
+        }),
+      ).annotate({ identifier: "GetSecurityPolicyResponse" });
+  }
+}
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9248,17 +9910,17 @@ function __c108(j: number): any {
         ),
       ).annotate({ identifier: "ListAFDCustomDomainByProfileRequest" });
     case 1:
-      return S.Array(__S(4229, __c132, 5));
+      return S.Array(__S(2816, __c88, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3457, __c108, 1),
+          value: __S(4097, __c128, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AFDDomainListResult" });
   }
 }
-function __c109(j: number): any {
+function __c129(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9276,17 +9938,17 @@ function __c109(j: number): any {
         ),
       ).annotate({ identifier: "ListAFDEndpointByProfileRequest" });
     case 1:
-      return S.Array(__S(4641, __c145, 1));
+      return S.Array(__S(2880, __c90, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3489, __c109, 1),
+          value: __S(4129, __c129, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AFDEndpointListResult" });
   }
 }
-function __c110(j: number): any {
+function __c130(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9306,7 +9968,7 @@ function __c110(j: number): any {
       ).annotate({ identifier: "ListAFDEndpointResourceUsageRequest" });
   }
 }
-function __c111(j: number): any {
+function __c131(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9322,21 +9984,21 @@ function __c111(j: number): any {
           unit: S.String,
           currentValue: S.Number,
           limit: S.Number,
-          name: __S(3552, __c111, 0),
+          name: __S(4192, __c131, 0),
         }),
       ).annotate({ identifier: "Usage" });
     case 2:
-      return S.Array(__S(3553, __c111, 1));
+      return S.Array(__S(4193, __c131, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3554, __c111, 2),
+          value: __S(4194, __c131, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsagesListResult" });
   }
 }
-function __c112(j: number): any {
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9355,17 +10017,17 @@ function __c112(j: number): any {
         ),
       ).annotate({ identifier: "ListAFDOriginByOriginGroupRequest" });
     case 1:
-      return S.Array(__S(354, __c11, 2));
+      return S.Array(__S(2944, __c92, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3585, __c112, 1),
+          value: __S(4225, __c132, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AFDOriginListResult" });
   }
 }
-function __c113(j: number): any {
+function __c133(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9383,17 +10045,17 @@ function __c113(j: number): any {
         ),
       ).annotate({ identifier: "ListAFDOriginGroupByProfileRequest" });
     case 1:
-      return S.Array(__S(803, __c25, 3));
+      return S.Array(__S(3008, __c94, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3617, __c113, 1),
+          value: __S(4257, __c133, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AFDOriginGroupListResult" });
   }
 }
-function __c114(j: number): any {
+function __c134(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9413,7 +10075,7 @@ function __c114(j: number): any {
       ).annotate({ identifier: "ListAFDOriginGroupResourceUsageRequest" });
   }
 }
-function __c115(j: number): any {
+function __c135(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9432,7 +10094,7 @@ function __c115(j: number): any {
       ).annotate({ identifier: "ListAFDProfileResourceUsageRequest" });
   }
 }
-function __c116(j: number): any {
+function __c136(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9451,17 +10113,17 @@ function __c116(j: number): any {
         ),
       ).annotate({ identifier: "ListCustomDomainByEndpointRequest" });
     case 1:
-      return S.Array(__S(1058, __c33, 2));
+      return S.Array(__S(3072, __c96, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3713, __c116, 1),
+          value: __S(4353, __c136, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomDomainListResult" });
   }
 }
-function __c117(j: number): any {
+function __c137(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9480,7 +10142,19 @@ function __c117(j: number): any {
       ).annotate({ identifier: "CommitProfilesMigrationRequest" });
   }
 }
-function __c118(j: number): any {
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CommitProfilesMigrationResponse" });
+  }
+}
+function __c139(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9501,21 +10175,21 @@ function __c118(j: number): any {
         }),
       ).annotate({ identifier: "CidrIpAddress" });
     case 2:
-      return S.Array(__S(3777, __c118, 1));
+      return S.Array(__S(4449, __c139, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           deliveryRegion: S.optional(S.String),
-          ipv4Addresses: S.optional(__S(3778, __c118, 2)),
-          ipv6Addresses: S.optional(__S(3778, __c118, 2)),
+          ipv4Addresses: S.optional(__S(4450, __c139, 2)),
+          ipv6Addresses: S.optional(__S(4450, __c139, 2)),
         }),
       ).annotate({ identifier: "IpAddressGroup" });
     case 4:
-      return S.Array(__S(3779, __c118, 3));
+      return S.Array(__S(4451, __c139, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ipAddressGroups: __S(3780, __c118, 4),
+          ipAddressGroups: __S(4452, __c139, 4),
         }),
       ).annotate({ identifier: "EdgeNodeProperties" });
     case 6:
@@ -9524,22 +10198,22 @@ function __c118(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(192, __c6, 0)),
-          properties: S.optional(__S(3781, __c118, 5)),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(4453, __c139, 5)),
         }),
       ).annotate({ identifier: "EdgeNode" });
     case 7:
-      return S.Array(__S(3782, __c118, 6));
+      return S.Array(__S(4454, __c139, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3783, __c118, 7),
+          value: __S(4455, __c139, 7),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EdgenodeResult" });
   }
 }
-function __c119(j: number): any {
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9557,17 +10231,17 @@ function __c119(j: number): any {
         ),
       ).annotate({ identifier: "ListEndpointByProfileRequest" });
     case 1:
-      return S.Array(__S(1234, __c38, 18));
+      return S.Array(__S(3136, __c98, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3809, __c119, 1),
+          value: __S(4481, __c140, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EndpointListResult" });
   }
 }
-function __c120(j: number): any {
+function __c141(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9587,7 +10261,7 @@ function __c120(j: number): any {
       ).annotate({ identifier: "ListEndpointResourceUsageRequest" });
   }
 }
-function __c121(j: number): any {
+function __c142(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9599,17 +10273,17 @@ function __c121(j: number): any {
         }),
       ).annotate({ identifier: "ResourceUsage" });
     case 1:
-      return S.Array(__S(3872, __c121, 0));
+      return S.Array(__S(4544, __c142, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3873, __c121, 1),
+          value: __S(4545, __c142, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceUsageListResult" });
   }
 }
-function __c122(j: number): any {
+function __c143(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9632,24 +10306,24 @@ function __c122(j: number): any {
         }),
       ).annotate({ identifier: "ManagedRuleDefinition" });
     case 2:
-      return S.Array(__S(3905, __c122, 1));
+      return S.Array(__S(4577, __c143, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           ruleGroupName: S.optional(S.String),
           description: S.optional(S.String),
-          rules: S.optional(__S(3906, __c122, 2)),
+          rules: S.optional(__S(4578, __c143, 2)),
         }),
       ).annotate({ identifier: "ManagedRuleGroupDefinition" });
     case 4:
-      return S.Array(__S(3907, __c122, 3));
+      return S.Array(__S(4579, __c143, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           ruleSetType: S.optional(S.String),
           ruleSetVersion: S.optional(S.String),
-          ruleGroups: S.optional(__S(3908, __c122, 4)),
+          ruleGroups: S.optional(__S(4580, __c143, 4)),
         }),
       ).annotate({ identifier: "ManagedRuleSetDefinitionProperties" });
     case 6:
@@ -9658,23 +10332,23 @@ function __c122(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(192, __c6, 0)),
-          properties: S.optional(__S(3909, __c122, 5)),
-          sku: S.optional(__S(96, __c3, 0)),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(4581, __c143, 5)),
+          sku: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({ identifier: "ManagedRuleSetDefinition" });
     case 7:
-      return S.Array(__S(3910, __c122, 6));
+      return S.Array(__S(4582, __c143, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3911, __c122, 7),
+          value: __S(4583, __c143, 7),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedRuleSetDefinitionList" });
   }
 }
-function __c123(j: number): any {
+function __c144(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9706,7 +10380,7 @@ function __c123(j: number): any {
         }),
       ).annotate({ identifier: "LogSpecification" });
     case 3:
-      return S.Array(__S(3938, __c123, 2));
+      return S.Array(__S(4610, __c144, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -9715,7 +10389,7 @@ function __c123(j: number): any {
         }),
       ).annotate({ identifier: "MetricAvailability" });
     case 5:
-      return S.Array(__S(3940, __c123, 4));
+      return S.Array(__S(4612, __c144, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -9725,7 +10399,7 @@ function __c123(j: number): any {
         }),
       ).annotate({ identifier: "DimensionProperties" });
     case 7:
-      return S.Array(__S(3942, __c123, 6));
+      return S.Array(__S(4614, __c144, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -9734,27 +10408,27 @@ function __c123(j: number): any {
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          availabilities: S.optional(__S(3941, __c123, 5)),
-          supportedTimeGrainTypes: S.optional(__S(320, __c10, 0)),
-          dimensions: S.optional(__S(3943, __c123, 7)),
+          availabilities: S.optional(__S(4613, __c144, 5)),
+          supportedTimeGrainTypes: S.optional(__S(352, __c11, 0)),
+          dimensions: S.optional(__S(4615, __c144, 7)),
           fillGapWithZero: S.optional(S.Boolean),
           metricFilterPattern: S.optional(S.String),
           isInternal: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MetricSpecification" });
     case 9:
-      return S.Array(__S(3944, __c123, 8));
+      return S.Array(__S(4616, __c144, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
-          logSpecifications: S.optional(__S(3939, __c123, 3)),
-          metricSpecifications: S.optional(__S(3945, __c123, 9)),
+          logSpecifications: S.optional(__S(4611, __c144, 3)),
+          metricSpecifications: S.optional(__S(4617, __c144, 9)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
     case 11:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(3946, __c123, 10)),
+          serviceSpecification: S.optional(__S(4618, __c144, 10)),
         }),
       ).annotate({ identifier: "OperationProperties" });
     case 12:
@@ -9762,23 +10436,23 @@ function __c123(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(3937, __c123, 1)),
+          display: S.optional(__S(4609, __c144, 1)),
           origin: S.optional(S.String),
-          properties: S.optional(__S(3947, __c123, 11)),
+          properties: S.optional(__S(4619, __c144, 11)),
         }),
       ).annotate({ identifier: "Operation" });
     case 13:
-      return S.Array(__S(3948, __c123, 12));
+      return S.Array(__S(4620, __c144, 12));
     case 14:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3949, __c123, 13),
+          value: __S(4621, __c144, 13),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationsListResult" });
   }
 }
-function __c124(j: number): any {
+function __c145(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9797,17 +10471,17 @@ function __c124(j: number): any {
         ),
       ).annotate({ identifier: "ListOriginByEndpointRequest" });
     case 1:
-      return S.Array(__S(1281, __c40, 1));
+      return S.Array(__S(3488, __c109, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3969, __c124, 1),
+          value: __S(4641, __c145, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OriginListResult" });
   }
 }
-function __c125(j: number): any {
+function __c146(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9826,17 +10500,17 @@ function __c125(j: number): any {
         ),
       ).annotate({ identifier: "ListOriginGroupByEndpointRequest" });
     case 1:
-      return S.Array(__S(1345, __c42, 1));
+      return S.Array(__S(3552, __c111, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(4001, __c125, 1),
+          value: __S(4673, __c146, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OriginGroupListResult" });
   }
 }
-function __c126(j: number): any {
+function __c147(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9853,17 +10527,17 @@ function __c126(j: number): any {
         ),
       ).annotate({ identifier: "ListPoliciesRequest" });
     case 1:
-      return S.Array(__S(3217, __c100, 17));
+      return S.Array(__S(3616, __c113, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(4033, __c126, 1),
+          value: __S(4705, __c147, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CdnWebApplicationFirewallPolicyList" });
   }
 }
-function __c127(j: number): any {
+function __c148(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9881,20 +10555,20 @@ function __c127(j: number): any {
       ).annotate({ identifier: "ListProfileByResourceGroupRequest" });
   }
 }
-function __c128(j: number): any {
+function __c149(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(135, __c4, 7));
+      return S.Array(__S(3712, __c116, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(4096, __c128, 0),
+          value: __S(4768, __c149, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProfileListResult" });
   }
 }
-function __c129(j: number): any {
+function __c150(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9913,17 +10587,17 @@ function __c129(j: number): any {
       ).annotate({ identifier: "ListProfileResourceUsageRequest" });
   }
 }
-function __c130(j: number): any {
+function __c151(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tlsSettings: S.optional(__S(4225, __c132, 1)),
-          mtlsSettings: S.optional(__S(4226, __c132, 2)),
-          azureDnsZone: S.optional(__S(160, __c5, 0)),
-          preValidatedCustomDomainResourceId: S.optional(__S(160, __c5, 0)),
+          tlsSettings: S.optional(__S(4897, __c153, 1)),
+          mtlsSettings: S.optional(__S(4898, __c153, 2)),
+          azureDnsZone: S.optional(__S(192, __c6, 0)),
+          preValidatedCustomDomainResourceId: S.optional(__S(192, __c6, 0)),
           hostName: S.String,
-          extendedProperties: S.optional(__S(224, __c7, 0)),
+          extendedProperties: S.optional(__S(256, __c8, 0)),
         }),
       ).annotate({ identifier: "AFDDomainPropertiesInput" });
     case 1:
@@ -9933,7 +10607,7 @@ function __c130(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           customDomainName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(4160, __c130, 0)),
+          properties: S.optional(__S(4832, __c151, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9943,21 +10617,33 @@ function __c130(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateAFDCustomDomainRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(4900, __c153, 4)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+        }),
+      ).annotate({ identifier: "CreateAFDCustomDomainResponse" });
   }
 }
-function __c131(j: number): any {
+function __c152(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c132(j: number): any {
+function __c153(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          cipherSuiteSetForTls12: S.optional(__S(4192, __c131, 0)),
-          cipherSuiteSetForTls13: S.optional(__S(4192, __c131, 0)),
+          cipherSuiteSetForTls12: S.optional(__S(4864, __c152, 0)),
+          cipherSuiteSetForTls13: S.optional(__S(4864, __c152, 0)),
         }),
       ).annotate({ identifier: "AFDDomainHttpsCustomizedCipherSuiteSet" });
     case 1:
@@ -9966,10 +10652,10 @@ function __c132(j: number): any {
           certificateType: S.String,
           cipherSuiteSetType: S.optional(S.String),
           minimumTlsVersion: S.optional(S.String),
-          customizedCipherSuiteSet: S.optional(__S(4224, __c132, 0)),
+          customizedCipherSuiteSet: S.optional(__S(4896, __c153, 0)),
           serverTlsGroupPolicy: S.optional(S.String),
-          serverTlsGroups: S.optional(__S(4192, __c131, 0)),
-          secret: S.optional(__S(160, __c5, 0)),
+          serverTlsGroups: S.optional(__S(4864, __c152, 0)),
+          secret: S.optional(__S(192, __c6, 0)),
         }),
       ).annotate({ identifier: "AFDDomainHttpsParameters" });
     case 2:
@@ -9989,31 +10675,21 @@ function __c132(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileName: S.optional(S.String),
-          tlsSettings: S.optional(__S(4225, __c132, 1)),
-          mtlsSettings: S.optional(__S(4226, __c132, 2)),
-          azureDnsZone: S.optional(__S(160, __c5, 0)),
-          preValidatedCustomDomainResourceId: S.optional(__S(160, __c5, 0)),
+          tlsSettings: S.optional(__S(4897, __c153, 1)),
+          mtlsSettings: S.optional(__S(4898, __c153, 2)),
+          azureDnsZone: S.optional(__S(192, __c6, 0)),
+          preValidatedCustomDomainResourceId: S.optional(__S(192, __c6, 0)),
           provisioningState: S.optional(S.String),
           deploymentStatus: S.optional(S.String),
           domainValidationState: S.optional(S.String),
           hostName: S.String,
-          extendedProperties: S.optional(__S(224, __c7, 0)),
-          validationProperties: S.optional(__S(4227, __c132, 3)),
+          extendedProperties: S.optional(__S(256, __c8, 0)),
+          validationProperties: S.optional(__S(4899, __c153, 3)),
         }),
       ).annotate({ identifier: "AFDDomainProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(192, __c6, 0)),
-          properties: S.optional(__S(4228, __c132, 4)),
-        }),
-      ).annotate({ identifier: "CreateAFDCustomDomainResponse" });
   }
 }
-function __c133(j: number): any {
+function __c154(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10030,7 +10706,7 @@ function __c133(j: number): any {
       ).annotate({ identifier: "ListProfilesRequest" });
   }
 }
-function __c134(j: number): any {
+function __c155(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10050,12 +10726,12 @@ function __c134(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          supportedOptimizationTypes: S.optional(__S(4192, __c131, 0)),
+          supportedOptimizationTypes: S.optional(__S(4864, __c152, 0)),
         }),
       ).annotate({ identifier: "SupportedOptimizationTypesListResult" });
   }
 }
-function __c135(j: number): any {
+function __c156(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10072,7 +10748,7 @@ function __c135(j: number): any {
       ).annotate({ identifier: "ListResourceUsageRequest" });
   }
 }
-function __c136(j: number): any {
+function __c157(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10091,17 +10767,17 @@ function __c136(j: number): any {
         ),
       ).annotate({ identifier: "ListRouteByEndpointRequest" });
     case 1:
-      return S.Array(__S(1509, __c47, 5));
+      return S.Array(__S(3776, __c118, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(4353, __c136, 1),
+          value: __S(5025, __c157, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RouteListResult" });
   }
 }
-function __c137(j: number): any {
+function __c158(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10120,17 +10796,17 @@ function __c137(j: number): any {
         ),
       ).annotate({ identifier: "ListRuleByRuleSetRequest" });
     case 1:
-      return S.Array(__S(1601, __c50, 1));
+      return S.Array(__S(3840, __c120, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(4385, __c137, 1),
+          value: __S(5057, __c158, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RuleListResult" });
   }
 }
-function __c138(j: number): any {
+function __c159(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10148,17 +10824,17 @@ function __c138(j: number): any {
         ),
       ).annotate({ identifier: "ListRuleSetByProfileRequest" });
     case 1:
-      return S.Array(__S(1667, __c52, 3));
+      return S.Array(__S(3904, __c122, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(4417, __c138, 1),
+          value: __S(5089, __c159, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RuleSetListResult" });
   }
 }
-function __c139(j: number): any {
+function __c160(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10178,7 +10854,7 @@ function __c139(j: number): any {
       ).annotate({ identifier: "ListRuleSetResourceUsageRequest" });
   }
 }
-function __c140(j: number): any {
+function __c161(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10196,17 +10872,17 @@ function __c140(j: number): any {
         ),
       ).annotate({ identifier: "ListSecretByProfileRequest" });
     case 1:
-      return S.Array(__S(1794, __c56, 2));
+      return S.Array(__S(4000, __c125, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(4481, __c140, 1),
+          value: __S(5153, __c161, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecretListResult" });
   }
 }
-function __c141(j: number): any {
+function __c162(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10224,36 +10900,36 @@ function __c141(j: number): any {
         ),
       ).annotate({ identifier: "ListSecurityPolicyByProfileRequest" });
     case 1:
-      return S.Array(__S(1858, __c58, 2));
+      return S.Array(__S(4064, __c127, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(4513, __c141, 1),
+          value: __S(5185, __c162, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecurityPolicyListResult" });
   }
 }
-function __c142(j: number): any {
+function __c163(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          migratedFrom: S.optional(__S(160, __c5, 0)),
-          migratedTo: S.optional(__S(160, __c5, 0)),
+          migratedFrom: S.optional(__S(192, __c6, 0)),
+          migratedTo: S.optional(__S(192, __c6, 0)),
         }),
       ).annotate({ identifier: "MigrationWebApplicationFirewallMapping" });
     case 1:
-      return S.Array(__S(4544, __c142, 0));
+      return S.Array(__S(5216, __c163, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          sku: __S(96, __c3, 0),
-          classicResourceReference: __S(160, __c5, 0),
+          sku: __S(128, __c4, 0),
+          classicResourceReference: __S(192, __c6, 0),
           profileName: S.String,
-          migrationWebApplicationFirewallMappings: S.optional(__S(4545, __c142, 1)),
+          migrationWebApplicationFirewallMappings: S.optional(__S(5217, __c163, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10265,12 +10941,12 @@ function __c142(j: number): any {
       ).annotate({ identifier: "MigrateProfileRequest" });
   }
 }
-function __c143(j: number): any {
+function __c164(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          migratedProfileResourceId: S.optional(__S(160, __c5, 0)),
+          migratedProfileResourceId: S.optional(__S(192, __c6, 0)),
         }),
       ).annotate({ identifier: "MigrateResultProperties" });
     case 1:
@@ -10278,12 +10954,14 @@ function __c143(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(4576, __c143, 0)),
+          properties: S.optional(__S(5248, __c164, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "MigrateResult" });
   }
 }
-function __c144(j: number): any {
+function __c165(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10300,9 +10978,9 @@ function __c144(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
           location: S.String,
-          properties: S.optional(__S(4608, __c144, 0)),
+          properties: S.optional(__S(5280, __c165, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10312,9 +10990,24 @@ function __c144(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateAFDEndpointRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(5312, __c166, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "CreateAFDEndpointResponse" });
   }
 }
-function __c145(j: number): any {
+function __c166(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10328,28 +11021,16 @@ function __c145(j: number): any {
           autoGeneratedDomainNameLabelScope: S.optional(S.String),
         }),
       ).annotate({ identifier: "AFDEndpointProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(192, __c6, 0)),
-          tags: S.optional(__S(224, __c7, 0)),
-          location: S.String,
-          properties: S.optional(__S(4640, __c145, 0)),
-        }),
-      ).annotate({ identifier: "CreateAFDEndpointResponse" });
   }
 }
-function __c146(j: number): any {
+function __c167(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          classicResourceReference: __S(160, __c5, 0),
+          classicResourceReference: __S(192, __c6, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10361,7 +11042,7 @@ function __c146(j: number): any {
       ).annotate({ identifier: "MigrateProfilesCanRequest" });
   }
 }
-function __c147(j: number): any {
+function __c168(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10373,13 +11054,13 @@ function __c147(j: number): any {
         }),
       ).annotate({ identifier: "MigrationErrorType" });
     case 1:
-      return S.Array(__S(4704, __c147, 0));
+      return S.Array(__S(5376, __c168, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           canMigrate: S.optional(S.Boolean),
           defaultSku: S.optional(S.String),
-          errors: S.optional(__S(4705, __c147, 1)),
+          errors: S.optional(__S(5377, __c168, 1)),
         }),
       ).annotate({ identifier: "CanMigrateProperties" });
     case 3:
@@ -10387,12 +11068,14 @@ function __c147(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(4706, __c147, 2)),
+          properties: S.optional(__S(5378, __c168, 2)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CanMigrateResult" });
   }
 }
-function __c148(j: number): any {
+function __c169(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10401,7 +11084,7 @@ function __c148(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           securityPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1888, __c59, 0)),
+          properties: S.optional(__S(1952, __c61, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10411,18 +11094,30 @@ function __c148(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchSecurityPolicyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1921, __c60, 1)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "PatchSecurityPolicyResponse" });
   }
 }
-function __c149(j: number): any {
+function __c170(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          policySettings: S.optional(__S(3200, __c100, 0)),
-          rateLimitRules: S.optional(__S(3205, __c100, 5)),
-          customRules: S.optional(__S(3208, __c100, 8)),
-          managedRules: S.optional(__S(3215, __c100, 15)),
-          extendedProperties: S.optional(__S(224, __c7, 0)),
+          policySettings: S.optional(__S(3648, __c114, 0)),
+          rateLimitRules: S.optional(__S(3653, __c114, 5)),
+          customRules: S.optional(__S(3656, __c114, 8)),
+          managedRules: S.optional(__S(3663, __c114, 15)),
+          extendedProperties: S.optional(__S(256, __c8, 0)),
         }),
       ).annotate({ identifier: "CdnWebApplicationFirewallPolicyPropertiesInput" });
     case 1:
@@ -10431,11 +11126,11 @@ function __c149(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           policyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
           location: S.String,
-          properties: S.optional(__S(4768, __c149, 0)),
+          properties: S.optional(__S(5440, __c170, 0)),
           etag: S.optional(S.String),
-          sku: __S(96, __c3, 0),
+          sku: __S(128, __c4, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10445,9 +11140,25 @@ function __c149(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PoliciesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(3664, __c114, 16)),
+          etag: S.optional(S.String),
+          sku: __S(128, __c4, 0),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "PoliciesCreateOrUpdateResponse" });
   }
 }
-function __c150(j: number): any {
+function __c171(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10466,7 +11177,7 @@ function __c150(j: number): any {
       ).annotate({ identifier: "ProfilesCdnCanMigrateToAfdRequest" });
   }
 }
-function __c151(j: number): any {
+function __c172(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10476,15 +11187,15 @@ function __c151(j: number): any {
         }),
       ).annotate({ identifier: "MigrationEndpointMapping" });
     case 1:
-      return S.Array(__S(4832, __c151, 0));
+      return S.Array(__S(5504, __c172, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          sku: __S(96, __c3, 0),
-          migrationEndpointMappings: S.optional(__S(4833, __c151, 1)),
+          sku: __S(128, __c4, 0),
+          migrationEndpointMappings: S.optional(__S(5505, __c172, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10496,7 +11207,7 @@ function __c151(j: number): any {
       ).annotate({ identifier: "ProfilesCdnMigrateToAfdRequest" });
   }
 }
-function __c152(j: number): any {
+function __c173(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10505,8 +11216,8 @@ function __c152(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
-          contentPaths: __S(320, __c10, 0),
-          domains: S.optional(__S(320, __c10, 0)),
+          contentPaths: __S(352, __c11, 0),
+          domains: S.optional(__S(352, __c11, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10518,7 +11229,7 @@ function __c152(j: number): any {
       ).annotate({ identifier: "PurgeAFDEndpointContentRequest" });
   }
 }
-function __c153(j: number): any {
+function __c174(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10527,7 +11238,7 @@ function __c153(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
-          contentPaths: __S(320, __c10, 0),
+          contentPaths: __S(352, __c11, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10539,7 +11250,7 @@ function __c153(j: number): any {
       ).annotate({ identifier: "PurgeEndpointContentRequest" });
   }
 }
-function __c154(j: number): any {
+function __c175(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10559,7 +11270,7 @@ function __c154(j: number): any {
       ).annotate({ identifier: "RefreshAFDCustomDomainValidationTokenRequest" });
   }
 }
-function __c155(j: number): any {
+function __c176(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10579,7 +11290,24 @@ function __c155(j: number): any {
       ).annotate({ identifier: "StartEndpointRequest" });
   }
 }
-function __c156(j: number): any {
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(1265, __c39, 17)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "StartEndpointResponse" });
+  }
+}
+function __c178(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

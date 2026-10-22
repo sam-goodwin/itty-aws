@@ -413,6 +413,10 @@ export interface AddBillingAccountPaymentTermsResponse {
   properties?: BillingAccountProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: AddBillingAccountPaymentTermsResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The state determines whether users from the associated tenant can be assigned roles for commerce activities like viewing and downloading invoices, managing payments, and making purchases. */
 export type BillingManagementTenantState = "Other" | "NotAllowed" | "Active" | "Revoked";
@@ -478,6 +482,10 @@ export interface AssociatedTenantsCreateOrUpdateResponse {
   properties?: AssociatedTenantProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: AssociatedTenantsCreateOrUpdateResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface BillingAccountsListInvoiceSectionsByCreateSubscriptionPermissionRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -716,6 +724,10 @@ export interface BillingProfilesCreateOrUpdateResponse {
   properties?: BillingProfileProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: BillingProfilesCreateOrUpdateResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface BillingProfilesValidateDeleteEligibilityRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -905,6 +917,10 @@ export interface BillingRequestsCreateOrUpdateResponse {
   properties?: BillingRequestProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: BillingRequestsCreateOrUpdateResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The properties of the billing role assignment. */
 export interface BillingRoleAssignmentPropertiesInput {
@@ -1026,6 +1042,10 @@ export interface BillingRoleAssignmentsCreateOrUpdateByBillingAccountResponse {
   properties?: BillingRoleAssignmentProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: BillingRoleAssignmentsCreateOrUpdateByBillingAccountResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingRoleAssignmentsCreateOrUpdateByDepartmentRequestTagsMap = {
@@ -1060,6 +1080,10 @@ export interface BillingRoleAssignmentsCreateOrUpdateByDepartmentResponse {
   properties?: BillingRoleAssignmentProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: BillingRoleAssignmentsCreateOrUpdateByDepartmentResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountRequestTagsMap = {
@@ -1094,6 +1118,10 @@ export interface BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountResponse
   properties?: BillingRoleAssignmentProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface BillingRoleAssignmentsResolveByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -1123,11 +1151,15 @@ export interface BillingRoleAssignment {
 /** The BillingRoleAssignment items on this page */
 export type BillingRoleAssignmentListResultValueList = Array<BillingRoleAssignment>;
 /** Paged collection of BillingRoleAssignment items */
-export interface BillingRoleAssignmentListResult {
+export interface BillingRoleAssignmentsResolveByBillingAccountResponse {
   /** The BillingRoleAssignment items on this page */
   value: BillingRoleAssignmentListResultValueList;
   /** The link to the next page of items */
   nextLink?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface BillingRoleAssignmentsResolveByBillingProfileRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -1138,6 +1170,17 @@ export interface BillingRoleAssignmentsResolveByBillingProfileRequest {
   resolveScopeDisplayNames?: boolean;
   /** The filter query option allows clients to filter a collection of resources that are addressed by a request URL. */
   filter?: string;
+}
+/** Paged collection of BillingRoleAssignment items */
+export interface BillingRoleAssignmentsResolveByBillingProfileResponse {
+  /** The BillingRoleAssignment items on this page */
+  value: BillingRoleAssignmentListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface BillingRoleAssignmentsResolveByCustomerRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -1151,6 +1194,17 @@ export interface BillingRoleAssignmentsResolveByCustomerRequest {
   /** The filter query option allows clients to filter a collection of resources that are addressed by a request URL. */
   filter?: string;
 }
+/** Paged collection of BillingRoleAssignment items */
+export interface BillingRoleAssignmentsResolveByCustomerResponse {
+  /** The BillingRoleAssignment items on this page */
+  value: BillingRoleAssignmentListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface BillingRoleAssignmentsResolveByInvoiceSectionRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
@@ -1162,6 +1216,17 @@ export interface BillingRoleAssignmentsResolveByInvoiceSectionRequest {
   resolveScopeDisplayNames?: boolean;
   /** The filter query option allows clients to filter a collection of resources that are addressed by a request URL. */
   filter?: string;
+}
+/** Paged collection of BillingRoleAssignment items */
+export interface BillingRoleAssignmentsResolveByInvoiceSectionResponse {
+  /** The BillingRoleAssignment items on this page */
+  value: BillingRoleAssignmentListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Indicates whether auto renewal is turned on or off for a product. */
 export type AutoRenew = "Off" | "On";
@@ -1435,6 +1500,10 @@ export interface BillingSubscriptionsAliasesCreateOrUpdateResponse {
   properties?: BillingSubscriptionAliasProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: BillingSubscriptionsAliasesCreateOrUpdateResponseTagsMap;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 export interface BillingSubscriptionsSplitRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -1565,6 +1634,10 @@ export interface BillingSubscriptionsSplitResponse {
   properties?: BillingSubscriptionProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: BillingSubscriptionsSplitResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface BillingSubscriptionsValidateMoveEligibilityRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -1642,6 +1715,10 @@ export interface CancelBillingAccountPaymentTermsResponse {
   properties?: BillingAccountProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: CancelBillingAccountPaymentTermsResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Cancellation reason. */
 export type CancellationReason = "Other" | "Compromise" | "Dispute";
@@ -1655,7 +1732,12 @@ export interface CancelBillingSubscriptionRequest {
   /** The fully qualified ID that uniquely identifies a customer. */
   customerId?: string;
 }
-export interface CancelBillingSubscriptionResponse {}
+export interface CancelBillingSubscriptionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface CancelPartnerTransferRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
@@ -1887,6 +1969,10 @@ export interface CreateBillingRoleAssignmentByBillingAccountResponse {
   properties?: BillingRoleAssignmentProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: CreateBillingRoleAssignmentByBillingAccountResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface CreateBillingRoleAssignmentByBillingProfileRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -1925,6 +2011,10 @@ export interface CreateBillingRoleAssignmentByBillingProfileResponse {
   properties?: BillingRoleAssignmentProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: CreateBillingRoleAssignmentByBillingProfileResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface CreateBillingRoleAssignmentByCustomerRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -1965,6 +2055,10 @@ export interface CreateBillingRoleAssignmentByCustomerResponse {
   properties?: BillingRoleAssignmentProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: CreateBillingRoleAssignmentByCustomerResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface CreateBillingRoleAssignmentByInvoiceSectionRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -2005,6 +2099,10 @@ export interface CreateBillingRoleAssignmentByInvoiceSectionResponse {
   properties?: BillingRoleAssignmentProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: CreateBillingRoleAssignmentByInvoiceSectionResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteAssociatedTenantRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -2012,14 +2110,24 @@ export interface DeleteAssociatedTenantRequest {
   /** The ID that uniquely identifies a tenant. */
   associatedTenantName: string;
 }
-export interface DeleteAssociatedTenantResponse {}
+export interface DeleteAssociatedTenantResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteBillingProfileRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
   /** The ID that uniquely identifies a billing profile. */
   billingProfileName: string;
 }
-export interface DeleteBillingProfileResponse {}
+export interface DeleteBillingProfileResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteBillingRoleAssignmentByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
@@ -2082,7 +2190,12 @@ export interface DeleteBillingSubscriptionRequest {
   /** The ID that uniquely identifies a subscription. */
   billingSubscriptionName: string;
 }
-export interface DeleteBillingSubscriptionResponse {}
+export interface DeleteBillingSubscriptionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteInvoiceSectionRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
@@ -2091,7 +2204,12 @@ export interface DeleteInvoiceSectionRequest {
   /** The ID that uniquely identifies an invoice section. */
   invoiceSectionName: string;
 }
-export interface DeleteInvoiceSectionResponse {}
+export interface DeleteInvoiceSectionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeletePaymentMethodByUserRequest {
   /** The ID that uniquely identifies a payment method. */
   paymentMethodName: string;
@@ -2111,6 +2229,10 @@ export interface DocumentDownloadResult {
   expiryTime?: string;
   /** The URL to the PDF or .zip file. */
   url?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DownloadInvoiceByBillingSubscriptionRequest {
   /** The ID that uniquely identifies a billing subscription. */
@@ -4604,7 +4726,12 @@ export interface InvoicesAmendRequest {
   /** The ID that uniquely identifies an invoice. */
   invoiceName: string;
 }
-export interface InvoicesAmendResponse {}
+export interface InvoicesAmendResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type InvoiceSectionPropertiesInputTagsMap = { [key: string]: string | undefined };
 /** An invoice section. */
@@ -4649,6 +4776,10 @@ export interface InvoiceSectionsCreateOrUpdateResponse {
   properties?: InvoiceSectionProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: InvoiceSectionsCreateOrUpdateResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface InvoiceSectionsValidateDeleteEligibilityRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5032,6 +5163,13 @@ export interface ListBillingRoleAssignmentByBillingAccountRequest {
   top?: number;
   /** The skip query option requests the number of items in the queried collection that are to be skipped and not included in the result. */
   skip?: number;
+}
+/** Paged collection of BillingRoleAssignment items */
+export interface BillingRoleAssignmentListResult {
+  /** The BillingRoleAssignment items on this page */
+  value: BillingRoleAssignmentListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
 }
 export interface ListBillingRoleAssignmentByBillingProfileRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -6423,6 +6561,10 @@ export interface MergeBillingSubscriptionResponse {
   properties?: BillingSubscriptionProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: MergeBillingSubscriptionResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MoveBillingSubscriptionRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -6449,6 +6591,10 @@ export interface MoveBillingSubscriptionResponse {
   properties?: BillingSubscriptionProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: MoveBillingSubscriptionResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MoveProductRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -6473,6 +6619,10 @@ export interface MoveProductResponse {
   properties?: ProductProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: MoveProductResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Request parameters to initiate transfer. */
 export interface PartnerInitiateTransferProperties {
@@ -6538,6 +6688,10 @@ export interface PoliciesCreateOrUpdateByBillingAccountResponse {
   properties?: BillingAccountPolicyProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: PoliciesCreateOrUpdateByBillingAccountResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type PoliciesCreateOrUpdateByBillingProfileRequestTagsMap = {
@@ -6570,6 +6724,10 @@ export interface PoliciesCreateOrUpdateByBillingProfileResponse {
   properties?: BillingProfilePolicyProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: PoliciesCreateOrUpdateByBillingProfileResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type PoliciesCreateOrUpdateByCustomerRequestTagsMap = { [key: string]: string | undefined };
@@ -6600,6 +6758,10 @@ export interface PoliciesCreateOrUpdateByCustomerResponse {
   properties?: CustomerPolicyProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: PoliciesCreateOrUpdateByCustomerResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type PoliciesCreateOrUpdateByCustomerAtBillingAccountRequestTagsMap = {
@@ -6632,6 +6794,10 @@ export interface PoliciesCreateOrUpdateByCustomerAtBillingAccountResponse {
   properties?: CustomerPolicyProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: PoliciesCreateOrUpdateByCustomerAtBillingAccountResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ProductsValidateMoveEligibilityRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -6841,6 +7007,10 @@ export interface UpdateBillingAccountResponse {
   properties?: BillingAccountProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: UpdateBillingAccountResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** A billing property. */
 export interface BillingPropertyPropertiesInput {
@@ -6906,6 +7076,10 @@ export interface UpdateBillingSubscriptionResponse {
   properties?: BillingSubscriptionProperties;
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: UpdateBillingSubscriptionResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type UpdateProductRequestTagsMap = { [key: string]: string | undefined };
@@ -7042,6 +7216,12 @@ export interface UpdateReservationByBillingAccountResponse {
   tags?: UpdateReservationByBillingAccountResponseTagsMap;
   /** The sku information associated to this reservation */
   sku?: ReservationSkuProperty;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Tags for this reservation */
 export type UpdateSavingsPlanByBillingAccountRequestTagsMap = { [key: string]: string | undefined };
@@ -7078,6 +7258,12 @@ export interface UpdateSavingsPlanByBillingAccountResponse {
   tags?: UpdateSavingsPlanByBillingAccountResponseTagsMap;
   /** Savings plan SKU */
   sku: Sku;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ValidateAddressRequest {
   /** Address line 1. */
@@ -7223,7 +7409,7 @@ export const AddBillingAccountPaymentTerms: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c6, 0) as any as S.Schema<AddBillingAccountPaymentTermsRequest>,
-  output: __S(117, __c7, 5) as any as S.Schema<AddBillingAccountPaymentTermsResponse>,
+  output: __S(112, __c7, 0) as any as S.Schema<AddBillingAccountPaymentTermsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7237,8 +7423,8 @@ export const AssociatedTenantsCreateOrUpdate: API.OperationMethod<
   AssociatedTenantsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2161, __c135, 1) as any as S.Schema<AssociatedTenantsCreateOrUpdateRequest>,
-  output: __S(2177, __c136, 1) as any as S.Schema<AssociatedTenantsCreateOrUpdateResponse>,
+  input: __S(2273, __c142, 1) as any as S.Schema<AssociatedTenantsCreateOrUpdateRequest>,
+  output: __S(2274, __c142, 2) as any as S.Schema<AssociatedTenantsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7253,11 +7439,11 @@ export const BillingAccountsListInvoiceSectionsByCreateSubscriptionPermission: A
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2384,
-    __c149,
+    2496,
+    __c156,
     0,
   ) as any as S.Schema<BillingAccountsListInvoiceSectionsByCreateSubscriptionPermissionRequest>,
-  output: __S(2387, __c149, 3) as any as S.Schema<InvoiceSectionWithCreateSubPermissionListResult>,
+  output: __S(2499, __c156, 3) as any as S.Schema<InvoiceSectionWithCreateSubPermissionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7271,8 +7457,8 @@ export const BillingProfilesCreateOrUpdate: API.OperationMethod<
   BillingProfilesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2577, __c161, 1) as any as S.Schema<BillingProfilesCreateOrUpdateRequest>,
-  output: __S(2595, __c162, 3) as any as S.Schema<BillingProfilesCreateOrUpdateResponse>,
+  input: __S(2689, __c168, 1) as any as S.Schema<BillingProfilesCreateOrUpdateRequest>,
+  output: __S(2690, __c168, 2) as any as S.Schema<BillingProfilesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7286,8 +7472,8 @@ export const BillingProfilesValidateDeleteEligibility: API.OperationMethod<
   BillingProfilesValidateDeleteEligibilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2832, __c177, 0) as any as S.Schema<BillingProfilesValidateDeleteEligibilityRequest>,
-  output: __S(2850, __c178, 2) as any as S.Schema<DeleteBillingProfileEligibilityResult>,
+  input: __S(2960, __c185, 0) as any as S.Schema<BillingProfilesValidateDeleteEligibilityRequest>,
+  output: __S(2978, __c186, 2) as any as S.Schema<DeleteBillingProfileEligibilityResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7301,8 +7487,8 @@ export const BillingRequestsCreateOrUpdate: API.OperationMethod<
   BillingRequestsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3057, __c191, 1) as any as S.Schema<BillingRequestsCreateOrUpdateRequest>,
-  output: __S(3075, __c192, 3) as any as S.Schema<BillingRequestsCreateOrUpdateResponse>,
+  input: __S(3233, __c202, 1) as any as S.Schema<BillingRequestsCreateOrUpdateRequest>,
+  output: __S(3234, __c202, 2) as any as S.Schema<BillingRequestsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7317,14 +7503,14 @@ export const BillingRoleAssignmentsCreateOrUpdateByBillingAccount: API.Operation
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3280,
-    __c205,
+    3472,
+    __c217,
     0,
   ) as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByBillingAccountRequest>,
   output: __S(
-    3313,
-    __c207,
-    1,
+    3520,
+    __c220,
+    0,
   ) as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7340,14 +7526,14 @@ export const BillingRoleAssignmentsCreateOrUpdateByDepartment: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3568,
-    __c223,
+    3808,
+    __c238,
     0,
   ) as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByDepartmentRequest>,
   output: __S(
-    3313,
-    __c207,
-    1,
+    3520,
+    __c220,
+    0,
   ) as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByDepartmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7363,14 +7549,14 @@ export const BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccount: API.Operat
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3888,
-    __c243,
+    4160,
+    __c260,
     0,
   ) as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountRequest>,
   output: __S(
-    3313,
-    __c207,
-    1,
+    3520,
+    __c220,
+    0,
   ) as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7381,16 +7567,20 @@ export type BillingRoleAssignmentsResolveByBillingAccountError = AzureOpError;
 /** Lists the role assignments for the caller on a billing account while fetching user info for each role assignment. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement, Microsoft Customer Agreement or Enterprise Agreement. */
 export const BillingRoleAssignmentsResolveByBillingAccount: API.OperationMethod<
   BillingRoleAssignmentsResolveByBillingAccountRequest,
-  BillingRoleAssignmentListResult,
+  BillingRoleAssignmentsResolveByBillingAccountResponse,
   BillingRoleAssignmentsResolveByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    208,
-    __c13,
+    224,
+    __c14,
     0,
   ) as any as S.Schema<BillingRoleAssignmentsResolveByBillingAccountRequest>,
-  output: __S(225, __c14, 1) as any as S.Schema<BillingRoleAssignmentListResult>,
+  output: __S(
+    240,
+    __c15,
+    0,
+  ) as any as S.Schema<BillingRoleAssignmentsResolveByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7400,16 +7590,20 @@ export type BillingRoleAssignmentsResolveByBillingProfileError = AzureOpError;
 /** Lists the role assignments for the caller on an billing profile while fetching user info for each role assignment. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement or Microsoft Customer Agreement. */
 export const BillingRoleAssignmentsResolveByBillingProfile: API.OperationMethod<
   BillingRoleAssignmentsResolveByBillingProfileRequest,
-  BillingRoleAssignmentListResult,
+  BillingRoleAssignmentsResolveByBillingProfileResponse,
   BillingRoleAssignmentsResolveByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    416,
-    __c26,
+    464,
+    __c29,
     0,
   ) as any as S.Schema<BillingRoleAssignmentsResolveByBillingProfileRequest>,
-  output: __S(225, __c14, 1) as any as S.Schema<BillingRoleAssignmentListResult>,
+  output: __S(
+    240,
+    __c15,
+    0,
+  ) as any as S.Schema<BillingRoleAssignmentsResolveByBillingProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7419,12 +7613,12 @@ export type BillingRoleAssignmentsResolveByCustomerError = AzureOpError;
 /** Lists the role assignments for the caller on a customer while fetching user info for each role assignment. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement. */
 export const BillingRoleAssignmentsResolveByCustomer: API.OperationMethod<
   BillingRoleAssignmentsResolveByCustomerRequest,
-  BillingRoleAssignmentListResult,
+  BillingRoleAssignmentsResolveByCustomerResponse,
   BillingRoleAssignmentsResolveByCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<BillingRoleAssignmentsResolveByCustomerRequest>,
-  output: __S(225, __c14, 1) as any as S.Schema<BillingRoleAssignmentListResult>,
+  input: __S(672, __c42, 0) as any as S.Schema<BillingRoleAssignmentsResolveByCustomerRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<BillingRoleAssignmentsResolveByCustomerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7434,16 +7628,20 @@ export type BillingRoleAssignmentsResolveByInvoiceSectionError = AzureOpError;
 /** Lists the role assignments for the caller on an invoice section while fetching user info for each role assignment. The operation is supported for billing accounts with agreement type Microsoft Customer Agreement. */
 export const BillingRoleAssignmentsResolveByInvoiceSection: API.OperationMethod<
   BillingRoleAssignmentsResolveByInvoiceSectionRequest,
-  BillingRoleAssignmentListResult,
+  BillingRoleAssignmentsResolveByInvoiceSectionResponse,
   BillingRoleAssignmentsResolveByInvoiceSectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    816,
-    __c51,
+    880,
+    __c55,
     0,
   ) as any as S.Schema<BillingRoleAssignmentsResolveByInvoiceSectionRequest>,
-  output: __S(225, __c14, 1) as any as S.Schema<BillingRoleAssignmentListResult>,
+  output: __S(
+    240,
+    __c15,
+    0,
+  ) as any as S.Schema<BillingRoleAssignmentsResolveByInvoiceSectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7457,8 +7655,8 @@ export const BillingSubscriptionsAliasesCreateOrUpdate: API.OperationMethod<
   BillingSubscriptionsAliasesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c64, 0) as any as S.Schema<BillingSubscriptionsAliasesCreateOrUpdateRequest>,
-  output: __S(1137, __c71, 1) as any as S.Schema<BillingSubscriptionsAliasesCreateOrUpdateResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<BillingSubscriptionsAliasesCreateOrUpdateRequest>,
+  output: __S(1089, __c68, 1) as any as S.Schema<BillingSubscriptionsAliasesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7472,8 +7670,8 @@ export const BillingSubscriptionsSplit: API.OperationMethod<
   BillingSubscriptionsSplitError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1360, __c85, 0) as any as S.Schema<BillingSubscriptionsSplitRequest>,
-  output: __S(1377, __c86, 1) as any as S.Schema<BillingSubscriptionsSplitResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<BillingSubscriptionsSplitRequest>,
+  output: __S(1440, __c90, 0) as any as S.Schema<BillingSubscriptionsSplitResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7487,8 +7685,12 @@ export const BillingSubscriptionsValidateMoveEligibility: API.OperationMethod<
   BillingSubscriptionsValidateMoveEligibilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1584, __c99, 0) as any as S.Schema<BillingSubscriptionsValidateMoveEligibilityRequest>,
-  output: __S(1601, __c100, 1) as any as S.Schema<MoveBillingSubscriptionEligibilityResult>,
+  input: __S(
+    1664,
+    __c104,
+    0,
+  ) as any as S.Schema<BillingSubscriptionsValidateMoveEligibilityRequest>,
+  output: __S(1681, __c105, 1) as any as S.Schema<MoveBillingSubscriptionEligibilityResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7502,8 +7704,8 @@ export const CancelBillingAccountPaymentTerms: API.OperationMethod<
   CancelBillingAccountPaymentTermsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1792, __c112, 0) as any as S.Schema<CancelBillingAccountPaymentTermsRequest>,
-  output: __S(117, __c7, 5) as any as S.Schema<CancelBillingAccountPaymentTermsResponse>,
+  input: __S(1872, __c117, 0) as any as S.Schema<CancelBillingAccountPaymentTermsRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<CancelBillingAccountPaymentTermsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7517,8 +7719,8 @@ export const CancelBillingSubscription: API.OperationMethod<
   CancelBillingSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1984, __c124, 0) as any as S.Schema<CancelBillingSubscriptionRequest>,
-  output: __S(1104, __c69, 0) as any as S.Schema<CancelBillingSubscriptionResponse>,
+  input: __S(2080, __c130, 0) as any as S.Schema<CancelBillingSubscriptionRequest>,
+  output: __S(2096, __c131, 0) as any as S.Schema<CancelBillingSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7532,8 +7734,8 @@ export const CancelPartnerTransfer: API.OperationMethod<
   CancelPartnerTransferError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2128, __c133, 0) as any as S.Schema<CancelPartnerTransferRequest>,
-  output: __S(2145, __c134, 1) as any as S.Schema<CancelPartnerTransferResponse>,
+  input: __S(2240, __c140, 0) as any as S.Schema<CancelPartnerTransferRequest>,
+  output: __S(2257, __c141, 1) as any as S.Schema<CancelPartnerTransferResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7547,8 +7749,8 @@ export const CancelTransfer: API.OperationMethod<
   CancelTransferError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2192, __c137, 0) as any as S.Schema<CancelTransferRequest>,
-  output: __S(2209, __c138, 1) as any as S.Schema<CancelTransferResponse>,
+  input: __S(2304, __c144, 0) as any as S.Schema<CancelTransferRequest>,
+  output: __S(2321, __c145, 1) as any as S.Schema<CancelTransferResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7563,13 +7765,13 @@ export const CheckBillingPermissionsAccessByBillingAccount: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2224,
-    __c139,
+    2336,
+    __c146,
     0,
   ) as any as S.Schema<CheckBillingPermissionsAccessByBillingAccountRequest>,
   output: __S(
-    2242,
-    __c140,
+    2354,
+    __c147,
     2,
   ) as any as S.Schema<CheckBillingPermissionsAccessByBillingAccountResponse>,
   errors: [UnknownAzureError],
@@ -7586,13 +7788,13 @@ export const CheckBillingPermissionsAccessByBillingProfile: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2256,
-    __c141,
+    2368,
+    __c148,
     0,
   ) as any as S.Schema<CheckBillingPermissionsAccessByBillingProfileRequest>,
   output: __S(
-    2242,
-    __c140,
+    2354,
+    __c147,
     2,
   ) as any as S.Schema<CheckBillingPermissionsAccessByBillingProfileResponse>,
   errors: [UnknownAzureError],
@@ -7608,8 +7810,8 @@ export const CheckBillingPermissionsAccessByCustomer: API.OperationMethod<
   CheckBillingPermissionsAccessByCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2272, __c142, 0) as any as S.Schema<CheckBillingPermissionsAccessByCustomerRequest>,
-  output: __S(2242, __c140, 2) as any as S.Schema<CheckBillingPermissionsAccessByCustomerResponse>,
+  input: __S(2384, __c149, 0) as any as S.Schema<CheckBillingPermissionsAccessByCustomerRequest>,
+  output: __S(2354, __c147, 2) as any as S.Schema<CheckBillingPermissionsAccessByCustomerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7623,10 +7825,10 @@ export const CheckBillingPermissionsAccessByDepartment: API.OperationMethod<
   CheckBillingPermissionsAccessByDepartmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2288, __c143, 0) as any as S.Schema<CheckBillingPermissionsAccessByDepartmentRequest>,
+  input: __S(2400, __c150, 0) as any as S.Schema<CheckBillingPermissionsAccessByDepartmentRequest>,
   output: __S(
-    2242,
-    __c140,
+    2354,
+    __c147,
     2,
   ) as any as S.Schema<CheckBillingPermissionsAccessByDepartmentResponse>,
   errors: [UnknownAzureError],
@@ -7643,13 +7845,13 @@ export const CheckBillingPermissionsAccessByEnrollmentAccount: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2304,
-    __c144,
+    2416,
+    __c151,
     0,
   ) as any as S.Schema<CheckBillingPermissionsAccessByEnrollmentAccountRequest>,
   output: __S(
-    2242,
-    __c140,
+    2354,
+    __c147,
     2,
   ) as any as S.Schema<CheckBillingPermissionsAccessByEnrollmentAccountResponse>,
   errors: [UnknownAzureError],
@@ -7666,13 +7868,13 @@ export const CheckBillingPermissionsAccessByInvoiceSection: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2320,
-    __c145,
+    2432,
+    __c152,
     0,
   ) as any as S.Schema<CheckBillingPermissionsAccessByInvoiceSectionRequest>,
   output: __S(
-    2242,
-    __c140,
+    2354,
+    __c147,
     2,
   ) as any as S.Schema<CheckBillingPermissionsAccessByInvoiceSectionResponse>,
   errors: [UnknownAzureError],
@@ -7688,8 +7890,8 @@ export const ConfirmBillingAccountTransition: API.OperationMethod<
   ConfirmBillingAccountTransitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2336, __c146, 0) as any as S.Schema<ConfirmBillingAccountTransitionRequest>,
-  output: __S(2337, __c146, 1) as any as S.Schema<TransitionDetails>,
+  input: __S(2448, __c153, 0) as any as S.Schema<ConfirmBillingAccountTransitionRequest>,
+  output: __S(2449, __c153, 1) as any as S.Schema<TransitionDetails>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7704,14 +7906,14 @@ export const CreateBillingRoleAssignmentByBillingAccount: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2352,
-    __c147,
+    2464,
+    __c154,
     0,
   ) as any as S.Schema<CreateBillingRoleAssignmentByBillingAccountRequest>,
   output: __S(
-    3313,
-    __c207,
-    1,
+    3520,
+    __c220,
+    0,
   ) as any as S.Schema<CreateBillingRoleAssignmentByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7727,14 +7929,14 @@ export const CreateBillingRoleAssignmentByBillingProfile: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2368,
-    __c148,
+    2480,
+    __c155,
     0,
   ) as any as S.Schema<CreateBillingRoleAssignmentByBillingProfileRequest>,
   output: __S(
-    3313,
-    __c207,
-    1,
+    3520,
+    __c220,
+    0,
   ) as any as S.Schema<CreateBillingRoleAssignmentByBillingProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7749,8 +7951,8 @@ export const CreateBillingRoleAssignmentByCustomer: API.OperationMethod<
   CreateBillingRoleAssignmentByCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2416, __c151, 0) as any as S.Schema<CreateBillingRoleAssignmentByCustomerRequest>,
-  output: __S(3313, __c207, 1) as any as S.Schema<CreateBillingRoleAssignmentByCustomerResponse>,
+  input: __S(2528, __c158, 0) as any as S.Schema<CreateBillingRoleAssignmentByCustomerRequest>,
+  output: __S(3520, __c220, 0) as any as S.Schema<CreateBillingRoleAssignmentByCustomerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7765,14 +7967,14 @@ export const CreateBillingRoleAssignmentByInvoiceSection: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2432,
-    __c152,
+    2544,
+    __c159,
     0,
   ) as any as S.Schema<CreateBillingRoleAssignmentByInvoiceSectionRequest>,
   output: __S(
-    3313,
-    __c207,
-    1,
+    3520,
+    __c220,
+    0,
   ) as any as S.Schema<CreateBillingRoleAssignmentByInvoiceSectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7787,8 +7989,8 @@ export const DeleteAssociatedTenant: API.OperationMethod<
   DeleteAssociatedTenantError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2448, __c153, 0) as any as S.Schema<DeleteAssociatedTenantRequest>,
-  output: __S(1104, __c69, 0) as any as S.Schema<DeleteAssociatedTenantResponse>,
+  input: __S(2560, __c160, 0) as any as S.Schema<DeleteAssociatedTenantRequest>,
+  output: __S(2096, __c131, 0) as any as S.Schema<DeleteAssociatedTenantResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7802,8 +8004,8 @@ export const DeleteBillingProfile: API.OperationMethod<
   DeleteBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2464, __c154, 0) as any as S.Schema<DeleteBillingProfileRequest>,
-  output: __S(1104, __c69, 0) as any as S.Schema<DeleteBillingProfileResponse>,
+  input: __S(2576, __c161, 0) as any as S.Schema<DeleteBillingProfileRequest>,
+  output: __S(2096, __c131, 0) as any as S.Schema<DeleteBillingProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7818,13 +8020,13 @@ export const DeleteBillingRoleAssignmentByBillingAccount: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2480,
-    __c155,
+    2592,
+    __c162,
     0,
   ) as any as S.Schema<DeleteBillingRoleAssignmentByBillingAccountRequest>,
   output: __S(
-    1104,
-    __c69,
+    1184,
+    __c74,
     0,
   ) as any as S.Schema<DeleteBillingRoleAssignmentByBillingAccountResponse>,
   errors: [UnknownAzureError],
@@ -7841,13 +8043,13 @@ export const DeleteBillingRoleAssignmentByBillingProfile: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2496,
-    __c156,
+    2608,
+    __c163,
     0,
   ) as any as S.Schema<DeleteBillingRoleAssignmentByBillingProfileRequest>,
   output: __S(
-    1104,
-    __c69,
+    1184,
+    __c74,
     0,
   ) as any as S.Schema<DeleteBillingRoleAssignmentByBillingProfileResponse>,
   errors: [UnknownAzureError],
@@ -7863,8 +8065,8 @@ export const DeleteBillingRoleAssignmentByCustomer: API.OperationMethod<
   DeleteBillingRoleAssignmentByCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2512, __c157, 0) as any as S.Schema<DeleteBillingRoleAssignmentByCustomerRequest>,
-  output: __S(1104, __c69, 0) as any as S.Schema<DeleteBillingRoleAssignmentByCustomerResponse>,
+  input: __S(2624, __c164, 0) as any as S.Schema<DeleteBillingRoleAssignmentByCustomerRequest>,
+  output: __S(1184, __c74, 0) as any as S.Schema<DeleteBillingRoleAssignmentByCustomerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7878,8 +8080,8 @@ export const DeleteBillingRoleAssignmentByDepartment: API.OperationMethod<
   DeleteBillingRoleAssignmentByDepartmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2528, __c158, 0) as any as S.Schema<DeleteBillingRoleAssignmentByDepartmentRequest>,
-  output: __S(1104, __c69, 0) as any as S.Schema<DeleteBillingRoleAssignmentByDepartmentResponse>,
+  input: __S(2640, __c165, 0) as any as S.Schema<DeleteBillingRoleAssignmentByDepartmentRequest>,
+  output: __S(1184, __c74, 0) as any as S.Schema<DeleteBillingRoleAssignmentByDepartmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7894,13 +8096,13 @@ export const DeleteBillingRoleAssignmentByEnrollmentAccount: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2544,
-    __c159,
+    2656,
+    __c166,
     0,
   ) as any as S.Schema<DeleteBillingRoleAssignmentByEnrollmentAccountRequest>,
   output: __S(
-    1104,
-    __c69,
+    1184,
+    __c74,
     0,
   ) as any as S.Schema<DeleteBillingRoleAssignmentByEnrollmentAccountResponse>,
   errors: [UnknownAzureError],
@@ -7917,13 +8119,13 @@ export const DeleteBillingRoleAssignmentByInvoiceSection: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2560,
-    __c160,
+    2672,
+    __c167,
     0,
   ) as any as S.Schema<DeleteBillingRoleAssignmentByInvoiceSectionRequest>,
   output: __S(
-    1104,
-    __c69,
+    1184,
+    __c74,
     0,
   ) as any as S.Schema<DeleteBillingRoleAssignmentByInvoiceSectionResponse>,
   errors: [UnknownAzureError],
@@ -7939,8 +8141,8 @@ export const DeleteBillingSubscription: API.OperationMethod<
   DeleteBillingSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2624, __c164, 0) as any as S.Schema<DeleteBillingSubscriptionRequest>,
-  output: __S(1104, __c69, 0) as any as S.Schema<DeleteBillingSubscriptionResponse>,
+  input: __S(2736, __c171, 0) as any as S.Schema<DeleteBillingSubscriptionRequest>,
+  output: __S(2096, __c131, 0) as any as S.Schema<DeleteBillingSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7954,8 +8156,8 @@ export const DeleteInvoiceSection: API.OperationMethod<
   DeleteInvoiceSectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2640, __c165, 0) as any as S.Schema<DeleteInvoiceSectionRequest>,
-  output: __S(1104, __c69, 0) as any as S.Schema<DeleteInvoiceSectionResponse>,
+  input: __S(2752, __c172, 0) as any as S.Schema<DeleteInvoiceSectionRequest>,
+  output: __S(2096, __c131, 0) as any as S.Schema<DeleteInvoiceSectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7969,8 +8171,8 @@ export const DeletePaymentMethodByUser: API.OperationMethod<
   DeletePaymentMethodByUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2656, __c166, 0) as any as S.Schema<DeletePaymentMethodByUserRequest>,
-  output: __S(1104, __c69, 0) as any as S.Schema<DeletePaymentMethodByUserResponse>,
+  input: __S(2768, __c173, 0) as any as S.Schema<DeletePaymentMethodByUserRequest>,
+  output: __S(1184, __c74, 0) as any as S.Schema<DeletePaymentMethodByUserResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7984,8 +8186,8 @@ export const DownloadInvoiceByBillingAccount: API.OperationMethod<
   DownloadInvoiceByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2672, __c167, 0) as any as S.Schema<DownloadInvoiceByBillingAccountRequest>,
-  output: __S(2688, __c168, 0) as any as S.Schema<DocumentDownloadResult>,
+  input: __S(2784, __c174, 0) as any as S.Schema<DownloadInvoiceByBillingAccountRequest>,
+  output: __S(2800, __c175, 0) as any as S.Schema<DocumentDownloadResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7999,8 +8201,8 @@ export const DownloadInvoiceByBillingSubscription: API.OperationMethod<
   DownloadInvoiceByBillingSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2704, __c169, 0) as any as S.Schema<DownloadInvoiceByBillingSubscriptionRequest>,
-  output: __S(2688, __c168, 0) as any as S.Schema<DocumentDownloadResult>,
+  input: __S(2816, __c176, 0) as any as S.Schema<DownloadInvoiceByBillingSubscriptionRequest>,
+  output: __S(2800, __c175, 0) as any as S.Schema<DocumentDownloadResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8014,8 +8216,8 @@ export const DownloadInvoiceDocumentsByBillingAccount: API.OperationMethod<
   DownloadInvoiceDocumentsByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2720, __c170, 0) as any as S.Schema<DownloadInvoiceDocumentsByBillingAccountRequest>,
-  output: __S(2688, __c168, 0) as any as S.Schema<DocumentDownloadResult>,
+  input: __S(2832, __c177, 0) as any as S.Schema<DownloadInvoiceDocumentsByBillingAccountRequest>,
+  output: __S(2800, __c175, 0) as any as S.Schema<DocumentDownloadResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8030,11 +8232,11 @@ export const DownloadInvoiceDocumentsByBillingSubscription: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2752,
-    __c172,
+    2864,
+    __c179,
     0,
   ) as any as S.Schema<DownloadInvoiceDocumentsByBillingSubscriptionRequest>,
-  output: __S(2688, __c168, 0) as any as S.Schema<DocumentDownloadResult>,
+  output: __S(2800, __c175, 0) as any as S.Schema<DocumentDownloadResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8048,8 +8250,8 @@ export const DownloadInvoiceSummaryByBillingAccount: API.OperationMethod<
   DownloadInvoiceSummaryByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2768, __c173, 0) as any as S.Schema<DownloadInvoiceSummaryByBillingAccountRequest>,
-  output: __S(2688, __c168, 0) as any as S.Schema<DocumentDownloadResult>,
+  input: __S(2880, __c180, 0) as any as S.Schema<DownloadInvoiceSummaryByBillingAccountRequest>,
+  output: __S(2800, __c175, 0) as any as S.Schema<DocumentDownloadResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8063,8 +8265,8 @@ export const GetAgreement: API.OperationMethod<
   GetAgreementError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2784, __c174, 0) as any as S.Schema<GetAgreementRequest>,
-  output: __S(2805, __c175, 5) as any as S.Schema<GetAgreementResponse>,
+  input: __S(2896, __c181, 0) as any as S.Schema<GetAgreementRequest>,
+  output: __S(2917, __c182, 5) as any as S.Schema<GetAgreementResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8078,8 +8280,8 @@ export const GetAssociatedTenant: API.OperationMethod<
   GetAssociatedTenantError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2816, __c176, 0) as any as S.Schema<GetAssociatedTenantRequest>,
-  output: __S(2177, __c136, 1) as any as S.Schema<GetAssociatedTenantResponse>,
+  input: __S(2928, __c183, 0) as any as S.Schema<GetAssociatedTenantRequest>,
+  output: __S(2944, __c184, 0) as any as S.Schema<GetAssociatedTenantResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8093,8 +8295,8 @@ export const GetAvailableBalanceByBillingAccount: API.OperationMethod<
   GetAvailableBalanceByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2864, __c179, 0) as any as S.Schema<GetAvailableBalanceByBillingAccountRequest>,
-  output: __S(2883, __c180, 3) as any as S.Schema<GetAvailableBalanceByBillingAccountResponse>,
+  input: __S(2992, __c187, 0) as any as S.Schema<GetAvailableBalanceByBillingAccountRequest>,
+  output: __S(3011, __c188, 3) as any as S.Schema<GetAvailableBalanceByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8108,8 +8310,8 @@ export const GetAvailableBalanceByBillingProfile: API.OperationMethod<
   GetAvailableBalanceByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2896, __c181, 0) as any as S.Schema<GetAvailableBalanceByBillingProfileRequest>,
-  output: __S(2883, __c180, 3) as any as S.Schema<GetAvailableBalanceByBillingProfileResponse>,
+  input: __S(3024, __c189, 0) as any as S.Schema<GetAvailableBalanceByBillingProfileRequest>,
+  output: __S(3011, __c188, 3) as any as S.Schema<GetAvailableBalanceByBillingProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8123,8 +8325,8 @@ export const GetBillingAccount: API.OperationMethod<
   GetBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2912, __c182, 0) as any as S.Schema<GetBillingAccountRequest>,
-  output: __S(117, __c7, 5) as any as S.Schema<GetBillingAccountResponse>,
+  input: __S(3040, __c190, 0) as any as S.Schema<GetBillingAccountRequest>,
+  output: __S(3056, __c191, 0) as any as S.Schema<GetBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8138,8 +8340,8 @@ export const GetBillingProfile: API.OperationMethod<
   GetBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2928, __c183, 0) as any as S.Schema<GetBillingProfileRequest>,
-  output: __S(2595, __c162, 3) as any as S.Schema<GetBillingProfileResponse>,
+  input: __S(3072, __c192, 0) as any as S.Schema<GetBillingProfileRequest>,
+  output: __S(3088, __c193, 0) as any as S.Schema<GetBillingProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8153,8 +8355,8 @@ export const GetBillingProperty: API.OperationMethod<
   GetBillingPropertyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2944, __c184, 0) as any as S.Schema<GetBillingPropertyRequest>,
-  output: __S(2962, __c185, 2) as any as S.Schema<GetBillingPropertyResponse>,
+  input: __S(3104, __c194, 0) as any as S.Schema<GetBillingPropertyRequest>,
+  output: __S(3122, __c195, 2) as any as S.Schema<GetBillingPropertyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8168,8 +8370,8 @@ export const GetBillingRequest: API.OperationMethod<
   GetBillingRequestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2976, __c186, 0) as any as S.Schema<GetBillingRequestRequest>,
-  output: __S(3075, __c192, 3) as any as S.Schema<GetBillingRequestResponse>,
+  input: __S(3136, __c196, 0) as any as S.Schema<GetBillingRequestRequest>,
+  output: __S(3152, __c197, 0) as any as S.Schema<GetBillingRequestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8183,8 +8385,8 @@ export const GetBillingRoleAssignmentByBillingAccount: API.OperationMethod<
   GetBillingRoleAssignmentByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2992, __c187, 0) as any as S.Schema<GetBillingRoleAssignmentByBillingAccountRequest>,
-  output: __S(3313, __c207, 1) as any as S.Schema<GetBillingRoleAssignmentByBillingAccountResponse>,
+  input: __S(3168, __c198, 0) as any as S.Schema<GetBillingRoleAssignmentByBillingAccountRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<GetBillingRoleAssignmentByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8198,8 +8400,8 @@ export const GetBillingRoleAssignmentByBillingProfile: API.OperationMethod<
   GetBillingRoleAssignmentByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3008, __c188, 0) as any as S.Schema<GetBillingRoleAssignmentByBillingProfileRequest>,
-  output: __S(3313, __c207, 1) as any as S.Schema<GetBillingRoleAssignmentByBillingProfileResponse>,
+  input: __S(3184, __c199, 0) as any as S.Schema<GetBillingRoleAssignmentByBillingProfileRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<GetBillingRoleAssignmentByBillingProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8213,8 +8415,8 @@ export const GetBillingRoleAssignmentByCustomer: API.OperationMethod<
   GetBillingRoleAssignmentByCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3024, __c189, 0) as any as S.Schema<GetBillingRoleAssignmentByCustomerRequest>,
-  output: __S(3313, __c207, 1) as any as S.Schema<GetBillingRoleAssignmentByCustomerResponse>,
+  input: __S(3200, __c200, 0) as any as S.Schema<GetBillingRoleAssignmentByCustomerRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<GetBillingRoleAssignmentByCustomerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8228,8 +8430,8 @@ export const GetBillingRoleAssignmentByDepartment: API.OperationMethod<
   GetBillingRoleAssignmentByDepartmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3040, __c190, 0) as any as S.Schema<GetBillingRoleAssignmentByDepartmentRequest>,
-  output: __S(3313, __c207, 1) as any as S.Schema<GetBillingRoleAssignmentByDepartmentResponse>,
+  input: __S(3216, __c201, 0) as any as S.Schema<GetBillingRoleAssignmentByDepartmentRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<GetBillingRoleAssignmentByDepartmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8244,14 +8446,14 @@ export const GetBillingRoleAssignmentByEnrollmentAccount: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3088,
-    __c193,
+    3264,
+    __c204,
     0,
   ) as any as S.Schema<GetBillingRoleAssignmentByEnrollmentAccountRequest>,
   output: __S(
-    3313,
-    __c207,
-    1,
+    272,
+    __c17,
+    0,
   ) as any as S.Schema<GetBillingRoleAssignmentByEnrollmentAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8266,8 +8468,8 @@ export const GetBillingRoleAssignmentByInvoiceSection: API.OperationMethod<
   GetBillingRoleAssignmentByInvoiceSectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3104, __c194, 0) as any as S.Schema<GetBillingRoleAssignmentByInvoiceSectionRequest>,
-  output: __S(3313, __c207, 1) as any as S.Schema<GetBillingRoleAssignmentByInvoiceSectionResponse>,
+  input: __S(3280, __c205, 0) as any as S.Schema<GetBillingRoleAssignmentByInvoiceSectionRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<GetBillingRoleAssignmentByInvoiceSectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8281,8 +8483,8 @@ export const GetBillingRoleDefinitionByBillingAccount: API.OperationMethod<
   GetBillingRoleDefinitionByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3120, __c195, 0) as any as S.Schema<GetBillingRoleDefinitionByBillingAccountRequest>,
-  output: __S(3153, __c197, 1) as any as S.Schema<GetBillingRoleDefinitionByBillingAccountResponse>,
+  input: __S(3296, __c206, 0) as any as S.Schema<GetBillingRoleDefinitionByBillingAccountRequest>,
+  output: __S(3329, __c208, 1) as any as S.Schema<GetBillingRoleDefinitionByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8296,8 +8498,8 @@ export const GetBillingRoleDefinitionByBillingProfile: API.OperationMethod<
   GetBillingRoleDefinitionByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3168, __c198, 0) as any as S.Schema<GetBillingRoleDefinitionByBillingProfileRequest>,
-  output: __S(3153, __c197, 1) as any as S.Schema<GetBillingRoleDefinitionByBillingProfileResponse>,
+  input: __S(3344, __c209, 0) as any as S.Schema<GetBillingRoleDefinitionByBillingProfileRequest>,
+  output: __S(3329, __c208, 1) as any as S.Schema<GetBillingRoleDefinitionByBillingProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8311,8 +8513,8 @@ export const GetBillingRoleDefinitionByCustomer: API.OperationMethod<
   GetBillingRoleDefinitionByCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3184, __c199, 0) as any as S.Schema<GetBillingRoleDefinitionByCustomerRequest>,
-  output: __S(3153, __c197, 1) as any as S.Schema<GetBillingRoleDefinitionByCustomerResponse>,
+  input: __S(3360, __c210, 0) as any as S.Schema<GetBillingRoleDefinitionByCustomerRequest>,
+  output: __S(3329, __c208, 1) as any as S.Schema<GetBillingRoleDefinitionByCustomerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8326,8 +8528,8 @@ export const GetBillingRoleDefinitionByDepartment: API.OperationMethod<
   GetBillingRoleDefinitionByDepartmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3200, __c200, 0) as any as S.Schema<GetBillingRoleDefinitionByDepartmentRequest>,
-  output: __S(3153, __c197, 1) as any as S.Schema<GetBillingRoleDefinitionByDepartmentResponse>,
+  input: __S(3376, __c211, 0) as any as S.Schema<GetBillingRoleDefinitionByDepartmentRequest>,
+  output: __S(3329, __c208, 1) as any as S.Schema<GetBillingRoleDefinitionByDepartmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8342,13 +8544,13 @@ export const GetBillingRoleDefinitionByEnrollmentAccount: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3216,
-    __c201,
+    3392,
+    __c212,
     0,
   ) as any as S.Schema<GetBillingRoleDefinitionByEnrollmentAccountRequest>,
   output: __S(
-    3153,
-    __c197,
+    3329,
+    __c208,
     1,
   ) as any as S.Schema<GetBillingRoleDefinitionByEnrollmentAccountResponse>,
   errors: [UnknownAzureError],
@@ -8364,8 +8566,8 @@ export const GetBillingRoleDefinitionByInvoiceSection: API.OperationMethod<
   GetBillingRoleDefinitionByInvoiceSectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3232, __c202, 0) as any as S.Schema<GetBillingRoleDefinitionByInvoiceSectionRequest>,
-  output: __S(3153, __c197, 1) as any as S.Schema<GetBillingRoleDefinitionByInvoiceSectionResponse>,
+  input: __S(3408, __c213, 0) as any as S.Schema<GetBillingRoleDefinitionByInvoiceSectionRequest>,
+  output: __S(3329, __c208, 1) as any as S.Schema<GetBillingRoleDefinitionByInvoiceSectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8379,8 +8581,8 @@ export const GetBillingSubscription: API.OperationMethod<
   GetBillingSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3248, __c203, 0) as any as S.Schema<GetBillingSubscriptionRequest>,
-  output: __S(1377, __c86, 1) as any as S.Schema<GetBillingSubscriptionResponse>,
+  input: __S(3424, __c214, 0) as any as S.Schema<GetBillingSubscriptionRequest>,
+  output: __S(3440, __c215, 0) as any as S.Schema<GetBillingSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8394,8 +8596,8 @@ export const GetBillingSubscriptionByBillingProfile: API.OperationMethod<
   GetBillingSubscriptionByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3264, __c204, 0) as any as S.Schema<GetBillingSubscriptionByBillingProfileRequest>,
-  output: __S(1377, __c86, 1) as any as S.Schema<GetBillingSubscriptionByBillingProfileResponse>,
+  input: __S(3456, __c216, 0) as any as S.Schema<GetBillingSubscriptionByBillingProfileRequest>,
+  output: __S(3440, __c215, 0) as any as S.Schema<GetBillingSubscriptionByBillingProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8409,8 +8611,8 @@ export const GetBillingSubscriptionsAlias: API.OperationMethod<
   GetBillingSubscriptionsAliasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3328, __c208, 0) as any as S.Schema<GetBillingSubscriptionsAliasRequest>,
-  output: __S(1137, __c71, 1) as any as S.Schema<GetBillingSubscriptionsAliasResponse>,
+  input: __S(3536, __c221, 0) as any as S.Schema<GetBillingSubscriptionsAliasRequest>,
+  output: __S(3552, __c222, 0) as any as S.Schema<GetBillingSubscriptionsAliasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8424,8 +8626,8 @@ export const GetCustomer: API.OperationMethod<
   GetCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3344, __c209, 0) as any as S.Schema<GetCustomerRequest>,
-  output: __S(3362, __c210, 2) as any as S.Schema<GetCustomerResponse>,
+  input: __S(3568, __c223, 0) as any as S.Schema<GetCustomerRequest>,
+  output: __S(3586, __c224, 2) as any as S.Schema<GetCustomerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8439,8 +8641,8 @@ export const GetCustomerByBillingAccount: API.OperationMethod<
   GetCustomerByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3376, __c211, 0) as any as S.Schema<GetCustomerByBillingAccountRequest>,
-  output: __S(3362, __c210, 2) as any as S.Schema<GetCustomerByBillingAccountResponse>,
+  input: __S(3600, __c225, 0) as any as S.Schema<GetCustomerByBillingAccountRequest>,
+  output: __S(3586, __c224, 2) as any as S.Schema<GetCustomerByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8454,8 +8656,8 @@ export const GetDepartment: API.OperationMethod<
   GetDepartmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3392, __c212, 0) as any as S.Schema<GetDepartmentRequest>,
-  output: __S(3409, __c213, 1) as any as S.Schema<GetDepartmentResponse>,
+  input: __S(3616, __c226, 0) as any as S.Schema<GetDepartmentRequest>,
+  output: __S(3633, __c227, 1) as any as S.Schema<GetDepartmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8469,8 +8671,8 @@ export const GetEnrollmentAccount: API.OperationMethod<
   GetEnrollmentAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3424, __c214, 0) as any as S.Schema<GetEnrollmentAccountRequest>,
-  output: __S(3441, __c215, 1) as any as S.Schema<GetEnrollmentAccountResponse>,
+  input: __S(3648, __c228, 0) as any as S.Schema<GetEnrollmentAccountRequest>,
+  output: __S(3665, __c229, 1) as any as S.Schema<GetEnrollmentAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8484,8 +8686,8 @@ export const GetEnrollmentAccountByDepartment: API.OperationMethod<
   GetEnrollmentAccountByDepartmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3456, __c216, 0) as any as S.Schema<GetEnrollmentAccountByDepartmentRequest>,
-  output: __S(3441, __c215, 1) as any as S.Schema<GetEnrollmentAccountByDepartmentResponse>,
+  input: __S(3680, __c230, 0) as any as S.Schema<GetEnrollmentAccountByDepartmentRequest>,
+  output: __S(3665, __c229, 1) as any as S.Schema<GetEnrollmentAccountByDepartmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8499,8 +8701,8 @@ export const GetInvoice: API.OperationMethod<
   GetInvoiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3472, __c217, 0) as any as S.Schema<GetInvoiceRequest>,
-  output: __S(3497, __c218, 9) as any as S.Schema<GetInvoiceResponse>,
+  input: __S(3696, __c231, 0) as any as S.Schema<GetInvoiceRequest>,
+  output: __S(3721, __c232, 9) as any as S.Schema<GetInvoiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8514,8 +8716,8 @@ export const GetInvoiceByBillingAccount: API.OperationMethod<
   GetInvoiceByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3504, __c219, 0) as any as S.Schema<GetInvoiceByBillingAccountRequest>,
-  output: __S(3497, __c218, 9) as any as S.Schema<GetInvoiceByBillingAccountResponse>,
+  input: __S(3728, __c233, 0) as any as S.Schema<GetInvoiceByBillingAccountRequest>,
+  output: __S(3721, __c232, 9) as any as S.Schema<GetInvoiceByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8529,8 +8731,8 @@ export const GetInvoiceByBillingSubscription: API.OperationMethod<
   GetInvoiceByBillingSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3520, __c220, 0) as any as S.Schema<GetInvoiceByBillingSubscriptionRequest>,
-  output: __S(3497, __c218, 9) as any as S.Schema<GetInvoiceByBillingSubscriptionResponse>,
+  input: __S(3744, __c234, 0) as any as S.Schema<GetInvoiceByBillingSubscriptionRequest>,
+  output: __S(3721, __c232, 9) as any as S.Schema<GetInvoiceByBillingSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8544,8 +8746,8 @@ export const GetInvoiceSection: API.OperationMethod<
   GetInvoiceSectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3536, __c221, 0) as any as S.Schema<GetInvoiceSectionRequest>,
-  output: __S(3553, __c222, 1) as any as S.Schema<GetInvoiceSectionResponse>,
+  input: __S(3760, __c235, 0) as any as S.Schema<GetInvoiceSectionRequest>,
+  output: __S(3776, __c236, 0) as any as S.Schema<GetInvoiceSectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8559,8 +8761,8 @@ export const GetPartnerTransfer: API.OperationMethod<
   GetPartnerTransferError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3584, __c224, 0) as any as S.Schema<GetPartnerTransferRequest>,
-  output: __S(2145, __c134, 1) as any as S.Schema<GetPartnerTransferResponse>,
+  input: __S(3824, __c239, 0) as any as S.Schema<GetPartnerTransferRequest>,
+  output: __S(2257, __c141, 1) as any as S.Schema<GetPartnerTransferResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8574,8 +8776,8 @@ export const GetPaymentMethodByBillingAccount: API.OperationMethod<
   GetPaymentMethodByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3600, __c225, 0) as any as S.Schema<GetPaymentMethodByBillingAccountRequest>,
-  output: __S(3632, __c227, 0) as any as S.Schema<GetPaymentMethodByBillingAccountResponse>,
+  input: __S(3840, __c240, 0) as any as S.Schema<GetPaymentMethodByBillingAccountRequest>,
+  output: __S(3872, __c242, 0) as any as S.Schema<GetPaymentMethodByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8589,8 +8791,8 @@ export const GetPaymentMethodByBillingProfile: API.OperationMethod<
   GetPaymentMethodByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3648, __c228, 0) as any as S.Schema<GetPaymentMethodByBillingProfileRequest>,
-  output: __S(3665, __c229, 1) as any as S.Schema<GetPaymentMethodByBillingProfileResponse>,
+  input: __S(3888, __c243, 0) as any as S.Schema<GetPaymentMethodByBillingProfileRequest>,
+  output: __S(3905, __c244, 1) as any as S.Schema<GetPaymentMethodByBillingProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8604,8 +8806,8 @@ export const GetPaymentMethodByUser: API.OperationMethod<
   GetPaymentMethodByUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3680, __c230, 0) as any as S.Schema<GetPaymentMethodByUserRequest>,
-  output: __S(3632, __c227, 0) as any as S.Schema<GetPaymentMethodByUserResponse>,
+  input: __S(3920, __c245, 0) as any as S.Schema<GetPaymentMethodByUserRequest>,
+  output: __S(3872, __c242, 0) as any as S.Schema<GetPaymentMethodByUserResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8619,8 +8821,8 @@ export const GetPolicyByBillingAccount: API.OperationMethod<
   GetPolicyByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3696, __c231, 0) as any as S.Schema<GetPolicyByBillingAccountRequest>,
-  output: __S(3713, __c232, 1) as any as S.Schema<GetPolicyByBillingAccountResponse>,
+  input: __S(3936, __c246, 0) as any as S.Schema<GetPolicyByBillingAccountRequest>,
+  output: __S(3937, __c246, 1) as any as S.Schema<GetPolicyByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8634,8 +8836,8 @@ export const GetPolicyByBillingProfile: API.OperationMethod<
   GetPolicyByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3760, __c235, 0) as any as S.Schema<GetPolicyByBillingProfileRequest>,
-  output: __S(3777, __c236, 1) as any as S.Schema<GetPolicyByBillingProfileResponse>,
+  input: __S(4000, __c250, 0) as any as S.Schema<GetPolicyByBillingProfileRequest>,
+  output: __S(4001, __c250, 1) as any as S.Schema<GetPolicyByBillingProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8649,8 +8851,8 @@ export const GetPolicyByCustomer: API.OperationMethod<
   GetPolicyByCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3792, __c237, 0) as any as S.Schema<GetPolicyByCustomerRequest>,
-  output: __S(3809, __c238, 1) as any as S.Schema<GetPolicyByCustomerResponse>,
+  input: __S(4032, __c252, 0) as any as S.Schema<GetPolicyByCustomerRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<GetPolicyByCustomerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8664,8 +8866,8 @@ export const GetPolicyByCustomerAtBillingAccount: API.OperationMethod<
   GetPolicyByCustomerAtBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3824, __c239, 0) as any as S.Schema<GetPolicyByCustomerAtBillingAccountRequest>,
-  output: __S(3809, __c238, 1) as any as S.Schema<GetPolicyByCustomerAtBillingAccountResponse>,
+  input: __S(4080, __c255, 0) as any as S.Schema<GetPolicyByCustomerAtBillingAccountRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<GetPolicyByCustomerAtBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8679,8 +8881,8 @@ export const GetPolicyBySubscription: API.OperationMethod<
   GetPolicyBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3840, __c240, 0) as any as S.Schema<GetPolicyBySubscriptionRequest>,
-  output: __S(3842, __c240, 2) as any as S.Schema<GetPolicyBySubscriptionResponse>,
+  input: __S(4096, __c256, 0) as any as S.Schema<GetPolicyBySubscriptionRequest>,
+  output: __S(4098, __c256, 2) as any as S.Schema<GetPolicyBySubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8694,8 +8896,8 @@ export const GetProduct: API.OperationMethod<
   GetProductError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3856, __c241, 0) as any as S.Schema<GetProductRequest>,
-  output: __S(3873, __c242, 1) as any as S.Schema<GetProductResponse>,
+  input: __S(4112, __c257, 0) as any as S.Schema<GetProductRequest>,
+  output: __S(4144, __c259, 0) as any as S.Schema<GetProductResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8709,7 +8911,7 @@ export const GetRecipientTransfer: API.OperationMethod<
   GetRecipientTransferError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3904, __c244, 0) as any as S.Schema<GetRecipientTransferRequest>,
+  input: __S(4176, __c261, 0) as any as S.Schema<GetRecipientTransferRequest>,
   output: __S(81, __c5, 1) as any as S.Schema<GetRecipientTransferResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8724,8 +8926,8 @@ export const GetReservationByReservationOrder: API.OperationMethod<
   GetReservationByReservationOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3920, __c245, 0) as any as S.Schema<GetReservationByReservationOrderRequest>,
-  output: __S(3945, __c246, 9) as any as S.Schema<GetReservationByReservationOrderResponse>,
+  input: __S(4192, __c262, 0) as any as S.Schema<GetReservationByReservationOrderRequest>,
+  output: __S(4208, __c263, 0) as any as S.Schema<GetReservationByReservationOrderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8739,8 +8941,8 @@ export const GetReservationOrderByBillingAccount: API.OperationMethod<
   GetReservationOrderByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4032, __c252, 0) as any as S.Schema<GetReservationOrderByBillingAccountRequest>,
-  output: __S(4068, __c254, 4) as any as S.Schema<GetReservationOrderByBillingAccountResponse>,
+  input: __S(4320, __c270, 0) as any as S.Schema<GetReservationOrderByBillingAccountRequest>,
+  output: __S(4356, __c272, 4) as any as S.Schema<GetReservationOrderByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8754,8 +8956,8 @@ export const GetSavingsPlanByBillingAccount: API.OperationMethod<
   GetSavingsPlanByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4080, __c255, 0) as any as S.Schema<GetSavingsPlanByBillingAccountRequest>,
-  output: __S(4113, __c257, 1) as any as S.Schema<GetSavingsPlanByBillingAccountResponse>,
+  input: __S(4368, __c273, 0) as any as S.Schema<GetSavingsPlanByBillingAccountRequest>,
+  output: __S(4384, __c274, 0) as any as S.Schema<GetSavingsPlanByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8769,8 +8971,8 @@ export const GetSavingsPlanOrderByBillingAccount: API.OperationMethod<
   GetSavingsPlanOrderByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4144, __c259, 0) as any as S.Schema<GetSavingsPlanOrderByBillingAccountRequest>,
-  output: __S(4164, __c260, 4) as any as S.Schema<GetSavingsPlanOrderByBillingAccountResponse>,
+  input: __S(4448, __c278, 0) as any as S.Schema<GetSavingsPlanOrderByBillingAccountRequest>,
+  output: __S(4468, __c279, 4) as any as S.Schema<GetSavingsPlanOrderByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8784,8 +8986,8 @@ export const GetTransactionTransactionSummaryByInvoice: API.OperationMethod<
   GetTransactionTransactionSummaryByInvoiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4176, __c261, 0) as any as S.Schema<GetTransactionTransactionSummaryByInvoiceRequest>,
-  output: __S(4177, __c261, 1) as any as S.Schema<TransactionSummary>,
+  input: __S(4480, __c280, 0) as any as S.Schema<GetTransactionTransactionSummaryByInvoiceRequest>,
+  output: __S(4481, __c280, 1) as any as S.Schema<TransactionSummary>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8799,8 +9001,8 @@ export const GetTransfer: API.OperationMethod<
   GetTransferError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4192, __c262, 0) as any as S.Schema<GetTransferRequest>,
-  output: __S(2209, __c138, 1) as any as S.Schema<GetTransferResponse>,
+  input: __S(4496, __c281, 0) as any as S.Schema<GetTransferRequest>,
+  output: __S(2321, __c145, 1) as any as S.Schema<GetTransferResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8814,8 +9016,8 @@ export const InvoicesAmend: API.OperationMethod<
   InvoicesAmendError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4208, __c263, 0) as any as S.Schema<InvoicesAmendRequest>,
-  output: __S(1104, __c69, 0) as any as S.Schema<InvoicesAmendResponse>,
+  input: __S(4512, __c282, 0) as any as S.Schema<InvoicesAmendRequest>,
+  output: __S(2096, __c131, 0) as any as S.Schema<InvoicesAmendResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8829,8 +9031,8 @@ export const InvoiceSectionsCreateOrUpdate: API.OperationMethod<
   InvoiceSectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4225, __c264, 1) as any as S.Schema<InvoiceSectionsCreateOrUpdateRequest>,
-  output: __S(3553, __c222, 1) as any as S.Schema<InvoiceSectionsCreateOrUpdateResponse>,
+  input: __S(4529, __c283, 1) as any as S.Schema<InvoiceSectionsCreateOrUpdateRequest>,
+  output: __S(4530, __c283, 2) as any as S.Schema<InvoiceSectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8844,8 +9046,8 @@ export const InvoiceSectionsValidateDeleteEligibility: API.OperationMethod<
   InvoiceSectionsValidateDeleteEligibilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4240, __c265, 0) as any as S.Schema<InvoiceSectionsValidateDeleteEligibilityRequest>,
-  output: __S(2850, __c178, 2) as any as S.Schema<DeleteInvoiceSectionEligibilityResult>,
+  input: __S(4544, __c284, 0) as any as S.Schema<InvoiceSectionsValidateDeleteEligibilityRequest>,
+  output: __S(2978, __c186, 2) as any as S.Schema<DeleteInvoiceSectionEligibilityResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8859,8 +9061,8 @@ export const ListAgreementByBillingAccount: API.OperationMethod<
   ListAgreementByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c15, 0) as any as S.Schema<ListAgreementByBillingAccountRequest>,
-  output: __S(242, __c15, 2) as any as S.Schema<AgreementListResult>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListAgreementByBillingAccountRequest>,
+  output: __S(290, __c18, 2) as any as S.Schema<AgreementListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8874,8 +9076,8 @@ export const ListAssociatedTenantByBillingAccount: API.OperationMethod<
   ListAssociatedTenantByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<ListAssociatedTenantByBillingAccountRequest>,
-  output: __S(258, __c16, 2) as any as S.Schema<AssociatedTenantListResult>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListAssociatedTenantByBillingAccountRequest>,
+  output: __S(306, __c19, 2) as any as S.Schema<AssociatedTenantListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8889,8 +9091,8 @@ export const ListBillingAccounts: API.OperationMethod<
   ListBillingAccountsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<ListBillingAccountsRequest>,
-  output: __S(274, __c17, 2) as any as S.Schema<BillingAccountListResult>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListBillingAccountsRequest>,
+  output: __S(322, __c20, 2) as any as S.Schema<BillingAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8904,8 +9106,8 @@ export const ListBillingPermissionsByBillingAccount: API.OperationMethod<
   ListBillingPermissionsByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<ListBillingPermissionsByBillingAccountRequest>,
-  output: __S(304, __c19, 0) as any as S.Schema<BillingPermissionListResult>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListBillingPermissionsByBillingAccountRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<BillingPermissionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8919,8 +9121,8 @@ export const ListBillingPermissionsByBillingProfile: API.OperationMethod<
   ListBillingPermissionsByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<ListBillingPermissionsByBillingProfileRequest>,
-  output: __S(304, __c19, 0) as any as S.Schema<BillingPermissionListResult>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListBillingPermissionsByBillingProfileRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<BillingPermissionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8934,8 +9136,8 @@ export const ListBillingPermissionsByCustomer: API.OperationMethod<
   ListBillingPermissionsByCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<ListBillingPermissionsByCustomerRequest>,
-  output: __S(304, __c19, 0) as any as S.Schema<BillingPermissionListResult>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListBillingPermissionsByCustomerRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<BillingPermissionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8950,11 +9152,11 @@ export const ListBillingPermissionsByCustomerAtBillingAccount: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    352,
-    __c22,
+    400,
+    __c25,
     0,
   ) as any as S.Schema<ListBillingPermissionsByCustomerAtBillingAccountRequest>,
-  output: __S(304, __c19, 0) as any as S.Schema<BillingPermissionListResult>,
+  output: __S(352, __c22, 0) as any as S.Schema<BillingPermissionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8968,8 +9170,8 @@ export const ListBillingPermissionsByDepartment: API.OperationMethod<
   ListBillingPermissionsByDepartmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<ListBillingPermissionsByDepartmentRequest>,
-  output: __S(304, __c19, 0) as any as S.Schema<BillingPermissionListResult>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListBillingPermissionsByDepartmentRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<BillingPermissionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8983,8 +9185,8 @@ export const ListBillingPermissionsByEnrollmentAccount: API.OperationMethod<
   ListBillingPermissionsByEnrollmentAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<ListBillingPermissionsByEnrollmentAccountRequest>,
-  output: __S(304, __c19, 0) as any as S.Schema<BillingPermissionListResult>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListBillingPermissionsByEnrollmentAccountRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<BillingPermissionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8998,8 +9200,8 @@ export const ListBillingPermissionsByInvoiceSection: API.OperationMethod<
   ListBillingPermissionsByInvoiceSectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<ListBillingPermissionsByInvoiceSectionRequest>,
-  output: __S(304, __c19, 0) as any as S.Schema<BillingPermissionListResult>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListBillingPermissionsByInvoiceSectionRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<BillingPermissionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9013,8 +9215,8 @@ export const ListBillingProfileByBillingAccount: API.OperationMethod<
   ListBillingProfileByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c27, 0) as any as S.Schema<ListBillingProfileByBillingAccountRequest>,
-  output: __S(434, __c27, 2) as any as S.Schema<BillingProfileListResult>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListBillingProfileByBillingAccountRequest>,
+  output: __S(482, __c30, 2) as any as S.Schema<BillingProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9028,8 +9230,8 @@ export const ListBillingRequestByBillingAccount: API.OperationMethod<
   ListBillingRequestByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<ListBillingRequestByBillingAccountRequest>,
-  output: __S(465, __c29, 1) as any as S.Schema<BillingRequestListResult>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListBillingRequestByBillingAccountRequest>,
+  output: __S(513, __c32, 1) as any as S.Schema<BillingRequestListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9043,8 +9245,8 @@ export const ListBillingRequestByBillingProfile: API.OperationMethod<
   ListBillingRequestByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<ListBillingRequestByBillingProfileRequest>,
-  output: __S(465, __c29, 1) as any as S.Schema<BillingRequestListResult>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListBillingRequestByBillingProfileRequest>,
+  output: __S(513, __c32, 1) as any as S.Schema<BillingRequestListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9058,8 +9260,8 @@ export const ListBillingRequestByCustomer: API.OperationMethod<
   ListBillingRequestByCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<ListBillingRequestByCustomerRequest>,
-  output: __S(465, __c29, 1) as any as S.Schema<BillingRequestListResult>,
+  input: __S(544, __c34, 0) as any as S.Schema<ListBillingRequestByCustomerRequest>,
+  output: __S(513, __c32, 1) as any as S.Schema<BillingRequestListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9073,8 +9275,8 @@ export const ListBillingRequestByInvoiceSection: API.OperationMethod<
   ListBillingRequestByInvoiceSectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<ListBillingRequestByInvoiceSectionRequest>,
-  output: __S(465, __c29, 1) as any as S.Schema<BillingRequestListResult>,
+  input: __S(560, __c35, 0) as any as S.Schema<ListBillingRequestByInvoiceSectionRequest>,
+  output: __S(513, __c32, 1) as any as S.Schema<BillingRequestListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9088,8 +9290,8 @@ export const ListBillingRequestByUser: API.OperationMethod<
   ListBillingRequestByUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<ListBillingRequestByUserRequest>,
-  output: __S(465, __c29, 1) as any as S.Schema<BillingRequestListResult>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListBillingRequestByUserRequest>,
+  output: __S(513, __c32, 1) as any as S.Schema<BillingRequestListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9103,8 +9305,8 @@ export const ListBillingRoleAssignmentByBillingAccount: API.OperationMethod<
   ListBillingRoleAssignmentByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<ListBillingRoleAssignmentByBillingAccountRequest>,
-  output: __S(225, __c14, 1) as any as S.Schema<BillingRoleAssignmentListResult>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListBillingRoleAssignmentByBillingAccountRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<BillingRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9118,8 +9320,8 @@ export const ListBillingRoleAssignmentByBillingProfile: API.OperationMethod<
   ListBillingRoleAssignmentByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c35, 0) as any as S.Schema<ListBillingRoleAssignmentByBillingProfileRequest>,
-  output: __S(225, __c14, 1) as any as S.Schema<BillingRoleAssignmentListResult>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListBillingRoleAssignmentByBillingProfileRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<BillingRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9133,8 +9335,8 @@ export const ListBillingRoleAssignmentByCustomer: API.OperationMethod<
   ListBillingRoleAssignmentByCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<ListBillingRoleAssignmentByCustomerRequest>,
-  output: __S(225, __c14, 1) as any as S.Schema<BillingRoleAssignmentListResult>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListBillingRoleAssignmentByCustomerRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<BillingRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9148,8 +9350,8 @@ export const ListBillingRoleAssignmentByDepartment: API.OperationMethod<
   ListBillingRoleAssignmentByDepartmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<ListBillingRoleAssignmentByDepartmentRequest>,
-  output: __S(225, __c14, 1) as any as S.Schema<BillingRoleAssignmentListResult>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListBillingRoleAssignmentByDepartmentRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<BillingRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9163,8 +9365,8 @@ export const ListBillingRoleAssignmentByEnrollmentAccount: API.OperationMethod<
   ListBillingRoleAssignmentByEnrollmentAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<ListBillingRoleAssignmentByEnrollmentAccountRequest>,
-  output: __S(225, __c14, 1) as any as S.Schema<BillingRoleAssignmentListResult>,
+  input: __S(688, __c43, 0) as any as S.Schema<ListBillingRoleAssignmentByEnrollmentAccountRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<BillingRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9178,8 +9380,8 @@ export const ListBillingRoleAssignmentByInvoiceSection: API.OperationMethod<
   ListBillingRoleAssignmentByInvoiceSectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<ListBillingRoleAssignmentByInvoiceSectionRequest>,
-  output: __S(225, __c14, 1) as any as S.Schema<BillingRoleAssignmentListResult>,
+  input: __S(704, __c44, 0) as any as S.Schema<ListBillingRoleAssignmentByInvoiceSectionRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<BillingRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9193,8 +9395,8 @@ export const ListBillingRoleDefinitionByBillingAccount: API.OperationMethod<
   ListBillingRoleDefinitionByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<ListBillingRoleDefinitionByBillingAccountRequest>,
-  output: __S(673, __c42, 1) as any as S.Schema<BillingRoleDefinitionListResult>,
+  input: __S(720, __c45, 0) as any as S.Schema<ListBillingRoleDefinitionByBillingAccountRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<BillingRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9208,8 +9410,8 @@ export const ListBillingRoleDefinitionByBillingProfile: API.OperationMethod<
   ListBillingRoleDefinitionByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c43, 0) as any as S.Schema<ListBillingRoleDefinitionByBillingProfileRequest>,
-  output: __S(673, __c42, 1) as any as S.Schema<BillingRoleDefinitionListResult>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListBillingRoleDefinitionByBillingProfileRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<BillingRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9223,8 +9425,8 @@ export const ListBillingRoleDefinitionByCustomer: API.OperationMethod<
   ListBillingRoleDefinitionByCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c44, 0) as any as S.Schema<ListBillingRoleDefinitionByCustomerRequest>,
-  output: __S(673, __c42, 1) as any as S.Schema<BillingRoleDefinitionListResult>,
+  input: __S(768, __c48, 0) as any as S.Schema<ListBillingRoleDefinitionByCustomerRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<BillingRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9238,8 +9440,8 @@ export const ListBillingRoleDefinitionByDepartment: API.OperationMethod<
   ListBillingRoleDefinitionByDepartmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<ListBillingRoleDefinitionByDepartmentRequest>,
-  output: __S(673, __c42, 1) as any as S.Schema<BillingRoleDefinitionListResult>,
+  input: __S(784, __c49, 0) as any as S.Schema<ListBillingRoleDefinitionByDepartmentRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<BillingRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9253,8 +9455,8 @@ export const ListBillingRoleDefinitionByEnrollmentAccount: API.OperationMethod<
   ListBillingRoleDefinitionByEnrollmentAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c46, 0) as any as S.Schema<ListBillingRoleDefinitionByEnrollmentAccountRequest>,
-  output: __S(673, __c42, 1) as any as S.Schema<BillingRoleDefinitionListResult>,
+  input: __S(800, __c50, 0) as any as S.Schema<ListBillingRoleDefinitionByEnrollmentAccountRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<BillingRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9268,8 +9470,8 @@ export const ListBillingRoleDefinitionByInvoiceSection: API.OperationMethod<
   ListBillingRoleDefinitionByInvoiceSectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c47, 0) as any as S.Schema<ListBillingRoleDefinitionByInvoiceSectionRequest>,
-  output: __S(673, __c42, 1) as any as S.Schema<BillingRoleDefinitionListResult>,
+  input: __S(816, __c51, 0) as any as S.Schema<ListBillingRoleDefinitionByInvoiceSectionRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<BillingRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9283,8 +9485,8 @@ export const ListBillingSubscriptionByBillingAccount: API.OperationMethod<
   ListBillingSubscriptionByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c48, 0) as any as S.Schema<ListBillingSubscriptionByBillingAccountRequest>,
-  output: __S(785, __c49, 1) as any as S.Schema<BillingSubscriptionListResult>,
+  input: __S(832, __c52, 0) as any as S.Schema<ListBillingSubscriptionByBillingAccountRequest>,
+  output: __S(849, __c53, 1) as any as S.Schema<BillingSubscriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9298,8 +9500,8 @@ export const ListBillingSubscriptionByBillingProfile: API.OperationMethod<
   ListBillingSubscriptionByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c50, 0) as any as S.Schema<ListBillingSubscriptionByBillingProfileRequest>,
-  output: __S(785, __c49, 1) as any as S.Schema<BillingSubscriptionListResult>,
+  input: __S(864, __c54, 0) as any as S.Schema<ListBillingSubscriptionByBillingProfileRequest>,
+  output: __S(849, __c53, 1) as any as S.Schema<BillingSubscriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9313,8 +9515,8 @@ export const ListBillingSubscriptionByCustomer: API.OperationMethod<
   ListBillingSubscriptionByCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c52, 0) as any as S.Schema<ListBillingSubscriptionByCustomerRequest>,
-  output: __S(785, __c49, 1) as any as S.Schema<BillingSubscriptionListResult>,
+  input: __S(896, __c56, 0) as any as S.Schema<ListBillingSubscriptionByCustomerRequest>,
+  output: __S(849, __c53, 1) as any as S.Schema<BillingSubscriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9329,11 +9531,11 @@ export const ListBillingSubscriptionByCustomerAtBillingAccount: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    848,
-    __c53,
+    912,
+    __c57,
     0,
   ) as any as S.Schema<ListBillingSubscriptionByCustomerAtBillingAccountRequest>,
-  output: __S(785, __c49, 1) as any as S.Schema<BillingSubscriptionListResult>,
+  output: __S(849, __c53, 1) as any as S.Schema<BillingSubscriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9347,8 +9549,8 @@ export const ListBillingSubscriptionByEnrollmentAccount: API.OperationMethod<
   ListBillingSubscriptionByEnrollmentAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c54, 0) as any as S.Schema<ListBillingSubscriptionByEnrollmentAccountRequest>,
-  output: __S(785, __c49, 1) as any as S.Schema<BillingSubscriptionListResult>,
+  input: __S(928, __c58, 0) as any as S.Schema<ListBillingSubscriptionByEnrollmentAccountRequest>,
+  output: __S(849, __c53, 1) as any as S.Schema<BillingSubscriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9362,8 +9564,8 @@ export const ListBillingSubscriptionByInvoiceSection: API.OperationMethod<
   ListBillingSubscriptionByInvoiceSectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(880, __c55, 0) as any as S.Schema<ListBillingSubscriptionByInvoiceSectionRequest>,
-  output: __S(785, __c49, 1) as any as S.Schema<BillingSubscriptionListResult>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListBillingSubscriptionByInvoiceSectionRequest>,
+  output: __S(849, __c53, 1) as any as S.Schema<BillingSubscriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9378,11 +9580,11 @@ export const ListBillingSubscriptionsAliasByBillingAccount: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    896,
-    __c56,
+    960,
+    __c60,
     0,
   ) as any as S.Schema<ListBillingSubscriptionsAliasByBillingAccountRequest>,
-  output: __S(898, __c56, 2) as any as S.Schema<BillingSubscriptionAliasListResult>,
+  output: __S(962, __c60, 2) as any as S.Schema<BillingSubscriptionAliasListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9396,8 +9598,8 @@ export const ListCustomerByBillingAccount: API.OperationMethod<
   ListCustomerByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(912, __c57, 0) as any as S.Schema<ListCustomerByBillingAccountRequest>,
-  output: __S(929, __c58, 1) as any as S.Schema<CustomerListResult>,
+  input: __S(976, __c61, 0) as any as S.Schema<ListCustomerByBillingAccountRequest>,
+  output: __S(993, __c62, 1) as any as S.Schema<CustomerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9411,8 +9613,8 @@ export const ListCustomerByBillingProfile: API.OperationMethod<
   ListCustomerByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(944, __c59, 0) as any as S.Schema<ListCustomerByBillingProfileRequest>,
-  output: __S(929, __c58, 1) as any as S.Schema<CustomerListResult>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListCustomerByBillingProfileRequest>,
+  output: __S(993, __c62, 1) as any as S.Schema<CustomerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9426,8 +9628,8 @@ export const ListDepartmentByBillingAccount: API.OperationMethod<
   ListDepartmentByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c60, 0) as any as S.Schema<ListDepartmentByBillingAccountRequest>,
-  output: __S(962, __c60, 2) as any as S.Schema<DepartmentListResult>,
+  input: __S(1024, __c64, 0) as any as S.Schema<ListDepartmentByBillingAccountRequest>,
+  output: __S(1026, __c64, 2) as any as S.Schema<DepartmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9441,8 +9643,8 @@ export const ListEnrollmentAccountByBillingAccount: API.OperationMethod<
   ListEnrollmentAccountByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(976, __c61, 0) as any as S.Schema<ListEnrollmentAccountByBillingAccountRequest>,
-  output: __S(993, __c62, 1) as any as S.Schema<EnrollmentAccountListResult>,
+  input: __S(1040, __c65, 0) as any as S.Schema<ListEnrollmentAccountByBillingAccountRequest>,
+  output: __S(1057, __c66, 1) as any as S.Schema<EnrollmentAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9456,8 +9658,8 @@ export const ListEnrollmentAccountByDepartment: API.OperationMethod<
   ListEnrollmentAccountByDepartmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1008, __c63, 0) as any as S.Schema<ListEnrollmentAccountByDepartmentRequest>,
-  output: __S(993, __c62, 1) as any as S.Schema<EnrollmentAccountListResult>,
+  input: __S(1072, __c67, 0) as any as S.Schema<ListEnrollmentAccountByDepartmentRequest>,
+  output: __S(1057, __c66, 1) as any as S.Schema<EnrollmentAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9471,8 +9673,8 @@ export const ListInvoiceByBillingAccount: API.OperationMethod<
   ListInvoiceByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1152, __c72, 0) as any as S.Schema<ListInvoiceByBillingAccountRequest>,
-  output: __S(1169, __c73, 1) as any as S.Schema<InvoiceListResult>,
+  input: __S(1216, __c76, 0) as any as S.Schema<ListInvoiceByBillingAccountRequest>,
+  output: __S(1233, __c77, 1) as any as S.Schema<InvoiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9486,8 +9688,8 @@ export const ListInvoiceByBillingProfile: API.OperationMethod<
   ListInvoiceByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c74, 0) as any as S.Schema<ListInvoiceByBillingProfileRequest>,
-  output: __S(1169, __c73, 1) as any as S.Schema<InvoiceListResult>,
+  input: __S(1248, __c78, 0) as any as S.Schema<ListInvoiceByBillingProfileRequest>,
+  output: __S(1233, __c77, 1) as any as S.Schema<InvoiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9501,8 +9703,8 @@ export const ListInvoiceByBillingSubscription: API.OperationMethod<
   ListInvoiceByBillingSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1200, __c75, 0) as any as S.Schema<ListInvoiceByBillingSubscriptionRequest>,
-  output: __S(1169, __c73, 1) as any as S.Schema<InvoiceListResult>,
+  input: __S(1264, __c79, 0) as any as S.Schema<ListInvoiceByBillingSubscriptionRequest>,
+  output: __S(1233, __c77, 1) as any as S.Schema<InvoiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9516,8 +9718,8 @@ export const ListInvoiceSectionByBillingProfile: API.OperationMethod<
   ListInvoiceSectionByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c76, 0) as any as S.Schema<ListInvoiceSectionByBillingProfileRequest>,
-  output: __S(1218, __c76, 2) as any as S.Schema<InvoiceSectionListResult>,
+  input: __S(1280, __c80, 0) as any as S.Schema<ListInvoiceSectionByBillingProfileRequest>,
+  output: __S(1282, __c80, 2) as any as S.Schema<InvoiceSectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9531,8 +9733,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1232, __c77, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(1236, __c77, 4) as any as S.Schema<OperationListResult>,
+  input: __S(1296, __c81, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1300, __c81, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9546,8 +9748,8 @@ export const ListPartnerTransfers: API.OperationMethod<
   ListPartnerTransfersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c78, 0) as any as S.Schema<ListPartnerTransfersRequest>,
-  output: __S(1250, __c78, 2) as any as S.Schema<PartnerTransferDetailsListResult>,
+  input: __S(1312, __c82, 0) as any as S.Schema<ListPartnerTransfersRequest>,
+  output: __S(1314, __c82, 2) as any as S.Schema<PartnerTransferDetailsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9561,8 +9763,8 @@ export const ListPaymentMethodByBillingAccount: API.OperationMethod<
   ListPaymentMethodByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1264, __c79, 0) as any as S.Schema<ListPaymentMethodByBillingAccountRequest>,
-  output: __S(1281, __c80, 1) as any as S.Schema<PaymentMethodsListResult>,
+  input: __S(1328, __c83, 0) as any as S.Schema<ListPaymentMethodByBillingAccountRequest>,
+  output: __S(1345, __c84, 1) as any as S.Schema<PaymentMethodsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9576,8 +9778,8 @@ export const ListPaymentMethodByBillingProfile: API.OperationMethod<
   ListPaymentMethodByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1296, __c81, 0) as any as S.Schema<ListPaymentMethodByBillingProfileRequest>,
-  output: __S(1298, __c81, 2) as any as S.Schema<PaymentMethodLinksListResult>,
+  input: __S(1360, __c85, 0) as any as S.Schema<ListPaymentMethodByBillingProfileRequest>,
+  output: __S(1362, __c85, 2) as any as S.Schema<PaymentMethodLinksListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9591,8 +9793,8 @@ export const ListPaymentMethodByUser: API.OperationMethod<
   ListPaymentMethodByUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c82, 0) as any as S.Schema<ListPaymentMethodByUserRequest>,
-  output: __S(1281, __c80, 1) as any as S.Schema<PaymentMethodsListResult>,
+  input: __S(1376, __c86, 0) as any as S.Schema<ListPaymentMethodByUserRequest>,
+  output: __S(1345, __c84, 1) as any as S.Schema<PaymentMethodsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9606,8 +9808,8 @@ export const ListProductByBillingAccount: API.OperationMethod<
   ListProductByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1328, __c83, 0) as any as S.Schema<ListProductByBillingAccountRequest>,
-  output: __S(1345, __c84, 1) as any as S.Schema<ProductListResult>,
+  input: __S(1392, __c87, 0) as any as S.Schema<ListProductByBillingAccountRequest>,
+  output: __S(1409, __c88, 1) as any as S.Schema<ProductListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9621,8 +9823,8 @@ export const ListProductByBillingProfile: API.OperationMethod<
   ListProductByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1392, __c87, 0) as any as S.Schema<ListProductByBillingProfileRequest>,
-  output: __S(1345, __c84, 1) as any as S.Schema<ProductListResult>,
+  input: __S(1472, __c92, 0) as any as S.Schema<ListProductByBillingProfileRequest>,
+  output: __S(1409, __c88, 1) as any as S.Schema<ProductListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9636,8 +9838,8 @@ export const ListProductByCustomer: API.OperationMethod<
   ListProductByCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c88, 0) as any as S.Schema<ListProductByCustomerRequest>,
-  output: __S(1345, __c84, 1) as any as S.Schema<ProductListResult>,
+  input: __S(1488, __c93, 0) as any as S.Schema<ListProductByCustomerRequest>,
+  output: __S(1409, __c88, 1) as any as S.Schema<ProductListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9651,8 +9853,8 @@ export const ListProductByInvoiceSection: API.OperationMethod<
   ListProductByInvoiceSectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1424, __c89, 0) as any as S.Schema<ListProductByInvoiceSectionRequest>,
-  output: __S(1345, __c84, 1) as any as S.Schema<ProductListResult>,
+  input: __S(1504, __c94, 0) as any as S.Schema<ListProductByInvoiceSectionRequest>,
+  output: __S(1409, __c88, 1) as any as S.Schema<ProductListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9666,8 +9868,8 @@ export const ListRecipientTransfers: API.OperationMethod<
   ListRecipientTransfersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c90, 0) as any as S.Schema<ListRecipientTransfersRequest>,
-  output: __S(1442, __c90, 2) as any as S.Schema<RecipientTransferDetailsListResult>,
+  input: __S(1520, __c95, 0) as any as S.Schema<ListRecipientTransfersRequest>,
+  output: __S(1522, __c95, 2) as any as S.Schema<RecipientTransferDetailsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9681,8 +9883,8 @@ export const ListReservationByBillingAccount: API.OperationMethod<
   ListReservationByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1456, __c91, 0) as any as S.Schema<ListReservationByBillingAccountRequest>,
-  output: __S(1473, __c92, 1) as any as S.Schema<ReservationsListResult>,
+  input: __S(1536, __c96, 0) as any as S.Schema<ListReservationByBillingAccountRequest>,
+  output: __S(1553, __c97, 1) as any as S.Schema<ReservationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9696,8 +9898,8 @@ export const ListReservationByBillingProfile: API.OperationMethod<
   ListReservationByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1488, __c93, 0) as any as S.Schema<ListReservationByBillingProfileRequest>,
-  output: __S(1473, __c92, 1) as any as S.Schema<ReservationsListResult>,
+  input: __S(1568, __c98, 0) as any as S.Schema<ListReservationByBillingProfileRequest>,
+  output: __S(1553, __c97, 1) as any as S.Schema<ReservationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9711,8 +9913,8 @@ export const ListReservationByReservationOrder: API.OperationMethod<
   ListReservationByReservationOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c94, 0) as any as S.Schema<ListReservationByReservationOrderRequest>,
-  output: __S(1505, __c94, 1) as any as S.Schema<ReservationList>,
+  input: __S(1584, __c99, 0) as any as S.Schema<ListReservationByReservationOrderRequest>,
+  output: __S(1585, __c99, 1) as any as S.Schema<ReservationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9726,8 +9928,8 @@ export const ListReservationOrderByBillingAccount: API.OperationMethod<
   ListReservationOrderByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1520, __c95, 0) as any as S.Schema<ListReservationOrderByBillingAccountRequest>,
-  output: __S(1522, __c95, 2) as any as S.Schema<ReservationOrderList>,
+  input: __S(1600, __c100, 0) as any as S.Schema<ListReservationOrderByBillingAccountRequest>,
+  output: __S(1602, __c100, 2) as any as S.Schema<ReservationOrderList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9741,8 +9943,8 @@ export const ListSavingsPlanByBillingAccount: API.OperationMethod<
   ListSavingsPlanByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c96, 0) as any as S.Schema<ListSavingsPlanByBillingAccountRequest>,
-  output: __S(1538, __c96, 2) as any as S.Schema<ListSavingsPlanByBillingAccountResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<ListSavingsPlanByBillingAccountRequest>,
+  output: __S(1618, __c101, 2) as any as S.Schema<ListSavingsPlanByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9756,8 +9958,8 @@ export const ListSavingsPlanBySavingsPlanOrder: API.OperationMethod<
   ListSavingsPlanBySavingsPlanOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c98, 0) as any as S.Schema<ListSavingsPlanBySavingsPlanOrderRequest>,
-  output: __S(1569, __c98, 1) as any as S.Schema<SavingsPlanModelList>,
+  input: __S(1648, __c103, 0) as any as S.Schema<ListSavingsPlanBySavingsPlanOrderRequest>,
+  output: __S(1649, __c103, 1) as any as S.Schema<SavingsPlanModelList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9771,8 +9973,8 @@ export const ListSavingsPlanOrderByBillingAccount: API.OperationMethod<
   ListSavingsPlanOrderByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1616, __c101, 0) as any as S.Schema<ListSavingsPlanOrderByBillingAccountRequest>,
-  output: __S(1618, __c101, 2) as any as S.Schema<SavingsPlanOrderModelList>,
+  input: __S(1696, __c106, 0) as any as S.Schema<ListSavingsPlanOrderByBillingAccountRequest>,
+  output: __S(1698, __c106, 2) as any as S.Schema<SavingsPlanOrderModelList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9786,8 +9988,8 @@ export const ListTransactionByBillingProfile: API.OperationMethod<
   ListTransactionByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1632, __c102, 0) as any as S.Schema<ListTransactionByBillingProfileRequest>,
-  output: __S(1652, __c103, 4) as any as S.Schema<TransactionListResult>,
+  input: __S(1712, __c107, 0) as any as S.Schema<ListTransactionByBillingProfileRequest>,
+  output: __S(1732, __c108, 4) as any as S.Schema<TransactionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9801,8 +10003,8 @@ export const ListTransactionByCustomer: API.OperationMethod<
   ListTransactionByCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1664, __c104, 0) as any as S.Schema<ListTransactionByCustomerRequest>,
-  output: __S(1652, __c103, 4) as any as S.Schema<TransactionListResult>,
+  input: __S(1744, __c109, 0) as any as S.Schema<ListTransactionByCustomerRequest>,
+  output: __S(1732, __c108, 4) as any as S.Schema<TransactionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9816,8 +10018,8 @@ export const ListTransactionByInvoice: API.OperationMethod<
   ListTransactionByInvoiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1680, __c105, 0) as any as S.Schema<ListTransactionByInvoiceRequest>,
-  output: __S(1652, __c103, 4) as any as S.Schema<TransactionListResult>,
+  input: __S(1760, __c110, 0) as any as S.Schema<ListTransactionByInvoiceRequest>,
+  output: __S(1732, __c108, 4) as any as S.Schema<TransactionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9831,8 +10033,8 @@ export const ListTransactionByInvoiceSection: API.OperationMethod<
   ListTransactionByInvoiceSectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c106, 0) as any as S.Schema<ListTransactionByInvoiceSectionRequest>,
-  output: __S(1652, __c103, 4) as any as S.Schema<TransactionListResult>,
+  input: __S(1776, __c111, 0) as any as S.Schema<ListTransactionByInvoiceSectionRequest>,
+  output: __S(1732, __c108, 4) as any as S.Schema<TransactionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9846,8 +10048,8 @@ export const ListTransfers: API.OperationMethod<
   ListTransfersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1712, __c107, 0) as any as S.Schema<ListTransfersRequest>,
-  output: __S(1714, __c107, 2) as any as S.Schema<TransferDetailsListResult>,
+  input: __S(1792, __c112, 0) as any as S.Schema<ListTransfersRequest>,
+  output: __S(1794, __c112, 2) as any as S.Schema<TransferDetailsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9861,8 +10063,8 @@ export const MergeBillingSubscription: API.OperationMethod<
   MergeBillingSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c108, 0) as any as S.Schema<MergeBillingSubscriptionRequest>,
-  output: __S(1377, __c86, 1) as any as S.Schema<MergeBillingSubscriptionResponse>,
+  input: __S(1808, __c113, 0) as any as S.Schema<MergeBillingSubscriptionRequest>,
+  output: __S(1440, __c90, 0) as any as S.Schema<MergeBillingSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9876,8 +10078,8 @@ export const MoveBillingSubscription: API.OperationMethod<
   MoveBillingSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1744, __c109, 0) as any as S.Schema<MoveBillingSubscriptionRequest>,
-  output: __S(1377, __c86, 1) as any as S.Schema<MoveBillingSubscriptionResponse>,
+  input: __S(1824, __c114, 0) as any as S.Schema<MoveBillingSubscriptionRequest>,
+  output: __S(1440, __c90, 0) as any as S.Schema<MoveBillingSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9891,8 +10093,8 @@ export const MoveProduct: API.OperationMethod<
   MoveProductError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c110, 0) as any as S.Schema<MoveProductRequest>,
-  output: __S(3873, __c242, 1) as any as S.Schema<MoveProductResponse>,
+  input: __S(1840, __c115, 0) as any as S.Schema<MoveProductRequest>,
+  output: __S(1841, __c115, 1) as any as S.Schema<MoveProductResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9906,8 +10108,8 @@ export const PartnerTransfersInitiate: API.OperationMethod<
   PartnerTransfersInitiateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1777, __c111, 1) as any as S.Schema<PartnerTransfersInitiateRequest>,
-  output: __S(2145, __c134, 1) as any as S.Schema<PartnerTransfersInitiateResponse>,
+  input: __S(1857, __c116, 1) as any as S.Schema<PartnerTransfersInitiateRequest>,
+  output: __S(2257, __c141, 1) as any as S.Schema<PartnerTransfersInitiateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9921,8 +10123,8 @@ export const PoliciesCreateOrUpdateByBillingAccount: API.OperationMethod<
   PoliciesCreateOrUpdateByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1808, __c113, 0) as any as S.Schema<PoliciesCreateOrUpdateByBillingAccountRequest>,
-  output: __S(3713, __c232, 1) as any as S.Schema<PoliciesCreateOrUpdateByBillingAccountResponse>,
+  input: __S(1888, __c118, 0) as any as S.Schema<PoliciesCreateOrUpdateByBillingAccountRequest>,
+  output: __S(1889, __c118, 1) as any as S.Schema<PoliciesCreateOrUpdateByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9936,8 +10138,8 @@ export const PoliciesCreateOrUpdateByBillingProfile: API.OperationMethod<
   PoliciesCreateOrUpdateByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1824, __c114, 0) as any as S.Schema<PoliciesCreateOrUpdateByBillingProfileRequest>,
-  output: __S(3777, __c236, 1) as any as S.Schema<PoliciesCreateOrUpdateByBillingProfileResponse>,
+  input: __S(1904, __c119, 0) as any as S.Schema<PoliciesCreateOrUpdateByBillingProfileRequest>,
+  output: __S(1905, __c119, 1) as any as S.Schema<PoliciesCreateOrUpdateByBillingProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9951,8 +10153,8 @@ export const PoliciesCreateOrUpdateByCustomer: API.OperationMethod<
   PoliciesCreateOrUpdateByCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1840, __c115, 0) as any as S.Schema<PoliciesCreateOrUpdateByCustomerRequest>,
-  output: __S(3809, __c238, 1) as any as S.Schema<PoliciesCreateOrUpdateByCustomerResponse>,
+  input: __S(1920, __c120, 0) as any as S.Schema<PoliciesCreateOrUpdateByCustomerRequest>,
+  output: __S(1936, __c121, 0) as any as S.Schema<PoliciesCreateOrUpdateByCustomerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9967,14 +10169,14 @@ export const PoliciesCreateOrUpdateByCustomerAtBillingAccount: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1856,
-    __c116,
+    1952,
+    __c122,
     0,
   ) as any as S.Schema<PoliciesCreateOrUpdateByCustomerAtBillingAccountRequest>,
   output: __S(
-    3809,
-    __c238,
-    1,
+    1936,
+    __c121,
+    0,
   ) as any as S.Schema<PoliciesCreateOrUpdateByCustomerAtBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9989,8 +10191,8 @@ export const ProductsValidateMoveEligibility: API.OperationMethod<
   ProductsValidateMoveEligibilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1872, __c117, 0) as any as S.Schema<ProductsValidateMoveEligibilityRequest>,
-  output: __S(1601, __c100, 1) as any as S.Schema<MoveProductEligibilityResult>,
+  input: __S(1968, __c123, 0) as any as S.Schema<ProductsValidateMoveEligibilityRequest>,
+  output: __S(1681, __c105, 1) as any as S.Schema<MoveProductEligibilityResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10004,7 +10206,7 @@ export const RecipientTransfersDecline: API.OperationMethod<
   RecipientTransfersDeclineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1888, __c118, 0) as any as S.Schema<RecipientTransfersDeclineRequest>,
+  input: __S(1984, __c124, 0) as any as S.Schema<RecipientTransfersDeclineRequest>,
   output: __S(81, __c5, 1) as any as S.Schema<RecipientTransfersDeclineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10019,8 +10221,8 @@ export const SavingsPlansValidateUpdateByBillingAccount: API.OperationMethod<
   SavingsPlansValidateUpdateByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1905, __c119, 1) as any as S.Schema<SavingsPlansValidateUpdateByBillingAccountRequest>,
-  output: __S(1908, __c119, 4) as any as S.Schema<SavingsPlanValidateResponse>,
+  input: __S(2001, __c125, 1) as any as S.Schema<SavingsPlansValidateUpdateByBillingAccountRequest>,
+  output: __S(2004, __c125, 4) as any as S.Schema<SavingsPlanValidateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10034,8 +10236,8 @@ export const TransactionsTransactionsDownloadByInvoice: API.OperationMethod<
   TransactionsTransactionsDownloadByInvoiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1936, __c121, 0) as any as S.Schema<TransactionsTransactionsDownloadByInvoiceRequest>,
-  output: __S(2688, __c168, 0) as any as S.Schema<DocumentDownloadResult>,
+  input: __S(2032, __c127, 0) as any as S.Schema<TransactionsTransactionsDownloadByInvoiceRequest>,
+  output: __S(2800, __c175, 0) as any as S.Schema<DocumentDownloadResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10049,8 +10251,8 @@ export const TransfersInitiate: API.OperationMethod<
   TransfersInitiateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1953, __c122, 1) as any as S.Schema<TransfersInitiateRequest>,
-  output: __S(2209, __c138, 1) as any as S.Schema<TransfersInitiateResponse>,
+  input: __S(2049, __c128, 1) as any as S.Schema<TransfersInitiateRequest>,
+  output: __S(2321, __c145, 1) as any as S.Schema<TransfersInitiateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10064,8 +10266,8 @@ export const UpdateBillingAccount: API.OperationMethod<
   UpdateBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1971, __c123, 3) as any as S.Schema<UpdateBillingAccountRequest>,
-  output: __S(117, __c7, 5) as any as S.Schema<UpdateBillingAccountResponse>,
+  input: __S(2067, __c129, 3) as any as S.Schema<UpdateBillingAccountRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<UpdateBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10079,8 +10281,8 @@ export const UpdateBillingProperty: API.OperationMethod<
   UpdateBillingPropertyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2001, __c125, 1) as any as S.Schema<UpdateBillingPropertyRequest>,
-  output: __S(2962, __c185, 2) as any as S.Schema<UpdateBillingPropertyResponse>,
+  input: __S(2113, __c132, 1) as any as S.Schema<UpdateBillingPropertyRequest>,
+  output: __S(3122, __c195, 2) as any as S.Schema<UpdateBillingPropertyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10094,8 +10296,8 @@ export const UpdateBillingSubscription: API.OperationMethod<
   UpdateBillingSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2016, __c126, 0) as any as S.Schema<UpdateBillingSubscriptionRequest>,
-  output: __S(1377, __c86, 1) as any as S.Schema<UpdateBillingSubscriptionResponse>,
+  input: __S(2128, __c133, 0) as any as S.Schema<UpdateBillingSubscriptionRequest>,
+  output: __S(1440, __c90, 0) as any as S.Schema<UpdateBillingSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10109,8 +10311,8 @@ export const UpdateProduct: API.OperationMethod<
   UpdateProductError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2033, __c127, 1) as any as S.Schema<UpdateProductRequest>,
-  output: __S(3873, __c242, 1) as any as S.Schema<UpdateProductResponse>,
+  input: __S(2145, __c134, 1) as any as S.Schema<UpdateProductRequest>,
+  output: __S(4144, __c259, 0) as any as S.Schema<UpdateProductResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10124,8 +10326,8 @@ export const UpdateReservationByBillingAccount: API.OperationMethod<
   UpdateReservationByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2052, __c128, 4) as any as S.Schema<UpdateReservationByBillingAccountRequest>,
-  output: __S(3945, __c246, 9) as any as S.Schema<UpdateReservationByBillingAccountResponse>,
+  input: __S(2164, __c135, 4) as any as S.Schema<UpdateReservationByBillingAccountRequest>,
+  output: __S(2165, __c135, 5) as any as S.Schema<UpdateReservationByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10139,8 +10341,8 @@ export const UpdateSavingsPlanByBillingAccount: API.OperationMethod<
   UpdateSavingsPlanByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2064, __c129, 0) as any as S.Schema<UpdateSavingsPlanByBillingAccountRequest>,
-  output: __S(4113, __c257, 1) as any as S.Schema<UpdateSavingsPlanByBillingAccountResponse>,
+  input: __S(2176, __c136, 0) as any as S.Schema<UpdateSavingsPlanByBillingAccountRequest>,
+  output: __S(2177, __c136, 1) as any as S.Schema<UpdateSavingsPlanByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10154,8 +10356,8 @@ export const ValidateAddress: API.OperationMethod<
   ValidateAddressError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2080, __c130, 0) as any as S.Schema<ValidateAddressRequest>,
-  output: __S(2082, __c130, 2) as any as S.Schema<AddressValidationResponse>,
+  input: __S(2192, __c137, 0) as any as S.Schema<ValidateAddressRequest>,
+  output: __S(2194, __c137, 2) as any as S.Schema<AddressValidationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10169,8 +10371,8 @@ export const ValidateBillingAccountPaymentTerms: API.OperationMethod<
   ValidateBillingAccountPaymentTermsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2096, __c131, 0) as any as S.Schema<ValidateBillingAccountPaymentTermsRequest>,
-  output: __S(2850, __c178, 2) as any as S.Schema<PaymentTermsEligibilityResult>,
+  input: __S(2208, __c138, 0) as any as S.Schema<ValidateBillingAccountPaymentTermsRequest>,
+  output: __S(2978, __c186, 2) as any as S.Schema<PaymentTermsEligibilityResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10184,8 +10386,8 @@ export const ValidateRecipientTransfer: API.OperationMethod<
   ValidateRecipientTransferError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2112, __c132, 0) as any as S.Schema<ValidateRecipientTransferRequest>,
-  output: __S(2118, __c132, 6) as any as S.Schema<ValidateTransferListResponse>,
+  input: __S(2224, __c139, 0) as any as S.Schema<ValidateRecipientTransferRequest>,
+  output: __S(2230, __c139, 6) as any as S.Schema<ValidateTransferListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10314,7 +10516,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
-          body: __S(128, __c8, 0).pipe(T.HttpBody()),
+          body: __S(144, __c9, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10327,6 +10529,23 @@ function __c6(j: number): any {
   }
 }
 function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(132, __c8, 4)),
+          tags: S.optional(__S(33, __c2, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AddBillingAccountPaymentTermsResponse" });
+  }
+}
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10344,7 +10563,7 @@ function __c7(j: number): any {
           cloud: S.optional(S.String),
           poNumber: S.optional(S.String),
           markupStatus: S.optional(S.String),
-          indirectRelationshipInfo: S.optional(__S(160, __c10, 0)),
+          indirectRelationshipInfo: S.optional(__S(176, __c11, 0)),
           invoiceRecipient: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnrollmentDetails" });
@@ -10353,7 +10572,7 @@ function __c7(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           required: S.optional(S.Boolean),
-          type: S.optional(__S(144, __c9, 0)),
+          type: S.optional(__S(160, __c10, 0)),
         }),
       ).annotate({ identifier: "RegistrationNumber" });
     case 2:
@@ -10367,7 +10586,7 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "TaxIdentifier" });
     case 3:
-      return S.Array(__S(114, __c7, 2));
+      return S.Array(__S(130, __c8, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -10378,44 +10597,33 @@ function __c7(j: number): any {
           accountStatusReasonCode: S.optional(S.String),
           agreementType: S.optional(S.String),
           displayName: S.optional(S.String),
-          enrollmentDetails: S.optional(__S(112, __c7, 0)),
+          enrollmentDetails: S.optional(__S(128, __c8, 0)),
           hasReadAccess: S.optional(S.Boolean),
           hasNoBillingProfiles: S.optional(S.Boolean),
           notificationEmailAddress: S.optional(S.String),
           primaryBillingTenantId: S.optional(S.String),
-          soldTo: S.optional(__S(176, __c11, 0)),
-          registrationNumber: S.optional(__S(113, __c7, 1)),
+          soldTo: S.optional(__S(192, __c12, 0)),
+          registrationNumber: S.optional(__S(129, __c8, 1)),
           billingRelationshipTypes: S.optional(__S(16, __c1, 0)),
-          qualifications: S.optional(__S(144, __c9, 0)),
-          taxIds: S.optional(__S(115, __c7, 3)),
+          qualifications: S.optional(__S(160, __c10, 0)),
+          taxIds: S.optional(__S(131, __c8, 3)),
         }),
       ).annotate({ identifier: "BillingAccountProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(116, __c7, 4)),
-          tags: S.optional(__S(33, __c2, 1)),
-        }),
-      ).annotate({ identifier: "AddBillingAccountPaymentTermsResponse" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(192, __c12, 0));
   }
 }
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(__S(208, __c13, 0));
   }
 }
 function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10427,7 +10635,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "IndirectRelationshipInfo" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10451,7 +10659,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "AddressDetails" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10463,7 +10671,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "PaymentTermInput" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10482,20 +10690,41 @@ function __c13(j: number): any {
       ).annotate({ identifier: "BillingRoleAssignmentsResolveByBillingAccountRequest" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(3313, __c207, 1));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(224, __c14, 0),
+          value: __S(256, __c16, 0),
           nextLink: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
-      ).annotate({ identifier: "BillingRoleAssignmentListResult" });
+      ).annotate({ identifier: "BillingRoleAssignmentsResolveByBillingAccountResponse" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(272, __c17, 0));
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(3504, __c219, 0)),
+          tags: S.optional(__S(33, __c2, 1)),
+        }),
+      ).annotate({ identifier: "BillingRoleAssignment" });
+  }
+}
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10512,17 +10741,17 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "ListAgreementByBillingAccountRequest" });
     case 1:
-      return S.Array(__S(2805, __c175, 5));
+      return S.Array(__S(2917, __c182, 5));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(241, __c15, 1),
+          value: __S(289, __c18, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgreementListResult" });
   }
 }
-function __c16(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10545,17 +10774,17 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "ListAssociatedTenantByBillingAccountRequest" });
     case 1:
-      return S.Array(__S(2177, __c136, 1));
+      return S.Array(__S(2944, __c184, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(257, __c16, 1),
+          value: __S(305, __c19, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssociatedTenantListResult" });
   }
 }
-function __c17(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10582,17 +10811,17 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "ListBillingAccountsRequest" });
     case 1:
-      return S.Array(__S(117, __c7, 5));
+      return S.Array(__S(3056, __c191, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(273, __c17, 1),
+          value: __S(321, __c20, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingAccountListResult" });
   }
 }
-function __c18(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10609,18 +10838,18 @@ function __c18(j: number): any {
       ).annotate({ identifier: "ListBillingPermissionsByBillingAccountRequest" });
   }
 }
-function __c19(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3137, __c196, 1),
+          value: __S(3313, __c207, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingPermissionListResult" });
   }
 }
-function __c20(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10638,7 +10867,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "ListBillingPermissionsByBillingProfileRequest" });
   }
 }
-function __c21(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10657,7 +10886,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "ListBillingPermissionsByCustomerRequest" });
   }
 }
-function __c22(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10675,7 +10904,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "ListBillingPermissionsByCustomerAtBillingAccountRequest" });
   }
 }
-function __c23(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10693,7 +10922,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "ListBillingPermissionsByDepartmentRequest" });
   }
 }
-function __c24(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10711,7 +10940,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "ListBillingPermissionsByEnrollmentAccountRequest" });
   }
 }
-function __c25(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10730,7 +10959,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "ListBillingPermissionsByInvoiceSectionRequest" });
   }
 }
-function __c26(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10750,7 +10979,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "BillingRoleAssignmentsResolveByBillingProfileRequest" });
   }
 }
-function __c27(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10773,17 +11002,17 @@ function __c27(j: number): any {
         ),
       ).annotate({ identifier: "ListBillingProfileByBillingAccountRequest" });
     case 1:
-      return S.Array(__S(2595, __c162, 3));
+      return S.Array(__S(3088, __c193, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(433, __c27, 1),
+          value: __S(481, __c30, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingProfileListResult" });
   }
 }
-function __c28(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10806,20 +11035,20 @@ function __c28(j: number): any {
       ).annotate({ identifier: "ListBillingRequestByBillingAccountRequest" });
   }
 }
-function __c29(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(3075, __c192, 3));
+      return S.Array(__S(3152, __c197, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(464, __c29, 0),
+          value: __S(512, __c32, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingRequestListResult" });
   }
 }
-function __c30(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10843,7 +11072,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "ListBillingRequestByBillingProfileRequest" });
   }
 }
-function __c31(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10868,7 +11097,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "ListBillingRequestByCustomerRequest" });
   }
 }
-function __c32(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10893,7 +11122,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "ListBillingRequestByInvoiceSectionRequest" });
   }
 }
-function __c33(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10915,7 +11144,7 @@ function __c33(j: number): any {
       ).annotate({ identifier: "ListBillingRequestByUserRequest" });
   }
 }
-function __c34(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10935,7 +11164,18 @@ function __c34(j: number): any {
       ).annotate({ identifier: "ListBillingRoleAssignmentByBillingAccountRequest" });
   }
 }
-function __c35(j: number): any {
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(256, __c16, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BillingRoleAssignmentListResult" });
+  }
+}
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10956,7 +11196,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "ListBillingRoleAssignmentByBillingProfileRequest" });
   }
 }
-function __c36(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10978,7 +11218,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "ListBillingRoleAssignmentByCustomerRequest" });
   }
 }
-function __c37(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10996,7 +11236,7 @@ function __c37(j: number): any {
       ).annotate({ identifier: "ListBillingRoleAssignmentByDepartmentRequest" });
   }
 }
-function __c38(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11017,7 +11257,7 @@ function __c38(j: number): any {
       ).annotate({ identifier: "BillingRoleAssignmentsResolveByCustomerRequest" });
   }
 }
-function __c39(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11035,7 +11275,7 @@ function __c39(j: number): any {
       ).annotate({ identifier: "ListBillingRoleAssignmentByEnrollmentAccountRequest" });
   }
 }
-function __c40(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11057,7 +11297,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "ListBillingRoleAssignmentByInvoiceSectionRequest" });
   }
 }
-function __c41(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11074,20 +11314,20 @@ function __c41(j: number): any {
       ).annotate({ identifier: "ListBillingRoleDefinitionByBillingAccountRequest" });
   }
 }
-function __c42(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(3153, __c197, 1));
+      return S.Array(__S(3329, __c208, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(672, __c42, 0),
+          value: __S(736, __c46, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingRoleDefinitionListResult" });
   }
 }
-function __c43(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11105,7 +11345,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "ListBillingRoleDefinitionByBillingProfileRequest" });
   }
 }
-function __c44(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11124,7 +11364,7 @@ function __c44(j: number): any {
       ).annotate({ identifier: "ListBillingRoleDefinitionByCustomerRequest" });
   }
 }
-function __c45(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11142,7 +11382,7 @@ function __c45(j: number): any {
       ).annotate({ identifier: "ListBillingRoleDefinitionByDepartmentRequest" });
   }
 }
-function __c46(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11160,7 +11400,7 @@ function __c46(j: number): any {
       ).annotate({ identifier: "ListBillingRoleDefinitionByEnrollmentAccountRequest" });
   }
 }
-function __c47(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11179,7 +11419,7 @@ function __c47(j: number): any {
       ).annotate({ identifier: "ListBillingRoleDefinitionByInvoiceSectionRequest" });
   }
 }
-function __c48(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11206,21 +11446,21 @@ function __c48(j: number): any {
       ).annotate({ identifier: "ListBillingSubscriptionByBillingAccountRequest" });
   }
 }
-function __c49(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1377, __c86, 1));
+      return S.Array(__S(3440, __c215, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
           totalCount: S.optional(S.Number),
-          value: S.optional(__S(784, __c49, 0)),
+          value: S.optional(__S(848, __c53, 0)),
         }),
       ).annotate({ identifier: "BillingSubscriptionListResult" });
   }
 }
-function __c50(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11246,7 +11486,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "ListBillingSubscriptionByBillingProfileRequest" });
   }
 }
-function __c51(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11267,7 +11507,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "BillingRoleAssignmentsResolveByInvoiceSectionRequest" });
   }
 }
-function __c52(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11294,7 +11534,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "ListBillingSubscriptionByCustomerRequest" });
   }
 }
-function __c53(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11320,7 +11560,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "ListBillingSubscriptionByCustomerAtBillingAccountRequest" });
   }
 }
-function __c54(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11344,7 +11584,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "ListBillingSubscriptionByEnrollmentAccountRequest" });
   }
 }
-function __c55(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11371,7 +11611,7 @@ function __c55(j: number): any {
       ).annotate({ identifier: "ListBillingSubscriptionByInvoiceSectionRequest" });
   }
 }
-function __c56(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11394,17 +11634,17 @@ function __c56(j: number): any {
         ),
       ).annotate({ identifier: "ListBillingSubscriptionsAliasByBillingAccountRequest" });
     case 1:
-      return S.Array(__S(1137, __c71, 1));
+      return S.Array(__S(3552, __c222, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(897, __c56, 1),
+          value: __S(961, __c60, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingSubscriptionAliasListResult" });
   }
 }
-function __c57(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11428,20 +11668,20 @@ function __c57(j: number): any {
       ).annotate({ identifier: "ListCustomerByBillingAccountRequest" });
   }
 }
-function __c58(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(3362, __c210, 2));
+      return S.Array(__S(3586, __c224, 2));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(928, __c58, 0),
+          value: __S(992, __c62, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomerListResult" });
   }
 }
-function __c59(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11466,7 +11706,7 @@ function __c59(j: number): any {
       ).annotate({ identifier: "ListCustomerByBillingProfileRequest" });
   }
 }
-function __c60(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11487,17 +11727,17 @@ function __c60(j: number): any {
         ),
       ).annotate({ identifier: "ListDepartmentByBillingAccountRequest" });
     case 1:
-      return S.Array(__S(3409, __c213, 1));
+      return S.Array(__S(3633, __c227, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(961, __c60, 1),
+          value: __S(1025, __c64, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DepartmentListResult" });
   }
 }
-function __c61(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11520,20 +11760,20 @@ function __c61(j: number): any {
       ).annotate({ identifier: "ListEnrollmentAccountByBillingAccountRequest" });
   }
 }
-function __c62(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(3441, __c215, 1));
+      return S.Array(__S(3665, __c229, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(992, __c62, 0),
+          value: __S(1056, __c66, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnrollmentAccountListResult" });
   }
 }
-function __c63(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11557,14 +11797,14 @@ function __c63(j: number): any {
       ).annotate({ identifier: "ListEnrollmentAccountByDepartmentRequest" });
   }
 }
-function __c64(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           aliasName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1120, __c70, 0)),
+          properties: S.optional(__S(1168, __c73, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }).pipe(
           T.Http({
@@ -11575,9 +11815,22 @@ function __c64(j: number): any {
           }),
         ),
       ).annotate({ identifier: "BillingSubscriptionsAliasesCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(1200, __c75, 0)),
+          tags: S.optional(__S(33, __c2, 1)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "BillingSubscriptionsAliasesCreateOrUpdateResponse" });
   }
 }
-function __c65(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11588,7 +11841,7 @@ function __c65(j: number): any {
       ).annotate({ identifier: "Amount" });
   }
 }
-function __c66(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11598,10 +11851,10 @@ function __c66(j: number): any {
         }),
       ).annotate({ identifier: "BillingSubscriptionStatusDetails" });
     case 1:
-      return S.Array(__S(1056, __c66, 0));
+      return S.Array(__S(1120, __c70, 0));
   }
 }
-function __c67(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11644,7 +11897,7 @@ function __c67(j: number): any {
       ).annotate({ identifier: "SystemOverrides" });
   }
 }
-function __c68(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11655,20 +11908,14 @@ function __c68(j: number): any {
       ).annotate({ identifier: "Reseller" });
   }
 }
-function __c69(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "SystemOverridesInput" });
-  }
-}
-function __c70(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           autoRenew: S.optional(S.String),
           beneficiaryTenantId: S.optional(S.String),
-          beneficiary: S.optional(__S(1072, __c67, 0)),
+          beneficiary: S.optional(__S(1136, __c71, 0)),
           billingFrequency: S.optional(S.String),
           billingProfileId: S.optional(S.String),
           consumptionCostCenter: S.optional(S.String),
@@ -11678,21 +11925,27 @@ function __c70(j: number): any {
           productTypeId: S.optional(S.String),
           quantity: S.optional(S.Number),
           skuId: S.optional(S.String),
-          systemOverrides: S.optional(__S(1104, __c69, 0)),
+          systemOverrides: S.optional(__S(1184, __c74, 0)),
           termDuration: S.optional(S.String),
           provisioningTenantId: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingSubscriptionAliasPropertiesInput" });
   }
 }
-function __c71(j: number): any {
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "SystemOverridesInput" });
+  }
+}
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           autoRenew: S.optional(S.String),
           beneficiaryTenantId: S.optional(S.String),
-          beneficiary: S.optional(__S(1072, __c67, 0)),
+          beneficiary: S.optional(__S(1136, __c71, 0)),
           billingFrequency: S.optional(S.String),
           billingProfileId: S.optional(S.String),
           billingPolicies: S.optional(__S(33, __c2, 1)),
@@ -11705,24 +11958,24 @@ function __c71(j: number): any {
           displayName: S.optional(S.String),
           enrollmentAccountId: S.optional(S.String),
           enrollmentAccountDisplayName: S.optional(S.String),
-          enrollmentAccountSubscriptionDetails: S.optional(__S(1073, __c67, 1)),
+          enrollmentAccountSubscriptionDetails: S.optional(__S(1137, __c71, 1)),
           invoiceSectionId: S.optional(S.String),
           invoiceSectionDisplayName: S.optional(S.String),
           invoiceSectionName: S.optional(S.String),
-          lastMonthCharges: S.optional(__S(1040, __c65, 0)),
-          monthToDateCharges: S.optional(__S(1040, __c65, 0)),
-          nextBillingCycleDetails: S.optional(__S(1074, __c67, 2)),
+          lastMonthCharges: S.optional(__S(1104, __c69, 0)),
+          monthToDateCharges: S.optional(__S(1104, __c69, 0)),
+          nextBillingCycleDetails: S.optional(__S(1138, __c71, 2)),
           offerId: S.optional(S.String),
           productCategory: S.optional(S.String),
           productType: S.optional(S.String),
           productTypeId: S.optional(S.String),
           purchaseDate: S.optional(S.String),
           quantity: S.optional(S.Number),
-          reseller: S.optional(__S(1088, __c68, 0)),
-          renewalTermDetails: S.optional(__S(1075, __c67, 3)),
+          reseller: S.optional(__S(1152, __c72, 0)),
+          renewalTermDetails: S.optional(__S(1139, __c71, 3)),
           skuId: S.optional(S.String),
           skuDescription: S.optional(S.String),
-          systemOverrides: S.optional(__S(1076, __c67, 4)),
+          systemOverrides: S.optional(__S(1140, __c71, 4)),
           resourceUri: S.optional(S.String),
           termDuration: S.optional(S.String),
           termStartDate: S.optional(S.String),
@@ -11732,25 +11985,14 @@ function __c71(j: number): any {
           operationStatus: S.optional(S.String),
           provisioningState: S.optional(S.String),
           subscriptionId: S.optional(S.String),
-          suspensionReasons: S.optional(__S(144, __c9, 0)),
-          suspensionReasonDetails: S.optional(__S(1057, __c66, 1)),
+          suspensionReasons: S.optional(__S(160, __c10, 0)),
+          suspensionReasonDetails: S.optional(__S(1121, __c70, 1)),
           billingSubscriptionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingSubscriptionAliasProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(1136, __c71, 0)),
-          tags: S.optional(__S(33, __c2, 1)),
-        }),
-      ).annotate({ identifier: "BillingSubscriptionsAliasesCreateOrUpdateResponse" });
   }
 }
-function __c72(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11775,20 +12017,20 @@ function __c72(j: number): any {
       ).annotate({ identifier: "ListInvoiceByBillingAccountRequest" });
   }
 }
-function __c73(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(3497, __c218, 9));
+      return S.Array(__S(3721, __c232, 9));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1168, __c73, 0),
+          value: __S(1232, __c77, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "InvoiceListResult" });
   }
 }
-function __c74(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11814,7 +12056,7 @@ function __c74(j: number): any {
       ).annotate({ identifier: "ListInvoiceByBillingProfileRequest" });
   }
 }
-function __c75(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11839,7 +12081,7 @@ function __c75(j: number): any {
       ).annotate({ identifier: "ListInvoiceByBillingSubscriptionRequest" });
   }
 }
-function __c76(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11863,17 +12105,17 @@ function __c76(j: number): any {
         ),
       ).annotate({ identifier: "ListInvoiceSectionByBillingProfileRequest" });
     case 1:
-      return S.Array(__S(3553, __c222, 1));
+      return S.Array(__S(3776, __c236, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1217, __c76, 1),
+          value: __S(1281, __c80, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "InvoiceSectionListResult" });
   }
 }
-function __c77(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11900,21 +12142,21 @@ function __c77(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(1233, __c77, 1)),
+          display: S.optional(__S(1297, __c81, 1)),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(1234, __c77, 2));
+      return S.Array(__S(1298, __c81, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1235, __c77, 3)),
+          value: S.optional(__S(1299, __c81, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
   }
 }
-function __c78(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11932,17 +12174,17 @@ function __c78(j: number): any {
         ),
       ).annotate({ identifier: "ListPartnerTransfersRequest" });
     case 1:
-      return S.Array(__S(2145, __c134, 1));
+      return S.Array(__S(2257, __c141, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1249, __c78, 1),
+          value: __S(1313, __c82, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PartnerTransferDetailsListResult" });
   }
 }
-function __c79(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11959,20 +12201,20 @@ function __c79(j: number): any {
       ).annotate({ identifier: "ListPaymentMethodByBillingAccountRequest" });
   }
 }
-function __c80(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(3632, __c227, 0));
+      return S.Array(__S(3872, __c242, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1280, __c80, 0),
+          value: __S(1344, __c84, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PaymentMethodsListResult" });
   }
 }
-function __c81(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11989,17 +12231,17 @@ function __c81(j: number): any {
         ),
       ).annotate({ identifier: "ListPaymentMethodByBillingProfileRequest" });
     case 1:
-      return S.Array(__S(3665, __c229, 1));
+      return S.Array(__S(3905, __c244, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1297, __c81, 1),
+          value: __S(1361, __c85, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PaymentMethodLinksListResult" });
   }
 }
-function __c82(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12014,7 +12256,7 @@ function __c82(j: number): any {
       ).annotate({ identifier: "ListPaymentMethodByUserRequest" });
   }
 }
-function __c83(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12037,20 +12279,20 @@ function __c83(j: number): any {
       ).annotate({ identifier: "ListProductByBillingAccountRequest" });
   }
 }
-function __c84(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(3873, __c242, 1));
+      return S.Array(__S(4144, __c259, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1344, __c84, 0),
+          value: __S(1408, __c88, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductListResult" });
   }
 }
-function __c85(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12073,14 +12315,31 @@ function __c85(j: number): any {
       ).annotate({ identifier: "BillingSubscriptionsSplitRequest" });
   }
 }
-function __c86(j: number): any {
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(1456, __c91, 0)),
+          tags: S.optional(__S(33, __c2, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "BillingSubscriptionsSplitResponse" });
+  }
+}
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           autoRenew: S.optional(S.String),
           beneficiaryTenantId: S.optional(S.String),
-          beneficiary: S.optional(__S(1072, __c67, 0)),
+          beneficiary: S.optional(__S(1136, __c71, 0)),
           billingFrequency: S.optional(S.String),
           billingProfileId: S.optional(S.String),
           billingPolicies: S.optional(__S(33, __c2, 1)),
@@ -12093,24 +12352,24 @@ function __c86(j: number): any {
           displayName: S.optional(S.String),
           enrollmentAccountId: S.optional(S.String),
           enrollmentAccountDisplayName: S.optional(S.String),
-          enrollmentAccountSubscriptionDetails: S.optional(__S(1073, __c67, 1)),
+          enrollmentAccountSubscriptionDetails: S.optional(__S(1137, __c71, 1)),
           invoiceSectionId: S.optional(S.String),
           invoiceSectionDisplayName: S.optional(S.String),
           invoiceSectionName: S.optional(S.String),
-          lastMonthCharges: S.optional(__S(1040, __c65, 0)),
-          monthToDateCharges: S.optional(__S(1040, __c65, 0)),
-          nextBillingCycleDetails: S.optional(__S(1074, __c67, 2)),
+          lastMonthCharges: S.optional(__S(1104, __c69, 0)),
+          monthToDateCharges: S.optional(__S(1104, __c69, 0)),
+          nextBillingCycleDetails: S.optional(__S(1138, __c71, 2)),
           offerId: S.optional(S.String),
           productCategory: S.optional(S.String),
           productType: S.optional(S.String),
           productTypeId: S.optional(S.String),
           purchaseDate: S.optional(S.String),
           quantity: S.optional(S.Number),
-          reseller: S.optional(__S(1088, __c68, 0)),
-          renewalTermDetails: S.optional(__S(1075, __c67, 3)),
+          reseller: S.optional(__S(1152, __c72, 0)),
+          renewalTermDetails: S.optional(__S(1139, __c71, 3)),
           skuId: S.optional(S.String),
           skuDescription: S.optional(S.String),
-          systemOverrides: S.optional(__S(1076, __c67, 4)),
+          systemOverrides: S.optional(__S(1140, __c71, 4)),
           resourceUri: S.optional(S.String),
           termDuration: S.optional(S.String),
           termStartDate: S.optional(S.String),
@@ -12120,24 +12379,13 @@ function __c86(j: number): any {
           operationStatus: S.optional(S.String),
           provisioningState: S.optional(S.String),
           subscriptionId: S.optional(S.String),
-          suspensionReasons: S.optional(__S(144, __c9, 0)),
-          suspensionReasonDetails: S.optional(__S(1057, __c66, 1)),
+          suspensionReasons: S.optional(__S(160, __c10, 0)),
+          suspensionReasonDetails: S.optional(__S(1121, __c70, 1)),
         }),
       ).annotate({ identifier: "BillingSubscriptionProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(1376, __c86, 0)),
-          tags: S.optional(__S(33, __c2, 1)),
-        }),
-      ).annotate({ identifier: "BillingSubscriptionsSplitResponse" });
   }
 }
-function __c87(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12161,7 +12409,7 @@ function __c87(j: number): any {
       ).annotate({ identifier: "ListProductByBillingProfileRequest" });
   }
 }
-function __c88(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12185,7 +12433,7 @@ function __c88(j: number): any {
       ).annotate({ identifier: "ListProductByCustomerRequest" });
   }
 }
-function __c89(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12210,7 +12458,7 @@ function __c89(j: number): any {
       ).annotate({ identifier: "ListProductByInvoiceSectionRequest" });
   }
 }
-function __c90(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12228,13 +12476,13 @@ function __c90(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1441, __c90, 1),
+          value: __S(1521, __c95, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecipientTransferDetailsListResult" });
   }
 }
-function __c91(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12257,7 +12505,7 @@ function __c91(j: number): any {
       ).annotate({ identifier: "ListReservationByBillingAccountRequest" });
   }
 }
-function __c92(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12277,13 +12525,13 @@ function __c92(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          summary: S.optional(__S(1472, __c92, 0)),
-          value: S.optional(__S(4048, __c253, 0)),
+          summary: S.optional(__S(1552, __c97, 0)),
+          value: S.optional(__S(4336, __c271, 0)),
         }),
       ).annotate({ identifier: "ReservationsListResult" });
   }
 }
-function __c93(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12307,7 +12555,7 @@ function __c93(j: number): any {
       ).annotate({ identifier: "ListReservationByBillingProfileRequest" });
   }
 }
-function __c94(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12326,13 +12574,13 @@ function __c94(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(4048, __c253, 0),
+          value: __S(4336, __c271, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReservationList" });
   }
 }
-function __c95(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12351,17 +12599,17 @@ function __c95(j: number): any {
         ),
       ).annotate({ identifier: "ListReservationOrderByBillingAccountRequest" });
     case 1:
-      return S.Array(__S(4068, __c254, 4));
+      return S.Array(__S(4356, __c272, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1521, __c95, 1),
+          value: __S(1601, __c100, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReservationOrderList" });
   }
 }
-function __c96(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12399,20 +12647,20 @@ function __c96(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1552, __c97, 0),
+          value: __S(1632, __c102, 0),
           nextLink: S.optional(S.String),
-          summary: __S(1537, __c96, 1),
+          summary: __S(1617, __c101, 1),
         }),
       ).annotate({ identifier: "ListSavingsPlanByBillingAccountResponse" });
   }
 }
-function __c97(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(4113, __c257, 1));
+      return S.Array(__S(4384, __c274, 0));
   }
 }
-function __c98(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12431,13 +12679,13 @@ function __c98(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1552, __c97, 0),
+          value: __S(1632, __c102, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SavingsPlanModelList" });
   }
 }
-function __c99(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12457,7 +12705,7 @@ function __c99(j: number): any {
       ).annotate({ identifier: "BillingSubscriptionsValidateMoveEligibilityRequest" });
   }
 }
-function __c100(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12471,12 +12719,12 @@ function __c100(j: number): any {
       return S.suspend(() =>
         S.Struct({
           isMoveEligible: S.optional(S.Boolean),
-          errorDetails: S.optional(__S(1600, __c100, 0)),
+          errorDetails: S.optional(__S(1680, __c105, 0)),
         }),
       ).annotate({ identifier: "MoveBillingSubscriptionEligibilityResult" });
   }
 }
-function __c101(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12495,17 +12743,17 @@ function __c101(j: number): any {
         ),
       ).annotate({ identifier: "ListSavingsPlanOrderByBillingAccountRequest" });
     case 1:
-      return S.Array(__S(4164, __c260, 4));
+      return S.Array(__S(4468, __c279, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1617, __c101, 1),
+          value: __S(1697, __c106, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SavingsPlanOrderModelList" });
   }
 }
-function __c102(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12532,31 +12780,31 @@ function __c102(j: number): any {
       ).annotate({ identifier: "ListTransactionByBillingProfileRequest" });
   }
 }
-function __c103(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          amountRequested: S.optional(__S(1040, __c65, 0)),
-          amountRefunded: S.optional(__S(1040, __c65, 0)),
+          amountRequested: S.optional(__S(1104, __c69, 0)),
+          amountRefunded: S.optional(__S(1104, __c69, 0)),
           refundOperationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RefundTransactionDetails" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          azureCreditApplied: S.optional(__S(1040, __c65, 0)),
+          azureCreditApplied: S.optional(__S(1104, __c69, 0)),
           azurePlan: S.optional(S.String),
           billingCurrency: S.optional(S.String),
           billingProfileDisplayName: S.optional(S.Unknown),
           billingProfileId: S.optional(S.String),
-          consumptionCommitmentDecremented: S.optional(__S(1040, __c65, 0)),
+          consumptionCommitmentDecremented: S.optional(__S(1104, __c69, 0)),
           customerDisplayName: S.optional(S.String),
           customerId: S.optional(S.String),
           creditType: S.optional(S.String),
           date: S.optional(S.String),
           discount: S.optional(S.Number),
-          effectivePrice: S.optional(__S(1040, __c65, 0)),
+          effectivePrice: S.optional(__S(1104, __c69, 0)),
           exchangeRate: S.optional(S.Number),
           invoice: S.optional(S.String),
           invoiceId: S.optional(S.String),
@@ -12564,7 +12812,7 @@ function __c103(j: number): any {
           invoiceSectionId: S.optional(S.String),
           isThirdParty: S.optional(S.Boolean),
           kind: S.optional(S.String),
-          marketPrice: S.optional(__S(1040, __c65, 0)),
+          marketPrice: S.optional(__S(1104, __c69, 0)),
           partNumber: S.optional(S.String),
           pricingCurrency: S.optional(S.String),
           productDescription: S.optional(S.String),
@@ -12575,15 +12823,15 @@ function __c103(j: number): any {
           reasonCode: S.optional(S.String),
           servicePeriodStartDate: S.optional(S.String),
           servicePeriodEndDate: S.optional(S.String),
-          subTotal: S.optional(__S(1040, __c65, 0)),
-          tax: S.optional(__S(1040, __c65, 0)),
-          transactionAmount: S.optional(__S(1040, __c65, 0)),
+          subTotal: S.optional(__S(1104, __c69, 0)),
+          tax: S.optional(__S(1104, __c69, 0)),
+          transactionAmount: S.optional(__S(1104, __c69, 0)),
           transactionType: S.optional(S.String),
           units: S.optional(S.Number),
           unitOfMeasure: S.optional(S.String),
           unitType: S.optional(S.String),
           specialTaxationType: S.optional(S.String),
-          refundTransactionDetails: S.optional(__S(1648, __c103, 0)),
+          refundTransactionDetails: S.optional(__S(1728, __c108, 0)),
         }),
       ).annotate({ identifier: "TransactionProperties" });
     case 2:
@@ -12594,21 +12842,21 @@ function __c103(j: number): any {
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
           tags: S.optional(__S(33, __c2, 1)),
-          properties: S.optional(__S(1649, __c103, 1)),
+          properties: S.optional(__S(1729, __c108, 1)),
         }),
       ).annotate({ identifier: "Transaction" });
     case 3:
-      return S.Array(__S(1650, __c103, 2));
+      return S.Array(__S(1730, __c108, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1651, __c103, 3),
+          value: __S(1731, __c108, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TransactionListResult" });
   }
 }
-function __c104(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12636,7 +12884,7 @@ function __c104(j: number): any {
       ).annotate({ identifier: "ListTransactionByCustomerRequest" });
   }
 }
-function __c105(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12660,7 +12908,7 @@ function __c105(j: number): any {
       ).annotate({ identifier: "ListTransactionByInvoiceRequest" });
   }
 }
-function __c106(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12688,7 +12936,7 @@ function __c106(j: number): any {
       ).annotate({ identifier: "ListTransactionByInvoiceSectionRequest" });
   }
 }
-function __c107(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12706,17 +12954,17 @@ function __c107(j: number): any {
         ),
       ).annotate({ identifier: "ListTransfersRequest" });
     case 1:
-      return S.Array(__S(2209, __c138, 1));
+      return S.Array(__S(2321, __c145, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1713, __c107, 1),
+          value: __S(1793, __c112, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TransferDetailsListResult" });
   }
 }
-function __c108(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12736,7 +12984,7 @@ function __c108(j: number): any {
       ).annotate({ identifier: "MergeBillingSubscriptionRequest" });
   }
 }
-function __c109(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12756,7 +13004,7 @@ function __c109(j: number): any {
       ).annotate({ identifier: "MoveBillingSubscriptionRequest" });
   }
 }
-function __c110(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12773,9 +13021,22 @@ function __c110(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MoveProductRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(4128, __c258, 0)),
+          tags: S.optional(__S(33, __c2, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "MoveProductResponse" });
   }
 }
-function __c111(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12791,7 +13052,7 @@ function __c111(j: number): any {
           billingProfileName: S.String.pipe(T.Label()),
           customerName: S.String.pipe(T.Label()),
           transferName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1776, __c111, 0)),
+          properties: S.optional(__S(1856, __c116, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12803,7 +13064,7 @@ function __c111(j: number): any {
       ).annotate({ identifier: "PartnerTransfersInitiateRequest" });
   }
 }
-function __c112(j: number): any {
+function __c117(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12821,13 +13082,13 @@ function __c112(j: number): any {
       ).annotate({ identifier: "CancelBillingAccountPaymentTermsRequest" });
   }
 }
-function __c113(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3712, __c232, 0)),
+          properties: S.optional(__S(3952, __c247, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }).pipe(
           T.Http({
@@ -12838,16 +13099,29 @@ function __c113(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PoliciesCreateOrUpdateByBillingAccountRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(3952, __c247, 0)),
+          tags: S.optional(__S(33, __c2, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "PoliciesCreateOrUpdateByBillingAccountResponse" });
   }
 }
-function __c114(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           billingProfileName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3776, __c236, 0)),
+          properties: S.optional(__S(4016, __c251, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }).pipe(
           T.Http({
@@ -12858,9 +13132,22 @@ function __c114(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PoliciesCreateOrUpdateByBillingProfileRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(4016, __c251, 0)),
+          tags: S.optional(__S(33, __c2, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "PoliciesCreateOrUpdateByBillingProfileResponse" });
   }
 }
-function __c115(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12868,7 +13155,7 @@ function __c115(j: number): any {
           billingAccountName: S.String.pipe(T.Label()),
           billingProfileName: S.String.pipe(T.Label()),
           customerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3808, __c238, 0)),
+          properties: S.optional(__S(4064, __c254, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }).pipe(
           T.Http({
@@ -12881,14 +13168,31 @@ function __c115(j: number): any {
       ).annotate({ identifier: "PoliciesCreateOrUpdateByCustomerRequest" });
   }
 }
-function __c116(j: number): any {
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(4064, __c254, 0)),
+          tags: S.optional(__S(33, __c2, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "PoliciesCreateOrUpdateByCustomerResponse" });
+  }
+}
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           customerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3808, __c238, 0)),
+          properties: S.optional(__S(4064, __c254, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }).pipe(
           T.Http({
@@ -12901,7 +13205,7 @@ function __c116(j: number): any {
       ).annotate({ identifier: "PoliciesCreateOrUpdateByCustomerAtBillingAccountRequest" });
   }
 }
-function __c117(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12920,7 +13224,7 @@ function __c117(j: number): any {
       ).annotate({ identifier: "ProductsValidateMoveEligibilityRequest" });
   }
 }
-function __c118(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12937,17 +13241,17 @@ function __c118(j: number): any {
       ).annotate({ identifier: "RecipientTransfersDeclineRequest" });
   }
 }
-function __c119(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1920, __c120, 0));
+      return S.Array(__S(2016, __c126, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           savingsPlanOrderId: S.String.pipe(T.Label()),
           savingsPlanId: S.String.pipe(T.Label()),
-          benefits: S.optional(__S(1904, __c119, 0)),
+          benefits: S.optional(__S(2000, __c125, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12966,31 +13270,31 @@ function __c119(j: number): any {
         }),
       ).annotate({ identifier: "SavingsPlanValidResponseProperty" });
     case 3:
-      return S.Array(__S(1906, __c119, 2));
+      return S.Array(__S(2002, __c125, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          benefits: S.optional(__S(1907, __c119, 3)),
+          benefits: S.optional(__S(2003, __c125, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SavingsPlanValidateResponse" });
   }
 }
-function __c120(j: number): any {
+function __c126(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           appliedScopeType: S.optional(S.String),
-          appliedScopeProperties: S.optional(__S(3952, __c247, 0)),
+          appliedScopeProperties: S.optional(__S(4240, __c265, 0)),
           renew: S.optional(S.Boolean),
-          renewProperties: S.optional(__S(4099, __c256, 3)),
+          renewProperties: S.optional(__S(4403, __c275, 3)),
         }),
       ).annotate({ identifier: "SavingsPlanUpdateRequestProperties" });
   }
 }
-function __c121(j: number): any {
+function __c127(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13008,7 +13312,7 @@ function __c121(j: number): any {
       ).annotate({ identifier: "TransactionsTransactionsDownloadByInvoiceRequest" });
   }
 }
-function __c122(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13023,7 +13327,7 @@ function __c122(j: number): any {
           billingProfileName: S.String.pipe(T.Label()),
           invoiceSectionName: S.String.pipe(T.Label()),
           transferName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1952, __c122, 0)),
+          properties: S.optional(__S(2048, __c128, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13035,7 +13339,7 @@ function __c122(j: number): any {
       ).annotate({ identifier: "TransfersInitiateRequest" });
   }
 }
-function __c123(j: number): any {
+function __c129(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13043,7 +13347,7 @@ function __c123(j: number): any {
           startDate: S.optional(S.String),
           endDate: S.optional(S.String),
           poNumber: S.optional(S.String),
-          indirectRelationshipInfo: S.optional(__S(160, __c10, 0)),
+          indirectRelationshipInfo: S.optional(__S(176, __c11, 0)),
         }),
       ).annotate({ identifier: "EnrollmentDetailsInput" });
     case 1:
@@ -13056,14 +13360,14 @@ function __c123(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          enrollmentDetails: S.optional(__S(1968, __c123, 0)),
+          enrollmentDetails: S.optional(__S(2064, __c129, 0)),
           hasReadAccess: S.optional(S.Boolean),
           hasNoBillingProfiles: S.optional(S.Boolean),
           notificationEmailAddress: S.optional(S.String),
           primaryBillingTenantId: S.optional(S.String),
-          soldTo: S.optional(__S(176, __c11, 0)),
-          registrationNumber: S.optional(__S(1969, __c123, 1)),
-          taxIds: S.optional(__S(115, __c7, 3)),
+          soldTo: S.optional(__S(192, __c12, 0)),
+          registrationNumber: S.optional(__S(2065, __c129, 1)),
+          taxIds: S.optional(__S(131, __c8, 3)),
         }),
       ).annotate({ identifier: "BillingAccountPropertiesInput" });
     case 3:
@@ -13071,7 +13375,7 @@ function __c123(j: number): any {
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           tags: S.optional(__S(33, __c2, 1)),
-          properties: S.optional(__S(1970, __c123, 2)),
+          properties: S.optional(__S(2066, __c129, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13083,7 +13387,7 @@ function __c123(j: number): any {
       ).annotate({ identifier: "UpdateBillingAccountRequest" });
   }
 }
-function __c124(j: number): any {
+function __c130(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13103,21 +13407,32 @@ function __c124(j: number): any {
       ).annotate({ identifier: "CancelBillingSubscriptionRequest" });
   }
 }
-function __c125(j: number): any {
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CancelBillingSubscriptionResponse" });
+  }
+}
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           costCenter: S.optional(S.String),
-          subscriptionServiceUsageAddress: S.optional(__S(176, __c11, 0)),
-          enrollmentDetails: S.optional(__S(2960, __c185, 0)),
+          subscriptionServiceUsageAddress: S.optional(__S(192, __c12, 0)),
+          enrollmentDetails: S.optional(__S(3120, __c195, 0)),
         }),
       ).annotate({ identifier: "BillingPropertyPropertiesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2000, __c125, 0)),
+          properties: S.optional(__S(2112, __c132, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }).pipe(
           T.Http({
@@ -13130,7 +13445,7 @@ function __c125(j: number): any {
       ).annotate({ identifier: "UpdateBillingPropertyRequest" });
   }
 }
-function __c126(j: number): any {
+function __c133(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13138,7 +13453,7 @@ function __c126(j: number): any {
           billingAccountName: S.String.pipe(T.Label()),
           billingSubscriptionName: S.String.pipe(T.Label()),
           tags: S.optional(__S(33, __c2, 1)),
-          properties: S.optional(__S(1120, __c70, 0)),
+          properties: S.optional(__S(1168, __c73, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13150,14 +13465,14 @@ function __c126(j: number): any {
       ).annotate({ identifier: "UpdateBillingSubscriptionRequest" });
   }
 }
-function __c127(j: number): any {
+function __c134(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           autoRenew: S.optional(S.String),
-          lastCharge: S.optional(__S(1104, __c69, 0)),
-          reseller: S.optional(__S(1104, __c69, 0)),
+          lastCharge: S.optional(__S(1184, __c74, 0)),
+          reseller: S.optional(__S(1184, __c74, 0)),
         }),
       ).annotate({ identifier: "ProductPropertiesInput" });
     case 1:
@@ -13166,7 +13481,7 @@ function __c127(j: number): any {
           billingAccountName: S.String.pipe(T.Label()),
           productName: S.String.pipe(T.Label()),
           tags: S.optional(__S(33, __c2, 1)),
-          properties: S.optional(__S(2032, __c127, 0)),
+          properties: S.optional(__S(2144, __c134, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13178,7 +13493,7 @@ function __c127(j: number): any {
       ).annotate({ identifier: "UpdateProductRequest" });
   }
 }
-function __c128(j: number): any {
+function __c135(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13187,10 +13502,10 @@ function __c128(j: number): any {
           quantity: S.optional(S.Number),
           displayName: S.optional(S.String),
           appliedScopeType: S.optional(S.String),
-          appliedScopes: S.optional(__S(144, __c9, 0)),
-          appliedScopeProperties: S.optional(__S(3952, __c247, 0)),
+          appliedScopes: S.optional(__S(160, __c10, 0)),
+          appliedScopeProperties: S.optional(__S(4240, __c265, 0)),
           renew: S.optional(S.Boolean),
-          reservedResourceProperties: S.optional(__S(3940, __c246, 4)),
+          reservedResourceProperties: S.optional(__S(4228, __c264, 4)),
           instanceFlexibility: S.optional(S.String),
           reviewDateTime: S.optional(S.String),
         }),
@@ -13198,26 +13513,26 @@ function __c128(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(__S(3984, __c249, 0)),
+          sku: S.optional(__S(4272, __c267, 0)),
           location: S.optional(S.String),
-          properties: S.optional(__S(2048, __c128, 0)),
+          properties: S.optional(__S(2160, __c135, 0)),
         }),
       ).annotate({ identifier: "ReservationPurchaseRequestInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          purchaseProperties: S.optional(__S(2049, __c128, 1)),
+          purchaseProperties: S.optional(__S(2161, __c135, 1)),
         }),
       ).annotate({ identifier: "PatchPropertiesRenewPropertiesInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           appliedScopeType: S.optional(S.String),
-          appliedScopeProperties: S.optional(__S(3952, __c247, 0)),
+          appliedScopeProperties: S.optional(__S(4240, __c265, 0)),
           instanceFlexibility: S.optional(S.String),
           displayName: S.optional(S.String),
           renew: S.optional(S.Boolean),
-          renewProperties: S.optional(__S(2050, __c128, 2)),
+          renewProperties: S.optional(__S(2162, __c135, 2)),
           reviewDateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "PatchPropertiesInput" });
@@ -13227,8 +13542,8 @@ function __c128(j: number): any {
           billingAccountName: S.String.pipe(T.Label()),
           reservationOrderId: S.String.pipe(T.Label()),
           reservationId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2051, __c128, 3)),
-          sku: S.optional(__S(1104, __c69, 0)),
+          properties: S.optional(__S(2163, __c135, 3)),
+          sku: S.optional(__S(1184, __c74, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }).pipe(
           T.Http({
@@ -13239,9 +13554,26 @@ function __c128(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateReservationByBillingAccountRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(4232, __c264, 8)),
+          location: S.optional(S.String),
+          etag: S.optional(S.Number),
+          tags: S.optional(__S(33, __c2, 1)),
+          sku: S.optional(__S(4272, __c267, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateReservationByBillingAccountResponse" });
   }
 }
-function __c129(j: number): any {
+function __c136(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13249,8 +13581,8 @@ function __c129(j: number): any {
           billingAccountName: S.String.pipe(T.Label()),
           savingsPlanOrderId: S.String.pipe(T.Label()),
           savingsPlanId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1920, __c120, 0)),
-          sku: S.optional(__S(3984, __c249, 0)),
+          properties: S.optional(__S(2016, __c126, 0)),
+          sku: S.optional(__S(4272, __c267, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }).pipe(
           T.Http({
@@ -13261,9 +13593,24 @@ function __c129(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSavingsPlanByBillingAccountRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(4416, __c276, 0)),
+          tags: S.optional(__S(33, __c2, 1)),
+          sku: __S(4272, __c267, 0),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateSavingsPlanByBillingAccountResponse" });
   }
 }
-function __c130(j: number): any {
+function __c137(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13293,24 +13640,24 @@ function __c130(j: number): any {
         ),
       ).annotate({ identifier: "ValidateAddressRequest" });
     case 1:
-      return S.Array(__S(176, __c11, 0));
+      return S.Array(__S(192, __c12, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          suggestedAddresses: S.optional(__S(2081, __c130, 1)),
+          suggestedAddresses: S.optional(__S(2193, __c137, 1)),
           validationMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "AddressValidationResponse" });
   }
 }
-function __c131(j: number): any {
+function __c138(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
-          body: __S(128, __c8, 0).pipe(T.HttpBody()),
+          body: __S(144, __c9, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13322,7 +13669,7 @@ function __c131(j: number): any {
       ).annotate({ identifier: "ValidateBillingAccountPaymentTermsRequest" });
   }
 }
-function __c132(j: number): any {
+function __c139(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13347,32 +13694,32 @@ function __c132(j: number): any {
         }),
       ).annotate({ identifier: "ValidationResultProperties" });
     case 2:
-      return S.Array(__S(2113, __c132, 1));
+      return S.Array(__S(2225, __c139, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           productId: S.optional(S.String),
-          results: S.optional(__S(2114, __c132, 2)),
+          results: S.optional(__S(2226, __c139, 2)),
         }),
       ).annotate({ identifier: "ValidateTransferResponseProperties" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(2115, __c132, 3)),
+          properties: S.optional(__S(2227, __c139, 3)),
         }),
       ).annotate({ identifier: "ValidateTransferResponse" });
     case 5:
-      return S.Array(__S(2116, __c132, 4));
+      return S.Array(__S(2228, __c139, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2117, __c132, 5)),
+          value: S.optional(__S(2229, __c139, 5)),
         }),
       ).annotate({ identifier: "ValidateTransferListResponse" });
   }
 }
-function __c133(j: number): any {
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13392,7 +13739,7 @@ function __c133(j: number): any {
       ).annotate({ identifier: "CancelPartnerTransferRequest" });
   }
 }
-function __c134(j: number): any {
+function __c141(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13415,13 +13762,13 @@ function __c134(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(2144, __c134, 0)),
+          properties: S.optional(__S(2256, __c141, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "CancelPartnerTransferResponse" });
   }
 }
-function __c135(j: number): any {
+function __c142(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13437,7 +13784,7 @@ function __c135(j: number): any {
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           associatedTenantName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2160, __c135, 0)),
+          properties: S.optional(__S(2272, __c142, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }).pipe(
           T.Http({
@@ -13448,9 +13795,22 @@ function __c135(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AssociatedTenantsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(2288, __c143, 0)),
+          tags: S.optional(__S(33, __c2, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AssociatedTenantsCreateOrUpdateResponse" });
   }
 }
-function __c136(j: number): any {
+function __c143(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13463,20 +13823,9 @@ function __c136(j: number): any {
           provisioningBillingRequestId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssociatedTenantProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(2176, __c136, 0)),
-          tags: S.optional(__S(33, __c2, 1)),
-        }),
-      ).annotate({ identifier: "AssociatedTenantsCreateOrUpdateResponse" });
   }
 }
-function __c137(j: number): any {
+function __c144(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13496,7 +13845,7 @@ function __c137(j: number): any {
       ).annotate({ identifier: "CancelTransferRequest" });
   }
 }
-function __c138(j: number): any {
+function __c145(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13516,19 +13865,19 @@ function __c138(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(2208, __c138, 0)),
+          properties: S.optional(__S(2320, __c145, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "CancelTransferResponse" });
   }
 }
-function __c139(j: number): any {
+function __c146(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
-          actions: S.optional(__S(144, __c9, 0)),
+          actions: S.optional(__S(160, __c10, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13540,7 +13889,7 @@ function __c139(j: number): any {
       ).annotate({ identifier: "CheckBillingPermissionsAccessByBillingAccountRequest" });
   }
 }
-function __c140(j: number): any {
+function __c147(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13550,21 +13899,21 @@ function __c140(j: number): any {
         }),
       ).annotate({ identifier: "CheckAccessResponse" });
     case 1:
-      return S.Array(__S(2240, __c140, 0));
+      return S.Array(__S(2352, __c147, 0));
     case 2:
-      return S.suspend(() => __S(2241, __c140, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(2353, __c147, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "CheckBillingPermissionsAccessByBillingAccountResponse",
       });
   }
 }
-function __c141(j: number): any {
+function __c148(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           billingProfileName: S.String.pipe(T.Label()),
-          actions: S.optional(__S(144, __c9, 0)),
+          actions: S.optional(__S(160, __c10, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13576,7 +13925,7 @@ function __c141(j: number): any {
       ).annotate({ identifier: "CheckBillingPermissionsAccessByBillingProfileRequest" });
   }
 }
-function __c142(j: number): any {
+function __c149(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13584,7 +13933,7 @@ function __c142(j: number): any {
           billingAccountName: S.String.pipe(T.Label()),
           billingProfileName: S.String.pipe(T.Label()),
           customerName: S.String.pipe(T.Label()),
-          actions: S.optional(__S(144, __c9, 0)),
+          actions: S.optional(__S(160, __c10, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13596,14 +13945,14 @@ function __c142(j: number): any {
       ).annotate({ identifier: "CheckBillingPermissionsAccessByCustomerRequest" });
   }
 }
-function __c143(j: number): any {
+function __c150(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           departmentName: S.String.pipe(T.Label()),
-          actions: S.optional(__S(144, __c9, 0)),
+          actions: S.optional(__S(160, __c10, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13615,14 +13964,14 @@ function __c143(j: number): any {
       ).annotate({ identifier: "CheckBillingPermissionsAccessByDepartmentRequest" });
   }
 }
-function __c144(j: number): any {
+function __c151(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           enrollmentAccountName: S.String.pipe(T.Label()),
-          actions: S.optional(__S(144, __c9, 0)),
+          actions: S.optional(__S(160, __c10, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13634,7 +13983,7 @@ function __c144(j: number): any {
       ).annotate({ identifier: "CheckBillingPermissionsAccessByEnrollmentAccountRequest" });
   }
 }
-function __c145(j: number): any {
+function __c152(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13642,7 +13991,7 @@ function __c145(j: number): any {
           billingAccountName: S.String.pipe(T.Label()),
           billingProfileName: S.String.pipe(T.Label()),
           invoiceSectionName: S.String.pipe(T.Label()),
-          actions: S.optional(__S(144, __c9, 0)),
+          actions: S.optional(__S(160, __c10, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13654,7 +14003,7 @@ function __c145(j: number): any {
       ).annotate({ identifier: "CheckBillingPermissionsAccessByInvoiceSectionRequest" });
   }
 }
-function __c146(j: number): any {
+function __c153(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13678,7 +14027,7 @@ function __c146(j: number): any {
       ).annotate({ identifier: "TransitionDetails" });
   }
 }
-function __c147(j: number): any {
+function __c154(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13702,7 +14051,7 @@ function __c147(j: number): any {
       ).annotate({ identifier: "CreateBillingRoleAssignmentByBillingAccountRequest" });
   }
 }
-function __c148(j: number): any {
+function __c155(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13727,7 +14076,7 @@ function __c148(j: number): any {
       ).annotate({ identifier: "CreateBillingRoleAssignmentByBillingProfileRequest" });
   }
 }
-function __c149(j: number): any {
+function __c156(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13754,24 +14103,24 @@ function __c149(j: number): any {
           billingProfileStatus: S.optional(S.String),
           billingProfileStatusReasonCode: S.optional(S.String),
           billingProfileSpendingLimit: S.optional(S.String),
-          enabledAzurePlans: S.optional(__S(2401, __c150, 1)),
+          enabledAzurePlans: S.optional(__S(2513, __c157, 1)),
           invoiceSectionDisplayName: S.optional(S.String),
           invoiceSectionId: S.optional(S.String),
           invoiceSectionSystemId: S.optional(S.String),
         }),
       ).annotate({ identifier: "InvoiceSectionWithCreateSubPermission" });
     case 2:
-      return S.Array(__S(2385, __c149, 1));
+      return S.Array(__S(2497, __c156, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2386, __c149, 2),
+          value: __S(2498, __c156, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "InvoiceSectionWithCreateSubPermissionListResult" });
   }
 }
-function __c150(j: number): any {
+function __c157(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13782,10 +14131,10 @@ function __c150(j: number): any {
         }),
       ).annotate({ identifier: "AzurePlan" });
     case 1:
-      return S.Array(__S(2400, __c150, 0));
+      return S.Array(__S(2512, __c157, 0));
   }
 }
-function __c151(j: number): any {
+function __c158(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13811,7 +14160,7 @@ function __c151(j: number): any {
       ).annotate({ identifier: "CreateBillingRoleAssignmentByCustomerRequest" });
   }
 }
-function __c152(j: number): any {
+function __c159(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13837,7 +14186,7 @@ function __c152(j: number): any {
       ).annotate({ identifier: "CreateBillingRoleAssignmentByInvoiceSectionRequest" });
   }
 }
-function __c153(j: number): any {
+function __c160(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13855,7 +14204,7 @@ function __c153(j: number): any {
       ).annotate({ identifier: "DeleteAssociatedTenantRequest" });
   }
 }
-function __c154(j: number): any {
+function __c161(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13873,7 +14222,7 @@ function __c154(j: number): any {
       ).annotate({ identifier: "DeleteBillingProfileRequest" });
   }
 }
-function __c155(j: number): any {
+function __c162(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13891,7 +14240,7 @@ function __c155(j: number): any {
       ).annotate({ identifier: "DeleteBillingRoleAssignmentByBillingAccountRequest" });
   }
 }
-function __c156(j: number): any {
+function __c163(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13910,7 +14259,7 @@ function __c156(j: number): any {
       ).annotate({ identifier: "DeleteBillingRoleAssignmentByBillingProfileRequest" });
   }
 }
-function __c157(j: number): any {
+function __c164(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13930,7 +14279,7 @@ function __c157(j: number): any {
       ).annotate({ identifier: "DeleteBillingRoleAssignmentByCustomerRequest" });
   }
 }
-function __c158(j: number): any {
+function __c165(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13949,7 +14298,7 @@ function __c158(j: number): any {
       ).annotate({ identifier: "DeleteBillingRoleAssignmentByDepartmentRequest" });
   }
 }
-function __c159(j: number): any {
+function __c166(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13968,7 +14317,7 @@ function __c159(j: number): any {
       ).annotate({ identifier: "DeleteBillingRoleAssignmentByEnrollmentAccountRequest" });
   }
 }
-function __c160(j: number): any {
+function __c167(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13988,22 +14337,22 @@ function __c160(j: number): any {
       ).annotate({ identifier: "DeleteBillingRoleAssignmentByInvoiceSectionRequest" });
   }
 }
-function __c161(j: number): any {
+function __c168(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          billTo: S.optional(__S(176, __c11, 0)),
+          billTo: S.optional(__S(192, __c12, 0)),
           displayName: S.optional(S.String),
-          enabledAzurePlans: S.optional(__S(2401, __c150, 1)),
-          indirectRelationshipInfo: S.optional(__S(160, __c10, 0)),
+          enabledAzurePlans: S.optional(__S(2513, __c157, 1)),
+          indirectRelationshipInfo: S.optional(__S(176, __c11, 0)),
           invoiceEmailOptIn: S.optional(S.Boolean),
-          invoiceRecipients: S.optional(__S(144, __c9, 0)),
+          invoiceRecipients: S.optional(__S(160, __c10, 0)),
           poNumber: S.optional(S.String),
-          shipTo: S.optional(__S(176, __c11, 0)),
-          soldTo: S.optional(__S(176, __c11, 0)),
+          shipTo: S.optional(__S(192, __c12, 0)),
+          soldTo: S.optional(__S(192, __c12, 0)),
           tags: S.optional(__S(33, __c2, 1)),
-          currentPaymentTerm: S.optional(__S(192, __c12, 0)),
+          currentPaymentTerm: S.optional(__S(208, __c13, 0)),
         }),
       ).annotate({ identifier: "BillingProfilePropertiesInput" });
     case 1:
@@ -14011,7 +14360,7 @@ function __c161(j: number): any {
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           billingProfileName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2576, __c161, 0)),
+          properties: S.optional(__S(2688, __c168, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }).pipe(
           T.Http({
@@ -14022,9 +14371,22 @@ function __c161(j: number): any {
           }),
         ),
       ).annotate({ identifier: "BillingProfilesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(2706, __c169, 2)),
+          tags: S.optional(__S(33, __c2, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "BillingProfilesCreateOrUpdateResponse" });
   }
 }
-function __c162(j: number): any {
+function __c169(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14036,49 +14398,38 @@ function __c162(j: number): any {
         }),
       ).annotate({ identifier: "PaymentTerm" });
     case 1:
-      return S.Array(__S(2592, __c162, 0));
+      return S.Array(__S(2704, __c169, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           billingRelationshipType: S.optional(S.String),
-          billTo: S.optional(__S(176, __c11, 0)),
+          billTo: S.optional(__S(192, __c12, 0)),
           currency: S.optional(S.String),
           displayName: S.optional(S.String),
-          enabledAzurePlans: S.optional(__S(2401, __c150, 1)),
+          enabledAzurePlans: S.optional(__S(2513, __c157, 1)),
           hasReadAccess: S.optional(S.Boolean),
-          indirectRelationshipInfo: S.optional(__S(160, __c10, 0)),
+          indirectRelationshipInfo: S.optional(__S(176, __c11, 0)),
           invoiceDay: S.optional(S.Number),
           invoiceEmailOptIn: S.optional(S.Boolean),
-          invoiceRecipients: S.optional(__S(144, __c9, 0)),
+          invoiceRecipients: S.optional(__S(160, __c10, 0)),
           poNumber: S.optional(S.String),
-          shipTo: S.optional(__S(176, __c11, 0)),
-          soldTo: S.optional(__S(176, __c11, 0)),
+          shipTo: S.optional(__S(192, __c12, 0)),
+          soldTo: S.optional(__S(192, __c12, 0)),
           spendingLimit: S.optional(S.String),
-          spendingLimitDetails: S.optional(__S(2609, __c163, 1)),
+          spendingLimitDetails: S.optional(__S(2721, __c170, 1)),
           status: S.optional(S.String),
           statusReasonCode: S.optional(S.String),
           systemId: S.optional(S.String),
           tags: S.optional(__S(33, __c2, 1)),
-          targetClouds: S.optional(__S(144, __c9, 0)),
-          currentPaymentTerm: S.optional(__S(2592, __c162, 0)),
-          otherPaymentTerms: S.optional(__S(2593, __c162, 1)),
+          targetClouds: S.optional(__S(160, __c10, 0)),
+          currentPaymentTerm: S.optional(__S(2704, __c169, 0)),
+          otherPaymentTerms: S.optional(__S(2705, __c169, 1)),
         }),
       ).annotate({ identifier: "BillingProfileProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(2594, __c162, 2)),
-          tags: S.optional(__S(33, __c2, 1)),
-        }),
-      ).annotate({ identifier: "BillingProfilesCreateOrUpdateResponse" });
   }
 }
-function __c163(j: number): any {
+function __c170(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14092,10 +14443,10 @@ function __c163(j: number): any {
         }),
       ).annotate({ identifier: "SpendingLimitDetails" });
     case 1:
-      return S.Array(__S(2608, __c163, 0));
+      return S.Array(__S(2720, __c170, 0));
   }
 }
-function __c164(j: number): any {
+function __c171(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14113,7 +14464,7 @@ function __c164(j: number): any {
       ).annotate({ identifier: "DeleteBillingSubscriptionRequest" });
   }
 }
-function __c165(j: number): any {
+function __c172(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14132,7 +14483,7 @@ function __c165(j: number): any {
       ).annotate({ identifier: "DeleteInvoiceSectionRequest" });
   }
 }
-function __c166(j: number): any {
+function __c173(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14149,7 +14500,7 @@ function __c166(j: number): any {
       ).annotate({ identifier: "DeletePaymentMethodByUserRequest" });
   }
 }
-function __c167(j: number): any {
+function __c174(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14168,18 +14519,20 @@ function __c167(j: number): any {
       ).annotate({ identifier: "DownloadInvoiceByBillingAccountRequest" });
   }
 }
-function __c168(j: number): any {
+function __c175(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           expiryTime: S.optional(S.String),
           url: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "DocumentDownloadResult" });
   }
 }
-function __c169(j: number): any {
+function __c176(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14198,13 +14551,13 @@ function __c169(j: number): any {
       ).annotate({ identifier: "DownloadInvoiceByBillingSubscriptionRequest" });
   }
 }
-function __c170(j: number): any {
+function __c177(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
-          body: __S(2737, __c171, 1).pipe(T.HttpBody()),
+          body: __S(2849, __c178, 1).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14216,7 +14569,7 @@ function __c170(j: number): any {
       ).annotate({ identifier: "DownloadInvoiceDocumentsByBillingAccountRequest" });
   }
 }
-function __c171(j: number): any {
+function __c178(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14226,16 +14579,16 @@ function __c171(j: number): any {
         }),
       ).annotate({ identifier: "DocumentDownloadRequest" });
     case 1:
-      return S.Array(__S(2736, __c171, 0));
+      return S.Array(__S(2848, __c178, 0));
   }
 }
-function __c172(j: number): any {
+function __c179(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
-          body: __S(2737, __c171, 1).pipe(T.HttpBody()),
+          body: __S(2849, __c178, 1).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14247,7 +14600,7 @@ function __c172(j: number): any {
       ).annotate({ identifier: "DownloadInvoiceDocumentsByBillingSubscriptionRequest" });
   }
 }
-function __c173(j: number): any {
+function __c180(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14265,7 +14618,7 @@ function __c173(j: number): any {
       ).annotate({ identifier: "DownloadInvoiceSummaryByBillingAccountRequest" });
   }
 }
-function __c174(j: number): any {
+function __c181(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14283,7 +14636,7 @@ function __c174(j: number): any {
       ).annotate({ identifier: "GetAgreementRequest" });
   }
 }
-function __c175(j: number): any {
+function __c182(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14296,7 +14649,7 @@ function __c175(j: number): any {
         }),
       ).annotate({ identifier: "BillingProfileInfo" });
     case 1:
-      return S.Array(__S(2800, __c175, 0));
+      return S.Array(__S(2912, __c182, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -14306,18 +14659,18 @@ function __c175(j: number): any {
         }),
       ).annotate({ identifier: "Participant" });
     case 3:
-      return S.Array(__S(2802, __c175, 2));
+      return S.Array(__S(2914, __c182, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           acceptanceMode: S.optional(S.String),
           agreementLink: S.optional(S.String),
-          billingProfileInfo: S.optional(__S(2801, __c175, 1)),
+          billingProfileInfo: S.optional(__S(2913, __c182, 1)),
           category: S.optional(S.String),
           displayName: S.optional(S.String),
           effectiveDate: S.optional(S.String),
           expirationDate: S.optional(S.String),
-          participants: S.optional(__S(2803, __c175, 3)),
+          participants: S.optional(__S(2915, __c182, 3)),
           status: S.optional(S.String),
           leadBillingAccountName: S.optional(S.String),
         }),
@@ -14329,13 +14682,13 @@ function __c175(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(2804, __c175, 4)),
+          properties: S.optional(__S(2916, __c182, 4)),
           tags: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "GetAgreementResponse" });
   }
 }
-function __c176(j: number): any {
+function __c183(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14353,7 +14706,22 @@ function __c176(j: number): any {
       ).annotate({ identifier: "GetAssociatedTenantRequest" });
   }
 }
-function __c177(j: number): any {
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(2288, __c143, 0)),
+          tags: S.optional(__S(33, __c2, 1)),
+        }),
+      ).annotate({ identifier: "GetAssociatedTenantResponse" });
+  }
+}
+function __c185(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14371,7 +14739,7 @@ function __c177(j: number): any {
       ).annotate({ identifier: "BillingProfilesValidateDeleteEligibilityRequest" });
   }
 }
-function __c178(j: number): any {
+function __c186(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14381,17 +14749,17 @@ function __c178(j: number): any {
         }),
       ).annotate({ identifier: "DeleteBillingProfileEligibilityDetail" });
     case 1:
-      return S.Array(__S(2848, __c178, 0));
+      return S.Array(__S(2976, __c186, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           eligibilityStatus: S.optional(S.String),
-          eligibilityDetails: S.optional(__S(2849, __c178, 1)),
+          eligibilityDetails: S.optional(__S(2977, __c186, 1)),
         }),
       ).annotate({ identifier: "DeleteBillingProfileEligibilityResult" });
   }
 }
-function __c179(j: number): any {
+function __c187(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14408,12 +14776,12 @@ function __c179(j: number): any {
       ).annotate({ identifier: "GetAvailableBalanceByBillingAccountRequest" });
   }
 }
-function __c180(j: number): any {
+function __c188(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(1040, __c65, 0)),
+          amount: S.optional(__S(1104, __c69, 0)),
           billingProfileId: S.optional(S.String),
           billingProfileDisplayName: S.optional(S.String),
           invoiceId: S.optional(S.String),
@@ -14423,13 +14791,13 @@ function __c180(j: number): any {
         }),
       ).annotate({ identifier: "PaymentOnAccount" });
     case 1:
-      return S.Array(__S(2880, __c180, 0));
+      return S.Array(__S(3008, __c188, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(1040, __c65, 0)),
-          paymentsOnAccount: S.optional(__S(2881, __c180, 1)),
-          totalPaymentsOnAccount: S.optional(__S(1040, __c65, 0)),
+          amount: S.optional(__S(1104, __c69, 0)),
+          paymentsOnAccount: S.optional(__S(3009, __c188, 1)),
+          totalPaymentsOnAccount: S.optional(__S(1104, __c69, 0)),
         }),
       ).annotate({ identifier: "AvailableBalanceProperties" });
     case 3:
@@ -14439,13 +14807,13 @@ function __c180(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(2882, __c180, 2)),
+          properties: S.optional(__S(3010, __c188, 2)),
           tags: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "GetAvailableBalanceByBillingAccountResponse" });
   }
 }
-function __c181(j: number): any {
+function __c189(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14463,7 +14831,7 @@ function __c181(j: number): any {
       ).annotate({ identifier: "GetAvailableBalanceByBillingProfileRequest" });
   }
 }
-function __c182(j: number): any {
+function __c190(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14480,7 +14848,22 @@ function __c182(j: number): any {
       ).annotate({ identifier: "GetBillingAccountRequest" });
   }
 }
-function __c183(j: number): any {
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(132, __c8, 4)),
+          tags: S.optional(__S(33, __c2, 1)),
+        }),
+      ).annotate({ identifier: "GetBillingAccountResponse" });
+  }
+}
+function __c192(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14498,7 +14881,22 @@ function __c183(j: number): any {
       ).annotate({ identifier: "GetBillingProfileRequest" });
   }
 }
-function __c184(j: number): any {
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(2706, __c169, 2)),
+          tags: S.optional(__S(33, __c2, 1)),
+        }),
+      ).annotate({ identifier: "GetBillingProfileResponse" });
+  }
+}
+function __c194(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14517,7 +14915,7 @@ function __c184(j: number): any {
       ).annotate({ identifier: "GetBillingPropertyRequest" });
   }
 }
-function __c185(j: number): any {
+function __c195(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14545,7 +14943,7 @@ function __c185(j: number): any {
           billingProfileDisplayName: S.optional(S.String),
           billingProfileId: S.optional(S.String),
           billingProfileSpendingLimit: S.optional(S.String),
-          billingProfileSpendingLimitDetails: S.optional(__S(2609, __c163, 1)),
+          billingProfileSpendingLimitDetails: S.optional(__S(2721, __c170, 1)),
           billingProfileStatus: S.optional(S.String),
           billingProfileStatusReasonCode: S.optional(S.String),
           billingProfilePaymentMethodFamily: S.optional(S.String),
@@ -14563,11 +14961,11 @@ function __c185(j: number): any {
           skuDescription: S.optional(S.String),
           skuId: S.optional(S.String),
           subscriptionBillingStatus: S.optional(S.String),
-          subscriptionBillingStatusDetails: S.optional(__S(1057, __c66, 1)),
+          subscriptionBillingStatusDetails: S.optional(__S(1121, __c70, 1)),
           subscriptionBillingType: S.optional(S.String),
-          subscriptionServiceUsageAddress: S.optional(__S(176, __c11, 0)),
+          subscriptionServiceUsageAddress: S.optional(__S(192, __c12, 0)),
           subscriptionWorkloadType: S.optional(S.String),
-          enrollmentDetails: S.optional(__S(2960, __c185, 0)),
+          enrollmentDetails: S.optional(__S(3120, __c195, 0)),
           isAccountAdmin: S.optional(S.Boolean),
           productId: S.optional(S.String),
           productName: S.optional(S.String),
@@ -14580,13 +14978,13 @@ function __c185(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(2961, __c185, 1)),
+          properties: S.optional(__S(3121, __c195, 1)),
           tags: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "GetBillingPropertyResponse" });
   }
 }
-function __c186(j: number): any {
+function __c196(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14603,7 +15001,22 @@ function __c186(j: number): any {
       ).annotate({ identifier: "GetBillingRequestRequest" });
   }
 }
-function __c187(j: number): any {
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(3250, __c203, 2)),
+          tags: S.optional(__S(33, __c2, 1)),
+        }),
+      ).annotate({ identifier: "GetBillingRequestResponse" });
+  }
+}
+function __c198(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14621,7 +15034,7 @@ function __c187(j: number): any {
       ).annotate({ identifier: "GetBillingRoleAssignmentByBillingAccountRequest" });
   }
 }
-function __c188(j: number): any {
+function __c199(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14640,7 +15053,7 @@ function __c188(j: number): any {
       ).annotate({ identifier: "GetBillingRoleAssignmentByBillingProfileRequest" });
   }
 }
-function __c189(j: number): any {
+function __c200(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14660,7 +15073,7 @@ function __c189(j: number): any {
       ).annotate({ identifier: "GetBillingRoleAssignmentByCustomerRequest" });
   }
 }
-function __c190(j: number): any {
+function __c201(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14679,28 +15092,28 @@ function __c190(j: number): any {
       ).annotate({ identifier: "GetBillingRoleAssignmentByDepartmentRequest" });
   }
 }
-function __c191(j: number): any {
+function __c202(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           additionalInformation: S.optional(__S(33, __c2, 1)),
-          reviewedBy: S.optional(__S(3072, __c192, 0)),
-          createdBy: S.optional(__S(3072, __c192, 0)),
+          reviewedBy: S.optional(__S(3248, __c203, 0)),
+          createdBy: S.optional(__S(3248, __c203, 0)),
           decisionReason: S.optional(S.String),
           justification: S.optional(S.String),
-          recipients: S.optional(__S(3073, __c192, 1)),
+          recipients: S.optional(__S(3249, __c203, 1)),
           requestScope: S.optional(S.String),
           status: S.optional(S.String),
           type: S.optional(S.String),
-          lastUpdatedBy: S.optional(__S(3072, __c192, 0)),
+          lastUpdatedBy: S.optional(__S(3248, __c203, 0)),
         }),
       ).annotate({ identifier: "BillingRequestPropertiesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           billingRequestName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3056, __c191, 0)),
+          properties: S.optional(__S(3232, __c202, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }).pipe(
           T.Http({
@@ -14711,9 +15124,22 @@ function __c191(j: number): any {
           }),
         ),
       ).annotate({ identifier: "BillingRequestsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(3250, __c203, 2)),
+          tags: S.optional(__S(33, __c2, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "BillingRequestsCreateOrUpdateResponse" });
   }
 }
-function __c192(j: number): any {
+function __c203(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14724,13 +15150,13 @@ function __c192(j: number): any {
         }),
       ).annotate({ identifier: "Principal" });
     case 1:
-      return S.Array(__S(3072, __c192, 0));
+      return S.Array(__S(3248, __c203, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           additionalInformation: S.optional(__S(33, __c2, 1)),
-          reviewedBy: S.optional(__S(3072, __c192, 0)),
+          reviewedBy: S.optional(__S(3248, __c203, 0)),
           reviewalDate: S.optional(S.String),
           billingAccountId: S.optional(S.String),
           billingAccountName: S.optional(S.String),
@@ -14739,7 +15165,7 @@ function __c192(j: number): any {
           billingProfileId: S.optional(S.String),
           billingProfileName: S.optional(S.String),
           billingProfileDisplayName: S.optional(S.String),
-          createdBy: S.optional(__S(3072, __c192, 0)),
+          createdBy: S.optional(__S(3248, __c203, 0)),
           creationDate: S.optional(S.String),
           expirationDate: S.optional(S.String),
           decisionReason: S.optional(S.String),
@@ -14753,29 +15179,18 @@ function __c192(j: number): any {
           subscriptionName: S.optional(S.String),
           subscriptionDisplayName: S.optional(S.String),
           justification: S.optional(S.String),
-          recipients: S.optional(__S(3073, __c192, 1)),
+          recipients: S.optional(__S(3249, __c203, 1)),
           requestScope: S.optional(S.String),
           billingScope: S.optional(S.String),
           status: S.optional(S.String),
           type: S.optional(S.String),
-          lastUpdatedBy: S.optional(__S(3072, __c192, 0)),
+          lastUpdatedBy: S.optional(__S(3248, __c203, 0)),
           lastUpdatedDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingRequestProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(3074, __c192, 2)),
-          tags: S.optional(__S(33, __c2, 1)),
-        }),
-      ).annotate({ identifier: "BillingRequestsCreateOrUpdateResponse" });
   }
 }
-function __c193(j: number): any {
+function __c204(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14794,7 +15209,7 @@ function __c193(j: number): any {
       ).annotate({ identifier: "GetBillingRoleAssignmentByEnrollmentAccountRequest" });
   }
 }
-function __c194(j: number): any {
+function __c205(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14814,7 +15229,7 @@ function __c194(j: number): any {
       ).annotate({ identifier: "GetBillingRoleAssignmentByInvoiceSectionRequest" });
   }
 }
-function __c195(j: number): any {
+function __c206(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14832,26 +15247,26 @@ function __c195(j: number): any {
       ).annotate({ identifier: "GetBillingRoleDefinitionByBillingAccountRequest" });
   }
 }
-function __c196(j: number): any {
+function __c207(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(__S(144, __c9, 0)),
-          notActions: S.optional(__S(144, __c9, 0)),
+          actions: S.optional(__S(160, __c10, 0)),
+          notActions: S.optional(__S(160, __c10, 0)),
         }),
       ).annotate({ identifier: "BillingPermission" });
     case 1:
-      return S.Array(__S(3136, __c196, 0));
+      return S.Array(__S(3312, __c207, 0));
   }
 }
-function __c197(j: number): any {
+function __c208(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          permissions: S.optional(__S(3137, __c196, 1)),
+          permissions: S.optional(__S(3313, __c207, 1)),
           roleName: S.String,
         }),
       ).annotate({ identifier: "BillingRoleDefinitionProperties" });
@@ -14862,13 +15277,13 @@ function __c197(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(3152, __c197, 0)),
+          properties: S.optional(__S(3328, __c208, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "GetBillingRoleDefinitionByBillingAccountResponse" });
   }
 }
-function __c198(j: number): any {
+function __c209(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14887,7 +15302,7 @@ function __c198(j: number): any {
       ).annotate({ identifier: "GetBillingRoleDefinitionByBillingProfileRequest" });
   }
 }
-function __c199(j: number): any {
+function __c210(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14907,7 +15322,7 @@ function __c199(j: number): any {
       ).annotate({ identifier: "GetBillingRoleDefinitionByCustomerRequest" });
   }
 }
-function __c200(j: number): any {
+function __c211(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14926,7 +15341,7 @@ function __c200(j: number): any {
       ).annotate({ identifier: "GetBillingRoleDefinitionByDepartmentRequest" });
   }
 }
-function __c201(j: number): any {
+function __c212(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14945,7 +15360,7 @@ function __c201(j: number): any {
       ).annotate({ identifier: "GetBillingRoleDefinitionByEnrollmentAccountRequest" });
   }
 }
-function __c202(j: number): any {
+function __c213(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14965,7 +15380,7 @@ function __c202(j: number): any {
       ).annotate({ identifier: "GetBillingRoleDefinitionByInvoiceSectionRequest" });
   }
 }
-function __c203(j: number): any {
+function __c214(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14984,7 +15399,22 @@ function __c203(j: number): any {
       ).annotate({ identifier: "GetBillingSubscriptionRequest" });
   }
 }
-function __c204(j: number): any {
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(1456, __c91, 0)),
+          tags: S.optional(__S(33, __c2, 1)),
+        }),
+      ).annotate({ identifier: "GetBillingSubscriptionResponse" });
+  }
+}
+function __c216(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15004,14 +15434,14 @@ function __c204(j: number): any {
       ).annotate({ identifier: "GetBillingSubscriptionByBillingProfileRequest" });
   }
 }
-function __c205(j: number): any {
+function __c217(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           billingRoleAssignmentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3296, __c206, 0)),
+          properties: S.optional(__S(3488, __c218, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }).pipe(
           T.Http({
@@ -15024,7 +15454,7 @@ function __c205(j: number): any {
       ).annotate({ identifier: "BillingRoleAssignmentsCreateOrUpdateByBillingAccountRequest" });
   }
 }
-function __c206(j: number): any {
+function __c218(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15040,7 +15470,7 @@ function __c206(j: number): any {
       ).annotate({ identifier: "BillingRoleAssignmentPropertiesInput" });
   }
 }
-function __c207(j: number): any {
+function __c219(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15077,20 +15507,26 @@ function __c207(j: number): any {
           customerDisplayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingRoleAssignmentProperties" });
-    case 1:
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(3312, __c207, 0)),
+          properties: S.optional(__S(3504, __c219, 0)),
           tags: S.optional(__S(33, __c2, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "BillingRoleAssignmentsCreateOrUpdateByBillingAccountResponse" });
   }
 }
-function __c208(j: number): any {
+function __c221(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15108,7 +15544,22 @@ function __c208(j: number): any {
       ).annotate({ identifier: "GetBillingSubscriptionsAliasRequest" });
   }
 }
-function __c209(j: number): any {
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(1200, __c75, 0)),
+          tags: S.optional(__S(33, __c2, 1)),
+        }),
+      ).annotate({ identifier: "GetBillingSubscriptionsAliasResponse" });
+  }
+}
+function __c223(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15127,10 +15578,10 @@ function __c209(j: number): any {
       ).annotate({ identifier: "GetCustomerRequest" });
   }
 }
-function __c210(j: number): any {
+function __c224(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1088, __c68, 0));
+      return S.Array(__S(1152, __c72, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -15139,8 +15590,8 @@ function __c210(j: number): any {
           displayName: S.optional(S.String),
           systemId: S.optional(S.String),
           status: S.optional(S.String),
-          enabledAzurePlans: S.optional(__S(2401, __c150, 1)),
-          resellers: S.optional(__S(3360, __c210, 0)),
+          enabledAzurePlans: S.optional(__S(2513, __c157, 1)),
+          resellers: S.optional(__S(3584, __c224, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "CustomerProperties" });
@@ -15151,13 +15602,13 @@ function __c210(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(3361, __c210, 1)),
+          properties: S.optional(__S(3585, __c224, 1)),
           tags: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "GetCustomerResponse" });
   }
 }
-function __c211(j: number): any {
+function __c225(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15175,7 +15626,7 @@ function __c211(j: number): any {
       ).annotate({ identifier: "GetCustomerByBillingAccountRequest" });
   }
 }
-function __c212(j: number): any {
+function __c226(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15193,7 +15644,7 @@ function __c212(j: number): any {
       ).annotate({ identifier: "GetDepartmentRequest" });
   }
 }
-function __c213(j: number): any {
+function __c227(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15211,13 +15662,13 @@ function __c213(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(3408, __c213, 0)),
+          properties: S.optional(__S(3632, __c227, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "GetDepartmentResponse" });
   }
 }
-function __c214(j: number): any {
+function __c228(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15235,7 +15686,7 @@ function __c214(j: number): any {
       ).annotate({ identifier: "GetEnrollmentAccountRequest" });
   }
 }
-function __c215(j: number): any {
+function __c229(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15259,13 +15710,13 @@ function __c215(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(3440, __c215, 0)),
+          properties: S.optional(__S(3664, __c229, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "GetEnrollmentAccountResponse" });
   }
 }
-function __c216(j: number): any {
+function __c230(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15284,7 +15735,7 @@ function __c216(j: number): any {
       ).annotate({ identifier: "GetEnrollmentAccountByDepartmentRequest" });
   }
 }
-function __c217(j: number): any {
+function __c231(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15301,12 +15752,12 @@ function __c217(j: number): any {
       ).annotate({ identifier: "GetInvoiceRequest" });
   }
 }
-function __c218(j: number): any {
+function __c232(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          documentNumbers: S.optional(__S(144, __c9, 0)),
+          documentNumbers: S.optional(__S(160, __c10, 0)),
           externalUrl: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.optional(S.String),
@@ -15315,7 +15766,7 @@ function __c218(j: number): any {
         }),
       ).annotate({ identifier: "InvoiceDocument" });
     case 1:
-      return S.Array(__S(3488, __c218, 0));
+      return S.Array(__S(3712, __c232, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -15324,11 +15775,11 @@ function __c218(j: number): any {
         }),
       ).annotate({ identifier: "FailedPayment" });
     case 3:
-      return S.Array(__S(3490, __c218, 2));
+      return S.Array(__S(3714, __c232, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(1040, __c65, 0)),
+          amount: S.optional(__S(1104, __c69, 0)),
           date: S.optional(S.String),
           paymentMethodId: S.optional(S.String),
           paymentMethodFamily: S.optional(S.String),
@@ -15337,13 +15788,13 @@ function __c218(j: number): any {
         }),
       ).annotate({ identifier: "Payment" });
     case 5:
-      return S.Array(__S(3492, __c218, 4));
+      return S.Array(__S(3716, __c232, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           invoiceDocumentId: S.optional(S.String),
           creditNoteDocumentId: S.optional(S.String),
-          rebillDetails: S.optional(__S(3494, __c218, 6)),
+          rebillDetails: S.optional(__S(3718, __c232, 6)),
         }),
       ).annotate({ identifier: "RebillDetails" });
     case 7:
@@ -15352,8 +15803,8 @@ function __c218(j: number): any {
           requestedOn: S.optional(S.String),
           approvedOn: S.optional(S.String),
           completedOn: S.optional(S.String),
-          amountRequested: S.optional(__S(1040, __c65, 0)),
-          amountRefunded: S.optional(__S(1040, __c65, 0)),
+          amountRequested: S.optional(__S(1104, __c69, 0)),
+          amountRefunded: S.optional(__S(1104, __c69, 0)),
           rebillInvoiceId: S.optional(S.String),
           transactionCount: S.optional(S.Number),
           refundStatus: S.optional(S.String),
@@ -15364,35 +15815,35 @@ function __c218(j: number): any {
     case 8:
       return S.suspend(() =>
         S.Struct({
-          amountDue: S.optional(__S(1040, __c65, 0)),
-          azurePrepaymentApplied: S.optional(__S(1040, __c65, 0)),
-          billedAmount: S.optional(__S(1040, __c65, 0)),
+          amountDue: S.optional(__S(1104, __c69, 0)),
+          azurePrepaymentApplied: S.optional(__S(1104, __c69, 0)),
+          billedAmount: S.optional(__S(1104, __c69, 0)),
           billedDocumentId: S.optional(S.String),
           billingProfileDisplayName: S.optional(S.String),
           billingProfileId: S.optional(S.String),
-          creditAmount: S.optional(__S(1040, __c65, 0)),
+          creditAmount: S.optional(__S(1104, __c69, 0)),
           creditForDocumentId: S.optional(S.String),
-          documents: S.optional(__S(3489, __c218, 1)),
+          documents: S.optional(__S(3713, __c232, 1)),
           documentType: S.optional(S.String),
           dueDate: S.optional(S.String),
-          failedPayments: S.optional(__S(3491, __c218, 3)),
-          freeAzureCreditApplied: S.optional(__S(1040, __c65, 0)),
+          failedPayments: S.optional(__S(3715, __c232, 3)),
+          freeAzureCreditApplied: S.optional(__S(1104, __c69, 0)),
           invoiceDate: S.optional(S.String),
           invoicePeriodEndDate: S.optional(S.String),
           invoicePeriodStartDate: S.optional(S.String),
           invoiceType: S.optional(S.String),
           isMonthlyInvoice: S.optional(S.Boolean),
-          payments: S.optional(__S(3493, __c218, 5)),
+          payments: S.optional(__S(3717, __c232, 5)),
           purchaseOrderNumber: S.optional(S.String),
-          rebillDetails: S.optional(__S(3494, __c218, 6)),
+          rebillDetails: S.optional(__S(3718, __c232, 6)),
           status: S.optional(S.String),
           subscriptionDisplayName: S.optional(S.String),
           subscriptionId: S.optional(S.String),
           specialTaxationType: S.optional(S.String),
-          subTotal: S.optional(__S(1040, __c65, 0)),
-          taxAmount: S.optional(__S(1040, __c65, 0)),
-          totalAmount: S.optional(__S(1040, __c65, 0)),
-          refundDetails: S.optional(__S(3495, __c218, 7)),
+          subTotal: S.optional(__S(1104, __c69, 0)),
+          taxAmount: S.optional(__S(1104, __c69, 0)),
+          totalAmount: S.optional(__S(1104, __c69, 0)),
+          refundDetails: S.optional(__S(3719, __c232, 7)),
         }),
       ).annotate({ identifier: "InvoiceProperties" });
     case 9:
@@ -15402,13 +15853,13 @@ function __c218(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(3496, __c218, 8)),
+          properties: S.optional(__S(3720, __c232, 8)),
           tags: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "GetInvoiceResponse" });
   }
 }
-function __c219(j: number): any {
+function __c233(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15426,7 +15877,7 @@ function __c219(j: number): any {
       ).annotate({ identifier: "GetInvoiceByBillingAccountRequest" });
   }
 }
-function __c220(j: number): any {
+function __c234(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15444,7 +15895,7 @@ function __c220(j: number): any {
       ).annotate({ identifier: "GetInvoiceByBillingSubscriptionRequest" });
   }
 }
-function __c221(j: number): any {
+function __c235(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15463,7 +15914,22 @@ function __c221(j: number): any {
       ).annotate({ identifier: "GetInvoiceSectionRequest" });
   }
 }
-function __c222(j: number): any {
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(3792, __c237, 0)),
+          tags: S.optional(__S(33, __c2, 1)),
+        }),
+      ).annotate({ identifier: "GetInvoiceSectionResponse" });
+  }
+}
+function __c237(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15477,20 +15943,9 @@ function __c222(j: number): any {
           tags: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "InvoiceSectionProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(3552, __c222, 0)),
-          tags: S.optional(__S(33, __c2, 1)),
-        }),
-      ).annotate({ identifier: "GetInvoiceSectionResponse" });
   }
 }
-function __c223(j: number): any {
+function __c238(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15498,7 +15953,7 @@ function __c223(j: number): any {
           billingAccountName: S.String.pipe(T.Label()),
           departmentName: S.String.pipe(T.Label()),
           billingRoleAssignmentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3296, __c206, 0)),
+          properties: S.optional(__S(3488, __c218, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }).pipe(
           T.Http({
@@ -15511,7 +15966,7 @@ function __c223(j: number): any {
       ).annotate({ identifier: "BillingRoleAssignmentsCreateOrUpdateByDepartmentRequest" });
   }
 }
-function __c224(j: number): any {
+function __c239(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15531,7 +15986,7 @@ function __c224(j: number): any {
       ).annotate({ identifier: "GetPartnerTransferRequest" });
   }
 }
-function __c225(j: number): any {
+function __c240(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15549,7 +16004,7 @@ function __c225(j: number): any {
       ).annotate({ identifier: "GetPaymentMethodByBillingAccountRequest" });
   }
 }
-function __c226(j: number): any {
+function __c241(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15559,7 +16014,7 @@ function __c226(j: number): any {
         }),
       ).annotate({ identifier: "PaymentMethodLogo" });
     case 1:
-      return S.Array(__S(3616, __c226, 0));
+      return S.Array(__S(3856, __c241, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -15569,14 +16024,14 @@ function __c226(j: number): any {
           expiration: S.optional(S.String),
           family: S.optional(S.String),
           lastFourDigits: S.optional(S.String),
-          logos: S.optional(__S(3617, __c226, 1)),
+          logos: S.optional(__S(3857, __c241, 1)),
           paymentMethodType: S.optional(S.String),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "PaymentMethodProperties" });
   }
 }
-function __c227(j: number): any {
+function __c242(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15585,13 +16040,13 @@ function __c227(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(3618, __c226, 2)),
+          properties: S.optional(__S(3858, __c241, 2)),
           tags: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "GetPaymentMethodByBillingAccountResponse" });
   }
 }
-function __c228(j: number): any {
+function __c243(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15610,7 +16065,7 @@ function __c228(j: number): any {
       ).annotate({ identifier: "GetPaymentMethodByBillingProfileRequest" });
   }
 }
-function __c229(j: number): any {
+function __c244(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15620,8 +16075,8 @@ function __c229(j: number): any {
           expiration: S.optional(S.String),
           family: S.optional(S.String),
           lastFourDigits: S.optional(S.String),
-          logos: S.optional(__S(3617, __c226, 1)),
-          paymentMethod: S.optional(__S(3618, __c226, 2)),
+          logos: S.optional(__S(3857, __c241, 1)),
+          paymentMethod: S.optional(__S(3858, __c241, 2)),
           paymentMethodId: S.optional(S.String),
           paymentMethodType: S.optional(S.String),
           status: S.optional(S.String),
@@ -15634,13 +16089,13 @@ function __c229(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(3664, __c229, 0)),
+          properties: S.optional(__S(3904, __c244, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "GetPaymentMethodByBillingProfileResponse" });
   }
 }
-function __c230(j: number): any {
+function __c245(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15657,7 +16112,7 @@ function __c230(j: number): any {
       ).annotate({ identifier: "GetPaymentMethodByUserRequest" });
   }
 }
-function __c231(j: number): any {
+function __c246(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15672,21 +16127,6 @@ function __c231(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPolicyByBillingAccountRequest" });
-  }
-}
-function __c232(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          enterpriseAgreementPolicies: S.optional(__S(3728, __c233, 0)),
-          marketplacePurchases: S.optional(S.String),
-          reservationPurchases: S.optional(S.String),
-          savingsPlanPurchases: S.optional(S.String),
-          policies: S.optional(__S(3745, __c234, 1)),
-        }),
-      ).annotate({ identifier: "BillingAccountPolicyProperties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -15694,13 +16134,28 @@ function __c232(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(3712, __c232, 0)),
+          properties: S.optional(__S(3952, __c247, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "GetPolicyByBillingAccountResponse" });
   }
 }
-function __c233(j: number): any {
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          enterpriseAgreementPolicies: S.optional(__S(3968, __c248, 0)),
+          marketplacePurchases: S.optional(S.String),
+          reservationPurchases: S.optional(S.String),
+          savingsPlanPurchases: S.optional(S.String),
+          policies: S.optional(__S(3985, __c249, 1)),
+        }),
+      ).annotate({ identifier: "BillingAccountPolicyProperties" });
+  }
+}
+function __c248(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15712,7 +16167,7 @@ function __c233(j: number): any {
       ).annotate({ identifier: "EnterpriseAgreementPolicies" });
   }
 }
-function __c234(j: number): any {
+function __c249(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15724,10 +16179,10 @@ function __c234(j: number): any {
         }),
       ).annotate({ identifier: "PolicySummary" });
     case 1:
-      return S.Array(__S(3744, __c234, 0));
+      return S.Array(__S(3984, __c249, 0));
   }
 }
-function __c235(j: number): any {
+function __c250(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15743,23 +16198,6 @@ function __c235(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPolicyByBillingProfileRequest" });
-  }
-}
-function __c236(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          enterpriseAgreementPolicies: S.optional(__S(3728, __c233, 0)),
-          invoiceSectionLabelManagement: S.optional(S.String),
-          marketplacePurchases: S.optional(S.String),
-          reservationPurchases: S.optional(S.String),
-          savingsPlanPurchases: S.optional(S.String),
-          viewCharges: S.optional(S.String),
-          policies: S.optional(__S(3745, __c234, 1)),
-        }),
-      ).annotate({ identifier: "BillingProfilePolicyProperties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -15767,13 +16205,30 @@ function __c236(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(3776, __c236, 0)),
+          properties: S.optional(__S(4016, __c251, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "GetPolicyByBillingProfileResponse" });
   }
 }
-function __c237(j: number): any {
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          enterpriseAgreementPolicies: S.optional(__S(3968, __c248, 0)),
+          invoiceSectionLabelManagement: S.optional(S.String),
+          marketplacePurchases: S.optional(S.String),
+          reservationPurchases: S.optional(S.String),
+          savingsPlanPurchases: S.optional(S.String),
+          viewCharges: S.optional(S.String),
+          policies: S.optional(__S(3985, __c249, 1)),
+        }),
+      ).annotate({ identifier: "BillingProfilePolicyProperties" });
+  }
+}
+function __c252(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15793,30 +16248,34 @@ function __c237(j: number): any {
       ).annotate({ identifier: "GetPolicyByCustomerRequest" });
   }
 }
-function __c238(j: number): any {
+function __c253(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          viewCharges: S.String,
-          policies: S.optional(__S(3745, __c234, 1)),
-        }),
-      ).annotate({ identifier: "CustomerPolicyProperties" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(3808, __c238, 0)),
+          properties: S.optional(__S(4064, __c254, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "GetPolicyByCustomerResponse" });
   }
 }
-function __c239(j: number): any {
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          viewCharges: S.String,
+          policies: S.optional(__S(3985, __c249, 1)),
+        }),
+      ).annotate({ identifier: "CustomerPolicyProperties" });
+  }
+}
+function __c255(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15834,7 +16293,7 @@ function __c239(j: number): any {
       ).annotate({ identifier: "GetPolicyByCustomerAtBillingAccountRequest" });
   }
 }
-function __c240(j: number): any {
+function __c256(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15853,7 +16312,7 @@ function __c240(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          policies: S.optional(__S(3745, __c234, 1)),
+          policies: S.optional(__S(3985, __c249, 1)),
         }),
       ).annotate({ identifier: "SubscriptionPolicyProperties" });
     case 2:
@@ -15863,13 +16322,13 @@ function __c240(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(3841, __c240, 1)),
+          properties: S.optional(__S(4097, __c256, 1)),
           tags: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "GetPolicyBySubscriptionResponse" });
   }
 }
-function __c241(j: number): any {
+function __c257(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15887,7 +16346,7 @@ function __c241(j: number): any {
       ).annotate({ identifier: "GetProductRequest" });
   }
 }
-function __c242(j: number): any {
+function __c258(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15903,7 +16362,7 @@ function __c242(j: number): any {
           endDate: S.optional(S.String),
           invoiceSectionId: S.optional(S.String),
           invoiceSectionDisplayName: S.optional(S.String),
-          lastCharge: S.optional(__S(1040, __c65, 0)),
+          lastCharge: S.optional(__S(1104, __c69, 0)),
           lastChargeDate: S.optional(S.String),
           productType: S.optional(S.String),
           productTypeId: S.optional(S.String),
@@ -15913,23 +16372,27 @@ function __c242(j: number): any {
           quantity: S.optional(S.Number),
           status: S.optional(S.String),
           tenantId: S.optional(S.String),
-          reseller: S.optional(__S(1088, __c68, 0)),
+          reseller: S.optional(__S(1152, __c72, 0)),
         }),
       ).annotate({ identifier: "ProductProperties" });
-    case 1:
+  }
+}
+function __c259(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(3872, __c242, 0)),
+          properties: S.optional(__S(4128, __c258, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "GetProductResponse" });
   }
 }
-function __c243(j: number): any {
+function __c260(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15937,7 +16400,7 @@ function __c243(j: number): any {
           billingAccountName: S.String.pipe(T.Label()),
           enrollmentAccountName: S.String.pipe(T.Label()),
           billingRoleAssignmentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3296, __c206, 0)),
+          properties: S.optional(__S(3488, __c218, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }).pipe(
           T.Http({
@@ -15950,7 +16413,7 @@ function __c243(j: number): any {
       ).annotate({ identifier: "BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountRequest" });
   }
 }
-function __c244(j: number): any {
+function __c261(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15967,7 +16430,7 @@ function __c244(j: number): any {
       ).annotate({ identifier: "GetRecipientTransferRequest" });
   }
 }
-function __c245(j: number): any {
+function __c262(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15987,20 +16450,38 @@ function __c245(j: number): any {
       ).annotate({ identifier: "GetReservationByReservationOrderRequest" });
   }
 }
-function __c246(j: number): any {
+function __c263(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(4232, __c264, 8)),
+          location: S.optional(S.String),
+          etag: S.optional(S.Number),
+          tags: S.optional(__S(33, __c2, 1)),
+          sku: S.optional(__S(4272, __c267, 0)),
+        }),
+      ).annotate({ identifier: "GetReservationByReservationOrderResponse" });
+  }
+}
+function __c264(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           statusCode: S.optional(S.String),
           message: S.optional(S.String),
-          properties: S.optional(__S(4000, __c250, 0)),
+          properties: S.optional(__S(4288, __c268, 0)),
         }),
       ).annotate({ identifier: "ReservationExtendedStatusInfo" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          splitDestinations: S.optional(__S(144, __c9, 0)),
+          splitDestinations: S.optional(__S(160, __c10, 0)),
           splitSource: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReservationSplitProperties" });
@@ -16008,7 +16489,7 @@ function __c246(j: number): any {
       return S.suspend(() =>
         S.Struct({
           mergeDestination: S.optional(S.String),
-          mergeSources: S.optional(__S(144, __c9, 0)),
+          mergeSources: S.optional(__S(160, __c10, 0)),
         }),
       ).annotate({ identifier: "ReservationMergeProperties" });
     case 3:
@@ -16034,10 +16515,10 @@ function __c246(j: number): any {
           quantity: S.optional(S.Number),
           displayName: S.optional(S.String),
           appliedScopeType: S.optional(S.String),
-          appliedScopes: S.optional(__S(144, __c9, 0)),
-          appliedScopeProperties: S.optional(__S(3952, __c247, 0)),
+          appliedScopes: S.optional(__S(160, __c10, 0)),
+          appliedScopeProperties: S.optional(__S(4240, __c265, 0)),
           renew: S.optional(S.Boolean),
-          reservedResourceProperties: S.optional(__S(3940, __c246, 4)),
+          reservedResourceProperties: S.optional(__S(4228, __c264, 4)),
           instanceFlexibility: S.optional(S.String),
           reviewDateTime: S.optional(S.String),
         }),
@@ -16045,17 +16526,17 @@ function __c246(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(__S(3984, __c249, 0)),
+          sku: S.optional(__S(4272, __c267, 0)),
           location: S.optional(S.String),
-          properties: S.optional(__S(3941, __c246, 5)),
+          properties: S.optional(__S(4229, __c264, 5)),
         }),
       ).annotate({ identifier: "ReservationPurchaseRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          purchaseProperties: S.optional(__S(3942, __c246, 6)),
-          pricingCurrencyTotal: S.optional(__S(4016, __c251, 0)),
-          billingCurrencyTotal: S.optional(__S(4016, __c251, 0)),
+          purchaseProperties: S.optional(__S(4230, __c264, 6)),
+          pricingCurrencyTotal: S.optional(__S(4304, __c269, 0)),
+          billingCurrencyTotal: S.optional(__S(4304, __c269, 0)),
         }),
       ).annotate({ identifier: "RenewPropertiesResponse" });
     case 8:
@@ -16064,7 +16545,7 @@ function __c246(j: number): any {
           reservedResourceType: S.optional(S.String),
           instanceFlexibility: S.optional(S.String),
           displayName: S.optional(S.String),
-          appliedScopes: S.optional(__S(144, __c9, 0)),
+          appliedScopes: S.optional(__S(160, __c10, 0)),
           appliedScopeType: S.optional(S.String),
           archived: S.optional(S.Boolean),
           capabilities: S.optional(S.String),
@@ -16077,45 +16558,31 @@ function __c246(j: number): any {
           expiryDateTime: S.optional(S.String),
           reviewDateTime: S.optional(S.String),
           skuDescription: S.optional(S.String),
-          extendedStatusInfo: S.optional(__S(3936, __c246, 0)),
+          extendedStatusInfo: S.optional(__S(4224, __c264, 0)),
           billingPlan: S.optional(S.String),
           displayProvisioningState: S.optional(S.String),
           provisioningSubState: S.optional(S.String),
           purchaseDate: S.optional(S.String),
           purchaseDateTime: S.optional(S.String),
-          splitProperties: S.optional(__S(3937, __c246, 1)),
-          mergeProperties: S.optional(__S(3938, __c246, 2)),
-          swapProperties: S.optional(__S(3939, __c246, 3)),
-          appliedScopeProperties: S.optional(__S(3952, __c247, 0)),
+          splitProperties: S.optional(__S(4225, __c264, 1)),
+          mergeProperties: S.optional(__S(4226, __c264, 2)),
+          swapProperties: S.optional(__S(4227, __c264, 3)),
+          appliedScopeProperties: S.optional(__S(4240, __c265, 0)),
           billingScopeId: S.optional(S.String),
           renew: S.optional(S.Boolean),
           renewSource: S.optional(S.String),
           renewDestination: S.optional(S.String),
-          renewProperties: S.optional(__S(3943, __c246, 7)),
+          renewProperties: S.optional(__S(4231, __c264, 7)),
           term: S.optional(S.String),
           userFriendlyAppliedScopeType: S.optional(S.String),
           userFriendlyRenewState: S.optional(S.String),
-          utilization: S.optional(__S(3970, __c248, 2)),
+          utilization: S.optional(__S(4258, __c266, 2)),
           productCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReservationProperty" });
-    case 9:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(3944, __c246, 8)),
-          location: S.optional(S.String),
-          etag: S.optional(S.Number),
-          tags: S.optional(__S(33, __c2, 1)),
-          sku: S.optional(__S(3984, __c249, 0)),
-        }),
-      ).annotate({ identifier: "GetReservationByReservationOrderResponse" });
   }
 }
-function __c247(j: number): any {
+function __c265(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16129,7 +16596,7 @@ function __c247(j: number): any {
       ).annotate({ identifier: "ReservationAppliedScopeProperties" });
   }
 }
-function __c248(j: number): any {
+function __c266(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16141,17 +16608,17 @@ function __c248(j: number): any {
         }),
       ).annotate({ identifier: "ReservationUtilizationAggregates" });
     case 1:
-      return S.Array(__S(3968, __c248, 0));
+      return S.Array(__S(4256, __c266, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           trend: S.optional(S.String),
-          aggregates: S.optional(__S(3969, __c248, 1)),
+          aggregates: S.optional(__S(4257, __c266, 1)),
         }),
       ).annotate({ identifier: "ReservationPropertyUtilization" });
   }
 }
-function __c249(j: number): any {
+function __c267(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16161,7 +16628,7 @@ function __c249(j: number): any {
       ).annotate({ identifier: "SkuName" });
   }
 }
-function __c250(j: number): any {
+function __c268(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16171,7 +16638,7 @@ function __c250(j: number): any {
       ).annotate({ identifier: "ExtendedStatusDefinitionProperties" });
   }
 }
-function __c251(j: number): any {
+function __c269(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16182,7 +16649,7 @@ function __c251(j: number): any {
       ).annotate({ identifier: "Price" });
   }
 }
-function __c252(j: number): any {
+function __c270(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16201,35 +16668,35 @@ function __c252(j: number): any {
       ).annotate({ identifier: "GetReservationOrderByBillingAccountRequest" });
   }
 }
-function __c253(j: number): any {
+function __c271(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(3945, __c246, 9));
+      return S.Array(__S(4208, __c263, 0));
   }
 }
-function __c254(j: number): any {
+function __c272(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           dueDate: S.optional(S.String),
           paymentDate: S.optional(S.String),
-          pricingCurrencyTotal: S.optional(__S(4016, __c251, 0)),
-          billingCurrencyTotal: S.optional(__S(4016, __c251, 0)),
+          pricingCurrencyTotal: S.optional(__S(4304, __c269, 0)),
+          billingCurrencyTotal: S.optional(__S(4304, __c269, 0)),
           billingAccount: S.optional(S.String),
           status: S.optional(S.String),
-          extendedStatusInfo: S.optional(__S(3936, __c246, 0)),
+          extendedStatusInfo: S.optional(__S(4224, __c264, 0)),
         }),
       ).annotate({ identifier: "ReservationPaymentDetail" });
     case 1:
-      return S.Array(__S(4064, __c254, 0));
+      return S.Array(__S(4352, __c272, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          pricingCurrencyTotal: S.optional(__S(4016, __c251, 0)),
+          pricingCurrencyTotal: S.optional(__S(4304, __c269, 0)),
           startDate: S.optional(S.String),
           nextPaymentDueDate: S.optional(S.String),
-          transactions: S.optional(__S(4065, __c254, 1)),
+          transactions: S.optional(__S(4353, __c272, 1)),
         }),
       ).annotate({ identifier: "ReservationOrderBillingPlanInformation" });
     case 3:
@@ -16249,10 +16716,10 @@ function __c254(j: number): any {
           term: S.optional(S.String),
           provisioningState: S.optional(S.String),
           billingPlan: S.optional(S.String),
-          planInformation: S.optional(__S(4066, __c254, 2)),
-          reservations: S.optional(__S(4048, __c253, 0)),
+          planInformation: S.optional(__S(4354, __c272, 2)),
+          reservations: S.optional(__S(4336, __c271, 0)),
           reviewDateTime: S.optional(S.String),
-          extendedStatusInfo: S.optional(__S(3936, __c246, 0)),
+          extendedStatusInfo: S.optional(__S(4224, __c264, 0)),
           productCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReservationOrderProperty" });
@@ -16263,14 +16730,14 @@ function __c254(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(4067, __c254, 3)),
+          properties: S.optional(__S(4355, __c272, 3)),
           etag: S.optional(S.Number),
           tags: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "GetReservationOrderByBillingAccountResponse" });
   }
 }
-function __c255(j: number): any {
+function __c273(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16290,7 +16757,23 @@ function __c255(j: number): any {
       ).annotate({ identifier: "GetSavingsPlanByBillingAccountRequest" });
   }
 }
-function __c256(j: number): any {
+function __c274(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(4416, __c276, 0)),
+          tags: S.optional(__S(33, __c2, 1)),
+          sku: __S(4272, __c267, 0),
+        }),
+      ).annotate({ identifier: "GetSavingsPlanByBillingAccountResponse" });
+  }
+}
+function __c275(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16308,27 +16791,27 @@ function __c256(j: number): any {
           term: S.optional(S.String),
           billingPlan: S.optional(S.String),
           appliedScopeType: S.optional(S.String),
-          commitment: S.optional(__S(4096, __c256, 0)),
+          commitment: S.optional(__S(4400, __c275, 0)),
           renew: S.optional(S.Boolean),
-          appliedScopeProperties: S.optional(__S(3952, __c247, 0)),
+          appliedScopeProperties: S.optional(__S(4240, __c265, 0)),
         }),
       ).annotate({ identifier: "PurchaseRequestProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(__S(3984, __c249, 0)),
-          properties: S.optional(__S(4097, __c256, 1)),
+          sku: S.optional(__S(4272, __c267, 0)),
+          properties: S.optional(__S(4401, __c275, 1)),
         }),
       ).annotate({ identifier: "PurchaseRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          purchaseProperties: S.optional(__S(4098, __c256, 2)),
+          purchaseProperties: S.optional(__S(4402, __c275, 2)),
         }),
       ).annotate({ identifier: "RenewProperties" });
   }
 }
-function __c257(j: number): any {
+function __c276(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16345,47 +16828,35 @@ function __c257(j: number): any {
           renew: S.optional(S.Boolean),
           renewSource: S.optional(S.String),
           renewDestination: S.optional(S.String),
-          renewProperties: S.optional(__S(4099, __c256, 3)),
+          renewProperties: S.optional(__S(4403, __c275, 3)),
           billingPlan: S.optional(S.String),
           appliedScopeType: S.optional(S.String),
-          appliedScopeProperties: S.optional(__S(3952, __c247, 0)),
-          commitment: S.optional(__S(4096, __c256, 0)),
+          appliedScopeProperties: S.optional(__S(4240, __c265, 0)),
+          commitment: S.optional(__S(4400, __c275, 0)),
           effectiveDateTime: S.optional(S.String),
           benefitStartTime: S.optional(S.String),
           expiryDateTime: S.optional(S.String),
           purchaseDateTime: S.optional(S.String),
-          utilization: S.optional(__S(3970, __c248, 2)),
-          extendedStatusInfo: S.optional(__S(4128, __c258, 0)),
+          utilization: S.optional(__S(4258, __c266, 2)),
+          extendedStatusInfo: S.optional(__S(4432, __c277, 0)),
           productCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "SavingsPlanModelProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(4112, __c257, 0)),
-          tags: S.optional(__S(33, __c2, 1)),
-          sku: __S(3984, __c249, 0),
-        }),
-      ).annotate({ identifier: "GetSavingsPlanByBillingAccountResponse" });
   }
 }
-function __c258(j: number): any {
+function __c277(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           statusCode: S.optional(S.String),
           message: S.optional(S.String),
-          properties: S.optional(__S(4000, __c250, 0)),
+          properties: S.optional(__S(4288, __c268, 0)),
         }),
       ).annotate({ identifier: "ExtendedStatusInfo" });
   }
 }
-function __c259(j: number): any {
+function __c278(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16404,28 +16875,28 @@ function __c259(j: number): any {
       ).annotate({ identifier: "GetSavingsPlanOrderByBillingAccountRequest" });
   }
 }
-function __c260(j: number): any {
+function __c279(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           dueDate: S.optional(S.String),
           paymentDate: S.optional(S.String),
-          pricingCurrencyTotal: S.optional(__S(4016, __c251, 0)),
-          billingCurrencyTotal: S.optional(__S(4016, __c251, 0)),
+          pricingCurrencyTotal: S.optional(__S(4304, __c269, 0)),
+          billingCurrencyTotal: S.optional(__S(4304, __c269, 0)),
           status: S.optional(S.String),
-          extendedStatusInfo: S.optional(__S(4128, __c258, 0)),
+          extendedStatusInfo: S.optional(__S(4432, __c277, 0)),
         }),
       ).annotate({ identifier: "PaymentDetail" });
     case 1:
-      return S.Array(__S(4160, __c260, 0));
+      return S.Array(__S(4464, __c279, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          pricingCurrencyTotal: S.optional(__S(4016, __c251, 0)),
+          pricingCurrencyTotal: S.optional(__S(4304, __c269, 0)),
           startDate: S.optional(S.String),
           nextPaymentDueDate: S.optional(S.String),
-          transactions: S.optional(__S(4161, __c260, 1)),
+          transactions: S.optional(__S(4465, __c279, 1)),
         }),
       ).annotate({ identifier: "BillingPlanInformation" });
     case 3:
@@ -16441,9 +16912,9 @@ function __c260(j: number): any {
           billingPlan: S.optional(S.String),
           benefitStartTime: S.optional(S.String),
           expiryDateTime: S.optional(S.String),
-          planInformation: S.optional(__S(4162, __c260, 2)),
-          savingsPlans: S.optional(__S(144, __c9, 0)),
-          extendedStatusInfo: S.optional(__S(4128, __c258, 0)),
+          planInformation: S.optional(__S(4466, __c279, 2)),
+          savingsPlans: S.optional(__S(160, __c10, 0)),
+          extendedStatusInfo: S.optional(__S(4432, __c277, 0)),
           productCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "SavingsPlanOrderModelProperties" });
@@ -16454,14 +16925,14 @@ function __c260(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(4163, __c260, 3)),
+          properties: S.optional(__S(4467, __c279, 3)),
           tags: S.optional(__S(33, __c2, 1)),
-          sku: __S(3984, __c249, 0),
+          sku: __S(4272, __c267, 0),
         }),
       ).annotate({ identifier: "GetSavingsPlanOrderByBillingAccountResponse" });
   }
 }
-function __c261(j: number): any {
+function __c280(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16492,7 +16963,7 @@ function __c261(j: number): any {
       ).annotate({ identifier: "TransactionSummary" });
   }
 }
-function __c262(j: number): any {
+function __c281(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16512,7 +16983,7 @@ function __c262(j: number): any {
       ).annotate({ identifier: "GetTransferRequest" });
   }
 }
-function __c263(j: number): any {
+function __c282(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16530,7 +17001,7 @@ function __c263(j: number): any {
       ).annotate({ identifier: "InvoicesAmendRequest" });
   }
 }
-function __c264(j: number): any {
+function __c283(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16548,7 +17019,7 @@ function __c264(j: number): any {
           billingAccountName: S.String.pipe(T.Label()),
           billingProfileName: S.String.pipe(T.Label()),
           invoiceSectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(4224, __c264, 0)),
+          properties: S.optional(__S(4528, __c283, 0)),
           tags: S.optional(__S(33, __c2, 1)),
         }).pipe(
           T.Http({
@@ -16559,9 +17030,22 @@ function __c264(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InvoiceSectionsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(3792, __c237, 0)),
+          tags: S.optional(__S(33, __c2, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "InvoiceSectionsCreateOrUpdateResponse" });
   }
 }
-function __c265(j: number): any {
+function __c284(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

@@ -89,6 +89,12 @@ export interface BackupResultProperties {
 export interface BackupResult {
   /** Properties of the Cloud HSM Cluster */
   properties?: BackupResultProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CloudHsmClustersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -311,6 +317,10 @@ export interface CloudHsmClustersCreateOrUpdateResponse {
   identity?: CloudHsmClustersCreateOrUpdateResponseIdentity;
   /** SKU details */
   sku?: CloudHsmClusterSku;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface CloudHsmClustersValidateRestorePropertiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -362,6 +372,12 @@ export interface BackupRestoreBaseResultProperties {
 export interface RestoreResult {
   /** Backup and Restore operation common properties */
   properties?: BackupRestoreBaseResultProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The private endpoint resource. */
 export type PrivateEndpointConnectionPropertiesInputPrivateEndpoint = UserAssignedIdentityInput;
@@ -534,6 +550,10 @@ export interface DedicatedHsmCreateOrUpdateResponse {
   sku: Sku;
   /** The availability zones. */
   zones?: DedicatedHsmCreateOrUpdateResponseZonesList;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteCloudHsmClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -543,7 +563,12 @@ export interface DeleteCloudHsmClusterRequest {
   /** The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length. */
   cloudHsmClusterName: string;
 }
-export interface DeleteCloudHsmClusterResponse {}
+export interface DeleteCloudHsmClusterResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteCloudHsmClusterPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -554,7 +579,12 @@ export interface DeleteCloudHsmClusterPrivateEndpointConnectionRequest {
   /** Name of the private endpoint connection associated with the Cloud HSM Cluster. */
   peConnectionName: string;
 }
-export interface DeleteCloudHsmClusterPrivateEndpointConnectionResponse {}
+export interface DeleteCloudHsmClusterPrivateEndpointConnectionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDedicatedHsmRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -563,7 +593,12 @@ export interface DeleteDedicatedHsmRequest {
   /** Name of the dedicated Hsm */
   name: string;
 }
-export interface DeleteDedicatedHsmResponse {}
+export interface DeleteDedicatedHsmResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetCloudHsmClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1008,6 +1043,10 @@ export interface UpdateCloudHsmClusterResponse {
   identity?: UpdateCloudHsmClusterResponseIdentity;
   /** SKU details */
   sku?: CloudHsmClusterSku;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags */
 export type UpdateDedicatedHsmRequestTagsMap = { [key: string]: string | undefined };
@@ -1044,6 +1083,10 @@ export interface UpdateDedicatedHsmResponse {
   sku: Sku;
   /** The availability zones. */
   zones?: UpdateDedicatedHsmResponseZonesList;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ValidateCloudHsmClusterBackupPropertiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1081,7 +1124,7 @@ export const CloudHsmClustersCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(25, __c3, 1) as any as S.Schema<CloudHsmClustersCreateOrUpdateRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<CloudHsmClustersCreateOrUpdateResponse>,
+  output: __S(26, __c3, 2) as any as S.Schema<CloudHsmClustersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1095,8 +1138,8 @@ export const CloudHsmClustersValidateRestoreProperties: API.OperationMethod<
   CloudHsmClustersValidateRestorePropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<CloudHsmClustersValidateRestorePropertiesRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<RestoreResult>,
+  input: __S(192, __c24, 0) as any as S.Schema<CloudHsmClustersValidateRestorePropertiesRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<RestoreResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1111,8 +1154,8 @@ export const CreateCloudHsmClusterPrivateEndpointConnection: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    241,
-    __c30,
+    249,
+    __c31,
     1,
   ) as any as S.Schema<CreateCloudHsmClusterPrivateEndpointConnectionRequest>,
   output: __S(
@@ -1133,8 +1176,8 @@ export const DedicatedHsmCreateOrUpdate: API.OperationMethod<
   DedicatedHsmCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<DedicatedHsmCreateOrUpdateRequest>,
-  output: __S(262, __c32, 6) as any as S.Schema<DedicatedHsmCreateOrUpdateResponse>,
+  input: __S(260, __c32, 4) as any as S.Schema<DedicatedHsmCreateOrUpdateRequest>,
+  output: __S(261, __c32, 5) as any as S.Schema<DedicatedHsmCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1148,8 +1191,8 @@ export const DeleteCloudHsmCluster: API.OperationMethod<
   DeleteCloudHsmClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<DeleteCloudHsmClusterRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteCloudHsmClusterResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<DeleteCloudHsmClusterRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<DeleteCloudHsmClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1164,13 +1207,13 @@ export const DeleteCloudHsmClusterPrivateEndpointConnection: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    272,
-    __c34,
+    288,
+    __c36,
     0,
   ) as any as S.Schema<DeleteCloudHsmClusterPrivateEndpointConnectionRequest>,
   output: __S(
-    48,
-    __c6,
+    280,
+    __c35,
     0,
   ) as any as S.Schema<DeleteCloudHsmClusterPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
@@ -1186,8 +1229,8 @@ export const DeleteDedicatedHsm: API.OperationMethod<
   DeleteDedicatedHsmError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<DeleteDedicatedHsmRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteDedicatedHsmResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<DeleteDedicatedHsmRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<DeleteDedicatedHsmResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1201,8 +1244,8 @@ export const GetCloudHsmCluster: API.OperationMethod<
   GetCloudHsmClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<GetCloudHsmClusterRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<GetCloudHsmClusterResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<GetCloudHsmClusterRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<GetCloudHsmClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1216,7 +1259,7 @@ export const GetCloudHsmClusterBackupStatus: API.OperationMethod<
   GetCloudHsmClusterBackupStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<GetCloudHsmClusterBackupStatusRequest>,
+  input: __S(320, __c40, 0) as any as S.Schema<GetCloudHsmClusterBackupStatusRequest>,
   output: __S(17, __c2, 1) as any as S.Schema<BackupResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1247,7 +1290,7 @@ export const GetCloudHsmClusterRestoreStatus: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c12, 0) as any as S.Schema<GetCloudHsmClusterRestoreStatusRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<RestoreResult>,
+  output: __S(201, __c25, 1) as any as S.Schema<RestoreResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1262,7 +1305,7 @@ export const GetDedicatedHsm: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(104, __c13, 0) as any as S.Schema<GetDedicatedHsmRequest>,
-  output: __S(262, __c32, 6) as any as S.Schema<GetDedicatedHsmResponse>,
+  output: __S(112, __c14, 0) as any as S.Schema<GetDedicatedHsmResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1276,8 +1319,8 @@ export const ListCloudHsmClusterByResourceGroup: API.OperationMethod<
   ListCloudHsmClusterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListCloudHsmClusterByResourceGroupRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<CloudHsmClusterListResult>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListCloudHsmClusterByResourceGroupRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<CloudHsmClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1291,8 +1334,8 @@ export const ListCloudHsmClusterBySubscription: API.OperationMethod<
   ListCloudHsmClusterBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListCloudHsmClusterBySubscriptionRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<CloudHsmClusterListResult>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListCloudHsmClusterBySubscriptionRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<CloudHsmClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1307,13 +1350,13 @@ export const ListCloudHsmClusterPrivateLinkResourceByCloudHsmCluster: API.Operat
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    136,
-    __c17,
+    144,
+    __c18,
     0,
   ) as any as S.Schema<ListCloudHsmClusterPrivateLinkResourceByCloudHsmClusterRequest>,
   output: __S(
-    140,
-    __c17,
+    148,
+    __c18,
     4,
   ) as any as S.Schema<ListCloudHsmClusterPrivateLinkResourceByCloudHsmClusterResponse>,
   errors: [UnknownAzureError],
@@ -1329,8 +1372,8 @@ export const ListDedicatedHsmByResourceGroup: API.OperationMethod<
   ListDedicatedHsmByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListDedicatedHsmByResourceGroupRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<DedicatedHsmListResult>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListDedicatedHsmByResourceGroupRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<DedicatedHsmListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1344,8 +1387,8 @@ export const ListDedicatedHsmBySubscription: API.OperationMethod<
   ListDedicatedHsmBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<ListDedicatedHsmBySubscriptionRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<DedicatedHsmListResult>,
+  input: __S(168, __c21, 0) as any as S.Schema<ListDedicatedHsmBySubscriptionRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<DedicatedHsmListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1360,11 +1403,11 @@ export const ListDedicatedHsmOutboundNetworkDependenciesEndpoints: API.Operation
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    168,
-    __c21,
+    176,
+    __c22,
     0,
   ) as any as S.Schema<ListDedicatedHsmOutboundNetworkDependenciesEndpointsRequest>,
-  output: __S(175, __c21, 7) as any as S.Schema<OutboundEnvironmentEndpointCollection>,
+  output: __S(183, __c22, 7) as any as S.Schema<OutboundEnvironmentEndpointCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1378,8 +1421,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(188, __c23, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1394,11 +1437,11 @@ export const ListPrivateEndpointConnectionByCloudHsmCluster: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    200,
-    __c25,
+    208,
+    __c26,
     0,
   ) as any as S.Schema<ListPrivateEndpointConnectionByCloudHsmClusterRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  output: __S(209, __c26, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1412,8 +1455,8 @@ export const RestoreCloudHsmCluster: API.OperationMethod<
   RestoreCloudHsmClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<RestoreCloudHsmClusterRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<RestoreResult>,
+  input: __S(216, __c27, 0) as any as S.Schema<RestoreCloudHsmClusterRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<RestoreResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1427,8 +1470,8 @@ export const UpdateCloudHsmCluster: API.OperationMethod<
   UpdateCloudHsmClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<UpdateCloudHsmClusterRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<UpdateCloudHsmClusterResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<UpdateCloudHsmClusterRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<UpdateCloudHsmClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1442,8 +1485,8 @@ export const UpdateDedicatedHsm: API.OperationMethod<
   UpdateDedicatedHsmError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<UpdateDedicatedHsmRequest>,
-  output: __S(262, __c32, 6) as any as S.Schema<UpdateDedicatedHsmResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<UpdateDedicatedHsmRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<UpdateDedicatedHsmResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1457,7 +1500,7 @@ export const ValidateCloudHsmClusterBackupProperties: API.OperationMethod<
   ValidateCloudHsmClusterBackupPropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<ValidateCloudHsmClusterBackupPropertiesRequest>,
+  input: __S(240, __c30, 0) as any as S.Schema<ValidateCloudHsmClusterBackupPropertiesRequest>,
   output: __S(17, __c2, 1) as any as S.Schema<BackupResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1542,6 +1585,9 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           properties: S.optional(__S(16, __c2, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "BackupResult" });
   }
@@ -1575,12 +1621,28 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CloudHsmClustersCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c6, 0)),
+          tags: S.optional(__S(64, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(83, __c10, 3)),
+          identity: S.optional(__S(86, __c10, 6)),
+          sku: S.optional(__S(80, __c10, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CloudHsmClustersCreateOrUpdateResponse" });
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(48, __c6, 0)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(40, __c5, 0)));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1591,6 +1653,12 @@ function __c4(j: number): any {
   }
 }
 function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "UserAssignedIdentityInput" });
+  }
+}
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1605,12 +1673,6 @@ function __c5(j: number): any {
       ).annotate({ identifier: "SystemData" });
     case 1:
       return S.Array(S.String);
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "UserAssignedIdentityInput" });
   }
 }
 function __c7(j: number): any {
@@ -1637,7 +1699,7 @@ function __c7(j: number): any {
           privateEndpoint: S.optional(__S(56, __c7, 0)),
           privateLinkServiceConnectionState: __S(57, __c7, 1),
           provisioningState: S.optional(S.String),
-          groupIds: S.optional(__S(41, __c5, 1)),
+          groupIds: S.optional(__S(49, __c6, 1)),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionProperties" });
     case 3:
@@ -1646,7 +1708,7 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(40, __c5, 0)),
+          systemData: S.optional(__S(48, __c6, 0)),
           properties: S.optional(__S(58, __c7, 2)),
           etag: S.optional(S.String),
         }),
@@ -1715,20 +1777,6 @@ function __c10(j: number): any {
           userAssignedIdentities: S.optional(__S(85, __c10, 5)),
         }),
       ).annotate({ identifier: "CloudHsmClustersCreateOrUpdateResponseIdentity" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(40, __c5, 0)),
-          tags: S.optional(__S(64, __c8, 0)),
-          location: S.String,
-          properties: S.optional(__S(83, __c10, 3)),
-          identity: S.optional(__S(86, __c10, 6)),
-          sku: S.optional(__S(80, __c10, 0)),
-        }),
-      ).annotate({ identifier: "CloudHsmClustersCreateOrUpdateResponse" });
   }
 }
 function __c11(j: number): any {
@@ -1795,6 +1843,24 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c6, 0)),
+          tags: S.optional(__S(64, __c8, 0)),
+          location: S.String,
+          properties: __S(269, __c33, 5),
+          sku: __S(265, __c33, 1),
+          zones: S.optional(__S(49, __c6, 1)),
+        }),
+      ).annotate({ identifier: "GetDedicatedHsmResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
@@ -1809,20 +1875,20 @@ function __c14(j: number): any {
       ).annotate({ identifier: "ListCloudHsmClusterByResourceGroupRequest" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87, __c10, 7));
+      return S.Array(__S(312, __c39, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(120, __c15, 0),
+          value: __S(128, __c16, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudHsmClusterListResult" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1840,7 +1906,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "ListCloudHsmClusterBySubscriptionRequest" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1861,8 +1927,8 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(41, __c5, 1)),
-          requiredZoneNames: S.optional(__S(41, __c5, 1)),
+          requiredMembers: S.optional(__S(49, __c6, 1)),
+          requiredZoneNames: S.optional(__S(49, __c6, 1)),
         }),
       ).annotate({ identifier: "PrivateLinkResourceProperties" });
     case 2:
@@ -1871,22 +1937,22 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(40, __c5, 0)),
-          properties: S.optional(__S(137, __c17, 1)),
+          systemData: S.optional(__S(48, __c6, 0)),
+          properties: S.optional(__S(145, __c18, 1)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 3:
-      return S.Array(__S(138, __c17, 2));
+      return S.Array(__S(146, __c18, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(139, __c17, 3)),
+          value: S.optional(__S(147, __c18, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCloudHsmClusterPrivateLinkResourceByCloudHsmClusterResponse" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1905,20 +1971,20 @@ function __c18(j: number): any {
       ).annotate({ identifier: "ListDedicatedHsmByResourceGroupRequest" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(262, __c32, 6));
+      return S.Array(__S(112, __c14, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(152, __c19, 0),
+          value: __S(160, __c20, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedHsmListResult" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1936,7 +2002,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "ListDedicatedHsmBySubscriptionRequest" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1963,35 +2029,35 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "EndpointDetail" });
     case 2:
-      return S.Array(__S(169, __c21, 1));
+      return S.Array(__S(177, __c22, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
-          endpointDetails: S.optional(__S(170, __c21, 2)),
+          endpointDetails: S.optional(__S(178, __c22, 2)),
         }),
       ).annotate({ identifier: "EndpointDependency" });
     case 4:
-      return S.Array(__S(171, __c21, 3));
+      return S.Array(__S(179, __c22, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.String),
-          endpoints: S.optional(__S(172, __c21, 4)),
+          endpoints: S.optional(__S(180, __c22, 4)),
         }),
       ).annotate({ identifier: "OutboundEnvironmentEndpoint" });
     case 6:
-      return S.Array(__S(173, __c21, 5));
+      return S.Array(__S(181, __c22, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(174, __c21, 6),
+          value: __S(182, __c22, 6),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OutboundEnvironmentEndpointCollection" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2018,23 +2084,23 @@ function __c22(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(177, __c22, 1)),
+          display: S.optional(__S(185, __c23, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(178, __c22, 2));
+      return S.Array(__S(186, __c23, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(179, __c22, 3)),
+          value: S.optional(__S(187, __c23, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2056,7 +2122,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "CloudHsmClustersValidateRestorePropertiesRequest" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2072,12 +2138,15 @@ function __c24(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(200, __c25, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "RestoreResult" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2103,7 +2172,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2125,7 +2194,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "RestoreCloudHsmClusterRequest" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2144,9 +2213,25 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateCloudHsmClusterRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c6, 0)),
+          tags: S.optional(__S(64, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(83, __c10, 3)),
+          identity: S.optional(__S(86, __c10, 6)),
+          sku: S.optional(__S(80, __c10, 0)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateCloudHsmClusterResponse" });
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2164,9 +2249,25 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDedicatedHsmRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c6, 0)),
+          tags: S.optional(__S(64, __c8, 0)),
+          location: S.String,
+          properties: __S(269, __c33, 5),
+          sku: __S(265, __c33, 1),
+          zones: S.optional(__S(49, __c6, 1)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateDedicatedHsmResponse" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2187,12 +2288,12 @@ function __c29(j: number): any {
       ).annotate({ identifier: "ValidateCloudHsmClusterBackupPropertiesRequest" });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(48, __c6, 0)),
+          privateEndpoint: S.optional(__S(40, __c5, 0)),
           privateLinkServiceConnectionState: __S(57, __c7, 1),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionPropertiesInput" });
@@ -2203,7 +2304,7 @@ function __c30(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           cloudHsmClusterName: S.String.pipe(T.Label()),
           peConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(240, __c30, 0)),
+          properties: S.optional(__S(248, __c31, 0)),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -2216,7 +2317,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "CreateCloudHsmClusterPrivateEndpointConnectionRequest" });
   }
 }
-function __c31(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2225,19 +2326,19 @@ function __c31(j: number): any {
         }),
       ).annotate({ identifier: "NetworkInterfaceInput" });
     case 1:
-      return S.Array(__S(248, __c31, 0));
+      return S.Array(__S(256, __c32, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          subnet: S.optional(__S(256, __c32, 0)),
-          networkInterfaces: S.optional(__S(249, __c31, 1)),
+          subnet: S.optional(__S(264, __c33, 0)),
+          networkInterfaces: S.optional(__S(257, __c32, 1)),
         }),
       ).annotate({ identifier: "NetworkProfileInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          networkProfile: S.optional(__S(250, __c31, 2)),
-          managementNetworkProfile: S.optional(__S(250, __c31, 2)),
+          networkProfile: S.optional(__S(258, __c32, 2)),
+          managementNetworkProfile: S.optional(__S(258, __c32, 2)),
           stampId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedHsmPropertiesInput" });
@@ -2249,9 +2350,9 @@ function __c31(j: number): any {
           name: S.String.pipe(T.Label()),
           tags: S.optional(__S(64, __c8, 0)),
           location: S.String,
-          properties: __S(251, __c31, 3),
-          sku: __S(257, __c32, 1),
-          zones: S.optional(__S(41, __c5, 1)),
+          properties: __S(259, __c32, 3),
+          sku: __S(265, __c33, 1),
+          zones: S.optional(__S(49, __c6, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2261,9 +2362,25 @@ function __c31(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DedicatedHsmCreateOrUpdateRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c6, 0)),
+          tags: S.optional(__S(64, __c8, 0)),
+          location: S.String,
+          properties: __S(269, __c33, 5),
+          sku: __S(265, __c33, 1),
+          zones: S.optional(__S(49, __c6, 1)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DedicatedHsmCreateOrUpdateResponse" });
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2285,41 +2402,27 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "NetworkInterface" });
     case 3:
-      return S.Array(__S(258, __c32, 2));
+      return S.Array(__S(266, __c33, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          subnet: S.optional(__S(256, __c32, 0)),
-          networkInterfaces: S.optional(__S(259, __c32, 3)),
+          subnet: S.optional(__S(264, __c33, 0)),
+          networkInterfaces: S.optional(__S(267, __c33, 3)),
         }),
       ).annotate({ identifier: "NetworkProfile" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          networkProfile: S.optional(__S(260, __c32, 4)),
-          managementNetworkProfile: S.optional(__S(260, __c32, 4)),
+          networkProfile: S.optional(__S(268, __c33, 4)),
+          managementNetworkProfile: S.optional(__S(268, __c33, 4)),
           stampId: S.optional(S.String),
           statusMessage: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedHsmProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(40, __c5, 0)),
-          tags: S.optional(__S(64, __c8, 0)),
-          location: S.String,
-          properties: __S(261, __c32, 5),
-          sku: __S(257, __c32, 1),
-          zones: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "DedicatedHsmCreateOrUpdateResponse" });
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2338,7 +2441,18 @@ function __c33(j: number): any {
       ).annotate({ identifier: "DeleteCloudHsmClusterRequest" });
   }
 }
-function __c34(j: number): any {
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteCloudHsmClusterResponse" });
+  }
+}
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2358,7 +2472,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "DeleteCloudHsmClusterPrivateEndpointConnectionRequest" });
   }
 }
-function __c35(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2377,7 +2491,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "DeleteDedicatedHsmRequest" });
   }
 }
-function __c36(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2396,7 +2510,25 @@ function __c36(j: number): any {
       ).annotate({ identifier: "GetCloudHsmClusterRequest" });
   }
 }
-function __c37(j: number): any {
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c6, 0)),
+          tags: S.optional(__S(64, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(83, __c10, 3)),
+          identity: S.optional(__S(86, __c10, 6)),
+          sku: S.optional(__S(80, __c10, 0)),
+        }),
+      ).annotate({ identifier: "GetCloudHsmClusterResponse" });
+  }
+}
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

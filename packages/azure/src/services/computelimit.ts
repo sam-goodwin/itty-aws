@@ -244,6 +244,10 @@ export interface DisableFeatureResponse {
   operations?: DisableFeatureResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface EnableFeatureRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -276,6 +280,10 @@ export interface EnableFeatureResponse {
   operations?: EnableFeatureResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetFeatureRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2062,6 +2070,8 @@ function __c36(j: number): any {
           endTime: S.optional(S.String),
           operations: S.optional(__S(294, __c36, 6)),
           error: S.optional(__S(292, __c36, 4)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "DisableFeatureResponse" });
   }

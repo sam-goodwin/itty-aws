@@ -38,6 +38,10 @@ export interface BackupInstancesAdhocBackupResponse {
   objectType: string;
   /** Name or Arm Id of the job created for this operation. */
   jobId?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** Type of the specific object - used for deserializing */
 export type ResourcePropertiesObjectType = "DefaultResourceProperties";
@@ -309,6 +313,12 @@ export interface BackupInstancesCreateOrUpdateResponse {
   properties?: BackupInstance;
   /** Proxy Resource tags. */
   tags?: BackupInstancesCreateOrUpdateResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
 }
 /** Recovery Option */
 export type RecoveryOption = "FailIfExists";
@@ -365,6 +375,10 @@ export interface BackupInstancesTriggerCrossRegionRestoreResponse {
   objectType: string;
   /** Name or Arm Id of the job created for this operation. */
   jobId?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type BackupInstancesTriggerRestoreRequestResourceGuardOperationRequestsList = Array<string>;
@@ -394,6 +408,10 @@ export interface BackupInstancesTriggerRestoreResponse {
   objectType: string;
   /** Name or Arm Id of the job created for this operation. */
   jobId?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 export interface BackupInstancesValidateCrossRegionRestoreRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -412,6 +430,10 @@ export interface BackupInstancesValidateCrossRegionRestoreResponse {
   objectType: string;
   /** Name or Arm Id of the job created for this operation. */
   jobId?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 export interface BackupInstancesValidateForModifyBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -425,7 +447,12 @@ export interface BackupInstancesValidateForModifyBackupRequest {
   /** Backup Instance */
   backupInstance: BackupInstanceInput;
 }
-export interface BackupInstancesValidateForModifyBackupResponse {}
+export interface BackupInstancesValidateForModifyBackupResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface BackupInstancesValidateForRestoreRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -443,6 +470,10 @@ export interface BackupInstancesValidateForRestoreResponse {
   objectType: string;
   /** Name or Arm Id of the job created for this operation. */
   jobId?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** Type of datasource for the backup management */
 export type BaseBackupPolicyDatasourceTypesList = Array<string>;
@@ -753,6 +784,10 @@ export interface BackupVaultsCreateOrUpdateResponse {
   identity?: DppIdentityDetails;
   /** Optional ETag. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface CheckBackupVaultNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -798,7 +833,12 @@ export interface DeleteBackupInstanceRequest {
   /** The name of the BackupInstanceResource */
   backupInstanceName: string;
 }
-export interface DeleteBackupInstanceResponse {}
+export interface DeleteBackupInstanceResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteBackupPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -817,7 +857,12 @@ export interface DeleteBackupVaultRequest {
   /** The name of the BackupVaultResource */
   vaultName: string;
 }
-export interface DeleteBackupVaultResponse {}
+export interface DeleteBackupVaultResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDppResourceGuardProxyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1084,6 +1129,9 @@ export interface GetBackupVaultOperationResultResponse {
   identity?: DppIdentityDetails;
   /** Optional ETag. */
   eTag?: string;
+  azureAsyncOperation?: string;
+  locationHeader?: string;
+  retryAfter?: number;
 }
 export interface GetDeletedBackupInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1439,6 +1487,9 @@ export interface GetOperationResultResponse {
   objectType: string;
   /** Name or Arm Id of the job created for this operation. */
   jobId?: string;
+  azureAsyncOperation?: string;
+  location?: string;
+  retryAfter?: number;
 }
 export interface GetOperationStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2287,7 +2338,12 @@ export interface ResumeBackupInstanceBackupsRequest {
   /** The name of the BackupInstanceResource */
   backupInstanceName: string;
 }
-export interface ResumeBackupInstanceBackupsResponse {}
+export interface ResumeBackupInstanceBackupsResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface ResumeBackupInstanceProtectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2298,7 +2354,12 @@ export interface ResumeBackupInstanceProtectionRequest {
   /** The name of the BackupInstanceResource */
   backupInstanceName: string;
 }
-export interface ResumeBackupInstanceProtectionResponse {}
+export interface ResumeBackupInstanceProtectionResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type StopBackupInstanceProtectionRequestResourceGuardOperationRequestsList = Array<string>;
 export interface StopBackupInstanceProtectionRequest {
@@ -2313,7 +2374,12 @@ export interface StopBackupInstanceProtectionRequest {
   /** ResourceGuardOperationRequests on which LAC check will be performed */
   resourceGuardOperationRequests?: StopBackupInstanceProtectionRequestResourceGuardOperationRequestsList;
 }
-export interface StopBackupInstanceProtectionResponse {}
+export interface StopBackupInstanceProtectionResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type SuspendBackupInstanceBackupsRequestResourceGuardOperationRequestsList = Array<string>;
 export interface SuspendBackupInstanceBackupsRequest {
@@ -2328,7 +2394,12 @@ export interface SuspendBackupInstanceBackupsRequest {
   /** ResourceGuardOperationRequests on which LAC check will be performed */
   resourceGuardOperationRequests?: SuspendBackupInstanceBackupsRequestResourceGuardOperationRequestsList;
 }
-export interface SuspendBackupInstanceBackupsResponse {}
+export interface SuspendBackupInstanceBackupsResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 /** Field indicating sync type e.g. to sync only in case of failure or in all cases */
 export type SyncType = "Default" | "ForceResync";
 export interface SyncBackupInstanceBackupInstanceRequest {
@@ -2343,7 +2414,12 @@ export interface SyncBackupInstanceBackupInstanceRequest {
   /** Field indicating sync type e.g. to sync only in case of failure or in all cases */
   syncType?: SyncType | (string & {});
 }
-export interface SyncBackupInstanceBackupInstanceResponse {}
+export interface SyncBackupInstanceBackupInstanceResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 /** Priority to be used for rehydration. Values High or Standard */
 export type RehydrationPriority = "Invalid" | "High" | "Standard";
 export interface TriggerBackupInstanceRehydrateRequest {
@@ -2362,7 +2438,12 @@ export interface TriggerBackupInstanceRehydrateRequest {
   /** Retention duration in ISO 8601 format i.e P10D . */
   rehydrationRetentionDuration: string;
 }
-export interface TriggerBackupInstanceRehydrateResponse {}
+export interface TriggerBackupInstanceRehydrateResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface TriggerExportJobRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2371,7 +2452,10 @@ export interface TriggerExportJobRequest {
   /** The name of the BackupVaultResource */
   vaultName: string;
 }
-export interface TriggerExportJobResponse {}
+export interface TriggerExportJobResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface UndeleteDeletedBackupInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2382,7 +2466,12 @@ export interface UndeleteDeletedBackupInstanceRequest {
   /** The name of the deleted backup instance */
   backupInstanceName: string;
 }
-export interface UndeleteDeletedBackupInstanceResponse {}
+export interface UndeleteDeletedBackupInstanceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type PatchBackupVaultInputResourceGuardOperationRequestsList = Array<string>;
 /** Backup Vault Contract for Patch Backup Vault API. */
@@ -2435,6 +2524,10 @@ export interface UpdateBackupVaultResponse {
   identity?: DppIdentityDetails;
   /** Optional ETag. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ValidateBackupInstanceForBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2451,6 +2544,10 @@ export interface ValidateBackupInstanceForBackupResponse {
   objectType: string;
   /** Name or Arm Id of the job created for this operation. */
   jobId?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 export type BackupInstancesAdhocBackupError = AzureOpError;
 /** Trigger adhoc backup */
@@ -2476,7 +2573,7 @@ export const BackupInstancesCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c2, 0) as any as S.Schema<BackupInstancesCreateOrUpdateRequest>,
-  output: __S(81, __c5, 1) as any as S.Schema<BackupInstancesCreateOrUpdateResponse>,
+  output: __S(33, __c2, 1) as any as S.Schema<BackupInstancesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2490,7 +2587,7 @@ export const BackupInstancesTriggerCrossRegionRestore: API.OperationMethod<
   BackupInstancesTriggerCrossRegionRestoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<BackupInstancesTriggerCrossRegionRestoreRequest>,
+  input: __S(416, __c26, 0) as any as S.Schema<BackupInstancesTriggerCrossRegionRestoreRequest>,
   output: __S(16, __c1, 0) as any as S.Schema<BackupInstancesTriggerCrossRegionRestoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2505,7 +2602,7 @@ export const BackupInstancesTriggerRestore: API.OperationMethod<
   BackupInstancesTriggerRestoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<BackupInstancesTriggerRestoreRequest>,
+  input: __S(720, __c45, 0) as any as S.Schema<BackupInstancesTriggerRestoreRequest>,
   output: __S(16, __c1, 0) as any as S.Schema<BackupInstancesTriggerRestoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2520,7 +2617,7 @@ export const BackupInstancesValidateCrossRegionRestore: API.OperationMethod<
   BackupInstancesValidateCrossRegionRestoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(944, __c59, 0) as any as S.Schema<BackupInstancesValidateCrossRegionRestoreRequest>,
+  input: __S(992, __c62, 0) as any as S.Schema<BackupInstancesValidateCrossRegionRestoreRequest>,
   output: __S(16, __c1, 0) as any as S.Schema<BackupInstancesValidateCrossRegionRestoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2535,8 +2632,8 @@ export const BackupInstancesValidateForModifyBackup: API.OperationMethod<
   BackupInstancesValidateForModifyBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1168, __c73, 0) as any as S.Schema<BackupInstancesValidateForModifyBackupRequest>,
-  output: __S(1184, __c74, 0) as any as S.Schema<BackupInstancesValidateForModifyBackupResponse>,
+  input: __S(1216, __c76, 0) as any as S.Schema<BackupInstancesValidateForModifyBackupRequest>,
+  output: __S(1232, __c77, 0) as any as S.Schema<BackupInstancesValidateForModifyBackupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2550,7 +2647,7 @@ export const BackupInstancesValidateForRestore: API.OperationMethod<
   BackupInstancesValidateForRestoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1360, __c85, 0) as any as S.Schema<BackupInstancesValidateForRestoreRequest>,
+  input: __S(1408, __c88, 0) as any as S.Schema<BackupInstancesValidateForRestoreRequest>,
   output: __S(16, __c1, 0) as any as S.Schema<BackupInstancesValidateForRestoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2565,8 +2662,8 @@ export const BackupPoliciesCreateOrUpdate: API.OperationMethod<
   BackupPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c96, 0) as any as S.Schema<BackupPoliciesCreateOrUpdateRequest>,
-  output: __S(1553, __c97, 1) as any as S.Schema<BackupPoliciesCreateOrUpdateResponse>,
+  input: __S(1584, __c99, 0) as any as S.Schema<BackupPoliciesCreateOrUpdateRequest>,
+  output: __S(1601, __c100, 1) as any as S.Schema<BackupPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2580,8 +2677,8 @@ export const BackupVaultsCreateOrUpdate: API.OperationMethod<
   BackupVaultsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1649, __c103, 1) as any as S.Schema<BackupVaultsCreateOrUpdateRequest>,
-  output: __S(1684, __c105, 4) as any as S.Schema<BackupVaultsCreateOrUpdateResponse>,
+  input: __S(1697, __c106, 1) as any as S.Schema<BackupVaultsCreateOrUpdateRequest>,
+  output: __S(1762, __c110, 2) as any as S.Schema<BackupVaultsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2595,8 +2692,8 @@ export const CheckBackupVaultNameAvailability: API.OperationMethod<
   CheckBackupVaultNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1712, __c107, 0) as any as S.Schema<CheckBackupVaultNameAvailabilityRequest>,
-  output: __S(1713, __c107, 1) as any as S.Schema<CheckNameAvailabilityResult>,
+  input: __S(1776, __c111, 0) as any as S.Schema<CheckBackupVaultNameAvailabilityRequest>,
+  output: __S(1777, __c111, 1) as any as S.Schema<CheckNameAvailabilityResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2626,7 +2723,7 @@ export const DeleteBackupInstance: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(224, __c14, 0) as any as S.Schema<DeleteBackupInstanceRequest>,
-  output: __S(1184, __c74, 0) as any as S.Schema<DeleteBackupInstanceResponse>,
+  output: __S(1232, __c77, 0) as any as S.Schema<DeleteBackupInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2641,7 +2738,7 @@ export const DeleteBackupPolicy: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(240, __c15, 0) as any as S.Schema<DeleteBackupPolicyRequest>,
-  output: __S(1184, __c74, 0) as any as S.Schema<DeleteBackupPolicyResponse>,
+  output: __S(1712, __c107, 0) as any as S.Schema<DeleteBackupPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2656,7 +2753,7 @@ export const DeleteBackupVault: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(256, __c16, 0) as any as S.Schema<DeleteBackupVaultRequest>,
-  output: __S(1184, __c74, 0) as any as S.Schema<DeleteBackupVaultResponse>,
+  output: __S(272, __c17, 0) as any as S.Schema<DeleteBackupVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2670,8 +2767,8 @@ export const DeleteDppResourceGuardProxy: API.OperationMethod<
   DeleteDppResourceGuardProxyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<DeleteDppResourceGuardProxyRequest>,
-  output: __S(1184, __c74, 0) as any as S.Schema<DeleteDppResourceGuardProxyResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<DeleteDppResourceGuardProxyRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<DeleteDppResourceGuardProxyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2685,8 +2782,8 @@ export const DeleteResourceGuard: API.OperationMethod<
   DeleteResourceGuardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<DeleteResourceGuardRequest>,
-  output: __S(1184, __c74, 0) as any as S.Schema<DeleteResourceGuardResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<DeleteResourceGuardRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<DeleteResourceGuardResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2700,8 +2797,8 @@ export const DppResourceGuardProxyCreateOrUpdate: API.OperationMethod<
   DppResourceGuardProxyCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<DppResourceGuardProxyCreateOrUpdateRequest>,
-  output: __S(323, __c20, 3) as any as S.Schema<DppResourceGuardProxyCreateOrUpdateResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<DppResourceGuardProxyCreateOrUpdateRequest>,
+  output: __S(339, __c21, 3) as any as S.Schema<DppResourceGuardProxyCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2715,8 +2812,8 @@ export const DppResourceGuardProxyUnlockDelete: API.OperationMethod<
   DppResourceGuardProxyUnlockDeleteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<DppResourceGuardProxyUnlockDeleteRequest>,
-  output: __S(337, __c21, 1) as any as S.Schema<UnlockDeleteResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<DppResourceGuardProxyUnlockDeleteRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<UnlockDeleteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2730,8 +2827,8 @@ export const GetBackupInstance: API.OperationMethod<
   GetBackupInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<GetBackupInstanceRequest>,
-  output: __S(81, __c5, 1) as any as S.Schema<GetBackupInstanceResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetBackupInstanceRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<GetBackupInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2746,14 +2843,14 @@ export const GetBackupInstanceBackupInstanceOperationResult: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    368,
-    __c23,
+    400,
+    __c25,
     0,
   ) as any as S.Schema<GetBackupInstanceBackupInstanceOperationResultRequest>,
   output: __S(
-    81,
-    __c5,
-    1,
+    384,
+    __c24,
+    0,
   ) as any as S.Schema<GetBackupInstanceBackupInstanceOperationResultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2768,8 +2865,8 @@ export const GetBackupPolicy: API.OperationMethod<
   GetBackupPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<GetBackupPolicyRequest>,
-  output: __S(1553, __c97, 1) as any as S.Schema<GetBackupPolicyResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetBackupPolicyRequest>,
+  output: __S(1601, __c100, 1) as any as S.Schema<GetBackupPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2783,8 +2880,8 @@ export const GetBackupVault: API.OperationMethod<
   GetBackupVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<GetBackupVaultRequest>,
-  output: __S(1684, __c105, 4) as any as S.Schema<GetBackupVaultResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetBackupVaultRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<GetBackupVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2798,8 +2895,8 @@ export const GetBackupVaultInResourceGroup: API.OperationMethod<
   GetBackupVaultInResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<GetBackupVaultInResourceGroupRequest>,
-  output: __S(497, __c31, 1) as any as S.Schema<GetBackupVaultInResourceGroupResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetBackupVaultInResourceGroupRequest>,
+  output: __S(545, __c34, 1) as any as S.Schema<GetBackupVaultInResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2813,8 +2910,8 @@ export const GetBackupVaultInSubscription: API.OperationMethod<
   GetBackupVaultInSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<GetBackupVaultInSubscriptionRequest>,
-  output: __S(497, __c31, 1) as any as S.Schema<GetBackupVaultInSubscriptionResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<GetBackupVaultInSubscriptionRequest>,
+  output: __S(545, __c34, 1) as any as S.Schema<GetBackupVaultInSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2828,8 +2925,8 @@ export const GetBackupVaultOperationResult: API.OperationMethod<
   GetBackupVaultOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<GetBackupVaultOperationResultRequest>,
-  output: __S(1684, __c105, 4) as any as S.Schema<GetBackupVaultOperationResultResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<GetBackupVaultOperationResultRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<GetBackupVaultOperationResultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2843,8 +2940,8 @@ export const GetDeletedBackupInstance: API.OperationMethod<
   GetDeletedBackupInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<GetDeletedBackupInstanceRequest>,
-  output: __S(562, __c35, 2) as any as S.Schema<GetDeletedBackupInstanceResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<GetDeletedBackupInstanceRequest>,
+  output: __S(610, __c38, 2) as any as S.Schema<GetDeletedBackupInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2858,8 +2955,8 @@ export const GetDeletedBackupVault: API.OperationMethod<
   GetDeletedBackupVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<GetDeletedBackupVaultRequest>,
-  output: __S(594, __c37, 2) as any as S.Schema<GetDeletedBackupVaultResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<GetDeletedBackupVaultRequest>,
+  output: __S(642, __c40, 2) as any as S.Schema<GetDeletedBackupVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2873,8 +2970,8 @@ export const GetDppResourceGuardProxy: API.OperationMethod<
   GetDppResourceGuardProxyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<GetDppResourceGuardProxyRequest>,
-  output: __S(323, __c20, 3) as any as S.Schema<GetDppResourceGuardProxyResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<GetDppResourceGuardProxyRequest>,
+  output: __S(339, __c21, 3) as any as S.Schema<GetDppResourceGuardProxyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2888,8 +2985,8 @@ export const GetExportJobsOperationResult: API.OperationMethod<
   GetExportJobsOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<GetExportJobsOperationResultRequest>,
-  output: __S(625, __c39, 1) as any as S.Schema<ExportJobsResult>,
+  input: __S(672, __c42, 0) as any as S.Schema<GetExportJobsOperationResultRequest>,
+  output: __S(673, __c42, 1) as any as S.Schema<ExportJobsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2903,8 +3000,8 @@ export const GetFetchCrossRegionRestoreJob: API.OperationMethod<
   GetFetchCrossRegionRestoreJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<GetFetchCrossRegionRestoreJobRequest>,
-  output: __S(664, __c41, 8) as any as S.Schema<GetFetchCrossRegionRestoreJobResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetFetchCrossRegionRestoreJobRequest>,
+  output: __S(712, __c44, 8) as any as S.Schema<GetFetchCrossRegionRestoreJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2918,8 +3015,8 @@ export const GetJob: API.OperationMethod<
   GetJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c43, 0) as any as S.Schema<GetJobRequest>,
-  output: __S(664, __c41, 8) as any as S.Schema<GetJobResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<GetJobRequest>,
+  output: __S(712, __c44, 8) as any as S.Schema<GetJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2933,8 +3030,8 @@ export const GetOperationResult: API.OperationMethod<
   GetOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c44, 0) as any as S.Schema<GetOperationResultRequest>,
-  output: __S(16, __c1, 0) as any as S.Schema<GetOperationResultResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<GetOperationResultRequest>,
+  output: __S(753, __c47, 1) as any as S.Schema<GetOperationResultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2948,8 +3045,8 @@ export const GetOperationStatus: API.OperationMethod<
   GetOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<GetOperationStatusRequest>,
-  output: __S(740, __c46, 4) as any as S.Schema<OperationResource>,
+  input: __S(768, __c48, 0) as any as S.Schema<GetOperationStatusRequest>,
+  output: __S(788, __c49, 4) as any as S.Schema<OperationResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2963,8 +3060,8 @@ export const GetOperationStatusBackupVaultContext: API.OperationMethod<
   GetOperationStatusBackupVaultContextError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c47, 0) as any as S.Schema<GetOperationStatusBackupVaultContextRequest>,
-  output: __S(740, __c46, 4) as any as S.Schema<OperationResource>,
+  input: __S(800, __c50, 0) as any as S.Schema<GetOperationStatusBackupVaultContextRequest>,
+  output: __S(788, __c49, 4) as any as S.Schema<OperationResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2978,8 +3075,8 @@ export const GetOperationStatusResourceGroupContext: API.OperationMethod<
   GetOperationStatusResourceGroupContextError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c48, 0) as any as S.Schema<GetOperationStatusResourceGroupContextRequest>,
-  output: __S(740, __c46, 4) as any as S.Schema<OperationResource>,
+  input: __S(816, __c51, 0) as any as S.Schema<GetOperationStatusResourceGroupContextRequest>,
+  output: __S(788, __c49, 4) as any as S.Schema<OperationResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2993,8 +3090,8 @@ export const GetRecoveryPoint: API.OperationMethod<
   GetRecoveryPointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c49, 0) as any as S.Schema<GetRecoveryPointRequest>,
-  output: __S(800, __c50, 0) as any as S.Schema<GetRecoveryPointResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<GetRecoveryPointRequest>,
+  output: __S(848, __c53, 0) as any as S.Schema<GetRecoveryPointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3008,8 +3105,8 @@ export const GetResourceGuard: API.OperationMethod<
   GetResourceGuardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(816, __c51, 0) as any as S.Schema<GetResourceGuardRequest>,
-  output: __S(835, __c52, 3) as any as S.Schema<GetResourceGuardResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<GetResourceGuardRequest>,
+  output: __S(883, __c55, 3) as any as S.Schema<GetResourceGuardResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3024,11 +3121,11 @@ export const GetResourceGuardBackupSecurityPINRequestsObjects: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    848,
-    __c53,
+    896,
+    __c56,
     0,
   ) as any as S.Schema<GetResourceGuardBackupSecurityPINRequestsObjectsRequest>,
-  output: __S(881, __c55, 1) as any as S.Schema<DppBaseResourceList>,
+  output: __S(929, __c58, 1) as any as S.Schema<DppBaseResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3043,13 +3140,13 @@ export const GetResourceGuardDefaultBackupSecurityPINRequestsObject: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    896,
-    __c56,
+    944,
+    __c59,
     0,
   ) as any as S.Schema<GetResourceGuardDefaultBackupSecurityPINRequestsObjectRequest>,
   output: __S(
-    864,
-    __c54,
+    912,
+    __c57,
     0,
   ) as any as S.Schema<GetResourceGuardDefaultBackupSecurityPINRequestsObjectResponse>,
   errors: [UnknownAzureError],
@@ -3065,8 +3162,8 @@ export const GetResourceGuardResourcesInResourceGroup: API.OperationMethod<
   GetResourceGuardResourcesInResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(912, __c57, 0) as any as S.Schema<GetResourceGuardResourcesInResourceGroupRequest>,
-  output: __S(929, __c58, 1) as any as S.Schema<GetResourceGuardResourcesInResourceGroupResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<GetResourceGuardResourcesInResourceGroupRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<GetResourceGuardResourcesInResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3080,8 +3177,8 @@ export const GetResourceGuardResourcesInSubscription: API.OperationMethod<
   GetResourceGuardResourcesInSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c60, 0) as any as S.Schema<GetResourceGuardResourcesInSubscriptionRequest>,
-  output: __S(929, __c58, 1) as any as S.Schema<GetResourceGuardResourcesInSubscriptionResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<GetResourceGuardResourcesInSubscriptionRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<GetResourceGuardResourcesInSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3095,8 +3192,8 @@ export const ListBackupInstances: API.OperationMethod<
   ListBackupInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(976, __c61, 0) as any as S.Schema<ListBackupInstancesRequest>,
-  output: __S(993, __c62, 1) as any as S.Schema<ListBackupInstancesResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<ListBackupInstancesRequest>,
+  output: __S(1041, __c65, 1) as any as S.Schema<ListBackupInstancesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3110,8 +3207,8 @@ export const ListBackupInstancesExtensionRouting: API.OperationMethod<
   ListBackupInstancesExtensionRoutingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1008, __c63, 0) as any as S.Schema<ListBackupInstancesExtensionRoutingRequest>,
-  output: __S(993, __c62, 1) as any as S.Schema<ListBackupInstancesExtensionRoutingResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<ListBackupInstancesExtensionRoutingRequest>,
+  output: __S(1041, __c65, 1) as any as S.Schema<ListBackupInstancesExtensionRoutingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3125,8 +3222,8 @@ export const ListBackupPolicies: API.OperationMethod<
   ListBackupPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c64, 0) as any as S.Schema<ListBackupPoliciesRequest>,
-  output: __S(1026, __c64, 2) as any as S.Schema<ListBackupPoliciesResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<ListBackupPoliciesRequest>,
+  output: __S(1074, __c67, 2) as any as S.Schema<ListBackupPoliciesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3140,8 +3237,8 @@ export const ListDataProtectionOperations: API.OperationMethod<
   ListDataProtectionOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1040, __c65, 0) as any as S.Schema<ListDataProtectionOperationsRequest>,
-  output: __S(1044, __c65, 4) as any as S.Schema<ListDataProtectionOperationsResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<ListDataProtectionOperationsRequest>,
+  output: __S(1092, __c68, 4) as any as S.Schema<ListDataProtectionOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3155,8 +3252,8 @@ export const ListDeletedBackupInstances: API.OperationMethod<
   ListDeletedBackupInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c66, 0) as any as S.Schema<ListDeletedBackupInstancesRequest>,
-  output: __S(1058, __c66, 2) as any as S.Schema<ListDeletedBackupInstancesResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<ListDeletedBackupInstancesRequest>,
+  output: __S(1106, __c69, 2) as any as S.Schema<ListDeletedBackupInstancesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3170,8 +3267,8 @@ export const ListDeletedBackupVaultByLocation: API.OperationMethod<
   ListDeletedBackupVaultByLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1072, __c67, 0) as any as S.Schema<ListDeletedBackupVaultByLocationRequest>,
-  output: __S(1074, __c67, 2) as any as S.Schema<DeletedBackupVaultResourceListResult>,
+  input: __S(1120, __c70, 0) as any as S.Schema<ListDeletedBackupVaultByLocationRequest>,
+  output: __S(1122, __c70, 2) as any as S.Schema<DeletedBackupVaultResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3185,8 +3282,8 @@ export const ListDppResourceGuardProxy: API.OperationMethod<
   ListDppResourceGuardProxyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c68, 0) as any as S.Schema<ListDppResourceGuardProxyRequest>,
-  output: __S(1090, __c68, 2) as any as S.Schema<ListDppResourceGuardProxyResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<ListDppResourceGuardProxyRequest>,
+  output: __S(1138, __c71, 2) as any as S.Schema<ListDppResourceGuardProxyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3200,8 +3297,8 @@ export const ListFetchCrossRegionRestoreJobs: API.OperationMethod<
   ListFetchCrossRegionRestoreJobsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1104, __c69, 0) as any as S.Schema<ListFetchCrossRegionRestoreJobsRequest>,
-  output: __S(1121, __c70, 1) as any as S.Schema<ListFetchCrossRegionRestoreJobsResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<ListFetchCrossRegionRestoreJobsRequest>,
+  output: __S(1169, __c73, 1) as any as S.Schema<ListFetchCrossRegionRestoreJobsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3215,8 +3312,8 @@ export const ListFetchSecondaryRecoveryPoints: API.OperationMethod<
   ListFetchSecondaryRecoveryPointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1136, __c71, 0) as any as S.Schema<ListFetchSecondaryRecoveryPointsRequest>,
-  output: __S(1153, __c72, 1) as any as S.Schema<ListFetchSecondaryRecoveryPointsResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<ListFetchSecondaryRecoveryPointsRequest>,
+  output: __S(1201, __c75, 1) as any as S.Schema<ListFetchSecondaryRecoveryPointsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3230,8 +3327,8 @@ export const ListJobs: API.OperationMethod<
   ListJobsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1200, __c75, 0) as any as S.Schema<ListJobsRequest>,
-  output: __S(1121, __c70, 1) as any as S.Schema<ListJobsResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<ListJobsRequest>,
+  output: __S(1169, __c73, 1) as any as S.Schema<ListJobsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3245,8 +3342,8 @@ export const ListRecoveryPoints: API.OperationMethod<
   ListRecoveryPointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c76, 0) as any as S.Schema<ListRecoveryPointsRequest>,
-  output: __S(1153, __c72, 1) as any as S.Schema<ListRecoveryPointsResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<ListRecoveryPointsRequest>,
+  output: __S(1201, __c75, 1) as any as S.Schema<ListRecoveryPointsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3260,8 +3357,8 @@ export const PatchResourceGuard: API.OperationMethod<
   PatchResourceGuardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1232, __c77, 0) as any as S.Schema<PatchResourceGuardRequest>,
-  output: __S(835, __c52, 3) as any as S.Schema<PatchResourceGuardResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<PatchResourceGuardRequest>,
+  output: __S(883, __c55, 3) as any as S.Schema<PatchResourceGuardResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3275,8 +3372,8 @@ export const PutResourceGuard: API.OperationMethod<
   PutResourceGuardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1249, __c78, 1) as any as S.Schema<PutResourceGuardRequest>,
-  output: __S(835, __c52, 3) as any as S.Schema<PutResourceGuardResponse>,
+  input: __S(1297, __c81, 1) as any as S.Schema<PutResourceGuardRequest>,
+  output: __S(883, __c55, 3) as any as S.Schema<PutResourceGuardResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3291,13 +3388,13 @@ export const ResourceGuardsGetDefaultDeleteProtectedItemRequestsObject: API.Oper
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1264,
-    __c79,
+    1312,
+    __c82,
     0,
   ) as any as S.Schema<ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectRequest>,
   output: __S(
-    864,
-    __c54,
+    912,
+    __c57,
     0,
   ) as any as S.Schema<ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectResponse>,
   errors: [UnknownAzureError],
@@ -3314,13 +3411,13 @@ export const ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObject: API
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1280,
-    __c80,
+    1328,
+    __c83,
     0,
   ) as any as S.Schema<ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectRequest>,
   output: __S(
-    864,
-    __c54,
+    912,
+    __c57,
     0,
   ) as any as S.Schema<ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectResponse>,
   errors: [UnknownAzureError],
@@ -3337,13 +3434,13 @@ export const ResourceGuardsGetDefaultDisableSoftDeleteRequestsObject: API.Operat
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1296,
-    __c81,
+    1344,
+    __c84,
     0,
   ) as any as S.Schema<ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectRequest>,
   output: __S(
-    864,
-    __c54,
+    912,
+    __c57,
     0,
   ) as any as S.Schema<ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectResponse>,
   errors: [UnknownAzureError],
@@ -3360,13 +3457,13 @@ export const ResourceGuardsGetDefaultUpdateProtectedItemRequestsObject: API.Oper
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1312,
-    __c82,
+    1360,
+    __c85,
     0,
   ) as any as S.Schema<ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectRequest>,
   output: __S(
-    864,
-    __c54,
+    912,
+    __c57,
     0,
   ) as any as S.Schema<ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectResponse>,
   errors: [UnknownAzureError],
@@ -3383,13 +3480,13 @@ export const ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObject: API.O
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1328,
-    __c83,
+    1376,
+    __c86,
     0,
   ) as any as S.Schema<ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectRequest>,
   output: __S(
-    864,
-    __c54,
+    912,
+    __c57,
     0,
   ) as any as S.Schema<ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectResponse>,
   errors: [UnknownAzureError],
@@ -3406,11 +3503,11 @@ export const ResourceGuardsGetDeleteProtectedItemRequestsObjects: API.OperationM
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1344,
-    __c84,
+    1392,
+    __c87,
     0,
   ) as any as S.Schema<ResourceGuardsGetDeleteProtectedItemRequestsObjectsRequest>,
-  output: __S(881, __c55, 1) as any as S.Schema<DppBaseResourceList>,
+  output: __S(929, __c58, 1) as any as S.Schema<DppBaseResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3425,11 +3522,11 @@ export const ResourceGuardsGetDeleteResourceGuardProxyRequestsObjects: API.Opera
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1376,
-    __c86,
+    1424,
+    __c89,
     0,
   ) as any as S.Schema<ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsRequest>,
-  output: __S(881, __c55, 1) as any as S.Schema<DppBaseResourceList>,
+  output: __S(929, __c58, 1) as any as S.Schema<DppBaseResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3444,11 +3541,11 @@ export const ResourceGuardsGetDisableSoftDeleteRequestsObjects: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1392,
-    __c87,
+    1440,
+    __c90,
     0,
   ) as any as S.Schema<ResourceGuardsGetDisableSoftDeleteRequestsObjectsRequest>,
-  output: __S(881, __c55, 1) as any as S.Schema<DppBaseResourceList>,
+  output: __S(929, __c58, 1) as any as S.Schema<DppBaseResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3463,11 +3560,11 @@ export const ResourceGuardsGetUpdateProtectedItemRequestsObjects: API.OperationM
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1408,
-    __c88,
+    1456,
+    __c91,
     0,
   ) as any as S.Schema<ResourceGuardsGetUpdateProtectedItemRequestsObjectsRequest>,
-  output: __S(881, __c55, 1) as any as S.Schema<DppBaseResourceList>,
+  output: __S(929, __c58, 1) as any as S.Schema<DppBaseResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3482,11 +3579,11 @@ export const ResourceGuardsGetUpdateProtectionPolicyRequestsObjects: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1424,
-    __c89,
+    1472,
+    __c92,
     0,
   ) as any as S.Schema<ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsRequest>,
-  output: __S(881, __c55, 1) as any as S.Schema<DppBaseResourceList>,
+  output: __S(929, __c58, 1) as any as S.Schema<DppBaseResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3499,8 +3596,8 @@ export const RestorableTimeRangesFind: API.OperationMethod<
   RestorableTimeRangesFindError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c90, 0) as any as S.Schema<RestorableTimeRangesFindRequest>,
-  output: __S(1444, __c90, 4) as any as S.Schema<RestorableTimeRangesFindResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<RestorableTimeRangesFindRequest>,
+  output: __S(1492, __c93, 4) as any as S.Schema<RestorableTimeRangesFindResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3514,8 +3611,8 @@ export const ResumeBackupInstanceBackups: API.OperationMethod<
   ResumeBackupInstanceBackupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1456, __c91, 0) as any as S.Schema<ResumeBackupInstanceBackupsRequest>,
-  output: __S(1184, __c74, 0) as any as S.Schema<ResumeBackupInstanceBackupsResponse>,
+  input: __S(1504, __c94, 0) as any as S.Schema<ResumeBackupInstanceBackupsRequest>,
+  output: __S(1232, __c77, 0) as any as S.Schema<ResumeBackupInstanceBackupsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3529,8 +3626,8 @@ export const ResumeBackupInstanceProtection: API.OperationMethod<
   ResumeBackupInstanceProtectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c92, 0) as any as S.Schema<ResumeBackupInstanceProtectionRequest>,
-  output: __S(1184, __c74, 0) as any as S.Schema<ResumeBackupInstanceProtectionResponse>,
+  input: __S(1520, __c95, 0) as any as S.Schema<ResumeBackupInstanceProtectionRequest>,
+  output: __S(1232, __c77, 0) as any as S.Schema<ResumeBackupInstanceProtectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3544,8 +3641,8 @@ export const StopBackupInstanceProtection: API.OperationMethod<
   StopBackupInstanceProtectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1488, __c93, 0) as any as S.Schema<StopBackupInstanceProtectionRequest>,
-  output: __S(1184, __c74, 0) as any as S.Schema<StopBackupInstanceProtectionResponse>,
+  input: __S(1536, __c96, 0) as any as S.Schema<StopBackupInstanceProtectionRequest>,
+  output: __S(1232, __c77, 0) as any as S.Schema<StopBackupInstanceProtectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3559,8 +3656,8 @@ export const SuspendBackupInstanceBackups: API.OperationMethod<
   SuspendBackupInstanceBackupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c94, 0) as any as S.Schema<SuspendBackupInstanceBackupsRequest>,
-  output: __S(1184, __c74, 0) as any as S.Schema<SuspendBackupInstanceBackupsResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<SuspendBackupInstanceBackupsRequest>,
+  output: __S(1232, __c77, 0) as any as S.Schema<SuspendBackupInstanceBackupsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3574,8 +3671,8 @@ export const SyncBackupInstanceBackupInstance: API.OperationMethod<
   SyncBackupInstanceBackupInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1520, __c95, 0) as any as S.Schema<SyncBackupInstanceBackupInstanceRequest>,
-  output: __S(1184, __c74, 0) as any as S.Schema<SyncBackupInstanceBackupInstanceResponse>,
+  input: __S(1568, __c98, 0) as any as S.Schema<SyncBackupInstanceBackupInstanceRequest>,
+  output: __S(1232, __c77, 0) as any as S.Schema<SyncBackupInstanceBackupInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3589,8 +3686,8 @@ export const TriggerBackupInstanceRehydrate: API.OperationMethod<
   TriggerBackupInstanceRehydrateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c98, 0) as any as S.Schema<TriggerBackupInstanceRehydrateRequest>,
-  output: __S(1184, __c74, 0) as any as S.Schema<TriggerBackupInstanceRehydrateResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<TriggerBackupInstanceRehydrateRequest>,
+  output: __S(1232, __c77, 0) as any as S.Schema<TriggerBackupInstanceRehydrateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3604,8 +3701,8 @@ export const TriggerExportJob: API.OperationMethod<
   TriggerExportJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1584, __c99, 0) as any as S.Schema<TriggerExportJobRequest>,
-  output: __S(1184, __c74, 0) as any as S.Schema<TriggerExportJobResponse>,
+  input: __S(1632, __c102, 0) as any as S.Schema<TriggerExportJobRequest>,
+  output: __S(1633, __c102, 1) as any as S.Schema<TriggerExportJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3619,8 +3716,8 @@ export const UndeleteDeletedBackupInstance: API.OperationMethod<
   UndeleteDeletedBackupInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1600, __c100, 0) as any as S.Schema<UndeleteDeletedBackupInstanceRequest>,
-  output: __S(1184, __c74, 0) as any as S.Schema<UndeleteDeletedBackupInstanceResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<UndeleteDeletedBackupInstanceRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<UndeleteDeletedBackupInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3634,8 +3731,8 @@ export const UpdateBackupVault: API.OperationMethod<
   UpdateBackupVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1617, __c101, 1) as any as S.Schema<UpdateBackupVaultRequest>,
-  output: __S(1684, __c105, 4) as any as S.Schema<UpdateBackupVaultResponse>,
+  input: __S(1665, __c104, 1) as any as S.Schema<UpdateBackupVaultRequest>,
+  output: __S(1762, __c110, 2) as any as S.Schema<UpdateBackupVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3649,7 +3746,7 @@ export const ValidateBackupInstanceForBackup: API.OperationMethod<
   ValidateBackupInstanceForBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1632, __c102, 0) as any as S.Schema<ValidateBackupInstanceForBackupRequest>,
+  input: __S(1680, __c105, 0) as any as S.Schema<ValidateBackupInstanceForBackupRequest>,
   output: __S(16, __c1, 0) as any as S.Schema<ValidateBackupInstanceForBackupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3698,6 +3795,8 @@ function __c1(j: number): any {
         S.Struct({
           objectType: S.String,
           jobId: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "BackupInstancesAdhocBackupResponse" });
   }
@@ -3722,6 +3821,20 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "BackupInstancesCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(176, __c11, 0)),
+          properties: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(192, __c12, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+        }),
+      ).annotate({ identifier: "BackupInstancesCreateOrUpdateResponse" });
   }
 }
 function __c3(j: number): any {
@@ -3791,17 +3904,6 @@ function __c5(j: number): any {
           objectType: S.String,
         }),
       ).annotate({ identifier: "BackupInstance" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(176, __c11, 0)),
-          properties: S.optional(__S(80, __c5, 0)),
-          tags: S.optional(__S(192, __c12, 0)),
-        }),
-      ).annotate({ identifier: "BackupInstancesCreateOrUpdateResponse" });
   }
 }
 function __c6(j: number): any {
@@ -4010,6 +4112,17 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteBackupVaultResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
@@ -4025,7 +4138,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "DeleteDppResourceGuardProxyRequest" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4044,7 +4157,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "DeleteResourceGuardRequest" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4053,7 +4166,7 @@ function __c19(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           resourceGuardProxyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(322, __c20, 2)),
+          properties: S.optional(__S(338, __c21, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4065,7 +4178,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "DppResourceGuardProxyCreateOrUpdateRequest" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4075,12 +4188,12 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "ResourceGuardOperationDetail" });
     case 1:
-      return S.Array(__S(320, __c20, 0));
+      return S.Array(__S(336, __c21, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           resourceGuardResourceId: S.optional(S.String),
-          resourceGuardOperationDetails: S.optional(__S(321, __c20, 1)),
+          resourceGuardOperationDetails: S.optional(__S(337, __c21, 1)),
           lastUpdatedTime: S.optional(S.String),
           description: S.optional(S.String),
         }),
@@ -4092,12 +4205,12 @@ function __c20(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(176, __c11, 0)),
-          properties: S.optional(__S(322, __c20, 2)),
+          properties: S.optional(__S(338, __c21, 2)),
         }),
       ).annotate({ identifier: "DppResourceGuardProxyCreateOrUpdateResponse" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4125,7 +4238,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "UnlockDeleteResponse" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4145,7 +4258,22 @@ function __c22(j: number): any {
       ).annotate({ identifier: "GetBackupInstanceRequest" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(176, __c11, 0)),
+          properties: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(192, __c12, 0)),
+        }),
+      ).annotate({ identifier: "GetBackupInstanceResponse" });
+  }
+}
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4166,7 +4294,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "GetBackupInstanceBackupInstanceOperationResultRequest" });
   }
 }
-function __c24(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4174,8 +4302,8 @@ function __c24(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          restoreRequestObject: __S(432, __c27, 0),
-          crossRegionRestoreDetails: __S(416, __c26, 0),
+          restoreRequestObject: __S(464, __c29, 0),
+          crossRegionRestoreDetails: __S(448, __c28, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4187,7 +4315,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "BackupInstancesTriggerCrossRegionRestoreRequest" });
   }
 }
-function __c25(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4199,7 +4327,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "RestoreTargetInfoBase" });
   }
 }
-function __c26(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4210,13 +4338,13 @@ function __c26(j: number): any {
       ).annotate({ identifier: "CrossRegionRestoreDetails" });
   }
 }
-function __c27(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           objectType: S.String,
-          restoreTargetInfo: __S(400, __c25, 0),
+          restoreTargetInfo: __S(432, __c27, 0),
           sourceDataStoreType: S.String,
           sourceResourceId: S.optional(S.String),
           resourceGuardOperationRequests: S.optional(__S(112, __c7, 0)),
@@ -4225,7 +4353,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "AzureBackupRestoreRequest" });
   }
 }
-function __c28(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4245,7 +4373,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "GetBackupPolicyRequest" });
   }
 }
-function __c29(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4264,7 +4392,25 @@ function __c29(j: number): any {
       ).annotate({ identifier: "GetBackupVaultRequest" });
   }
 }
-function __c30(j: number): any {
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(176, __c11, 0)),
+          tags: S.optional(__S(192, __c12, 0)),
+          location: S.String,
+          properties: __S(1744, __c109, 0),
+          identity: S.optional(__S(1747, __c109, 3)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetBackupVaultResponse" });
+  }
+}
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4282,20 +4428,20 @@ function __c30(j: number): any {
       ).annotate({ identifier: "GetBackupVaultInResourceGroupRequest" });
   }
 }
-function __c31(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1684, __c105, 4));
+      return S.Array(__S(512, __c32, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(496, __c31, 0)),
+          value: S.optional(__S(544, __c34, 0)),
         }),
       ).annotate({ identifier: "GetBackupVaultInResourceGroupResponse" });
   }
 }
-function __c32(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4312,7 +4458,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "GetBackupVaultInSubscriptionRequest" });
   }
 }
-function __c33(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4330,9 +4476,26 @@ function __c33(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBackupVaultOperationResultRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(176, __c11, 0)),
+          tags: S.optional(__S(192, __c12, 0)),
+          location: S.String,
+          properties: __S(1744, __c109, 0),
+          identity: S.optional(__S(1747, __c109, 3)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "GetBackupVaultOperationResultResponse" });
   }
 }
-function __c34(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4352,7 +4515,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "GetDeletedBackupInstanceRequest" });
   }
 }
-function __c35(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4379,7 +4542,7 @@ function __c35(j: number): any {
           validationType: S.optional(S.String),
           identityDetails: S.optional(__S(96, __c6, 0)),
           objectType: S.String,
-          deletionInfo: S.optional(__S(560, __c35, 0)),
+          deletionInfo: S.optional(__S(608, __c38, 0)),
         }),
       ).annotate({ identifier: "DeletedBackupInstance" });
     case 2:
@@ -4389,12 +4552,12 @@ function __c35(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(176, __c11, 0)),
-          properties: S.optional(__S(561, __c35, 1)),
+          properties: S.optional(__S(609, __c38, 1)),
         }),
       ).annotate({ identifier: "GetDeletedBackupInstanceResponse" });
   }
 }
-function __c36(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4413,7 +4576,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "GetDeletedBackupVaultRequest" });
   }
 }
-function __c37(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4426,15 +4589,15 @@ function __c37(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          monitoringSettings: S.optional(__S(1665, __c104, 1)),
-          costManagementSettings: S.optional(__S(1666, __c104, 2)),
+          monitoringSettings: S.optional(__S(1729, __c108, 1)),
+          costManagementSettings: S.optional(__S(1730, __c108, 2)),
           provisioningState: S.optional(S.String),
           resourceMoveState: S.optional(S.String),
-          resourceMoveDetails: S.optional(__S(1678, __c104, 14)),
-          securitySettings: S.optional(__S(1673, __c104, 9)),
-          storageSettings: S.optional(__S(1675, __c104, 11)),
+          resourceMoveDetails: S.optional(__S(1742, __c108, 14)),
+          securitySettings: S.optional(__S(1737, __c108, 9)),
+          storageSettings: S.optional(__S(1739, __c108, 11)),
           isVaultProtectedByResourceGuard: S.optional(S.Boolean),
-          featureSettings: S.optional(__S(1677, __c104, 13)),
+          featureSettings: S.optional(__S(1741, __c108, 13)),
           secureScore: S.optional(S.String),
           bcdrSecurityLevel: S.optional(S.String),
           resourceGuardOperationRequests: S.optional(__S(112, __c7, 0)),
@@ -4442,7 +4605,7 @@ function __c37(j: number): any {
           originalBackupVaultId: S.String,
           originalBackupVaultName: S.String,
           originalBackupVaultResourcePath: S.String,
-          resourceDeletionInfo: __S(592, __c37, 0),
+          resourceDeletionInfo: __S(640, __c40, 0),
         }),
       ).annotate({ identifier: "DeletedBackupVault" });
     case 2:
@@ -4452,12 +4615,12 @@ function __c37(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(176, __c11, 0)),
-          properties: S.optional(__S(593, __c37, 1)),
+          properties: S.optional(__S(641, __c40, 1)),
         }),
       ).annotate({ identifier: "GetDeletedBackupVaultResponse" });
   }
 }
-function __c38(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4477,7 +4640,7 @@ function __c38(j: number): any {
       ).annotate({ identifier: "GetDppResourceGuardProxyRequest" });
   }
 }
-function __c39(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4506,7 +4669,7 @@ function __c39(j: number): any {
       ).annotate({ identifier: "ExportJobsResult" });
   }
 }
-function __c40(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4528,7 +4691,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "GetFetchCrossRegionRestoreJobRequest" });
   }
 }
-function __c41(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(50, __c3, 2));
@@ -4550,7 +4713,7 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "JobSubTask" });
     case 3:
-      return S.Array(__S(658, __c41, 2));
+      return S.Array(__S(706, __c44, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4559,7 +4722,7 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "UserFacingWarningDetail" });
     case 5:
-      return S.Array(__S(660, __c41, 4));
+      return S.Array(__S(708, __c44, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -4567,10 +4730,10 @@ function __c41(j: number): any {
           backupInstanceState: S.optional(S.String),
           dataTransferredInBytes: S.optional(S.Number),
           recoveryDestination: S.optional(S.String),
-          sourceRecoverPoint: S.optional(__S(657, __c41, 1)),
-          subTasks: S.optional(__S(659, __c41, 3)),
-          targetRecoverPoint: S.optional(__S(657, __c41, 1)),
-          warningDetails: S.optional(__S(661, __c41, 5)),
+          sourceRecoverPoint: S.optional(__S(705, __c44, 1)),
+          subTasks: S.optional(__S(707, __c44, 3)),
+          targetRecoverPoint: S.optional(__S(705, __c44, 1)),
+          warningDetails: S.optional(__S(709, __c44, 5)),
         }),
       ).annotate({ identifier: "JobExtendedInfo" });
     case 7:
@@ -4586,8 +4749,8 @@ function __c41(j: number): any {
           dataSourceType: S.String,
           duration: S.optional(S.String),
           endTime: S.optional(S.String),
-          errorDetails: S.optional(__S(656, __c41, 0)),
-          extendedInfo: S.optional(__S(662, __c41, 6)),
+          errorDetails: S.optional(__S(704, __c44, 0)),
+          extendedInfo: S.optional(__S(710, __c44, 6)),
           isUserTriggered: S.Boolean,
           operation: S.String,
           operationCategory: S.String,
@@ -4616,12 +4779,12 @@ function __c41(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(176, __c11, 0)),
-          properties: S.optional(__S(663, __c41, 7)),
+          properties: S.optional(__S(711, __c44, 7)),
         }),
       ).annotate({ identifier: "GetFetchCrossRegionRestoreJobResponse" });
   }
 }
-function __c42(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4631,7 +4794,7 @@ function __c42(j: number): any {
           vaultName: S.String.pipe(T.Label()),
           backupInstanceName: S.String.pipe(T.Label()),
           objectType: S.String,
-          restoreTargetInfo: __S(400, __c25, 0),
+          restoreTargetInfo: __S(432, __c27, 0),
           sourceDataStoreType: S.String,
           sourceResourceId: S.optional(S.String),
           resourceGuardOperationRequests: S.optional(__S(112, __c7, 0)),
@@ -4647,7 +4810,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "BackupInstancesTriggerRestoreRequest" });
   }
 }
-function __c43(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4667,7 +4830,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "GetJobRequest" });
   }
 }
-function __c44(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4684,9 +4847,19 @@ function __c44(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOperationResultRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          objectType: S.String,
+          jobId: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "GetOperationResultResponse" });
   }
 }
-function __c45(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4705,7 +4878,7 @@ function __c45(j: number): any {
       ).annotate({ identifier: "GetOperationStatusRequest" });
   }
 }
-function __c46(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4715,15 +4888,15 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "ErrorAdditionalInfoItem" });
     case 1:
-      return S.Array(__S(736, __c46, 0));
+      return S.Array(__S(784, __c49, 0));
     case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(739, __c46, 3)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(787, __c49, 3)));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          additionalInfo: S.optional(__S(737, __c46, 1)),
+          additionalInfo: S.optional(__S(785, __c49, 1)),
           code: S.optional(S.String),
-          details: S.optional(__S(738, __c46, 2)),
+          details: S.optional(__S(786, __c49, 2)),
           message: S.optional(S.String),
           target: S.optional(S.String),
         }),
@@ -4732,7 +4905,7 @@ function __c46(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
-          error: S.optional(__S(739, __c46, 3)),
+          error: S.optional(__S(787, __c49, 3)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           properties: S.optional(__S(128, __c8, 0)),
@@ -4742,7 +4915,7 @@ function __c46(j: number): any {
       ).annotate({ identifier: "OperationResource" });
   }
 }
-function __c47(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4762,7 +4935,7 @@ function __c47(j: number): any {
       ).annotate({ identifier: "GetOperationStatusBackupVaultContextRequest" });
   }
 }
-function __c48(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4781,7 +4954,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "GetOperationStatusResourceGroupContextRequest" });
   }
 }
-function __c49(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4802,7 +4975,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "GetRecoveryPointRequest" });
   }
 }
-function __c50(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4816,7 +4989,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "GetRecoveryPointResponse" });
   }
 }
-function __c51(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4835,7 +5008,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "GetResourceGuardRequest" });
   }
 }
-function __c52(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4845,13 +5018,13 @@ function __c52(j: number): any {
         }),
       ).annotate({ identifier: "ResourceGuardOperation" });
     case 1:
-      return S.Array(__S(832, __c52, 0));
+      return S.Array(__S(880, __c55, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           allowAutoApprovals: S.optional(S.Boolean),
-          resourceGuardOperations: S.optional(__S(833, __c52, 1)),
+          resourceGuardOperations: S.optional(__S(881, __c55, 1)),
           vaultCriticalOperationExclusionList: S.optional(__S(112, __c7, 0)),
           description: S.optional(S.String),
         }),
@@ -4865,13 +5038,13 @@ function __c52(j: number): any {
           systemData: S.optional(__S(176, __c11, 0)),
           tags: S.optional(__S(192, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(834, __c52, 2)),
+          properties: S.optional(__S(882, __c55, 2)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetResourceGuardResponse" });
   }
 }
-function __c53(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4890,7 +5063,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "GetResourceGuardBackupSecurityPINRequestsObjectsRequest" });
   }
 }
-function __c54(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4903,20 +5076,20 @@ function __c54(j: number): any {
       ).annotate({ identifier: "Resource" });
   }
 }
-function __c55(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(864, __c54, 0));
+      return S.Array(__S(912, __c57, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(880, __c55, 0),
+          value: __S(928, __c58, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DppBaseResourceList" });
   }
 }
-function __c56(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4936,7 +5109,7 @@ function __c56(j: number): any {
       ).annotate({ identifier: "GetResourceGuardDefaultBackupSecurityPINRequestsObjectRequest" });
   }
 }
-function __c57(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4954,20 +5127,20 @@ function __c57(j: number): any {
       ).annotate({ identifier: "GetResourceGuardResourcesInResourceGroupRequest" });
   }
 }
-function __c58(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(835, __c52, 3));
+      return S.Array(__S(883, __c55, 3));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(928, __c58, 0)),
+          value: S.optional(__S(976, __c61, 0)),
         }),
       ).annotate({ identifier: "GetResourceGuardResourcesInResourceGroupResponse" });
   }
 }
-function __c59(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4975,8 +5148,8 @@ function __c59(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          restoreRequestObject: __S(432, __c27, 0),
-          crossRegionRestoreDetails: __S(416, __c26, 0),
+          restoreRequestObject: __S(464, __c29, 0),
+          crossRegionRestoreDetails: __S(448, __c28, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4988,7 +5161,7 @@ function __c59(j: number): any {
       ).annotate({ identifier: "BackupInstancesValidateCrossRegionRestoreRequest" });
   }
 }
-function __c60(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5005,7 +5178,7 @@ function __c60(j: number): any {
       ).annotate({ identifier: "GetResourceGuardResourcesInSubscriptionRequest" });
   }
 }
-function __c61(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5024,20 +5197,20 @@ function __c61(j: number): any {
       ).annotate({ identifier: "ListBackupInstancesRequest" });
   }
 }
-function __c62(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(81, __c5, 1));
+      return S.Array(__S(384, __c24, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(992, __c62, 0)),
+          value: S.optional(__S(1040, __c65, 0)),
         }),
       ).annotate({ identifier: "ListBackupInstancesResponse" });
   }
 }
-function __c63(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5054,7 +5227,7 @@ function __c63(j: number): any {
       ).annotate({ identifier: "ListBackupInstancesExtensionRoutingRequest" });
   }
 }
-function __c64(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5072,17 +5245,17 @@ function __c64(j: number): any {
         ),
       ).annotate({ identifier: "ListBackupPoliciesRequest" });
     case 1:
-      return S.Array(__S(1553, __c97, 1));
+      return S.Array(__S(1601, __c100, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(1025, __c64, 1)),
+          value: S.optional(__S(1073, __c67, 1)),
         }),
       ).annotate({ identifier: "ListBackupPoliciesResponse" });
   }
 }
-function __c65(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5109,23 +5282,23 @@ function __c65(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(1041, __c65, 1)),
+          display: S.optional(__S(1089, __c68, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(1042, __c65, 2));
+      return S.Array(__S(1090, __c68, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1043, __c65, 3)),
+          value: S.optional(__S(1091, __c68, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDataProtectionOperationsResponse" });
   }
 }
-function __c66(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5143,17 +5316,17 @@ function __c66(j: number): any {
         ),
       ).annotate({ identifier: "ListDeletedBackupInstancesRequest" });
     case 1:
-      return S.Array(__S(562, __c35, 2));
+      return S.Array(__S(610, __c38, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(1057, __c66, 1)),
+          value: S.optional(__S(1105, __c69, 1)),
         }),
       ).annotate({ identifier: "ListDeletedBackupInstancesResponse" });
   }
 }
-function __c67(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5170,17 +5343,17 @@ function __c67(j: number): any {
         ),
       ).annotate({ identifier: "ListDeletedBackupVaultByLocationRequest" });
     case 1:
-      return S.Array(__S(594, __c37, 2));
+      return S.Array(__S(642, __c40, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1073, __c67, 1),
+          value: __S(1121, __c70, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeletedBackupVaultResourceListResult" });
   }
 }
-function __c68(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5198,17 +5371,17 @@ function __c68(j: number): any {
         ),
       ).annotate({ identifier: "ListDppResourceGuardProxyRequest" });
     case 1:
-      return S.Array(__S(323, __c20, 3));
+      return S.Array(__S(339, __c21, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(1089, __c68, 1)),
+          value: S.optional(__S(1137, __c71, 1)),
         }),
       ).annotate({ identifier: "ListDppResourceGuardProxyResponse" });
   }
 }
-function __c69(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5230,20 +5403,20 @@ function __c69(j: number): any {
       ).annotate({ identifier: "ListFetchCrossRegionRestoreJobsRequest" });
   }
 }
-function __c70(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(664, __c41, 8));
+      return S.Array(__S(712, __c44, 8));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(1120, __c70, 0)),
+          value: S.optional(__S(1168, __c73, 0)),
         }),
       ).annotate({ identifier: "ListFetchCrossRegionRestoreJobsResponse" });
   }
 }
-function __c71(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5266,20 +5439,20 @@ function __c71(j: number): any {
       ).annotate({ identifier: "ListFetchSecondaryRecoveryPointsRequest" });
   }
 }
-function __c72(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(800, __c50, 0));
+      return S.Array(__S(848, __c53, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(1152, __c72, 0)),
+          value: S.optional(__S(1200, __c75, 0)),
         }),
       ).annotate({ identifier: "ListFetchSecondaryRecoveryPointsResponse" });
   }
 }
-function __c73(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5300,15 +5473,18 @@ function __c73(j: number): any {
       ).annotate({ identifier: "BackupInstancesValidateForModifyBackupRequest" });
   }
 }
-function __c74(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "BackupInstancesValidateForModifyBackupResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "BackupInstancesValidateForModifyBackupResponse" });
   }
 }
-function __c75(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5327,7 +5503,7 @@ function __c75(j: number): any {
       ).annotate({ identifier: "ListJobsRequest" });
   }
 }
-function __c76(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5349,7 +5525,7 @@ function __c76(j: number): any {
       ).annotate({ identifier: "ListRecoveryPointsRequest" });
   }
 }
-function __c77(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5369,7 +5545,7 @@ function __c77(j: number): any {
       ).annotate({ identifier: "PatchResourceGuardRequest" });
   }
 }
-function __c78(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5385,7 +5561,7 @@ function __c78(j: number): any {
           resourceGuardsName: S.String.pipe(T.Label()),
           tags: S.optional(__S(192, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(1248, __c78, 0)),
+          properties: S.optional(__S(1296, __c81, 0)),
           eTag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -5398,7 +5574,7 @@ function __c78(j: number): any {
       ).annotate({ identifier: "PutResourceGuardRequest" });
   }
 }
-function __c79(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5420,7 +5596,7 @@ function __c79(j: number): any {
       });
   }
 }
-function __c80(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5442,7 +5618,7 @@ function __c80(j: number): any {
       });
   }
 }
-function __c81(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5462,7 +5638,7 @@ function __c81(j: number): any {
       ).annotate({ identifier: "ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectRequest" });
   }
 }
-function __c82(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5484,7 +5660,7 @@ function __c82(j: number): any {
       });
   }
 }
-function __c83(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5506,7 +5682,7 @@ function __c83(j: number): any {
       });
   }
 }
-function __c84(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5525,7 +5701,7 @@ function __c84(j: number): any {
       ).annotate({ identifier: "ResourceGuardsGetDeleteProtectedItemRequestsObjectsRequest" });
   }
 }
-function __c85(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5534,7 +5710,7 @@ function __c85(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           backupInstanceName: S.String.pipe(T.Label()),
-          restoreRequestObject: __S(432, __c27, 0),
+          restoreRequestObject: __S(464, __c29, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5546,7 +5722,7 @@ function __c85(j: number): any {
       ).annotate({ identifier: "BackupInstancesValidateForRestoreRequest" });
   }
 }
-function __c86(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5565,7 +5741,7 @@ function __c86(j: number): any {
       ).annotate({ identifier: "ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsRequest" });
   }
 }
-function __c87(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5584,7 +5760,7 @@ function __c87(j: number): any {
       ).annotate({ identifier: "ResourceGuardsGetDisableSoftDeleteRequestsObjectsRequest" });
   }
 }
-function __c88(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5603,7 +5779,7 @@ function __c88(j: number): any {
       ).annotate({ identifier: "ResourceGuardsGetUpdateProtectedItemRequestsObjectsRequest" });
   }
 }
-function __c89(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5622,7 +5798,7 @@ function __c89(j: number): any {
       ).annotate({ identifier: "ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsRequest" });
   }
 }
-function __c90(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5652,11 +5828,11 @@ function __c90(j: number): any {
         }),
       ).annotate({ identifier: "RestorableTimeRange" });
     case 2:
-      return S.Array(__S(1441, __c90, 1));
+      return S.Array(__S(1489, __c93, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          restorableTimeRanges: S.optional(__S(1442, __c90, 2)),
+          restorableTimeRanges: S.optional(__S(1490, __c93, 2)),
           objectType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AzureBackupFindRestorableTimeRangesResponse" });
@@ -5667,12 +5843,12 @@ function __c90(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(176, __c11, 0)),
-          properties: S.optional(__S(1443, __c90, 3)),
+          properties: S.optional(__S(1491, __c93, 3)),
         }),
       ).annotate({ identifier: "RestorableTimeRangesFindResponse" });
   }
 }
-function __c91(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5692,7 +5868,7 @@ function __c91(j: number): any {
       ).annotate({ identifier: "ResumeBackupInstanceBackupsRequest" });
   }
 }
-function __c92(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5712,7 +5888,7 @@ function __c92(j: number): any {
       ).annotate({ identifier: "ResumeBackupInstanceProtectionRequest" });
   }
 }
-function __c93(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5733,7 +5909,7 @@ function __c93(j: number): any {
       ).annotate({ identifier: "StopBackupInstanceProtectionRequest" });
   }
 }
-function __c94(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5754,7 +5930,7 @@ function __c94(j: number): any {
       ).annotate({ identifier: "SuspendBackupInstanceBackupsRequest" });
   }
 }
-function __c95(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5775,7 +5951,7 @@ function __c95(j: number): any {
       ).annotate({ identifier: "SyncBackupInstanceBackupInstanceRequest" });
   }
 }
-function __c96(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5784,7 +5960,7 @@ function __c96(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           backupPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1552, __c97, 0)),
+          properties: S.optional(__S(1600, __c100, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5796,7 +5972,7 @@ function __c96(j: number): any {
       ).annotate({ identifier: "BackupPoliciesCreateOrUpdateRequest" });
   }
 }
-function __c97(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5813,12 +5989,12 @@ function __c97(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(176, __c11, 0)),
-          properties: S.optional(__S(1552, __c97, 0)),
+          properties: S.optional(__S(1600, __c100, 0)),
         }),
       ).annotate({ identifier: "BackupPoliciesCreateOrUpdateResponse" });
   }
 }
-function __c98(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5841,7 +6017,7 @@ function __c98(j: number): any {
       ).annotate({ identifier: "TriggerBackupInstanceRehydrateRequest" });
   }
 }
-function __c99(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5858,9 +6034,15 @@ function __c99(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TriggerExportJobRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "TriggerExportJobResponse" });
   }
 }
-function __c100(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5880,15 +6062,15 @@ function __c100(j: number): any {
       ).annotate({ identifier: "UndeleteDeletedBackupInstanceRequest" });
   }
 }
-function __c101(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          monitoringSettings: S.optional(__S(1665, __c104, 1)),
-          securitySettings: S.optional(__S(1673, __c104, 9)),
-          featureSettings: S.optional(__S(1677, __c104, 13)),
-          costManagementSettings: S.optional(__S(1666, __c104, 2)),
+          monitoringSettings: S.optional(__S(1729, __c108, 1)),
+          securitySettings: S.optional(__S(1737, __c108, 9)),
+          featureSettings: S.optional(__S(1741, __c108, 13)),
+          costManagementSettings: S.optional(__S(1730, __c108, 2)),
           resourceGuardOperationRequests: S.optional(__S(112, __c7, 0)),
         }),
       ).annotate({ identifier: "PatchBackupVaultInput" });
@@ -5898,8 +6080,8 @@ function __c101(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(1697, __c106, 1)),
-          properties: S.optional(__S(1616, __c101, 0)),
+          identity: S.optional(__S(1761, __c110, 1)),
+          properties: S.optional(__S(1664, __c104, 0)),
           tags: S.optional(__S(192, __c12, 0)),
         }).pipe(
           T.Http({
@@ -5912,7 +6094,7 @@ function __c101(j: number): any {
       ).annotate({ identifier: "UpdateBackupVaultRequest" });
   }
 }
-function __c102(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5932,16 +6114,16 @@ function __c102(j: number): any {
       ).annotate({ identifier: "ValidateBackupInstanceForBackupRequest" });
   }
 }
-function __c103(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          monitoringSettings: S.optional(__S(1665, __c104, 1)),
-          costManagementSettings: S.optional(__S(1666, __c104, 2)),
-          securitySettings: S.optional(__S(1673, __c104, 9)),
-          storageSettings: S.optional(__S(1675, __c104, 11)),
-          featureSettings: S.optional(__S(1677, __c104, 13)),
+          monitoringSettings: S.optional(__S(1729, __c108, 1)),
+          costManagementSettings: S.optional(__S(1730, __c108, 2)),
+          securitySettings: S.optional(__S(1737, __c108, 9)),
+          storageSettings: S.optional(__S(1739, __c108, 11)),
+          featureSettings: S.optional(__S(1741, __c108, 13)),
           resourceGuardOperationRequests: S.optional(__S(112, __c7, 0)),
           replicatedRegions: S.optional(__S(112, __c7, 0)),
         }),
@@ -5954,8 +6136,8 @@ function __c103(j: number): any {
           vaultName: S.String.pipe(T.Label()),
           tags: S.optional(__S(192, __c12, 0)),
           location: S.String,
-          properties: __S(1648, __c103, 0),
-          identity: S.optional(__S(1697, __c106, 1)),
+          properties: __S(1696, __c106, 0),
+          identity: S.optional(__S(1761, __c110, 1)),
           eTag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -5968,7 +6150,15 @@ function __c103(j: number): any {
       ).annotate({ identifier: "BackupVaultsCreateOrUpdateRequest" });
   }
 }
-function __c104(j: number): any {
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DppIdentityDetailsInputUserAssignedIdentitiesValue",
+      });
+  }
+}
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5979,7 +6169,7 @@ function __c104(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          azureMonitorAlertSettings: S.optional(__S(1664, __c104, 0)),
+          azureMonitorAlertSettings: S.optional(__S(1728, __c108, 0)),
         }),
       ).annotate({ identifier: "MonitoringSettings" });
     case 2:
@@ -6006,7 +6196,7 @@ function __c104(j: number): any {
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
-          configuration: S.optional(__S(1668, __c104, 4)),
+          configuration: S.optional(__S(1732, __c108, 4)),
         }),
       ).annotate({ identifier: "ImmutabilitySettings" });
     case 6:
@@ -6026,17 +6216,17 @@ function __c104(j: number): any {
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(1670, __c104, 6)),
-          kekIdentity: S.optional(__S(1671, __c104, 7)),
+          keyVaultProperties: S.optional(__S(1734, __c108, 6)),
+          kekIdentity: S.optional(__S(1735, __c108, 7)),
           infrastructureEncryption: S.optional(S.String),
         }),
       ).annotate({ identifier: "EncryptionSettings" });
     case 9:
       return S.suspend(() =>
         S.Struct({
-          softDeleteSettings: S.optional(__S(1667, __c104, 3)),
-          immutabilitySettings: S.optional(__S(1669, __c104, 5)),
-          encryptionSettings: S.optional(__S(1672, __c104, 8)),
+          softDeleteSettings: S.optional(__S(1731, __c108, 3)),
+          immutabilitySettings: S.optional(__S(1733, __c108, 5)),
+          encryptionSettings: S.optional(__S(1736, __c108, 8)),
         }),
       ).annotate({ identifier: "SecuritySettings" });
     case 10:
@@ -6047,7 +6237,7 @@ function __c104(j: number): any {
         }),
       ).annotate({ identifier: "StorageSetting" });
     case 11:
-      return S.Array(__S(1674, __c104, 10));
+      return S.Array(__S(1738, __c108, 10));
     case 12:
       return S.suspend(() =>
         S.Struct({
@@ -6057,8 +6247,8 @@ function __c104(j: number): any {
     case 13:
       return S.suspend(() =>
         S.Struct({
-          crossSubscriptionRestoreSettings: S.optional(__S(1676, __c104, 12)),
-          crossRegionRestoreSettings: S.optional(__S(1676, __c104, 12)),
+          crossSubscriptionRestoreSettings: S.optional(__S(1740, __c108, 12)),
+          crossRegionRestoreSettings: S.optional(__S(1740, __c108, 12)),
         }),
       ).annotate({ identifier: "FeatureSettings" });
     case 14:
@@ -6073,20 +6263,20 @@ function __c104(j: number): any {
       ).annotate({ identifier: "ResourceMoveDetails" });
   }
 }
-function __c105(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          monitoringSettings: S.optional(__S(1665, __c104, 1)),
-          costManagementSettings: S.optional(__S(1666, __c104, 2)),
+          monitoringSettings: S.optional(__S(1729, __c108, 1)),
+          costManagementSettings: S.optional(__S(1730, __c108, 2)),
           provisioningState: S.optional(S.String),
           resourceMoveState: S.optional(S.String),
-          resourceMoveDetails: S.optional(__S(1678, __c104, 14)),
-          securitySettings: S.optional(__S(1673, __c104, 9)),
-          storageSettings: S.optional(__S(1675, __c104, 11)),
+          resourceMoveDetails: S.optional(__S(1742, __c108, 14)),
+          securitySettings: S.optional(__S(1737, __c108, 9)),
+          storageSettings: S.optional(__S(1739, __c108, 11)),
           isVaultProtectedByResourceGuard: S.optional(S.Boolean),
-          featureSettings: S.optional(__S(1677, __c104, 13)),
+          featureSettings: S.optional(__S(1741, __c108, 13)),
           secureScore: S.optional(S.String),
           bcdrSecurityLevel: S.optional(S.String),
           resourceGuardOperationRequests: S.optional(__S(112, __c7, 0)),
@@ -6101,17 +6291,30 @@ function __c105(j: number): any {
         }),
       ).annotate({ identifier: "DppIdentityDetailsUserAssignedIdentitiesValue" });
     case 2:
-      return S.Record(S.String, __S(1681, __c105, 1));
+      return S.Record(S.String, __S(1745, __c109, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(1682, __c105, 2)),
+          userAssignedIdentities: S.optional(__S(1746, __c109, 2)),
         }),
       ).annotate({ identifier: "DppIdentityDetails" });
-    case 4:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(1712, __c107, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(1760, __c110, 0)),
+        }),
+      ).annotate({ identifier: "DppIdentityDetailsInput" });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -6120,27 +6323,16 @@ function __c105(j: number): any {
           systemData: S.optional(__S(176, __c11, 0)),
           tags: S.optional(__S(192, __c12, 0)),
           location: S.String,
-          properties: __S(1680, __c105, 0),
-          identity: S.optional(__S(1683, __c105, 3)),
+          properties: __S(1744, __c109, 0),
+          identity: S.optional(__S(1747, __c109, 3)),
           eTag: S.optional(S.String),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "BackupVaultsCreateOrUpdateResponse" });
   }
 }
-function __c106(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(1184, __c74, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(1696, __c106, 0)),
-        }),
-      ).annotate({ identifier: "DppIdentityDetailsInput" });
-  }
-}
-function __c107(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

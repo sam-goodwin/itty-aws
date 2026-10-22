@@ -137,7 +137,10 @@ export interface CancelProjectCatalogImageDefinitionBuildRequest {
   /** The ID of the Image Definition Build. */
   buildName: string;
 }
-export interface CancelProjectCatalogImageDefinitionBuildResponse {}
+export interface CancelProjectCatalogImageDefinitionBuildResponse {
+  azureAsyncOperation?: string;
+  location?: string;
+}
 /** Properties for a Git repository catalog. */
 export interface GitCatalog {
   /** Git URI. */
@@ -268,7 +271,9 @@ export interface ConnectCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
-export interface ConnectCatalogResponse {}
+export interface ConnectCatalogResponse {
+  location?: string;
+}
 export interface ConnectProjectCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -279,7 +284,9 @@ export interface ConnectProjectCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
-export interface ConnectProjectCatalogResponse {}
+export interface ConnectProjectCatalogResponse {
+  location?: string;
+}
 export interface DeleteAttachedNetworkRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -290,7 +297,9 @@ export interface DeleteAttachedNetworkRequest {
   /** The name of the attached NetworkConnection. */
   attachedNetworkConnectionName: string;
 }
-export interface DeleteAttachedNetworkResponse {}
+export interface DeleteAttachedNetworkResponse {
+  location?: string;
+}
 export interface DeleteCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -301,7 +310,9 @@ export interface DeleteCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
-export interface DeleteCatalogResponse {}
+export interface DeleteCatalogResponse {
+  location?: string;
+}
 export interface DeleteDevBoxDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -312,7 +323,9 @@ export interface DeleteDevBoxDefinitionRequest {
   /** The name of the Dev Box definition. */
   devBoxDefinitionName: string;
 }
-export interface DeleteDevBoxDefinitionResponse {}
+export interface DeleteDevBoxDefinitionResponse {
+  location?: string;
+}
 export interface DeleteDevCenterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -321,7 +334,9 @@ export interface DeleteDevCenterRequest {
   /** The name of the devcenter. */
   devCenterName: string;
 }
-export interface DeleteDevCenterResponse {}
+export interface DeleteDevCenterResponse {
+  location?: string;
+}
 export interface DeleteEnvironmentTypeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -343,7 +358,9 @@ export interface DeleteGalleryRequest {
   /** The name of the gallery. */
   galleryName: string;
 }
-export interface DeleteGalleryResponse {}
+export interface DeleteGalleryResponse {
+  location?: string;
+}
 export interface DeleteNetworkConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -352,7 +369,9 @@ export interface DeleteNetworkConnectionRequest {
   /** Name of the Network Connection that can be applied to a Pool. */
   networkConnectionName: string;
 }
-export interface DeleteNetworkConnectionResponse {}
+export interface DeleteNetworkConnectionResponse {
+  location?: string;
+}
 export interface DeletePoolRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -363,7 +382,9 @@ export interface DeletePoolRequest {
   /** Name of the pool. */
   poolName: string;
 }
-export interface DeletePoolResponse {}
+export interface DeletePoolResponse {
+  location?: string;
+}
 export interface DeleteProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -372,7 +393,9 @@ export interface DeleteProjectRequest {
   /** The name of the project. */
   projectName: string;
 }
-export interface DeleteProjectResponse {}
+export interface DeleteProjectResponse {
+  location?: string;
+}
 export interface DeleteProjectCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -383,7 +406,9 @@ export interface DeleteProjectCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
-export interface DeleteProjectCatalogResponse {}
+export interface DeleteProjectCatalogResponse {
+  location?: string;
+}
 export interface DeleteProjectEnvironmentTypeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -405,7 +430,9 @@ export interface DeleteProjectPolicyRequest {
   /** The name of the project policy. */
   projectPolicyName: string;
 }
-export interface DeleteProjectPolicyResponse {}
+export interface DeleteProjectPolicyResponse {
+  location?: string;
+}
 export interface DeleteScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -420,7 +447,9 @@ export interface DeleteScheduleRequest {
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
 }
-export interface DeleteScheduleResponse {}
+export interface DeleteScheduleResponse {
+  location?: string;
+}
 /** Resource tags. */
 export type DevBoxDefinitionsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
 /** Image reference information */
@@ -1728,6 +1757,7 @@ export interface GetOperationStatusResponse {
   error?: ErrorDetail;
   /** Custom operation properties, populated only for a successful operation. */
   properties?: unknown;
+  location?: string;
 }
 export interface GetPoolRequest {
   /** The ID of the target subscription. */
@@ -3607,6 +3637,7 @@ export interface PatchProjectCatalogResponse {
   systemData?: SystemData;
   /** Catalog properties. */
   properties?: CatalogProperties;
+  location?: string;
 }
 /** Resource tags. */
 export type PoolsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -3701,7 +3732,10 @@ export interface ProjectCatalogImageDefinitionsBuildImageRequest {
   /** The name of the Image Definition. */
   imageDefinitionName: string;
 }
-export interface ProjectCatalogImageDefinitionsBuildImageResponse {}
+export interface ProjectCatalogImageDefinitionsBuildImageResponse {
+  azureAsyncOperation?: string;
+  location?: string;
+}
 export interface ProjectCatalogsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3911,7 +3945,9 @@ export interface RunNetworkConnectionHealthChecksRequest {
   /** Name of the Network Connection that can be applied to a Pool. */
   networkConnectionName: string;
 }
-export interface RunNetworkConnectionHealthChecksResponse {}
+export interface RunNetworkConnectionHealthChecksResponse {
+  location?: string;
+}
 export interface RunPoolHealthChecksRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3922,7 +3958,9 @@ export interface RunPoolHealthChecksRequest {
   /** Name of the pool. */
   poolName: string;
 }
-export interface RunPoolHealthChecksResponse {}
+export interface RunPoolHealthChecksResponse {
+  location?: string;
+}
 /** The Schedule properties defining when and what to execute. */
 export interface SchedulePropertiesInput {
   /** Resource tags. */
@@ -3978,7 +4016,9 @@ export interface SyncCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
-export interface SyncCatalogResponse {}
+export interface SyncCatalogResponse {
+  location?: string;
+}
 export interface SyncProjectCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3989,7 +4029,9 @@ export interface SyncProjectCatalogRequest {
   /** The name of the Catalog. */
   catalogName: string;
 }
-export interface SyncProjectCatalogResponse {}
+export interface SyncProjectCatalogResponse {
+  location?: string;
+}
 export interface UpdateCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4013,6 +4055,7 @@ export interface UpdateCatalogResponse {
   systemData?: SystemData;
   /** Catalog properties. */
   properties?: CatalogProperties;
+  location?: string;
 }
 /** Image reference information */
 export type DevBoxDefinitionUpdatePropertiesInputImageReference =
@@ -4063,6 +4106,7 @@ export interface UpdateDevBoxDefinitionResponse {
   location: string;
   /** Dev Box definition properties */
   properties?: DevBoxDefinitionProperties;
+  locationHeader?: string;
 }
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateDevCenterRequestIdentity = DevCentersCreateOrUpdateRequestIdentity;
@@ -4105,6 +4149,7 @@ export interface UpdateDevCenterResponse {
   properties?: DevCenterProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
+  locationHeader?: string;
 }
 /** Properties of an environment type. These properties can be updated after the resource has been created. */
 export type EnvironmentTypeUpdateProperties = EnvironmentTypePropertiesInput;
@@ -4184,6 +4229,7 @@ export interface UpdateNetworkConnectionResponse {
   location: string;
   /** Properties of a Network Connection */
   properties?: NetworkProperties;
+  locationHeader?: string;
 }
 /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
 export type PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList = Array<string>;
@@ -4247,6 +4293,7 @@ export interface UpdatePoolResponse {
   location: string;
   /** Pool properties */
   properties?: PoolProperties;
+  locationHeader?: string;
 }
 /** Properties of a project. These properties can be updated after the resource has been created. */
 export type ProjectUpdateProperties = ProjectPropertiesInput;
@@ -4289,6 +4336,7 @@ export interface UpdateProjectResponse {
   properties?: ProjectProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DevCentersCreateOrUpdateResponseIdentity;
+  locationHeader?: string;
 }
 /** A map of roles to assign to the environment creator. */
 export type ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap = {
@@ -4392,6 +4440,7 @@ export interface UpdateProjectPolicyResponse {
   systemData?: SystemData;
   /** Properties of an project policy. */
   properties?: ProjectPolicyProperties;
+  location?: string;
 }
 /** Updatable properties of a Schedule. */
 export interface ScheduleUpdateProperties {
@@ -4437,6 +4486,7 @@ export interface UpdateScheduleResponse {
   systemData?: SystemData;
   /** Properties of a Schedule resource */
   properties?: ScheduleProperties;
+  location?: string;
 }
 export type AttachedNetworksCreateOrUpdateError = AzureOpError;
 /** Creates or updates an attached NetworkConnection. */
@@ -4476,8 +4526,8 @@ export const CatalogsCreateOrUpdate: API.OperationMethod<
   CatalogsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c44, 0) as any as S.Schema<CatalogsCreateOrUpdateRequest>,
-  output: __S(755, __c47, 3) as any as S.Schema<CatalogsCreateOrUpdateResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<CatalogsCreateOrUpdateRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<CatalogsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4491,8 +4541,8 @@ export const ConnectCatalog: API.OperationMethod<
   ConnectCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1072, __c67, 0) as any as S.Schema<ConnectCatalogRequest>,
-  output: __S(64, __c4, 0) as any as S.Schema<ConnectCatalogResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<ConnectCatalogRequest>,
+  output: __S(1136, __c71, 0) as any as S.Schema<ConnectCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4506,8 +4556,8 @@ export const ConnectProjectCatalog: API.OperationMethod<
   ConnectProjectCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c80, 0) as any as S.Schema<ConnectProjectCatalogRequest>,
-  output: __S(64, __c4, 0) as any as S.Schema<ConnectProjectCatalogResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<ConnectProjectCatalogRequest>,
+  output: __S(1136, __c71, 0) as any as S.Schema<ConnectProjectCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4521,8 +4571,8 @@ export const DeleteAttachedNetwork: API.OperationMethod<
   DeleteAttachedNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c98, 0) as any as S.Schema<DeleteAttachedNetworkRequest>,
-  output: __S(64, __c4, 0) as any as S.Schema<DeleteAttachedNetworkResponse>,
+  input: __S(1680, __c105, 0) as any as S.Schema<DeleteAttachedNetworkRequest>,
+  output: __S(1136, __c71, 0) as any as S.Schema<DeleteAttachedNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4536,8 +4586,8 @@ export const DeleteCatalog: API.OperationMethod<
   DeleteCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1840, __c115, 0) as any as S.Schema<DeleteCatalogRequest>,
-  output: __S(64, __c4, 0) as any as S.Schema<DeleteCatalogResponse>,
+  input: __S(1984, __c124, 0) as any as S.Schema<DeleteCatalogRequest>,
+  output: __S(1136, __c71, 0) as any as S.Schema<DeleteCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4551,8 +4601,8 @@ export const DeleteDevBoxDefinition: API.OperationMethod<
   DeleteDevBoxDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2080, __c130, 0) as any as S.Schema<DeleteDevBoxDefinitionRequest>,
-  output: __S(64, __c4, 0) as any as S.Schema<DeleteDevBoxDefinitionResponse>,
+  input: __S(2224, __c139, 0) as any as S.Schema<DeleteDevBoxDefinitionRequest>,
+  output: __S(1136, __c71, 0) as any as S.Schema<DeleteDevBoxDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4566,8 +4616,8 @@ export const DeleteDevCenter: API.OperationMethod<
   DeleteDevCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c144, 0) as any as S.Schema<DeleteDevCenterRequest>,
-  output: __S(64, __c4, 0) as any as S.Schema<DeleteDevCenterResponse>,
+  input: __S(2448, __c153, 0) as any as S.Schema<DeleteDevCenterRequest>,
+  output: __S(1136, __c71, 0) as any as S.Schema<DeleteDevCenterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4581,8 +4631,8 @@ export const DeleteEnvironmentType: API.OperationMethod<
   DeleteEnvironmentTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2496, __c156, 0) as any as S.Schema<DeleteEnvironmentTypeRequest>,
-  output: __S(64, __c4, 0) as any as S.Schema<DeleteEnvironmentTypeResponse>,
+  input: __S(2640, __c165, 0) as any as S.Schema<DeleteEnvironmentTypeRequest>,
+  output: __S(2656, __c166, 0) as any as S.Schema<DeleteEnvironmentTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4597,7 +4647,7 @@ export const DeleteGallery: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(80, __c5, 0) as any as S.Schema<DeleteGalleryRequest>,
-  output: __S(64, __c4, 0) as any as S.Schema<DeleteGalleryResponse>,
+  output: __S(1136, __c71, 0) as any as S.Schema<DeleteGalleryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4612,7 +4662,7 @@ export const DeleteNetworkConnection: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(288, __c18, 0) as any as S.Schema<DeleteNetworkConnectionRequest>,
-  output: __S(64, __c4, 0) as any as S.Schema<DeleteNetworkConnectionResponse>,
+  output: __S(1136, __c71, 0) as any as S.Schema<DeleteNetworkConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4627,7 +4677,7 @@ export const DeletePool: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(416, __c26, 0) as any as S.Schema<DeletePoolRequest>,
-  output: __S(64, __c4, 0) as any as S.Schema<DeletePoolResponse>,
+  output: __S(1136, __c71, 0) as any as S.Schema<DeletePoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4642,7 +4692,7 @@ export const DeleteProject: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(432, __c27, 0) as any as S.Schema<DeleteProjectRequest>,
-  output: __S(64, __c4, 0) as any as S.Schema<DeleteProjectResponse>,
+  output: __S(1136, __c71, 0) as any as S.Schema<DeleteProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4657,7 +4707,7 @@ export const DeleteProjectCatalog: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(448, __c28, 0) as any as S.Schema<DeleteProjectCatalogRequest>,
-  output: __S(64, __c4, 0) as any as S.Schema<DeleteProjectCatalogResponse>,
+  output: __S(1136, __c71, 0) as any as S.Schema<DeleteProjectCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4672,7 +4722,7 @@ export const DeleteProjectEnvironmentType: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(464, __c29, 0) as any as S.Schema<DeleteProjectEnvironmentTypeRequest>,
-  output: __S(64, __c4, 0) as any as S.Schema<DeleteProjectEnvironmentTypeResponse>,
+  output: __S(2656, __c166, 0) as any as S.Schema<DeleteProjectEnvironmentTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4687,7 +4737,7 @@ export const DeleteProjectPolicy: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(480, __c30, 0) as any as S.Schema<DeleteProjectPolicyRequest>,
-  output: __S(64, __c4, 0) as any as S.Schema<DeleteProjectPolicyResponse>,
+  output: __S(1136, __c71, 0) as any as S.Schema<DeleteProjectPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4702,7 +4752,7 @@ export const DeleteSchedule: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(496, __c31, 0) as any as S.Schema<DeleteScheduleRequest>,
-  output: __S(64, __c4, 0) as any as S.Schema<DeleteScheduleResponse>,
+  output: __S(1136, __c71, 0) as any as S.Schema<DeleteScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4717,7 +4767,7 @@ export const DevBoxDefinitionsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(513, __c32, 1) as any as S.Schema<DevBoxDefinitionsCreateOrUpdateRequest>,
-  output: __S(577, __c36, 1) as any as S.Schema<DevBoxDefinitionsCreateOrUpdateResponse>,
+  output: __S(576, __c36, 0) as any as S.Schema<DevBoxDefinitionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4731,8 +4781,8 @@ export const DevCentersCreateOrUpdate: API.OperationMethod<
   DevCentersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<DevCentersCreateOrUpdateRequest>,
-  output: __S(677, __c42, 5) as any as S.Schema<DevCentersCreateOrUpdateResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<DevCentersCreateOrUpdateRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<DevCentersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4746,8 +4796,8 @@ export const EnvironmentTypesCreateOrUpdate: API.OperationMethod<
   EnvironmentTypesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c49, 0) as any as S.Schema<EnvironmentTypesCreateOrUpdateRequest>,
-  output: __S(817, __c51, 1) as any as S.Schema<EnvironmentTypesCreateOrUpdateResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<EnvironmentTypesCreateOrUpdateRequest>,
+  output: __S(865, __c54, 1) as any as S.Schema<EnvironmentTypesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4761,8 +4811,8 @@ export const ExecuteCheckNameAvailability: API.OperationMethod<
   ExecuteCheckNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c52, 0) as any as S.Schema<ExecuteCheckNameAvailabilityRequest>,
-  output: __S(848, __c53, 0) as any as S.Schema<ExecuteCheckNameAvailabilityResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<ExecuteCheckNameAvailabilityRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<ExecuteCheckNameAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4776,8 +4826,8 @@ export const ExecuteCheckScopedNameAvailability: API.OperationMethod<
   ExecuteCheckScopedNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c54, 0) as any as S.Schema<ExecuteCheckScopedNameAvailabilityRequest>,
-  output: __S(848, __c53, 0) as any as S.Schema<ExecuteCheckScopedNameAvailabilityResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<ExecuteCheckScopedNameAvailabilityRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<ExecuteCheckScopedNameAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4791,8 +4841,8 @@ export const GalleriesCreateOrUpdate: API.OperationMethod<
   GalleriesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(881, __c55, 1) as any as S.Schema<GalleriesCreateOrUpdateRequest>,
-  output: __S(897, __c56, 1) as any as S.Schema<GalleriesCreateOrUpdateResponse>,
+  input: __S(929, __c58, 1) as any as S.Schema<GalleriesCreateOrUpdateRequest>,
+  output: __S(945, __c59, 1) as any as S.Schema<GalleriesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4806,7 +4856,7 @@ export const GetAttachedNetworkByDevCenter: API.OperationMethod<
   GetAttachedNetworkByDevCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(912, __c57, 0) as any as S.Schema<GetAttachedNetworkByDevCenterRequest>,
+  input: __S(960, __c60, 0) as any as S.Schema<GetAttachedNetworkByDevCenterRequest>,
   output: __S(33, __c2, 1) as any as S.Schema<GetAttachedNetworkByDevCenterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4821,7 +4871,7 @@ export const GetAttachedNetworkByProject: API.OperationMethod<
   GetAttachedNetworkByProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c58, 0) as any as S.Schema<GetAttachedNetworkByProjectRequest>,
+  input: __S(976, __c61, 0) as any as S.Schema<GetAttachedNetworkByProjectRequest>,
   output: __S(33, __c2, 1) as any as S.Schema<GetAttachedNetworkByProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4836,8 +4886,8 @@ export const GetCatalog: API.OperationMethod<
   GetCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(944, __c59, 0) as any as S.Schema<GetCatalogRequest>,
-  output: __S(755, __c47, 3) as any as S.Schema<GetCatalogResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<GetCatalogRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<GetCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4851,8 +4901,8 @@ export const GetCatalogSyncErrorDetails: API.OperationMethod<
   GetCatalogSyncErrorDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c60, 0) as any as S.Schema<GetCatalogSyncErrorDetailsRequest>,
-  output: __S(996, __c62, 4) as any as S.Schema<SyncErrorDetails>,
+  input: __S(1008, __c63, 0) as any as S.Schema<GetCatalogSyncErrorDetailsRequest>,
+  output: __S(1044, __c65, 4) as any as S.Schema<SyncErrorDetails>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4866,8 +4916,8 @@ export const GetCustomizationTask: API.OperationMethod<
   GetCustomizationTaskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1008, __c63, 0) as any as S.Schema<GetCustomizationTaskRequest>,
-  output: __S(1027, __c64, 3) as any as S.Schema<GetCustomizationTaskResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<GetCustomizationTaskRequest>,
+  output: __S(1075, __c67, 3) as any as S.Schema<GetCustomizationTaskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4881,8 +4931,8 @@ export const GetCustomizationTaskErrorDetails: API.OperationMethod<
   GetCustomizationTaskErrorDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1040, __c65, 0) as any as S.Schema<GetCustomizationTaskErrorDetailsRequest>,
-  output: __S(1056, __c66, 0) as any as S.Schema<GetCustomizationTaskErrorDetailsResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<GetCustomizationTaskErrorDetailsRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<GetCustomizationTaskErrorDetailsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4896,8 +4946,8 @@ export const GetDevBoxDefinition: API.OperationMethod<
   GetDevBoxDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c68, 0) as any as S.Schema<GetDevBoxDefinitionRequest>,
-  output: __S(577, __c36, 1) as any as S.Schema<GetDevBoxDefinitionResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<GetDevBoxDefinitionRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<GetDevBoxDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4911,8 +4961,8 @@ export const GetDevBoxDefinitionByProject: API.OperationMethod<
   GetDevBoxDefinitionByProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1104, __c69, 0) as any as S.Schema<GetDevBoxDefinitionByProjectRequest>,
-  output: __S(577, __c36, 1) as any as S.Schema<GetDevBoxDefinitionByProjectResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<GetDevBoxDefinitionByProjectRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<GetDevBoxDefinitionByProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4926,8 +4976,8 @@ export const GetDevCenter: API.OperationMethod<
   GetDevCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c70, 0) as any as S.Schema<GetDevCenterRequest>,
-  output: __S(677, __c42, 5) as any as S.Schema<GetDevCenterResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<GetDevCenterRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<GetDevCenterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4941,8 +4991,8 @@ export const GetEnvironmentDefinition: API.OperationMethod<
   GetEnvironmentDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1136, __c71, 0) as any as S.Schema<GetEnvironmentDefinitionRequest>,
-  output: __S(1155, __c72, 3) as any as S.Schema<GetEnvironmentDefinitionResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<GetEnvironmentDefinitionRequest>,
+  output: __S(1219, __c76, 3) as any as S.Schema<GetEnvironmentDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4956,8 +5006,8 @@ export const GetEnvironmentDefinitionByProjectCatalog: API.OperationMethod<
   GetEnvironmentDefinitionByProjectCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1168, __c73, 0) as any as S.Schema<GetEnvironmentDefinitionByProjectCatalogRequest>,
-  output: __S(1155, __c72, 3) as any as S.Schema<GetEnvironmentDefinitionByProjectCatalogResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<GetEnvironmentDefinitionByProjectCatalogRequest>,
+  output: __S(1219, __c76, 3) as any as S.Schema<GetEnvironmentDefinitionByProjectCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4971,8 +5021,8 @@ export const GetEnvironmentDefinitionErrorDetails: API.OperationMethod<
   GetEnvironmentDefinitionErrorDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c74, 0) as any as S.Schema<GetEnvironmentDefinitionErrorDetailsRequest>,
-  output: __S(1056, __c66, 0) as any as S.Schema<GetEnvironmentDefinitionErrorDetailsResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<GetEnvironmentDefinitionErrorDetailsRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<GetEnvironmentDefinitionErrorDetailsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4986,8 +5036,8 @@ export const GetEnvironmentType: API.OperationMethod<
   GetEnvironmentTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1200, __c75, 0) as any as S.Schema<GetEnvironmentTypeRequest>,
-  output: __S(817, __c51, 1) as any as S.Schema<GetEnvironmentTypeResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<GetEnvironmentTypeRequest>,
+  output: __S(865, __c54, 1) as any as S.Schema<GetEnvironmentTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5001,8 +5051,8 @@ export const GetGallery: API.OperationMethod<
   GetGalleryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c76, 0) as any as S.Schema<GetGalleryRequest>,
-  output: __S(897, __c56, 1) as any as S.Schema<GetGalleryResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<GetGalleryRequest>,
+  output: __S(945, __c59, 1) as any as S.Schema<GetGalleryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5016,8 +5066,8 @@ export const GetImage: API.OperationMethod<
   GetImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1232, __c77, 0) as any as S.Schema<GetImageRequest>,
-  output: __S(1251, __c78, 3) as any as S.Schema<GetImageResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<GetImageRequest>,
+  output: __S(1315, __c82, 3) as any as S.Schema<GetImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5031,8 +5081,8 @@ export const GetImageByProject: API.OperationMethod<
   GetImageByProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1264, __c79, 0) as any as S.Schema<GetImageByProjectRequest>,
-  output: __S(1251, __c78, 3) as any as S.Schema<GetImageByProjectResponse>,
+  input: __S(1328, __c83, 0) as any as S.Schema<GetImageByProjectRequest>,
+  output: __S(1315, __c82, 3) as any as S.Schema<GetImageByProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5046,8 +5096,8 @@ export const GetImageVersion: API.OperationMethod<
   GetImageVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1296, __c81, 0) as any as S.Schema<GetImageVersionRequest>,
-  output: __S(1313, __c82, 1) as any as S.Schema<GetImageVersionResponse>,
+  input: __S(1360, __c85, 0) as any as S.Schema<GetImageVersionRequest>,
+  output: __S(1377, __c86, 1) as any as S.Schema<GetImageVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5061,8 +5111,8 @@ export const GetImageVersionByProject: API.OperationMethod<
   GetImageVersionByProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1328, __c83, 0) as any as S.Schema<GetImageVersionByProjectRequest>,
-  output: __S(1313, __c82, 1) as any as S.Schema<GetImageVersionByProjectResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<GetImageVersionByProjectRequest>,
+  output: __S(1377, __c86, 1) as any as S.Schema<GetImageVersionByProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5076,8 +5126,8 @@ export const GetNetworkConnection: API.OperationMethod<
   GetNetworkConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c84, 0) as any as S.Schema<GetNetworkConnectionRequest>,
-  output: __S(1361, __c85, 1) as any as S.Schema<GetNetworkConnectionResponse>,
+  input: __S(1408, __c88, 0) as any as S.Schema<GetNetworkConnectionRequest>,
+  output: __S(1424, __c89, 0) as any as S.Schema<GetNetworkConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5091,8 +5141,8 @@ export const GetNetworkConnectionHealthDetails: API.OperationMethod<
   GetNetworkConnectionHealthDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c86, 0) as any as S.Schema<GetNetworkConnectionHealthDetailsRequest>,
-  output: __S(1395, __c87, 3) as any as S.Schema<GetNetworkConnectionHealthDetailsResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<GetNetworkConnectionHealthDetailsRequest>,
+  output: __S(1475, __c92, 3) as any as S.Schema<GetNetworkConnectionHealthDetailsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5106,8 +5156,8 @@ export const GetOperationStatus: API.OperationMethod<
   GetOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c88, 0) as any as S.Schema<GetOperationStatusRequest>,
-  output: __S(1416, __c88, 8) as any as S.Schema<GetOperationStatusResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<GetOperationStatusRequest>,
+  output: __S(1496, __c93, 8) as any as S.Schema<GetOperationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5121,8 +5171,8 @@ export const GetPool: API.OperationMethod<
   GetPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1424, __c89, 0) as any as S.Schema<GetPoolRequest>,
-  output: __S(1459, __c91, 3) as any as S.Schema<GetPoolResponse>,
+  input: __S(1504, __c94, 0) as any as S.Schema<GetPoolRequest>,
+  output: __S(1536, __c96, 0) as any as S.Schema<GetPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5136,8 +5186,8 @@ export const GetProject: API.OperationMethod<
   GetProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c92, 0) as any as S.Schema<GetProjectRequest>,
-  output: __S(1490, __c93, 2) as any as S.Schema<GetProjectResponse>,
+  input: __S(1568, __c98, 0) as any as S.Schema<GetProjectRequest>,
+  output: __S(1584, __c99, 0) as any as S.Schema<GetProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5151,8 +5201,8 @@ export const GetProjectAllowedEnvironmentType: API.OperationMethod<
   GetProjectAllowedEnvironmentTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c94, 0) as any as S.Schema<GetProjectAllowedEnvironmentTypeRequest>,
-  output: __S(1521, __c95, 1) as any as S.Schema<GetProjectAllowedEnvironmentTypeResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<GetProjectAllowedEnvironmentTypeRequest>,
+  output: __S(1633, __c102, 1) as any as S.Schema<GetProjectAllowedEnvironmentTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5166,8 +5216,8 @@ export const GetProjectCatalog: API.OperationMethod<
   GetProjectCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c96, 0) as any as S.Schema<GetProjectCatalogRequest>,
-  output: __S(755, __c47, 3) as any as S.Schema<GetProjectCatalogResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<GetProjectCatalogRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<GetProjectCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5182,13 +5232,13 @@ export const GetProjectCatalogEnvironmentDefinitionErrorDetails: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1552,
-    __c97,
+    1664,
+    __c104,
     0,
   ) as any as S.Schema<GetProjectCatalogEnvironmentDefinitionErrorDetailsRequest>,
   output: __S(
-    1056,
-    __c66,
+    1104,
+    __c69,
     0,
   ) as any as S.Schema<GetProjectCatalogEnvironmentDefinitionErrorDetailsResponse>,
   errors: [UnknownAzureError],
@@ -5204,8 +5254,8 @@ export const GetProjectCatalogImageDefinitionBuild: API.OperationMethod<
   GetProjectCatalogImageDefinitionBuildError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1584, __c99, 0) as any as S.Schema<GetProjectCatalogImageDefinitionBuildRequest>,
-  output: __S(1601, __c100, 1) as any as S.Schema<GetProjectCatalogImageDefinitionBuildResponse>,
+  input: __S(1696, __c106, 0) as any as S.Schema<GetProjectCatalogImageDefinitionBuildRequest>,
+  output: __S(1713, __c107, 1) as any as S.Schema<GetProjectCatalogImageDefinitionBuildResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5220,13 +5270,13 @@ export const GetProjectCatalogImageDefinitionBuildBuildDetails: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1616,
-    __c101,
+    1728,
+    __c108,
     0,
   ) as any as S.Schema<GetProjectCatalogImageDefinitionBuildBuildDetailsRequest>,
   output: __S(
-    1623,
-    __c101,
+    1735,
+    __c108,
     7,
   ) as any as S.Schema<GetProjectCatalogImageDefinitionBuildBuildDetailsResponse>,
   errors: [UnknownAzureError],
@@ -5243,13 +5293,13 @@ export const GetProjectCatalogImageDefinitionByProjectCatalog: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1632,
-    __c102,
+    1744,
+    __c109,
     0,
   ) as any as S.Schema<GetProjectCatalogImageDefinitionByProjectCatalogRequest>,
   output: __S(
-    1650,
-    __c103,
+    1762,
+    __c110,
     2,
   ) as any as S.Schema<GetProjectCatalogImageDefinitionByProjectCatalogResponse>,
   errors: [UnknownAzureError],
@@ -5266,13 +5316,13 @@ export const GetProjectCatalogImageDefinitionErrorDetails: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1664,
-    __c104,
+    1776,
+    __c111,
     0,
   ) as any as S.Schema<GetProjectCatalogImageDefinitionErrorDetailsRequest>,
   output: __S(
-    1056,
-    __c66,
+    1104,
+    __c69,
     0,
   ) as any as S.Schema<GetProjectCatalogImageDefinitionErrorDetailsResponse>,
   errors: [UnknownAzureError],
@@ -5288,8 +5338,8 @@ export const GetProjectCatalogSyncErrorDetails: API.OperationMethod<
   GetProjectCatalogSyncErrorDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1680, __c105, 0) as any as S.Schema<GetProjectCatalogSyncErrorDetailsRequest>,
-  output: __S(996, __c62, 4) as any as S.Schema<SyncErrorDetails>,
+  input: __S(1792, __c112, 0) as any as S.Schema<GetProjectCatalogSyncErrorDetailsRequest>,
+  output: __S(1044, __c65, 4) as any as S.Schema<SyncErrorDetails>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5303,8 +5353,8 @@ export const GetProjectEnvironmentType: API.OperationMethod<
   GetProjectEnvironmentTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c106, 0) as any as S.Schema<GetProjectEnvironmentTypeRequest>,
-  output: __S(1717, __c107, 5) as any as S.Schema<GetProjectEnvironmentTypeResponse>,
+  input: __S(1808, __c113, 0) as any as S.Schema<GetProjectEnvironmentTypeRequest>,
+  output: __S(1829, __c114, 5) as any as S.Schema<GetProjectEnvironmentTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5318,8 +5368,8 @@ export const GetProjectInheritedSettings: API.OperationMethod<
   GetProjectInheritedSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c108, 0) as any as S.Schema<GetProjectInheritedSettingsRequest>,
-  output: __S(1729, __c108, 1) as any as S.Schema<InheritedSettingsForProject>,
+  input: __S(1840, __c115, 0) as any as S.Schema<GetProjectInheritedSettingsRequest>,
+  output: __S(1841, __c115, 1) as any as S.Schema<InheritedSettingsForProject>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5333,8 +5383,8 @@ export const GetProjectPolicy: API.OperationMethod<
   GetProjectPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1744, __c109, 0) as any as S.Schema<GetProjectPolicyRequest>,
-  output: __S(1763, __c110, 3) as any as S.Schema<GetProjectPolicyResponse>,
+  input: __S(1856, __c116, 0) as any as S.Schema<GetProjectPolicyRequest>,
+  output: __S(1872, __c117, 0) as any as S.Schema<GetProjectPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5348,8 +5398,8 @@ export const GetSchedule: API.OperationMethod<
   GetScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1776, __c111, 0) as any as S.Schema<GetScheduleRequest>,
-  output: __S(1793, __c112, 1) as any as S.Schema<GetScheduleResponse>,
+  input: __S(1904, __c119, 0) as any as S.Schema<GetScheduleRequest>,
+  output: __S(1920, __c120, 0) as any as S.Schema<GetScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5363,8 +5413,8 @@ export const ListAttachedNetworkByDevCenter: API.OperationMethod<
   ListAttachedNetworkByDevCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1808, __c113, 0) as any as S.Schema<ListAttachedNetworkByDevCenterRequest>,
-  output: __S(1825, __c114, 1) as any as S.Schema<AttachedNetworkListResult>,
+  input: __S(1952, __c122, 0) as any as S.Schema<ListAttachedNetworkByDevCenterRequest>,
+  output: __S(1969, __c123, 1) as any as S.Schema<AttachedNetworkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5378,8 +5428,8 @@ export const ListAttachedNetworkByProject: API.OperationMethod<
   ListAttachedNetworkByProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1856, __c116, 0) as any as S.Schema<ListAttachedNetworkByProjectRequest>,
-  output: __S(1825, __c114, 1) as any as S.Schema<AttachedNetworkListResult>,
+  input: __S(2000, __c125, 0) as any as S.Schema<ListAttachedNetworkByProjectRequest>,
+  output: __S(1969, __c123, 1) as any as S.Schema<AttachedNetworkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5393,8 +5443,8 @@ export const ListCatalogByDevCenter: API.OperationMethod<
   ListCatalogByDevCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1872, __c117, 0) as any as S.Schema<ListCatalogByDevCenterRequest>,
-  output: __S(1889, __c118, 1) as any as S.Schema<CatalogListResult>,
+  input: __S(2016, __c126, 0) as any as S.Schema<ListCatalogByDevCenterRequest>,
+  output: __S(2033, __c127, 1) as any as S.Schema<CatalogListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5408,8 +5458,8 @@ export const ListCustomizationTaskByCatalog: API.OperationMethod<
   ListCustomizationTaskByCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1904, __c119, 0) as any as S.Schema<ListCustomizationTaskByCatalogRequest>,
-  output: __S(1906, __c119, 2) as any as S.Schema<CustomizationTaskListResult>,
+  input: __S(2048, __c128, 0) as any as S.Schema<ListCustomizationTaskByCatalogRequest>,
+  output: __S(2050, __c128, 2) as any as S.Schema<CustomizationTaskListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5423,8 +5473,8 @@ export const ListDevBoxDefinitionByDevCenter: API.OperationMethod<
   ListDevBoxDefinitionByDevCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1920, __c120, 0) as any as S.Schema<ListDevBoxDefinitionByDevCenterRequest>,
-  output: __S(1937, __c121, 1) as any as S.Schema<DevBoxDefinitionListResult>,
+  input: __S(2064, __c129, 0) as any as S.Schema<ListDevBoxDefinitionByDevCenterRequest>,
+  output: __S(2081, __c130, 1) as any as S.Schema<DevBoxDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5438,8 +5488,8 @@ export const ListDevBoxDefinitionByProject: API.OperationMethod<
   ListDevBoxDefinitionByProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1952, __c122, 0) as any as S.Schema<ListDevBoxDefinitionByProjectRequest>,
-  output: __S(1937, __c121, 1) as any as S.Schema<DevBoxDefinitionListResult>,
+  input: __S(2096, __c131, 0) as any as S.Schema<ListDevBoxDefinitionByProjectRequest>,
+  output: __S(2081, __c130, 1) as any as S.Schema<DevBoxDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5453,8 +5503,8 @@ export const ListDevCenterByResourceGroup: API.OperationMethod<
   ListDevCenterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1968, __c123, 0) as any as S.Schema<ListDevCenterByResourceGroupRequest>,
-  output: __S(1985, __c124, 1) as any as S.Schema<DevCenterListResult>,
+  input: __S(2112, __c132, 0) as any as S.Schema<ListDevCenterByResourceGroupRequest>,
+  output: __S(2129, __c133, 1) as any as S.Schema<DevCenterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5468,8 +5518,8 @@ export const ListDevCenterBySubscription: API.OperationMethod<
   ListDevCenterBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2000, __c125, 0) as any as S.Schema<ListDevCenterBySubscriptionRequest>,
-  output: __S(1985, __c124, 1) as any as S.Schema<DevCenterListResult>,
+  input: __S(2144, __c134, 0) as any as S.Schema<ListDevCenterBySubscriptionRequest>,
+  output: __S(2129, __c133, 1) as any as S.Schema<DevCenterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5483,8 +5533,8 @@ export const ListEnvironmentDefinitionByCatalog: API.OperationMethod<
   ListEnvironmentDefinitionByCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2016, __c126, 0) as any as S.Schema<ListEnvironmentDefinitionByCatalogRequest>,
-  output: __S(2033, __c127, 1) as any as S.Schema<EnvironmentDefinitionListResult>,
+  input: __S(2160, __c135, 0) as any as S.Schema<ListEnvironmentDefinitionByCatalogRequest>,
+  output: __S(2177, __c136, 1) as any as S.Schema<EnvironmentDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5498,8 +5548,8 @@ export const ListEnvironmentDefinitionByProjectCatalog: API.OperationMethod<
   ListEnvironmentDefinitionByProjectCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2048, __c128, 0) as any as S.Schema<ListEnvironmentDefinitionByProjectCatalogRequest>,
-  output: __S(2033, __c127, 1) as any as S.Schema<EnvironmentDefinitionListResult>,
+  input: __S(2192, __c137, 0) as any as S.Schema<ListEnvironmentDefinitionByProjectCatalogRequest>,
+  output: __S(2177, __c136, 1) as any as S.Schema<EnvironmentDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5513,8 +5563,8 @@ export const ListEnvironmentTypeByDevCenter: API.OperationMethod<
   ListEnvironmentTypeByDevCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2064, __c129, 0) as any as S.Schema<ListEnvironmentTypeByDevCenterRequest>,
-  output: __S(2066, __c129, 2) as any as S.Schema<EnvironmentTypeListResult>,
+  input: __S(2208, __c138, 0) as any as S.Schema<ListEnvironmentTypeByDevCenterRequest>,
+  output: __S(2210, __c138, 2) as any as S.Schema<EnvironmentTypeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5528,8 +5578,8 @@ export const ListGalleryByDevCenter: API.OperationMethod<
   ListGalleryByDevCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2096, __c131, 0) as any as S.Schema<ListGalleryByDevCenterRequest>,
-  output: __S(2098, __c131, 2) as any as S.Schema<GalleryListResult>,
+  input: __S(2240, __c140, 0) as any as S.Schema<ListGalleryByDevCenterRequest>,
+  output: __S(2242, __c140, 2) as any as S.Schema<GalleryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5543,8 +5593,8 @@ export const ListImageByDevCenter: API.OperationMethod<
   ListImageByDevCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2112, __c132, 0) as any as S.Schema<ListImageByDevCenterRequest>,
-  output: __S(2129, __c133, 1) as any as S.Schema<ImageListResult>,
+  input: __S(2256, __c141, 0) as any as S.Schema<ListImageByDevCenterRequest>,
+  output: __S(2273, __c142, 1) as any as S.Schema<ImageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5558,8 +5608,8 @@ export const ListImageByGallery: API.OperationMethod<
   ListImageByGalleryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2144, __c134, 0) as any as S.Schema<ListImageByGalleryRequest>,
-  output: __S(2129, __c133, 1) as any as S.Schema<ImageListResult>,
+  input: __S(2288, __c143, 0) as any as S.Schema<ListImageByGalleryRequest>,
+  output: __S(2273, __c142, 1) as any as S.Schema<ImageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5573,8 +5623,8 @@ export const ListImageByProject: API.OperationMethod<
   ListImageByProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2160, __c135, 0) as any as S.Schema<ListImageByProjectRequest>,
-  output: __S(2129, __c133, 1) as any as S.Schema<ImageListResult>,
+  input: __S(2304, __c144, 0) as any as S.Schema<ListImageByProjectRequest>,
+  output: __S(2273, __c142, 1) as any as S.Schema<ImageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5588,8 +5638,8 @@ export const ListImageVersionByImage: API.OperationMethod<
   ListImageVersionByImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2176, __c136, 0) as any as S.Schema<ListImageVersionByImageRequest>,
-  output: __S(2193, __c137, 1) as any as S.Schema<ImageVersionListResult>,
+  input: __S(2320, __c145, 0) as any as S.Schema<ListImageVersionByImageRequest>,
+  output: __S(2337, __c146, 1) as any as S.Schema<ImageVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5603,8 +5653,8 @@ export const ListImageVersionByProject: API.OperationMethod<
   ListImageVersionByProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2208, __c138, 0) as any as S.Schema<ListImageVersionByProjectRequest>,
-  output: __S(2193, __c137, 1) as any as S.Schema<ImageVersionListResult>,
+  input: __S(2352, __c147, 0) as any as S.Schema<ListImageVersionByProjectRequest>,
+  output: __S(2337, __c146, 1) as any as S.Schema<ImageVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5618,8 +5668,8 @@ export const ListNetworkConnectionByResourceGroup: API.OperationMethod<
   ListNetworkConnectionByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2224, __c139, 0) as any as S.Schema<ListNetworkConnectionByResourceGroupRequest>,
-  output: __S(2241, __c140, 1) as any as S.Schema<NetworkConnectionListResult>,
+  input: __S(2368, __c148, 0) as any as S.Schema<ListNetworkConnectionByResourceGroupRequest>,
+  output: __S(2385, __c149, 1) as any as S.Schema<NetworkConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5633,8 +5683,8 @@ export const ListNetworkConnectionBySubscription: API.OperationMethod<
   ListNetworkConnectionBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2256, __c141, 0) as any as S.Schema<ListNetworkConnectionBySubscriptionRequest>,
-  output: __S(2241, __c140, 1) as any as S.Schema<NetworkConnectionListResult>,
+  input: __S(2400, __c150, 0) as any as S.Schema<ListNetworkConnectionBySubscriptionRequest>,
+  output: __S(2385, __c149, 1) as any as S.Schema<NetworkConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5648,8 +5698,8 @@ export const ListNetworkConnectionHealthDetails: API.OperationMethod<
   ListNetworkConnectionHealthDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2272, __c142, 0) as any as S.Schema<ListNetworkConnectionHealthDetailsRequest>,
-  output: __S(2274, __c142, 2) as any as S.Schema<HealthCheckStatusDetailsListResult>,
+  input: __S(2416, __c151, 0) as any as S.Schema<ListNetworkConnectionHealthDetailsRequest>,
+  output: __S(2418, __c151, 2) as any as S.Schema<HealthCheckStatusDetailsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5664,11 +5714,11 @@ export const ListNetworkConnectionOutboundNetworkDependenciesEndpoints: API.Oper
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2288,
-    __c143,
+    2432,
+    __c152,
     0,
   ) as any as S.Schema<ListNetworkConnectionOutboundNetworkDependenciesEndpointsRequest>,
-  output: __S(2295, __c143, 7) as any as S.Schema<OutboundEnvironmentEndpointCollection>,
+  output: __S(2439, __c152, 7) as any as S.Schema<OutboundEnvironmentEndpointCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5682,8 +5732,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2320, __c145, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(2324, __c145, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(2464, __c154, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(2468, __c154, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5697,8 +5747,8 @@ export const ListPoolByProject: API.OperationMethod<
   ListPoolByProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2336, __c146, 0) as any as S.Schema<ListPoolByProjectRequest>,
-  output: __S(2338, __c146, 2) as any as S.Schema<PoolListResult>,
+  input: __S(2480, __c155, 0) as any as S.Schema<ListPoolByProjectRequest>,
+  output: __S(2482, __c155, 2) as any as S.Schema<PoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5712,8 +5762,8 @@ export const ListProjectAllowedEnvironmentTypes: API.OperationMethod<
   ListProjectAllowedEnvironmentTypesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2352, __c147, 0) as any as S.Schema<ListProjectAllowedEnvironmentTypesRequest>,
-  output: __S(2354, __c147, 2) as any as S.Schema<AllowedEnvironmentTypeListResult>,
+  input: __S(2496, __c156, 0) as any as S.Schema<ListProjectAllowedEnvironmentTypesRequest>,
+  output: __S(2498, __c156, 2) as any as S.Schema<AllowedEnvironmentTypeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5727,8 +5777,8 @@ export const ListProjectByResourceGroup: API.OperationMethod<
   ListProjectByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2368, __c148, 0) as any as S.Schema<ListProjectByResourceGroupRequest>,
-  output: __S(2385, __c149, 1) as any as S.Schema<ProjectListResult>,
+  input: __S(2512, __c157, 0) as any as S.Schema<ListProjectByResourceGroupRequest>,
+  output: __S(2529, __c158, 1) as any as S.Schema<ProjectListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5742,8 +5792,8 @@ export const ListProjectBySubscription: API.OperationMethod<
   ListProjectBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2400, __c150, 0) as any as S.Schema<ListProjectBySubscriptionRequest>,
-  output: __S(2385, __c149, 1) as any as S.Schema<ProjectListResult>,
+  input: __S(2544, __c159, 0) as any as S.Schema<ListProjectBySubscriptionRequest>,
+  output: __S(2529, __c158, 1) as any as S.Schema<ProjectListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5758,11 +5808,11 @@ export const ListProjectCatalogImageDefinitionBuildByImageDefinition: API.Operat
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2416,
-    __c151,
+    2560,
+    __c160,
     0,
   ) as any as S.Schema<ListProjectCatalogImageDefinitionBuildByImageDefinitionRequest>,
-  output: __S(2418, __c151, 2) as any as S.Schema<ImageDefinitionBuildListResult>,
+  output: __S(2562, __c160, 2) as any as S.Schema<ImageDefinitionBuildListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5777,11 +5827,11 @@ export const ListProjectCatalogImageDefinitionByProjectCatalog: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2432,
-    __c152,
+    2576,
+    __c161,
     0,
   ) as any as S.Schema<ListProjectCatalogImageDefinitionByProjectCatalogRequest>,
-  output: __S(2434, __c152, 2) as any as S.Schema<ImageDefinitionListResult>,
+  output: __S(2578, __c161, 2) as any as S.Schema<ImageDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5795,8 +5845,8 @@ export const ListProjectCatalogs: API.OperationMethod<
   ListProjectCatalogsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2448, __c153, 0) as any as S.Schema<ListProjectCatalogsRequest>,
-  output: __S(1889, __c118, 1) as any as S.Schema<CatalogListResult>,
+  input: __S(2592, __c162, 0) as any as S.Schema<ListProjectCatalogsRequest>,
+  output: __S(2033, __c127, 1) as any as S.Schema<CatalogListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5810,8 +5860,8 @@ export const ListProjectEnvironmentTypes: API.OperationMethod<
   ListProjectEnvironmentTypesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2464, __c154, 0) as any as S.Schema<ListProjectEnvironmentTypesRequest>,
-  output: __S(2466, __c154, 2) as any as S.Schema<ProjectEnvironmentTypeListResult>,
+  input: __S(2608, __c163, 0) as any as S.Schema<ListProjectEnvironmentTypesRequest>,
+  output: __S(2610, __c163, 2) as any as S.Schema<ProjectEnvironmentTypeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5825,8 +5875,8 @@ export const ListProjectPolicyByDevCenter: API.OperationMethod<
   ListProjectPolicyByDevCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2480, __c155, 0) as any as S.Schema<ListProjectPolicyByDevCenterRequest>,
-  output: __S(2482, __c155, 2) as any as S.Schema<ProjectPolicyListResult>,
+  input: __S(2624, __c164, 0) as any as S.Schema<ListProjectPolicyByDevCenterRequest>,
+  output: __S(2626, __c164, 2) as any as S.Schema<ProjectPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5840,8 +5890,8 @@ export const ListScheduleByPool: API.OperationMethod<
   ListScheduleByPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2512, __c157, 0) as any as S.Schema<ListScheduleByPoolRequest>,
-  output: __S(2514, __c157, 2) as any as S.Schema<ScheduleListResult>,
+  input: __S(2672, __c167, 0) as any as S.Schema<ListScheduleByPoolRequest>,
+  output: __S(2674, __c167, 2) as any as S.Schema<ScheduleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5855,8 +5905,8 @@ export const ListSkusByProject: API.OperationMethod<
   ListSkusByProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2528, __c158, 0) as any as S.Schema<ListSkusByProjectRequest>,
-  output: __S(2548, __c159, 4) as any as S.Schema<ListSkusByProjectResponse>,
+  input: __S(2688, __c168, 0) as any as S.Schema<ListSkusByProjectRequest>,
+  output: __S(2708, __c169, 4) as any as S.Schema<ListSkusByProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5870,8 +5920,8 @@ export const ListSkusBySubscription: API.OperationMethod<
   ListSkusBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2560, __c160, 0) as any as S.Schema<ListSkusBySubscriptionRequest>,
-  output: __S(2548, __c159, 4) as any as S.Schema<SkuListResult>,
+  input: __S(2720, __c170, 0) as any as S.Schema<ListSkusBySubscriptionRequest>,
+  output: __S(2708, __c169, 4) as any as S.Schema<SkuListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5885,8 +5935,8 @@ export const ListUsageByLocation: API.OperationMethod<
   ListUsageByLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2576, __c161, 0) as any as S.Schema<ListUsageByLocationRequest>,
-  output: __S(2580, __c161, 4) as any as S.Schema<ListUsagesResult>,
+  input: __S(2736, __c171, 0) as any as S.Schema<ListUsageByLocationRequest>,
+  output: __S(2740, __c171, 4) as any as S.Schema<ListUsagesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5900,8 +5950,8 @@ export const NetworkConnectionsCreateOrUpdate: API.OperationMethod<
   NetworkConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2593, __c162, 1) as any as S.Schema<NetworkConnectionsCreateOrUpdateRequest>,
-  output: __S(1361, __c85, 1) as any as S.Schema<NetworkConnectionsCreateOrUpdateResponse>,
+  input: __S(2753, __c172, 1) as any as S.Schema<NetworkConnectionsCreateOrUpdateRequest>,
+  output: __S(1424, __c89, 0) as any as S.Schema<NetworkConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5915,8 +5965,8 @@ export const PatchProjectCatalog: API.OperationMethod<
   PatchProjectCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2608, __c163, 0) as any as S.Schema<PatchProjectCatalogRequest>,
-  output: __S(755, __c47, 3) as any as S.Schema<PatchProjectCatalogResponse>,
+  input: __S(2768, __c173, 0) as any as S.Schema<PatchProjectCatalogRequest>,
+  output: __S(2784, __c174, 0) as any as S.Schema<PatchProjectCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5930,8 +5980,8 @@ export const PoolsCreateOrUpdate: API.OperationMethod<
   PoolsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2625, __c164, 1) as any as S.Schema<PoolsCreateOrUpdateRequest>,
-  output: __S(1459, __c91, 3) as any as S.Schema<PoolsCreateOrUpdateResponse>,
+  input: __S(2801, __c175, 1) as any as S.Schema<PoolsCreateOrUpdateRequest>,
+  output: __S(1536, __c96, 0) as any as S.Schema<PoolsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5945,7 +5995,7 @@ export const ProjectCatalogImageDefinitionsBuildImage: API.OperationMethod<
   ProjectCatalogImageDefinitionsBuildImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2656, __c166, 0) as any as S.Schema<ProjectCatalogImageDefinitionsBuildImageRequest>,
+  input: __S(2832, __c177, 0) as any as S.Schema<ProjectCatalogImageDefinitionsBuildImageRequest>,
   output: __S(64, __c4, 0) as any as S.Schema<ProjectCatalogImageDefinitionsBuildImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5960,8 +6010,8 @@ export const ProjectCatalogsCreateOrUpdate: API.OperationMethod<
   ProjectCatalogsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2672, __c167, 0) as any as S.Schema<ProjectCatalogsCreateOrUpdateRequest>,
-  output: __S(755, __c47, 3) as any as S.Schema<ProjectCatalogsCreateOrUpdateResponse>,
+  input: __S(2848, __c178, 0) as any as S.Schema<ProjectCatalogsCreateOrUpdateRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<ProjectCatalogsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5975,8 +6025,8 @@ export const ProjectEnvironmentTypesCreateOrUpdate: API.OperationMethod<
   ProjectEnvironmentTypesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2688, __c168, 0) as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateRequest>,
-  output: __S(1717, __c107, 5) as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateResponse>,
+  input: __S(2864, __c179, 0) as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateRequest>,
+  output: __S(1829, __c114, 5) as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5991,7 +6041,7 @@ export const ProjectPoliciesCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c6, 0) as any as S.Schema<ProjectPoliciesCreateOrUpdateRequest>,
-  output: __S(1763, __c110, 3) as any as S.Schema<ProjectPoliciesCreateOrUpdateResponse>,
+  output: __S(1872, __c117, 0) as any as S.Schema<ProjectPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6006,7 +6056,7 @@ export const ProjectsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(128, __c8, 0) as any as S.Schema<ProjectsCreateOrUpdateRequest>,
-  output: __S(1490, __c93, 2) as any as S.Schema<ProjectsCreateOrUpdateResponse>,
+  output: __S(1584, __c99, 0) as any as S.Schema<ProjectsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6021,7 +6071,7 @@ export const RunNetworkConnectionHealthChecks: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c10, 0) as any as S.Schema<RunNetworkConnectionHealthChecksRequest>,
-  output: __S(64, __c4, 0) as any as S.Schema<RunNetworkConnectionHealthChecksResponse>,
+  output: __S(1136, __c71, 0) as any as S.Schema<RunNetworkConnectionHealthChecksResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6036,7 +6086,7 @@ export const RunPoolHealthChecks: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(176, __c11, 0) as any as S.Schema<RunPoolHealthChecksRequest>,
-  output: __S(64, __c4, 0) as any as S.Schema<RunPoolHealthChecksResponse>,
+  output: __S(1136, __c71, 0) as any as S.Schema<RunPoolHealthChecksResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6051,7 +6101,7 @@ export const SchedulesCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(193, __c12, 1) as any as S.Schema<SchedulesCreateOrUpdateRequest>,
-  output: __S(1793, __c112, 1) as any as S.Schema<SchedulesCreateOrUpdateResponse>,
+  output: __S(1920, __c120, 0) as any as S.Schema<SchedulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6066,7 +6116,7 @@ export const SyncCatalog: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(208, __c13, 0) as any as S.Schema<SyncCatalogRequest>,
-  output: __S(64, __c4, 0) as any as S.Schema<SyncCatalogResponse>,
+  output: __S(1136, __c71, 0) as any as S.Schema<SyncCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6081,7 +6131,7 @@ export const SyncProjectCatalog: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(224, __c14, 0) as any as S.Schema<SyncProjectCatalogRequest>,
-  output: __S(64, __c4, 0) as any as S.Schema<SyncProjectCatalogResponse>,
+  output: __S(1136, __c71, 0) as any as S.Schema<SyncProjectCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6096,7 +6146,7 @@ export const UpdateCatalog: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(240, __c15, 0) as any as S.Schema<UpdateCatalogRequest>,
-  output: __S(755, __c47, 3) as any as S.Schema<UpdateCatalogResponse>,
+  output: __S(2784, __c174, 0) as any as S.Schema<UpdateCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6111,7 +6161,7 @@ export const UpdateDevBoxDefinition: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(257, __c16, 1) as any as S.Schema<UpdateDevBoxDefinitionRequest>,
-  output: __S(577, __c36, 1) as any as S.Schema<UpdateDevBoxDefinitionResponse>,
+  output: __S(258, __c16, 2) as any as S.Schema<UpdateDevBoxDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6126,7 +6176,7 @@ export const UpdateDevCenter: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(272, __c17, 0) as any as S.Schema<UpdateDevCenterRequest>,
-  output: __S(677, __c42, 5) as any as S.Schema<UpdateDevCenterResponse>,
+  output: __S(273, __c17, 1) as any as S.Schema<UpdateDevCenterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6141,7 +6191,7 @@ export const UpdateEnvironmentType: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(304, __c19, 0) as any as S.Schema<UpdateEnvironmentTypeRequest>,
-  output: __S(817, __c51, 1) as any as S.Schema<UpdateEnvironmentTypeResponse>,
+  output: __S(865, __c54, 1) as any as S.Schema<UpdateEnvironmentTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6156,7 +6206,7 @@ export const UpdateNetworkConnection: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(321, __c20, 1) as any as S.Schema<UpdateNetworkConnectionRequest>,
-  output: __S(1361, __c85, 1) as any as S.Schema<UpdateNetworkConnectionResponse>,
+  output: __S(322, __c20, 2) as any as S.Schema<UpdateNetworkConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6171,7 +6221,7 @@ export const UpdatePool: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(337, __c21, 1) as any as S.Schema<UpdatePoolRequest>,
-  output: __S(1459, __c91, 3) as any as S.Schema<UpdatePoolResponse>,
+  output: __S(338, __c21, 2) as any as S.Schema<UpdatePoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6186,7 +6236,7 @@ export const UpdateProject: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(352, __c22, 0) as any as S.Schema<UpdateProjectRequest>,
-  output: __S(1490, __c93, 2) as any as S.Schema<UpdateProjectResponse>,
+  output: __S(353, __c22, 1) as any as S.Schema<UpdateProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6201,7 +6251,7 @@ export const UpdateProjectEnvironmentType: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(368, __c23, 0) as any as S.Schema<UpdateProjectEnvironmentTypeRequest>,
-  output: __S(1717, __c107, 5) as any as S.Schema<UpdateProjectEnvironmentTypeResponse>,
+  output: __S(1829, __c114, 5) as any as S.Schema<UpdateProjectEnvironmentTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6216,7 +6266,7 @@ export const UpdateProjectPolicy: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(384, __c24, 0) as any as S.Schema<UpdateProjectPolicyRequest>,
-  output: __S(1763, __c110, 3) as any as S.Schema<UpdateProjectPolicyResponse>,
+  output: __S(385, __c24, 1) as any as S.Schema<UpdateProjectPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6231,7 +6281,7 @@ export const UpdateSchedule: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(401, __c25, 1) as any as S.Schema<UpdateScheduleRequest>,
-  output: __S(1793, __c112, 1) as any as S.Schema<UpdateScheduleResponse>,
+  output: __S(402, __c25, 2) as any as S.Schema<UpdateScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6331,9 +6381,12 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelProjectCatalogImageDefinitionBuildResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "CancelProjectCatalogImageDefinitionBuildResponse" });
   }
 }
 function __c5(j: number): any {
@@ -6382,8 +6435,8 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resourcePolicies: S.optional(__S(1761, __c110, 1)),
-          scopes: S.optional(__S(1440, __c90, 0)),
+          resourcePolicies: S.optional(__S(1889, __c118, 1)),
+          scopes: S.optional(__S(1520, __c95, 0)),
         }),
       ).annotate({ identifier: "ProjectPolicyPropertiesInput" });
   }
@@ -6396,10 +6449,10 @@ function __c8(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(720, __c45, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
           location: S.String,
           properties: S.optional(__S(144, __c9, 0)),
-          identity: S.optional(__S(689, __c43, 1)),
+          identity: S.optional(__S(721, __c45, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6420,7 +6473,7 @@ function __c9(j: number): any {
           description: S.optional(S.String),
           maxDevBoxesPerUser: S.optional(S.Number),
           displayName: S.optional(S.String),
-          catalogSettings: S.optional(__S(1488, __c93, 0)),
+          catalogSettings: S.optional(__S(1600, __c100, 0)),
         }),
       ).annotate({ identifier: "ProjectPropertiesInput" });
   }
@@ -6469,7 +6522,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(720, __c45, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
           location: S.optional(S.String),
           type: S.String,
           frequency: S.String,
@@ -6548,7 +6601,7 @@ function __c15(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           devCenterName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(768, __c48, 0)),
+          properties: S.optional(__S(816, __c51, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6565,7 +6618,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          imageReference: S.optional(__S(592, __c37, 0)),
+          imageReference: S.optional(__S(608, __c38, 0)),
           sku: S.optional(__S(560, __c35, 0)),
           osStorageType: S.optional(S.String),
           hibernateSupport: S.optional(S.String),
@@ -6578,7 +6631,7 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           devCenterName: S.String.pipe(T.Label()),
           devBoxDefinitionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(720, __c45, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
           location: S.optional(S.String),
           properties: S.optional(__S(256, __c16, 0)),
         }).pipe(
@@ -6590,6 +6643,19 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDevBoxDefinitionRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
+          location: S.String,
+          properties: S.optional(__S(592, __c37, 0)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateDevBoxDefinitionResponse" });
   }
 }
 function __c17(j: number): any {
@@ -6600,10 +6666,10 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           devCenterName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(720, __c45, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
           location: S.optional(S.String),
-          identity: S.optional(__S(689, __c43, 1)),
-          properties: S.optional(__S(624, __c39, 0)),
+          identity: S.optional(__S(721, __c45, 1)),
+          properties: S.optional(__S(640, __c40, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6613,6 +6679,20 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDevCenterRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
+          location: S.String,
+          properties: S.optional(__S(708, __c44, 4)),
+          identity: S.optional(__S(658, __c41, 2)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateDevCenterResponse" });
   }
 }
 function __c18(j: number): any {
@@ -6643,8 +6723,8 @@ function __c19(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           devCenterName: S.String.pipe(T.Label()),
           environmentTypeName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(800, __c50, 0)),
-          tags: S.optional(__S(720, __c45, 0)),
+          properties: S.optional(__S(848, __c53, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6674,7 +6754,7 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkConnectionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(720, __c45, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
           location: S.optional(S.String),
           properties: S.optional(__S(320, __c20, 0)),
         }).pipe(
@@ -6686,6 +6766,19 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateNetworkConnectionRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
+          location: S.String,
+          properties: S.optional(__S(1440, __c90, 0)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateNetworkConnectionResponse" });
   }
 }
 function __c21(j: number): any {
@@ -6695,16 +6788,16 @@ function __c21(j: number): any {
         S.Struct({
           devBoxDefinitionType: S.optional(S.String),
           devBoxDefinitionName: S.optional(S.String),
-          devBoxDefinition: S.optional(__S(2640, __c165, 0)),
+          devBoxDefinition: S.optional(__S(2816, __c176, 0)),
           networkConnectionName: S.optional(S.String),
           licenseType: S.optional(S.String),
           localAdministrator: S.optional(S.String),
-          stopOnDisconnect: S.optional(__S(1457, __c91, 1)),
-          stopOnNoConnect: S.optional(__S(1457, __c91, 1)),
+          stopOnDisconnect: S.optional(__S(1553, __c97, 1)),
+          stopOnNoConnect: S.optional(__S(1553, __c97, 1)),
           singleSignOnStatus: S.optional(S.String),
           displayName: S.optional(S.String),
           virtualNetworkType: S.optional(S.String),
-          managedVirtualNetworkRegions: S.optional(__S(1440, __c90, 0)),
+          managedVirtualNetworkRegions: S.optional(__S(1520, __c95, 0)),
         }),
       ).annotate({ identifier: "PoolUpdatePropertiesInput" });
     case 1:
@@ -6714,7 +6807,7 @@ function __c21(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(720, __c45, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
           location: S.optional(S.String),
           properties: S.optional(__S(336, __c21, 0)),
         }).pipe(
@@ -6726,6 +6819,19 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdatePoolRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
+          location: S.String,
+          properties: S.optional(__S(1554, __c97, 2)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdatePoolResponse" });
   }
 }
 function __c22(j: number): any {
@@ -6736,10 +6842,10 @@ function __c22(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(720, __c45, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
           location: S.optional(S.String),
           properties: S.optional(__S(144, __c9, 0)),
-          identity: S.optional(__S(689, __c43, 1)),
+          identity: S.optional(__S(721, __c45, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6749,6 +6855,20 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateProjectRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
+          location: S.String,
+          properties: S.optional(__S(1601, __c100, 1)),
+          identity: S.optional(__S(658, __c41, 2)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateProjectResponse" });
   }
 }
 function __c23(j: number): any {
@@ -6760,9 +6880,9 @@ function __c23(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           environmentTypeName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2706, __c169, 2)),
-          tags: S.optional(__S(720, __c45, 0)),
-          identity: S.optional(__S(689, __c43, 1)),
+          properties: S.optional(__S(2882, __c180, 2)),
+          tags: S.optional(__S(752, __c47, 0)),
+          identity: S.optional(__S(721, __c45, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6793,6 +6913,17 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateProjectPolicyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1890, __c118, 2)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateProjectPolicyResponse" });
   }
 }
 function __c25(j: number): any {
@@ -6800,7 +6931,7 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(720, __c45, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
           location: S.optional(S.String),
           type: S.optional(S.String),
           frequency: S.optional(S.String),
@@ -6828,6 +6959,17 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateScheduleRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1936, __c121, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateScheduleResponse" });
   }
 }
 function __c26(j: number): any {
@@ -6956,14 +7098,14 @@ function __c32(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          imageReference: __S(592, __c37, 0),
+          imageReference: __S(608, __c38, 0),
           sku: __S(560, __c35, 0),
           osStorageType: S.optional(S.String),
           hibernateSupport: S.optional(S.String),
           imageValidationStatus: S.optional(S.String),
           imageValidationErrorDetails: S.optional(__S(528, __c33, 0)),
           validationStatus: S.optional(S.String),
-          activeImageReference: S.optional(__S(592, __c37, 0)),
+          activeImageReference: S.optional(__S(608, __c38, 0)),
         }),
       ).annotate({ identifier: "DevBoxDefinitionPropertiesInput" });
     case 1:
@@ -6973,7 +7115,7 @@ function __c32(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           devCenterName: S.String.pipe(T.Label()),
           devBoxDefinitionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(720, __c45, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
           location: S.String,
           properties: S.optional(__S(512, __c32, 0)),
         }).pipe(
@@ -7028,6 +7170,22 @@ function __c36(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
+          location: S.String,
+          properties: S.optional(__S(592, __c37, 0)),
+        }),
+      ).annotate({ identifier: "DevBoxDefinitionsCreateOrUpdateResponse" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           imageReference: __S(544, __c34, 0),
           sku: __S(560, __c35, 0),
           osStorageType: S.optional(S.String),
@@ -7039,21 +7197,9 @@ function __c36(j: number): any {
           activeImageReference: S.optional(__S(544, __c34, 0)),
         }),
       ).annotate({ identifier: "DevBoxDefinitionProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          tags: S.optional(__S(720, __c45, 0)),
-          location: S.String,
-          properties: S.optional(__S(576, __c36, 0)),
-        }),
-      ).annotate({ identifier: "DevBoxDefinitionsCreateOrUpdateResponse" });
   }
 }
-function __c37(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7063,7 +7209,7 @@ function __c37(j: number): any {
       ).annotate({ identifier: "DevBoxDefinitionPropertiesInputImageReference" });
   }
 }
-function __c38(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7071,10 +7217,10 @@ function __c38(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           devCenterName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(720, __c45, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
           location: S.String,
-          properties: S.optional(__S(624, __c39, 0)),
-          identity: S.optional(__S(689, __c43, 1)),
+          properties: S.optional(__S(640, __c40, 0)),
+          identity: S.optional(__S(721, __c45, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7086,21 +7232,21 @@ function __c38(j: number): any {
       ).annotate({ identifier: "DevCentersCreateOrUpdateRequest" });
   }
 }
-function __c39(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          encryption: S.optional(__S(674, __c42, 2)),
+          encryption: S.optional(__S(706, __c44, 2)),
           displayName: S.optional(S.String),
-          projectCatalogSettings: S.optional(__S(656, __c41, 0)),
-          networkSettings: S.optional(__S(657, __c41, 1)),
-          devBoxProvisioningSettings: S.optional(__S(675, __c42, 3)),
+          projectCatalogSettings: S.optional(__S(672, __c42, 0)),
+          networkSettings: S.optional(__S(673, __c42, 1)),
+          devBoxProvisioningSettings: S.optional(__S(707, __c44, 3)),
         }),
       ).annotate({ identifier: "DevCenterPropertiesInput" });
   }
 }
-function __c40(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7110,19 +7256,19 @@ function __c40(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 1:
-      return S.Record(S.String, __S(640, __c40, 0));
+      return S.Record(S.String, __S(656, __c41, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(641, __c40, 1)),
+          userAssignedIdentities: S.optional(__S(657, __c41, 1)),
         }),
       ).annotate({ identifier: "DevCentersCreateOrUpdateResponseIdentity" });
   }
 }
-function __c41(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7138,7 +7284,24 @@ function __c41(j: number): any {
       ).annotate({ identifier: "DevCenterNetworkSettings" });
   }
 }
-function __c42(j: number): any {
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
+          location: S.String,
+          properties: S.optional(__S(708, __c44, 4)),
+          identity: S.optional(__S(658, __c41, 2)),
+        }),
+      ).annotate({ identifier: "DevCentersCreateOrUpdateResponse" });
+  }
+}
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7151,14 +7314,14 @@ function __c42(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          keyEncryptionKeyIdentity: S.optional(__S(672, __c42, 0)),
+          keyEncryptionKeyIdentity: S.optional(__S(704, __c44, 0)),
           keyEncryptionKeyUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "EncryptionCustomerManagedKeyEncryption" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          customerManagedKeyEncryption: S.optional(__S(673, __c42, 1)),
+          customerManagedKeyEncryption: S.optional(__S(705, __c44, 1)),
         }),
       ).annotate({ identifier: "Encryption" });
     case 3:
@@ -7170,44 +7333,31 @@ function __c42(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          encryption: S.optional(__S(674, __c42, 2)),
+          encryption: S.optional(__S(706, __c44, 2)),
           displayName: S.optional(S.String),
-          projectCatalogSettings: S.optional(__S(656, __c41, 0)),
-          networkSettings: S.optional(__S(657, __c41, 1)),
-          devBoxProvisioningSettings: S.optional(__S(675, __c42, 3)),
+          projectCatalogSettings: S.optional(__S(672, __c42, 0)),
+          networkSettings: S.optional(__S(673, __c42, 1)),
+          devBoxProvisioningSettings: S.optional(__S(707, __c44, 3)),
           provisioningState: S.optional(S.String),
           devCenterUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "DevCenterProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          tags: S.optional(__S(720, __c45, 0)),
-          location: S.String,
-          properties: S.optional(__S(676, __c42, 4)),
-          identity: S.optional(__S(642, __c40, 2)),
-        }),
-      ).annotate({ identifier: "DevCentersCreateOrUpdateResponse" });
   }
 }
-function __c43(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(64, __c4, 0));
+      return S.Record(S.String, __S(2656, __c166, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(688, __c43, 0)),
+          userAssignedIdentities: S.optional(__S(720, __c45, 0)),
         }),
       ).annotate({ identifier: "DevCentersCreateOrUpdateRequestIdentity" });
   }
 }
-function __c44(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7216,7 +7366,7 @@ function __c44(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           devCenterName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(768, __c48, 0)),
+          properties: S.optional(__S(816, __c51, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7228,19 +7378,19 @@ function __c44(j: number): any {
       ).annotate({ identifier: "CatalogsCreateOrUpdateRequest" });
   }
 }
-function __c45(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
   }
 }
-function __c46(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c47(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7260,50 +7410,54 @@ function __c47(j: number): any {
           removed: S.optional(S.Number),
           validationErrors: S.optional(S.Number),
           synchronizationErrors: S.optional(S.Number),
-          syncedCatalogItemTypes: S.optional(__S(736, __c46, 0)),
+          syncedCatalogItemTypes: S.optional(__S(768, __c48, 0)),
         }),
       ).annotate({ identifier: "SyncStats" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          gitHub: S.optional(__S(752, __c47, 0)),
-          adoGit: S.optional(__S(752, __c47, 0)),
+          gitHub: S.optional(__S(784, __c49, 0)),
+          adoGit: S.optional(__S(784, __c49, 0)),
           syncType: S.optional(S.String),
-          tags: S.optional(__S(720, __c45, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
           provisioningState: S.optional(S.String),
           syncState: S.optional(S.String),
-          lastSyncStats: S.optional(__S(753, __c47, 1)),
+          lastSyncStats: S.optional(__S(785, __c49, 1)),
           connectionState: S.optional(S.String),
           lastConnectionTime: S.optional(S.String),
           lastSyncTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "CatalogProperties" });
-    case 3:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(754, __c47, 2)),
+          properties: S.optional(__S(786, __c49, 2)),
         }),
       ).annotate({ identifier: "CatalogsCreateOrUpdateResponse" });
   }
 }
-function __c48(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          gitHub: S.optional(__S(752, __c47, 0)),
-          adoGit: S.optional(__S(752, __c47, 0)),
+          gitHub: S.optional(__S(784, __c49, 0)),
+          adoGit: S.optional(__S(784, __c49, 0)),
           syncType: S.optional(S.String),
-          tags: S.optional(__S(720, __c45, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
         }),
       ).annotate({ identifier: "CatalogPropertiesInput" });
   }
 }
-function __c49(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7312,8 +7466,8 @@ function __c49(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           devCenterName: S.String.pipe(T.Label()),
           environmentTypeName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(800, __c50, 0)),
-          tags: S.optional(__S(720, __c45, 0)),
+          properties: S.optional(__S(848, __c53, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7325,7 +7479,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "EnvironmentTypesCreateOrUpdateRequest" });
   }
 }
-function __c50(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7335,7 +7489,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "EnvironmentTypePropertiesInput" });
   }
 }
-function __c51(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7351,13 +7505,13 @@ function __c51(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(816, __c51, 0)),
-          tags: S.optional(__S(720, __c45, 0)),
+          properties: S.optional(__S(864, __c54, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
         }),
       ).annotate({ identifier: "EnvironmentTypesCreateOrUpdateResponse" });
   }
 }
-function __c52(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7376,7 +7530,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "ExecuteCheckNameAvailabilityRequest" });
   }
 }
-function __c53(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7388,7 +7542,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "ExecuteCheckNameAvailabilityResponse" });
   }
 }
-function __c54(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7408,7 +7562,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "ExecuteCheckScopedNameAvailabilityRequest" });
   }
 }
-function __c55(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7423,7 +7577,7 @@ function __c55(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           devCenterName: S.String.pipe(T.Label()),
           galleryName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(880, __c55, 0)),
+          properties: S.optional(__S(928, __c58, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7435,7 +7589,7 @@ function __c55(j: number): any {
       ).annotate({ identifier: "GalleriesCreateOrUpdateRequest" });
   }
 }
-function __c56(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7451,12 +7605,12 @@ function __c56(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(896, __c56, 0)),
+          properties: S.optional(__S(944, __c59, 0)),
         }),
       ).annotate({ identifier: "GalleriesCreateOrUpdateResponse" });
   }
 }
-function __c57(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7476,7 +7630,7 @@ function __c57(j: number): any {
       ).annotate({ identifier: "GetAttachedNetworkByDevCenterRequest" });
   }
 }
-function __c58(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7496,7 +7650,7 @@ function __c58(j: number): any {
       ).annotate({ identifier: "GetAttachedNetworkByProjectRequest" });
   }
 }
-function __c59(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7516,7 +7670,7 @@ function __c59(j: number): any {
       ).annotate({ identifier: "GetCatalogRequest" });
   }
 }
-function __c60(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7536,13 +7690,13 @@ function __c60(j: number): any {
       ).annotate({ identifier: "GetCatalogSyncErrorDetailsRequest" });
   }
 }
-function __c61(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(528, __c33, 0));
   }
 }
-function __c62(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7552,27 +7706,27 @@ function __c62(j: number): any {
         }),
       ).annotate({ identifier: "CatalogConflictError" });
     case 1:
-      return S.Array(__S(992, __c62, 0));
+      return S.Array(__S(1040, __c65, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
-          errorDetails: S.optional(__S(976, __c61, 0)),
+          errorDetails: S.optional(__S(1024, __c64, 0)),
         }),
       ).annotate({ identifier: "CatalogSyncError" });
     case 3:
-      return S.Array(__S(994, __c62, 2));
+      return S.Array(__S(1042, __c65, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           operationError: S.optional(__S(528, __c33, 0)),
-          conflicts: S.optional(__S(993, __c62, 1)),
-          errors: S.optional(__S(995, __c62, 3)),
+          conflicts: S.optional(__S(1041, __c65, 1)),
+          errors: S.optional(__S(1043, __c65, 3)),
         }),
       ).annotate({ identifier: "SyncErrorDetails" });
   }
 }
-function __c63(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7593,7 +7747,7 @@ function __c63(j: number): any {
       ).annotate({ identifier: "GetCustomizationTaskRequest" });
   }
 }
-function __c64(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7604,11 +7758,11 @@ function __c64(j: number): any {
         }),
       ).annotate({ identifier: "CustomizationTaskInput" });
     case 1:
-      return S.Record(S.String, __S(1024, __c64, 0));
+      return S.Record(S.String, __S(1072, __c67, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          inputs: S.optional(__S(1025, __c64, 1)),
+          inputs: S.optional(__S(1073, __c67, 1)),
           timeout: S.optional(S.Number),
           validationStatus: S.optional(S.String),
         }),
@@ -7620,12 +7774,12 @@ function __c64(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1026, __c64, 2)),
+          properties: S.optional(__S(1074, __c67, 2)),
         }),
       ).annotate({ identifier: "GetCustomizationTaskResponse" });
   }
 }
-function __c65(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7646,17 +7800,17 @@ function __c65(j: number): any {
       ).annotate({ identifier: "GetCustomizationTaskErrorDetailsRequest" });
   }
 }
-function __c66(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(__S(976, __c61, 0)),
+          errors: S.optional(__S(1024, __c64, 0)),
         }),
       ).annotate({ identifier: "GetCustomizationTaskErrorDetailsResponse" });
   }
 }
-function __c67(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7676,7 +7830,17 @@ function __c67(j: number): any {
       ).annotate({ identifier: "ConnectCatalogRequest" });
   }
 }
-function __c68(j: number): any {
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "ConnectCatalogResponse" });
+  }
+}
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7696,7 +7860,7 @@ function __c68(j: number): any {
       ).annotate({ identifier: "GetDevBoxDefinitionRequest" });
   }
 }
-function __c69(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7716,7 +7880,7 @@ function __c69(j: number): any {
       ).annotate({ identifier: "GetDevBoxDefinitionByProjectRequest" });
   }
 }
-function __c70(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7735,7 +7899,7 @@ function __c70(j: number): any {
       ).annotate({ identifier: "GetDevCenterRequest" });
   }
 }
-function __c71(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7756,7 +7920,7 @@ function __c71(j: number): any {
       ).annotate({ identifier: "GetEnvironmentDefinitionRequest" });
   }
 }
-function __c72(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7770,12 +7934,12 @@ function __c72(j: number): any {
         }),
       ).annotate({ identifier: "EnvironmentDefinitionParameter" });
     case 1:
-      return S.Array(__S(1152, __c72, 0));
+      return S.Array(__S(1216, __c76, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          parameters: S.optional(__S(1153, __c72, 1)),
+          parameters: S.optional(__S(1217, __c76, 1)),
           templatePath: S.optional(S.String),
           validationStatus: S.optional(S.String),
         }),
@@ -7787,12 +7951,12 @@ function __c72(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1154, __c72, 2)),
+          properties: S.optional(__S(1218, __c76, 2)),
         }),
       ).annotate({ identifier: "GetEnvironmentDefinitionResponse" });
   }
 }
-function __c73(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7813,7 +7977,7 @@ function __c73(j: number): any {
       ).annotate({ identifier: "GetEnvironmentDefinitionByProjectCatalogRequest" });
   }
 }
-function __c74(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7834,7 +7998,7 @@ function __c74(j: number): any {
       ).annotate({ identifier: "GetEnvironmentDefinitionErrorDetailsRequest" });
   }
 }
-function __c75(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7854,7 +8018,7 @@ function __c75(j: number): any {
       ).annotate({ identifier: "GetEnvironmentTypeRequest" });
   }
 }
-function __c76(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7874,7 +8038,7 @@ function __c76(j: number): any {
       ).annotate({ identifier: "GetGalleryRequest" });
   }
 }
-function __c77(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7895,7 +8059,7 @@ function __c77(j: number): any {
       ).annotate({ identifier: "GetImageRequest" });
   }
 }
-function __c78(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7907,8 +8071,8 @@ function __c78(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          memory: S.optional(__S(1248, __c78, 0)),
-          vCPUs: S.optional(__S(1248, __c78, 0)),
+          memory: S.optional(__S(1312, __c82, 0)),
+          vCPUs: S.optional(__S(1312, __c82, 0)),
         }),
       ).annotate({ identifier: "RecommendedMachineConfiguration" });
     case 2:
@@ -7918,7 +8082,7 @@ function __c78(j: number): any {
           publisher: S.optional(S.String),
           offer: S.optional(S.String),
           sku: S.optional(S.String),
-          recommendedMachineConfiguration: S.optional(__S(1249, __c78, 1)),
+          recommendedMachineConfiguration: S.optional(__S(1313, __c82, 1)),
           provisioningState: S.optional(S.String),
           hibernateSupport: S.optional(S.String),
         }),
@@ -7930,12 +8094,12 @@ function __c78(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1250, __c78, 2)),
+          properties: S.optional(__S(1314, __c82, 2)),
         }),
       ).annotate({ identifier: "GetImageResponse" });
   }
 }
-function __c79(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7955,7 +8119,7 @@ function __c79(j: number): any {
       ).annotate({ identifier: "GetImageByProjectRequest" });
   }
 }
-function __c80(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7975,7 +8139,7 @@ function __c80(j: number): any {
       ).annotate({ identifier: "ConnectProjectCatalogRequest" });
   }
 }
-function __c81(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7997,7 +8161,7 @@ function __c81(j: number): any {
       ).annotate({ identifier: "GetImageVersionRequest" });
   }
 }
-function __c82(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8016,12 +8180,12 @@ function __c82(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1312, __c82, 0)),
+          properties: S.optional(__S(1376, __c86, 0)),
         }),
       ).annotate({ identifier: "GetImageVersionResponse" });
   }
 }
-function __c83(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8042,7 +8206,7 @@ function __c83(j: number): any {
       ).annotate({ identifier: "GetImageVersionByProjectRequest" });
   }
 }
-function __c84(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8061,7 +8225,23 @@ function __c84(j: number): any {
       ).annotate({ identifier: "GetNetworkConnectionRequest" });
   }
 }
-function __c85(j: number): any {
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
+          location: S.String,
+          properties: S.optional(__S(1440, __c90, 0)),
+        }),
+      ).annotate({ identifier: "GetNetworkConnectionResponse" });
+  }
+}
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8077,21 +8257,9 @@ function __c85(j: number): any {
           domainJoinType: S.String,
         }),
       ).annotate({ identifier: "NetworkProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          tags: S.optional(__S(720, __c45, 0)),
-          location: S.String,
-          properties: S.optional(__S(1360, __c85, 0)),
-        }),
-      ).annotate({ identifier: "GetNetworkConnectionResponse" });
   }
 }
-function __c86(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8110,7 +8278,7 @@ function __c86(j: number): any {
       ).annotate({ identifier: "GetNetworkConnectionHealthDetailsRequest" });
   }
 }
-function __c87(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8125,13 +8293,13 @@ function __c87(j: number): any {
         }),
       ).annotate({ identifier: "HealthCheck" });
     case 1:
-      return S.Array(__S(1392, __c87, 0));
+      return S.Array(__S(1472, __c92, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           startDateTime: S.optional(S.String),
           endDateTime: S.optional(S.String),
-          healthChecks: S.optional(__S(1393, __c87, 1)),
+          healthChecks: S.optional(__S(1473, __c92, 1)),
         }),
       ).annotate({ identifier: "HealthCheckStatusDetailsProperties" });
     case 3:
@@ -8141,12 +8309,12 @@ function __c87(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1394, __c87, 2)),
+          properties: S.optional(__S(1474, __c92, 2)),
         }),
       ).annotate({ identifier: "GetNetworkConnectionHealthDetailsResponse" });
   }
 }
-function __c88(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8164,9 +8332,9 @@ function __c88(j: number): any {
         ),
       ).annotate({ identifier: "GetOperationStatusRequest" });
     case 1:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1414, __c88, 6)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1494, __c93, 6)));
     case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1413, __c88, 5)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1493, __c93, 5)));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -8175,15 +8343,15 @@ function __c88(j: number): any {
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
     case 4:
-      return S.Array(__S(1411, __c88, 3));
+      return S.Array(__S(1491, __c93, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(1410, __c88, 2)),
-          additionalInfo: S.optional(__S(1412, __c88, 4)),
+          details: S.optional(__S(1490, __c93, 2)),
+          additionalInfo: S.optional(__S(1492, __c93, 4)),
         }),
       ).annotate({ identifier: "ErrorDetail" });
     case 6:
@@ -8196,12 +8364,12 @@ function __c88(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(1409, __c88, 1)),
-          error: S.optional(__S(1413, __c88, 5)),
+          operations: S.optional(__S(1489, __c93, 1)),
+          error: S.optional(__S(1493, __c93, 5)),
         }),
       ).annotate({ identifier: "OperationStatusResult" });
     case 7:
-      return S.Array(__S(1414, __c88, 6));
+      return S.Array(__S(1494, __c93, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -8212,14 +8380,15 @@ function __c88(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(1415, __c88, 7)),
-          error: S.optional(__S(1413, __c88, 5)),
+          operations: S.optional(__S(1495, __c93, 7)),
+          error: S.optional(__S(1493, __c93, 5)),
           properties: S.optional(S.Unknown),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "GetOperationStatusResponse" });
   }
 }
-function __c89(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8239,13 +8408,29 @@ function __c89(j: number): any {
       ).annotate({ identifier: "GetPoolRequest" });
   }
 }
-function __c90(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c91(j: number): any {
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
+          location: S.String,
+          properties: S.optional(__S(1554, __c97, 2)),
+        }),
+      ).annotate({ identifier: "GetPoolResponse" });
+  }
+}
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8267,37 +8452,25 @@ function __c91(j: number): any {
         S.Struct({
           devBoxDefinitionType: S.optional(S.String),
           devBoxDefinitionName: S.String,
-          devBoxDefinition: S.optional(__S(1456, __c91, 0)),
+          devBoxDefinition: S.optional(__S(1552, __c97, 0)),
           networkConnectionName: S.String,
           licenseType: S.String,
           localAdministrator: S.String,
-          stopOnDisconnect: S.optional(__S(1457, __c91, 1)),
-          stopOnNoConnect: S.optional(__S(1457, __c91, 1)),
+          stopOnDisconnect: S.optional(__S(1553, __c97, 1)),
+          stopOnNoConnect: S.optional(__S(1553, __c97, 1)),
           singleSignOnStatus: S.optional(S.String),
           displayName: S.optional(S.String),
           virtualNetworkType: S.optional(S.String),
-          managedVirtualNetworkRegions: S.optional(__S(1440, __c90, 0)),
+          managedVirtualNetworkRegions: S.optional(__S(1520, __c95, 0)),
           healthStatus: S.optional(S.String),
-          healthStatusDetails: S.optional(__S(976, __c61, 0)),
+          healthStatusDetails: S.optional(__S(1024, __c64, 0)),
           devBoxCount: S.optional(S.Number),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "PoolProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          tags: S.optional(__S(720, __c45, 0)),
-          location: S.String,
-          properties: S.optional(__S(1458, __c91, 2)),
-        }),
-      ).annotate({ identifier: "GetPoolResponse" });
   }
 }
-function __c92(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8316,12 +8489,29 @@ function __c92(j: number): any {
       ).annotate({ identifier: "GetProjectRequest" });
   }
 }
-function __c93(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          catalogItemSyncTypes: S.optional(__S(736, __c46, 0)),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
+          location: S.String,
+          properties: S.optional(__S(1601, __c100, 1)),
+          identity: S.optional(__S(658, __c41, 2)),
+        }),
+      ).annotate({ identifier: "GetProjectResponse" });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          catalogItemSyncTypes: S.optional(__S(768, __c48, 0)),
         }),
       ).annotate({ identifier: "ProjectCatalogSettings" });
     case 1:
@@ -8331,27 +8521,14 @@ function __c93(j: number): any {
           description: S.optional(S.String),
           maxDevBoxesPerUser: S.optional(S.Number),
           displayName: S.optional(S.String),
-          catalogSettings: S.optional(__S(1488, __c93, 0)),
+          catalogSettings: S.optional(__S(1600, __c100, 0)),
           provisioningState: S.optional(S.String),
           devCenterUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          tags: S.optional(__S(720, __c45, 0)),
-          location: S.String,
-          properties: S.optional(__S(1489, __c93, 1)),
-          identity: S.optional(__S(642, __c40, 2)),
-        }),
-      ).annotate({ identifier: "GetProjectResponse" });
   }
 }
-function __c94(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8371,7 +8548,7 @@ function __c94(j: number): any {
       ).annotate({ identifier: "GetProjectAllowedEnvironmentTypeRequest" });
   }
 }
-function __c95(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8387,12 +8564,12 @@ function __c95(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1520, __c95, 0)),
+          properties: S.optional(__S(1632, __c102, 0)),
         }),
       ).annotate({ identifier: "GetProjectAllowedEnvironmentTypeResponse" });
   }
 }
-function __c96(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8412,7 +8589,7 @@ function __c96(j: number): any {
       ).annotate({ identifier: "GetProjectCatalogRequest" });
   }
 }
-function __c97(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8433,7 +8610,7 @@ function __c97(j: number): any {
       ).annotate({ identifier: "GetProjectCatalogEnvironmentDefinitionErrorDetailsRequest" });
   }
 }
-function __c98(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8453,7 +8630,7 @@ function __c98(j: number): any {
       ).annotate({ identifier: "DeleteAttachedNetworkRequest" });
   }
 }
-function __c99(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8475,7 +8652,7 @@ function __c99(j: number): any {
       ).annotate({ identifier: "GetProjectCatalogImageDefinitionBuildRequest" });
   }
 }
-function __c100(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8494,12 +8671,12 @@ function __c100(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1600, __c100, 0)),
+          properties: S.optional(__S(1712, __c107, 0)),
         }),
       ).annotate({ identifier: "GetProjectCatalogImageDefinitionBuildResponse" });
   }
 }
-function __c101(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8527,12 +8704,12 @@ function __c101(j: number): any {
         }),
       ).annotate({ identifier: "ImageDefinitionBuildTaskParametersItem" });
     case 2:
-      return S.Array(__S(1617, __c101, 1));
+      return S.Array(__S(1729, __c108, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          parameters: S.optional(__S(1618, __c101, 2)),
+          parameters: S.optional(__S(1730, __c108, 2)),
           displayName: S.optional(S.String),
           id: S.optional(S.String),
           startTime: S.optional(S.String),
@@ -8542,7 +8719,7 @@ function __c101(j: number): any {
         }),
       ).annotate({ identifier: "ImageDefinitionBuildTask" });
     case 4:
-      return S.Array(__S(1619, __c101, 3));
+      return S.Array(__S(1731, __c108, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -8550,11 +8727,11 @@ function __c101(j: number): any {
           status: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          tasks: S.optional(__S(1620, __c101, 4)),
+          tasks: S.optional(__S(1732, __c108, 4)),
         }),
       ).annotate({ identifier: "ImageDefinitionBuildTaskGroup" });
     case 6:
-      return S.Array(__S(1621, __c101, 5));
+      return S.Array(__S(1733, __c108, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -8567,12 +8744,12 @@ function __c101(j: number): any {
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           errorDetails: S.optional(__S(528, __c33, 0)),
-          taskGroups: S.optional(__S(1622, __c101, 6)),
+          taskGroups: S.optional(__S(1734, __c108, 6)),
         }),
       ).annotate({ identifier: "GetProjectCatalogImageDefinitionBuildBuildDetailsResponse" });
   }
 }
-function __c102(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8593,7 +8770,7 @@ function __c102(j: number): any {
       ).annotate({ identifier: "GetProjectCatalogImageDefinitionByProjectCatalogRequest" });
   }
 }
-function __c103(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8609,7 +8786,7 @@ function __c103(j: number): any {
         S.Struct({
           imageReference: S.optional(__S(544, __c34, 0)),
           fileUrl: S.optional(S.String),
-          latestBuild: S.optional(__S(1648, __c103, 0)),
+          latestBuild: S.optional(__S(1760, __c110, 0)),
           imageValidationStatus: S.optional(S.String),
           imageValidationErrorDetails: S.optional(__S(528, __c33, 0)),
           validationStatus: S.optional(S.String),
@@ -8624,12 +8801,12 @@ function __c103(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1649, __c103, 1)),
+          properties: S.optional(__S(1761, __c110, 1)),
         }),
       ).annotate({ identifier: "GetProjectCatalogImageDefinitionByProjectCatalogResponse" });
   }
 }
-function __c104(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8650,7 +8827,7 @@ function __c104(j: number): any {
       ).annotate({ identifier: "GetProjectCatalogImageDefinitionErrorDetailsRequest" });
   }
 }
-function __c105(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8670,7 +8847,7 @@ function __c105(j: number): any {
       ).annotate({ identifier: "GetProjectCatalogSyncErrorDetailsRequest" });
   }
 }
-function __c106(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8690,7 +8867,7 @@ function __c106(j: number): any {
       ).annotate({ identifier: "GetProjectEnvironmentTypeRequest" });
   }
 }
-function __c107(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8700,23 +8877,23 @@ function __c107(j: number): any {
         }),
       ).annotate({ identifier: "EnvironmentRole" });
     case 1:
-      return S.Record(S.String, __S(1712, __c107, 0));
+      return S.Record(S.String, __S(1824, __c114, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          roles: S.optional(__S(1713, __c107, 1)),
+          roles: S.optional(__S(1825, __c114, 1)),
         }),
       ).annotate({ identifier: "ProjectEnvironmentTypePropertiesCreatorRoleAssignment" });
     case 3:
-      return S.Record(S.String, __S(1714, __c107, 2));
+      return S.Record(S.String, __S(1826, __c114, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           deploymentTargetId: S.optional(S.String),
           displayName: S.optional(S.String),
           status: S.optional(S.String),
-          creatorRoleAssignment: S.optional(__S(1714, __c107, 2)),
-          userRoleAssignments: S.optional(__S(1715, __c107, 3)),
+          creatorRoleAssignment: S.optional(__S(1826, __c114, 2)),
+          userRoleAssignments: S.optional(__S(1827, __c114, 3)),
           provisioningState: S.optional(S.String),
           environmentCount: S.optional(S.Number),
         }),
@@ -8728,15 +8905,15 @@ function __c107(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1716, __c107, 4)),
-          tags: S.optional(__S(720, __c45, 0)),
-          identity: S.optional(__S(642, __c40, 2)),
+          properties: S.optional(__S(1828, __c114, 4)),
+          tags: S.optional(__S(752, __c47, 0)),
+          identity: S.optional(__S(658, __c41, 2)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetProjectEnvironmentTypeResponse" });
   }
 }
-function __c108(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8756,13 +8933,13 @@ function __c108(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          projectCatalogSettings: S.optional(__S(656, __c41, 0)),
-          networkSettings: S.optional(__S(657, __c41, 1)),
+          projectCatalogSettings: S.optional(__S(672, __c42, 0)),
+          networkSettings: S.optional(__S(673, __c42, 1)),
         }),
       ).annotate({ identifier: "InheritedSettingsForProject" });
   }
 }
-function __c109(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8782,7 +8959,21 @@ function __c109(j: number): any {
       ).annotate({ identifier: "GetProjectPolicyRequest" });
   }
 }
-function __c110(j: number): any {
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1890, __c118, 2)),
+        }),
+      ).annotate({ identifier: "GetProjectPolicyResponse" });
+  }
+}
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8794,28 +8985,18 @@ function __c110(j: number): any {
         }),
       ).annotate({ identifier: "ResourcePolicy" });
     case 1:
-      return S.Array(__S(1760, __c110, 0));
+      return S.Array(__S(1888, __c118, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resourcePolicies: S.optional(__S(1761, __c110, 1)),
-          scopes: S.optional(__S(1440, __c90, 0)),
+          resourcePolicies: S.optional(__S(1889, __c118, 1)),
+          scopes: S.optional(__S(1520, __c95, 0)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectPolicyProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1762, __c110, 2)),
-        }),
-      ).annotate({ identifier: "GetProjectPolicyResponse" });
   }
 }
-function __c111(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8837,12 +9018,26 @@ function __c111(j: number): any {
       ).annotate({ identifier: "GetScheduleRequest" });
   }
 }
-function __c112(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(720, __c45, 0)),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1936, __c121, 0)),
+        }),
+      ).annotate({ identifier: "GetScheduleResponse" });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tags: S.optional(__S(752, __c47, 0)),
           location: S.optional(S.String),
           type: S.String,
           frequency: S.String,
@@ -8852,19 +9047,9 @@ function __c112(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScheduleProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1792, __c112, 0)),
-        }),
-      ).annotate({ identifier: "GetScheduleResponse" });
   }
 }
-function __c113(j: number): any {
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8884,20 +9069,20 @@ function __c113(j: number): any {
       ).annotate({ identifier: "ListAttachedNetworkByDevCenterRequest" });
   }
 }
-function __c114(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(33, __c2, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1824, __c114, 0)),
+          value: S.optional(__S(1968, __c123, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AttachedNetworkListResult" });
   }
 }
-function __c115(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8917,7 +9102,7 @@ function __c115(j: number): any {
       ).annotate({ identifier: "DeleteCatalogRequest" });
   }
 }
-function __c116(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8937,7 +9122,7 @@ function __c116(j: number): any {
       ).annotate({ identifier: "ListAttachedNetworkByProjectRequest" });
   }
 }
-function __c117(j: number): any {
+function __c126(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8957,20 +9142,20 @@ function __c117(j: number): any {
       ).annotate({ identifier: "ListCatalogByDevCenterRequest" });
   }
 }
-function __c118(j: number): any {
+function __c127(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(755, __c47, 3));
+      return S.Array(__S(800, __c50, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1888, __c118, 0)),
+          value: S.optional(__S(2032, __c127, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CatalogListResult" });
   }
 }
-function __c119(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8990,17 +9175,17 @@ function __c119(j: number): any {
         ),
       ).annotate({ identifier: "ListCustomizationTaskByCatalogRequest" });
     case 1:
-      return S.Array(__S(1027, __c64, 3));
+      return S.Array(__S(1075, __c67, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1905, __c119, 1)),
+          value: S.optional(__S(2049, __c128, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomizationTaskListResult" });
   }
 }
-function __c120(j: number): any {
+function __c129(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9020,20 +9205,20 @@ function __c120(j: number): any {
       ).annotate({ identifier: "ListDevBoxDefinitionByDevCenterRequest" });
   }
 }
-function __c121(j: number): any {
+function __c130(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(577, __c36, 1));
+      return S.Array(__S(576, __c36, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1936, __c121, 0)),
+          value: S.optional(__S(2080, __c130, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DevBoxDefinitionListResult" });
   }
 }
-function __c122(j: number): any {
+function __c131(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9053,7 +9238,7 @@ function __c122(j: number): any {
       ).annotate({ identifier: "ListDevBoxDefinitionByProjectRequest" });
   }
 }
-function __c123(j: number): any {
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9072,20 +9257,20 @@ function __c123(j: number): any {
       ).annotate({ identifier: "ListDevCenterByResourceGroupRequest" });
   }
 }
-function __c124(j: number): any {
+function __c133(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(677, __c42, 5));
+      return S.Array(__S(688, __c43, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1984, __c124, 0)),
+          value: S.optional(__S(2128, __c133, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DevCenterListResult" });
   }
 }
-function __c125(j: number): any {
+function __c134(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9103,7 +9288,7 @@ function __c125(j: number): any {
       ).annotate({ identifier: "ListDevCenterBySubscriptionRequest" });
   }
 }
-function __c126(j: number): any {
+function __c135(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9124,20 +9309,20 @@ function __c126(j: number): any {
       ).annotate({ identifier: "ListEnvironmentDefinitionByCatalogRequest" });
   }
 }
-function __c127(j: number): any {
+function __c136(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1155, __c72, 3));
+      return S.Array(__S(1219, __c76, 3));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2032, __c127, 0)),
+          value: S.optional(__S(2176, __c136, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnvironmentDefinitionListResult" });
   }
 }
-function __c128(j: number): any {
+function __c137(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9157,7 +9342,7 @@ function __c128(j: number): any {
       ).annotate({ identifier: "ListEnvironmentDefinitionByProjectCatalogRequest" });
   }
 }
-function __c129(j: number): any {
+function __c138(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9176,17 +9361,17 @@ function __c129(j: number): any {
         ),
       ).annotate({ identifier: "ListEnvironmentTypeByDevCenterRequest" });
     case 1:
-      return S.Array(__S(817, __c51, 1));
+      return S.Array(__S(865, __c54, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2065, __c129, 1)),
+          value: S.optional(__S(2209, __c138, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnvironmentTypeListResult" });
   }
 }
-function __c130(j: number): any {
+function __c139(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9206,7 +9391,7 @@ function __c130(j: number): any {
       ).annotate({ identifier: "DeleteDevBoxDefinitionRequest" });
   }
 }
-function __c131(j: number): any {
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9225,17 +9410,17 @@ function __c131(j: number): any {
         ),
       ).annotate({ identifier: "ListGalleryByDevCenterRequest" });
     case 1:
-      return S.Array(__S(897, __c56, 1));
+      return S.Array(__S(945, __c59, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2097, __c131, 1)),
+          value: S.optional(__S(2241, __c140, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GalleryListResult" });
   }
 }
-function __c132(j: number): any {
+function __c141(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9255,20 +9440,20 @@ function __c132(j: number): any {
       ).annotate({ identifier: "ListImageByDevCenterRequest" });
   }
 }
-function __c133(j: number): any {
+function __c142(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1251, __c78, 3));
+      return S.Array(__S(1315, __c82, 3));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2128, __c133, 0)),
+          value: S.optional(__S(2272, __c142, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageListResult" });
   }
 }
-function __c134(j: number): any {
+function __c143(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9289,7 +9474,7 @@ function __c134(j: number): any {
       ).annotate({ identifier: "ListImageByGalleryRequest" });
   }
 }
-function __c135(j: number): any {
+function __c144(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9308,7 +9493,7 @@ function __c135(j: number): any {
       ).annotate({ identifier: "ListImageByProjectRequest" });
   }
 }
-function __c136(j: number): any {
+function __c145(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9329,20 +9514,20 @@ function __c136(j: number): any {
       ).annotate({ identifier: "ListImageVersionByImageRequest" });
   }
 }
-function __c137(j: number): any {
+function __c146(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1313, __c82, 1));
+      return S.Array(__S(1377, __c86, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2192, __c137, 0)),
+          value: S.optional(__S(2336, __c146, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageVersionListResult" });
   }
 }
-function __c138(j: number): any {
+function __c147(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9362,7 +9547,7 @@ function __c138(j: number): any {
       ).annotate({ identifier: "ListImageVersionByProjectRequest" });
   }
 }
-function __c139(j: number): any {
+function __c148(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9381,20 +9566,20 @@ function __c139(j: number): any {
       ).annotate({ identifier: "ListNetworkConnectionByResourceGroupRequest" });
   }
 }
-function __c140(j: number): any {
+function __c149(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1361, __c85, 1));
+      return S.Array(__S(1424, __c89, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2240, __c140, 0)),
+          value: S.optional(__S(2384, __c149, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkConnectionListResult" });
   }
 }
-function __c141(j: number): any {
+function __c150(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9412,7 +9597,7 @@ function __c141(j: number): any {
       ).annotate({ identifier: "ListNetworkConnectionBySubscriptionRequest" });
   }
 }
-function __c142(j: number): any {
+function __c151(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9431,17 +9616,17 @@ function __c142(j: number): any {
         ),
       ).annotate({ identifier: "ListNetworkConnectionHealthDetailsRequest" });
     case 1:
-      return S.Array(__S(1395, __c87, 3));
+      return S.Array(__S(1475, __c92, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2273, __c142, 1)),
+          value: S.optional(__S(2417, __c151, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "HealthCheckStatusDetailsListResult" });
   }
 }
-function __c143(j: number): any {
+function __c152(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9468,36 +9653,36 @@ function __c143(j: number): any {
         }),
       ).annotate({ identifier: "EndpointDetail" });
     case 2:
-      return S.Array(__S(2289, __c143, 1));
+      return S.Array(__S(2433, __c152, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
           description: S.optional(S.String),
-          endpointDetails: S.optional(__S(2290, __c143, 2)),
+          endpointDetails: S.optional(__S(2434, __c152, 2)),
         }),
       ).annotate({ identifier: "EndpointDependency" });
     case 4:
-      return S.Array(__S(2291, __c143, 3));
+      return S.Array(__S(2435, __c152, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.String),
-          endpoints: S.optional(__S(2292, __c143, 4)),
+          endpoints: S.optional(__S(2436, __c152, 4)),
         }),
       ).annotate({ identifier: "OutboundEnvironmentEndpoint" });
     case 6:
-      return S.Array(__S(2293, __c143, 5));
+      return S.Array(__S(2437, __c152, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2294, __c143, 6)),
+          value: S.optional(__S(2438, __c152, 6)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OutboundEnvironmentEndpointCollection" });
   }
 }
-function __c144(j: number): any {
+function __c153(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9516,7 +9701,7 @@ function __c144(j: number): any {
       ).annotate({ identifier: "DeleteDevCenterRequest" });
   }
 }
-function __c145(j: number): any {
+function __c154(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9543,23 +9728,23 @@ function __c145(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(2321, __c145, 1)),
+          display: S.optional(__S(2465, __c154, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(2322, __c145, 2));
+      return S.Array(__S(2466, __c154, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2323, __c145, 3)),
+          value: S.optional(__S(2467, __c154, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c146(j: number): any {
+function __c155(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9578,17 +9763,17 @@ function __c146(j: number): any {
         ),
       ).annotate({ identifier: "ListPoolByProjectRequest" });
     case 1:
-      return S.Array(__S(1459, __c91, 3));
+      return S.Array(__S(1536, __c96, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2337, __c146, 1)),
+          value: S.optional(__S(2481, __c155, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PoolListResult" });
   }
 }
-function __c147(j: number): any {
+function __c156(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9607,17 +9792,17 @@ function __c147(j: number): any {
         ),
       ).annotate({ identifier: "ListProjectAllowedEnvironmentTypesRequest" });
     case 1:
-      return S.Array(__S(1521, __c95, 1));
+      return S.Array(__S(1633, __c102, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2353, __c147, 1)),
+          value: S.optional(__S(2497, __c156, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AllowedEnvironmentTypeListResult" });
   }
 }
-function __c148(j: number): any {
+function __c157(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9636,20 +9821,20 @@ function __c148(j: number): any {
       ).annotate({ identifier: "ListProjectByResourceGroupRequest" });
   }
 }
-function __c149(j: number): any {
+function __c158(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1490, __c93, 2));
+      return S.Array(__S(1584, __c99, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2384, __c149, 0)),
+          value: S.optional(__S(2528, __c158, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectListResult" });
   }
 }
-function __c150(j: number): any {
+function __c159(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9667,7 +9852,7 @@ function __c150(j: number): any {
       ).annotate({ identifier: "ListProjectBySubscriptionRequest" });
   }
 }
-function __c151(j: number): any {
+function __c160(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9687,17 +9872,17 @@ function __c151(j: number): any {
         ),
       ).annotate({ identifier: "ListProjectCatalogImageDefinitionBuildByImageDefinitionRequest" });
     case 1:
-      return S.Array(__S(1601, __c100, 1));
+      return S.Array(__S(1713, __c107, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2417, __c151, 1)),
+          value: S.optional(__S(2561, __c160, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageDefinitionBuildListResult" });
   }
 }
-function __c152(j: number): any {
+function __c161(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9717,17 +9902,17 @@ function __c152(j: number): any {
         ),
       ).annotate({ identifier: "ListProjectCatalogImageDefinitionByProjectCatalogRequest" });
     case 1:
-      return S.Array(__S(1650, __c103, 2));
+      return S.Array(__S(1762, __c110, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2433, __c152, 1)),
+          value: S.optional(__S(2577, __c161, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageDefinitionListResult" });
   }
 }
-function __c153(j: number): any {
+function __c162(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9747,7 +9932,7 @@ function __c153(j: number): any {
       ).annotate({ identifier: "ListProjectCatalogsRequest" });
   }
 }
-function __c154(j: number): any {
+function __c163(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9766,17 +9951,17 @@ function __c154(j: number): any {
         ),
       ).annotate({ identifier: "ListProjectEnvironmentTypesRequest" });
     case 1:
-      return S.Array(__S(1717, __c107, 5));
+      return S.Array(__S(1829, __c114, 5));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2465, __c154, 1)),
+          value: S.optional(__S(2609, __c163, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectEnvironmentTypeListResult" });
   }
 }
-function __c155(j: number): any {
+function __c164(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9795,17 +9980,17 @@ function __c155(j: number): any {
         ),
       ).annotate({ identifier: "ListProjectPolicyByDevCenterRequest" });
     case 1:
-      return S.Array(__S(1763, __c110, 3));
+      return S.Array(__S(1872, __c117, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2481, __c155, 1)),
+          value: S.optional(__S(2625, __c164, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectPolicyListResult" });
   }
 }
-function __c156(j: number): any {
+function __c165(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9825,7 +10010,15 @@ function __c156(j: number): any {
       ).annotate({ identifier: "DeleteEnvironmentTypeRequest" });
   }
 }
-function __c157(j: number): any {
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteEnvironmentTypeResponse",
+      });
+  }
+}
+function __c167(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9845,17 +10038,17 @@ function __c157(j: number): any {
         ),
       ).annotate({ identifier: "ListScheduleByPoolRequest" });
     case 1:
-      return S.Array(__S(1793, __c112, 1));
+      return S.Array(__S(1920, __c120, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2513, __c157, 1)),
+          value: S.optional(__S(2673, __c167, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScheduleListResult" });
   }
 }
-function __c158(j: number): any {
+function __c168(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9874,7 +10067,7 @@ function __c158(j: number): any {
       ).annotate({ identifier: "ListSkusByProjectRequest" });
   }
 }
-function __c159(j: number): any {
+function __c169(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9884,7 +10077,7 @@ function __c159(j: number): any {
         }),
       ).annotate({ identifier: "Capability" });
     case 1:
-      return S.Array(__S(2544, __c159, 0));
+      return S.Array(__S(2704, __c169, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9894,22 +10087,22 @@ function __c159(j: number): any {
           family: S.optional(S.String),
           capacity: S.optional(S.Number),
           resourceType: S.optional(S.String),
-          locations: S.optional(__S(1440, __c90, 0)),
-          capabilities: S.optional(__S(2545, __c159, 1)),
+          locations: S.optional(__S(1520, __c95, 0)),
+          capabilities: S.optional(__S(2705, __c169, 1)),
         }),
       ).annotate({ identifier: "ListSkusByProjectResponseValueItem" });
     case 3:
-      return S.Array(__S(2546, __c159, 2));
+      return S.Array(__S(2706, __c169, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2547, __c159, 3)),
+          value: S.optional(__S(2707, __c169, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSkusByProjectResponse" });
   }
 }
-function __c160(j: number): any {
+function __c170(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9927,7 +10120,7 @@ function __c160(j: number): any {
       ).annotate({ identifier: "ListSkusBySubscriptionRequest" });
   }
 }
-function __c161(j: number): any {
+function __c171(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9956,22 +10149,22 @@ function __c161(j: number): any {
           currentValue: S.optional(S.Number),
           limit: S.optional(S.Number),
           unit: S.optional(S.String),
-          name: S.optional(__S(2577, __c161, 1)),
+          name: S.optional(__S(2737, __c171, 1)),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "Usage" });
     case 3:
-      return S.Array(__S(2578, __c161, 2));
+      return S.Array(__S(2738, __c171, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2579, __c161, 3)),
+          value: S.optional(__S(2739, __c171, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListUsagesResult" });
   }
 }
-function __c162(j: number): any {
+function __c172(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9992,9 +10185,9 @@ function __c162(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkConnectionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(720, __c45, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
           location: S.String,
-          properties: S.optional(__S(2592, __c162, 0)),
+          properties: S.optional(__S(2752, __c172, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10006,7 +10199,7 @@ function __c162(j: number): any {
       ).annotate({ identifier: "NetworkConnectionsCreateOrUpdateRequest" });
   }
 }
-function __c163(j: number): any {
+function __c173(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10015,7 +10208,7 @@ function __c163(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(768, __c48, 0)),
+          properties: S.optional(__S(816, __c51, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10027,23 +10220,38 @@ function __c163(j: number): any {
       ).annotate({ identifier: "PatchProjectCatalogRequest" });
   }
 }
-function __c164(j: number): any {
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(786, __c49, 2)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "PatchProjectCatalogResponse" });
+  }
+}
+function __c175(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           devBoxDefinitionType: S.optional(S.String),
           devBoxDefinitionName: S.String,
-          devBoxDefinition: S.optional(__S(2640, __c165, 0)),
+          devBoxDefinition: S.optional(__S(2816, __c176, 0)),
           networkConnectionName: S.String,
           licenseType: S.String,
           localAdministrator: S.String,
-          stopOnDisconnect: S.optional(__S(1457, __c91, 1)),
-          stopOnNoConnect: S.optional(__S(1457, __c91, 1)),
+          stopOnDisconnect: S.optional(__S(1553, __c97, 1)),
+          stopOnNoConnect: S.optional(__S(1553, __c97, 1)),
           singleSignOnStatus: S.optional(S.String),
           displayName: S.optional(S.String),
           virtualNetworkType: S.optional(S.String),
-          managedVirtualNetworkRegions: S.optional(__S(1440, __c90, 0)),
+          managedVirtualNetworkRegions: S.optional(__S(1520, __c95, 0)),
         }),
       ).annotate({ identifier: "PoolPropertiesInput" });
     case 1:
@@ -10053,9 +10261,9 @@ function __c164(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(720, __c45, 0)),
+          tags: S.optional(__S(752, __c47, 0)),
           location: S.String,
-          properties: S.optional(__S(2624, __c164, 0)),
+          properties: S.optional(__S(2800, __c175, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10067,19 +10275,19 @@ function __c164(j: number): any {
       ).annotate({ identifier: "PoolsCreateOrUpdateRequest" });
   }
 }
-function __c165(j: number): any {
+function __c176(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          imageReference: S.optional(__S(592, __c37, 0)),
+          imageReference: S.optional(__S(608, __c38, 0)),
           sku: S.optional(__S(560, __c35, 0)),
-          activeImageReference: S.optional(__S(592, __c37, 0)),
+          activeImageReference: S.optional(__S(608, __c38, 0)),
         }),
       ).annotate({ identifier: "PoolDevBoxDefinitionInput" });
   }
 }
-function __c166(j: number): any {
+function __c177(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10100,7 +10308,7 @@ function __c166(j: number): any {
       ).annotate({ identifier: "ProjectCatalogImageDefinitionsBuildImageRequest" });
   }
 }
-function __c167(j: number): any {
+function __c178(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10109,7 +10317,7 @@ function __c167(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(768, __c48, 0)),
+          properties: S.optional(__S(816, __c51, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10121,7 +10329,7 @@ function __c167(j: number): any {
       ).annotate({ identifier: "ProjectCatalogsCreateOrUpdateRequest" });
   }
 }
-function __c168(j: number): any {
+function __c179(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10130,9 +10338,9 @@ function __c168(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           environmentTypeName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2706, __c169, 2)),
-          tags: S.optional(__S(720, __c45, 0)),
-          identity: S.optional(__S(689, __c43, 1)),
+          properties: S.optional(__S(2882, __c180, 2)),
+          tags: S.optional(__S(752, __c47, 0)),
+          identity: S.optional(__S(721, __c45, 1)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -10145,24 +10353,24 @@ function __c168(j: number): any {
       ).annotate({ identifier: "ProjectEnvironmentTypesCreateOrUpdateRequest" });
   }
 }
-function __c169(j: number): any {
+function __c180(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          roles: S.optional(__S(688, __c43, 0)),
+          roles: S.optional(__S(720, __c45, 0)),
         }),
       ).annotate({ identifier: "ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment" });
     case 1:
-      return S.Record(S.String, __S(2704, __c169, 0));
+      return S.Record(S.String, __S(2880, __c180, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           deploymentTargetId: S.optional(S.String),
           displayName: S.optional(S.String),
           status: S.optional(S.String),
-          creatorRoleAssignment: S.optional(__S(2704, __c169, 0)),
-          userRoleAssignments: S.optional(__S(2705, __c169, 1)),
+          creatorRoleAssignment: S.optional(__S(2880, __c180, 0)),
+          userRoleAssignments: S.optional(__S(2881, __c180, 1)),
         }),
       ).annotate({ identifier: "ProjectEnvironmentTypePropertiesInput" });
   }

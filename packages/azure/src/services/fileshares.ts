@@ -117,6 +117,12 @@ export interface CreatePrivateEndpointConnectionResponse {
   systemData?: SystemData;
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteFileShareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -126,7 +132,12 @@ export interface DeleteFileShareRequest {
   /** The resource name of the file share, as seen by the administrator through Azure Resource Manager. */
   resourceName: string;
 }
-export interface DeleteFileShareResponse {}
+export interface DeleteFileShareResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteFileShareSnapshotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -137,7 +148,12 @@ export interface DeleteFileShareSnapshotRequest {
   /** The name of the FileShareSnapshot */
   name: string;
 }
-export interface DeleteFileShareSnapshotResponse {}
+export interface DeleteFileShareSnapshotResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -148,7 +164,14 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-export interface DeletePrivateEndpointConnectionResponse {}
+export interface DeletePrivateEndpointConnectionResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Resource tags. */
 export type FileSharesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
 /** Media Tier enum. */
@@ -300,6 +323,10 @@ export interface FileSharesCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: FileShareProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The metadata */
 export type FileShareSnapshotPropertiesInputMetadataMap = { [key: string]: string | undefined };
@@ -322,7 +349,14 @@ export interface FileShareSnapshotCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: FileShareSnapshotPropertiesInput;
 }
-export interface FileShareSnapshotCreateOrUpdateResponse {}
+export interface FileShareSnapshotCreateOrUpdateResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetFileShareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -748,6 +782,10 @@ export interface UpdateFileShareResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: FileShareProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The metadata */
 export type FileShareSnapshotUpdatePropertiesMetadataMap = { [key: string]: string | undefined };
@@ -779,6 +817,12 @@ export interface UpdateFileShareSnapshotResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: FileShareSnapshotProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type CheckFileShareNameAvailabilityError = AzureOpError;
 /** Implements local CheckNameAvailability operations */
@@ -803,8 +847,8 @@ export const CreatePrivateEndpointConnection: API.OperationMethod<
   CreatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
+  input: __S(10, __c1, 2) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -819,7 +863,7 @@ export const DeleteFileShare: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(152, __c19, 0) as any as S.Schema<DeleteFileShareRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteFileShareResponse>,
+  output: __S(160, __c20, 0) as any as S.Schema<DeleteFileShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -833,8 +877,8 @@ export const DeleteFileShareSnapshot: API.OperationMethod<
   DeleteFileShareSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<DeleteFileShareSnapshotRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteFileShareSnapshotResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<DeleteFileShareSnapshotRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<DeleteFileShareSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -848,8 +892,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -863,8 +907,8 @@ export const FileSharesCreateOrUpdate: API.OperationMethod<
   FileSharesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<FileSharesCreateOrUpdateRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<FileSharesCreateOrUpdateResponse>,
+  input: __S(209, __c26, 1) as any as S.Schema<FileSharesCreateOrUpdateRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<FileSharesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -878,8 +922,8 @@ export const FileShareSnapshotCreateOrUpdate: API.OperationMethod<
   FileShareSnapshotCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<FileShareSnapshotCreateOrUpdateRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<FileShareSnapshotCreateOrUpdateResponse>,
+  input: __S(249, __c31, 1) as any as S.Schema<FileShareSnapshotCreateOrUpdateRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<FileShareSnapshotCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -893,8 +937,8 @@ export const GetFileShare: API.OperationMethod<
   GetFileShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<GetFileShareRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<GetFileShareResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<GetFileShareRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<GetFileShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -908,8 +952,8 @@ export const GetFileShareLimits: API.OperationMethod<
   GetFileShareLimitsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<GetFileShareLimitsRequest>,
-  output: __S(244, __c30, 4) as any as S.Schema<FileShareLimitsResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<GetFileShareLimitsRequest>,
+  output: __S(276, __c34, 4) as any as S.Schema<FileShareLimitsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -923,8 +967,8 @@ export const GetFileShareProvisioningRecommendation: API.OperationMethod<
   GetFileShareProvisioningRecommendationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<GetFileShareProvisioningRecommendationRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<FileShareProvisioningRecommendationResponse>,
+  input: __S(281, __c35, 1) as any as S.Schema<GetFileShareProvisioningRecommendationRequest>,
+  output: __S(284, __c35, 4) as any as S.Schema<FileShareProvisioningRecommendationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -938,8 +982,8 @@ export const GetFileShareSnapshot: API.OperationMethod<
   GetFileShareSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetFileShareSnapshotRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<GetFileShareSnapshotResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetFileShareSnapshotRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<GetFileShareSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -969,7 +1013,7 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(72, __c9, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  output: __S(224, __c28, 0) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1088,8 +1132,8 @@ export const UpdateFileShare: API.OperationMethod<
   UpdateFileShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<UpdateFileShareRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<UpdateFileShareResponse>,
+  input: __S(169, __c21, 1) as any as S.Schema<UpdateFileShareRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<UpdateFileShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1103,8 +1147,8 @@ export const UpdateFileShareSnapshot: API.OperationMethod<
   UpdateFileShareSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<UpdateFileShareSnapshotRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<UpdateFileShareSnapshotResponse>,
+  input: __S(177, __c22, 1) as any as S.Schema<UpdateFileShareSnapshotRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<UpdateFileShareSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1142,20 +1186,22 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "PrivateEndpointInput" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(16, __c2, 0)),
-          privateLinkServiceConnectionState: __S(40, __c5, 0),
+          privateEndpoint: S.optional(__S(8, __c1, 0)),
+          privateLinkServiceConnectionState: __S(32, __c4, 0),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionPropertiesInput" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(9, __c1, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1165,15 +1211,22 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreatePrivateEndpointConnectionRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(34, __c4, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreatePrivateEndpointConnectionResponse" });
   }
 }
 function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "PrivateEndpointInput" });
-  }
-}
-function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1188,13 +1241,13 @@ function __c3(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1213,25 +1266,15 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(32, __c4, 0)),
-          privateEndpoint: S.optional(__S(41, __c5, 1)),
-          privateLinkServiceConnectionState: __S(40, __c5, 0),
+          groupIds: S.optional(__S(24, __c3, 0)),
+          privateEndpoint: S.optional(__S(33, __c4, 1)),
+          privateLinkServiceConnectionState: __S(32, __c4, 0),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(24, __c3, 0)),
-          properties: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "CreatePrivateEndpointConnectionResponse" });
   }
 }
-function __c6(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1251,6 +1294,20 @@ function __c6(j: number): any {
       ).annotate({ identifier: "GetFileShareSnapshotRequest" });
   }
 }
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(56, __c7, 0)),
+        }),
+      ).annotate({ identifier: "GetFileShareSnapshotResponse" });
+  }
+}
 function __c7(j: number): any {
   switch (j) {
     case 0:
@@ -1258,19 +1315,9 @@ function __c7(j: number): any {
         S.Struct({
           snapshotTime: S.optional(S.String),
           initiatorId: S.optional(S.String),
-          metadata: S.optional(__S(200, __c25, 0)),
+          metadata: S.optional(__S(216, __c27, 0)),
         }),
       ).annotate({ identifier: "FileShareSnapshotProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(24, __c3, 0)),
-          properties: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({ identifier: "GetFileShareSnapshotResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1355,8 +1402,8 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(32, __c4, 0)),
-          requiredZoneNames: S.optional(__S(32, __c4, 0)),
+          requiredMembers: S.optional(__S(24, __c3, 0)),
+          requiredZoneNames: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResourceProperties" });
     case 1:
@@ -1365,7 +1412,7 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(24, __c3, 0)),
+          systemData: S.optional(__S(16, __c2, 0)),
           properties: S.optional(__S(88, __c11, 0)),
         }),
       ).annotate({ identifier: "GetPrivateLinkResourceResponse" });
@@ -1392,7 +1439,7 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(219, __c27, 3));
+      return S.Array(__S(264, __c33, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1437,7 +1484,7 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "ListFileShareSnapshotRequest" });
     case 1:
-      return S.Array(__S(57, __c7, 1));
+      return S.Array(__S(48, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1510,7 +1557,7 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(208, __c26, 0),
+          value: __S(232, __c29, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
@@ -1568,11 +1615,22 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteFileShareResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           provisionedStorageGiB: S.optional(S.Number),
           provisionedIOPerSec: S.optional(S.Number),
           provisionedThroughputMiBPerSec: S.optional(S.Number),
-          nfsProtocolProperties: S.optional(__S(216, __c27, 0)),
-          publicAccessProperties: S.optional(__S(217, __c27, 1)),
+          nfsProtocolProperties: S.optional(__S(240, __c30, 0)),
+          publicAccessProperties: S.optional(__S(241, __c30, 1)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileShareUpdateProperties" });
@@ -1582,8 +1640,8 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(200, __c25, 0)),
-          properties: S.optional(__S(160, __c20, 0)),
+          tags: S.optional(__S(216, __c27, 0)),
+          properties: S.optional(__S(168, __c21, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1593,14 +1651,28 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFileShareRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(216, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(242, __c30, 2)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateFileShareResponse" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(200, __c25, 0)),
+          metadata: S.optional(__S(216, __c27, 0)),
         }),
       ).annotate({ identifier: "FileShareSnapshotUpdateProperties" });
     case 1:
@@ -1610,7 +1682,7 @@ function __c21(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(176, __c22, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1620,9 +1692,22 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFileShareSnapshotRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(56, __c7, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateFileShareSnapshotResponse" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1642,7 +1727,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "DeleteFileShareSnapshotRequest" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1662,7 +1747,19 @@ function __c23(j: number): any {
       ).annotate({ identifier: "DeletePrivateEndpointConnectionRequest" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeletePrivateEndpointConnectionResponse" });
+  }
+}
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1674,8 +1771,8 @@ function __c24(j: number): any {
           provisionedStorageGiB: S.optional(S.Number),
           provisionedIOPerSec: S.optional(S.Number),
           provisionedThroughputMiBPerSec: S.optional(S.Number),
-          nfsProtocolProperties: S.optional(__S(216, __c27, 0)),
-          publicAccessProperties: S.optional(__S(217, __c27, 1)),
+          nfsProtocolProperties: S.optional(__S(240, __c30, 0)),
+          publicAccessProperties: S.optional(__S(241, __c30, 1)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileSharePropertiesInput" });
@@ -1685,9 +1782,9 @@ function __c24(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(200, __c25, 0)),
+          tags: S.optional(__S(216, __c27, 0)),
           location: S.String,
-          properties: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(208, __c26, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1697,21 +1794,49 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "FileSharesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(216, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(242, __c30, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "FileSharesCreateOrUpdateResponse" });
   }
 }
-function __c25(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
   }
 }
-function __c26(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(43, __c5, 3));
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(34, __c4, 2)),
+        }),
+      ).annotate({ identifier: "FileSharePropertiesPrivateEndpointConnectionsItem" });
   }
 }
-function __c27(j: number): any {
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(224, __c28, 0));
+  }
+}
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1723,7 +1848,7 @@ function __c27(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          allowedSubnets: S.optional(__S(32, __c4, 0)),
+          allowedSubnets: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "PublicAccessProperties" });
     case 2:
@@ -1742,34 +1867,22 @@ function __c27(j: number): any {
           provisionedThroughputNextAllowedDowngrade: S.optional(S.String),
           includedBurstIOPerSec: S.optional(S.Number),
           maxBurstIOPerSecCredits: S.optional(S.Number),
-          nfsProtocolProperties: S.optional(__S(216, __c27, 0)),
-          publicAccessProperties: S.optional(__S(217, __c27, 1)),
+          nfsProtocolProperties: S.optional(__S(240, __c30, 0)),
+          publicAccessProperties: S.optional(__S(241, __c30, 1)),
           provisioningState: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(208, __c26, 0)),
+          privateEndpointConnections: S.optional(__S(232, __c29, 0)),
         }),
       ).annotate({ identifier: "FileShareProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(24, __c3, 0)),
-          tags: S.optional(__S(200, __c25, 0)),
-          location: S.String,
-          properties: S.optional(__S(218, __c27, 2)),
-        }),
-      ).annotate({ identifier: "FileSharesCreateOrUpdateResponse" });
   }
 }
-function __c28(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           initiatorId: S.optional(S.String),
-          metadata: S.optional(__S(200, __c25, 0)),
+          metadata: S.optional(__S(216, __c27, 0)),
         }),
       ).annotate({ identifier: "FileShareSnapshotPropertiesInput" });
     case 1:
@@ -1779,7 +1892,7 @@ function __c28(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(224, __c28, 0)),
+          properties: S.optional(__S(248, __c31, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1791,7 +1904,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "FileShareSnapshotCreateOrUpdateRequest" });
   }
 }
-function __c29(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1810,7 +1923,23 @@ function __c29(j: number): any {
       ).annotate({ identifier: "GetFileShareRequest" });
   }
 }
-function __c30(j: number): any {
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(216, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(242, __c30, 2)),
+        }),
+      ).annotate({ identifier: "GetFileShareResponse" });
+  }
+}
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1855,19 +1984,19 @@ function __c30(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          limits: __S(241, __c30, 1),
-          provisioningConstants: __S(242, __c30, 2),
+          limits: __S(273, __c34, 1),
+          provisioningConstants: __S(274, __c34, 2),
         }),
       ).annotate({ identifier: "FileShareLimitsOutput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(243, __c30, 3),
+          properties: __S(275, __c34, 3),
         }),
       ).annotate({ identifier: "FileShareLimitsResponse" });
   }
 }
-function __c31(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1880,7 +2009,7 @@ function __c31(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          properties: __S(248, __c31, 0),
+          properties: __S(280, __c35, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1897,13 +2026,13 @@ function __c31(j: number): any {
         S.Struct({
           provisionedIOPerSec: S.Number,
           provisionedThroughputMiBPerSec: S.Number,
-          availableRedundancyOptions: __S(250, __c31, 2),
+          availableRedundancyOptions: __S(282, __c35, 2),
         }),
       ).annotate({ identifier: "FileShareProvisioningRecommendationOutput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(251, __c31, 3),
+          properties: __S(283, __c35, 3),
         }),
       ).annotate({ identifier: "FileShareProvisioningRecommendationResponse" });
   }

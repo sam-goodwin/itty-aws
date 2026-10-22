@@ -2193,6 +2193,7 @@ export interface PageResultOfCatalogItem {
   count?: number | null;
   /** Gets the collection of entities for this feed. */
   items?: PageResultOfCatalogItemItemsList | null;
+  [key: string]: unknown;
 }
 export interface ListGetApiKeysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4843,11 +4844,14 @@ function __c26(j: number): any {
       return S.Array(__S(837, __c26, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({
-          nextPageLink: S.optional(S.NullOr(S.String)),
-          count: S.optional(S.NullOr(S.Number)),
-          items: S.optional(S.NullOr(__S(838, __c26, 6))),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            nextPageLink: S.optional(S.NullOr(S.String)),
+            count: S.optional(S.NullOr(S.Number)),
+            items: S.optional(S.NullOr(__S(838, __c26, 6))),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "PageResultOfCatalogItem" });
   }
 }

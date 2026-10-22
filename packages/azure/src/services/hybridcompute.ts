@@ -20,7 +20,14 @@ export interface DeleteGatewayRequest {
   /** The name of the Gateway. */
   gatewayName: string;
 }
-export interface DeleteGatewayResponse {}
+export interface DeleteGatewayResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteLicenseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -29,7 +36,12 @@ export interface DeleteLicenseRequest {
   /** The name of the license. */
   licenseName: string;
 }
-export interface DeleteLicenseResponse {}
+export interface DeleteLicenseResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export type DeleteLicenseProfileRequestLicenseProfileName = "default";
 export interface DeleteLicenseProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41,7 +53,14 @@ export interface DeleteLicenseProfileRequest {
   /** The name of the license profile. */
   licenseProfileName: DeleteLicenseProfileRequestLicenseProfileName | (string & {});
 }
-export interface DeleteLicenseProfileResponse {}
+export interface DeleteLicenseProfileResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteMachineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -50,7 +69,14 @@ export interface DeleteMachineRequest {
   /** The name of the hybrid machine. */
   machineName: string;
 }
-export interface DeleteMachineResponse {}
+export interface DeleteMachineResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteMachineExtensionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -61,7 +87,14 @@ export interface DeleteMachineExtensionRequest {
   /** The name of the machine extension. */
   extensionName: string;
 }
-export interface DeleteMachineExtensionResponse {}
+export interface DeleteMachineExtensionResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteMachineRunCommandRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -72,7 +105,14 @@ export interface DeleteMachineRunCommandRequest {
   /** The name of the run command. */
   runCommandName: string;
 }
-export interface DeleteMachineRunCommandResponse {}
+export interface DeleteMachineRunCommandResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -83,7 +123,14 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection. */
   privateEndpointConnectionName: string;
 }
-export interface DeletePrivateEndpointConnectionResponse {}
+export interface DeletePrivateEndpointConnectionResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeletePrivateLinkScopeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -92,7 +139,14 @@ export interface DeletePrivateLinkScopeRequest {
   /** The name of the Azure Arc PrivateLinkScope resource. */
   scopeName: string;
 }
-export interface DeletePrivateLinkScopeResponse {}
+export interface DeletePrivateLinkScopeResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Resource tags. */
 export type GatewaysCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
 /** The type of the Gateway resource. */
@@ -189,6 +243,12 @@ export interface GatewaysCreateOrUpdateResponse {
   location: string;
   /** Hybrid Compute Gateway properties */
   properties?: GatewayProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetExtensionMetadataRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1752,6 +1812,10 @@ export interface MachineInstallPatchesResult {
   osType?: OsType;
   /** The error detail. */
   errorDetails?: MachineInstallPatchesResultErrorDetails;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type LicenseProfilesCreateOrUpdateRequestLicenseProfileName = "default";
 /** Resource tags. */
@@ -1829,6 +1893,12 @@ export interface LicenseProfilesCreateOrUpdateResponse {
   location: string;
   /** Describe the properties of a license profile. */
   properties?: LicenseProfileProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type LicensesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -1889,6 +1959,10 @@ export interface LicensesCreateOrUpdateResponse {
   location: string;
   /** Hybrid Compute License properties */
   properties?: LicenseProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ListExtensionMetadataRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2429,6 +2503,10 @@ export interface MachineExtensionsCreateOrUpdateResponse {
   location: string;
   /** Describes Machine Extension Properties. */
   properties?: MachineExtensionProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type MachineRunCommandsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -2495,6 +2573,12 @@ export interface MachineRunCommandsCreateOrUpdateResponse {
   location: string;
   /** Describes Run Command Properties */
   properties?: MachineRunCommandProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MachinesAssessPatchesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2564,6 +2648,10 @@ export interface MachineAssessPatchesResult {
   osType?: OsType;
   /** The error detail. */
   errorDetails?: MachineAssessPatchesResultErrorDetails;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type MachinesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -2749,6 +2837,12 @@ export interface NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkSc
 export interface NetworkSecurityPerimeterConfigurationReconcileResult {
   /** The URL of the resource used to check the status of the asynchronous operation. */
   location?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Settings properties */
 export interface SettingsPropertiesInput {
@@ -2820,6 +2914,10 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type PrivateLinkScopesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -2888,6 +2986,12 @@ export type SetupExtensionRequestExtensionsList = Array<MachineExtensionProperti
 export interface SetupExtensionRequest {
   /** The list of extensions */
   extensions?: SetupExtensionRequestExtensionsList;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags */
 export type UpdateGatewayRequestTagsMap = { [key: string]: string | undefined };
@@ -2981,6 +3085,10 @@ export interface UpdateLicenseResponse {
   location: string;
   /** Hybrid Compute License properties */
   properties?: LicenseProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type UpdateLicenseProfileRequestLicenseProfileName = "default";
 /** Resource tags */
@@ -3048,6 +3156,12 @@ export interface UpdateLicenseProfileResponse {
   location: string;
   /** Describe the properties of a license profile. */
   properties?: LicenseProfileProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags */
 export type UpdateMachineRequestTagsMap = { [key: string]: string | undefined };
@@ -3196,6 +3310,12 @@ export interface UpdateMachineExtensionResponse {
   location: string;
   /** Describes Machine Extension Properties. */
   properties?: MachineExtensionProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags */
 export type UpdatePrivateLinkScopeTagsRequestTagsMap = { [key: string]: string | undefined };
@@ -3274,7 +3394,14 @@ export interface UpgradeExtensionsRequest {
   /** Describes the Extension Target Properties. */
   extensionTargets?: UpgradeExtensionsRequestExtensionTargetsMap;
 }
-export interface UpgradeExtensionsResponse {}
+export interface UpgradeExtensionsResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Resource tags. */
 export type ValidateLicenseLicenseRequestTagsMap = { [key: string]: string | undefined };
 export interface ValidateLicenseLicenseRequest {
@@ -3304,6 +3431,10 @@ export interface ValidateLicenseLicenseResponse {
   location: string;
   /** Hybrid Compute License properties */
   properties?: LicenseProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type DeleteGatewayError = AzureOpError;
 /** The operation to delete a gateway. */
@@ -3329,7 +3460,7 @@ export const DeleteLicense: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c2, 0) as any as S.Schema<DeleteLicenseRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteLicenseResponse>,
+  output: __S(65, __c2, 1) as any as S.Schema<DeleteLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3343,7 +3474,7 @@ export const DeleteLicenseProfile: API.OperationMethod<
   DeleteLicenseProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<DeleteLicenseProfileRequest>,
+  input: __S(1024, __c32, 0) as any as S.Schema<DeleteLicenseProfileRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<DeleteLicenseProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3358,7 +3489,7 @@ export const DeleteMachine: API.OperationMethod<
   DeleteMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c45, 0) as any as S.Schema<DeleteMachineRequest>,
+  input: __S(1632, __c51, 0) as any as S.Schema<DeleteMachineRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<DeleteMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3373,7 +3504,7 @@ export const DeleteMachineExtension: API.OperationMethod<
   DeleteMachineExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1920, __c60, 0) as any as S.Schema<DeleteMachineExtensionRequest>,
+  input: __S(2112, __c66, 0) as any as S.Schema<DeleteMachineExtensionRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<DeleteMachineExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3388,7 +3519,7 @@ export const DeleteMachineRunCommand: API.OperationMethod<
   DeleteMachineRunCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2336, __c73, 0) as any as S.Schema<DeleteMachineRunCommandRequest>,
+  input: __S(2528, __c79, 0) as any as S.Schema<DeleteMachineRunCommandRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<DeleteMachineRunCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3403,7 +3534,7 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2752, __c86, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  input: __S(2944, __c92, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3418,7 +3549,7 @@ export const DeletePrivateLinkScope: API.OperationMethod<
   DeletePrivateLinkScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2944, __c92, 0) as any as S.Schema<DeletePrivateLinkScopeRequest>,
+  input: __S(3136, __c98, 0) as any as S.Schema<DeletePrivateLinkScopeRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<DeletePrivateLinkScopeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3433,8 +3564,8 @@ export const GatewaysCreateOrUpdate: API.OperationMethod<
   GatewaysCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2977, __c93, 1) as any as S.Schema<GatewaysCreateOrUpdateRequest>,
-  output: __S(3073, __c96, 1) as any as S.Schema<GatewaysCreateOrUpdateResponse>,
+  input: __S(3169, __c99, 1) as any as S.Schema<GatewaysCreateOrUpdateRequest>,
+  output: __S(3170, __c99, 2) as any as S.Schema<GatewaysCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3448,8 +3579,8 @@ export const GetExtensionMetadata: API.OperationMethod<
   GetExtensionMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3136, __c98, 0) as any as S.Schema<GetExtensionMetadataRequest>,
-  output: __S(3169, __c99, 1) as any as S.Schema<GetExtensionMetadataResponse>,
+  input: __S(3328, __c104, 0) as any as S.Schema<GetExtensionMetadataRequest>,
+  output: __S(3361, __c105, 1) as any as S.Schema<GetExtensionMetadataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3479,7 +3610,7 @@ export const GetGateway: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c5, 0) as any as S.Schema<GetGatewayRequest>,
-  output: __S(3073, __c96, 1) as any as S.Schema<GetGatewayResponse>,
+  output: __S(192, __c6, 0) as any as S.Schema<GetGatewayResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3493,8 +3624,8 @@ export const GetLicense: API.OperationMethod<
   GetLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c6, 0) as any as S.Schema<GetLicenseRequest>,
-  output: __S(228, __c7, 4) as any as S.Schema<GetLicenseResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetLicenseRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<GetLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3508,8 +3639,8 @@ export const GetLicenseProfile: API.OperationMethod<
   GetLicenseProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c8, 0) as any as S.Schema<GetLicenseProfileRequest>,
-  output: __S(354, __c11, 2) as any as S.Schema<GetLicenseProfileResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetLicenseProfileRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<GetLicenseProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3523,8 +3654,8 @@ export const GetMachine: API.OperationMethod<
   GetMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c12, 0) as any as S.Schema<GetMachineRequest>,
-  output: __S(603, __c18, 27) as any as S.Schema<GetMachineResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetMachineRequest>,
+  output: __S(699, __c21, 27) as any as S.Schema<GetMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3538,8 +3669,8 @@ export const GetMachineExtension: API.OperationMethod<
   GetMachineExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c19, 0) as any as S.Schema<GetMachineExtensionRequest>,
-  output: __S(480, __c15, 0) as any as S.Schema<GetMachineExtensionResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetMachineExtensionRequest>,
+  output: __S(576, __c18, 0) as any as S.Schema<GetMachineExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3553,8 +3684,8 @@ export const GetMachineRunCommand: API.OperationMethod<
   GetMachineRunCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c20, 0) as any as S.Schema<GetMachineRunCommandRequest>,
-  output: __S(679, __c21, 7) as any as S.Schema<GetMachineRunCommandResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetMachineRunCommandRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<GetMachineRunCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3568,8 +3699,8 @@ export const GetNetworkProfile: API.OperationMethod<
   GetNetworkProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c22, 0) as any as S.Schema<GetNetworkProfileRequest>,
-  output: __S(517, __c16, 5) as any as S.Schema<NetworkProfile>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetNetworkProfileRequest>,
+  output: __S(613, __c19, 5) as any as S.Schema<NetworkProfile>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3584,13 +3715,13 @@ export const GetNetworkSecurityPerimeterConfigurationByPrivateLinkScope: API.Ope
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    736,
-    __c23,
+    864,
+    __c27,
     0,
   ) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationByPrivateLinkScopeRequest>,
   output: __S(
-    778,
-    __c24,
+    906,
+    __c28,
     10,
   ) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationByPrivateLinkScopeResponse>,
   errors: [UnknownAzureError],
@@ -3606,8 +3737,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c25, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(864, __c27, 0) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(992, __c31, 0) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3621,8 +3752,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(961, __c30, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(1089, __c34, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3636,8 +3767,8 @@ export const GetPrivateLinkScope: API.OperationMethod<
   GetPrivateLinkScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<GetPrivateLinkScopeRequest>,
-  output: __S(1029, __c32, 5) as any as S.Schema<GetPrivateLinkScopeResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetPrivateLinkScopeRequest>,
+  output: __S(1157, __c36, 5) as any as S.Schema<GetPrivateLinkScopeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3651,8 +3782,8 @@ export const GetPrivateLinkScopeValidationDetails: API.OperationMethod<
   GetPrivateLinkScopeValidationDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c33, 0) as any as S.Schema<GetPrivateLinkScopeValidationDetailsRequest>,
-  output: __S(1090, __c34, 2) as any as S.Schema<PrivateLinkScopeValidationDetails>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetPrivateLinkScopeValidationDetailsRequest>,
+  output: __S(1218, __c38, 2) as any as S.Schema<PrivateLinkScopeValidationDetails>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3667,11 +3798,11 @@ export const GetPrivateLinkScopeValidationDetailsForMachine: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1120,
-    __c35,
+    1248,
+    __c39,
     0,
   ) as any as S.Schema<GetPrivateLinkScopeValidationDetailsForMachineRequest>,
-  output: __S(1090, __c34, 2) as any as S.Schema<PrivateLinkScopeValidationDetails>,
+  output: __S(1218, __c38, 2) as any as S.Schema<PrivateLinkScopeValidationDetails>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3685,8 +3816,8 @@ export const GetSettings: API.OperationMethod<
   GetSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1152, __c36, 0) as any as S.Schema<GetSettingsRequest>,
-  output: __S(1186, __c37, 2) as any as S.Schema<GetSettingsResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<GetSettingsRequest>,
+  output: __S(1314, __c41, 2) as any as S.Schema<GetSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3700,8 +3831,8 @@ export const InstallMachinePatches: API.OperationMethod<
   InstallMachinePatchesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1219, __c38, 3) as any as S.Schema<InstallMachinePatchesRequest>,
-  output: __S(1220, __c38, 4) as any as S.Schema<MachineInstallPatchesResult>,
+  input: __S(1347, __c42, 3) as any as S.Schema<InstallMachinePatchesRequest>,
+  output: __S(1348, __c42, 4) as any as S.Schema<MachineInstallPatchesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3715,8 +3846,8 @@ export const LicenseProfilesCreateOrUpdate: API.OperationMethod<
   LicenseProfilesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1252, __c39, 4) as any as S.Schema<LicenseProfilesCreateOrUpdateRequest>,
-  output: __S(354, __c11, 2) as any as S.Schema<LicenseProfilesCreateOrUpdateResponse>,
+  input: __S(1380, __c43, 4) as any as S.Schema<LicenseProfilesCreateOrUpdateRequest>,
+  output: __S(1441, __c45, 1) as any as S.Schema<LicenseProfilesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3730,8 +3861,8 @@ export const LicensesCreateOrUpdate: API.OperationMethod<
   LicensesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c41, 0) as any as S.Schema<LicensesCreateOrUpdateRequest>,
-  output: __S(228, __c7, 4) as any as S.Schema<LicensesCreateOrUpdateResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<LicensesCreateOrUpdateRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<LicensesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3745,8 +3876,8 @@ export const ListExtensionMetadata: API.OperationMethod<
   ListExtensionMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c43, 0) as any as S.Schema<ListExtensionMetadataRequest>,
-  output: __S(1378, __c43, 2) as any as S.Schema<ExtensionValueListResult>,
+  input: __S(1568, __c49, 0) as any as S.Schema<ListExtensionMetadataRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<ExtensionValueListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3760,8 +3891,8 @@ export const ListExtensionMetadataV2: API.OperationMethod<
   ListExtensionMetadataV2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c44, 0) as any as S.Schema<ListExtensionMetadataV2Request>,
-  output: __S(1410, __c44, 2) as any as S.Schema<ExtensionValueListResultV2>,
+  input: __S(1600, __c50, 0) as any as S.Schema<ListExtensionMetadataV2Request>,
+  output: __S(1602, __c50, 2) as any as S.Schema<ExtensionValueListResultV2>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3775,8 +3906,8 @@ export const ListExtensionPublisher: API.OperationMethod<
   ListExtensionPublisherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c46, 0) as any as S.Schema<ListExtensionPublisherRequest>,
-  output: __S(1506, __c47, 2) as any as S.Schema<ExtensionPublisherListResult>,
+  input: __S(1664, __c52, 0) as any as S.Schema<ListExtensionPublisherRequest>,
+  output: __S(1698, __c53, 2) as any as S.Schema<ExtensionPublisherListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3790,8 +3921,8 @@ export const ListExtensionType: API.OperationMethod<
   ListExtensionTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c48, 0) as any as S.Schema<ListExtensionTypeRequest>,
-  output: __S(1506, __c47, 2) as any as S.Schema<ExtensionTypeListResult>,
+  input: __S(1728, __c54, 0) as any as S.Schema<ListExtensionTypeRequest>,
+  output: __S(1698, __c53, 2) as any as S.Schema<ExtensionTypeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3805,8 +3936,8 @@ export const ListGatewayByResourceGroup: API.OperationMethod<
   ListGatewayByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c49, 0) as any as S.Schema<ListGatewayByResourceGroupRequest>,
-  output: __S(1601, __c50, 1) as any as S.Schema<GatewaysListResult>,
+  input: __S(1760, __c55, 0) as any as S.Schema<ListGatewayByResourceGroupRequest>,
+  output: __S(1793, __c56, 1) as any as S.Schema<GatewaysListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3820,8 +3951,8 @@ export const ListGatewayBySubscription: API.OperationMethod<
   ListGatewayBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1632, __c51, 0) as any as S.Schema<ListGatewayBySubscriptionRequest>,
-  output: __S(1601, __c50, 1) as any as S.Schema<GatewaysListResult>,
+  input: __S(1824, __c57, 0) as any as S.Schema<ListGatewayBySubscriptionRequest>,
+  output: __S(1793, __c56, 1) as any as S.Schema<GatewaysListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3835,8 +3966,8 @@ export const ListLicenseByResourceGroup: API.OperationMethod<
   ListLicenseByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1664, __c52, 0) as any as S.Schema<ListLicenseByResourceGroupRequest>,
-  output: __S(1697, __c53, 1) as any as S.Schema<LicensesListResult>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListLicenseByResourceGroupRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<LicensesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3850,8 +3981,8 @@ export const ListLicenseBySubscription: API.OperationMethod<
   ListLicenseBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c54, 0) as any as S.Schema<ListLicenseBySubscriptionRequest>,
-  output: __S(1697, __c53, 1) as any as S.Schema<LicensesListResult>,
+  input: __S(1920, __c60, 0) as any as S.Schema<ListLicenseBySubscriptionRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<LicensesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3865,8 +3996,8 @@ export const ListLicenseProfiles: API.OperationMethod<
   ListLicenseProfilesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c55, 0) as any as S.Schema<ListLicenseProfilesRequest>,
-  output: __S(1762, __c55, 2) as any as S.Schema<LicenseProfilesListResult>,
+  input: __S(1952, __c61, 0) as any as S.Schema<ListLicenseProfilesRequest>,
+  output: __S(1954, __c61, 2) as any as S.Schema<LicenseProfilesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3880,8 +4011,8 @@ export const ListMachineByResourceGroup: API.OperationMethod<
   ListMachineByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1792, __c56, 0) as any as S.Schema<ListMachineByResourceGroupRequest>,
-  output: __S(1825, __c57, 1) as any as S.Schema<MachineListResult>,
+  input: __S(1984, __c62, 0) as any as S.Schema<ListMachineByResourceGroupRequest>,
+  output: __S(2017, __c63, 1) as any as S.Schema<MachineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3895,8 +4026,8 @@ export const ListMachineBySubscription: API.OperationMethod<
   ListMachineBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1856, __c58, 0) as any as S.Schema<ListMachineBySubscriptionRequest>,
-  output: __S(1825, __c57, 1) as any as S.Schema<MachineListResult>,
+  input: __S(2048, __c64, 0) as any as S.Schema<ListMachineBySubscriptionRequest>,
+  output: __S(2017, __c63, 1) as any as S.Schema<MachineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3910,8 +4041,8 @@ export const ListMachineExtensions: API.OperationMethod<
   ListMachineExtensionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1888, __c59, 0) as any as S.Schema<ListMachineExtensionsRequest>,
-  output: __S(1889, __c59, 1) as any as S.Schema<MachineExtensionsListResult>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ListMachineExtensionsRequest>,
+  output: __S(2081, __c65, 1) as any as S.Schema<MachineExtensionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3925,8 +4056,8 @@ export const ListMachineRunCommands: API.OperationMethod<
   ListMachineRunCommandsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1952, __c61, 0) as any as S.Schema<ListMachineRunCommandsRequest>,
-  output: __S(1954, __c61, 2) as any as S.Schema<MachineRunCommandsListResult>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListMachineRunCommandsRequest>,
+  output: __S(2146, __c67, 2) as any as S.Schema<MachineRunCommandsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3941,11 +4072,11 @@ export const ListNetworkSecurityPerimeterConfigurationByPrivateLinkScope: API.Op
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1984,
-    __c62,
+    2176,
+    __c68,
     0,
   ) as any as S.Schema<ListNetworkSecurityPerimeterConfigurationByPrivateLinkScopeRequest>,
-  output: __S(1986, __c62, 2) as any as S.Schema<NetworkSecurityPerimeterConfigurationListResult>,
+  output: __S(2178, __c68, 2) as any as S.Schema<NetworkSecurityPerimeterConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3959,8 +4090,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2016, __c63, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(2020, __c63, 4) as any as S.Schema<OperationListResult>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(2212, __c69, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3975,11 +4106,11 @@ export const ListPrivateEndpointConnectionByPrivateLinkScope: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2048,
-    __c64,
+    2240,
+    __c70,
     0,
   ) as any as S.Schema<ListPrivateEndpointConnectionByPrivateLinkScopeRequest>,
-  output: __S(2050, __c64, 2) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  output: __S(2242, __c70, 2) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3993,8 +4124,8 @@ export const ListPrivateLinkResourceByPrivateLinkScope: API.OperationMethod<
   ListPrivateLinkResourceByPrivateLinkScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2080, __c65, 0) as any as S.Schema<ListPrivateLinkResourceByPrivateLinkScopeRequest>,
-  output: __S(2082, __c65, 2) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(2272, __c71, 0) as any as S.Schema<ListPrivateLinkResourceByPrivateLinkScopeRequest>,
+  output: __S(2274, __c71, 2) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4008,8 +4139,8 @@ export const ListPrivateLinkScopeByResourceGroup: API.OperationMethod<
   ListPrivateLinkScopeByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2112, __c66, 0) as any as S.Schema<ListPrivateLinkScopeByResourceGroupRequest>,
-  output: __S(2145, __c67, 1) as any as S.Schema<HybridComputePrivateLinkScopeListResult>,
+  input: __S(2304, __c72, 0) as any as S.Schema<ListPrivateLinkScopeByResourceGroupRequest>,
+  output: __S(2337, __c73, 1) as any as S.Schema<HybridComputePrivateLinkScopeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4023,8 +4154,8 @@ export const ListPrivateLinkScopes: API.OperationMethod<
   ListPrivateLinkScopesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2176, __c68, 0) as any as S.Schema<ListPrivateLinkScopesRequest>,
-  output: __S(2145, __c67, 1) as any as S.Schema<HybridComputePrivateLinkScopeListResult>,
+  input: __S(2368, __c74, 0) as any as S.Schema<ListPrivateLinkScopesRequest>,
+  output: __S(2337, __c73, 1) as any as S.Schema<HybridComputePrivateLinkScopeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4038,8 +4169,8 @@ export const MachineExtensionsCreateOrUpdate: API.OperationMethod<
   MachineExtensionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2208, __c69, 0) as any as S.Schema<MachineExtensionsCreateOrUpdateRequest>,
-  output: __S(480, __c15, 0) as any as S.Schema<MachineExtensionsCreateOrUpdateResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<MachineExtensionsCreateOrUpdateRequest>,
+  output: __S(2401, __c75, 1) as any as S.Schema<MachineExtensionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4053,8 +4184,8 @@ export const MachineRunCommandsCreateOrUpdate: API.OperationMethod<
   MachineRunCommandsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2273, __c71, 1) as any as S.Schema<MachineRunCommandsCreateOrUpdateRequest>,
-  output: __S(679, __c21, 7) as any as S.Schema<MachineRunCommandsCreateOrUpdateResponse>,
+  input: __S(2465, __c77, 1) as any as S.Schema<MachineRunCommandsCreateOrUpdateRequest>,
+  output: __S(2466, __c77, 2) as any as S.Schema<MachineRunCommandsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4068,8 +4199,8 @@ export const MachinesAssessPatches: API.OperationMethod<
   MachinesAssessPatchesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c72, 0) as any as S.Schema<MachinesAssessPatchesRequest>,
-  output: __S(2306, __c72, 2) as any as S.Schema<MachineAssessPatchesResult>,
+  input: __S(2496, __c78, 0) as any as S.Schema<MachinesAssessPatchesRequest>,
+  output: __S(2498, __c78, 2) as any as S.Schema<MachineAssessPatchesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4083,8 +4214,8 @@ export const MachinesCreateOrUpdate: API.OperationMethod<
   MachinesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2372, __c74, 4) as any as S.Schema<MachinesCreateOrUpdateRequest>,
-  output: __S(603, __c18, 27) as any as S.Schema<MachinesCreateOrUpdateResponse>,
+  input: __S(2564, __c80, 4) as any as S.Schema<MachinesCreateOrUpdateRequest>,
+  output: __S(699, __c21, 27) as any as S.Schema<MachinesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4099,13 +4230,13 @@ export const NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScope:
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2432,
-    __c76,
+    2624,
+    __c82,
     0,
   ) as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeRequest>,
   output: __S(
-    2433,
-    __c76,
+    2625,
+    __c82,
     1,
   ) as any as S.Schema<NetworkSecurityPerimeterConfigurationReconcileResult>,
   errors: [UnknownAzureError],
@@ -4121,8 +4252,8 @@ export const PatchSettings2: API.OperationMethod<
   PatchSettings2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2464, __c77, 0) as any as S.Schema<PatchSettingsRequest>,
-  output: __S(1186, __c37, 2) as any as S.Schema<PatchSettingsResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<PatchSettingsRequest>,
+  output: __S(1314, __c41, 2) as any as S.Schema<PatchSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4136,8 +4267,8 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2530, __c79, 2) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
-  output: __S(864, __c27, 0) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
+  input: __S(2722, __c85, 2) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
+  output: __S(2723, __c85, 3) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4151,8 +4282,8 @@ export const PrivateLinkScopesCreateOrUpdate: API.OperationMethod<
   PrivateLinkScopesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2561, __c80, 1) as any as S.Schema<PrivateLinkScopesCreateOrUpdateRequest>,
-  output: __S(1029, __c32, 5) as any as S.Schema<PrivateLinkScopesCreateOrUpdateResponse>,
+  input: __S(2753, __c86, 1) as any as S.Schema<PrivateLinkScopesCreateOrUpdateRequest>,
+  output: __S(1157, __c36, 5) as any as S.Schema<PrivateLinkScopesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4166,8 +4297,8 @@ export const SetupExtensions: API.OperationMethod<
   SetupExtensionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2593, __c81, 1) as any as S.Schema<SetupExtensionsRequest>,
-  output: __S(2595, __c81, 3) as any as S.Schema<SetupExtensionRequest>,
+  input: __S(2785, __c87, 1) as any as S.Schema<SetupExtensionsRequest>,
+  output: __S(2787, __c87, 3) as any as S.Schema<SetupExtensionRequest>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4181,8 +4312,8 @@ export const UpdateGateway: API.OperationMethod<
   UpdateGatewayError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2625, __c82, 1) as any as S.Schema<UpdateGatewayRequest>,
-  output: __S(3073, __c96, 1) as any as S.Schema<UpdateGatewayResponse>,
+  input: __S(2817, __c88, 1) as any as S.Schema<UpdateGatewayRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<UpdateGatewayResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4196,8 +4327,8 @@ export const UpdateLicense: API.OperationMethod<
   UpdateLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2658, __c83, 2) as any as S.Schema<UpdateLicenseRequest>,
-  output: __S(228, __c7, 4) as any as S.Schema<UpdateLicenseResponse>,
+  input: __S(2850, __c89, 2) as any as S.Schema<UpdateLicenseRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<UpdateLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4211,8 +4342,8 @@ export const UpdateLicenseProfile: API.OperationMethod<
   UpdateLicenseProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2692, __c84, 4) as any as S.Schema<UpdateLicenseProfileRequest>,
-  output: __S(354, __c11, 2) as any as S.Schema<UpdateLicenseProfileResponse>,
+  input: __S(2884, __c90, 4) as any as S.Schema<UpdateLicenseProfileRequest>,
+  output: __S(1441, __c45, 1) as any as S.Schema<UpdateLicenseProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4226,8 +4357,8 @@ export const UpdateMachine: API.OperationMethod<
   UpdateMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2721, __c85, 1) as any as S.Schema<UpdateMachineRequest>,
-  output: __S(603, __c18, 27) as any as S.Schema<UpdateMachineResponse>,
+  input: __S(2913, __c91, 1) as any as S.Schema<UpdateMachineRequest>,
+  output: __S(699, __c21, 27) as any as S.Schema<UpdateMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4241,8 +4372,8 @@ export const UpdateMachineExtension: API.OperationMethod<
   UpdateMachineExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2785, __c87, 1) as any as S.Schema<UpdateMachineExtensionRequest>,
-  output: __S(480, __c15, 0) as any as S.Schema<UpdateMachineExtensionResponse>,
+  input: __S(2977, __c93, 1) as any as S.Schema<UpdateMachineExtensionRequest>,
+  output: __S(2978, __c93, 2) as any as S.Schema<UpdateMachineExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4256,8 +4387,8 @@ export const UpdatePrivateLinkScopeTags: API.OperationMethod<
   UpdatePrivateLinkScopeTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2816, __c88, 0) as any as S.Schema<UpdatePrivateLinkScopeTagsRequest>,
-  output: __S(1029, __c32, 5) as any as S.Schema<UpdatePrivateLinkScopeTagsResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<UpdatePrivateLinkScopeTagsRequest>,
+  output: __S(1157, __c36, 5) as any as S.Schema<UpdatePrivateLinkScopeTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4271,8 +4402,8 @@ export const UpdateSettings: API.OperationMethod<
   UpdateSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2848, __c89, 0) as any as S.Schema<UpdateSettingsRequest>,
-  output: __S(1186, __c37, 2) as any as S.Schema<UpdateSettingsResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<UpdateSettingsRequest>,
+  output: __S(1314, __c41, 2) as any as S.Schema<UpdateSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4286,7 +4417,7 @@ export const UpgradeExtensions: API.OperationMethod<
   UpgradeExtensionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2882, __c90, 2) as any as S.Schema<UpgradeExtensionsRequest>,
+  input: __S(3074, __c96, 2) as any as S.Schema<UpgradeExtensionsRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<UpgradeExtensionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4301,8 +4432,8 @@ export const ValidateLicenseLicense: API.OperationMethod<
   ValidateLicenseLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2912, __c91, 0) as any as S.Schema<ValidateLicenseLicenseRequest>,
-  output: __S(228, __c7, 4) as any as S.Schema<ValidateLicenseLicenseResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<ValidateLicenseLicenseRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<ValidateLicenseLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4331,7 +4462,13 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteGatewayResponse" });
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteGatewayResponse" });
   }
 }
 function __c2(j: number): any {
@@ -4351,6 +4488,13 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteLicenseRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteLicenseResponse" });
   }
 }
 function __c3(j: number): any {
@@ -4381,10 +4525,10 @@ function __c4(j: number): any {
           version: S.optional(S.String),
           extensionType: S.optional(S.String),
           publisher: S.optional(S.String),
-          extensionUris: S.optional(__S(3008, __c94, 0)),
+          extensionUris: S.optional(__S(3200, __c100, 0)),
           extensionSignatureUri: S.optional(S.String),
           operatingSystem: S.optional(S.String),
-          architecture: S.optional(__S(3008, __c94, 0)),
+          architecture: S.optional(__S(3200, __c100, 0)),
         }),
       ).annotate({ identifier: "ExtensionValueV2Properties" });
     case 1:
@@ -4393,7 +4537,7 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3104, __c97, 0)),
+          systemData: S.optional(__S(3296, __c103, 0)),
           properties: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({ identifier: "GetExtensionMetadataV2Response" });
@@ -4423,6 +4567,22 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(3296, __c103, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
+          location: S.String,
+          properties: S.optional(__S(3264, __c102, 0)),
+        }),
+      ).annotate({ identifier: "GetGatewayResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           licenseName: S.String.pipe(T.Label()),
@@ -4437,7 +4597,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "GetLicenseRequest" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4447,7 +4607,7 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "VolumeLicenseDetails" });
     case 1:
-      return S.Array(__S(224, __c7, 0));
+      return S.Array(__S(256, __c8, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4458,7 +4618,7 @@ function __c7(j: number): any {
           processors: S.optional(S.Number),
           assignedLicenses: S.optional(S.Number),
           immutableId: S.optional(S.String),
-          volumeLicenseDetails: S.optional(__S(225, __c7, 1)),
+          volumeLicenseDetails: S.optional(__S(257, __c8, 1)),
         }),
       ).annotate({ identifier: "LicenseDetails" });
     case 3:
@@ -4467,24 +4627,28 @@ function __c7(j: number): any {
           provisioningState: S.optional(S.String),
           tenantId: S.optional(S.String),
           licenseType: S.optional(S.String),
-          licenseDetails: S.optional(__S(226, __c7, 2)),
+          licenseDetails: S.optional(__S(258, __c8, 2)),
         }),
       ).annotate({ identifier: "LicenseProperties" });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3104, __c97, 0)),
-          tags: S.optional(__S(3040, __c95, 0)),
+          systemData: S.optional(__S(3296, __c103, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
           location: S.String,
-          properties: S.optional(__S(227, __c7, 3)),
+          properties: S.optional(__S(259, __c8, 3)),
         }),
       ).annotate({ identifier: "GetLicenseResponse" });
   }
 }
-function __c8(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4504,10 +4668,10 @@ function __c8(j: number): any {
       ).annotate({ identifier: "GetLicenseProfileRequest" });
   }
 }
-function __c9(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(291, __c9, 3)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(355, __c11, 3)));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4516,32 +4680,32 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
     case 2:
-      return S.Array(__S(289, __c9, 1));
+      return S.Array(__S(353, __c11, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(288, __c9, 0)),
-          additionalInfo: S.optional(__S(290, __c9, 2)),
+          details: S.optional(__S(352, __c11, 0)),
+          additionalInfo: S.optional(__S(354, __c11, 2)),
         }),
       ).annotate({ identifier: "ErrorDetail" });
     case 4:
-      return S.Array(__S(291, __c9, 3));
+      return S.Array(__S(355, __c11, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(292, __c9, 4)),
-          additionalInfo: S.optional(__S(290, __c9, 2)),
+          details: S.optional(__S(356, __c11, 4)),
+          additionalInfo: S.optional(__S(354, __c11, 2)),
         }),
       ).annotate({ identifier: "LicenseProfileArmProductProfilePropertiesError" });
   }
 }
-function __c10(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4557,7 +4721,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "EsuKey" });
     case 2:
-      return S.Array(__S(321, __c10, 1));
+      return S.Array(__S(385, __c12, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4567,11 +4731,11 @@ function __c10(j: number): any {
           billingStartDate: S.optional(S.String),
           disenrollmentDate: S.optional(S.String),
           billingEndDate: S.optional(S.String),
-          error: S.optional(__S(293, __c9, 5)),
+          error: S.optional(__S(357, __c11, 5)),
         }),
       ).annotate({ identifier: "ProductFeature" });
     case 4:
-      return S.Array(__S(323, __c10, 3));
+      return S.Array(__S(387, __c12, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4581,19 +4745,19 @@ function __c10(j: number): any {
           billingStartDate: S.optional(S.String),
           disenrollmentDate: S.optional(S.String),
           billingEndDate: S.optional(S.String),
-          error: S.optional(__S(293, __c9, 5)),
-          productFeatures: S.optional(__S(324, __c10, 4)),
+          error: S.optional(__S(357, __c11, 5)),
+          productFeatures: S.optional(__S(388, __c12, 4)),
         }),
       ).annotate({ identifier: "LicenseProfileArmProductProfileProperties" });
   }
 }
-function __c11(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           assignedLicenseImmutableId: S.optional(S.String),
-          esuKeys: S.optional(__S(322, __c10, 2)),
+          esuKeys: S.optional(__S(386, __c12, 2)),
           serverType: S.optional(S.String),
           esuEligibility: S.optional(S.String),
           esuKeyState: S.optional(S.String),
@@ -4603,27 +4767,31 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          softwareAssurance: S.optional(__S(320, __c10, 0)),
-          esuProfile: S.optional(__S(352, __c11, 0)),
-          productProfile: S.optional(__S(325, __c10, 5)),
+          softwareAssurance: S.optional(__S(384, __c12, 0)),
+          esuProfile: S.optional(__S(416, __c13, 0)),
+          productProfile: S.optional(__S(389, __c12, 5)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "LicenseProfileProperties" });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3104, __c97, 0)),
-          tags: S.optional(__S(3040, __c95, 0)),
+          systemData: S.optional(__S(3296, __c103, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
           location: S.String,
-          properties: S.optional(__S(353, __c11, 1)),
+          properties: S.optional(__S(417, __c13, 1)),
         }),
       ).annotate({ identifier: "GetLicenseProfileResponse" });
   }
 }
-function __c12(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4643,7 +4811,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "GetMachineRequest" });
   }
 }
-function __c13(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4657,7 +4825,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "MachineExtensionInstanceViewStatus" });
   }
 }
-function __c14(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4665,7 +4833,7 @@ function __c14(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           typeHandlerVersion: S.optional(S.String),
-          status: S.optional(__S(416, __c13, 0)),
+          status: S.optional(__S(512, __c16, 0)),
         }),
       ).annotate({ identifier: "MachineExtensionInstanceView" });
     case 1:
@@ -4679,15 +4847,15 @@ function __c14(j: number): any {
           typeHandlerVersion: S.optional(S.String),
           enableAutomaticUpgrade: S.optional(S.Boolean),
           autoUpgradeMinorVersion: S.optional(S.Boolean),
-          settings: S.optional(__S(449, __c14, 1)),
-          protectedSettings: S.optional(__S(449, __c14, 1)),
+          settings: S.optional(__S(545, __c17, 1)),
+          protectedSettings: S.optional(__S(545, __c17, 1)),
           provisioningState: S.optional(S.String),
-          instanceView: S.optional(__S(448, __c14, 0)),
+          instanceView: S.optional(__S(544, __c17, 0)),
         }),
       ).annotate({ identifier: "MachineExtensionProperties" });
   }
 }
-function __c15(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4695,15 +4863,15 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3104, __c97, 0)),
-          tags: S.optional(__S(3040, __c95, 0)),
+          systemData: S.optional(__S(3296, __c103, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
           location: S.String,
-          properties: S.optional(__S(450, __c14, 2)),
+          properties: S.optional(__S(546, __c17, 2)),
         }),
       ).annotate({ identifier: "MachineExtension" });
   }
 }
-function __c16(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4716,37 +4884,37 @@ function __c16(j: number): any {
         S.Struct({
           address: S.optional(S.String),
           ipAddressVersion: S.optional(S.String),
-          subnet: S.optional(__S(512, __c16, 0)),
+          subnet: S.optional(__S(608, __c19, 0)),
         }),
       ).annotate({ identifier: "IpAddress" });
     case 2:
-      return S.Array(__S(513, __c16, 1));
+      return S.Array(__S(609, __c19, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           macAddress: S.optional(S.String),
           id: S.optional(S.String),
           name: S.optional(S.String),
-          ipAddresses: S.optional(__S(514, __c16, 2)),
+          ipAddresses: S.optional(__S(610, __c19, 2)),
         }),
       ).annotate({ identifier: "NetworkInterface" });
     case 4:
-      return S.Array(__S(515, __c16, 3));
+      return S.Array(__S(611, __c19, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          networkInterfaces: S.optional(__S(516, __c16, 4)),
+          networkInterfaces: S.optional(__S(612, __c19, 4)),
         }),
       ).annotate({ identifier: "NetworkProfile" });
   }
 }
-function __c17(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(480, __c15, 0));
+      return S.Array(__S(576, __c18, 0));
   }
 }
-function __c18(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4765,15 +4933,15 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "ConfigurationExtension" });
     case 2:
-      return S.Array(__S(577, __c18, 1));
+      return S.Array(__S(673, __c21, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           proxyUrl: S.optional(S.String),
-          incomingConnectionsPorts: S.optional(__S(3008, __c94, 0)),
-          extensionsAllowList: S.optional(__S(578, __c18, 2)),
-          extensionsBlockList: S.optional(__S(578, __c18, 2)),
-          proxyBypass: S.optional(__S(3008, __c94, 0)),
+          incomingConnectionsPorts: S.optional(__S(3200, __c100, 0)),
+          extensionsAllowList: S.optional(__S(674, __c21, 2)),
+          extensionsBlockList: S.optional(__S(674, __c21, 2)),
+          proxyBypass: S.optional(__S(3200, __c100, 0)),
           extensionsEnabled: S.optional(S.String),
           guestConfigurationEnabled: S.optional(S.String),
           configMode: S.optional(S.String),
@@ -4789,8 +4957,8 @@ function __c18(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          extensionService: S.optional(__S(580, __c18, 4)),
-          guestConfigurationService: S.optional(__S(580, __c18, 4)),
+          extensionService: S.optional(__S(676, __c21, 4)),
+          guestConfigurationService: S.optional(__S(676, __c21, 4)),
         }),
       ).annotate({ identifier: "ServiceStatuses" });
     case 6:
@@ -4801,13 +4969,13 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "Processor" });
     case 7:
-      return S.Array(__S(582, __c18, 6));
+      return S.Array(__S(678, __c21, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
           totalPhysicalMemoryInBytes: S.optional(S.Number),
           numberOfCpuSockets: S.optional(S.Number),
-          processors: S.optional(__S(583, __c18, 7)),
+          processors: S.optional(__S(679, __c21, 7)),
         }),
       ).annotate({ identifier: "HardwareProfile" });
     case 9:
@@ -4823,11 +4991,11 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "Disk" });
     case 10:
-      return S.Array(__S(585, __c18, 9));
+      return S.Array(__S(681, __c21, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
-          disks: S.optional(__S(586, __c18, 10)),
+          disks: S.optional(__S(682, __c21, 10)),
         }),
       ).annotate({ identifier: "StorageProfile" });
     case 12:
@@ -4859,7 +5027,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           hotpatchEnablementStatus: S.optional(S.String),
-          error: S.optional(__S(293, __c9, 5)),
+          error: S.optional(__S(357, __c11, 5)),
         }),
       ).annotate({ identifier: "PatchSettingsStatus" });
     case 16:
@@ -4868,32 +5036,32 @@ function __c18(j: number): any {
           assessmentMode: S.optional(S.String),
           patchMode: S.optional(S.String),
           enableHotpatching: S.optional(S.Boolean),
-          status: S.optional(__S(591, __c18, 15)),
+          status: S.optional(__S(687, __c21, 15)),
         }),
       ).annotate({ identifier: "PatchSettings" });
     case 17:
       return S.suspend(() =>
         S.Struct({
-          patchSettings: S.optional(__S(592, __c18, 16)),
+          patchSettings: S.optional(__S(688, __c21, 16)),
         }),
       ).annotate({ identifier: "OSProfileWindowsConfiguration" });
     case 18:
       return S.suspend(() =>
         S.Struct({
           computerName: S.optional(S.String),
-          windowsConfiguration: S.optional(__S(593, __c18, 17)),
-          linuxConfiguration: S.optional(__S(593, __c18, 17)),
+          windowsConfiguration: S.optional(__S(689, __c21, 17)),
+          linuxConfiguration: S.optional(__S(689, __c21, 17)),
         }),
       ).annotate({ identifier: "OSProfile" });
     case 19:
       return S.suspend(() =>
         S.Struct({
           assignedLicenseImmutableId: S.optional(S.String),
-          esuKeys: S.optional(__S(322, __c10, 2)),
+          esuKeys: S.optional(__S(386, __c12, 2)),
           serverType: S.optional(S.String),
           esuEligibility: S.optional(S.String),
           esuKeyState: S.optional(S.String),
-          assignedLicense: S.optional(__S(228, __c7, 4)),
+          assignedLicense: S.optional(__S(288, __c9, 0)),
           licenseAssignmentState: S.optional(S.String),
         }),
       ).annotate({ identifier: "LicenseProfileMachineInstanceViewEsuProperties" });
@@ -4902,33 +5070,33 @@ function __c18(j: number): any {
         S.Struct({
           licenseStatus: S.optional(S.String),
           licenseChannel: S.optional(S.String),
-          softwareAssurance: S.optional(__S(320, __c10, 0)),
-          esuProfile: S.optional(__S(595, __c18, 19)),
-          productProfile: S.optional(__S(325, __c10, 5)),
+          softwareAssurance: S.optional(__S(384, __c12, 0)),
+          esuProfile: S.optional(__S(691, __c21, 19)),
+          productProfile: S.optional(__S(389, __c12, 5)),
         }),
       ).annotate({ identifier: "LicenseProfileMachineInstanceView" });
     case 21:
-      return S.Array(__S(293, __c9, 5));
+      return S.Array(__S(357, __c11, 5));
     case 22:
-      return S.Array(__S(448, __c14, 0));
+      return S.Array(__S(544, __c17, 0));
     case 23:
       return S.suspend(() =>
         S.Struct({
-          locationData: S.optional(__S(576, __c18, 0)),
-          agentConfiguration: S.optional(__S(579, __c18, 3)),
-          serviceStatuses: S.optional(__S(581, __c18, 5)),
-          hardwareProfile: S.optional(__S(584, __c18, 8)),
-          storageProfile: S.optional(__S(587, __c18, 11)),
-          firmwareProfile: S.optional(__S(588, __c18, 12)),
-          cloudMetadata: S.optional(__S(589, __c18, 13)),
-          agentUpgrade: S.optional(__S(590, __c18, 14)),
-          osProfile: S.optional(__S(594, __c18, 18)),
-          licenseProfile: S.optional(__S(596, __c18, 20)),
+          locationData: S.optional(__S(672, __c21, 0)),
+          agentConfiguration: S.optional(__S(675, __c21, 3)),
+          serviceStatuses: S.optional(__S(677, __c21, 5)),
+          hardwareProfile: S.optional(__S(680, __c21, 8)),
+          storageProfile: S.optional(__S(683, __c21, 11)),
+          firmwareProfile: S.optional(__S(684, __c21, 12)),
+          cloudMetadata: S.optional(__S(685, __c21, 13)),
+          agentUpgrade: S.optional(__S(686, __c21, 14)),
+          osProfile: S.optional(__S(690, __c21, 18)),
+          licenseProfile: S.optional(__S(692, __c21, 20)),
           statusReason: S.optional(S.String),
           provisioningState: S.optional(S.String),
           status: S.optional(S.String),
           lastStatusChange: S.optional(S.String),
-          errorDetails: S.optional(__S(597, __c18, 21)),
+          errorDetails: S.optional(__S(693, __c21, 21)),
           agentVersion: S.optional(S.String),
           vmId: S.optional(S.String),
           displayName: S.optional(S.String),
@@ -4940,7 +5108,7 @@ function __c18(j: number): any {
           osVersion: S.optional(S.String),
           osType: S.optional(S.String),
           vmUuid: S.optional(S.String),
-          extensions: S.optional(__S(598, __c18, 22)),
+          extensions: S.optional(__S(694, __c21, 22)),
           osSku: S.optional(S.String),
           osEdition: S.optional(S.String),
           domainName: S.optional(S.String),
@@ -4950,8 +5118,8 @@ function __c18(j: number): any {
           parentClusterResourceId: S.optional(S.String),
           hardwareResourceId: S.optional(S.String),
           mssqlDiscovered: S.optional(S.String),
-          detectedProperties: S.optional(__S(3040, __c95, 0)),
-          networkProfile: S.optional(__S(517, __c16, 5)),
+          detectedProperties: S.optional(__S(3232, __c101, 0)),
+          networkProfile: S.optional(__S(613, __c19, 5)),
         }),
       ).annotate({ identifier: "MachineProperties" });
     case 24:
@@ -4962,14 +5130,14 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 25:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(600, __c18, 24)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(696, __c21, 24)));
     case 26:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(601, __c18, 25)),
+          userAssignedIdentities: S.optional(__S(697, __c21, 25)),
         }),
       ).annotate({ identifier: "GetMachineResponseIdentity" });
     case 27:
@@ -4978,18 +5146,18 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3104, __c97, 0)),
-          tags: S.optional(__S(3040, __c95, 0)),
+          systemData: S.optional(__S(3296, __c103, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
           location: S.String,
-          properties: S.optional(__S(599, __c18, 23)),
-          resources: S.optional(__S(544, __c17, 0)),
-          identity: S.optional(__S(602, __c18, 26)),
+          properties: S.optional(__S(695, __c21, 23)),
+          resources: S.optional(__S(640, __c20, 0)),
+          identity: S.optional(__S(698, __c21, 26)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetMachineResponse" });
   }
 }
-function __c19(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5009,7 +5177,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "GetMachineExtensionRequest" });
   }
 }
-function __c20(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5029,7 +5197,23 @@ function __c20(j: number): any {
       ).annotate({ identifier: "GetMachineRunCommandRequest" });
   }
 }
-function __c21(j: number): any {
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(3296, __c103, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
+          location: S.String,
+          properties: S.optional(__S(806, __c25, 6)),
+        }),
+      ).annotate({ identifier: "GetMachineRunCommandResponse" });
+  }
+}
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5044,7 +5228,7 @@ function __c21(j: number): any {
           script: S.optional(S.String),
           scriptUri: S.optional(S.String),
           commandId: S.optional(S.String),
-          scriptUriManagedIdentity: S.optional(__S(672, __c21, 0)),
+          scriptUriManagedIdentity: S.optional(__S(800, __c25, 0)),
         }),
       ).annotate({ identifier: "MachineRunCommandScriptSource" });
     case 2:
@@ -5055,9 +5239,9 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "RunCommandInputParameter" });
     case 3:
-      return S.Array(__S(674, __c21, 2));
+      return S.Array(__S(802, __c25, 2));
     case 4:
-      return S.Array(__S(416, __c13, 0));
+      return S.Array(__S(512, __c16, 0));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5068,42 +5252,30 @@ function __c21(j: number): any {
           error: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          statuses: S.optional(__S(676, __c21, 4)),
+          statuses: S.optional(__S(804, __c25, 4)),
         }),
       ).annotate({ identifier: "MachineRunCommandInstanceView" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(__S(673, __c21, 1)),
-          parameters: S.optional(__S(675, __c21, 3)),
-          protectedParameters: S.optional(__S(675, __c21, 3)),
+          source: S.optional(__S(801, __c25, 1)),
+          parameters: S.optional(__S(803, __c25, 3)),
+          protectedParameters: S.optional(__S(803, __c25, 3)),
           asyncExecution: S.optional(S.Boolean),
           runAsUser: S.optional(S.String),
           runAsPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           timeoutInSeconds: S.optional(S.Number),
           outputBlobUri: S.optional(S.String),
           errorBlobUri: S.optional(S.String),
-          outputBlobManagedIdentity: S.optional(__S(672, __c21, 0)),
-          errorBlobManagedIdentity: S.optional(__S(672, __c21, 0)),
+          outputBlobManagedIdentity: S.optional(__S(800, __c25, 0)),
+          errorBlobManagedIdentity: S.optional(__S(800, __c25, 0)),
           provisioningState: S.optional(S.String),
-          instanceView: S.optional(__S(677, __c21, 5)),
+          instanceView: S.optional(__S(805, __c25, 5)),
         }),
       ).annotate({ identifier: "MachineRunCommandProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3104, __c97, 0)),
-          tags: S.optional(__S(3040, __c95, 0)),
-          location: S.String,
-          properties: S.optional(__S(678, __c21, 6)),
-        }),
-      ).annotate({ identifier: "GetMachineRunCommandResponse" });
   }
 }
-function __c22(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5122,7 +5294,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "GetNetworkProfileRequest" });
   }
 }
-function __c23(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5144,43 +5316,43 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           direction: S.optional(S.String),
-          addressPrefixes: S.optional(__S(3008, __c94, 0)),
+          addressPrefixes: S.optional(__S(3200, __c100, 0)),
         }),
       ).annotate({ identifier: "AccessRuleProperties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(__S(768, __c24, 0)),
+          properties: S.optional(__S(896, __c28, 0)),
         }),
       ).annotate({ identifier: "AccessRule" });
     case 2:
-      return S.Array(__S(769, __c24, 1));
+      return S.Array(__S(897, __c28, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           issueType: S.optional(S.String),
           severity: S.optional(S.String),
           description: S.optional(S.String),
-          suggestedResourceIds: S.optional(__S(3008, __c94, 0)),
-          suggestedAccessRules: S.optional(__S(770, __c24, 2)),
+          suggestedResourceIds: S.optional(__S(3200, __c100, 0)),
+          suggestedAccessRules: S.optional(__S(898, __c28, 2)),
         }),
       ).annotate({ identifier: "ProvisioningIssueProperties" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(__S(771, __c24, 3)),
+          properties: S.optional(__S(899, __c28, 3)),
         }),
       ).annotate({ identifier: "ProvisioningIssue" });
     case 5:
-      return S.Array(__S(772, __c24, 4));
+      return S.Array(__S(900, __c28, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5201,19 +5373,19 @@ function __c24(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           accessRulesVersion: S.optional(S.Number),
-          accessRules: S.optional(__S(770, __c24, 2)),
+          accessRules: S.optional(__S(898, __c28, 2)),
           diagnosticSettingsVersion: S.optional(S.Number),
-          enabledLogCategories: S.optional(__S(3008, __c94, 0)),
+          enabledLogCategories: S.optional(__S(3200, __c100, 0)),
         }),
       ).annotate({ identifier: "NetworkSecurityPerimeterProfile" });
     case 9:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          provisioningIssues: S.optional(__S(773, __c24, 5)),
-          networkSecurityPerimeter: S.optional(__S(774, __c24, 6)),
-          resourceAssociation: S.optional(__S(775, __c24, 7)),
-          profile: S.optional(__S(776, __c24, 8)),
+          provisioningIssues: S.optional(__S(901, __c28, 5)),
+          networkSecurityPerimeter: S.optional(__S(902, __c28, 6)),
+          resourceAssociation: S.optional(__S(903, __c28, 7)),
+          profile: S.optional(__S(904, __c28, 8)),
         }),
       ).annotate({ identifier: "NetworkSecurityPerimeterConfigurationProperties" });
     case 10:
@@ -5222,15 +5394,15 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3104, __c97, 0)),
-          properties: S.optional(__S(777, __c24, 9)),
+          systemData: S.optional(__S(3296, __c103, 0)),
+          properties: S.optional(__S(905, __c28, 9)),
         }),
       ).annotate({
         identifier: "GetNetworkSecurityPerimeterConfigurationByPrivateLinkScopeResponse",
       });
   }
 }
-function __c25(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5250,7 +5422,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "GetPrivateEndpointConnectionRequest" });
   }
 }
-function __c26(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5269,15 +5441,15 @@ function __c26(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(832, __c26, 0)),
-          privateLinkServiceConnectionState: S.optional(__S(833, __c26, 1)),
+          privateEndpoint: S.optional(__S(960, __c30, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(961, __c30, 1)),
           provisioningState: S.optional(S.String),
-          groupIds: S.optional(__S(3008, __c94, 0)),
+          groupIds: S.optional(__S(3200, __c100, 0)),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionProperties" });
   }
 }
-function __c27(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5285,13 +5457,13 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3104, __c97, 0)),
-          properties: S.optional(__S(834, __c26, 2)),
+          systemData: S.optional(__S(3296, __c103, 0)),
+          properties: S.optional(__S(962, __c30, 2)),
         }),
       ).annotate({ identifier: "GetPrivateEndpointConnectionResponse" });
   }
 }
-function __c28(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5311,7 +5483,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "DeleteLicenseProfileRequest" });
   }
 }
-function __c29(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5331,14 +5503,14 @@ function __c29(j: number): any {
       ).annotate({ identifier: "GetPrivateLinkResourceRequest" });
   }
 }
-function __c30(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(3008, __c94, 0)),
-          requiredZoneNames: S.optional(__S(3008, __c94, 0)),
+          requiredMembers: S.optional(__S(3200, __c100, 0)),
+          requiredZoneNames: S.optional(__S(3200, __c100, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResourceProperties" });
     case 1:
@@ -5347,13 +5519,13 @@ function __c30(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3104, __c97, 0)),
-          properties: S.optional(__S(960, __c30, 0)),
+          systemData: S.optional(__S(3296, __c103, 0)),
+          properties: S.optional(__S(1088, __c34, 0)),
         }),
       ).annotate({ identifier: "GetPrivateLinkResourceResponse" });
   }
 }
-function __c31(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5372,7 +5544,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "GetPrivateLinkScopeRequest" });
   }
 }
-function __c32(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5380,11 +5552,11 @@ function __c32(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(834, __c26, 2)),
+          properties: S.optional(__S(962, __c30, 2)),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionDataModel" });
     case 1:
-      return S.Array(__S(1024, __c32, 0));
+      return S.Array(__S(1152, __c36, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5393,15 +5565,15 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "ServiceExtension" });
     case 3:
-      return S.Array(__S(1026, __c32, 2));
+      return S.Array(__S(1154, __c36, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           publicNetworkAccess: S.optional(S.String),
           provisioningState: S.optional(S.String),
           privateLinkScopeId: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(1025, __c32, 1)),
-          serviceExtensions: S.optional(__S(1027, __c32, 3)),
+          privateEndpointConnections: S.optional(__S(1153, __c36, 1)),
+          serviceExtensions: S.optional(__S(1155, __c36, 3)),
         }),
       ).annotate({ identifier: "HybridComputePrivateLinkScopeProperties" });
     case 5:
@@ -5410,15 +5582,15 @@ function __c32(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3104, __c97, 0)),
-          tags: S.optional(__S(3040, __c95, 0)),
+          systemData: S.optional(__S(3296, __c103, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
           location: S.String,
-          properties: S.optional(__S(1028, __c32, 4)),
+          properties: S.optional(__S(1156, __c36, 4)),
         }),
       ).annotate({ identifier: "GetPrivateLinkScopeResponse" });
   }
 }
-function __c33(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5437,7 +5609,7 @@ function __c33(j: number): any {
       ).annotate({ identifier: "GetPrivateLinkScopeValidationDetailsRequest" });
   }
 }
-function __c34(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5450,18 +5622,18 @@ function __c34(j: number): any {
         }),
       ).annotate({ identifier: "ConnectionDetail" });
     case 1:
-      return S.Array(__S(1088, __c34, 0));
+      return S.Array(__S(1216, __c38, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
-          connectionDetails: S.optional(__S(1089, __c34, 1)),
+          connectionDetails: S.optional(__S(1217, __c38, 1)),
         }),
       ).annotate({ identifier: "PrivateLinkScopeValidationDetails" });
   }
 }
-function __c35(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5480,7 +5652,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "GetPrivateLinkScopeValidationDetailsForMachineRequest" });
   }
 }
-function __c36(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5502,7 +5674,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "GetSettingsRequest" });
   }
 }
-function __c37(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5514,7 +5686,7 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
-          gatewayProperties: S.optional(__S(1184, __c37, 0)),
+          gatewayProperties: S.optional(__S(1312, __c41, 0)),
         }),
       ).annotate({ identifier: "SettingsProperties" });
     case 2:
@@ -5523,34 +5695,34 @@ function __c37(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3104, __c97, 0)),
-          properties: S.optional(__S(1185, __c37, 1)),
+          systemData: S.optional(__S(3296, __c103, 0)),
+          properties: S.optional(__S(1313, __c41, 1)),
         }),
       ).annotate({ identifier: "GetSettingsResponse" });
   }
 }
-function __c38(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          classificationsToInclude: S.optional(__S(1216, __c38, 0)),
-          kbNumbersToInclude: S.optional(__S(3008, __c94, 0)),
-          kbNumbersToExclude: S.optional(__S(3008, __c94, 0)),
+          classificationsToInclude: S.optional(__S(1344, __c42, 0)),
+          kbNumbersToInclude: S.optional(__S(3200, __c100, 0)),
+          kbNumbersToExclude: S.optional(__S(3200, __c100, 0)),
           excludeKbsRequiringReboot: S.optional(S.Boolean),
           maxPatchPublishDate: S.optional(S.String),
-          patchNameMasksToInclude: S.optional(__S(3008, __c94, 0)),
-          patchNameMasksToExclude: S.optional(__S(3008, __c94, 0)),
+          patchNameMasksToInclude: S.optional(__S(3200, __c100, 0)),
+          patchNameMasksToExclude: S.optional(__S(3200, __c100, 0)),
         }),
       ).annotate({ identifier: "WindowsParameters" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          classificationsToInclude: S.optional(__S(1216, __c38, 0)),
-          packageNameMasksToInclude: S.optional(__S(3008, __c94, 0)),
-          packageNameMasksToExclude: S.optional(__S(3008, __c94, 0)),
+          classificationsToInclude: S.optional(__S(1344, __c42, 0)),
+          packageNameMasksToInclude: S.optional(__S(3200, __c100, 0)),
+          packageNameMasksToExclude: S.optional(__S(3200, __c100, 0)),
         }),
       ).annotate({ identifier: "LinuxParameters" });
     case 3:
@@ -5561,8 +5733,8 @@ function __c38(j: number): any {
           name: S.String.pipe(T.Label()),
           maximumDuration: S.String,
           rebootSetting: S.String,
-          windowsParameters: S.optional(__S(1217, __c38, 1)),
-          linuxParameters: S.optional(__S(1218, __c38, 2)),
+          windowsParameters: S.optional(__S(1345, __c42, 1)),
+          linuxParameters: S.optional(__S(1346, __c42, 2)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5589,38 +5761,40 @@ function __c38(j: number): any {
           startedBy: S.optional(S.String),
           patchServiceUsed: S.optional(S.String),
           osType: S.optional(S.String),
-          errorDetails: S.optional(__S(293, __c9, 5)),
+          errorDetails: S.optional(__S(357, __c11, 5)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "MachineInstallPatchesResult" });
   }
 }
-function __c39(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           subscriptionStatus: S.optional(S.String),
-          error: S.optional(__S(32, __c1, 0)),
+          error: S.optional(__S(1408, __c44, 0)),
         }),
       ).annotate({ identifier: "ProductFeatureInput" });
     case 1:
-      return S.Array(__S(1248, __c39, 0));
+      return S.Array(__S(1376, __c43, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionStatus: S.optional(S.String),
           productType: S.optional(S.String),
-          error: S.optional(__S(32, __c1, 0)),
-          productFeatures: S.optional(__S(1249, __c39, 1)),
+          error: S.optional(__S(1408, __c44, 0)),
+          productFeatures: S.optional(__S(1377, __c43, 1)),
         }),
       ).annotate({ identifier: "LicenseProfileArmProductProfilePropertiesInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          softwareAssurance: S.optional(__S(320, __c10, 0)),
-          esuProfile: S.optional(__S(1280, __c40, 0)),
-          productProfile: S.optional(__S(1250, __c39, 2)),
+          softwareAssurance: S.optional(__S(384, __c12, 0)),
+          esuProfile: S.optional(__S(1440, __c45, 0)),
+          productProfile: S.optional(__S(1378, __c43, 2)),
         }),
       ).annotate({ identifier: "LicenseProfilePropertiesInput" });
     case 4:
@@ -5630,9 +5804,9 @@ function __c39(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           machineName: S.String.pipe(T.Label()),
           licenseProfileName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3040, __c95, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
           location: S.String,
-          properties: S.optional(__S(1251, __c39, 3)),
+          properties: S.optional(__S(1379, __c43, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5644,7 +5818,15 @@ function __c39(j: number): any {
       ).annotate({ identifier: "LicenseProfilesCreateOrUpdateRequest" });
   }
 }
-function __c40(j: number): any {
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "LicenseProfileArmProductProfilePropertiesInputError",
+      });
+  }
+}
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5652,9 +5834,24 @@ function __c40(j: number): any {
           assignedLicense: S.optional(S.String),
         }),
       ).annotate({ identifier: "LicenseProfileArmEsuPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(3296, __c103, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
+          location: S.String,
+          properties: S.optional(__S(417, __c13, 1)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "LicenseProfilesCreateOrUpdateResponse" });
   }
 }
-function __c41(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5662,9 +5859,9 @@ function __c41(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           licenseName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3040, __c95, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
           location: S.String,
-          properties: S.optional(__S(1345, __c42, 1)),
+          properties: S.optional(__S(1505, __c47, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5676,7 +5873,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "LicensesCreateOrUpdateRequest" });
   }
 }
-function __c42(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5686,7 +5883,7 @@ function __c42(j: number): any {
           edition: S.optional(S.String),
           type: S.optional(S.String),
           processors: S.optional(S.Number),
-          volumeLicenseDetails: S.optional(__S(225, __c7, 1)),
+          volumeLicenseDetails: S.optional(__S(257, __c8, 1)),
         }),
       ).annotate({ identifier: "LicenseDetailsInput" });
     case 1:
@@ -5694,12 +5891,30 @@ function __c42(j: number): any {
         S.Struct({
           tenantId: S.optional(S.String),
           licenseType: S.optional(S.String),
-          licenseDetails: S.optional(__S(1344, __c42, 0)),
+          licenseDetails: S.optional(__S(1504, __c47, 0)),
         }),
       ).annotate({ identifier: "LicensePropertiesInput" });
   }
 }
-function __c43(j: number): any {
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(3296, __c103, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
+          location: S.String,
+          properties: S.optional(__S(259, __c8, 3)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "LicensesCreateOrUpdateResponse" });
+  }
+}
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5718,17 +5933,17 @@ function __c43(j: number): any {
         ),
       ).annotate({ identifier: "ListExtensionMetadataRequest" });
     case 1:
-      return S.Array(__S(3169, __c99, 1));
+      return S.Array(__S(3361, __c105, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1377, __c43, 1)),
+          value: S.optional(__S(1569, __c49, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExtensionValueListResult" });
   }
 }
-function __c44(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5750,13 +5965,13 @@ function __c44(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1409, __c44, 1),
+          value: __S(1601, __c50, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExtensionValueListResultV2" });
   }
 }
-function __c45(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5775,7 +5990,7 @@ function __c45(j: number): any {
       ).annotate({ identifier: "DeleteMachineRequest" });
   }
 }
-function __c46(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5792,7 +6007,7 @@ function __c46(j: number): any {
       ).annotate({ identifier: "ListExtensionPublisherRequest" });
   }
 }
-function __c47(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5802,17 +6017,17 @@ function __c47(j: number): any {
         }),
       ).annotate({ identifier: "ExtensionPublisher" });
     case 1:
-      return S.Array(__S(1504, __c47, 0));
+      return S.Array(__S(1696, __c53, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1505, __c47, 1),
+          value: __S(1697, __c53, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExtensionPublisherListResult" });
   }
 }
-function __c48(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5830,7 +6045,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "ListExtensionTypeRequest" });
   }
 }
-function __c49(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5848,20 +6063,20 @@ function __c49(j: number): any {
       ).annotate({ identifier: "ListGatewayByResourceGroupRequest" });
   }
 }
-function __c50(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(3073, __c96, 1));
+      return S.Array(__S(192, __c6, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1600, __c50, 0),
+          value: __S(1792, __c56, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GatewaysListResult" });
   }
 }
-function __c51(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5878,7 +6093,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "ListGatewayBySubscriptionRequest" });
   }
 }
-function __c52(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5896,20 +6111,20 @@ function __c52(j: number): any {
       ).annotate({ identifier: "ListLicenseByResourceGroupRequest" });
   }
 }
-function __c53(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(228, __c7, 4));
+      return S.Array(__S(288, __c9, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1696, __c53, 0),
+          value: __S(1888, __c59, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "LicensesListResult" });
   }
 }
-function __c54(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5926,7 +6141,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "ListLicenseBySubscriptionRequest" });
   }
 }
-function __c55(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5944,17 +6159,17 @@ function __c55(j: number): any {
         ),
       ).annotate({ identifier: "ListLicenseProfilesRequest" });
     case 1:
-      return S.Array(__S(354, __c11, 2));
+      return S.Array(__S(448, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1761, __c55, 1),
+          value: __S(1953, __c61, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "LicenseProfilesListResult" });
   }
 }
-function __c56(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5973,20 +6188,20 @@ function __c56(j: number): any {
       ).annotate({ identifier: "ListMachineByResourceGroupRequest" });
   }
 }
-function __c57(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(603, __c18, 27));
+      return S.Array(__S(699, __c21, 27));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1824, __c57, 0),
+          value: __S(2016, __c63, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MachineListResult" });
   }
 }
-function __c58(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6003,7 +6218,7 @@ function __c58(j: number): any {
       ).annotate({ identifier: "ListMachineBySubscriptionRequest" });
   }
 }
-function __c59(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6024,13 +6239,13 @@ function __c59(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(544, __c17, 0),
+          value: __S(640, __c20, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MachineExtensionsListResult" });
   }
 }
-function __c60(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6050,7 +6265,7 @@ function __c60(j: number): any {
       ).annotate({ identifier: "DeleteMachineExtensionRequest" });
   }
 }
-function __c61(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6069,17 +6284,17 @@ function __c61(j: number): any {
         ),
       ).annotate({ identifier: "ListMachineRunCommandsRequest" });
     case 1:
-      return S.Array(__S(679, __c21, 7));
+      return S.Array(__S(768, __c24, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1953, __c61, 1),
+          value: __S(2145, __c67, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MachineRunCommandsListResult" });
   }
 }
-function __c62(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6099,17 +6314,17 @@ function __c62(j: number): any {
         identifier: "ListNetworkSecurityPerimeterConfigurationByPrivateLinkScopeRequest",
       });
     case 1:
-      return S.Array(__S(778, __c24, 10));
+      return S.Array(__S(906, __c28, 10));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1985, __c62, 1),
+          value: __S(2177, __c68, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkSecurityPerimeterConfigurationListResult" });
   }
 }
-function __c63(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6136,22 +6351,22 @@ function __c63(j: number): any {
         S.Struct({
           origin: S.optional(S.String),
           name: S.optional(S.String),
-          display: S.optional(__S(2017, __c63, 1)),
+          display: S.optional(__S(2209, __c69, 1)),
           isDataAction: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "OperationValue" });
     case 3:
-      return S.Array(__S(2018, __c63, 2));
+      return S.Array(__S(2210, __c69, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2019, __c63, 3)),
+          value: S.optional(__S(2211, __c69, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
   }
 }
-function __c64(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6169,17 +6384,17 @@ function __c64(j: number): any {
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionByPrivateLinkScopeRequest" });
     case 1:
-      return S.Array(__S(864, __c27, 0));
+      return S.Array(__S(992, __c31, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2049, __c64, 1),
+          value: __S(2241, __c70, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
   }
 }
-function __c65(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6197,17 +6412,17 @@ function __c65(j: number): any {
         ),
       ).annotate({ identifier: "ListPrivateLinkResourceByPrivateLinkScopeRequest" });
     case 1:
-      return S.Array(__S(961, __c30, 1));
+      return S.Array(__S(1089, __c34, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2081, __c65, 1),
+          value: __S(2273, __c71, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResourceListResult" });
   }
 }
-function __c66(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6225,20 +6440,20 @@ function __c66(j: number): any {
       ).annotate({ identifier: "ListPrivateLinkScopeByResourceGroupRequest" });
   }
 }
-function __c67(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1029, __c32, 5));
+      return S.Array(__S(1157, __c36, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2144, __c67, 0),
+          value: __S(2336, __c73, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "HybridComputePrivateLinkScopeListResult" });
   }
 }
-function __c68(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6255,7 +6470,7 @@ function __c68(j: number): any {
       ).annotate({ identifier: "ListPrivateLinkScopesRequest" });
   }
 }
-function __c69(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6264,9 +6479,9 @@ function __c69(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           machineName: S.String.pipe(T.Label()),
           extensionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3040, __c95, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
           location: S.String,
-          properties: S.optional(__S(2240, __c70, 0)),
+          properties: S.optional(__S(2432, __c76, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6276,9 +6491,23 @@ function __c69(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MachineExtensionsCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(3296, __c103, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
+          location: S.String,
+          properties: S.optional(__S(546, __c17, 2)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "MachineExtensionsCreateOrUpdateResponse" });
   }
 }
-function __c70(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6289,29 +6518,29 @@ function __c70(j: number): any {
           typeHandlerVersion: S.optional(S.String),
           enableAutomaticUpgrade: S.optional(S.Boolean),
           autoUpgradeMinorVersion: S.optional(S.Boolean),
-          settings: S.optional(__S(449, __c14, 1)),
-          protectedSettings: S.optional(__S(449, __c14, 1)),
-          instanceView: S.optional(__S(448, __c14, 0)),
+          settings: S.optional(__S(545, __c17, 1)),
+          protectedSettings: S.optional(__S(545, __c17, 1)),
+          instanceView: S.optional(__S(544, __c17, 0)),
         }),
       ).annotate({ identifier: "MachineExtensionPropertiesInput" });
   }
 }
-function __c71(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(__S(673, __c21, 1)),
-          parameters: S.optional(__S(675, __c21, 3)),
-          protectedParameters: S.optional(__S(675, __c21, 3)),
+          source: S.optional(__S(801, __c25, 1)),
+          parameters: S.optional(__S(803, __c25, 3)),
+          protectedParameters: S.optional(__S(803, __c25, 3)),
           asyncExecution: S.optional(S.Boolean),
           runAsUser: S.optional(S.String),
           runAsPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           timeoutInSeconds: S.optional(S.Number),
           outputBlobUri: S.optional(S.String),
           errorBlobUri: S.optional(S.String),
-          outputBlobManagedIdentity: S.optional(__S(672, __c21, 0)),
-          errorBlobManagedIdentity: S.optional(__S(672, __c21, 0)),
+          outputBlobManagedIdentity: S.optional(__S(800, __c25, 0)),
+          errorBlobManagedIdentity: S.optional(__S(800, __c25, 0)),
         }),
       ).annotate({ identifier: "MachineRunCommandPropertiesInput" });
     case 1:
@@ -6321,9 +6550,9 @@ function __c71(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           machineName: S.String.pipe(T.Label()),
           runCommandName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3040, __c95, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
           location: S.String,
-          properties: S.optional(__S(2272, __c71, 0)),
+          properties: S.optional(__S(2464, __c77, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6333,9 +6562,24 @@ function __c71(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MachineRunCommandsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(3296, __c103, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
+          location: S.String,
+          properties: S.optional(__S(806, __c25, 6)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "MachineRunCommandsCreateOrUpdateResponse" });
   }
 }
-function __c72(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6372,18 +6616,20 @@ function __c72(j: number): any {
           status: S.optional(S.String),
           assessmentActivityId: S.optional(S.String),
           rebootPending: S.optional(S.Boolean),
-          availablePatchCountByClassification: S.optional(__S(2305, __c72, 1)),
+          availablePatchCountByClassification: S.optional(__S(2497, __c78, 1)),
           startDateTime: S.optional(S.String),
           lastModifiedDateTime: S.optional(S.String),
           startedBy: S.optional(S.String),
           patchServiceUsed: S.optional(S.String),
           osType: S.optional(S.String),
-          errorDetails: S.optional(__S(293, __c9, 5)),
+          errorDetails: S.optional(__S(357, __c11, 5)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "MachineAssessPatchesResult" });
   }
 }
-function __c73(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6403,44 +6649,44 @@ function __c73(j: number): any {
       ).annotate({ identifier: "DeleteMachineRunCommandRequest" });
   }
 }
-function __c74(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(3040, __c95, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
           location: S.String,
-          properties: S.optional(__S(1345, __c42, 1)),
+          properties: S.optional(__S(1505, __c47, 1)),
         }),
       ).annotate({ identifier: "LicenseInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          assignedLicense: S.optional(__S(2368, __c74, 0)),
+          assignedLicense: S.optional(__S(2560, __c80, 0)),
           licenseAssignmentState: S.optional(S.String),
         }),
       ).annotate({ identifier: "LicenseProfileMachineInstanceViewEsuPropertiesInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          esuProfile: S.optional(__S(2369, __c74, 1)),
+          esuProfile: S.optional(__S(2561, __c80, 1)),
         }),
       ).annotate({ identifier: "LicenseProfileMachineInstanceViewInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          locationData: S.optional(__S(576, __c18, 0)),
-          serviceStatuses: S.optional(__S(581, __c18, 5)),
-          cloudMetadata: S.optional(__S(32, __c1, 0)),
-          agentUpgrade: S.optional(__S(2400, __c75, 0)),
-          osProfile: S.optional(__S(2403, __c75, 3)),
-          licenseProfile: S.optional(__S(2370, __c74, 2)),
+          locationData: S.optional(__S(672, __c21, 0)),
+          serviceStatuses: S.optional(__S(677, __c21, 5)),
+          cloudMetadata: S.optional(__S(1408, __c44, 0)),
+          agentUpgrade: S.optional(__S(2592, __c81, 0)),
+          osProfile: S.optional(__S(2595, __c81, 3)),
+          licenseProfile: S.optional(__S(2562, __c80, 2)),
           vmId: S.optional(S.String),
           clientPublicKey: S.optional(S.String),
           identityKeyStore: S.optional(S.String),
           tpmEkCertificate: S.optional(S.String),
           osType: S.optional(S.String),
-          extensions: S.optional(__S(598, __c18, 22)),
+          extensions: S.optional(__S(694, __c21, 22)),
           privateLinkScopeResourceId: S.optional(S.String),
           parentClusterResourceId: S.optional(S.String),
           hardwareResourceId: S.optional(S.String),
@@ -6454,10 +6700,10 @@ function __c74(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           machineName: S.String.pipe(T.Label()),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-          tags: S.optional(__S(3040, __c95, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
           location: S.String,
-          properties: S.optional(__S(2371, __c74, 3)),
-          identity: S.optional(__S(2405, __c75, 5)),
+          properties: S.optional(__S(2563, __c80, 3)),
+          identity: S.optional(__S(2597, __c81, 5)),
           kind: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -6470,7 +6716,7 @@ function __c74(j: number): any {
       ).annotate({ identifier: "MachinesCreateOrUpdateRequest" });
   }
 }
-function __c75(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6491,28 +6737,28 @@ function __c75(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          patchSettings: S.optional(__S(2401, __c75, 1)),
+          patchSettings: S.optional(__S(2593, __c81, 1)),
         }),
       ).annotate({ identifier: "OSProfileWindowsConfigurationInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          windowsConfiguration: S.optional(__S(2402, __c75, 2)),
-          linuxConfiguration: S.optional(__S(2402, __c75, 2)),
+          windowsConfiguration: S.optional(__S(2594, __c81, 2)),
+          linuxConfiguration: S.optional(__S(2594, __c81, 2)),
         }),
       ).annotate({ identifier: "OSProfileInput" });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(32, __c1, 0)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1408, __c44, 0)));
     case 5:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(2404, __c75, 4)),
+          userAssignedIdentities: S.optional(__S(2596, __c81, 4)),
         }),
       ).annotate({ identifier: "MachinesCreateOrUpdateRequestIdentity" });
   }
 }
-function __c76(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6536,11 +6782,14 @@ function __c76(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "NetworkSecurityPerimeterConfigurationReconcileResult" });
   }
 }
-function __c77(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6551,7 +6800,7 @@ function __c77(j: number): any {
           baseResourceType: S.String.pipe(T.Label()),
           baseResourceName: S.String.pipe(T.Label()),
           settingsResourceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2496, __c78, 0)),
+          properties: S.optional(__S(2688, __c84, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6563,17 +6812,17 @@ function __c77(j: number): any {
       ).annotate({ identifier: "PatchSettingsRequest" });
   }
 }
-function __c78(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          gatewayProperties: S.optional(__S(1184, __c37, 0)),
+          gatewayProperties: S.optional(__S(1312, __c41, 0)),
         }),
       ).annotate({ identifier: "SettingsPropertiesInput" });
   }
 }
-function __c79(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6585,8 +6834,8 @@ function __c79(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(832, __c26, 0)),
-          privateLinkServiceConnectionState: S.optional(__S(2528, __c79, 0)),
+          privateEndpoint: S.optional(__S(960, __c30, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(2720, __c85, 0)),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionPropertiesInput" });
     case 2:
@@ -6596,7 +6845,7 @@ function __c79(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           scopeName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2529, __c79, 1)),
+          properties: S.optional(__S(2721, __c85, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6606,15 +6855,27 @@ function __c79(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PrivateEndpointConnectionsCreateOrUpdateRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(3296, __c103, 0)),
+          properties: S.optional(__S(962, __c30, 2)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "PrivateEndpointConnectionsCreateOrUpdateResponse" });
   }
 }
-function __c80(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           publicNetworkAccess: S.optional(S.String),
-          serviceExtensions: S.optional(__S(1027, __c32, 3)),
+          serviceExtensions: S.optional(__S(1155, __c36, 3)),
         }),
       ).annotate({ identifier: "HybridComputePrivateLinkScopePropertiesInput" });
     case 1:
@@ -6623,9 +6884,9 @@ function __c80(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           scopeName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3040, __c95, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
           location: S.String,
-          properties: S.optional(__S(2560, __c80, 0)),
+          properties: S.optional(__S(2752, __c86, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6637,17 +6898,17 @@ function __c80(j: number): any {
       ).annotate({ identifier: "PrivateLinkScopesCreateOrUpdateRequest" });
   }
 }
-function __c81(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2240, __c70, 0));
+      return S.Array(__S(2432, __c76, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           machineName: S.String.pipe(T.Label()),
-          extensions: S.optional(__S(2592, __c81, 0)),
+          extensions: S.optional(__S(2784, __c87, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6658,22 +6919,25 @@ function __c81(j: number): any {
         ),
       ).annotate({ identifier: "SetupExtensionsRequest" });
     case 2:
-      return S.Array(__S(450, __c14, 2));
+      return S.Array(__S(546, __c17, 2));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          extensions: S.optional(__S(2594, __c81, 2)),
+          extensions: S.optional(__S(2786, __c87, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "SetupExtensionRequest" });
   }
 }
-function __c82(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          allowedFeatures: S.optional(__S(3008, __c94, 0)),
-          gatewayBypass: S.optional(__S(3008, __c94, 0)),
+          allowedFeatures: S.optional(__S(3200, __c100, 0)),
+          gatewayBypass: S.optional(__S(3200, __c100, 0)),
         }),
       ).annotate({ identifier: "GatewayUpdateProperties" });
     case 1:
@@ -6682,8 +6946,8 @@ function __c82(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           gatewayName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3040, __c95, 0)),
-          properties: S.optional(__S(2624, __c82, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
+          properties: S.optional(__S(2816, __c88, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6695,7 +6959,7 @@ function __c82(j: number): any {
       ).annotate({ identifier: "UpdateGatewayRequest" });
   }
 }
-function __c83(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6711,7 +6975,7 @@ function __c83(j: number): any {
       return S.suspend(() =>
         S.Struct({
           licenseType: S.optional(S.String),
-          licenseDetails: S.optional(__S(2656, __c83, 0)),
+          licenseDetails: S.optional(__S(2848, __c89, 0)),
         }),
       ).annotate({ identifier: "LicenseUpdateProperties" });
     case 2:
@@ -6720,8 +6984,8 @@ function __c83(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           licenseName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3040, __c95, 0)),
-          properties: S.optional(__S(2657, __c83, 1)),
+          tags: S.optional(__S(3232, __c101, 0)),
+          properties: S.optional(__S(2849, __c89, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6733,7 +6997,7 @@ function __c83(j: number): any {
       ).annotate({ identifier: "UpdateLicenseRequest" });
   }
 }
-function __c84(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6743,21 +7007,21 @@ function __c84(j: number): any {
         }),
       ).annotate({ identifier: "ProductFeatureUpdate" });
     case 1:
-      return S.Array(__S(2688, __c84, 0));
+      return S.Array(__S(2880, __c90, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionStatus: S.optional(S.String),
           productType: S.optional(S.String),
-          productFeatures: S.optional(__S(2689, __c84, 1)),
+          productFeatures: S.optional(__S(2881, __c90, 1)),
         }),
       ).annotate({ identifier: "ProductProfileUpdateProperties" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          softwareAssurance: S.optional(__S(320, __c10, 0)),
-          esuProfile: S.optional(__S(1280, __c40, 0)),
-          productProfile: S.optional(__S(2690, __c84, 2)),
+          softwareAssurance: S.optional(__S(384, __c12, 0)),
+          esuProfile: S.optional(__S(1440, __c45, 0)),
+          productProfile: S.optional(__S(2882, __c90, 2)),
         }),
       ).annotate({ identifier: "LicenseProfileUpdateProperties" });
     case 4:
@@ -6767,8 +7031,8 @@ function __c84(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           machineName: S.String.pipe(T.Label()),
           licenseProfileName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3040, __c95, 0)),
-          properties: S.optional(__S(2691, __c84, 3)),
+          tags: S.optional(__S(3232, __c101, 0)),
+          properties: S.optional(__S(2883, __c90, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6780,15 +7044,15 @@ function __c84(j: number): any {
       ).annotate({ identifier: "UpdateLicenseProfileRequest" });
   }
 }
-function __c85(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          locationData: S.optional(__S(576, __c18, 0)),
-          osProfile: S.optional(__S(2403, __c75, 3)),
-          cloudMetadata: S.optional(__S(32, __c1, 0)),
-          agentUpgrade: S.optional(__S(2400, __c75, 0)),
+          locationData: S.optional(__S(672, __c21, 0)),
+          osProfile: S.optional(__S(2595, __c81, 3)),
+          cloudMetadata: S.optional(__S(1408, __c44, 0)),
+          agentUpgrade: S.optional(__S(2592, __c81, 0)),
           parentClusterResourceId: S.optional(S.String),
           privateLinkScopeResourceId: S.optional(S.String),
           identityKeyStore: S.optional(S.String),
@@ -6801,10 +7065,10 @@ function __c85(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           machineName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3040, __c95, 0)),
-          identity: S.optional(__S(2405, __c75, 5)),
+          tags: S.optional(__S(3232, __c101, 0)),
+          identity: S.optional(__S(2597, __c81, 5)),
           kind: S.optional(S.String),
-          properties: S.optional(__S(2720, __c85, 0)),
+          properties: S.optional(__S(2912, __c91, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6816,7 +7080,7 @@ function __c85(j: number): any {
       ).annotate({ identifier: "UpdateMachineRequest" });
   }
 }
-function __c86(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6836,7 +7100,7 @@ function __c86(j: number): any {
       ).annotate({ identifier: "DeletePrivateEndpointConnectionRequest" });
   }
 }
-function __c87(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6847,8 +7111,8 @@ function __c87(j: number): any {
           typeHandlerVersion: S.optional(S.String),
           enableAutomaticUpgrade: S.optional(S.Boolean),
           autoUpgradeMinorVersion: S.optional(S.Boolean),
-          settings: S.optional(__S(449, __c14, 1)),
-          protectedSettings: S.optional(__S(449, __c14, 1)),
+          settings: S.optional(__S(545, __c17, 1)),
+          protectedSettings: S.optional(__S(545, __c17, 1)),
         }),
       ).annotate({ identifier: "MachineExtensionUpdateProperties" });
     case 1:
@@ -6858,8 +7122,8 @@ function __c87(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           machineName: S.String.pipe(T.Label()),
           extensionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3040, __c95, 0)),
-          properties: S.optional(__S(2784, __c87, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
+          properties: S.optional(__S(2976, __c93, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6869,9 +7133,24 @@ function __c87(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateMachineExtensionRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(3296, __c103, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
+          location: S.String,
+          properties: S.optional(__S(546, __c17, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateMachineExtensionResponse" });
   }
 }
-function __c88(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6879,7 +7158,7 @@ function __c88(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           scopeName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3040, __c95, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6891,7 +7170,7 @@ function __c88(j: number): any {
       ).annotate({ identifier: "UpdatePrivateLinkScopeTagsRequest" });
   }
 }
-function __c89(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6902,7 +7181,7 @@ function __c89(j: number): any {
           baseResourceType: S.String.pipe(T.Label()),
           baseResourceName: S.String.pipe(T.Label()),
           settingsResourceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2496, __c78, 0)),
+          properties: S.optional(__S(2688, __c84, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6914,7 +7193,7 @@ function __c89(j: number): any {
       ).annotate({ identifier: "UpdateSettingsRequest" });
   }
 }
-function __c90(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6923,14 +7202,14 @@ function __c90(j: number): any {
         }),
       ).annotate({ identifier: "ExtensionTargetProperties" });
     case 1:
-      return S.Record(S.String, __S(2880, __c90, 0));
+      return S.Record(S.String, __S(3072, __c96, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           machineName: S.String.pipe(T.Label()),
-          extensionTargets: S.optional(__S(2881, __c90, 1)),
+          extensionTargets: S.optional(__S(3073, __c96, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6942,15 +7221,15 @@ function __c90(j: number): any {
       ).annotate({ identifier: "UpgradeExtensionsRequest" });
   }
 }
-function __c91(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3040, __c95, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
           location: S.String,
-          properties: S.optional(__S(1345, __c42, 1)),
+          properties: S.optional(__S(1505, __c47, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6962,7 +7241,7 @@ function __c91(j: number): any {
       ).annotate({ identifier: "ValidateLicenseLicenseRequest" });
   }
 }
-function __c92(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6981,14 +7260,14 @@ function __c92(j: number): any {
       ).annotate({ identifier: "DeletePrivateLinkScopeRequest" });
   }
 }
-function __c93(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           gatewayType: S.optional(S.String),
-          allowedFeatures: S.optional(__S(3008, __c94, 0)),
-          gatewayBypass: S.optional(__S(3008, __c94, 0)),
+          allowedFeatures: S.optional(__S(3200, __c100, 0)),
+          gatewayBypass: S.optional(__S(3200, __c100, 0)),
         }),
       ).annotate({ identifier: "GatewayPropertiesInput" });
     case 1:
@@ -6997,9 +7276,9 @@ function __c93(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           gatewayName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3040, __c95, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
           location: S.String,
-          properties: S.optional(__S(2976, __c93, 0)),
+          properties: S.optional(__S(3168, __c99, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7009,21 +7288,36 @@ function __c93(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GatewaysCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(3296, __c103, 0)),
+          tags: S.optional(__S(3232, __c101, 0)),
+          location: S.String,
+          properties: S.optional(__S(3264, __c102, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "GatewaysCreateOrUpdateResponse" });
   }
 }
-function __c94(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c95(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
   }
 }
-function __c96(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7032,25 +7326,13 @@ function __c96(j: number): any {
           gatewayId: S.optional(S.String),
           gatewayType: S.optional(S.String),
           gatewayEndpoint: S.optional(S.String),
-          allowedFeatures: S.optional(__S(3008, __c94, 0)),
-          gatewayBypass: S.optional(__S(3008, __c94, 0)),
+          allowedFeatures: S.optional(__S(3200, __c100, 0)),
+          gatewayBypass: S.optional(__S(3200, __c100, 0)),
         }),
       ).annotate({ identifier: "GatewayProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3104, __c97, 0)),
-          tags: S.optional(__S(3040, __c95, 0)),
-          location: S.String,
-          properties: S.optional(__S(3072, __c96, 0)),
-        }),
-      ).annotate({ identifier: "GatewaysCreateOrUpdateResponse" });
   }
 }
-function __c97(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7065,7 +7347,7 @@ function __c97(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c98(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7086,7 +7368,7 @@ function __c98(j: number): any {
       ).annotate({ identifier: "GetExtensionMetadataRequest" });
   }
 }
-function __c99(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7102,8 +7384,8 @@ function __c99(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3104, __c97, 0)),
-          properties: S.optional(__S(3168, __c99, 0)),
+          systemData: S.optional(__S(3296, __c103, 0)),
+          properties: S.optional(__S(3360, __c105, 0)),
         }),
       ).annotate({ identifier: "GetExtensionMetadataResponse" });
   }

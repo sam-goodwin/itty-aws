@@ -17,7 +17,14 @@ export interface DeleteGroupQuotasRequest {
   /** The GroupQuota name. The name should be unique for the provided context tenantId/MgId. */
   groupQuotaName: string;
 }
-export interface DeleteGroupQuotasResponse {}
+export interface DeleteGroupQuotasResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteGroupQuotaSubscriptionRequest {
   /** The management group ID. */
   managementGroupId: string;
@@ -26,7 +33,14 @@ export interface DeleteGroupQuotaSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export interface DeleteGroupQuotaSubscriptionResponse {}
+export interface DeleteGroupQuotaSubscriptionResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetGroupQuotaLimitsRequestRequest {
   /** The management group ID. */
   managementGroupId: string;
@@ -443,6 +457,12 @@ export interface GroupQuotaLocationSettingsCreateOrUpdateResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   properties?: GroupQuotasEnforcementStatusProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified. */
 export interface GroupQuotasEntityBaseInput {
@@ -468,6 +488,12 @@ export interface GroupQuotasCreateOrUpdateResponse {
   systemData?: SystemData;
   /** Properties */
   properties?: GroupQuotasEntityBase;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GroupQuotaSubscriptionsCreateOrUpdateRequest {
   /** Management Group Id. */
@@ -487,6 +513,12 @@ export interface GroupQuotaSubscriptionsCreateOrUpdateResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   properties?: GroupQuotaSubscriptionIdProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ListGroupQuotaLimitsRequest {
   /** The management group ID. */
@@ -943,6 +975,10 @@ export interface QuotaCreateOrUpdateResponse {
   systemData?: SystemData;
   /** Quota properties for the specified resource, based on the API called, Quotas or Usages. */
   properties?: QuotaProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Group Quota details. */
 export interface GroupQuotaDetailsInput {
@@ -985,6 +1021,12 @@ export interface UpdateGroupQuotaLimitsRequestResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   properties?: GroupQuotaLimitListProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface UpdateGroupQuotaLocationSettingsRequest {
   /** The management group ID. */
@@ -1007,6 +1049,12 @@ export interface UpdateGroupQuotaLocationSettingsResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   properties?: GroupQuotasEnforcementStatusProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified. */
 export type GroupQuotasEntityBasePatchInput = GroupQuotasEntityBaseInput;
@@ -1029,6 +1077,12 @@ export interface UpdateGroupQuotasResponse {
   systemData?: SystemData;
   /** Properties */
   properties?: GroupQuotasEntityBase;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface UpdateGroupQuotaSubscriptionRequest {
   /** Management Group Id. */
@@ -1048,6 +1102,12 @@ export interface UpdateGroupQuotaSubscriptionResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   properties?: GroupQuotaSubscriptionIdProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Subscription Quota details. */
 export interface SubscriptionQuotaDetailsInput {
@@ -1091,6 +1151,12 @@ export interface UpdateGroupQuotaSubscriptionAllocationRequestResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   properties?: SubscriptionQuotaAllocationsListProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface UpdateQuotaRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -1111,6 +1177,8 @@ export interface UpdateQuotaResponse {
   systemData?: SystemData;
   /** Quota properties for the specified resource, based on the API called, Quotas or Usages. */
   properties?: QuotaProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
 }
 export type DeleteGroupQuotasError = AzureOpError;
 /** Deletes the GroupQuotas for the name passed. All the remaining shareQuota in the GroupQuotas will be lost. */
@@ -1150,8 +1218,8 @@ export const GetGroupQuotaLimitsRequest: API.OperationMethod<
   GetGroupQuotaLimitsRequestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<GetGroupQuotaLimitsRequestRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<GetGroupQuotaLimitsRequestResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetGroupQuotaLimitsRequestRequest>,
+  output: __S(163, __c20, 3) as any as S.Schema<GetGroupQuotaLimitsRequestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1165,7 +1233,7 @@ export const GetGroupQuotaLocationSettings: API.OperationMethod<
   GetGroupQuotaLocationSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<GetGroupQuotaLocationSettingsRequest>,
+  input: __S(272, __c34, 0) as any as S.Schema<GetGroupQuotaLocationSettingsRequest>,
   output: __S(273, __c34, 1) as any as S.Schema<GetGroupQuotaLocationSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1180,8 +1248,8 @@ export const GetGroupQuotas: API.OperationMethod<
   GetGroupQuotasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<GetGroupQuotasRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<GetGroupQuotasResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<GetGroupQuotasRequest>,
+  output: __S(328, __c41, 0) as any as S.Schema<GetGroupQuotasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1195,8 +1263,8 @@ export const GetGroupQuotaSubscription: API.OperationMethod<
   GetGroupQuotaSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<GetGroupQuotaSubscriptionRequest2>,
-  output: __S(329, __c41, 1) as any as S.Schema<GetGroupQuotaSubscriptionResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<GetGroupQuotaSubscriptionRequest2>,
+  output: __S(352, __c44, 0) as any as S.Schema<GetGroupQuotaSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1210,8 +1278,8 @@ export const GetGroupQuotaSubscriptionAllocationRequest: API.OperationMethod<
   GetGroupQuotaSubscriptionAllocationRequestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<GetGroupQuotaSubscriptionAllocationRequestRequest>,
-  output: __S(347, __c43, 3) as any as S.Schema<GetGroupQuotaSubscriptionAllocationRequestResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<GetGroupQuotaSubscriptionAllocationRequestRequest>,
+  output: __S(371, __c46, 3) as any as S.Schema<GetGroupQuotaSubscriptionAllocationRequestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1225,8 +1293,8 @@ export const GetGroupQuotaSubscriptionRequest: API.OperationMethod<
   GetGroupQuotaSubscriptionRequestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<GetGroupQuotaSubscriptionRequestRequest>,
-  output: __S(361, __c45, 1) as any as S.Schema<GetGroupQuotaSubscriptionRequestResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<GetGroupQuotaSubscriptionRequestRequest>,
+  output: __S(385, __c48, 1) as any as S.Schema<GetGroupQuotaSubscriptionRequestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1240,8 +1308,8 @@ export const GetQuota: API.OperationMethod<
   GetQuotaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<GetQuotaRequest>,
-  output: __S(377, __c47, 1) as any as S.Schema<GetQuotaResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<GetQuotaRequest>,
+  output: __S(400, __c50, 0) as any as S.Schema<GetQuotaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1255,8 +1323,8 @@ export const GetQuotaRequestStatus: API.OperationMethod<
   GetQuotaRequestStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<GetQuotaRequestStatusRequest>,
-  output: __S(404, __c50, 4) as any as S.Schema<GetQuotaRequestStatusResponse>,
+  input: __S(424, __c53, 0) as any as S.Schema<GetQuotaRequestStatusRequest>,
+  output: __S(436, __c54, 4) as any as S.Schema<GetQuotaRequestStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1286,7 +1354,7 @@ export const GroupQuotaLocationSettingsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(40, __c5, 0) as any as S.Schema<GroupQuotaLocationSettingsCreateOrUpdateRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<GroupQuotaLocationSettingsCreateOrUpdateResponse>,
+  output: __S(49, __c6, 1) as any as S.Schema<GroupQuotaLocationSettingsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1301,7 +1369,7 @@ export const GroupQuotasCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(56, __c7, 0) as any as S.Schema<GroupQuotasCreateOrUpdateRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<GroupQuotasCreateOrUpdateResponse>,
+  output: __S(65, __c8, 1) as any as S.Schema<GroupQuotasCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1316,7 +1384,7 @@ export const GroupQuotaSubscriptionsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(72, __c9, 0) as any as S.Schema<GroupQuotaSubscriptionsCreateOrUpdateRequest>,
-  output: __S(329, __c41, 1) as any as S.Schema<GroupQuotaSubscriptionsCreateOrUpdateResponse>,
+  output: __S(80, __c10, 0) as any as S.Schema<GroupQuotaSubscriptionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1330,8 +1398,8 @@ export const ListGroupQuotaLimits: API.OperationMethod<
   ListGroupQuotaLimitsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListGroupQuotaLimitsRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<ListGroupQuotaLimitsResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListGroupQuotaLimitsRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<ListGroupQuotaLimitsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1345,8 +1413,8 @@ export const ListGroupQuotaLimitsRequest2: API.OperationMethod<
   ListGroupQuotaLimitsRequest2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListGroupQuotaLimitsRequestRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<SubmittedResourceRequestStatusList>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListGroupQuotaLimitsRequestRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<SubmittedResourceRequestStatusList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1360,8 +1428,8 @@ export const ListGroupQuotas: API.OperationMethod<
   ListGroupQuotasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListGroupQuotasRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GroupQuotaList>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListGroupQuotasRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<GroupQuotaList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1375,8 +1443,8 @@ export const ListGroupQuotaSubscriptionAllocation: API.OperationMethod<
   ListGroupQuotaSubscriptionAllocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListGroupQuotaSubscriptionAllocationRequest2>,
-  output: __S(124, __c15, 4) as any as S.Schema<ListGroupQuotaSubscriptionAllocationResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListGroupQuotaSubscriptionAllocationRequest2>,
+  output: __S(121, __c15, 1) as any as S.Schema<ListGroupQuotaSubscriptionAllocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1390,8 +1458,8 @@ export const ListGroupQuotaSubscriptionAllocationRequest: API.OperationMethod<
   ListGroupQuotaSubscriptionAllocationRequestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListGroupQuotaSubscriptionAllocationRequestRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<QuotaAllocationRequestStatusList>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListGroupQuotaSubscriptionAllocationRequestRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<QuotaAllocationRequestStatusList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1405,8 +1473,8 @@ export const ListGroupQuotaSubscriptionRequests: API.OperationMethod<
   ListGroupQuotaSubscriptionRequestsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<ListGroupQuotaSubscriptionRequestsRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<GroupQuotaSubscriptionRequestStatusList>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListGroupQuotaSubscriptionRequestsRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<GroupQuotaSubscriptionRequestStatusList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1420,8 +1488,8 @@ export const ListGroupQuotaSubscriptions: API.OperationMethod<
   ListGroupQuotaSubscriptionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<ListGroupQuotaSubscriptionsRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<GroupQuotaSubscriptionIdList>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListGroupQuotaSubscriptionsRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<GroupQuotaSubscriptionIdList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1435,8 +1503,8 @@ export const ListGroupQuotaUsages: API.OperationMethod<
   ListGroupQuotaUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<ListGroupQuotaUsagesRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<ResourceUsageList>,
+  input: __S(192, __c24, 0) as any as S.Schema<ListGroupQuotaUsagesRequest>,
+  output: __S(196, __c24, 4) as any as S.Schema<ResourceUsageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1450,8 +1518,8 @@ export const ListQuota: API.OperationMethod<
   ListQuotaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<ListQuotaRequest>,
-  output: __S(194, __c24, 2) as any as S.Schema<QuotaLimits>,
+  input: __S(200, __c25, 0) as any as S.Schema<ListQuotaRequest>,
+  output: __S(202, __c25, 2) as any as S.Schema<QuotaLimits>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1465,8 +1533,8 @@ export const ListQuotaOperation: API.OperationMethod<
   ListQuotaOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<ListQuotaOperationRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<OperationList>,
+  input: __S(208, __c26, 0) as any as S.Schema<ListQuotaOperationRequest>,
+  output: __S(212, __c26, 4) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1480,8 +1548,8 @@ export const ListQuotaRequestStatus: API.OperationMethod<
   ListQuotaRequestStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<ListQuotaRequestStatusRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<QuotaRequestDetailsList>,
+  input: __S(216, __c27, 0) as any as S.Schema<ListQuotaRequestStatusRequest>,
+  output: __S(218, __c27, 2) as any as S.Schema<QuotaRequestDetailsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1495,8 +1563,8 @@ export const ListUsages: API.OperationMethod<
   ListUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<ListUsagesRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<UsagesLimits>,
+  input: __S(224, __c28, 0) as any as S.Schema<ListUsagesRequest>,
+  output: __S(226, __c28, 2) as any as S.Schema<UsagesLimits>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1510,8 +1578,8 @@ export const QuotaCreateOrUpdate: API.OperationMethod<
   QuotaCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<QuotaCreateOrUpdateRequest>,
-  output: __S(377, __c47, 1) as any as S.Schema<QuotaCreateOrUpdateResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<QuotaCreateOrUpdateRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<QuotaCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1525,8 +1593,8 @@ export const UpdateGroupQuotaLimitsRequest: API.OperationMethod<
   UpdateGroupQuotaLimitsRequestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<UpdateGroupQuotaLimitsRequestRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<UpdateGroupQuotaLimitsRequestResponse>,
+  input: __S(252, __c31, 4) as any as S.Schema<UpdateGroupQuotaLimitsRequestRequest>,
+  output: __S(253, __c31, 5) as any as S.Schema<UpdateGroupQuotaLimitsRequestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1540,8 +1608,8 @@ export const UpdateGroupQuotaLocationSettings: API.OperationMethod<
   UpdateGroupQuotaLocationSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<UpdateGroupQuotaLocationSettingsRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<UpdateGroupQuotaLocationSettingsResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<UpdateGroupQuotaLocationSettingsRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<UpdateGroupQuotaLocationSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1555,8 +1623,8 @@ export const UpdateGroupQuotas: API.OperationMethod<
   UpdateGroupQuotasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<UpdateGroupQuotasRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<UpdateGroupQuotasResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<UpdateGroupQuotasRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<UpdateGroupQuotasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1570,8 +1638,8 @@ export const UpdateGroupQuotaSubscription: API.OperationMethod<
   UpdateGroupQuotaSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<UpdateGroupQuotaSubscriptionRequest>,
-  output: __S(329, __c41, 1) as any as S.Schema<UpdateGroupQuotaSubscriptionResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<UpdateGroupQuotaSubscriptionRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<UpdateGroupQuotaSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1586,14 +1654,14 @@ export const UpdateGroupQuotaSubscriptionAllocationRequest: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    292,
-    __c36,
+    300,
+    __c37,
     4,
   ) as any as S.Schema<UpdateGroupQuotaSubscriptionAllocationRequestRequest>,
   output: __S(
-    124,
-    __c15,
-    4,
+    301,
+    __c37,
+    5,
   ) as any as S.Schema<UpdateGroupQuotaSubscriptionAllocationRequestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1608,8 +1676,8 @@ export const UpdateQuota: API.OperationMethod<
   UpdateQuotaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<UpdateQuotaRequest>,
-  output: __S(377, __c47, 1) as any as S.Schema<UpdateQuotaResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<UpdateQuotaRequest>,
+  output: __S(305, __c38, 1) as any as S.Schema<UpdateQuotaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1637,7 +1705,13 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteGroupQuotasResponse" });
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteGroupQuotasResponse" });
   }
 }
 function __c2(j: number): any {
@@ -1691,7 +1765,7 @@ function __c4(j: number): any {
         S.Struct({
           usages: S.optional(__S(32, __c4, 0)),
           unit: S.optional(S.String),
-          name: S.optional(__S(168, __c21, 0)),
+          name: S.optional(__S(176, __c22, 0)),
           resourceType: S.optional(S.String),
           quotaPeriod: S.optional(S.String),
           isQuotaApplicable: S.optional(S.Boolean),
@@ -1704,7 +1778,7 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c20, 0)),
+          systemData: S.optional(__S(168, __c21, 0)),
           properties: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "GetUsageResponse" });
@@ -1739,6 +1813,19 @@ function __c6(j: number): any {
           enforcementEnabled: S.optional(S.String),
         }),
       ).annotate({ identifier: "GroupQuotasEnforcementStatusPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(280, __c35, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "GroupQuotaLocationSettingsCreateOrUpdateResponse" });
   }
 }
 function __c7(j: number): any {
@@ -1768,6 +1855,19 @@ function __c8(j: number): any {
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "GroupQuotasEntityBaseInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(320, __c40, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "GroupQuotasCreateOrUpdateResponse" });
   }
 }
 function __c9(j: number): any {
@@ -1794,6 +1894,23 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(344, __c43, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "GroupQuotaSubscriptionsCreateOrUpdateResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           managementGroupId: S.String.pipe(T.Label()),
           groupQuotaName: S.String.pipe(T.Label()),
           resourceProviderName: S.String.pipe(T.Label()),
@@ -1807,9 +1924,19 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListGroupQuotaLimitsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(102, __c12, 6)),
+        }),
+      ).annotate({ identifier: "ListGroupQuotaLimitsResponse" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1819,11 +1946,11 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "AllocatedToSubscription" });
     case 1:
-      return S.Array(__S(88, __c11, 0));
+      return S.Array(__S(96, __c12, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(89, __c11, 1)),
+          value: S.optional(__S(97, __c12, 1)),
         }),
       ).annotate({ identifier: "AllocatedQuotaToSubscriptionList" });
     case 3:
@@ -1833,40 +1960,30 @@ function __c11(j: number): any {
           limit: S.optional(S.Number),
           comment: S.optional(S.String),
           unit: S.optional(S.String),
-          name: S.optional(__S(168, __c21, 0)),
+          name: S.optional(__S(176, __c22, 0)),
           availableLimit: S.optional(S.Number),
-          allocatedToSubscriptions: S.optional(__S(90, __c11, 2)),
+          allocatedToSubscriptions: S.optional(__S(98, __c12, 2)),
         }),
       ).annotate({ identifier: "GroupQuotaDetails" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(91, __c11, 3)),
+          properties: S.optional(__S(99, __c12, 3)),
         }),
       ).annotate({ identifier: "GroupQuotaLimit" });
     case 5:
-      return S.Array(__S(92, __c11, 4));
+      return S.Array(__S(100, __c12, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          value: S.optional(__S(93, __c11, 5)),
+          value: S.optional(__S(101, __c12, 5)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GroupQuotaLimitListProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c20, 0)),
-          properties: S.optional(__S(94, __c11, 6)),
-        }),
-      ).annotate({ identifier: "ListGroupQuotaLimitsResponse" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1885,17 +2002,17 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "ListGroupQuotaLimitsRequestRequest" });
     case 1:
-      return S.Array(__S(155, __c19, 3));
+      return S.Array(__S(163, __c20, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(97, __c12, 1),
+          value: __S(105, __c13, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubmittedResourceRequestStatusList" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1911,17 +2028,17 @@ function __c13(j: number): any {
         ),
       ).annotate({ identifier: "ListGroupQuotasRequest" });
     case 1:
-      return S.Array(__S(313, __c39, 1));
+      return S.Array(__S(328, __c41, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(105, __c13, 1),
+          value: __S(113, __c14, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GroupQuotaList" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1940,9 +2057,19 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListGroupQuotaSubscriptionAllocationRequest2" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(131, __c16, 3)),
+        }),
+      ).annotate({ identifier: "ListGroupQuotaSubscriptionAllocationResponse" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1950,38 +2077,28 @@ function __c15(j: number): any {
           resourceName: S.optional(S.String),
           limit: S.optional(S.Number),
           shareableQuota: S.optional(S.Number),
-          name: S.optional(__S(168, __c21, 0)),
+          name: S.optional(__S(176, __c22, 0)),
         }),
       ).annotate({ identifier: "SubscriptionQuotaDetails" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(120, __c15, 0)),
+          properties: S.optional(__S(128, __c16, 0)),
         }),
       ).annotate({ identifier: "SubscriptionQuotaAllocations" });
     case 2:
-      return S.Array(__S(121, __c15, 1));
+      return S.Array(__S(129, __c16, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          value: S.optional(__S(122, __c15, 2)),
+          value: S.optional(__S(130, __c16, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubscriptionQuotaAllocationsListProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c20, 0)),
-          properties: S.optional(__S(123, __c15, 3)),
-        }),
-      ).annotate({ identifier: "ListGroupQuotaSubscriptionAllocationResponse" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2001,17 +2118,17 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "ListGroupQuotaSubscriptionAllocationRequestRequest" });
     case 1:
-      return S.Array(__S(347, __c43, 3));
+      return S.Array(__S(371, __c46, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(129, __c16, 1),
+          value: __S(137, __c17, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaAllocationRequestStatusList" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2028,17 +2145,17 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "ListGroupQuotaSubscriptionRequestsRequest" });
     case 1:
-      return S.Array(__S(361, __c45, 1));
+      return S.Array(__S(385, __c48, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(137, __c17, 1),
+          value: __S(145, __c18, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GroupQuotaSubscriptionRequestStatusList" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2057,13 +2174,13 @@ function __c18(j: number): any {
       ).annotate({ identifier: "GetGroupQuotaLimitsRequestRequest" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number),
-          name: S.optional(__S(168, __c21, 0)),
+          name: S.optional(__S(176, __c22, 0)),
           region: S.optional(S.String),
           comments: S.optional(S.String),
         }),
@@ -2071,13 +2188,13 @@ function __c19(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(152, __c19, 0)),
+          properties: S.optional(__S(160, __c20, 0)),
         }),
       ).annotate({ identifier: "GroupQuotaRequestBase" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          requestedResource: S.optional(__S(153, __c19, 1)),
+          requestedResource: S.optional(__S(161, __c20, 1)),
           requestSubmitTime: S.optional(S.String),
           provisioningState: S.optional(S.String),
           faultCode: S.optional(S.String),
@@ -2089,13 +2206,13 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c20, 0)),
-          properties: S.optional(__S(154, __c19, 2)),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(162, __c20, 2)),
         }),
       ).annotate({ identifier: "GetGroupQuotaLimitsRequestResponse" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2110,7 +2227,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2121,7 +2238,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "GroupQuotaRequestBasePropertiesName" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2138,17 +2255,17 @@ function __c22(j: number): any {
         ),
       ).annotate({ identifier: "ListGroupQuotaSubscriptionsRequest" });
     case 1:
-      return S.Array(__S(329, __c41, 1));
+      return S.Array(__S(352, __c44, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(177, __c22, 1),
+          value: __S(185, __c23, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GroupQuotaSubscriptionIdList" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2169,7 +2286,7 @@ function __c23(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(168, __c21, 0)),
+          name: S.optional(__S(176, __c22, 0)),
           limit: S.optional(S.Number),
           usages: S.optional(S.Number),
           unit: S.optional(S.String),
@@ -2181,22 +2298,22 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c20, 0)),
-          properties: S.optional(__S(185, __c23, 1)),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(193, __c24, 1)),
         }),
       ).annotate({ identifier: "ResourceUsages" });
     case 3:
-      return S.Array(__S(186, __c23, 2));
+      return S.Array(__S(194, __c24, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(187, __c23, 3),
+          value: __S(195, __c24, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceUsageList" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2212,17 +2329,17 @@ function __c24(j: number): any {
         ),
       ).annotate({ identifier: "ListQuotaRequest" });
     case 1:
-      return S.Array(__S(377, __c47, 1));
+      return S.Array(__S(400, __c50, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(193, __c24, 1),
+          value: __S(201, __c25, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaLimits" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2248,22 +2365,22 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(201, __c25, 1)),
+          display: S.optional(__S(209, __c26, 1)),
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationResponse" });
     case 3:
-      return S.Array(__S(202, __c25, 2));
+      return S.Array(__S(210, __c26, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(203, __c25, 3),
+          value: __S(211, __c26, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationList" });
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2282,17 +2399,17 @@ function __c26(j: number): any {
         ),
       ).annotate({ identifier: "ListQuotaRequestStatusRequest" });
     case 1:
-      return S.Array(__S(404, __c50, 4));
+      return S.Array(__S(436, __c54, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(209, __c26, 1),
+          value: __S(217, __c27, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaRequestDetailsList" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2312,20 +2429,20 @@ function __c27(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(217, __c27, 1),
+          value: __S(225, __c28, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsagesLimits" });
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(233, __c29, 1)),
+          properties: S.optional(__S(241, __c30, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2335,9 +2452,21 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "QuotaCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(408, __c51, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "QuotaCreateOrUpdateResponse" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2348,15 +2477,15 @@ function __c29(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          limit: S.optional(__S(384, __c48, 0)),
-          name: S.optional(__S(232, __c29, 0)),
+          limit: S.optional(__S(416, __c52, 0)),
+          name: S.optional(__S(240, __c30, 0)),
           resourceType: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "QuotaPropertiesInput" });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2369,15 +2498,15 @@ function __c30(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(240, __c30, 0)),
+          properties: S.optional(__S(248, __c31, 0)),
         }),
       ).annotate({ identifier: "GroupQuotaLimitInput" });
     case 2:
-      return S.Array(__S(241, __c30, 1));
+      return S.Array(__S(249, __c31, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(242, __c30, 2)),
+          value: S.optional(__S(250, __c31, 2)),
         }),
       ).annotate({ identifier: "GroupQuotaLimitListPropertiesInput" });
     case 4:
@@ -2387,7 +2516,7 @@ function __c30(j: number): any {
           groupQuotaName: S.String.pipe(T.Label()),
           resourceProviderName: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          properties: S.optional(__S(243, __c30, 3)),
+          properties: S.optional(__S(251, __c31, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2397,9 +2526,22 @@ function __c30(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateGroupQuotaLimitsRequestRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(102, __c12, 6)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateGroupQuotaLimitsRequestResponse" });
   }
 }
-function __c31(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2420,7 +2562,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "UpdateGroupQuotaLocationSettingsRequest" });
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2439,7 +2581,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "UpdateGroupQuotasRequest" });
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2457,9 +2599,19 @@ function __c33(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGroupQuotaLocationSettingsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(280, __c35, 0)),
+        }),
+      ).annotate({ identifier: "GetGroupQuotaLocationSettingsResponse" });
   }
 }
-function __c34(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2470,19 +2622,9 @@ function __c34(j: number): any {
           faultCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "GroupQuotasEnforcementStatusProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c20, 0)),
-          properties: S.optional(__S(272, __c34, 0)),
-        }),
-      ).annotate({ identifier: "GetGroupQuotaLocationSettingsResponse" });
   }
 }
-function __c35(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2501,7 +2643,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "UpdateGroupQuotaSubscriptionRequest" });
   }
 }
-function __c36(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2513,15 +2655,15 @@ function __c36(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(288, __c36, 0)),
+          properties: S.optional(__S(296, __c37, 0)),
         }),
       ).annotate({ identifier: "SubscriptionQuotaAllocationsInput" });
     case 2:
-      return S.Array(__S(289, __c36, 1));
+      return S.Array(__S(297, __c37, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(290, __c36, 2)),
+          value: S.optional(__S(298, __c37, 2)),
         }),
       ).annotate({ identifier: "SubscriptionQuotaAllocationsListPropertiesInput" });
     case 4:
@@ -2532,7 +2674,7 @@ function __c36(j: number): any {
           groupQuotaName: S.String.pipe(T.Label()),
           resourceProviderName: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          properties: S.optional(__S(291, __c36, 3)),
+          properties: S.optional(__S(299, __c37, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2542,16 +2684,29 @@ function __c36(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateGroupQuotaSubscriptionAllocationRequestRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(131, __c16, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateGroupQuotaSubscriptionAllocationRequestResponse" });
   }
 }
-function __c37(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(233, __c29, 1)),
+          properties: S.optional(__S(241, __c30, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2561,9 +2716,20 @@ function __c37(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateQuotaRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(408, __c51, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+        }),
+      ).annotate({ identifier: "UpdateQuotaResponse" });
   }
 }
-function __c38(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2581,7 +2747,7 @@ function __c38(j: number): any {
       ).annotate({ identifier: "GetGroupQuotasRequest" });
   }
 }
-function __c39(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2591,19 +2757,23 @@ function __c39(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "GroupQuotasEntityBase" });
-    case 1:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c20, 0)),
-          properties: S.optional(__S(312, __c39, 0)),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(320, __c40, 0)),
         }),
       ).annotate({ identifier: "GetGroupQuotasResponse" });
   }
 }
-function __c40(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2622,7 +2792,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "GetGroupQuotaSubscriptionRequest2" });
   }
 }
-function __c41(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2631,19 +2801,23 @@ function __c41(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "GroupQuotaSubscriptionIdProperties" });
-    case 1:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c20, 0)),
-          properties: S.optional(__S(328, __c41, 0)),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(344, __c43, 0)),
         }),
       ).annotate({ identifier: "GetGroupQuotaSubscriptionResponse" });
   }
 }
-function __c42(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2664,26 +2838,26 @@ function __c42(j: number): any {
       ).annotate({ identifier: "GetGroupQuotaSubscriptionAllocationRequestRequest" });
   }
 }
-function __c43(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number),
-          name: S.optional(__S(168, __c21, 0)),
+          name: S.optional(__S(176, __c22, 0)),
           region: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaAllocationRequestBaseProperties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(344, __c43, 0)),
+          properties: S.optional(__S(368, __c46, 0)),
         }),
       ).annotate({ identifier: "QuotaAllocationRequestBase" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          requestedResource: S.optional(__S(345, __c43, 1)),
+          requestedResource: S.optional(__S(369, __c46, 1)),
           requestSubmitTime: S.optional(S.String),
           provisioningState: S.optional(S.String),
           faultCode: S.optional(S.String),
@@ -2695,13 +2869,13 @@ function __c43(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c20, 0)),
-          properties: S.optional(__S(346, __c43, 2)),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(370, __c46, 2)),
         }),
       ).annotate({ identifier: "GetGroupQuotaSubscriptionAllocationRequestResponse" });
   }
 }
-function __c44(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2720,7 +2894,7 @@ function __c44(j: number): any {
       ).annotate({ identifier: "GetGroupQuotaSubscriptionRequestRequest" });
   }
 }
-function __c45(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2736,13 +2910,13 @@ function __c45(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c20, 0)),
-          properties: S.optional(__S(360, __c45, 0)),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(384, __c48, 0)),
         }),
       ).annotate({ identifier: "GetGroupQuotaSubscriptionRequestResponse" });
   }
 }
-function __c46(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2760,33 +2934,37 @@ function __c46(j: number): any {
       ).annotate({ identifier: "GetQuotaRequest" });
   }
 }
-function __c47(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          limit: S.optional(__S(384, __c48, 0)),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(408, __c51, 0)),
+        }),
+      ).annotate({ identifier: "GetQuotaResponse" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(__S(416, __c52, 0)),
           unit: S.optional(S.String),
-          name: S.optional(__S(168, __c21, 0)),
+          name: S.optional(__S(176, __c22, 0)),
           resourceType: S.optional(S.String),
           quotaPeriod: S.optional(S.String),
           isQuotaApplicable: S.optional(S.Boolean),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "QuotaProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c20, 0)),
-          properties: S.optional(__S(376, __c47, 0)),
-        }),
-      ).annotate({ identifier: "GetQuotaResponse" });
   }
 }
-function __c48(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2798,7 +2976,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "LimitJsonObject" });
   }
 }
-function __c49(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2816,7 +2994,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "GetQuotaRequestStatusRequest" });
   }
 }
-function __c50(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2828,25 +3006,25 @@ function __c50(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(168, __c21, 0)),
+          name: S.optional(__S(176, __c22, 0)),
           resourceType: S.optional(S.String),
           unit: S.optional(S.String),
           provisioningState: S.optional(S.String),
           message: S.optional(S.String),
           subRequestId: S.optional(S.String),
-          limit: S.optional(__S(384, __c48, 0)),
+          limit: S.optional(__S(416, __c52, 0)),
         }),
       ).annotate({ identifier: "SubRequest" });
     case 2:
-      return S.Array(__S(401, __c50, 1));
+      return S.Array(__S(433, __c54, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           message: S.optional(S.String),
-          error: S.optional(__S(400, __c50, 0)),
+          error: S.optional(__S(432, __c54, 0)),
           requestSubmitTime: S.optional(S.String),
-          value: S.optional(__S(402, __c50, 2)),
+          value: S.optional(__S(434, __c54, 2)),
         }),
       ).annotate({ identifier: "QuotaRequestProperties" });
     case 4:
@@ -2855,8 +3033,8 @@ function __c50(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c20, 0)),
-          properties: S.optional(__S(403, __c50, 3)),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(435, __c54, 3)),
         }),
       ).annotate({ identifier: "GetQuotaRequestStatusResponse" });
   }

@@ -197,6 +197,10 @@ export interface CreateLedgerResponse {
   location: string;
   /** Properties of Confidential Ledger Resource. */
   properties?: LedgerProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteLedgerRequest {
   /** The ID of the target subscription. */
@@ -206,7 +210,12 @@ export interface DeleteLedgerRequest {
   /** Name of the Confidential Ledger */
   ledgerName: string;
 }
-export interface DeleteLedgerResponse {}
+export interface DeleteLedgerResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface ExportLedgerFileRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -223,6 +232,10 @@ export interface ExportLedgerFileRequest {
 export interface ConfidentialLedgerFilesExportResponse {
   /** Response body stating if the ledger files are being exported. */
   message?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetLedgerRequest {
   /** The ID of the target subscription. */
@@ -355,6 +368,8 @@ export interface UpdateLedgerResponse {
   location: string;
   /** Properties of Confidential Ledger Resource. */
   properties?: LedgerProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 export type CheckNameAvailabilityError = AzureOpError;
 /** To check whether a resource name is available. */
@@ -380,7 +395,7 @@ export const CreateLedger: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(8, __c1, 0) as any as S.Schema<CreateLedgerRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<CreateLedgerResponse>,
+  output: __S(9, __c1, 1) as any as S.Schema<CreateLedgerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -425,7 +440,7 @@ export const GetLedger: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(48, __c6, 0) as any as S.Schema<GetLedgerRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetLedgerResponse>,
+  output: __S(56, __c7, 0) as any as S.Schema<GetLedgerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -439,8 +454,8 @@ export const ListLedgerByResourceGroup: API.OperationMethod<
   ListLedgerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListLedgerByResourceGroupRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ConfidentialLedgerList>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListLedgerByResourceGroupRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<ConfidentialLedgerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -454,8 +469,8 @@ export const ListLedgerBySubscription: API.OperationMethod<
   ListLedgerBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListLedgerBySubscriptionRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ConfidentialLedgerList>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListLedgerBySubscriptionRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<ConfidentialLedgerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -469,8 +484,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<ResourceProviderOperationList>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<ResourceProviderOperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -484,8 +499,8 @@ export const UpdateLedger: API.OperationMethod<
   UpdateLedgerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<UpdateLedgerRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<UpdateLedgerResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<UpdateLedgerRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<UpdateLedgerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -539,6 +554,20 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateLedgerRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(21, __c2, 5)),
+          tags: S.optional(__S(16, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(22, __c2, 6)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateLedgerResponse" });
   }
 }
 function __c2(j: number): any {
@@ -599,18 +628,6 @@ function __c2(j: number): any {
           scittConfiguration: S.optional(S.String),
         }),
       ).annotate({ identifier: "LedgerProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(21, __c2, 5)),
-          tags: S.optional(__S(16, __c2, 0)),
-          location: S.String,
-          properties: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "CreateLedgerResponse" });
   }
 }
 function __c3(j: number): any {
@@ -653,7 +670,12 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "DeleteLedgerRequest" });
     case 1:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteLedgerResponse" });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteLedgerResponse" });
   }
 }
 function __c5(j: number): any {
@@ -679,6 +701,8 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "ConfidentialLedgerFilesExportResponse" });
   }
@@ -707,6 +731,22 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(21, __c2, 5)),
+          tags: S.optional(__S(16, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(22, __c2, 6)),
+        }),
+      ).annotate({ identifier: "GetLedgerResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -721,20 +761,20 @@ function __c7(j: number): any {
       ).annotate({ identifier: "ListLedgerByResourceGroupRequest" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23, __c2, 7));
+      return S.Array(__S(56, __c7, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(64, __c8, 0),
+          value: __S(72, __c9, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfidentialLedgerList" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -752,7 +792,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "ListLedgerBySubscriptionRequest" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -779,21 +819,21 @@ function __c10(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(81, __c10, 1)),
+          display: S.optional(__S(89, __c11, 1)),
         }),
       ).annotate({ identifier: "ResourceProviderOperationDefinition" });
     case 3:
-      return S.Array(__S(82, __c10, 2));
+      return S.Array(__S(90, __c11, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(83, __c10, 3)),
+          value: S.optional(__S(91, __c11, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceProviderOperationList" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -813,6 +853,19 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateLedgerRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(21, __c2, 5)),
+          tags: S.optional(__S(16, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(22, __c2, 6)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateLedgerResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

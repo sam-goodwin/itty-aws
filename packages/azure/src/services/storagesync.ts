@@ -100,7 +100,12 @@ export interface CloudEndpointsPostRestoreRequest {
   /** Post Restore restore file spec array. */
   restoreFileSpec?: CloudEndpointsPostRestoreRequestRestoreFileSpecList;
 }
-export interface CloudEndpointsPostRestoreResponse {}
+export interface CloudEndpointsPostRestoreResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface CloudEndpointsPreBackupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -115,7 +120,12 @@ export interface CloudEndpointsPreBackupRequest {
   /** Azure File Share. */
   azureFileShare?: string;
 }
-export interface CloudEndpointsPreBackupResponse {}
+export interface CloudEndpointsPreBackupResponse {
+  /** Operation Status Location URI */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface CloudEndpointsRestoreheartbeatRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -270,6 +280,12 @@ export interface CreateCloudEndpointResponse {
   systemData?: SystemData;
   /** Cloud Endpoint properties. */
   properties?: CloudEndpointProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The private endpoint resource. */
 export interface PrivateEndpointInput {}
@@ -338,6 +354,12 @@ export interface CreatePrivateEndpointConnectionResponse {
   systemData?: SystemData;
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** RegisteredServer Create Properties object. */
 export interface RegisteredServerCreateParametersProperties {
@@ -448,6 +470,12 @@ export interface CreateRegisteredServerResponse {
   systemData?: SystemData;
   /** RegisteredServer properties. */
   properties?: RegisteredServerProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Type of the Feature Status */
 export type FeatureStatus = "on" | "off";
@@ -855,6 +883,12 @@ export interface CreateServerEndpointResponse {
   systemData?: SystemData;
   /** Server Endpoint properties. */
   properties?: ServerEndpointProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateStorageSyncServiceRequestTagsMap = { [key: string]: string | undefined };
@@ -972,6 +1006,12 @@ export interface CreateStorageSyncServiceResponse {
   properties?: StorageSyncServiceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateStorageSyncServiceResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface CreateSyncGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1016,7 +1056,14 @@ export interface DeleteCloudEndpointRequest {
   /** Name of Cloud Endpoint object. */
   cloudEndpointName: string;
 }
-export interface DeleteCloudEndpointResponse {}
+export interface DeleteCloudEndpointResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1027,7 +1074,14 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-export interface DeletePrivateEndpointConnectionResponse {}
+export interface DeletePrivateEndpointConnectionResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteRegisteredServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1038,7 +1092,12 @@ export interface DeleteRegisteredServerRequest {
   /** GUID identifying the on-premises server. */
   serverId: string;
 }
-export interface DeleteRegisteredServerResponse {}
+export interface DeleteRegisteredServerResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteServerEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1051,7 +1110,12 @@ export interface DeleteServerEndpointRequest {
   /** Name of Server Endpoint object. */
   serverEndpointName: string;
 }
-export interface DeleteServerEndpointResponse {}
+export interface DeleteServerEndpointResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteStorageSyncServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1060,7 +1124,14 @@ export interface DeleteStorageSyncServiceRequest {
   /** Name of Storage Sync Service resource. */
   storageSyncServiceName: string;
 }
-export interface DeleteStorageSyncServiceResponse {}
+export interface DeleteStorageSyncServiceResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSyncGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1564,6 +1635,8 @@ export interface ServerEndpointArray {
   value?: ServerEndpointArrayValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
+  /** Operation Status Location URI */
+  location?: string;
 }
 export interface ListStorageSyncServiceByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1715,6 +1788,10 @@ export interface PostBackupResponseProperties {
 export interface PostBackupResponse {
   /** Post Backup Response Properties */
   backupMetadata?: PostBackupResponseProperties;
+  /** Operation Status Location URI */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Pre Restore restore file spec array. */
 export type RestoreCloudEndpointsPreRequestRestoreFileSpecList = Array<RestoreFileSpec>;
@@ -1748,7 +1825,12 @@ export interface RestoreCloudEndpointsPreRequest {
   /** Pre Restore pause wait for sync drain time period in seconds. */
   pauseWaitForSyncDrainTimePeriodInSeconds?: number;
 }
-export interface RestoreCloudEndpointsPreResponse {}
+export interface RestoreCloudEndpointsPreResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface ServerEndpointsRecallActionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1765,7 +1847,12 @@ export interface ServerEndpointsRecallActionRequest {
   /** Recall path. */
   recallPath?: string;
 }
-export interface ServerEndpointsRecallActionResponse {}
+export interface ServerEndpointsRecallActionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Change Detection Mode. Applies to a directory specified in directoryPath parameter. */
 export type ChangeDetectionMode = "Default" | "Recursive";
 /** Array of relative paths on the Azure File share to be included in the change detection. Can be files and directories. */
@@ -1788,7 +1875,12 @@ export interface TriggerCloudEndpointChangeDetectionRequest {
   /** Array of relative paths on the Azure File share to be included in the change detection. Can be files and directories. */
   paths?: TriggerCloudEndpointChangeDetectionRequestPathsList;
 }
-export interface TriggerCloudEndpointChangeDetectionResponse {}
+export interface TriggerCloudEndpointChangeDetectionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface TriggerRegisteredServerRolloverRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1801,7 +1893,12 @@ export interface TriggerRegisteredServerRolloverRequest {
   /** Certificate Data */
   serverCertificate?: string;
 }
-export interface TriggerRegisteredServerRolloverResponse {}
+export interface TriggerRegisteredServerRolloverResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** CloudEndpoint Update Properties object. */
 export interface CloudEndpointUpdateProperties {
   /** The interval for enumerating changes on the cloud endpoint. */
@@ -1832,6 +1929,12 @@ export interface UpdateCloudEndpointResponse {
   systemData?: SystemData;
   /** Cloud Endpoint properties. */
   properties?: CloudEndpointProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** RegisteredServer Update Properties object. */
 export interface RegisteredServerUpdateProperties {
@@ -1863,6 +1966,12 @@ export interface UpdateRegisteredServerResponse {
   systemData?: SystemData;
   /** RegisteredServer properties. */
   properties?: RegisteredServerProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access. */
 export type ServerEndpointUpdatePropertiesLocalCacheMode =
@@ -1908,6 +2017,12 @@ export interface UpdateServerEndpointResponse {
   systemData?: SystemData;
   /** Server Endpoint properties. */
   properties?: ServerEndpointProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The user-specified tags associated with the storage sync service. */
 export type UpdateStorageSyncServiceRequestTagsMap = { [key: string]: string | undefined };
@@ -1950,6 +2065,12 @@ export interface UpdateStorageSyncServiceResponse {
   properties?: StorageSyncServiceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateStorageSyncServiceResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type AbortWorkflowError = AzureOpError;
 /** Abort the given workflow. */
@@ -1990,11 +2111,11 @@ export const CloudEndpointsAfsShareMetadataCertificatePublicKeys: API.OperationM
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    576,
-    __c18,
+    672,
+    __c21,
     0,
   ) as any as S.Schema<CloudEndpointsAfsShareMetadataCertificatePublicKeysRequest>,
-  output: __S(577, __c18, 1) as any as S.Schema<CloudEndpointAfsShareMetadataCertificatePublicKeys>,
+  output: __S(673, __c21, 1) as any as S.Schema<CloudEndpointAfsShareMetadataCertificatePublicKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2008,8 +2129,8 @@ export const CloudEndpointsPostRestore: API.OperationMethod<
   CloudEndpointsPostRestoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c30, 0) as any as S.Schema<CloudEndpointsPostRestoreRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<CloudEndpointsPostRestoreResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<CloudEndpointsPostRestoreRequest>,
+  output: __S(1216, __c38, 0) as any as S.Schema<CloudEndpointsPostRestoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2023,8 +2144,8 @@ export const CloudEndpointsPreBackup: API.OperationMethod<
   CloudEndpointsPreBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c43, 0) as any as S.Schema<CloudEndpointsPreBackupRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<CloudEndpointsPreBackupResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<CloudEndpointsPreBackupRequest>,
+  output: __S(1216, __c38, 0) as any as S.Schema<CloudEndpointsPreBackupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2038,7 +2159,7 @@ export const CloudEndpointsRestoreheartbeat: API.OperationMethod<
   CloudEndpointsRestoreheartbeatError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1600, __c50, 0) as any as S.Schema<CloudEndpointsRestoreheartbeatRequest>,
+  input: __S(1824, __c57, 0) as any as S.Schema<CloudEndpointsRestoreheartbeatRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<CloudEndpointsRestoreheartbeatResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2053,8 +2174,8 @@ export const CreateCloudEndpoint: API.OperationMethod<
   CreateCloudEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1633, __c51, 1) as any as S.Schema<CreateCloudEndpointRequest>,
-  output: __S(1668, __c52, 4) as any as S.Schema<CreateCloudEndpointResponse>,
+  input: __S(1857, __c58, 1) as any as S.Schema<CreateCloudEndpointRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<CreateCloudEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2068,8 +2189,8 @@ export const CreatePrivateEndpointConnection: API.OperationMethod<
   CreatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1729, __c54, 1) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
-  output: __S(1795, __c56, 3) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
+  input: __S(1985, __c62, 1) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
+  output: __S(1986, __c62, 2) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2083,8 +2204,8 @@ export const CreateRegisteredServer: API.OperationMethod<
   CreateRegisteredServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1825, __c57, 1) as any as S.Schema<CreateRegisteredServerRequest>,
-  output: __S(1857, __c58, 1) as any as S.Schema<CreateRegisteredServerResponse>,
+  input: __S(2081, __c65, 1) as any as S.Schema<CreateRegisteredServerRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<CreateRegisteredServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2098,8 +2219,8 @@ export const CreateServerEndpoint: API.OperationMethod<
   CreateServerEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1889, __c59, 1) as any as S.Schema<CreateServerEndpointRequest>,
-  output: __S(1974, __c61, 22) as any as S.Schema<CreateServerEndpointResponse>,
+  input: __S(2177, __c68, 1) as any as S.Schema<CreateServerEndpointRequest>,
+  output: __S(2272, __c71, 0) as any as S.Schema<CreateServerEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2114,7 +2235,7 @@ export const CreateStorageSyncService: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c3, 0) as any as S.Schema<CreateStorageSyncServiceRequest>,
-  output: __S(164, __c5, 4) as any as S.Schema<CreateStorageSyncServiceResponse>,
+  output: __S(227, __c7, 3) as any as S.Schema<CreateStorageSyncServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2128,8 +2249,8 @@ export const CreateSyncGroup: API.OperationMethod<
   CreateSyncGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c7, 0) as any as S.Schema<CreateSyncGroupRequest>,
-  output: __S(257, __c8, 1) as any as S.Schema<CreateSyncGroupResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<CreateSyncGroupRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<CreateSyncGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2143,8 +2264,8 @@ export const DeleteCloudEndpoint: API.OperationMethod<
   DeleteCloudEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c9, 0) as any as S.Schema<DeleteCloudEndpointRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteCloudEndpointResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteCloudEndpointRequest>,
+  output: __S(352, __c11, 0) as any as S.Schema<DeleteCloudEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2158,8 +2279,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c10, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(352, __c11, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2173,8 +2294,8 @@ export const DeleteRegisteredServer: API.OperationMethod<
   DeleteRegisteredServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c11, 0) as any as S.Schema<DeleteRegisteredServerRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteRegisteredServerResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteRegisteredServerRequest>,
+  output: __S(1216, __c38, 0) as any as S.Schema<DeleteRegisteredServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2188,8 +2309,8 @@ export const DeleteServerEndpoint: API.OperationMethod<
   DeleteServerEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c12, 0) as any as S.Schema<DeleteServerEndpointRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteServerEndpointResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteServerEndpointRequest>,
+  output: __S(1216, __c38, 0) as any as S.Schema<DeleteServerEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2203,8 +2324,8 @@ export const DeleteStorageSyncService: API.OperationMethod<
   DeleteStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c13, 0) as any as S.Schema<DeleteStorageSyncServiceRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteStorageSyncServiceResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<DeleteStorageSyncServiceRequest>,
+  output: __S(352, __c11, 0) as any as S.Schema<DeleteStorageSyncServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2218,7 +2339,7 @@ export const DeleteSyncGroup: API.OperationMethod<
   DeleteSyncGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c14, 0) as any as S.Schema<DeleteSyncGroupRequest>,
+  input: __S(512, __c16, 0) as any as S.Schema<DeleteSyncGroupRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<DeleteSyncGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2233,8 +2354,8 @@ export const GetCloudEndpoint: API.OperationMethod<
   GetCloudEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c15, 0) as any as S.Schema<GetCloudEndpointRequest>,
-  output: __S(1668, __c52, 4) as any as S.Schema<GetCloudEndpointResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetCloudEndpointRequest>,
+  output: __S(576, __c18, 0) as any as S.Schema<GetCloudEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2248,8 +2369,8 @@ export const GetOperationStatus: API.OperationMethod<
   GetOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c16, 0) as any as S.Schema<GetOperationStatusRequest>,
-  output: __S(513, __c16, 1) as any as S.Schema<OperationStatus>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetOperationStatusRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2263,8 +2384,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c19, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(1795, __c56, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2278,8 +2399,8 @@ export const GetRegisteredServer: API.OperationMethod<
   GetRegisteredServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c20, 0) as any as S.Schema<GetRegisteredServerRequest>,
-  output: __S(1857, __c58, 1) as any as S.Schema<GetRegisteredServerResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetRegisteredServerRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<GetRegisteredServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2293,8 +2414,8 @@ export const GetServerEndpoint: API.OperationMethod<
   GetServerEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<GetServerEndpointRequest>,
-  output: __S(1974, __c61, 22) as any as S.Schema<GetServerEndpointResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetServerEndpointRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<GetServerEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2308,8 +2429,8 @@ export const GetStorageSyncService: API.OperationMethod<
   GetStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c22, 0) as any as S.Schema<GetStorageSyncServiceRequest>,
-  output: __S(164, __c5, 4) as any as S.Schema<GetStorageSyncServiceResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetStorageSyncServiceRequest>,
+  output: __S(896, __c28, 0) as any as S.Schema<GetStorageSyncServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2323,8 +2444,8 @@ export const GetSyncGroup: API.OperationMethod<
   GetSyncGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c23, 0) as any as S.Schema<GetSyncGroupRequest>,
-  output: __S(257, __c8, 1) as any as S.Schema<GetSyncGroupResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetSyncGroupRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<GetSyncGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2338,8 +2459,8 @@ export const GetWorkflow: API.OperationMethod<
   GetWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c24, 0) as any as S.Schema<GetWorkflowRequest>,
-  output: __S(801, __c25, 1) as any as S.Schema<GetWorkflowResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<GetWorkflowRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<GetWorkflowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2353,8 +2474,8 @@ export const ListCloudEndpointBySyncGroup: API.OperationMethod<
   ListCloudEndpointBySyncGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c26, 0) as any as S.Schema<ListCloudEndpointBySyncGroupRequest>,
-  output: __S(834, __c26, 2) as any as S.Schema<CloudEndpointArray>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListCloudEndpointBySyncGroupRequest>,
+  output: __S(1026, __c32, 2) as any as S.Schema<CloudEndpointArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2368,8 +2489,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(874, __c27, 10) as any as S.Schema<OperationEntityListResult>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1066, __c33, 10) as any as S.Schema<OperationEntityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2384,11 +2505,11 @@ export const ListPrivateEndpointConnectionByStorageSyncService: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    896,
-    __c28,
+    1088,
+    __c34,
     0,
   ) as any as S.Schema<ListPrivateEndpointConnectionByStorageSyncServiceRequest>,
-  output: __S(897, __c28, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  output: __S(1089, __c34, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2402,10 +2523,10 @@ export const ListPrivateLinkResourceByStorageSyncService: API.OperationMethod<
   ListPrivateLinkResourceByStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<ListPrivateLinkResourceByStorageSyncServiceRequest>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListPrivateLinkResourceByStorageSyncServiceRequest>,
   output: __S(
-    932,
-    __c29,
+    1124,
+    __c35,
     4,
   ) as any as S.Schema<ListPrivateLinkResourceByStorageSyncServiceResponse>,
   errors: [UnknownAzureError],
@@ -2421,8 +2542,8 @@ export const ListRegisteredServerByStorageSyncService: API.OperationMethod<
   ListRegisteredServerByStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c32, 0) as any as S.Schema<ListRegisteredServerByStorageSyncServiceRequest>,
-  output: __S(1026, __c32, 2) as any as S.Schema<RegisteredServerArray>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ListRegisteredServerByStorageSyncServiceRequest>,
+  output: __S(1250, __c39, 2) as any as S.Schema<RegisteredServerArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2436,8 +2557,8 @@ export const ListServerEndpointBySyncGroup: API.OperationMethod<
   ListServerEndpointBySyncGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c33, 0) as any as S.Schema<ListServerEndpointBySyncGroupRequest>,
-  output: __S(1058, __c33, 2) as any as S.Schema<ServerEndpointArray>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListServerEndpointBySyncGroupRequest>,
+  output: __S(1282, __c40, 2) as any as S.Schema<ServerEndpointArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2451,8 +2572,8 @@ export const ListStorageSyncServiceByResourceGroup: API.OperationMethod<
   ListStorageSyncServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c34, 0) as any as S.Schema<ListStorageSyncServiceByResourceGroupRequest>,
-  output: __S(1121, __c35, 1) as any as S.Schema<StorageSyncServiceArray>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ListStorageSyncServiceByResourceGroupRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<StorageSyncServiceArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2466,8 +2587,8 @@ export const ListStorageSyncServiceBySubscription: API.OperationMethod<
   ListStorageSyncServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1152, __c36, 0) as any as S.Schema<ListStorageSyncServiceBySubscriptionRequest>,
-  output: __S(1121, __c35, 1) as any as S.Schema<StorageSyncServiceArray>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ListStorageSyncServiceBySubscriptionRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<StorageSyncServiceArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2481,8 +2602,8 @@ export const ListSyncGroupByStorageSyncService: API.OperationMethod<
   ListSyncGroupByStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c37, 0) as any as S.Schema<ListSyncGroupByStorageSyncServiceRequest>,
-  output: __S(1186, __c37, 2) as any as S.Schema<SyncGroupArray>,
+  input: __S(1408, __c44, 0) as any as S.Schema<ListSyncGroupByStorageSyncServiceRequest>,
+  output: __S(1410, __c44, 2) as any as S.Schema<SyncGroupArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2496,8 +2617,8 @@ export const ListWorkflowByStorageSyncService: API.OperationMethod<
   ListWorkflowByStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c38, 0) as any as S.Schema<ListWorkflowByStorageSyncServiceRequest>,
-  output: __S(1218, __c38, 2) as any as S.Schema<WorkflowArray>,
+  input: __S(1440, __c45, 0) as any as S.Schema<ListWorkflowByStorageSyncServiceRequest>,
+  output: __S(1442, __c45, 2) as any as S.Schema<WorkflowArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2511,8 +2632,8 @@ export const LocationOperationStatus2: API.OperationMethod<
   LocationOperationStatus2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c39, 0) as any as S.Schema<LocationOperationStatusRequest>,
-  output: __S(1249, __c39, 1) as any as S.Schema<LocationOperationStatus>,
+  input: __S(1472, __c46, 0) as any as S.Schema<LocationOperationStatusRequest>,
+  output: __S(1473, __c46, 1) as any as S.Schema<LocationOperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2526,8 +2647,8 @@ export const PostCloudEndpointBackup: API.OperationMethod<
   PostCloudEndpointBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c40, 0) as any as S.Schema<PostCloudEndpointBackupRequest>,
-  output: __S(1282, __c40, 2) as any as S.Schema<PostBackupResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<PostCloudEndpointBackupRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<PostBackupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2541,8 +2662,8 @@ export const RestoreCloudEndpointsPre: API.OperationMethod<
   RestoreCloudEndpointsPreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c41, 0) as any as S.Schema<RestoreCloudEndpointsPreRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<RestoreCloudEndpointsPreResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<RestoreCloudEndpointsPreRequest>,
+  output: __S(1216, __c38, 0) as any as S.Schema<RestoreCloudEndpointsPreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2556,8 +2677,8 @@ export const ServerEndpointsRecallAction: API.OperationMethod<
   ServerEndpointsRecallActionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c42, 0) as any as S.Schema<ServerEndpointsRecallActionRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<ServerEndpointsRecallActionResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<ServerEndpointsRecallActionRequest>,
+  output: __S(1216, __c38, 0) as any as S.Schema<ServerEndpointsRecallActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2571,8 +2692,8 @@ export const TriggerCloudEndpointChangeDetection: API.OperationMethod<
   TriggerCloudEndpointChangeDetectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c44, 0) as any as S.Schema<TriggerCloudEndpointChangeDetectionRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<TriggerCloudEndpointChangeDetectionResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<TriggerCloudEndpointChangeDetectionRequest>,
+  output: __S(1216, __c38, 0) as any as S.Schema<TriggerCloudEndpointChangeDetectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2586,8 +2707,8 @@ export const TriggerRegisteredServerRollover: API.OperationMethod<
   TriggerRegisteredServerRolloverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c45, 0) as any as S.Schema<TriggerRegisteredServerRolloverRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<TriggerRegisteredServerRolloverResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<TriggerRegisteredServerRolloverRequest>,
+  output: __S(1216, __c38, 0) as any as S.Schema<TriggerRegisteredServerRolloverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2601,8 +2722,8 @@ export const UpdateCloudEndpoint: API.OperationMethod<
   UpdateCloudEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1473, __c46, 1) as any as S.Schema<UpdateCloudEndpointRequest>,
-  output: __S(1668, __c52, 4) as any as S.Schema<UpdateCloudEndpointResponse>,
+  input: __S(1697, __c53, 1) as any as S.Schema<UpdateCloudEndpointRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<UpdateCloudEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2616,8 +2737,8 @@ export const UpdateRegisteredServer: API.OperationMethod<
   UpdateRegisteredServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1505, __c47, 1) as any as S.Schema<UpdateRegisteredServerRequest>,
-  output: __S(1857, __c58, 1) as any as S.Schema<UpdateRegisteredServerResponse>,
+  input: __S(1729, __c54, 1) as any as S.Schema<UpdateRegisteredServerRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<UpdateRegisteredServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2631,8 +2752,8 @@ export const UpdateServerEndpoint: API.OperationMethod<
   UpdateServerEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1537, __c48, 1) as any as S.Schema<UpdateServerEndpointRequest>,
-  output: __S(1974, __c61, 22) as any as S.Schema<UpdateServerEndpointResponse>,
+  input: __S(1761, __c55, 1) as any as S.Schema<UpdateServerEndpointRequest>,
+  output: __S(2272, __c71, 0) as any as S.Schema<UpdateServerEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2646,8 +2767,8 @@ export const UpdateStorageSyncService: API.OperationMethod<
   UpdateStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c49, 0) as any as S.Schema<UpdateStorageSyncServiceRequest>,
-  output: __S(164, __c5, 4) as any as S.Schema<UpdateStorageSyncServiceResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<UpdateStorageSyncServiceRequest>,
+  output: __S(227, __c7, 3) as any as S.Schema<UpdateStorageSyncServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2716,10 +2837,10 @@ function __c3(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageSyncServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1920, __c60, 0)),
+          tags: S.optional(__S(2208, __c69, 0)),
           location: S.String,
-          identity: S.optional(__S(193, __c6, 1)),
-          properties: S.optional(__S(194, __c6, 2)),
+          identity: S.optional(__S(225, __c7, 1)),
+          properties: S.optional(__S(226, __c7, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2734,10 +2855,24 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1795, __c56, 3));
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1952, __c61, 0)),
+          properties: S.optional(__S(2050, __c64, 2)),
+        }),
+      ).annotate({ identifier: "StorageSyncServicePropertiesPrivateEndpointConnectionsItem" });
   }
 }
 function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(128, __c4, 0));
+  }
+}
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2749,7 +2884,7 @@ function __c5(j: number): any {
           useIdentity: S.optional(S.Boolean),
           lastWorkflowId: S.optional(S.String),
           lastOperationName: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(128, __c4, 0)),
+          privateEndpointConnections: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({ identifier: "StorageSyncServiceProperties" });
     case 1:
@@ -2760,32 +2895,19 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(161, __c5, 1)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(193, __c6, 1)));
     case 3:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(162, __c5, 2)),
+          userAssignedIdentities: S.optional(__S(194, __c6, 2)),
         }),
       ).annotate({ identifier: "CreateStorageSyncServiceResponseIdentity" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1696, __c53, 0)),
-          tags: S.optional(__S(1920, __c60, 0)),
-          location: S.String,
-          properties: S.optional(__S(160, __c5, 0)),
-          identity: S.optional(__S(163, __c5, 3)),
-        }),
-      ).annotate({ identifier: "CreateStorageSyncServiceResponse" });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(32, __c1, 0)));
@@ -2793,7 +2915,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(192, __c6, 0)),
+          userAssignedIdentities: S.optional(__S(224, __c7, 0)),
         }),
       ).annotate({ identifier: "CreateStorageSyncServiceRequestIdentity" });
     case 2:
@@ -2803,9 +2925,25 @@ function __c6(j: number): any {
           useIdentity: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "StorageSyncServiceCreateParametersProperties" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1952, __c61, 0)),
+          tags: S.optional(__S(2208, __c69, 0)),
+          location: S.String,
+          properties: S.optional(__S(192, __c6, 0)),
+          identity: S.optional(__S(195, __c6, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateStorageSyncServiceResponse" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2826,7 +2964,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "CreateSyncGroupRequest" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2841,13 +2979,13 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1696, __c53, 0)),
-          properties: S.optional(__S(256, __c8, 0)),
+          systemData: S.optional(__S(1952, __c61, 0)),
+          properties: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({ identifier: "CreateSyncGroupResponse" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2868,7 +3006,19 @@ function __c9(j: number): any {
       ).annotate({ identifier: "DeleteCloudEndpointRequest" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteCloudEndpointResponse" });
+  }
+}
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2888,7 +3038,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "DeletePrivateEndpointConnectionRequest" });
   }
 }
-function __c11(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2908,7 +3058,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "DeleteRegisteredServerRequest" });
   }
 }
-function __c12(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2929,7 +3079,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "DeleteServerEndpointRequest" });
   }
 }
-function __c13(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2948,7 +3098,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "DeleteStorageSyncServiceRequest" });
   }
 }
-function __c14(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2968,7 +3118,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "DeleteSyncGroupRequest" });
   }
 }
-function __c15(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2989,7 +3139,21 @@ function __c15(j: number): any {
       ).annotate({ identifier: "GetCloudEndpointRequest" });
   }
 }
-function __c16(j: number): any {
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1952, __c61, 0)),
+          properties: S.optional(__S(1891, __c59, 3)),
+        }),
+      ).annotate({ identifier: "GetCloudEndpointResponse" });
+  }
+}
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3015,12 +3179,12 @@ function __c16(j: number): any {
           status: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          error: S.optional(__S(546, __c17, 2)),
+          error: S.optional(__S(642, __c20, 2)),
         }),
       ).annotate({ identifier: "OperationStatus" });
   }
 }
-function __c17(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3050,13 +3214,13 @@ function __c17(j: number): any {
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(544, __c17, 0)),
-          innererror: S.optional(__S(545, __c17, 1)),
+          details: S.optional(__S(640, __c20, 0)),
+          innererror: S.optional(__S(641, __c20, 1)),
         }),
       ).annotate({ identifier: "StorageSyncApiError" });
   }
 }
-function __c18(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3084,7 +3248,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "CloudEndpointAfsShareMetadataCertificatePublicKeys" });
   }
 }
-function __c19(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3104,7 +3268,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "GetPrivateEndpointConnectionRequest" });
   }
 }
-function __c20(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3124,7 +3288,21 @@ function __c20(j: number): any {
       ).annotate({ identifier: "GetRegisteredServerRequest" });
   }
 }
-function __c21(j: number): any {
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1952, __c61, 0)),
+          properties: S.optional(__S(2112, __c66, 0)),
+        }),
+      ).annotate({ identifier: "GetRegisteredServerResponse" });
+  }
+}
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3145,7 +3323,21 @@ function __c21(j: number): any {
       ).annotate({ identifier: "GetServerEndpointRequest" });
   }
 }
-function __c22(j: number): any {
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1952, __c61, 0)),
+          properties: S.optional(__S(2261, __c70, 21)),
+        }),
+      ).annotate({ identifier: "GetServerEndpointResponse" });
+  }
+}
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3164,7 +3356,24 @@ function __c22(j: number): any {
       ).annotate({ identifier: "GetStorageSyncServiceRequest" });
   }
 }
-function __c23(j: number): any {
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1952, __c61, 0)),
+          tags: S.optional(__S(2208, __c69, 0)),
+          location: S.String,
+          properties: S.optional(__S(192, __c6, 0)),
+          identity: S.optional(__S(195, __c6, 3)),
+        }),
+      ).annotate({ identifier: "GetStorageSyncServiceResponse" });
+  }
+}
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3184,7 +3393,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "GetSyncGroupRequest" });
   }
 }
-function __c24(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3204,7 +3413,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "GetWorkflowRequest" });
   }
 }
-function __c25(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3225,13 +3434,13 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1696, __c53, 0)),
-          properties: S.optional(__S(800, __c25, 0)),
+          systemData: S.optional(__S(1952, __c61, 0)),
+          properties: S.optional(__S(992, __c31, 0)),
         }),
       ).annotate({ identifier: "GetWorkflowResponse" });
   }
 }
-function __c26(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3250,17 +3459,17 @@ function __c26(j: number): any {
         ),
       ).annotate({ identifier: "ListCloudEndpointBySyncGroupRequest" });
     case 1:
-      return S.Array(__S(1668, __c52, 4));
+      return S.Array(__S(576, __c18, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(833, __c26, 1)),
+          value: S.optional(__S(1025, __c32, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudEndpointArray" });
   }
 }
-function __c27(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3291,7 +3500,7 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "OperationResourceMetricSpecificationDimension" });
     case 3:
-      return S.Array(__S(866, __c27, 2));
+      return S.Array(__S(1058, __c33, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3300,47 +3509,47 @@ function __c27(j: number): any {
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          supportedAggregationTypes: S.optional(__S(1760, __c55, 0)),
+          supportedAggregationTypes: S.optional(__S(2016, __c63, 0)),
           fillGapWithZero: S.optional(S.Boolean),
           lockAggregationType: S.optional(S.String),
-          dimensions: S.optional(__S(867, __c27, 3)),
+          dimensions: S.optional(__S(1059, __c33, 3)),
         }),
       ).annotate({ identifier: "OperationResourceMetricSpecification" });
     case 5:
-      return S.Array(__S(868, __c27, 4));
+      return S.Array(__S(1060, __c33, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(__S(869, __c27, 5)),
+          metricSpecifications: S.optional(__S(1061, __c33, 5)),
         }),
       ).annotate({ identifier: "OperationResourceServiceSpecification" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(870, __c27, 6)),
+          serviceSpecification: S.optional(__S(1062, __c33, 6)),
         }),
       ).annotate({ identifier: "OperationProperties" });
     case 8:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(865, __c27, 1)),
+          display: S.optional(__S(1057, __c33, 1)),
           origin: S.optional(S.String),
-          properties: S.optional(__S(871, __c27, 7)),
+          properties: S.optional(__S(1063, __c33, 7)),
         }),
       ).annotate({ identifier: "OperationEntity" });
     case 9:
-      return S.Array(__S(872, __c27, 8));
+      return S.Array(__S(1064, __c33, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
-          value: __S(873, __c27, 9),
+          value: __S(1065, __c33, 9),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationEntityListResult" });
   }
 }
-function __c28(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3360,13 +3569,13 @@ function __c28(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(128, __c4, 0)),
+          value: S.optional(__S(160, __c5, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
   }
 }
-function __c29(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3387,8 +3596,8 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(1760, __c55, 0)),
-          requiredZoneNames: S.optional(__S(1760, __c55, 0)),
+          requiredMembers: S.optional(__S(2016, __c63, 0)),
+          requiredZoneNames: S.optional(__S(2016, __c63, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResourceProperties" });
     case 2:
@@ -3397,21 +3606,21 @@ function __c29(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1696, __c53, 0)),
-          properties: S.optional(__S(929, __c29, 1)),
+          systemData: S.optional(__S(1952, __c61, 0)),
+          properties: S.optional(__S(1121, __c35, 1)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 3:
-      return S.Array(__S(930, __c29, 2));
+      return S.Array(__S(1122, __c35, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(931, __c29, 3)),
+          value: S.optional(__S(1123, __c35, 3)),
         }),
       ).annotate({ identifier: "ListPrivateLinkResourceByStorageSyncServiceResponse" });
   }
 }
-function __c30(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3428,7 +3637,7 @@ function __c30(j: number): any {
           status: S.optional(S.String),
           sourceAzureFileShareUri: S.optional(S.String),
           failedFileList: S.optional(S.String),
-          restoreFileSpec: S.optional(__S(993, __c31, 1)),
+          restoreFileSpec: S.optional(__S(1185, __c37, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3440,7 +3649,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "CloudEndpointsPostRestoreRequest" });
   }
 }
-function __c31(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3450,10 +3659,21 @@ function __c31(j: number): any {
         }),
       ).annotate({ identifier: "RestoreFileSpec" });
     case 1:
-      return S.Array(__S(992, __c31, 0));
+      return S.Array(__S(1184, __c37, 0));
   }
 }
-function __c32(j: number): any {
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CloudEndpointsPostRestoreResponse" });
+  }
+}
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3471,17 +3691,17 @@ function __c32(j: number): any {
         ),
       ).annotate({ identifier: "ListRegisteredServerByStorageSyncServiceRequest" });
     case 1:
-      return S.Array(__S(1857, __c58, 1));
+      return S.Array(__S(768, __c24, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1025, __c32, 1)),
+          value: S.optional(__S(1249, __c39, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegisteredServerArray" });
   }
 }
-function __c33(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3500,17 +3720,18 @@ function __c33(j: number): any {
         ),
       ).annotate({ identifier: "ListServerEndpointBySyncGroupRequest" });
     case 1:
-      return S.Array(__S(1974, __c61, 22));
+      return S.Array(__S(832, __c26, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1057, __c33, 1)),
+          value: S.optional(__S(1281, __c40, 1)),
           nextLink: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "ServerEndpointArray" });
   }
 }
-function __c34(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3528,20 +3749,20 @@ function __c34(j: number): any {
       ).annotate({ identifier: "ListStorageSyncServiceByResourceGroupRequest" });
   }
 }
-function __c35(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(164, __c5, 4));
+      return S.Array(__S(896, __c28, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1120, __c35, 0)),
+          value: S.optional(__S(1344, __c42, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageSyncServiceArray" });
   }
 }
-function __c36(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3558,7 +3779,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "ListStorageSyncServiceBySubscriptionRequest" });
   }
 }
-function __c37(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3576,17 +3797,17 @@ function __c37(j: number): any {
         ),
       ).annotate({ identifier: "ListSyncGroupByStorageSyncServiceRequest" });
     case 1:
-      return S.Array(__S(257, __c8, 1));
+      return S.Array(__S(289, __c9, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1185, __c37, 1)),
+          value: S.optional(__S(1409, __c44, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SyncGroupArray" });
   }
 }
-function __c38(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3604,17 +3825,17 @@ function __c38(j: number): any {
         ),
       ).annotate({ identifier: "ListWorkflowByStorageSyncServiceRequest" });
     case 1:
-      return S.Array(__S(801, __c25, 1));
+      return S.Array(__S(993, __c31, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1217, __c38, 1)),
+          value: S.optional(__S(1441, __c45, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowArray" });
   }
 }
-function __c39(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3639,13 +3860,13 @@ function __c39(j: number): any {
           status: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          error: S.optional(__S(546, __c17, 2)),
+          error: S.optional(__S(642, __c20, 2)),
           percentComplete: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LocationOperationStatus" });
   }
 }
-function __c40(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3674,12 +3895,14 @@ function __c40(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          backupMetadata: S.optional(__S(1281, __c40, 1)),
+          backupMetadata: S.optional(__S(1505, __c47, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "PostBackupResponse" });
   }
 }
-function __c41(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3696,7 +3919,7 @@ function __c41(j: number): any {
           status: S.optional(S.String),
           sourceAzureFileShareUri: S.optional(S.String),
           backupMetadataPropertyBag: S.optional(S.String),
-          restoreFileSpec: S.optional(__S(993, __c31, 1)),
+          restoreFileSpec: S.optional(__S(1185, __c37, 1)),
           pauseWaitForSyncDrainTimePeriodInSeconds: S.optional(S.Number),
         }).pipe(
           T.Http({
@@ -3709,7 +3932,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "RestoreCloudEndpointsPreRequest" });
   }
 }
-function __c42(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3732,7 +3955,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "ServerEndpointsRecallActionRequest" });
   }
 }
-function __c43(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3754,7 +3977,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "CloudEndpointsPreBackupRequest" });
   }
 }
-function __c44(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3766,7 +3989,7 @@ function __c44(j: number): any {
           cloudEndpointName: S.String.pipe(T.Label()),
           directoryPath: S.optional(S.String),
           changeDetectionMode: S.optional(S.String),
-          paths: S.optional(__S(1760, __c55, 0)),
+          paths: S.optional(__S(2016, __c63, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3778,7 +4001,7 @@ function __c44(j: number): any {
       ).annotate({ identifier: "TriggerCloudEndpointChangeDetectionRequest" });
   }
 }
-function __c45(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3799,7 +4022,7 @@ function __c45(j: number): any {
       ).annotate({ identifier: "TriggerRegisteredServerRolloverRequest" });
   }
 }
-function __c46(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3815,7 +4038,7 @@ function __c46(j: number): any {
           storageSyncServiceName: S.String.pipe(T.Label()),
           syncGroupName: S.String.pipe(T.Label()),
           cloudEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1472, __c46, 0)),
+          properties: S.optional(__S(1696, __c53, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3827,7 +4050,7 @@ function __c46(j: number): any {
       ).annotate({ identifier: "UpdateCloudEndpointRequest" });
   }
 }
-function __c47(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3843,7 +4066,7 @@ function __c47(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           storageSyncServiceName: S.String.pipe(T.Label()),
           serverId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1504, __c47, 0)),
+          properties: S.optional(__S(1728, __c54, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3855,7 +4078,7 @@ function __c47(j: number): any {
       ).annotate({ identifier: "UpdateRegisteredServerRequest" });
   }
 }
-function __c48(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3876,7 +4099,7 @@ function __c48(j: number): any {
           storageSyncServiceName: S.String.pipe(T.Label()),
           syncGroupName: S.String.pipe(T.Label()),
           serverEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1536, __c48, 0)),
+          properties: S.optional(__S(1760, __c55, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3888,7 +4111,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "UpdateServerEndpointRequest" });
   }
 }
-function __c49(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3896,9 +4119,9 @@ function __c49(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageSyncServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1920, __c60, 0)),
-          identity: S.optional(__S(193, __c6, 1)),
-          properties: S.optional(__S(194, __c6, 2)),
+          tags: S.optional(__S(2208, __c69, 0)),
+          identity: S.optional(__S(225, __c7, 1)),
+          properties: S.optional(__S(226, __c7, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3910,7 +4133,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "UpdateStorageSyncServiceRequest" });
   }
 }
-function __c50(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3931,7 +4154,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "CloudEndpointsRestoreheartbeatRequest" });
   }
 }
-function __c51(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3951,7 +4174,7 @@ function __c51(j: number): any {
           storageSyncServiceName: S.String.pipe(T.Label()),
           syncGroupName: S.String.pipe(T.Label()),
           cloudEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1632, __c51, 0)),
+          properties: S.optional(__S(1856, __c58, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3963,7 +4186,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "CreateCloudEndpointRequest" });
   }
 }
-function __c52(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3998,8 +4221,8 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimestamp: S.optional(S.String),
-          lastEnumerationStatus: S.optional(__S(1664, __c52, 0)),
-          activity: S.optional(__S(1665, __c52, 1)),
+          lastEnumerationStatus: S.optional(__S(1888, __c59, 0)),
+          activity: S.optional(__S(1889, __c59, 1)),
         }),
       ).annotate({ identifier: "CloudEndpointChangeEnumerationStatus" });
     case 3:
@@ -4014,23 +4237,30 @@ function __c52(j: number): any {
           provisioningState: S.optional(S.String),
           lastWorkflowId: S.optional(S.String),
           lastOperationName: S.optional(S.String),
-          changeEnumerationStatus: S.optional(__S(1666, __c52, 2)),
+          changeEnumerationStatus: S.optional(__S(1890, __c59, 2)),
           changeEnumerationIntervalDays: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CloudEndpointProperties" });
-    case 4:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1696, __c53, 0)),
-          properties: S.optional(__S(1667, __c52, 3)),
+          systemData: S.optional(__S(1952, __c61, 0)),
+          properties: S.optional(__S(1891, __c59, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CreateCloudEndpointResponse" });
   }
 }
-function __c53(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4045,13 +4275,13 @@ function __c53(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c54(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           privateEndpoint: S.optional(__S(32, __c1, 0)),
-          privateLinkServiceConnectionState: __S(1792, __c56, 0),
+          privateLinkServiceConnectionState: __S(2048, __c64, 0),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionPropertiesInput" });
     case 1:
@@ -4061,7 +4291,7 @@ function __c54(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           storageSyncServiceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1728, __c54, 0)),
+          properties: S.optional(__S(1984, __c62, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4071,15 +4301,28 @@ function __c54(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreatePrivateEndpointConnectionRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1952, __c61, 0)),
+          properties: S.optional(__S(2050, __c64, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreatePrivateEndpointConnectionResponse" });
   }
 }
-function __c55(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c56(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4098,25 +4341,15 @@ function __c56(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(1760, __c55, 0)),
-          privateEndpoint: S.optional(__S(1793, __c56, 1)),
-          privateLinkServiceConnectionState: __S(1792, __c56, 0),
+          groupIds: S.optional(__S(2016, __c63, 0)),
+          privateEndpoint: S.optional(__S(2049, __c64, 1)),
+          privateLinkServiceConnectionState: __S(2048, __c64, 0),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1696, __c53, 0)),
-          properties: S.optional(__S(1794, __c56, 2)),
-        }),
-      ).annotate({ identifier: "CreatePrivateEndpointConnectionResponse" });
   }
 }
-function __c57(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4141,7 +4374,7 @@ function __c57(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           storageSyncServiceName: S.String.pipe(T.Label()),
           serverId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1824, __c57, 0)),
+          properties: S.optional(__S(2080, __c65, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4153,7 +4386,7 @@ function __c57(j: number): any {
       ).annotate({ identifier: "CreateRegisteredServerRequest" });
   }
 }
-function __c58(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4187,19 +4420,26 @@ function __c58(j: number): any {
           activeAuthType: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegisteredServerProperties" });
-    case 1:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1696, __c53, 0)),
-          properties: S.optional(__S(1856, __c58, 0)),
+          systemData: S.optional(__S(1952, __c61, 0)),
+          properties: S.optional(__S(2112, __c66, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CreateRegisteredServerResponse" });
   }
 }
-function __c59(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4225,7 +4465,7 @@ function __c59(j: number): any {
           storageSyncServiceName: S.String.pipe(T.Label()),
           syncGroupName: S.String.pipe(T.Label()),
           serverEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1888, __c59, 0)),
+          properties: S.optional(__S(2176, __c68, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4237,13 +4477,13 @@ function __c59(j: number): any {
       ).annotate({ identifier: "CreateServerEndpointRequest" });
   }
 }
-function __c60(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
   }
 }
-function __c61(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4254,7 +4494,7 @@ function __c61(j: number): any {
         }),
       ).annotate({ identifier: "ServerEndpointFilesNotSyncingError" });
     case 1:
-      return S.Array(__S(1952, __c61, 0));
+      return S.Array(__S(2240, __c70, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4264,7 +4504,7 @@ function __c61(j: number): any {
           lastSyncPerItemErrorCount: S.optional(S.Number),
           persistentFilesNotSyncingCount: S.optional(S.Number),
           transientFilesNotSyncingCount: S.optional(S.Number),
-          filesNotSyncingErrors: S.optional(__S(1953, __c61, 1)),
+          filesNotSyncingErrors: S.optional(__S(2241, __c70, 1)),
           lastSyncMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerEndpointSyncSessionStatus" });
@@ -4310,12 +4550,12 @@ function __c61(j: number): any {
           syncActivity: S.optional(S.String),
           totalPersistentFilesNotSyncingCount: S.optional(S.Number),
           lastUpdatedTimestamp: S.optional(S.String),
-          uploadStatus: S.optional(__S(1954, __c61, 2)),
-          downloadStatus: S.optional(__S(1954, __c61, 2)),
-          uploadActivity: S.optional(__S(1955, __c61, 3)),
-          downloadActivity: S.optional(__S(1955, __c61, 3)),
+          uploadStatus: S.optional(__S(2242, __c70, 2)),
+          downloadStatus: S.optional(__S(2242, __c70, 2)),
+          uploadActivity: S.optional(__S(2243, __c70, 3)),
+          downloadActivity: S.optional(__S(2243, __c70, 3)),
           offlineDataTransferStatus: S.optional(S.String),
-          backgroundDataDownloadActivity: S.optional(__S(1956, __c61, 4)),
+          backgroundDataDownloadActivity: S.optional(__S(2244, __c70, 4)),
         }),
       ).annotate({ identifier: "ServerEndpointSyncStatus" });
     case 6:
@@ -4346,13 +4586,13 @@ function __c61(j: number): any {
         }),
       ).annotate({ identifier: "FilesNotTieringError" });
     case 9:
-      return S.Array(__S(1960, __c61, 8));
+      return S.Array(__S(2248, __c70, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimestamp: S.optional(S.String),
           totalFileCount: S.optional(S.Number),
-          errors: S.optional(__S(1961, __c61, 9)),
+          errors: S.optional(__S(2249, __c70, 9)),
         }),
       ).annotate({ identifier: "CloudTieringFilesNotTiering" });
     case 11:
@@ -4385,12 +4625,12 @@ function __c61(j: number): any {
           healthLastUpdatedTimestamp: S.optional(S.String),
           lastCloudTieringResult: S.optional(S.Number),
           lastSuccessTimestamp: S.optional(S.String),
-          spaceSavings: S.optional(__S(1958, __c61, 6)),
-          cachePerformance: S.optional(__S(1959, __c61, 7)),
-          filesNotTiering: S.optional(__S(1962, __c61, 10)),
-          volumeFreeSpacePolicyStatus: S.optional(__S(1963, __c61, 11)),
-          datePolicyStatus: S.optional(__S(1964, __c61, 12)),
-          lowDiskMode: S.optional(__S(1965, __c61, 13)),
+          spaceSavings: S.optional(__S(2246, __c70, 6)),
+          cachePerformance: S.optional(__S(2247, __c70, 7)),
+          filesNotTiering: S.optional(__S(2250, __c70, 10)),
+          volumeFreeSpacePolicyStatus: S.optional(__S(2251, __c70, 11)),
+          datePolicyStatus: S.optional(__S(2252, __c70, 12)),
+          lowDiskMode: S.optional(__S(2253, __c70, 13)),
         }),
       ).annotate({ identifier: "ServerEndpointCloudTieringStatus" });
     case 15:
@@ -4401,13 +4641,13 @@ function __c61(j: number): any {
         }),
       ).annotate({ identifier: "ServerEndpointRecallError" });
     case 16:
-      return S.Array(__S(1967, __c61, 15));
+      return S.Array(__S(2255, __c70, 15));
     case 17:
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimestamp: S.optional(S.String),
           totalRecallErrorsCount: S.optional(S.Number),
-          recallErrors: S.optional(__S(1968, __c61, 16)),
+          recallErrors: S.optional(__S(2256, __c70, 16)),
         }),
       ).annotate({ identifier: "ServerEndpointRecallStatus" });
     case 18:
@@ -4420,17 +4660,17 @@ function __c61(j: number): any {
           progressPercentage: S.optional(S.Number),
           endTime: S.optional(S.String),
           errorCode: S.optional(S.Number),
-          additionalInformation: S.optional(__S(1920, __c60, 0)),
+          additionalInformation: S.optional(__S(2208, __c69, 0)),
         }),
       ).annotate({ identifier: "ServerEndpointProvisioningStepStatus" });
     case 19:
-      return S.Array(__S(1970, __c61, 18));
+      return S.Array(__S(2258, __c70, 18));
     case 20:
       return S.suspend(() =>
         S.Struct({
           provisioningStatus: S.optional(S.String),
           provisioningType: S.optional(S.String),
-          provisioningStepStatuses: S.optional(__S(1971, __c61, 19)),
+          provisioningStepStatuses: S.optional(__S(2259, __c70, 19)),
         }),
       ).annotate({ identifier: "ServerEndpointProvisioningStatus" });
     case 21:
@@ -4445,28 +4685,35 @@ function __c61(j: number): any {
           provisioningState: S.optional(S.String),
           lastWorkflowId: S.optional(S.String),
           lastOperationName: S.optional(S.String),
-          syncStatus: S.optional(__S(1957, __c61, 5)),
+          syncStatus: S.optional(__S(2245, __c70, 5)),
           offlineDataTransfer: S.optional(S.String),
           offlineDataTransferStorageAccountResourceId: S.optional(S.String),
           offlineDataTransferStorageAccountTenantId: S.optional(S.String),
           offlineDataTransferShareName: S.optional(S.String),
-          cloudTieringStatus: S.optional(__S(1966, __c61, 14)),
-          recallStatus: S.optional(__S(1969, __c61, 17)),
+          cloudTieringStatus: S.optional(__S(2254, __c70, 14)),
+          recallStatus: S.optional(__S(2257, __c70, 17)),
           initialDownloadPolicy: S.optional(S.String),
           localCacheMode: S.optional(S.String),
           initialUploadPolicy: S.optional(S.String),
           serverName: S.optional(S.String),
-          serverEndpointProvisioningStatus: S.optional(__S(1972, __c61, 20)),
+          serverEndpointProvisioningStatus: S.optional(__S(2260, __c70, 20)),
         }),
       ).annotate({ identifier: "ServerEndpointProperties" });
-    case 22:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1696, __c53, 0)),
-          properties: S.optional(__S(1973, __c61, 21)),
+          systemData: S.optional(__S(1952, __c61, 0)),
+          properties: S.optional(__S(2261, __c70, 21)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CreateServerEndpointResponse" });
   }

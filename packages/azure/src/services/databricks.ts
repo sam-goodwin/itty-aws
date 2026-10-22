@@ -103,6 +103,10 @@ export interface AccessConnectorsCreateOrUpdateResponse {
   properties?: AccessConnectorProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AccessConnectorsCreateOrUpdateResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The private endpoint property of a private endpoint connection. */
 export type PrivateEndpointInput = AccessConnectorPropertiesInput;
@@ -178,6 +182,10 @@ export interface CreatePrivateEndpointConnectionResponse {
   type?: string;
   /** The private endpoint connection properties. */
   properties: PrivateEndpointConnectionProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteAccessConnectorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -187,7 +195,12 @@ export interface DeleteAccessConnectorRequest {
   /** The name of the Azure Databricks Access Connector. */
   connectorName: string;
 }
-export interface DeleteAccessConnectorResponse {}
+export interface DeleteAccessConnectorResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -198,7 +211,12 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection */
   privateEndpointConnectionName: string;
 }
-export interface DeletePrivateEndpointConnectionResponse {}
+export interface DeletePrivateEndpointConnectionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteVNetPeeringRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -209,7 +227,12 @@ export interface DeleteVNetPeeringRequest {
   /** The name of the workspace vNet peering. */
   peeringName: string;
 }
-export interface DeleteVNetPeeringResponse {}
+export interface DeleteVNetPeeringResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -220,7 +243,12 @@ export interface DeleteWorkspaceRequest {
   /** Optional parameter to retain default unity catalog data. By default the data will retained if Uc is enabled on the workspace. */
   forceDeletion?: boolean;
 }
-export interface DeleteWorkspaceResponse {}
+export interface DeleteWorkspaceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetAccessConnectorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -886,6 +914,10 @@ export interface UpdateAccessConnectorResponse {
   properties?: AccessConnectorProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AccessConnectorsCreateOrUpdateResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateWorkspaceRequestTagsMap = { [key: string]: string | undefined };
@@ -916,6 +948,10 @@ export interface UpdateWorkspaceResponse {
   properties: WorkspaceProperties;
   /** The SKU of the resource. */
   sku?: Sku;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface VNetPeeringCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -938,6 +974,10 @@ export interface VNetPeeringCreateOrUpdateResponse {
   type?: string;
   /** List of properties for vNet Peering */
   properties: VirtualNetworkPeeringPropertiesFormat;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type WorkspacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -1015,6 +1055,10 @@ export interface WorkspacesCreateOrUpdateResponse {
   properties: WorkspaceProperties;
   /** The SKU of the resource. */
   sku?: Sku;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type AccessConnectorsCreateOrUpdateError = AzureOpError;
 /** Creates or updates Azure Databricks Access Connector. */
@@ -1025,7 +1069,7 @@ export const AccessConnectorsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AccessConnectorsCreateOrUpdateRequest>,
-  output: __S(164, __c5, 4) as any as S.Schema<AccessConnectorsCreateOrUpdateResponse>,
+  output: __S(98, __c3, 2) as any as S.Schema<AccessConnectorsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1040,7 +1084,7 @@ export const CreatePrivateEndpointConnection: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(193, __c6, 1) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
-  output: __S(226, __c7, 2) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
+  output: __S(194, __c6, 2) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1054,8 +1098,8 @@ export const DeleteAccessConnector: API.OperationMethod<
   DeleteAccessConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c23, 0) as any as S.Schema<DeleteAccessConnectorRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteAccessConnectorResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<DeleteAccessConnectorRequest>,
+  output: __S(800, __c25, 0) as any as S.Schema<DeleteAccessConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1069,8 +1113,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(800, __c25, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1084,8 +1128,8 @@ export const DeleteVNetPeering: API.OperationMethod<
   DeleteVNetPeeringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<DeleteVNetPeeringRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteVNetPeeringResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<DeleteVNetPeeringRequest>,
+  output: __S(800, __c25, 0) as any as S.Schema<DeleteVNetPeeringResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1099,8 +1143,8 @@ export const DeleteWorkspace: API.OperationMethod<
   DeleteWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<DeleteWorkspaceRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteWorkspaceResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<DeleteWorkspaceRequest>,
+  output: __S(800, __c25, 0) as any as S.Schema<DeleteWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1114,8 +1158,8 @@ export const GetAccessConnector: API.OperationMethod<
   GetAccessConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c30, 0) as any as S.Schema<GetAccessConnectorRequest>,
-  output: __S(164, __c5, 4) as any as S.Schema<GetAccessConnectorResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetAccessConnectorRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<GetAccessConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1129,8 +1173,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(226, __c7, 2) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1144,8 +1188,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c32, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(1057, __c33, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(1217, __c38, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1159,8 +1203,8 @@ export const GetVNetPeering: API.OperationMethod<
   GetVNetPeeringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c34, 0) as any as S.Schema<GetVNetPeeringRequest>,
-  output: __S(1122, __c35, 2) as any as S.Schema<GetVNetPeeringResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<GetVNetPeeringRequest>,
+  output: __S(1280, __c40, 0) as any as S.Schema<GetVNetPeeringResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1175,7 +1219,7 @@ export const GetWorkspace: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(288, __c9, 0) as any as S.Schema<GetWorkspaceRequest>,
-  output: __S(374, __c11, 22) as any as S.Schema<GetWorkspaceResponse>,
+  output: __S(352, __c11, 0) as any as S.Schema<GetWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1189,8 +1233,8 @@ export const ListAccessConnectorByResourceGroup: API.OperationMethod<
   ListAccessConnectorByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c12, 0) as any as S.Schema<ListAccessConnectorByResourceGroupRequest>,
-  output: __S(417, __c13, 1) as any as S.Schema<AccessConnectorListResult>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListAccessConnectorByResourceGroupRequest>,
+  output: __S(449, __c14, 1) as any as S.Schema<AccessConnectorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1204,8 +1248,8 @@ export const ListAccessConnectorBySubscription: API.OperationMethod<
   ListAccessConnectorBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c14, 0) as any as S.Schema<ListAccessConnectorBySubscriptionRequest>,
-  output: __S(417, __c13, 1) as any as S.Schema<AccessConnectorListResult>,
+  input: __S(480, __c15, 0) as any as S.Schema<ListAccessConnectorBySubscriptionRequest>,
+  output: __S(449, __c14, 1) as any as S.Schema<AccessConnectorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1219,8 +1263,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c15, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(484, __c15, 4) as any as S.Schema<OperationListResult>,
+  input: __S(512, __c16, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(516, __c16, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1234,8 +1278,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c16, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(513, __c16, 1) as any as S.Schema<PrivateEndpointConnectionsList>,
+  input: __S(544, __c17, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(545, __c17, 1) as any as S.Schema<PrivateEndpointConnectionsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1249,8 +1293,8 @@ export const ListPrivateLinkResources: API.OperationMethod<
   ListPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<ListPrivateLinkResourcesRequest>,
-  output: __S(546, __c17, 2) as any as S.Schema<PrivateLinkResourcesList>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListPrivateLinkResourcesRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<PrivateLinkResourcesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1264,8 +1308,8 @@ export const ListVNetPeeringByWorkspace: API.OperationMethod<
   ListVNetPeeringByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c18, 0) as any as S.Schema<ListVNetPeeringByWorkspaceRequest>,
-  output: __S(578, __c18, 2) as any as S.Schema<VirtualNetworkPeeringList>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListVNetPeeringByWorkspaceRequest>,
+  output: __S(610, __c19, 2) as any as S.Schema<VirtualNetworkPeeringList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1279,8 +1323,8 @@ export const ListWorkspaceByResourceGroup: API.OperationMethod<
   ListWorkspaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c19, 0) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
-  output: __S(641, __c20, 1) as any as S.Schema<WorkspaceListResult>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
+  output: __S(673, __c21, 1) as any as S.Schema<WorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1294,8 +1338,8 @@ export const ListWorkspaceBySubscription: API.OperationMethod<
   ListWorkspaceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<ListWorkspaceBySubscriptionRequest>,
-  output: __S(641, __c20, 1) as any as S.Schema<WorkspaceListResult>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListWorkspaceBySubscriptionRequest>,
+  output: __S(673, __c21, 1) as any as S.Schema<WorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1309,8 +1353,8 @@ export const UpdateAccessConnector: API.OperationMethod<
   UpdateAccessConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c22, 0) as any as S.Schema<UpdateAccessConnectorRequest>,
-  output: __S(164, __c5, 4) as any as S.Schema<UpdateAccessConnectorResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<UpdateAccessConnectorRequest>,
+  output: __S(98, __c3, 2) as any as S.Schema<UpdateAccessConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1324,8 +1368,8 @@ export const UpdateWorkspace: API.OperationMethod<
   UpdateWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c24, 0) as any as S.Schema<UpdateWorkspaceRequest>,
-  output: __S(374, __c11, 22) as any as S.Schema<UpdateWorkspaceResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<UpdateWorkspaceRequest>,
+  output: __S(864, __c27, 0) as any as S.Schema<UpdateWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1339,8 +1383,8 @@ export const VNetPeeringCreateOrUpdate: API.OperationMethod<
   VNetPeeringCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c25, 0) as any as S.Schema<VNetPeeringCreateOrUpdateRequest>,
-  output: __S(1122, __c35, 2) as any as S.Schema<VNetPeeringCreateOrUpdateResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<VNetPeeringCreateOrUpdateRequest>,
+  output: __S(897, __c28, 1) as any as S.Schema<VNetPeeringCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1354,8 +1398,8 @@ export const WorkspacesCreateOrUpdate: API.OperationMethod<
   WorkspacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(833, __c26, 1) as any as S.Schema<WorkspacesCreateOrUpdateRequest>,
-  output: __S(374, __c11, 22) as any as S.Schema<WorkspacesCreateOrUpdateResponse>,
+  input: __S(929, __c29, 1) as any as S.Schema<WorkspacesCreateOrUpdateRequest>,
+  output: __S(864, __c27, 0) as any as S.Schema<WorkspacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1410,6 +1454,20 @@ function __c3(j: number): any {
           userAssignedIdentities: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({ identifier: "AccessConnectorsCreateOrUpdateRequestIdentity" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(160, __c5, 0)),
+          identity: S.optional(__S(163, __c5, 3)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AccessConnectorsCreateOrUpdateResponse" });
   }
 }
 function __c4(j: number): any {
@@ -1445,18 +1503,6 @@ function __c5(j: number): any {
           userAssignedIdentities: S.optional(__S(162, __c5, 2)),
         }),
       ).annotate({ identifier: "AccessConnectorsCreateOrUpdateResponseIdentity" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(128, __c4, 0)),
-          location: S.String,
-          properties: S.optional(__S(160, __c5, 0)),
-          identity: S.optional(__S(163, __c5, 3)),
-        }),
-      ).annotate({ identifier: "AccessConnectorsCreateOrUpdateResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1486,6 +1532,17 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreatePrivateEndpointConnectionRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: __S(225, __c7, 1),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreatePrivateEndpointConnectionResponse" });
   }
 }
 function __c7(j: number): any {
@@ -1507,15 +1564,6 @@ function __c7(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: __S(225, __c7, 1),
-        }),
-      ).annotate({ identifier: "CreatePrivateEndpointConnectionResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1550,10 +1598,26 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(226, __c7, 2));
+      return S.Array(__S(1152, __c36, 0));
   }
 }
 function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: __S(404, __c12, 20),
+          sku: S.optional(__S(405, __c12, 21)),
+        }),
+      ).annotate({ identifier: "GetWorkspaceResponse" });
+  }
+}
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1582,7 +1646,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          value: S.optional(__S(354, __c11, 2)),
+          value: S.optional(__S(386, __c12, 2)),
         }),
       ).annotate({ identifier: "WorkspaceEncryptionParameter" });
     case 4:
@@ -1595,22 +1659,22 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          amlWorkspaceId: S.optional(__S(352, __c11, 0)),
-          customVirtualNetworkId: S.optional(__S(352, __c11, 0)),
-          customPublicSubnetName: S.optional(__S(352, __c11, 0)),
-          customPrivateSubnetName: S.optional(__S(352, __c11, 0)),
-          enableNoPublicIp: S.optional(__S(353, __c11, 1)),
-          loadBalancerBackendPoolName: S.optional(__S(352, __c11, 0)),
-          loadBalancerId: S.optional(__S(352, __c11, 0)),
-          natGatewayName: S.optional(__S(352, __c11, 0)),
-          publicIpName: S.optional(__S(352, __c11, 0)),
-          prepareEncryption: S.optional(__S(353, __c11, 1)),
-          encryption: S.optional(__S(355, __c11, 3)),
-          requireInfrastructureEncryption: S.optional(__S(353, __c11, 1)),
-          storageAccountName: S.optional(__S(352, __c11, 0)),
-          storageAccountSkuName: S.optional(__S(352, __c11, 0)),
-          vnetAddressPrefix: S.optional(__S(352, __c11, 0)),
-          resourceTags: S.optional(__S(356, __c11, 4)),
+          amlWorkspaceId: S.optional(__S(384, __c12, 0)),
+          customVirtualNetworkId: S.optional(__S(384, __c12, 0)),
+          customPublicSubnetName: S.optional(__S(384, __c12, 0)),
+          customPrivateSubnetName: S.optional(__S(384, __c12, 0)),
+          enableNoPublicIp: S.optional(__S(385, __c12, 1)),
+          loadBalancerBackendPoolName: S.optional(__S(384, __c12, 0)),
+          loadBalancerId: S.optional(__S(384, __c12, 0)),
+          natGatewayName: S.optional(__S(384, __c12, 0)),
+          publicIpName: S.optional(__S(384, __c12, 0)),
+          prepareEncryption: S.optional(__S(385, __c12, 1)),
+          encryption: S.optional(__S(387, __c12, 3)),
+          requireInfrastructureEncryption: S.optional(__S(385, __c12, 1)),
+          storageAccountName: S.optional(__S(384, __c12, 0)),
+          storageAccountSkuName: S.optional(__S(384, __c12, 0)),
+          vnetAddressPrefix: S.optional(__S(384, __c12, 0)),
+          resourceTags: S.optional(__S(388, __c12, 4)),
         }),
       ).annotate({ identifier: "WorkspaceCustomParameters" });
     case 6:
@@ -1621,7 +1685,7 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "WorkspaceProviderAuthorization" });
     case 7:
-      return S.Array(__S(358, __c11, 6));
+      return S.Array(__S(390, __c12, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -1650,28 +1714,28 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           keySource: S.String,
-          keyVaultProperties: S.optional(__S(362, __c11, 10)),
+          keyVaultProperties: S.optional(__S(394, __c12, 10)),
         }),
       ).annotate({ identifier: "EncryptionV2" });
     case 12:
       return S.suspend(() =>
         S.Struct({
           keySource: S.String,
-          keyVaultProperties: __S(362, __c11, 10),
+          keyVaultProperties: __S(394, __c12, 10),
           rotationToLatestKeyVersionEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ManagedDiskEncryption" });
     case 13:
       return S.suspend(() =>
         S.Struct({
-          managedServices: S.optional(__S(363, __c11, 11)),
-          managedDisk: S.optional(__S(364, __c11, 12)),
+          managedServices: S.optional(__S(395, __c12, 11)),
+          managedDisk: S.optional(__S(396, __c12, 12)),
         }),
       ).annotate({ identifier: "EncryptionEntitiesDefinition" });
     case 14:
       return S.suspend(() =>
         S.Struct({
-          entities: __S(365, __c11, 13),
+          entities: __S(397, __c12, 13),
         }),
       ).annotate({ identifier: "WorkspacePropertiesEncryption" });
     case 15:
@@ -1690,9 +1754,9 @@ function __c11(j: number): any {
     case 17:
       return S.suspend(() =>
         S.Struct({
-          automaticClusterUpdate: S.optional(__S(367, __c11, 15)),
-          complianceSecurityProfile: S.optional(__S(368, __c11, 16)),
-          enhancedSecurityMonitoring: S.optional(__S(367, __c11, 15)),
+          automaticClusterUpdate: S.optional(__S(399, __c12, 15)),
+          complianceSecurityProfile: S.optional(__S(400, __c12, 16)),
+          enhancedSecurityMonitoring: S.optional(__S(399, __c12, 15)),
         }),
       ).annotate({ identifier: "EnhancedSecurityComplianceDefinition" });
     case 18:
@@ -1715,26 +1779,26 @@ function __c11(j: number): any {
         S.Struct({
           computeMode: S.String,
           managedResourceGroupId: S.optional(S.String),
-          parameters: S.optional(__S(357, __c11, 5)),
+          parameters: S.optional(__S(389, __c12, 5)),
           provisioningState: S.optional(S.String),
           uiDefinitionUri: S.optional(S.String),
-          authorizations: S.optional(__S(359, __c11, 7)),
-          createdBy: S.optional(__S(360, __c11, 8)),
-          updatedBy: S.optional(__S(360, __c11, 8)),
+          authorizations: S.optional(__S(391, __c12, 7)),
+          createdBy: S.optional(__S(392, __c12, 8)),
+          updatedBy: S.optional(__S(392, __c12, 8)),
           createdDateTime: S.optional(S.String),
           workspaceId: S.optional(S.String),
           workspaceUrl: S.optional(S.String),
-          storageAccountIdentity: S.optional(__S(361, __c11, 9)),
-          managedDiskIdentity: S.optional(__S(361, __c11, 9)),
+          storageAccountIdentity: S.optional(__S(393, __c12, 9)),
+          managedDiskIdentity: S.optional(__S(393, __c12, 9)),
           diskEncryptionSetId: S.optional(S.String),
-          encryption: S.optional(__S(366, __c11, 14)),
-          enhancedSecurityCompliance: S.optional(__S(369, __c11, 17)),
+          encryption: S.optional(__S(398, __c12, 14)),
+          enhancedSecurityCompliance: S.optional(__S(401, __c12, 17)),
           privateEndpointConnections: S.optional(__S(320, __c10, 0)),
           publicNetworkAccess: S.optional(S.String),
           requiredNsgRules: S.optional(S.String),
-          defaultCatalog: S.optional(__S(370, __c11, 18)),
+          defaultCatalog: S.optional(__S(402, __c12, 18)),
           isUcEnabled: S.optional(S.Boolean),
-          accessConnector: S.optional(__S(371, __c11, 19)),
+          accessConnector: S.optional(__S(403, __c12, 19)),
           defaultStorageFirewall: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceProperties" });
@@ -1745,21 +1809,9 @@ function __c11(j: number): any {
           tier: S.optional(S.String),
         }),
       ).annotate({ identifier: "Sku" });
-    case 22:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(128, __c4, 0)),
-          location: S.String,
-          properties: __S(372, __c11, 20),
-          sku: S.optional(__S(373, __c11, 21)),
-        }),
-      ).annotate({ identifier: "GetWorkspaceResponse" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1777,20 +1829,20 @@ function __c12(j: number): any {
       ).annotate({ identifier: "ListAccessConnectorByResourceGroupRequest" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(164, __c5, 4));
+      return S.Array(__S(1088, __c34, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(416, __c13, 0),
+          value: __S(448, __c14, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccessConnectorListResult" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1807,7 +1859,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "ListAccessConnectorBySubscriptionRequest" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1833,21 +1885,21 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(481, __c15, 1)),
+          display: S.optional(__S(513, __c16, 1)),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(482, __c15, 2));
+      return S.Array(__S(514, __c16, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(483, __c15, 3)),
+          value: S.optional(__S(515, __c16, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1873,7 +1925,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "PrivateEndpointConnectionsList" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1891,17 +1943,17 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "ListPrivateLinkResourcesRequest" });
     case 1:
-      return S.Array(__S(1057, __c33, 1));
+      return S.Array(__S(1217, __c38, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(545, __c17, 1),
+          value: __S(577, __c18, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResourcesList" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1919,17 +1971,17 @@ function __c18(j: number): any {
         ),
       ).annotate({ identifier: "ListVNetPeeringByWorkspaceRequest" });
     case 1:
-      return S.Array(__S(1122, __c35, 2));
+      return S.Array(__S(1280, __c40, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(577, __c18, 1),
+          value: __S(609, __c19, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualNetworkPeeringList" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1947,20 +1999,20 @@ function __c19(j: number): any {
       ).annotate({ identifier: "ListWorkspaceByResourceGroupRequest" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(374, __c11, 22));
+      return S.Array(__S(352, __c11, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(640, __c20, 0),
+          value: __S(672, __c21, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceListResult" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1977,7 +2029,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "ListWorkspaceBySubscriptionRequest" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1998,7 +2050,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "UpdateAccessConnectorRequest" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2017,7 +2069,18 @@ function __c23(j: number): any {
       ).annotate({ identifier: "DeleteAccessConnectorRequest" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteAccessConnectorResponse" });
+  }
+}
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2037,7 +2100,25 @@ function __c24(j: number): any {
       ).annotate({ identifier: "UpdateWorkspaceRequest" });
   }
 }
-function __c25(j: number): any {
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: __S(404, __c12, 20),
+          sku: S.optional(__S(405, __c12, 21)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateWorkspaceResponse" });
+  }
+}
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2046,7 +2127,7 @@ function __c25(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           peeringName: S.String.pipe(T.Label()),
-          properties: __S(1121, __c35, 1),
+          properties: __S(1313, __c41, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2056,28 +2137,39 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "VNetPeeringCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: __S(1313, __c41, 1),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "VNetPeeringCreateOrUpdateResponse" });
   }
 }
-function __c26(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           computeMode: S.String,
           managedResourceGroupId: S.optional(S.String),
-          parameters: S.optional(__S(357, __c11, 5)),
+          parameters: S.optional(__S(389, __c12, 5)),
           uiDefinitionUri: S.optional(S.String),
-          authorizations: S.optional(__S(359, __c11, 7)),
+          authorizations: S.optional(__S(391, __c12, 7)),
           createdBy: S.optional(__S(32, __c1, 0)),
           updatedBy: S.optional(__S(32, __c1, 0)),
           storageAccountIdentity: S.optional(__S(32, __c1, 0)),
           managedDiskIdentity: S.optional(__S(32, __c1, 0)),
-          encryption: S.optional(__S(366, __c11, 14)),
-          enhancedSecurityCompliance: S.optional(__S(369, __c11, 17)),
+          encryption: S.optional(__S(398, __c12, 14)),
+          enhancedSecurityCompliance: S.optional(__S(401, __c12, 17)),
           publicNetworkAccess: S.optional(S.String),
           requiredNsgRules: S.optional(S.String),
-          defaultCatalog: S.optional(__S(370, __c11, 18)),
-          accessConnector: S.optional(__S(371, __c11, 19)),
+          defaultCatalog: S.optional(__S(402, __c12, 18)),
+          accessConnector: S.optional(__S(403, __c12, 19)),
           defaultStorageFirewall: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspacePropertiesInput" });
@@ -2089,8 +2181,8 @@ function __c26(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           tags: S.optional(__S(128, __c4, 0)),
           location: S.String,
-          properties: __S(832, __c26, 0),
-          sku: S.optional(__S(373, __c11, 21)),
+          properties: __S(928, __c29, 0),
+          sku: S.optional(__S(405, __c12, 21)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2102,7 +2194,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "WorkspacesCreateOrUpdateRequest" });
   }
 }
-function __c27(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2122,7 +2214,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "DeletePrivateEndpointConnectionRequest" });
   }
 }
-function __c28(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2142,7 +2234,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "DeleteVNetPeeringRequest" });
   }
 }
-function __c29(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2162,7 +2254,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "DeleteWorkspaceRequest" });
   }
 }
-function __c30(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2181,7 +2273,23 @@ function __c30(j: number): any {
       ).annotate({ identifier: "GetAccessConnectorRequest" });
   }
 }
-function __c31(j: number): any {
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(160, __c5, 0)),
+          identity: S.optional(__S(163, __c5, 3)),
+        }),
+      ).annotate({ identifier: "GetAccessConnectorResponse" });
+  }
+}
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2201,7 +2309,20 @@ function __c31(j: number): any {
       ).annotate({ identifier: "GetPrivateEndpointConnectionRequest" });
   }
 }
-function __c32(j: number): any {
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: __S(225, __c7, 1),
+        }),
+      ).annotate({ identifier: "GetPrivateEndpointConnectionResponse" });
+  }
+}
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2221,7 +2342,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "GetPrivateLinkResourceRequest" });
   }
 }
-function __c33(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2237,12 +2358,12 @@ function __c33(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: __S(1056, __c33, 0),
+          properties: __S(1216, __c38, 0),
         }),
       ).annotate({ identifier: "GetPrivateLinkResourceResponse" });
   }
 }
-function __c34(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2262,7 +2383,20 @@ function __c34(j: number): any {
       ).annotate({ identifier: "GetVNetPeeringRequest" });
   }
 }
-function __c35(j: number): any {
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: __S(1313, __c41, 1),
+        }),
+      ).annotate({ identifier: "GetVNetPeeringResponse" });
+  }
+}
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2278,22 +2412,13 @@ function __c35(j: number): any {
           allowGatewayTransit: S.optional(S.Boolean),
           useRemoteGateways: S.optional(S.Boolean),
           databricksVirtualNetwork: S.optional(__S(256, __c8, 0)),
-          databricksAddressSpace: S.optional(__S(1120, __c35, 0)),
+          databricksAddressSpace: S.optional(__S(1312, __c41, 0)),
           remoteVirtualNetwork: __S(256, __c8, 0),
-          remoteAddressSpace: S.optional(__S(1120, __c35, 0)),
+          remoteAddressSpace: S.optional(__S(1312, __c41, 0)),
           peeringState: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualNetworkPeeringPropertiesFormat" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: __S(1121, __c35, 1),
-        }),
-      ).annotate({ identifier: "GetVNetPeeringResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

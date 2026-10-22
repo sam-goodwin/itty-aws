@@ -785,6 +785,10 @@ export interface PublicCloudConnectorsCreateOrUpdateResponse {
   properties?: PublicCloudConnectorProperties;
   /** The kind of the public cloud connector. */
   kind?: HostType;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Solution configuration resource. */
 export type SolutionConfigurationPropertiesInput = SolutionTypeSettings;
@@ -882,6 +886,10 @@ export interface SyncSolutionConfigurationNowResponse {
   operations?: SyncSolutionConfigurationNowResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface TestPublicCloudConnectorPermissionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -913,6 +921,10 @@ export interface TestPublicCloudConnectorPermissionsResponse {
   operations?: TestPublicCloudConnectorPermissionsResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface UpdateEndpointRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -1181,7 +1193,7 @@ export const GetPublicCloudConnector: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(368, __c46, 0) as any as S.Schema<GetPublicCloudConnectorRequest>,
-  output: __S(402, __c50, 2) as any as S.Schema<GetPublicCloudConnectorResponse>,
+  output: __S(408, __c51, 0) as any as S.Schema<GetPublicCloudConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1195,7 +1207,7 @@ export const GetServiceConfiguration: API.OperationMethod<
   GetServiceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<GetServiceConfigurationRequest>,
+  input: __S(416, __c52, 0) as any as S.Schema<GetServiceConfigurationRequest>,
   output: __S(17, __c2, 1) as any as S.Schema<GetServiceConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1451,7 +1463,7 @@ export const PublicCloudConnectorsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(233, __c29, 1) as any as S.Schema<PublicCloudConnectorsCreateOrUpdateRequest>,
-  output: __S(402, __c50, 2) as any as S.Schema<PublicCloudConnectorsCreateOrUpdateResponse>,
+  output: __S(234, __c29, 2) as any as S.Schema<PublicCloudConnectorsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1526,7 +1538,7 @@ export const UpdatePublicCloudConnector: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(292, __c36, 4) as any as S.Schema<UpdatePublicCloudConnectorRequest>,
-  output: __S(402, __c50, 2) as any as S.Schema<UpdatePublicCloudConnectorResponse>,
+  output: __S(408, __c51, 0) as any as S.Schema<UpdatePublicCloudConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1982,7 +1994,7 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(402, __c50, 2));
+      return S.Array(__S(408, __c51, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2218,6 +2230,21 @@ function __c29(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PublicCloudConnectorsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(376, __c47, 0)),
+          location: S.String,
+          properties: S.optional(__S(401, __c50, 1)),
+          kind: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "PublicCloudConnectorsCreateOrUpdateResponse" });
   }
 }
 function __c30(j: number): any {
@@ -2310,6 +2337,8 @@ function __c32(j: number): any {
           endTime: S.optional(S.String),
           operations: S.optional(__S(262, __c32, 6)),
           error: S.optional(__S(260, __c32, 4)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "SyncSolutionConfigurationNowResponse" });
   }
@@ -2681,7 +2710,11 @@ function __c50(j: number): any {
           connectorPrimaryIdentifier: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublicCloudConnectorProperties" });
-    case 2:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2696,7 +2729,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "GetPublicCloudConnectorResponse" });
   }
 }
-function __c51(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

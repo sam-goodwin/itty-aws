@@ -359,6 +359,7 @@ export interface ActiveDirectoryConnectorStatus {
   observedGeneration?: number;
   /** The state of the AD connector custom resource. */
   state?: string;
+  [key: string]: unknown;
 }
 /** The properties of an Active Directory connector resource */
 export interface ActiveDirectoryConnectorPropertiesInput {
@@ -431,6 +432,7 @@ export interface FailoverGroupSpec {
   partnerSyncMode?: FailoverGroupSpecPartnerSyncMode | (string & {});
   /** The role of the SQL managed instance in this failover group. */
   role: FailoverGroupSpecRole | (string & {});
+  [key: string]: unknown;
 }
 /** The properties of a failover group resource. */
 export interface FailoverGroupPropertiesInput {
@@ -440,6 +442,7 @@ export interface FailoverGroupPropertiesInput {
   spec: FailoverGroupSpec;
   /** The status of the failover group custom resource. */
   status?: unknown;
+  [key: string]: unknown;
 }
 export interface CreateFailoverGroupRequest {
   /** The ID of the Azure subscription */
@@ -469,6 +472,7 @@ export interface FailoverGroupProperties {
   spec: FailoverGroupSpec;
   /** The status of the failover group custom resource. */
   status?: unknown;
+  [key: string]: unknown;
 }
 export interface CreateFailoverGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -603,14 +607,17 @@ export interface K8sResourceRequirements {
   requests?: K8sResourceRequirementsRequestsMap;
   /** Limits for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'. */
   limits?: K8sResourceRequirementsLimitsMap;
+  [key: string]: unknown;
 }
 /** The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service */
 export interface K8sSchedulingOptions {
   resources?: K8sResourceRequirements;
+  [key: string]: unknown;
 }
 /** The kubernetes scheduling information. */
 export interface K8sScheduling {
   default?: K8sSchedulingOptions;
+  [key: string]: unknown;
 }
 export interface K8sActiveDirectoryConnector {
   /** Name of the connector */
@@ -645,6 +652,7 @@ export interface K8sSecurity {
   serviceCertificateSecret?: string;
   activeDirectory?: K8sActiveDirectory;
   transparentDataEncryption?: K8stransparentDataEncryption;
+  [key: string]: unknown;
 }
 /** The kubernetes network settings information. */
 export interface K8sNetworkSettings {
@@ -658,6 +666,7 @@ export interface K8sNetworkSettings {
 /** The kubernetes settings information. */
 export interface K8sSettings {
   network?: K8sNetworkSettings;
+  [key: string]: unknown;
 }
 /** The kubernetes spec information. */
 export interface SqlManagedInstanceK8sSpec {
@@ -666,10 +675,12 @@ export interface SqlManagedInstanceK8sSpec {
   replicas?: number;
   security?: K8sSecurity;
   settings?: K8sSettings;
+  [key: string]: unknown;
 }
 /** The raw kubernetes information. */
 export interface SqlManagedInstanceK8sRaw {
   spec?: SqlManagedInstanceK8sSpec;
+  [key: string]: unknown;
 }
 /** Username and password for basic login authentication. */
 export type SqlManagedInstancePropertiesInputBasicLoginInformation =
@@ -1131,6 +1142,8 @@ export interface CreateSqlServerAvailabilityGroupAvailabilityGroupResponse {
   location: string;
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
+  /** The URL of the resource used to check the status of the asynchronous operation. */
+  locationHeader?: string;
 }
 /** The availability mode of the availability group. */
 export type DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationAvailabilityMode =
@@ -1205,6 +1218,8 @@ export interface CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupRes
   location: string;
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
+  /** The URL of the resource used to check the status of the asynchronous operation. */
+  locationHeader?: string;
 }
 /** List of availability group replicas. */
 export type AvailabilityGroupCreateUpdateConfigurationReplicasList =
@@ -1301,6 +1316,12 @@ export interface CreateSqlServerAvailabilityGroupManagedInstanceLinkResponse {
   location: string;
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+  /** URL for determining when an operation has completed. */
+  locationHeader?: string;
+  /** The URL to retrieve the status of the asynchronous operation. */
+  azureAsyncOperation?: string;
 }
 /** Resource tags. */
 export type CreateSqlServerDatabaseRequestTagsMap = { [key: string]: string | undefined };
@@ -2500,7 +2521,10 @@ export interface DeleteSqlServerAvailabilityGroupRequest {
   /** Name of SQL Availability Group */
   availabilityGroupName: string;
 }
-export interface DeleteSqlServerAvailabilityGroupResponse {}
+export interface DeleteSqlServerAvailabilityGroupResponse {
+  /** The URL of the resource used to check the status of the asynchronous operation. */
+  location?: string;
+}
 export interface DeleteSqlServerAvailabilityGroupMiLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2511,7 +2535,14 @@ export interface DeleteSqlServerAvailabilityGroupMiLinkRequest {
   /** Name of SQL Availability Group */
   availabilityGroupName: string;
 }
-export interface DeleteSqlServerAvailabilityGroupMiLinkResponse {}
+export interface DeleteSqlServerAvailabilityGroupMiLinkResponse {
+  /** The Retry-After header indicates how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+  /** The URL of the resource used to check the status of the asynchronous operation. */
+  location?: string;
+  /** URL for checking the ongoing status of the operation. To get the status of the asynchronous operation, send a GET request to the URL in Azure-AsyncOperation header value. More details can be found in https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/async-api-reference.md */
+  azureAsyncOperation?: string;
+}
 export interface DeleteSqlServerDatabaseRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -2522,7 +2553,10 @@ export interface DeleteSqlServerDatabaseRequest {
   /** Name of the database */
   databaseName: string;
 }
-export interface DeleteSqlServerDatabaseResponse {}
+export interface DeleteSqlServerDatabaseResponse {
+  /** The URL of the resource used to check the status of the asynchronous operation. */
+  location?: string;
+}
 export interface DeleteSqlServerEsuLicenseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2974,6 +3008,10 @@ export interface GetSqlServerInstanceBestPracticesAssessmentResponse {
   rows: GetSqlServerInstanceBestPracticesAssessmentResponseRowsList;
   /** The link to the next page of the best practices assessment response for the SQL Server instance. Null, if no more pages are available. */
   nextLink?: string;
+  /** The URL to retrieve the operation status. */
+  location?: string;
+  /** The URL to retrieve the operation status. */
+  azureAsyncOperation?: string;
 }
 export interface GetSqlServerInstanceJobsStatusRequest {
   /** The ID of the Azure subscription */
@@ -3133,6 +3171,8 @@ export interface GetSqlServerInstanceTelemetryResponse {
   rows: GetSqlServerInstanceTelemetryResponseRowsList;
   /** The link to the next section of rows of the telemetry response for the SQL Server instance. Null if no more sections are available. */
   nextLink?: string;
+  /** The URL to retrieve the operation status. */
+  location?: string;
 }
 export interface GetSqlServerLicenseRequest {
   /** The ID of the Azure subscription */
@@ -3867,6 +3907,12 @@ export type RunSqlServerInstanceManagedInstanceLinkAssessmentResponseAssessments
 export interface RunSqlServerInstanceManagedInstanceLinkAssessmentResponse {
   /** The list of the results for MI Link assessment. */
   assessments?: RunSqlServerInstanceManagedInstanceLinkAssessmentResponseAssessmentsList;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+  /** The URL to retrieve the operation status. */
+  location?: string;
+  /** The URL to retrieve the operation status. */
+  azureAsyncOperation?: string;
 }
 export interface RunSqlServerInstanceMigrationAssessmentRequest {
   /** The ID of the Azure subscription */
@@ -3992,6 +4038,12 @@ export interface SqlServerAvailabilityGroupsFailoverMiLinkResponse {
   location: string;
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
+  /** The Retry-After header indicates how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+  /** The URL of the resource used to check the status of the asynchronous operation. */
+  locationHeader?: string;
+  /** URL for checking the ongoing status of the operation. To get the status of the asynchronous operation, send a GET request to the URL in Azure-AsyncOperation header value. More details can be found in https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/async-api-reference.md */
+  azureAsyncOperation?: string;
 }
 export interface SqlServerAvailabilityGroupsForceFailoverAllowDataLossRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4157,6 +4209,8 @@ export interface UpdateSqlServerAvailabilityGroupResponse {
   location: string;
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
+  /** The URL of the resource used to check the status of the asynchronous operation. */
+  locationHeader?: string;
 }
 /** Resource tags. */
 export type UpdateSqlServerDatabaseRequestTagsMap = { [key: string]: string | undefined };
@@ -4191,6 +4245,8 @@ export interface UpdateSqlServerDatabaseResponse {
   location: string;
   /** Properties of Arc Sql Server database */
   properties: SqlServerDatabaseResourceProperties;
+  /** The URL of the resource used to check the status of the asynchronous operation. */
+  locationHeader?: string;
 }
 /** Resource tags. */
 export type UpdateSqlServerEsuLicenseRequestTagsMap = { [key: string]: string | undefined };
@@ -4356,6 +4412,8 @@ export interface UpdateSqlServerInstanceResponse {
   location: string;
   /** null */
   properties?: SqlServerInstanceProperties;
+  /** The URL of the resource used to check the status of the asynchronous operation. */
+  locationHeader?: string;
 }
 /** Resource tags. */
 export type UpdateSqlServerLicenseRequestTagsMap = { [key: string]: string | undefined };
@@ -4422,7 +4480,7 @@ export const AddSqlServerAvailabilityGroupDatabases: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AddSqlServerAvailabilityGroupDatabasesRequest>,
-  output: __S(141, __c4, 13) as any as S.Schema<AddSqlServerAvailabilityGroupDatabasesResponse>,
+  output: __S(128, __c4, 0) as any as S.Schema<AddSqlServerAvailabilityGroupDatabasesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4436,8 +4494,8 @@ export const CreateActiveDirectoryConnector: API.OperationMethod<
   CreateActiveDirectoryConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c5, 1) as any as S.Schema<CreateActiveDirectoryConnectorRequest>,
-  output: __S(200, __c6, 8) as any as S.Schema<CreateActiveDirectoryConnectorResponse>,
+  input: __S(193, __c6, 1) as any as S.Schema<CreateActiveDirectoryConnectorRequest>,
+  output: __S(232, __c7, 8) as any as S.Schema<CreateActiveDirectoryConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4451,8 +4509,8 @@ export const CreateFailoverGroup: API.OperationMethod<
   CreateFailoverGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(705, __c22, 1) as any as S.Schema<CreateFailoverGroupRequest>,
-  output: __S(738, __c23, 2) as any as S.Schema<CreateFailoverGroupResponse>,
+  input: __S(801, __c25, 1) as any as S.Schema<CreateFailoverGroupRequest>,
+  output: __S(834, __c26, 2) as any as S.Schema<CreateFailoverGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4466,8 +4524,8 @@ export const CreatePostgresInstance: API.OperationMethod<
   CreatePostgresInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c35, 0) as any as S.Schema<CreatePostgresInstanceRequest>,
-  output: __S(1154, __c36, 2) as any as S.Schema<CreatePostgresInstanceResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<CreatePostgresInstanceRequest>,
+  output: __S(1250, __c39, 2) as any as S.Schema<CreatePostgresInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4481,8 +4539,8 @@ export const CreateSqlManagedInstance: API.OperationMethod<
   CreateSqlManagedInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1697, __c53, 1) as any as S.Schema<CreateSqlManagedInstanceRequest>,
-  output: __S(1743, __c54, 15) as any as S.Schema<CreateSqlManagedInstanceResponse>,
+  input: __S(1793, __c56, 1) as any as S.Schema<CreateSqlManagedInstanceRequest>,
+  output: __S(1839, __c57, 15) as any as S.Schema<CreateSqlManagedInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4496,8 +4554,8 @@ export const CreateSqlServerAvailabilityGroup: API.OperationMethod<
   CreateSqlServerAvailabilityGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2176, __c68, 0) as any as S.Schema<CreateSqlServerAvailabilityGroupRequest>,
-  output: __S(141, __c4, 13) as any as S.Schema<CreateSqlServerAvailabilityGroupResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<CreateSqlServerAvailabilityGroupRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<CreateSqlServerAvailabilityGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4512,14 +4570,14 @@ export const CreateSqlServerAvailabilityGroupAvailabilityGroup: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2688,
-    __c84,
+    2784,
+    __c87,
     0,
   ) as any as S.Schema<CreateSqlServerAvailabilityGroupAvailabilityGroupRequest>,
   output: __S(
-    141,
-    __c4,
-    13,
+    2816,
+    __c88,
+    0,
   ) as any as S.Schema<CreateSqlServerAvailabilityGroupAvailabilityGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4535,14 +4593,14 @@ export const CreateSqlServerAvailabilityGroupDistributedAvailabilityGroup: API.O
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3072,
-    __c96,
+    3200,
+    __c100,
     0,
   ) as any as S.Schema<CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupRequest>,
   output: __S(
-    141,
-    __c4,
-    13,
+    2816,
+    __c88,
+    0,
   ) as any as S.Schema<CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4558,14 +4616,14 @@ export const CreateSqlServerAvailabilityGroupManagedInstanceLink: API.OperationM
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3267,
-    __c102,
+    3395,
+    __c106,
     3,
   ) as any as S.Schema<CreateSqlServerAvailabilityGroupManagedInstanceLinkRequest>,
   output: __S(
-    141,
-    __c4,
-    13,
+    3424,
+    __c107,
+    0,
   ) as any as S.Schema<CreateSqlServerAvailabilityGroupManagedInstanceLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4580,8 +4638,8 @@ export const CreateSqlServerDatabase: API.OperationMethod<
   CreateSqlServerDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3296, __c103, 0) as any as S.Schema<CreateSqlServerDatabaseRequest>,
-  output: __S(3369, __c105, 9) as any as S.Schema<CreateSqlServerDatabaseResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<CreateSqlServerDatabaseRequest>,
+  output: __S(3520, __c110, 0) as any as S.Schema<CreateSqlServerDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4595,8 +4653,8 @@ export const CreateSqlServerEsuLicense: API.OperationMethod<
   CreateSqlServerEsuLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257, __c8, 1) as any as S.Schema<CreateSqlServerEsuLicenseRequest>,
-  output: __S(289, __c9, 1) as any as S.Schema<CreateSqlServerEsuLicenseResponse>,
+  input: __S(289, __c9, 1) as any as S.Schema<CreateSqlServerEsuLicenseRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<CreateSqlServerEsuLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4610,8 +4668,8 @@ export const CreateSqlServerInstance: API.OperationMethod<
   CreateSqlServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c10, 1) as any as S.Schema<CreateSqlServerInstanceRequest>,
-  output: __S(382, __c11, 30) as any as S.Schema<CreateSqlServerInstanceResponse>,
+  input: __S(353, __c11, 1) as any as S.Schema<CreateSqlServerInstanceRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<CreateSqlServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4625,8 +4683,8 @@ export const CreateSqlServerLicense: API.OperationMethod<
   CreateSqlServerLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(417, __c13, 1) as any as S.Schema<CreateSqlServerLicenseRequest>,
-  output: __S(449, __c14, 1) as any as S.Schema<CreateSqlServerLicenseResponse>,
+  input: __S(481, __c15, 1) as any as S.Schema<CreateSqlServerLicenseRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<CreateSqlServerLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4640,8 +4698,8 @@ export const DeleteActiveDirectoryConnector: API.OperationMethod<
   DeleteActiveDirectoryConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c15, 0) as any as S.Schema<DeleteActiveDirectoryConnectorRequest>,
-  output: __S(2240, __c70, 0) as any as S.Schema<DeleteActiveDirectoryConnectorResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<DeleteActiveDirectoryConnectorRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<DeleteActiveDirectoryConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4655,8 +4713,8 @@ export const DeleteDataControllerDataController: API.OperationMethod<
   DeleteDataControllerDataControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c16, 0) as any as S.Schema<DeleteDataControllerDataControllerRequest>,
-  output: __S(2240, __c70, 0) as any as S.Schema<DeleteDataControllerDataControllerResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<DeleteDataControllerDataControllerRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<DeleteDataControllerDataControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4670,8 +4728,8 @@ export const DeleteFailoverGroup: API.OperationMethod<
   DeleteFailoverGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<DeleteFailoverGroupRequest>,
-  output: __S(2240, __c70, 0) as any as S.Schema<DeleteFailoverGroupResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<DeleteFailoverGroupRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<DeleteFailoverGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4685,8 +4743,8 @@ export const DeletePostgresInstance: API.OperationMethod<
   DeletePostgresInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c18, 0) as any as S.Schema<DeletePostgresInstanceRequest>,
-  output: __S(2240, __c70, 0) as any as S.Schema<DeletePostgresInstanceResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<DeletePostgresInstanceRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<DeletePostgresInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4700,8 +4758,8 @@ export const DeleteSqlManagedInstance: API.OperationMethod<
   DeleteSqlManagedInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c19, 0) as any as S.Schema<DeleteSqlManagedInstanceRequest>,
-  output: __S(2240, __c70, 0) as any as S.Schema<DeleteSqlManagedInstanceResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<DeleteSqlManagedInstanceRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<DeleteSqlManagedInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4715,8 +4773,8 @@ export const DeleteSqlServerAvailabilityGroup: API.OperationMethod<
   DeleteSqlServerAvailabilityGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c20, 0) as any as S.Schema<DeleteSqlServerAvailabilityGroupRequest>,
-  output: __S(2240, __c70, 0) as any as S.Schema<DeleteSqlServerAvailabilityGroupResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<DeleteSqlServerAvailabilityGroupRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<DeleteSqlServerAvailabilityGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4730,8 +4788,8 @@ export const DeleteSqlServerAvailabilityGroupMiLink: API.OperationMethod<
   DeleteSqlServerAvailabilityGroupMiLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<DeleteSqlServerAvailabilityGroupMiLinkRequest>,
-  output: __S(2240, __c70, 0) as any as S.Schema<DeleteSqlServerAvailabilityGroupMiLinkResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<DeleteSqlServerAvailabilityGroupMiLinkRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<DeleteSqlServerAvailabilityGroupMiLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4745,8 +4803,8 @@ export const DeleteSqlServerDatabase: API.OperationMethod<
   DeleteSqlServerDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c24, 0) as any as S.Schema<DeleteSqlServerDatabaseRequest>,
-  output: __S(2240, __c70, 0) as any as S.Schema<DeleteSqlServerDatabaseResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<DeleteSqlServerDatabaseRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<DeleteSqlServerDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4760,8 +4818,8 @@ export const DeleteSqlServerEsuLicense: API.OperationMethod<
   DeleteSqlServerEsuLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c25, 0) as any as S.Schema<DeleteSqlServerEsuLicenseRequest>,
-  output: __S(2240, __c70, 0) as any as S.Schema<DeleteSqlServerEsuLicenseResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<DeleteSqlServerEsuLicenseRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<DeleteSqlServerEsuLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4775,8 +4833,8 @@ export const DeleteSqlServerInstance: API.OperationMethod<
   DeleteSqlServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c26, 0) as any as S.Schema<DeleteSqlServerInstanceRequest>,
-  output: __S(2240, __c70, 0) as any as S.Schema<DeleteSqlServerInstanceResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<DeleteSqlServerInstanceRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<DeleteSqlServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4790,8 +4848,8 @@ export const DeleteSqlServerLicense: API.OperationMethod<
   DeleteSqlServerLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<DeleteSqlServerLicenseRequest>,
-  output: __S(2240, __c70, 0) as any as S.Schema<DeleteSqlServerLicenseResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<DeleteSqlServerLicenseRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<DeleteSqlServerLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4805,8 +4863,8 @@ export const GetActiveDirectoryConnector: API.OperationMethod<
   GetActiveDirectoryConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<GetActiveDirectoryConnectorRequest>,
-  output: __S(200, __c6, 8) as any as S.Schema<GetActiveDirectoryConnectorResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetActiveDirectoryConnectorRequest>,
+  output: __S(232, __c7, 8) as any as S.Schema<GetActiveDirectoryConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4820,8 +4878,8 @@ export const GetDataControllerDataController: API.OperationMethod<
   GetDataControllerDataControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<GetDataControllerDataControllerRequest>,
-  output: __S(965, __c30, 5) as any as S.Schema<GetDataControllerDataControllerResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetDataControllerDataControllerRequest>,
+  output: __S(1061, __c33, 5) as any as S.Schema<GetDataControllerDataControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4835,8 +4893,8 @@ export const GetFailoverGroup: API.OperationMethod<
   GetFailoverGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<GetFailoverGroupRequest>,
-  output: __S(738, __c23, 2) as any as S.Schema<GetFailoverGroupResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetFailoverGroupRequest>,
+  output: __S(834, __c26, 2) as any as S.Schema<GetFailoverGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4850,8 +4908,8 @@ export const GetPostgresInstance: API.OperationMethod<
   GetPostgresInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c32, 0) as any as S.Schema<GetPostgresInstanceRequest>,
-  output: __S(1154, __c36, 2) as any as S.Schema<GetPostgresInstanceResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetPostgresInstanceRequest>,
+  output: __S(1250, __c39, 2) as any as S.Schema<GetPostgresInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4865,8 +4923,8 @@ export const GetSqlManagedInstance: API.OperationMethod<
   GetSqlManagedInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c33, 0) as any as S.Schema<GetSqlManagedInstanceRequest>,
-  output: __S(1743, __c54, 15) as any as S.Schema<GetSqlManagedInstanceResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<GetSqlManagedInstanceRequest>,
+  output: __S(1839, __c57, 15) as any as S.Schema<GetSqlManagedInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4880,8 +4938,8 @@ export const GetSqlServerAvailabilityGroup: API.OperationMethod<
   GetSqlServerAvailabilityGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c34, 0) as any as S.Schema<GetSqlServerAvailabilityGroupRequest>,
-  output: __S(141, __c4, 13) as any as S.Schema<GetSqlServerAvailabilityGroupResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetSqlServerAvailabilityGroupRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<GetSqlServerAvailabilityGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4895,8 +4953,8 @@ export const GetSqlServerDatabase: API.OperationMethod<
   GetSqlServerDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c39, 0) as any as S.Schema<GetSqlServerDatabaseRequest>,
-  output: __S(3369, __c105, 9) as any as S.Schema<GetSqlServerDatabaseResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<GetSqlServerDatabaseRequest>,
+  output: __S(3520, __c110, 0) as any as S.Schema<GetSqlServerDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4910,8 +4968,8 @@ export const GetSqlServerEsuLicense: API.OperationMethod<
   GetSqlServerEsuLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c40, 0) as any as S.Schema<GetSqlServerEsuLicenseRequest>,
-  output: __S(289, __c9, 1) as any as S.Schema<GetSqlServerEsuLicenseResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<GetSqlServerEsuLicenseRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<GetSqlServerEsuLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4925,8 +4983,8 @@ export const GetSqlServerInstance: API.OperationMethod<
   GetSqlServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c41, 0) as any as S.Schema<GetSqlServerInstanceRequest>,
-  output: __S(382, __c11, 30) as any as S.Schema<GetSqlServerInstanceResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<GetSqlServerInstanceRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<GetSqlServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4940,8 +4998,8 @@ export const GetSqlServerInstanceAllAvailabilityGroups: API.OperationMethod<
   GetSqlServerInstanceAllAvailabilityGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c42, 0) as any as S.Schema<GetSqlServerInstanceAllAvailabilityGroupsRequest>,
-  output: __S(1377, __c43, 1) as any as S.Schema<ArcSqlServerAvailabilityGroupListResult>,
+  input: __S(1440, __c45, 0) as any as S.Schema<GetSqlServerInstanceAllAvailabilityGroupsRequest>,
+  output: __S(1473, __c46, 1) as any as S.Schema<ArcSqlServerAvailabilityGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4955,11 +5013,11 @@ export const GetSqlServerInstanceBestPracticesAssessment: API.OperationMethod<
   GetSqlServerInstanceBestPracticesAssessmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c44, 0) as any as S.Schema<GetSqlServerInstanceBestPracticesAssessmentRequest>,
+  input: __S(1504, __c47, 0) as any as S.Schema<GetSqlServerInstanceBestPracticesAssessmentRequest>,
   output: __S(
-    1442,
-    __c45,
-    2,
+    1505,
+    __c47,
+    1,
   ) as any as S.Schema<GetSqlServerInstanceBestPracticesAssessmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4974,8 +5032,8 @@ export const GetSqlServerInstanceJobsStatus: API.OperationMethod<
   GetSqlServerInstanceJobsStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c46, 0) as any as S.Schema<GetSqlServerInstanceJobsStatusRequest>,
-  output: __S(1474, __c46, 2) as any as S.Schema<GetSqlServerInstanceJobsStatusResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<GetSqlServerInstanceJobsStatusRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<GetSqlServerInstanceJobsStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4989,8 +5047,8 @@ export const GetSqlServerInstanceTelemetry: API.OperationMethod<
   GetSqlServerInstanceTelemetryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c48, 0) as any as S.Schema<GetSqlServerInstanceTelemetryRequest>,
-  output: __S(1442, __c45, 2) as any as S.Schema<GetSqlServerInstanceTelemetryResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<GetSqlServerInstanceTelemetryRequest>,
+  output: __S(1633, __c51, 1) as any as S.Schema<GetSqlServerInstanceTelemetryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5004,8 +5062,8 @@ export const GetSqlServerLicense: API.OperationMethod<
   GetSqlServerLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c49, 0) as any as S.Schema<GetSqlServerLicenseRequest>,
-  output: __S(449, __c14, 1) as any as S.Schema<GetSqlServerLicenseResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<GetSqlServerLicenseRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<GetSqlServerLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5019,8 +5077,8 @@ export const ListActiveDirectoryConnectors: API.OperationMethod<
   ListActiveDirectoryConnectorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1600, __c50, 0) as any as S.Schema<ListActiveDirectoryConnectorsRequest>,
-  output: __S(1602, __c50, 2) as any as S.Schema<ListActiveDirectoryConnectorsResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<ListActiveDirectoryConnectorsRequest>,
+  output: __S(1698, __c53, 2) as any as S.Schema<ListActiveDirectoryConnectorsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5034,8 +5092,8 @@ export const ListDataControllerInGroup: API.OperationMethod<
   ListDataControllerInGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1632, __c51, 0) as any as S.Schema<ListDataControllerInGroupRequest>,
-  output: __S(1665, __c52, 1) as any as S.Schema<ListDataControllerInGroupResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<ListDataControllerInGroupRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<ListDataControllerInGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5049,8 +5107,8 @@ export const ListDataControllerInSubscription: API.OperationMethod<
   ListDataControllerInSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c55, 0) as any as S.Schema<ListDataControllerInSubscriptionRequest>,
-  output: __S(1665, __c52, 1) as any as S.Schema<ListDataControllerInSubscriptionResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListDataControllerInSubscriptionRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<ListDataControllerInSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5064,8 +5122,8 @@ export const ListFailoverGroups: API.OperationMethod<
   ListFailoverGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1792, __c56, 0) as any as S.Schema<ListFailoverGroupsRequest>,
-  output: __S(1794, __c56, 2) as any as S.Schema<ListFailoverGroupsResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<ListFailoverGroupsRequest>,
+  output: __S(1890, __c59, 2) as any as S.Schema<ListFailoverGroupsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5079,8 +5137,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1824, __c57, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(1829, __c57, 5) as any as S.Schema<ListOperationsResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1925, __c60, 5) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5094,8 +5152,8 @@ export const ListPostgresInstanceByResourceGroup: API.OperationMethod<
   ListPostgresInstanceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1856, __c58, 0) as any as S.Schema<ListPostgresInstanceByResourceGroupRequest>,
-  output: __S(1889, __c59, 1) as any as S.Schema<ListPostgresInstanceByResourceGroupResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<ListPostgresInstanceByResourceGroupRequest>,
+  output: __S(1985, __c62, 1) as any as S.Schema<ListPostgresInstanceByResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5109,8 +5167,8 @@ export const ListPostgresInstances: API.OperationMethod<
   ListPostgresInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1920, __c60, 0) as any as S.Schema<ListPostgresInstancesRequest>,
-  output: __S(1889, __c59, 1) as any as S.Schema<ListPostgresInstancesResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ListPostgresInstancesRequest>,
+  output: __S(1985, __c62, 1) as any as S.Schema<ListPostgresInstancesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5124,8 +5182,8 @@ export const ListSqlManagedInstanceByResourceGroup: API.OperationMethod<
   ListSqlManagedInstanceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1952, __c61, 0) as any as S.Schema<ListSqlManagedInstanceByResourceGroupRequest>,
-  output: __S(1985, __c62, 1) as any as S.Schema<ListSqlManagedInstanceByResourceGroupResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<ListSqlManagedInstanceByResourceGroupRequest>,
+  output: __S(2081, __c65, 1) as any as S.Schema<ListSqlManagedInstanceByResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5139,8 +5197,8 @@ export const ListSqlManagedInstances: API.OperationMethod<
   ListSqlManagedInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2016, __c63, 0) as any as S.Schema<ListSqlManagedInstancesRequest>,
-  output: __S(1985, __c62, 1) as any as S.Schema<ListSqlManagedInstancesResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListSqlManagedInstancesRequest>,
+  output: __S(2081, __c65, 1) as any as S.Schema<ListSqlManagedInstancesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5154,8 +5212,8 @@ export const ListSqlServerAvailabilityGroups: API.OperationMethod<
   ListSqlServerAvailabilityGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2048, __c64, 0) as any as S.Schema<ListSqlServerAvailabilityGroupsRequest>,
-  output: __S(1377, __c43, 1) as any as S.Schema<ArcSqlServerAvailabilityGroupListResult>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListSqlServerAvailabilityGroupsRequest>,
+  output: __S(1473, __c46, 1) as any as S.Schema<ArcSqlServerAvailabilityGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5169,8 +5227,8 @@ export const ListSqlServerDatabases: API.OperationMethod<
   ListSqlServerDatabasesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2080, __c65, 0) as any as S.Schema<ListSqlServerDatabasesRequest>,
-  output: __S(2082, __c65, 2) as any as S.Schema<ArcSqlServerDatabaseListResult>,
+  input: __S(2176, __c68, 0) as any as S.Schema<ListSqlServerDatabasesRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<ArcSqlServerDatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5184,8 +5242,8 @@ export const ListSqlServerEsuLicenseByResourceGroup: API.OperationMethod<
   ListSqlServerEsuLicenseByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2112, __c66, 0) as any as S.Schema<ListSqlServerEsuLicenseByResourceGroupRequest>,
-  output: __S(2145, __c67, 1) as any as S.Schema<SqlServerEsuLicenseListResult>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListSqlServerEsuLicenseByResourceGroupRequest>,
+  output: __S(2241, __c70, 1) as any as S.Schema<SqlServerEsuLicenseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5199,8 +5257,8 @@ export const ListSqlServerEsuLicenses: API.OperationMethod<
   ListSqlServerEsuLicensesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2272, __c71, 0) as any as S.Schema<ListSqlServerEsuLicensesRequest>,
-  output: __S(2145, __c67, 1) as any as S.Schema<SqlServerEsuLicenseListResult>,
+  input: __S(2368, __c74, 0) as any as S.Schema<ListSqlServerEsuLicensesRequest>,
+  output: __S(2241, __c70, 1) as any as S.Schema<SqlServerEsuLicenseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5214,8 +5272,8 @@ export const ListSqlServerInstanceByResourceGroup: API.OperationMethod<
   ListSqlServerInstanceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c72, 0) as any as S.Schema<ListSqlServerInstanceByResourceGroupRequest>,
-  output: __S(2337, __c73, 1) as any as S.Schema<ListSqlServerInstanceByResourceGroupResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<ListSqlServerInstanceByResourceGroupRequest>,
+  output: __S(2433, __c76, 1) as any as S.Schema<ListSqlServerInstanceByResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5229,8 +5287,8 @@ export const ListSqlServerInstances: API.OperationMethod<
   ListSqlServerInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2368, __c74, 0) as any as S.Schema<ListSqlServerInstancesRequest>,
-  output: __S(2337, __c73, 1) as any as S.Schema<ListSqlServerInstancesResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<ListSqlServerInstancesRequest>,
+  output: __S(2433, __c76, 1) as any as S.Schema<ListSqlServerInstancesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5244,8 +5302,8 @@ export const ListSqlServerLicenseByResourceGroup: API.OperationMethod<
   ListSqlServerLicenseByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2400, __c75, 0) as any as S.Schema<ListSqlServerLicenseByResourceGroupRequest>,
-  output: __S(2433, __c76, 1) as any as S.Schema<ListSqlServerLicenseByResourceGroupResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<ListSqlServerLicenseByResourceGroupRequest>,
+  output: __S(2529, __c79, 1) as any as S.Schema<ListSqlServerLicenseByResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5259,8 +5317,8 @@ export const ListSqlServerLicenses: API.OperationMethod<
   ListSqlServerLicensesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2464, __c77, 0) as any as S.Schema<ListSqlServerLicensesRequest>,
-  output: __S(2433, __c76, 1) as any as S.Schema<ListSqlServerLicensesResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<ListSqlServerLicensesRequest>,
+  output: __S(2529, __c79, 1) as any as S.Schema<ListSqlServerLicensesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5274,8 +5332,8 @@ export const PatchDataControllerDataController: API.OperationMethod<
   PatchDataControllerDataControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2496, __c78, 0) as any as S.Schema<PatchDataControllerDataControllerRequest>,
-  output: __S(965, __c30, 5) as any as S.Schema<PatchDataControllerDataControllerResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<PatchDataControllerDataControllerRequest>,
+  output: __S(1061, __c33, 5) as any as S.Schema<PatchDataControllerDataControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5289,8 +5347,8 @@ export const PostSqlServerInstanceUpgrade: API.OperationMethod<
   PostSqlServerInstanceUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2560, __c80, 0) as any as S.Schema<PostSqlServerInstanceUpgradeRequest>,
-  output: __S(382, __c11, 30) as any as S.Schema<PostSqlServerInstanceUpgradeResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<PostSqlServerInstanceUpgradeRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<PostSqlServerInstanceUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5304,8 +5362,8 @@ export const PutDataControllerDataController: API.OperationMethod<
   PutDataControllerDataControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2592, __c81, 0) as any as S.Schema<PutDataControllerDataControllerRequest>,
-  output: __S(965, __c30, 5) as any as S.Schema<PutDataControllerDataControllerResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<PutDataControllerDataControllerRequest>,
+  output: __S(1061, __c33, 5) as any as S.Schema<PutDataControllerDataControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5319,8 +5377,8 @@ export const RemoveSqlServerAvailabilityGroupDatabases: API.OperationMethod<
   RemoveSqlServerAvailabilityGroupDatabasesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2624, __c82, 0) as any as S.Schema<RemoveSqlServerAvailabilityGroupDatabasesRequest>,
-  output: __S(141, __c4, 13) as any as S.Schema<RemoveSqlServerAvailabilityGroupDatabasesResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<RemoveSqlServerAvailabilityGroupDatabasesRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<RemoveSqlServerAvailabilityGroupDatabasesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5334,10 +5392,10 @@ export const RunSqlServerInstanceBestPracticesAssessment: API.OperationMethod<
   RunSqlServerInstanceBestPracticesAssessmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2656, __c83, 0) as any as S.Schema<RunSqlServerInstanceBestPracticesAssessmentRequest>,
+  input: __S(2752, __c86, 0) as any as S.Schema<RunSqlServerInstanceBestPracticesAssessmentRequest>,
   output: __S(
-    1507,
-    __c47,
+    1603,
+    __c50,
     3,
   ) as any as S.Schema<RunSqlServerInstanceBestPracticesAssessmentResponse>,
   errors: [UnknownAzureError],
@@ -5354,13 +5412,13 @@ export const RunSqlServerInstanceManagedInstanceLinkAssessment: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2753,
-    __c86,
+    2881,
+    __c90,
     1,
   ) as any as S.Schema<RunSqlServerInstanceManagedInstanceLinkAssessmentRequest>,
   output: __S(
-    2756,
-    __c86,
+    2884,
+    __c90,
     4,
   ) as any as S.Schema<RunSqlServerInstanceManagedInstanceLinkAssessmentResponse>,
   errors: [UnknownAzureError],
@@ -5376,8 +5434,8 @@ export const RunSqlServerInstanceMigrationAssessment: API.OperationMethod<
   RunSqlServerInstanceMigrationAssessmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2784, __c87, 0) as any as S.Schema<RunSqlServerInstanceMigrationAssessmentRequest>,
-  output: __S(1507, __c47, 3) as any as S.Schema<RunSqlServerInstanceMigrationAssessmentResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<RunSqlServerInstanceMigrationAssessmentRequest>,
+  output: __S(1603, __c50, 3) as any as S.Schema<RunSqlServerInstanceMigrationAssessmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5391,8 +5449,8 @@ export const SqlServerAvailabilityGroupsDetailView: API.OperationMethod<
   SqlServerAvailabilityGroupsDetailViewError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2816, __c88, 0) as any as S.Schema<SqlServerAvailabilityGroupsDetailViewRequest>,
-  output: __S(141, __c4, 13) as any as S.Schema<SqlServerAvailabilityGroupsDetailViewResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<SqlServerAvailabilityGroupsDetailViewRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<SqlServerAvailabilityGroupsDetailViewResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5406,8 +5464,8 @@ export const SqlServerAvailabilityGroupsFailover: API.OperationMethod<
   SqlServerAvailabilityGroupsFailoverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2848, __c89, 0) as any as S.Schema<SqlServerAvailabilityGroupsFailoverRequest>,
-  output: __S(141, __c4, 13) as any as S.Schema<SqlServerAvailabilityGroupsFailoverResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<SqlServerAvailabilityGroupsFailoverRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<SqlServerAvailabilityGroupsFailoverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5421,8 +5479,12 @@ export const SqlServerAvailabilityGroupsFailoverMiLink: API.OperationMethod<
   SqlServerAvailabilityGroupsFailoverMiLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2880, __c90, 0) as any as S.Schema<SqlServerAvailabilityGroupsFailoverMiLinkRequest>,
-  output: __S(141, __c4, 13) as any as S.Schema<SqlServerAvailabilityGroupsFailoverMiLinkResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<SqlServerAvailabilityGroupsFailoverMiLinkRequest>,
+  output: __S(
+    3424,
+    __c107,
+    0,
+  ) as any as S.Schema<SqlServerAvailabilityGroupsFailoverMiLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5437,14 +5499,14 @@ export const SqlServerAvailabilityGroupsForceFailoverAllowDataLoss: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2912,
-    __c91,
+    3040,
+    __c95,
     0,
   ) as any as S.Schema<SqlServerAvailabilityGroupsForceFailoverAllowDataLossRequest>,
   output: __S(
-    141,
+    128,
     __c4,
-    13,
+    0,
   ) as any as S.Schema<SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5459,8 +5521,8 @@ export const SqlServerInstancesPreUpgrade: API.OperationMethod<
   SqlServerInstancesPreUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2944, __c92, 0) as any as S.Schema<SqlServerInstancesPreUpgradeRequest>,
-  output: __S(382, __c11, 30) as any as S.Schema<SqlServerInstancesPreUpgradeResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<SqlServerInstancesPreUpgradeRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<SqlServerInstancesPreUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5474,8 +5536,8 @@ export const UpdatePostgresInstance: API.OperationMethod<
   UpdatePostgresInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2976, __c93, 0) as any as S.Schema<UpdatePostgresInstanceRequest>,
-  output: __S(1154, __c36, 2) as any as S.Schema<UpdatePostgresInstanceResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<UpdatePostgresInstanceRequest>,
+  output: __S(1250, __c39, 2) as any as S.Schema<UpdatePostgresInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5489,8 +5551,8 @@ export const UpdateSqlManagedInstance: API.OperationMethod<
   UpdateSqlManagedInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3008, __c94, 0) as any as S.Schema<UpdateSqlManagedInstanceRequest>,
-  output: __S(1743, __c54, 15) as any as S.Schema<UpdateSqlManagedInstanceResponse>,
+  input: __S(3136, __c98, 0) as any as S.Schema<UpdateSqlManagedInstanceRequest>,
+  output: __S(1839, __c57, 15) as any as S.Schema<UpdateSqlManagedInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5504,8 +5566,8 @@ export const UpdateSqlServerAvailabilityGroup: API.OperationMethod<
   UpdateSqlServerAvailabilityGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3040, __c95, 0) as any as S.Schema<UpdateSqlServerAvailabilityGroupRequest>,
-  output: __S(141, __c4, 13) as any as S.Schema<UpdateSqlServerAvailabilityGroupResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<UpdateSqlServerAvailabilityGroupRequest>,
+  output: __S(2816, __c88, 0) as any as S.Schema<UpdateSqlServerAvailabilityGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5519,8 +5581,8 @@ export const UpdateSqlServerDatabase: API.OperationMethod<
   UpdateSqlServerDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3136, __c98, 0) as any as S.Schema<UpdateSqlServerDatabaseRequest>,
-  output: __S(3369, __c105, 9) as any as S.Schema<UpdateSqlServerDatabaseResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<UpdateSqlServerDatabaseRequest>,
+  output: __S(3265, __c102, 1) as any as S.Schema<UpdateSqlServerDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5534,8 +5596,8 @@ export const UpdateSqlServerEsuLicense: API.OperationMethod<
   UpdateSqlServerEsuLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3169, __c99, 1) as any as S.Schema<UpdateSqlServerEsuLicenseRequest>,
-  output: __S(289, __c9, 1) as any as S.Schema<UpdateSqlServerEsuLicenseResponse>,
+  input: __S(3297, __c103, 1) as any as S.Schema<UpdateSqlServerEsuLicenseRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<UpdateSqlServerEsuLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5549,8 +5611,8 @@ export const UpdateSqlServerInstance: API.OperationMethod<
   UpdateSqlServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3201, __c100, 1) as any as S.Schema<UpdateSqlServerInstanceRequest>,
-  output: __S(382, __c11, 30) as any as S.Schema<UpdateSqlServerInstanceResponse>,
+  input: __S(3329, __c104, 1) as any as S.Schema<UpdateSqlServerInstanceRequest>,
+  output: __S(3330, __c104, 2) as any as S.Schema<UpdateSqlServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5564,8 +5626,8 @@ export const UpdateSqlServerLicense: API.OperationMethod<
   UpdateSqlServerLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3233, __c101, 1) as any as S.Schema<UpdateSqlServerLicenseRequest>,
-  output: __S(449, __c14, 1) as any as S.Schema<UpdateSqlServerLicenseResponse>,
+  input: __S(3361, __c105, 1) as any as S.Schema<UpdateSqlServerLicenseRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<UpdateSqlServerLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5625,17 +5687,33 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          tags: S.optional(__S(96, __c3, 0)),
+          location: S.String,
+          properties: __S(172, __c5, 12),
+        }),
+      ).annotate({ identifier: "AddSqlServerAvailabilityGroupDatabasesResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           ipAddress: S.optional(S.String),
           mask: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlAvailabilityGroupIpV4AddressesAndMasksPropertiesItem" });
     case 1:
-      return S.Array(__S(128, __c4, 0));
+      return S.Array(__S(160, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           dnsName: S.optional(S.String),
-          ipV4AddressesAndMasks: S.optional(__S(129, __c4, 1)),
+          ipV4AddressesAndMasks: S.optional(__S(161, __c5, 1)),
           ipV6Addresses: S.optional(__S(64, __c2, 0)),
           port: S.optional(S.Number),
         }),
@@ -5659,7 +5737,7 @@ function __c4(j: number): any {
           secondaryRecoveryHealthDescription: S.optional(S.String),
           synchronizationHealthDescription: S.optional(S.String),
           replicationPartnerType: S.optional(S.String),
-          listener: S.optional(__S(130, __c4, 2)),
+          listener: S.optional(__S(162, __c5, 2)),
         }),
       ).annotate({ identifier: "AvailabilityGroupInfo" });
     case 4:
@@ -5706,16 +5784,16 @@ function __c4(j: number): any {
           replicaId: S.optional(S.String),
           replicaName: S.optional(S.String),
           replicaResourceId: S.optional(S.String),
-          configure: S.optional(__S(132, __c4, 4)),
-          state: S.optional(__S(133, __c4, 5)),
+          configure: S.optional(__S(164, __c5, 4)),
+          state: S.optional(__S(165, __c5, 5)),
         }),
       ).annotate({ identifier: "SqlAvailabilityGroupReplicaResourceProperties" });
     case 7:
-      return S.Array(__S(134, __c4, 6));
+      return S.Array(__S(166, __c5, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(135, __c4, 7)),
+          value: S.optional(__S(167, __c5, 7)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlServerAvailabilityGroupResourcePropertiesReplicas" });
@@ -5735,11 +5813,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "SqlAvailabilityGroupDatabaseReplicaResourceProperties" });
     case 10:
-      return S.Array(__S(137, __c4, 9));
+      return S.Array(__S(169, __c5, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(138, __c4, 10)),
+          value: S.optional(__S(170, __c5, 10)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlServerAvailabilityGroupResourcePropertiesDatabases" });
@@ -5751,34 +5829,22 @@ function __c4(j: number): any {
           instanceName: S.optional(S.String),
           vmId: S.optional(S.String),
           collectionTimestamp: S.optional(S.String),
-          info: S.optional(__S(131, __c4, 3)),
-          replicas: S.optional(__S(136, __c4, 8)),
-          databases: S.optional(__S(139, __c4, 11)),
+          info: S.optional(__S(163, __c5, 3)),
+          replicas: S.optional(__S(168, __c5, 8)),
+          databases: S.optional(__S(171, __c5, 11)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlServerAvailabilityGroupResourceProperties" });
-    case 13:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c1, 0)),
-          tags: S.optional(__S(96, __c3, 0)),
-          location: S.String,
-          properties: __S(140, __c4, 12),
-        }),
-      ).annotate({ identifier: "AddSqlServerAvailabilityGroupDatabasesResponse" });
   }
 }
-function __c5(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          domainServiceAccountLoginInformation: S.optional(__S(224, __c7, 0)),
-          spec: __S(197, __c6, 5),
-          status: S.optional(__S(198, __c6, 6)),
+          domainServiceAccountLoginInformation: S.optional(__S(256, __c8, 0)),
+          spec: __S(229, __c7, 5),
+          status: S.optional(__S(230, __c7, 6)),
         }),
       ).annotate({ identifier: "ActiveDirectoryConnectorPropertiesInput" });
     case 1:
@@ -5788,7 +5854,7 @@ function __c5(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           dataControllerName: S.String.pipe(T.Label()),
           activeDirectoryConnectorName: S.String.pipe(T.Label()),
-          properties: __S(160, __c5, 0),
+          properties: __S(192, __c6, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5800,7 +5866,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "CreateActiveDirectoryConnectorRequest" });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5809,12 +5875,12 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "ActiveDirectoryDomainController" });
     case 1:
-      return S.Array(__S(192, __c6, 0));
+      return S.Array(__S(224, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          primaryDomainController: S.optional(__S(192, __c6, 0)),
-          secondaryDomainControllers: S.optional(__S(193, __c6, 1)),
+          primaryDomainController: S.optional(__S(224, __c7, 0)),
+          secondaryDomainControllers: S.optional(__S(225, __c7, 1)),
         }),
       ).annotate({ identifier: "ActiveDirectoryDomainControllers" });
     case 3:
@@ -5824,7 +5890,7 @@ function __c6(j: number): any {
           netbiosDomainName: S.optional(S.String),
           serviceAccountProvisioning: S.optional(S.String),
           ouDistinguishedName: S.optional(S.String),
-          domainControllers: S.optional(__S(194, __c6, 2)),
+          domainControllers: S.optional(__S(226, __c7, 2)),
         }),
       ).annotate({ identifier: "ActiveDirectoryConnectorDomainDetails" });
     case 4:
@@ -5839,25 +5905,28 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          activeDirectory: __S(195, __c6, 3),
-          dns: __S(196, __c6, 4),
+          activeDirectory: __S(227, __c7, 3),
+          dns: __S(228, __c7, 4),
         }),
       ).annotate({ identifier: "ActiveDirectoryConnectorSpec" });
     case 6:
       return S.suspend(() =>
-        S.Struct({
-          lastUpdateTime: S.optional(S.String),
-          observedGeneration: S.optional(S.Number),
-          state: S.optional(S.String),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            lastUpdateTime: S.optional(S.String),
+            observedGeneration: S.optional(S.Number),
+            state: S.optional(S.String),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "ActiveDirectoryConnectorStatus" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          domainServiceAccountLoginInformation: S.optional(__S(224, __c7, 0)),
+          domainServiceAccountLoginInformation: S.optional(__S(256, __c8, 0)),
           provisioningState: S.optional(S.String),
-          spec: __S(197, __c6, 5),
-          status: S.optional(__S(198, __c6, 6)),
+          spec: __S(229, __c7, 5),
+          status: S.optional(__S(230, __c7, 6)),
         }),
       ).annotate({ identifier: "ActiveDirectoryConnectorProperties" });
     case 8:
@@ -5867,12 +5936,12 @@ function __c6(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c1, 0)),
-          properties: __S(199, __c6, 7),
+          properties: __S(231, __c7, 7),
         }),
       ).annotate({ identifier: "CreateActiveDirectoryConnectorResponse" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5885,7 +5954,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5905,7 +5974,7 @@ function __c8(j: number): any {
           sqlServerEsuLicenseName: S.String.pipe(T.Label()),
           tags: S.optional(__S(96, __c3, 0)),
           location: S.String,
-          properties: __S(256, __c8, 0),
+          properties: __S(288, __c9, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5917,7 +5986,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "CreateSqlServerEsuLicenseRequest" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5942,12 +6011,12 @@ function __c9(j: number): any {
           systemData: S.optional(__S(32, __c1, 0)),
           tags: S.optional(__S(96, __c3, 0)),
           location: S.String,
-          properties: __S(288, __c9, 0),
+          properties: __S(320, __c10, 0),
         }),
       ).annotate({ identifier: "CreateSqlServerEsuLicenseResponse" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5957,16 +6026,16 @@ function __c10(j: number): any {
           cores: S.optional(S.String),
           instanceName: S.optional(S.String),
           hostType: S.optional(S.String),
-          databaseMirroringEndpoint: S.optional(__S(384, __c12, 0)),
-          failoverCluster: S.optional(__S(2240, __c70, 0)),
-          backupPolicy: S.optional(__S(3328, __c104, 0)),
+          databaseMirroringEndpoint: S.optional(__S(448, __c14, 0)),
+          failoverCluster: S.optional(__S(2336, __c73, 0)),
+          backupPolicy: S.optional(__S(3488, __c109, 0)),
           upgradeLockedUntil: S.optional(S.String),
-          monitoring: S.optional(__S(352, __c11, 0)),
-          migration: S.optional(__S(386, __c12, 2)),
-          bestPracticesAssessment: S.optional(__S(357, __c11, 5)),
-          clientConnection: S.optional(__S(352, __c11, 0)),
+          monitoring: S.optional(__S(416, __c13, 0)),
+          migration: S.optional(__S(450, __c14, 2)),
+          bestPracticesAssessment: S.optional(__S(421, __c13, 5)),
+          clientConnection: S.optional(__S(416, __c13, 0)),
           serviceType: S.optional(S.String),
-          authentication: S.optional(__S(360, __c11, 8)),
+          authentication: S.optional(__S(424, __c13, 8)),
         }),
       ).annotate({ identifier: "SqlServerInstancePropertiesInput" });
     case 1:
@@ -5977,7 +6046,7 @@ function __c10(j: number): any {
           sqlServerInstanceName: S.String.pipe(T.Label()),
           tags: S.optional(__S(96, __c3, 0)),
           location: S.String,
-          properties: S.optional(__S(320, __c10, 0)),
+          properties: S.optional(__S(352, __c11, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5989,7 +6058,23 @@ function __c10(j: number): any {
       ).annotate({ identifier: "CreateSqlServerInstanceRequest" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          tags: S.optional(__S(96, __c3, 0)),
+          location: S.String,
+          properties: S.optional(__S(445, __c13, 29)),
+        }),
+      ).annotate({ identifier: "CreateSqlServerInstanceResponse" });
+  }
+}
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6014,7 +6099,7 @@ function __c11(j: number): any {
           strategy: S.optional(S.String),
           currency: S.optional(S.String),
           discountPercentage: S.optional(S.Number),
-          costOptions: S.optional(__S(353, __c11, 1)),
+          costOptions: S.optional(__S(417, __c13, 1)),
         }),
       ).annotate({ identifier: "MigrationAssessmentSettings" });
     case 3:
@@ -6029,14 +6114,14 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          cronTrigger: S.optional(__S(355, __c11, 3)),
+          cronTrigger: S.optional(__S(419, __c13, 3)),
         }),
       ).annotate({ identifier: "Schedule" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          schedule: S.optional(__S(356, __c11, 4)),
+          schedule: S.optional(__S(420, __c13, 4)),
         }),
       ).annotate({ identifier: "BestPracticesAssessment" });
     case 6:
@@ -6047,12 +6132,12 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "AuthenticationSqlServerEntraIdentityItem" });
     case 7:
-      return S.Array(__S(358, __c11, 6));
+      return S.Array(__S(422, __c13, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
-          sqlServerEntraIdentity: S.optional(__S(359, __c11, 7)),
+          sqlServerEntraIdentity: S.optional(__S(423, __c13, 7)),
         }),
       ).annotate({ identifier: "Authentication" });
     case 9:
@@ -6080,7 +6165,7 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "HostIPAddressInformation" });
     case 12:
-      return S.Array(__S(363, __c11, 11));
+      return S.Array(__S(427, __c13, 11));
     case 13:
       return S.suspend(() =>
         S.Struct({
@@ -6088,7 +6173,7 @@ function __c11(j: number): any {
           networkName: S.optional(S.String),
           sqlInstanceIds: S.optional(__S(64, __c2, 0)),
           hostNames: S.optional(__S(64, __c2, 0)),
-          hostIPAddresses: S.optional(__S(364, __c11, 12)),
+          hostIPAddresses: S.optional(__S(428, __c13, 12)),
         }),
       ).annotate({ identifier: "FailoverCluster" });
     case 14:
@@ -6100,27 +6185,27 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "ServerAssessmentsItemImpactedObjectsItem" });
     case 15:
-      return S.Array(__S(366, __c11, 14));
+      return S.Array(__S(430, __c13, 14));
     case 16:
       return S.suspend(() =>
         S.Struct({
           appliesToMigrationTargetPlatform: S.optional(S.String),
           featureId: S.optional(S.String),
-          impactedObjects: S.optional(__S(367, __c11, 15)),
+          impactedObjects: S.optional(__S(431, __c13, 15)),
           issueCategory: S.optional(S.String),
           moreInformation: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerAssessmentsItem" });
     case 17:
-      return S.Array(__S(368, __c11, 16));
+      return S.Array(__S(432, __c13, 16));
     case 18:
       return S.suspend(() =>
         S.Struct({
           recommendationStatus: S.optional(S.String),
           numberOfServerBlockerIssues: S.optional(S.Number),
-          monthlyCost: S.optional(__S(3331, __c104, 3)),
-          monthlyCostOptions: S.optional(__S(3334, __c104, 6)),
-          targetSku: S.optional(__S(3336, __c104, 8)),
+          monthlyCost: S.optional(__S(3491, __c109, 3)),
+          monthlyCostOptions: S.optional(__S(3494, __c109, 6)),
+          targetSku: S.optional(__S(3496, __c109, 8)),
         }),
       ).annotate({ identifier: "SkuRecommendationResultsAzureSqlDatabase" });
     case 19:
@@ -6156,18 +6241,18 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "DiskSizes" });
     case 22:
-      return S.Array(__S(373, __c11, 21));
+      return S.Array(__S(437, __c13, 21));
     case 23:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(__S(371, __c11, 19)),
+          category: S.optional(__S(435, __c13, 19)),
           computeSize: S.optional(S.Number),
           predictedDataSizeInMb: S.optional(S.Number),
           predictedLogSizeInMb: S.optional(S.Number),
-          virtualMachineSize: S.optional(__S(372, __c11, 20)),
-          dataDiskSizes: S.optional(__S(374, __c11, 22)),
-          logDiskSizes: S.optional(__S(374, __c11, 22)),
-          tempDbDiskSizes: S.optional(__S(374, __c11, 22)),
+          virtualMachineSize: S.optional(__S(436, __c13, 20)),
+          dataDiskSizes: S.optional(__S(438, __c13, 22)),
+          logDiskSizes: S.optional(__S(438, __c13, 22)),
+          tempDbDiskSizes: S.optional(__S(438, __c13, 22)),
         }),
       ).annotate({ identifier: "SkuRecommendationResultsAzureSqlVirtualMachineTargetSku" });
     case 24:
@@ -6175,24 +6260,24 @@ function __c11(j: number): any {
         S.Struct({
           recommendationStatus: S.optional(S.String),
           numberOfServerBlockerIssues: S.optional(S.Number),
-          monthlyCost: S.optional(__S(3331, __c104, 3)),
-          monthlyCostOptions: S.optional(__S(3334, __c104, 6)),
-          targetSku: S.optional(__S(375, __c11, 23)),
+          monthlyCost: S.optional(__S(3491, __c109, 3)),
+          monthlyCostOptions: S.optional(__S(3494, __c109, 6)),
+          targetSku: S.optional(__S(439, __c13, 23)),
         }),
       ).annotate({ identifier: "SkuRecommendationResultsAzureSqlVirtualMachine" });
     case 25:
       return S.suspend(() =>
         S.Struct({
-          azureSqlDatabase: S.optional(__S(370, __c11, 18)),
-          azureSqlManagedInstance: S.optional(__S(370, __c11, 18)),
-          azureSqlVirtualMachine: S.optional(__S(376, __c11, 24)),
+          azureSqlDatabase: S.optional(__S(434, __c13, 18)),
+          azureSqlManagedInstance: S.optional(__S(434, __c13, 18)),
+          azureSqlVirtualMachine: S.optional(__S(440, __c13, 24)),
         }),
       ).annotate({ identifier: "SkuRecommendationResults" });
     case 26:
       return S.suspend(() =>
         S.Struct({
-          azureSqlDatabase: S.optional(__S(3330, __c104, 2)),
-          azureSqlManagedInstance: S.optional(__S(3330, __c104, 2)),
+          azureSqlDatabase: S.optional(__S(3490, __c109, 2)),
+          azureSqlManagedInstance: S.optional(__S(3490, __c109, 2)),
         }),
       ).annotate({ identifier: "MigrationAssessmentImpactedObjectsSummary" });
     case 27:
@@ -6201,16 +6286,16 @@ function __c11(j: number): any {
           enabled: S.optional(S.Boolean),
           assessmentUploadTime: S.optional(S.String),
           version: S.optional(S.String),
-          settings: S.optional(__S(354, __c11, 2)),
-          serverAssessments: S.optional(__S(369, __c11, 17)),
-          skuRecommendationResults: S.optional(__S(377, __c11, 25)),
-          impactedObjectsSummary: S.optional(__S(378, __c11, 26)),
+          settings: S.optional(__S(418, __c13, 2)),
+          serverAssessments: S.optional(__S(433, __c13, 17)),
+          skuRecommendationResults: S.optional(__S(441, __c13, 25)),
+          impactedObjectsSummary: S.optional(__S(442, __c13, 26)),
         }),
       ).annotate({ identifier: "MigrationAssessment" });
     case 28:
       return S.suspend(() =>
         S.Struct({
-          assessment: S.optional(__S(379, __c11, 27)),
+          assessment: S.optional(__S(443, __c13, 27)),
         }),
       ).annotate({ identifier: "Migration" });
     case 29:
@@ -6228,7 +6313,7 @@ function __c11(j: number): any {
           collation: S.optional(S.String),
           dbMasterKeyExists: S.optional(S.Boolean),
           isHadrEnabled: S.optional(S.Boolean),
-          traceFlags: S.optional(__S(361, __c11, 9)),
+          traceFlags: S.optional(__S(425, __c13, 9)),
           currentVersion: S.optional(S.String),
           instanceName: S.optional(S.String),
           tcpDynamicPorts: S.optional(S.String),
@@ -6242,36 +6327,24 @@ function __c11(j: number): any {
           lastUsageUploadTime: S.optional(S.String),
           hostType: S.optional(S.String),
           alwaysOnRole: S.optional(S.String),
-          databaseMirroringEndpoint: S.optional(__S(362, __c11, 10)),
-          failoverCluster: S.optional(__S(365, __c11, 13)),
-          backupPolicy: S.optional(__S(3328, __c104, 0)),
+          databaseMirroringEndpoint: S.optional(__S(426, __c13, 10)),
+          failoverCluster: S.optional(__S(429, __c13, 13)),
+          backupPolicy: S.optional(__S(3488, __c109, 0)),
           upgradeLockedUntil: S.optional(S.String),
-          monitoring: S.optional(__S(352, __c11, 0)),
-          migration: S.optional(__S(380, __c11, 28)),
-          bestPracticesAssessment: S.optional(__S(357, __c11, 5)),
-          clientConnection: S.optional(__S(352, __c11, 0)),
+          monitoring: S.optional(__S(416, __c13, 0)),
+          migration: S.optional(__S(444, __c13, 28)),
+          bestPracticesAssessment: S.optional(__S(421, __c13, 5)),
+          clientConnection: S.optional(__S(416, __c13, 0)),
           serviceType: S.optional(S.String),
           maxServerMemoryMB: S.optional(S.Number),
           isMicrosoftPkiCertTrustConfigured: S.optional(S.Boolean),
           isDigiCertPkiCertTrustConfigured: S.optional(S.Boolean),
-          authentication: S.optional(__S(360, __c11, 8)),
+          authentication: S.optional(__S(424, __c13, 8)),
         }),
       ).annotate({ identifier: "SqlServerInstanceProperties" });
-    case 30:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c1, 0)),
-          tags: S.optional(__S(96, __c3, 0)),
-          location: S.String,
-          properties: S.optional(__S(381, __c11, 29)),
-        }),
-      ).annotate({ identifier: "CreateSqlServerInstanceResponse" });
   }
 }
-function __c12(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6284,19 +6357,19 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          settings: S.optional(__S(354, __c11, 2)),
-          impactedObjectsSummary: S.optional(__S(2240, __c70, 0)),
+          settings: S.optional(__S(418, __c13, 2)),
+          impactedObjectsSummary: S.optional(__S(2336, __c73, 0)),
         }),
       ).annotate({ identifier: "MigrationAssessmentInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          assessment: S.optional(__S(385, __c12, 1)),
+          assessment: S.optional(__S(449, __c14, 1)),
         }),
       ).annotate({ identifier: "MigrationInput" });
   }
 }
-function __c13(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6316,7 +6389,7 @@ function __c13(j: number): any {
           sqlServerLicenseName: S.String.pipe(T.Label()),
           tags: S.optional(__S(96, __c3, 0)),
           location: S.String,
-          properties: __S(416, __c13, 0),
+          properties: __S(480, __c15, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6328,7 +6401,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "CreateSqlServerLicenseRequest" });
   }
 }
-function __c14(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6352,12 +6425,12 @@ function __c14(j: number): any {
           systemData: S.optional(__S(32, __c1, 0)),
           tags: S.optional(__S(96, __c3, 0)),
           location: S.String,
-          properties: __S(448, __c14, 0),
+          properties: __S(512, __c16, 0),
         }),
       ).annotate({ identifier: "CreateSqlServerLicenseResponse" });
   }
 }
-function __c15(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6377,7 +6450,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "DeleteActiveDirectoryConnectorRequest" });
   }
 }
-function __c16(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6396,7 +6469,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "DeleteDataControllerDataControllerRequest" });
   }
 }
-function __c17(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6416,7 +6489,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "DeleteFailoverGroupRequest" });
   }
 }
-function __c18(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6435,7 +6508,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "DeletePostgresInstanceRequest" });
   }
 }
-function __c19(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6454,7 +6527,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "DeleteSqlManagedInstanceRequest" });
   }
 }
-function __c20(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6474,7 +6547,17 @@ function __c20(j: number): any {
       ).annotate({ identifier: "DeleteSqlServerAvailabilityGroupRequest" });
   }
 }
-function __c21(j: number): any {
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "DeleteSqlServerAvailabilityGroupResponse" });
+  }
+}
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6492,17 +6575,28 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteSqlServerAvailabilityGroupMiLinkRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+        }),
+      ).annotate({ identifier: "DeleteSqlServerAvailabilityGroupMiLinkResponse" });
   }
 }
-function __c22(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          partnerManagedInstanceId: S.String,
-          spec: __S(736, __c23, 0),
-          status: S.optional(S.Unknown),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            partnerManagedInstanceId: S.String,
+            spec: __S(832, __c26, 0),
+            status: S.optional(S.Unknown),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "FailoverGroupPropertiesInput" });
     case 1:
       return S.suspend(() =>
@@ -6511,7 +6605,7 @@ function __c22(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sqlManagedInstanceName: S.String.pipe(T.Label()),
           failoverGroupName: S.String.pipe(T.Label()),
-          properties: __S(704, __c22, 0),
+          properties: __S(800, __c25, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6523,28 +6617,34 @@ function __c22(j: number): any {
       ).annotate({ identifier: "CreateFailoverGroupRequest" });
   }
 }
-function __c23(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          sharedName: S.optional(S.String),
-          sourceMI: S.optional(S.String),
-          partnerMI: S.optional(S.String),
-          partnerMirroringURL: S.optional(S.String),
-          partnerMirroringCert: S.optional(S.String),
-          partnerSyncMode: S.optional(S.String),
-          role: S.String,
-        }),
+        S.StructWithRest(
+          S.Struct({
+            sharedName: S.optional(S.String),
+            sourceMI: S.optional(S.String),
+            partnerMI: S.optional(S.String),
+            partnerMirroringURL: S.optional(S.String),
+            partnerMirroringCert: S.optional(S.String),
+            partnerSyncMode: S.optional(S.String),
+            role: S.String,
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "FailoverGroupSpec" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          partnerManagedInstanceId: S.String,
-          spec: __S(736, __c23, 0),
-          status: S.optional(S.Unknown),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            provisioningState: S.optional(S.String),
+            partnerManagedInstanceId: S.String,
+            spec: __S(832, __c26, 0),
+            status: S.optional(S.Unknown),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "FailoverGroupProperties" });
     case 2:
       return S.suspend(() =>
@@ -6553,12 +6653,12 @@ function __c23(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c1, 0)),
-          properties: __S(737, __c23, 1),
+          properties: __S(833, __c26, 1),
         }),
       ).annotate({ identifier: "CreateFailoverGroupResponse" });
   }
 }
-function __c24(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6578,7 +6678,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "DeleteSqlServerDatabaseRequest" });
   }
 }
-function __c25(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6597,7 +6697,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "DeleteSqlServerEsuLicenseRequest" });
   }
 }
-function __c26(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6616,7 +6716,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "DeleteSqlServerInstanceRequest" });
   }
 }
-function __c27(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6635,7 +6735,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "DeleteSqlServerLicenseRequest" });
   }
 }
-function __c28(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6655,7 +6755,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "GetActiveDirectoryConnectorRequest" });
   }
 }
-function __c29(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6674,7 +6774,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "GetDataControllerDataControllerRequest" });
   }
 }
-function __c30(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6712,15 +6812,15 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           infrastructure: S.optional(S.String),
-          onPremiseProperty: S.optional(__S(960, __c30, 0)),
+          onPremiseProperty: S.optional(__S(1056, __c33, 0)),
           k8sRaw: S.optional(S.Unknown),
-          uploadWatermark: S.optional(__S(961, __c30, 1)),
+          uploadWatermark: S.optional(__S(1057, __c33, 1)),
           lastUploadedDate: S.optional(S.String),
-          basicLoginInformation: S.optional(__S(224, __c7, 0)),
-          metricsDashboardCredential: S.optional(__S(224, __c7, 0)),
-          logsDashboardCredential: S.optional(__S(224, __c7, 0)),
-          logAnalyticsWorkspaceConfig: S.optional(__S(962, __c30, 2)),
-          uploadServicePrincipal: S.optional(__S(963, __c30, 3)),
+          basicLoginInformation: S.optional(__S(256, __c8, 0)),
+          metricsDashboardCredential: S.optional(__S(256, __c8, 0)),
+          logsDashboardCredential: S.optional(__S(256, __c8, 0)),
+          logAnalyticsWorkspaceConfig: S.optional(__S(1058, __c33, 2)),
+          uploadServicePrincipal: S.optional(__S(1059, __c33, 3)),
           provisioningState: S.optional(S.String),
           clusterId: S.optional(S.String),
           extensionId: S.optional(S.String),
@@ -6735,13 +6835,13 @@ function __c30(j: number): any {
           systemData: S.optional(__S(32, __c1, 0)),
           tags: S.optional(__S(96, __c3, 0)),
           location: S.String,
-          extendedLocation: S.optional(__S(1184, __c37, 0)),
-          properties: __S(964, __c30, 4),
+          extendedLocation: S.optional(__S(1280, __c40, 0)),
+          properties: __S(1060, __c33, 4),
         }),
       ).annotate({ identifier: "GetDataControllerDataControllerResponse" });
   }
 }
-function __c31(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6761,7 +6861,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "GetFailoverGroupRequest" });
   }
 }
-function __c32(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6780,7 +6880,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "GetPostgresInstanceRequest" });
   }
 }
-function __c33(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6799,7 +6899,7 @@ function __c33(j: number): any {
       ).annotate({ identifier: "GetSqlManagedInstanceRequest" });
   }
 }
-function __c34(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6819,7 +6919,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "GetSqlServerAvailabilityGroupRequest" });
   }
 }
-function __c35(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6829,9 +6929,9 @@ function __c35(j: number): any {
           postgresInstanceName: S.String.pipe(T.Label()),
           tags: S.optional(__S(96, __c3, 0)),
           location: S.String,
-          extendedLocation: S.optional(__S(1184, __c37, 0)),
-          properties: __S(1216, __c38, 0),
-          sku: S.optional(__S(1152, __c36, 0)),
+          extendedLocation: S.optional(__S(1280, __c40, 0)),
+          properties: __S(1312, __c41, 0),
+          sku: S.optional(__S(1248, __c39, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6843,7 +6943,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "CreatePostgresInstanceRequest" });
   }
 }
-function __c36(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6861,7 +6961,7 @@ function __c36(j: number): any {
         S.Struct({
           dataControllerId: S.optional(S.String),
           admin: S.optional(S.String),
-          basicLoginInformation: S.optional(__S(224, __c7, 0)),
+          basicLoginInformation: S.optional(__S(256, __c8, 0)),
           k8sRaw: S.optional(S.Unknown),
           lastUploadedDate: S.optional(S.String),
           provisioningState: S.optional(S.String),
@@ -6876,14 +6976,14 @@ function __c36(j: number): any {
           systemData: S.optional(__S(32, __c1, 0)),
           tags: S.optional(__S(96, __c3, 0)),
           location: S.String,
-          extendedLocation: S.optional(__S(1184, __c37, 0)),
-          properties: __S(1153, __c36, 1),
-          sku: S.optional(__S(1152, __c36, 0)),
+          extendedLocation: S.optional(__S(1280, __c40, 0)),
+          properties: __S(1249, __c39, 1),
+          sku: S.optional(__S(1248, __c39, 0)),
         }),
       ).annotate({ identifier: "CreatePostgresInstanceResponse" });
   }
 }
-function __c37(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6894,21 +6994,21 @@ function __c37(j: number): any {
       ).annotate({ identifier: "CreatePostgresInstanceRequestExtendedLocation" });
   }
 }
-function __c38(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           dataControllerId: S.optional(S.String),
           admin: S.optional(S.String),
-          basicLoginInformation: S.optional(__S(224, __c7, 0)),
+          basicLoginInformation: S.optional(__S(256, __c8, 0)),
           k8sRaw: S.optional(S.Unknown),
           lastUploadedDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "PostgresInstancePropertiesInput" });
   }
 }
-function __c39(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6928,7 +7028,7 @@ function __c39(j: number): any {
       ).annotate({ identifier: "GetSqlServerDatabaseRequest" });
   }
 }
-function __c40(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6947,7 +7047,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "GetSqlServerEsuLicenseRequest" });
   }
 }
-function __c41(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6966,7 +7066,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "GetSqlServerInstanceRequest" });
   }
 }
-function __c42(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6987,20 +7087,20 @@ function __c42(j: number): any {
       ).annotate({ identifier: "GetSqlServerInstanceAllAvailabilityGroupsRequest" });
   }
 }
-function __c43(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(141, __c4, 13));
+      return S.Array(__S(128, __c4, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1376, __c43, 0)),
+          value: S.optional(__S(1472, __c46, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArcSqlServerAvailabilityGroupListResult" });
   }
 }
-function __c44(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7020,25 +7120,27 @@ function __c44(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSqlServerInstanceBestPracticesAssessmentRequest" });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(1184, __c37, 0));
     case 1:
-      return S.Array(__S(64, __c2, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          columns: __S(1440, __c45, 0),
-          rows: __S(1441, __c45, 1),
+          columns: __S(1536, __c48, 0),
+          rows: __S(1537, __c48, 1),
           nextLink: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
         }),
       ).annotate({ identifier: "GetSqlServerInstanceBestPracticesAssessmentResponse" });
   }
 }
-function __c46(j: number): any {
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1280, __c40, 0));
+    case 1:
+      return S.Array(__S(64, __c2, 0));
+  }
+}
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7058,16 +7160,16 @@ function __c46(j: number): any {
         ),
       ).annotate({ identifier: "GetSqlServerInstanceJobsStatusRequest" });
     case 1:
-      return S.Array(__S(1507, __c47, 3));
+      return S.Array(__S(1603, __c50, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          jobsStatus: S.optional(__S(1473, __c46, 1)),
+          jobsStatus: S.optional(__S(1569, __c49, 1)),
         }),
       ).annotate({ identifier: "GetSqlServerInstanceJobsStatusResponse" });
   }
 }
-function __c47(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7089,7 +7191,7 @@ function __c47(j: number): any {
         }),
       ).annotate({ identifier: "SequencerAction" });
     case 2:
-      return S.Array(__S(1505, __c47, 1));
+      return S.Array(__S(1601, __c50, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -7097,13 +7199,13 @@ function __c47(j: number): any {
           instanceName: S.optional(S.String),
           jobStatus: S.optional(S.String),
           jobException: S.optional(S.String),
-          backgroundJob: S.optional(__S(1504, __c47, 0)),
-          sequencerActions: S.optional(__S(1506, __c47, 2)),
+          backgroundJob: S.optional(__S(1600, __c50, 0)),
+          sequencerActions: S.optional(__S(1602, __c50, 2)),
         }),
       ).annotate({ identifier: "SqlServerInstanceJobStatus" });
   }
 }
-function __c48(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7126,9 +7228,18 @@ function __c48(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSqlServerInstanceTelemetryRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          columns: __S(1536, __c48, 0),
+          rows: __S(1537, __c48, 1),
+          nextLink: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "GetSqlServerInstanceTelemetryResponse" });
   }
 }
-function __c49(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7147,7 +7258,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "GetSqlServerLicenseRequest" });
   }
 }
-function __c50(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7165,17 +7276,17 @@ function __c50(j: number): any {
         ),
       ).annotate({ identifier: "ListActiveDirectoryConnectorsRequest" });
     case 1:
-      return S.Array(__S(200, __c6, 8));
+      return S.Array(__S(232, __c7, 8));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1601, __c50, 1)),
+          value: S.optional(__S(1697, __c53, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListActiveDirectoryConnectorsResponse" });
   }
 }
-function __c51(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7193,20 +7304,20 @@ function __c51(j: number): any {
       ).annotate({ identifier: "ListDataControllerInGroupRequest" });
   }
 }
-function __c52(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(965, __c30, 5));
+      return S.Array(__S(1061, __c33, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1664, __c52, 0)),
+          value: S.optional(__S(1760, __c55, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDataControllerInGroupResponse" });
   }
 }
-function __c53(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7215,10 +7326,10 @@ function __c53(j: number): any {
           admin: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          k8sRaw: S.optional(__S(1738, __c54, 10)),
-          basicLoginInformation: S.optional(__S(224, __c7, 0)),
+          k8sRaw: S.optional(__S(1834, __c57, 10)),
+          basicLoginInformation: S.optional(__S(256, __c8, 0)),
           lastUploadedDate: S.optional(S.String),
-          activeDirectoryInformation: S.optional(__S(1740, __c54, 12)),
+          activeDirectoryInformation: S.optional(__S(1836, __c57, 12)),
           licenseType: S.optional(S.String),
           clusterId: S.optional(S.String),
           extensionId: S.optional(S.String),
@@ -7232,9 +7343,9 @@ function __c53(j: number): any {
           sqlManagedInstanceName: S.String.pipe(T.Label()),
           tags: S.optional(__S(96, __c3, 0)),
           location: S.String,
-          properties: __S(1696, __c53, 0),
-          extendedLocation: S.optional(__S(1184, __c37, 0)),
-          sku: S.optional(__S(1741, __c54, 13)),
+          properties: __S(1792, __c56, 0),
+          extendedLocation: S.optional(__S(1280, __c40, 0)),
+          sku: S.optional(__S(1837, __c57, 13)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7246,26 +7357,35 @@ function __c53(j: number): any {
       ).annotate({ identifier: "CreateSqlManagedInstanceRequest" });
   }
 }
-function __c54(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          requests: S.optional(__S(96, __c3, 0)),
-          limits: S.optional(__S(96, __c3, 0)),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            requests: S.optional(__S(96, __c3, 0)),
+            limits: S.optional(__S(96, __c3, 0)),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "K8sResourceRequirements" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          resources: S.optional(__S(1728, __c54, 0)),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            resources: S.optional(__S(1824, __c57, 0)),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "K8sSchedulingOptions" });
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          default: S.optional(__S(1729, __c54, 1)),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            default: S.optional(__S(1825, __c57, 1)),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "K8sScheduling" });
     case 3:
       return S.suspend(() =>
@@ -7277,7 +7397,7 @@ function __c54(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          connector: S.optional(__S(1731, __c54, 3)),
+          connector: S.optional(__S(1827, __c57, 3)),
           accountName: S.optional(S.String),
           keytabSecret: S.optional(S.String),
           encryptionTypes: S.optional(__S(64, __c2, 0)),
@@ -7292,12 +7412,15 @@ function __c54(j: number): any {
       ).annotate({ identifier: "K8stransparentDataEncryption" });
     case 6:
       return S.suspend(() =>
-        S.Struct({
-          adminLoginSecret: S.optional(S.String),
-          serviceCertificateSecret: S.optional(S.String),
-          activeDirectory: S.optional(__S(1732, __c54, 4)),
-          transparentDataEncryption: S.optional(__S(1733, __c54, 5)),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            adminLoginSecret: S.optional(S.String),
+            serviceCertificateSecret: S.optional(S.String),
+            activeDirectory: S.optional(__S(1828, __c57, 4)),
+            transparentDataEncryption: S.optional(__S(1829, __c57, 5)),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "K8sSecurity" });
     case 7:
       return S.suspend(() =>
@@ -7309,24 +7432,33 @@ function __c54(j: number): any {
       ).annotate({ identifier: "K8sNetworkSettings" });
     case 8:
       return S.suspend(() =>
-        S.Struct({
-          network: S.optional(__S(1735, __c54, 7)),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            network: S.optional(__S(1831, __c57, 7)),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "K8sSettings" });
     case 9:
       return S.suspend(() =>
-        S.Struct({
-          scheduling: S.optional(__S(1730, __c54, 2)),
-          replicas: S.optional(S.Number),
-          security: S.optional(__S(1734, __c54, 6)),
-          settings: S.optional(__S(1736, __c54, 8)),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            scheduling: S.optional(__S(1826, __c57, 2)),
+            replicas: S.optional(S.Number),
+            security: S.optional(__S(1830, __c57, 6)),
+            settings: S.optional(__S(1832, __c57, 8)),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "SqlManagedInstanceK8sSpec" });
     case 10:
       return S.suspend(() =>
-        S.Struct({
-          spec: S.optional(__S(1737, __c54, 9)),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            spec: S.optional(__S(1833, __c57, 9)),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "SqlManagedInstanceK8sRaw" });
     case 11:
       return S.suspend(() =>
@@ -7337,7 +7469,7 @@ function __c54(j: number): any {
     case 12:
       return S.suspend(() =>
         S.Struct({
-          keytabInformation: S.optional(__S(1739, __c54, 11)),
+          keytabInformation: S.optional(__S(1835, __c57, 11)),
         }),
       ).annotate({ identifier: "ActiveDirectoryInformation" });
     case 13:
@@ -7358,11 +7490,11 @@ function __c54(j: number): any {
           admin: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          k8sRaw: S.optional(__S(1738, __c54, 10)),
-          basicLoginInformation: S.optional(__S(224, __c7, 0)),
+          k8sRaw: S.optional(__S(1834, __c57, 10)),
+          basicLoginInformation: S.optional(__S(256, __c8, 0)),
           lastUploadedDate: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          activeDirectoryInformation: S.optional(__S(1740, __c54, 12)),
+          activeDirectoryInformation: S.optional(__S(1836, __c57, 12)),
           licenseType: S.optional(S.String),
           clusterId: S.optional(S.String),
           extensionId: S.optional(S.String),
@@ -7377,14 +7509,14 @@ function __c54(j: number): any {
           systemData: S.optional(__S(32, __c1, 0)),
           tags: S.optional(__S(96, __c3, 0)),
           location: S.String,
-          properties: __S(1742, __c54, 14),
-          extendedLocation: S.optional(__S(1184, __c37, 0)),
-          sku: S.optional(__S(1741, __c54, 13)),
+          properties: __S(1838, __c57, 14),
+          extendedLocation: S.optional(__S(1280, __c40, 0)),
+          sku: S.optional(__S(1837, __c57, 13)),
         }),
       ).annotate({ identifier: "CreateSqlManagedInstanceResponse" });
   }
 }
-function __c55(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7401,7 +7533,7 @@ function __c55(j: number): any {
       ).annotate({ identifier: "ListDataControllerInSubscriptionRequest" });
   }
 }
-function __c56(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7419,17 +7551,17 @@ function __c56(j: number): any {
         ),
       ).annotate({ identifier: "ListFailoverGroupsRequest" });
     case 1:
-      return S.Array(__S(738, __c23, 2));
+      return S.Array(__S(834, __c26, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1793, __c56, 1)),
+          value: S.optional(__S(1889, __c59, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListFailoverGroupsResponse" });
   }
 }
-function __c57(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7457,24 +7589,24 @@ function __c57(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          display: __S(1825, __c57, 1),
+          display: __S(1921, __c60, 1),
           origin: S.optional(S.String),
           isDataAction: S.Boolean,
-          properties: S.optional(__S(1826, __c57, 2)),
+          properties: S.optional(__S(1922, __c60, 2)),
         }),
       ).annotate({ identifier: "Operation" });
     case 4:
-      return S.Array(__S(1827, __c57, 3));
+      return S.Array(__S(1923, __c60, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1828, __c57, 4)),
+          value: S.optional(__S(1924, __c60, 4)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c58(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7492,20 +7624,20 @@ function __c58(j: number): any {
       ).annotate({ identifier: "ListPostgresInstanceByResourceGroupRequest" });
   }
 }
-function __c59(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1154, __c36, 2));
+      return S.Array(__S(1250, __c39, 2));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1888, __c59, 0)),
+          value: S.optional(__S(1984, __c62, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPostgresInstanceByResourceGroupResponse" });
   }
 }
-function __c60(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7522,7 +7654,7 @@ function __c60(j: number): any {
       ).annotate({ identifier: "ListPostgresInstancesRequest" });
   }
 }
-function __c61(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7540,20 +7672,20 @@ function __c61(j: number): any {
       ).annotate({ identifier: "ListSqlManagedInstanceByResourceGroupRequest" });
   }
 }
-function __c62(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1743, __c54, 15));
+      return S.Array(__S(1839, __c57, 15));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1984, __c62, 0)),
+          value: S.optional(__S(2080, __c65, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSqlManagedInstanceByResourceGroupResponse" });
   }
 }
-function __c63(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7570,7 +7702,7 @@ function __c63(j: number): any {
       ).annotate({ identifier: "ListSqlManagedInstancesRequest" });
   }
 }
-function __c64(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7589,7 +7721,7 @@ function __c64(j: number): any {
       ).annotate({ identifier: "ListSqlServerAvailabilityGroupsRequest" });
   }
 }
-function __c65(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7607,17 +7739,17 @@ function __c65(j: number): any {
         ),
       ).annotate({ identifier: "ListSqlServerDatabasesRequest" });
     case 1:
-      return S.Array(__S(3369, __c105, 9));
+      return S.Array(__S(3520, __c110, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2081, __c65, 1)),
+          value: S.optional(__S(2177, __c68, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArcSqlServerDatabaseListResult" });
   }
 }
-function __c66(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7635,20 +7767,20 @@ function __c66(j: number): any {
       ).annotate({ identifier: "ListSqlServerEsuLicenseByResourceGroupRequest" });
   }
 }
-function __c67(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(289, __c9, 1));
+      return S.Array(__S(321, __c10, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2144, __c67, 0)),
+          value: S.optional(__S(2240, __c70, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlServerEsuLicenseListResult" });
   }
 }
-function __c68(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7659,7 +7791,7 @@ function __c68(j: number): any {
           availabilityGroupName: S.String.pipe(T.Label()),
           tags: S.optional(__S(96, __c3, 0)),
           location: S.String,
-          properties: __S(2216, __c69, 8),
+          properties: __S(2312, __c72, 8),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7671,7 +7803,7 @@ function __c68(j: number): any {
       ).annotate({ identifier: "CreateSqlServerAvailabilityGroupRequest" });
   }
 }
-function __c69(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7684,7 +7816,7 @@ function __c69(j: number): any {
           isDistributed: S.optional(S.Boolean),
           requiredSynchronizedSecondariesToCommit: S.optional(S.Number),
           isContained: S.optional(S.Boolean),
-          listener: S.optional(__S(130, __c4, 2)),
+          listener: S.optional(__S(162, __c5, 2)),
         }),
       ).annotate({ identifier: "AvailabilityGroupInfoInput" });
     case 1:
@@ -7711,16 +7843,16 @@ function __c69(j: number): any {
         S.Struct({
           replicaName: S.optional(S.String),
           replicaResourceId: S.optional(S.String),
-          configure: S.optional(__S(2209, __c69, 1)),
-          state: S.optional(__S(2240, __c70, 0)),
+          configure: S.optional(__S(2305, __c72, 1)),
+          state: S.optional(__S(2336, __c73, 0)),
         }),
       ).annotate({ identifier: "SqlAvailabilityGroupReplicaResourcePropertiesInput" });
     case 3:
-      return S.Array(__S(2210, __c69, 2));
+      return S.Array(__S(2306, __c72, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2211, __c69, 3)),
+          value: S.optional(__S(2307, __c72, 3)),
         }),
       ).annotate({ identifier: "SqlServerAvailabilityGroupResourcePropertiesInputReplicas" });
     case 5:
@@ -7730,30 +7862,30 @@ function __c69(j: number): any {
         }),
       ).annotate({ identifier: "SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput" });
     case 6:
-      return S.Array(__S(2213, __c69, 5));
+      return S.Array(__S(2309, __c72, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2214, __c69, 6)),
+          value: S.optional(__S(2310, __c72, 6)),
         }),
       ).annotate({ identifier: "SqlServerAvailabilityGroupResourcePropertiesInputDatabases" });
     case 8:
       return S.suspend(() =>
         S.Struct({
-          info: S.optional(__S(2208, __c69, 0)),
-          replicas: S.optional(__S(2212, __c69, 4)),
-          databases: S.optional(__S(2215, __c69, 7)),
+          info: S.optional(__S(2304, __c72, 0)),
+          replicas: S.optional(__S(2308, __c72, 4)),
+          databases: S.optional(__S(2311, __c72, 7)),
         }),
       ).annotate({ identifier: "SqlServerAvailabilityGroupResourcePropertiesInput" });
   }
 }
-function __c70(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({ identifier: "AvailabilityGroupStateInput" });
   }
 }
-function __c71(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7770,7 +7902,7 @@ function __c71(j: number): any {
       ).annotate({ identifier: "ListSqlServerEsuLicensesRequest" });
   }
 }
-function __c72(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7788,20 +7920,20 @@ function __c72(j: number): any {
       ).annotate({ identifier: "ListSqlServerInstanceByResourceGroupRequest" });
   }
 }
-function __c73(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(382, __c11, 30));
+      return S.Array(__S(384, __c12, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2336, __c73, 0)),
+          value: S.optional(__S(2432, __c76, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSqlServerInstanceByResourceGroupResponse" });
   }
 }
-function __c74(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7818,7 +7950,7 @@ function __c74(j: number): any {
       ).annotate({ identifier: "ListSqlServerInstancesRequest" });
   }
 }
-function __c75(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7836,20 +7968,20 @@ function __c75(j: number): any {
       ).annotate({ identifier: "ListSqlServerLicenseByResourceGroupRequest" });
   }
 }
-function __c76(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(449, __c14, 1));
+      return S.Array(__S(513, __c16, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2432, __c76, 0)),
+          value: S.optional(__S(2528, __c79, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSqlServerLicenseByResourceGroupResponse" });
   }
 }
-function __c77(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7866,7 +7998,7 @@ function __c77(j: number): any {
       ).annotate({ identifier: "ListSqlServerLicensesRequest" });
   }
 }
-function __c78(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7875,7 +8007,7 @@ function __c78(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           dataControllerName: S.String.pipe(T.Label()),
           tags: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(2528, __c79, 0)),
+          properties: S.optional(__S(2624, __c82, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7887,28 +8019,28 @@ function __c78(j: number): any {
       ).annotate({ identifier: "PatchDataControllerDataControllerRequest" });
   }
 }
-function __c79(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           infrastructure: S.optional(S.String),
-          onPremiseProperty: S.optional(__S(960, __c30, 0)),
+          onPremiseProperty: S.optional(__S(1056, __c33, 0)),
           k8sRaw: S.optional(S.Unknown),
-          uploadWatermark: S.optional(__S(961, __c30, 1)),
+          uploadWatermark: S.optional(__S(1057, __c33, 1)),
           lastUploadedDate: S.optional(S.String),
-          basicLoginInformation: S.optional(__S(224, __c7, 0)),
-          metricsDashboardCredential: S.optional(__S(224, __c7, 0)),
-          logsDashboardCredential: S.optional(__S(224, __c7, 0)),
-          logAnalyticsWorkspaceConfig: S.optional(__S(962, __c30, 2)),
-          uploadServicePrincipal: S.optional(__S(963, __c30, 3)),
+          basicLoginInformation: S.optional(__S(256, __c8, 0)),
+          metricsDashboardCredential: S.optional(__S(256, __c8, 0)),
+          logsDashboardCredential: S.optional(__S(256, __c8, 0)),
+          logAnalyticsWorkspaceConfig: S.optional(__S(1058, __c33, 2)),
+          uploadServicePrincipal: S.optional(__S(1059, __c33, 3)),
           clusterId: S.optional(S.String),
           extensionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataControllerPropertiesInput" });
   }
 }
-function __c80(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7927,7 +8059,7 @@ function __c80(j: number): any {
       ).annotate({ identifier: "PostSqlServerInstanceUpgradeRequest" });
   }
 }
-function __c81(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7937,8 +8069,8 @@ function __c81(j: number): any {
           dataControllerName: S.String.pipe(T.Label()),
           tags: S.optional(__S(96, __c3, 0)),
           location: S.String,
-          extendedLocation: S.optional(__S(1184, __c37, 0)),
-          properties: __S(2528, __c79, 0),
+          extendedLocation: S.optional(__S(1280, __c40, 0)),
+          properties: __S(2624, __c82, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7950,7 +8082,7 @@ function __c81(j: number): any {
       ).annotate({ identifier: "PutDataControllerDataControllerRequest" });
   }
 }
-function __c82(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7971,7 +8103,7 @@ function __c82(j: number): any {
       ).annotate({ identifier: "RemoveSqlServerAvailabilityGroupDatabasesRequest" });
   }
 }
-function __c83(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7990,7 +8122,7 @@ function __c83(j: number): any {
       ).annotate({ identifier: "RunSqlServerInstanceBestPracticesAssessmentRequest" });
   }
 }
-function __c84(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7999,7 +8131,7 @@ function __c84(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerInstanceName: S.String.pipe(T.Label()),
           availabilityGroupName: S.optional(S.String),
-          replicas: S.optional(__S(2721, __c85, 1)),
+          replicas: S.optional(__S(2849, __c89, 1)),
           databases: S.optional(__S(64, __c2, 0)),
           automatedBackupPreference: S.optional(S.String),
           failureConditionLevel: S.optional(S.Number),
@@ -8008,7 +8140,7 @@ function __c84(j: number): any {
           dtcSupport: S.optional(S.String),
           requiredSynchronizedSecondariesToCommit: S.optional(S.Number),
           clusterType: S.optional(S.String),
-          listener: S.optional(__S(130, __c4, 2)),
+          listener: S.optional(__S(162, __c5, 2)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8020,7 +8152,24 @@ function __c84(j: number): any {
       ).annotate({ identifier: "CreateSqlServerAvailabilityGroupAvailabilityGroupRequest" });
   }
 }
-function __c85(j: number): any {
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          tags: S.optional(__S(96, __c3, 0)),
+          location: S.String,
+          properties: __S(172, __c5, 12),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "CreateSqlServerAvailabilityGroupAvailabilityGroupResponse" });
+  }
+}
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8043,10 +8192,10 @@ function __c85(j: number): any {
         }),
       ).annotate({ identifier: "AvailabilityGroupCreateUpdateReplicaConfiguration" });
     case 1:
-      return S.Array(__S(2720, __c85, 0));
+      return S.Array(__S(2848, __c89, 0));
   }
 }
-function __c86(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -8061,7 +8210,7 @@ function __c86(j: number): any {
           databaseNames: __S(64, __c2, 0),
           availabilityGroupName: S.String,
           distributedAvailabilityGroupName: S.String,
-          assessmentCategories: S.optional(__S(2752, __c86, 0)),
+          assessmentCategories: S.optional(__S(2880, __c90, 0)),
           sqlServerIpAddress: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -8084,16 +8233,19 @@ function __c86(j: number): any {
         }),
       ).annotate({ identifier: "SqlServerInstanceManagedInstanceLinkAssessment" });
     case 3:
-      return S.Array(__S(2754, __c86, 2));
+      return S.Array(__S(2882, __c90, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          assessments: S.optional(__S(2755, __c86, 3)),
+          assessments: S.optional(__S(2883, __c90, 3)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
         }),
       ).annotate({ identifier: "RunSqlServerInstanceManagedInstanceLinkAssessmentResponse" });
   }
 }
-function __c87(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8112,7 +8264,7 @@ function __c87(j: number): any {
       ).annotate({ identifier: "RunSqlServerInstanceMigrationAssessmentRequest" });
   }
 }
-function __c88(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8132,7 +8284,7 @@ function __c88(j: number): any {
       ).annotate({ identifier: "SqlServerAvailabilityGroupsDetailViewRequest" });
   }
 }
-function __c89(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8152,7 +8304,7 @@ function __c89(j: number): any {
       ).annotate({ identifier: "SqlServerAvailabilityGroupsFailoverRequest" });
   }
 }
-function __c90(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8174,7 +8326,7 @@ function __c90(j: number): any {
       ).annotate({ identifier: "SqlServerAvailabilityGroupsFailoverMiLinkRequest" });
   }
 }
-function __c91(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8194,7 +8346,7 @@ function __c91(j: number): any {
       ).annotate({ identifier: "SqlServerAvailabilityGroupsForceFailoverAllowDataLossRequest" });
   }
 }
-function __c92(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8213,7 +8365,7 @@ function __c92(j: number): any {
       ).annotate({ identifier: "SqlServerInstancesPreUpgradeRequest" });
   }
 }
-function __c93(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8222,7 +8374,7 @@ function __c93(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           postgresInstanceName: S.String.pipe(T.Label()),
           tags: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(1216, __c38, 0)),
+          properties: S.optional(__S(1312, __c41, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8234,7 +8386,7 @@ function __c93(j: number): any {
       ).annotate({ identifier: "UpdatePostgresInstanceRequest" });
   }
 }
-function __c94(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8254,7 +8406,7 @@ function __c94(j: number): any {
       ).annotate({ identifier: "UpdateSqlManagedInstanceRequest" });
   }
 }
-function __c95(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8264,7 +8416,7 @@ function __c95(j: number): any {
           sqlServerInstanceName: S.String.pipe(T.Label()),
           availabilityGroupName: S.String.pipe(T.Label()),
           tags: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(2216, __c69, 8)),
+          properties: S.optional(__S(2312, __c72, 8)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8276,7 +8428,7 @@ function __c95(j: number): any {
       ).annotate({ identifier: "UpdateSqlServerAvailabilityGroupRequest" });
   }
 }
-function __c96(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8285,8 +8437,8 @@ function __c96(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerInstanceName: S.String.pipe(T.Label()),
           availabilityGroupName: S.optional(S.String),
-          primaryAvailabilityGroup: S.optional(__S(3105, __c97, 1)),
-          secondaryAvailabilityGroup: S.optional(__S(3105, __c97, 1)),
+          primaryAvailabilityGroup: S.optional(__S(3233, __c101, 1)),
+          secondaryAvailabilityGroup: S.optional(__S(3233, __c101, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8300,7 +8452,7 @@ function __c96(j: number): any {
       });
   }
 }
-function __c97(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8319,14 +8471,14 @@ function __c97(j: number): any {
           availabilityMode: S.optional(S.String),
           failoverMode: S.optional(S.String),
           seedingMode: S.optional(S.String),
-          certificateConfiguration: S.optional(__S(3104, __c97, 0)),
+          certificateConfiguration: S.optional(__S(3232, __c101, 0)),
         }),
       ).annotate({
         identifier: "DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration",
       });
   }
 }
-function __c98(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8336,7 +8488,7 @@ function __c98(j: number): any {
           sqlServerInstanceName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           tags: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(3393, __c106, 1)),
+          properties: S.optional(__S(3585, __c112, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8346,9 +8498,22 @@ function __c98(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSqlServerDatabaseRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          tags: S.optional(__S(96, __c3, 0)),
+          location: S.String,
+          properties: __S(3560, __c111, 8),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateSqlServerDatabaseResponse" });
   }
 }
-function __c99(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8367,7 +8532,7 @@ function __c99(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerEsuLicenseName: S.String.pipe(T.Label()),
           tags: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(3168, __c99, 0)),
+          properties: S.optional(__S(3296, __c103, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8379,7 +8544,7 @@ function __c99(j: number): any {
       ).annotate({ identifier: "UpdateSqlServerEsuLicenseRequest" });
   }
 }
-function __c100(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8389,16 +8554,16 @@ function __c100(j: number): any {
           cores: S.optional(S.String),
           instanceName: S.optional(S.String),
           hostType: S.optional(S.String),
-          failoverCluster: S.optional(__S(2240, __c70, 0)),
-          backupPolicy: S.optional(__S(3328, __c104, 0)),
+          failoverCluster: S.optional(__S(2336, __c73, 0)),
+          backupPolicy: S.optional(__S(3488, __c109, 0)),
           upgradeLockedUntil: S.optional(S.String),
-          monitoring: S.optional(__S(352, __c11, 0)),
-          migration: S.optional(__S(386, __c12, 2)),
-          bestPracticesAssessment: S.optional(__S(357, __c11, 5)),
-          clientConnection: S.optional(__S(352, __c11, 0)),
+          monitoring: S.optional(__S(416, __c13, 0)),
+          migration: S.optional(__S(450, __c14, 2)),
+          bestPracticesAssessment: S.optional(__S(421, __c13, 5)),
+          clientConnection: S.optional(__S(416, __c13, 0)),
           serviceType: S.optional(S.String),
-          authentication: S.optional(__S(360, __c11, 8)),
-          databaseMirroringEndpoint: S.optional(__S(384, __c12, 0)),
+          authentication: S.optional(__S(424, __c13, 8)),
+          databaseMirroringEndpoint: S.optional(__S(448, __c14, 0)),
           isMicrosoftPkiCertTrustConfigured: S.optional(S.Boolean),
           isDigiCertPkiCertTrustConfigured: S.optional(S.Boolean),
           maxServerMemoryMB: S.optional(S.Number),
@@ -8411,7 +8576,7 @@ function __c100(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerInstanceName: S.String.pipe(T.Label()),
           tags: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(3200, __c100, 0)),
+          properties: S.optional(__S(3328, __c104, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8421,9 +8586,22 @@ function __c100(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSqlServerInstanceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          tags: S.optional(__S(96, __c3, 0)),
+          location: S.String,
+          properties: S.optional(__S(445, __c13, 29)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateSqlServerInstanceResponse" });
   }
 }
-function __c101(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8442,7 +8620,7 @@ function __c101(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerLicenseName: S.String.pipe(T.Label()),
           tags: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(3232, __c101, 0)),
+          properties: S.optional(__S(3360, __c105, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8454,13 +8632,13 @@ function __c101(j: number): any {
       ).annotate({ identifier: "UpdateSqlServerLicenseRequest" });
   }
 }
-function __c102(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           availabilityGroupName: S.optional(S.String),
-          replicas: S.optional(__S(2721, __c85, 1)),
+          replicas: S.optional(__S(2849, __c89, 1)),
           databases: S.optional(__S(64, __c2, 0)),
           automatedBackupPreference: S.optional(S.String),
           failureConditionLevel: S.optional(S.Number),
@@ -8469,15 +8647,15 @@ function __c102(j: number): any {
           dtcSupport: S.optional(S.String),
           requiredSynchronizedSecondariesToCommit: S.optional(S.Number),
           clusterType: S.optional(S.String),
-          listener: S.optional(__S(130, __c4, 2)),
+          listener: S.optional(__S(162, __c5, 2)),
         }),
       ).annotate({ identifier: "AvailabilityGroupCreateUpdateConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           availabilityGroupName: S.optional(S.String),
-          primaryAvailabilityGroup: S.optional(__S(3105, __c97, 1)),
-          secondaryAvailabilityGroup: S.optional(__S(3105, __c97, 1)),
+          primaryAvailabilityGroup: S.optional(__S(3233, __c101, 1)),
+          secondaryAvailabilityGroup: S.optional(__S(3233, __c101, 1)),
         }),
       ).annotate({ identifier: "DistributedAvailabilityGroupCreateUpdateConfiguration" });
     case 2:
@@ -8492,9 +8670,9 @@ function __c102(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerInstanceName: S.String.pipe(T.Label()),
-          availabilityGroup: S.optional(__S(3264, __c102, 0)),
-          distributedAvailabilityGroup: S.optional(__S(3265, __c102, 1)),
-          miLinkConfiguration: S.optional(__S(3266, __c102, 2)),
+          availabilityGroup: S.optional(__S(3392, __c106, 0)),
+          distributedAvailabilityGroup: S.optional(__S(3393, __c106, 1)),
+          miLinkConfiguration: S.optional(__S(3394, __c106, 2)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8506,7 +8684,26 @@ function __c102(j: number): any {
       ).annotate({ identifier: "CreateSqlServerAvailabilityGroupManagedInstanceLinkRequest" });
   }
 }
-function __c103(j: number): any {
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          tags: S.optional(__S(96, __c3, 0)),
+          location: S.String,
+          properties: __S(172, __c5, 12),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+        }),
+      ).annotate({ identifier: "CreateSqlServerAvailabilityGroupManagedInstanceLinkResponse" });
+  }
+}
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8517,7 +8714,7 @@ function __c103(j: number): any {
           databaseName: S.String.pipe(T.Label()),
           tags: S.optional(__S(96, __c3, 0)),
           location: S.String,
-          properties: __S(3393, __c106, 1),
+          properties: __S(3585, __c112, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8529,7 +8726,7 @@ function __c103(j: number): any {
       ).annotate({ identifier: "CreateSqlServerDatabaseRequest" });
   }
 }
-function __c104(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8549,7 +8746,7 @@ function __c104(j: number): any {
         }),
       ).annotate({ identifier: "SkuRecommendationSummaryImpactedObjectsSummaryItem" });
     case 2:
-      return S.Array(__S(3329, __c104, 1));
+      return S.Array(__S(3489, __c109, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -8573,11 +8770,11 @@ function __c104(j: number): any {
       return S.suspend(() =>
         S.Struct({
           keyName: S.optional(S.String),
-          keyValue: S.optional(__S(3332, __c104, 4)),
+          keyValue: S.optional(__S(3492, __c109, 4)),
         }),
       ).annotate({ identifier: "SkuRecommendationResultsMonthlyCostOptionItem" });
     case 6:
-      return S.Array(__S(3333, __c104, 5));
+      return S.Array(__S(3493, __c109, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -8591,7 +8788,7 @@ function __c104(j: number): any {
     case 8:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(__S(3335, __c104, 7)),
+          category: S.optional(__S(3495, __c109, 7)),
           computeSize: S.optional(S.Number),
           storageMaxSizeInMb: S.optional(S.Number),
           predictedDataSizeInMb: S.optional(S.Number),
@@ -8602,7 +8799,23 @@ function __c104(j: number): any {
       ).annotate({ identifier: "SkuRecommendationSummaryTargetSku" });
   }
 }
-function __c105(j: number): any {
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          tags: S.optional(__S(96, __c3, 0)),
+          location: S.String,
+          properties: __S(3560, __c111, 8),
+        }),
+      ).annotate({ identifier: "CreateSqlServerDatabaseResponse" });
+  }
+}
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8636,38 +8849,38 @@ function __c105(j: number): any {
         }),
       ).annotate({ identifier: "DatabaseAssessmentsItem" });
     case 3:
-      return S.Array(__S(3362, __c105, 2));
+      return S.Array(__S(3554, __c111, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           numOfBlockerIssues: S.optional(S.Number),
           recommendationStatus: S.optional(S.String),
-          impactedObjectsSummary: S.optional(__S(3330, __c104, 2)),
-          monthlyCost: S.optional(__S(3331, __c104, 3)),
-          monthlyCostOptions: S.optional(__S(3334, __c104, 6)),
-          targetSku: S.optional(__S(3336, __c104, 8)),
+          impactedObjectsSummary: S.optional(__S(3490, __c109, 2)),
+          monthlyCost: S.optional(__S(3491, __c109, 3)),
+          monthlyCostOptions: S.optional(__S(3494, __c109, 6)),
+          targetSku: S.optional(__S(3496, __c109, 8)),
         }),
       ).annotate({ identifier: "SkuRecommendationSummary" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          azureSqlDatabase: S.optional(__S(3364, __c105, 4)),
-          azureSqlManagedInstance: S.optional(__S(3364, __c105, 4)),
-          azureSqlVirtualMachine: S.optional(__S(3364, __c105, 4)),
+          azureSqlDatabase: S.optional(__S(3556, __c111, 4)),
+          azureSqlManagedInstance: S.optional(__S(3556, __c111, 4)),
+          azureSqlVirtualMachine: S.optional(__S(3556, __c111, 4)),
         }),
       ).annotate({ identifier: "TargetReadiness" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           assessmentUploadTime: S.optional(S.String),
-          databaseAssessments: S.optional(__S(3363, __c105, 3)),
-          targetReadiness: S.optional(__S(3365, __c105, 5)),
+          databaseAssessments: S.optional(__S(3555, __c111, 3)),
+          targetReadiness: S.optional(__S(3557, __c111, 5)),
         }),
       ).annotate({ identifier: "DataBaseMigrationAssessment" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          assessment: S.optional(__S(3366, __c105, 6)),
+          assessment: S.optional(__S(3558, __c111, 6)),
         }),
       ).annotate({ identifier: "DataBaseMigration" });
     case 8:
@@ -8683,9 +8896,9 @@ function __c105(j: number): any {
           state: S.optional(S.String),
           isReadOnly: S.optional(S.Boolean),
           recoveryMode: S.optional(S.String),
-          databaseOptions: S.optional(__S(3360, __c105, 0)),
-          backupInformation: S.optional(__S(3361, __c105, 1)),
-          backupPolicy: S.optional(__S(3328, __c104, 0)),
+          databaseOptions: S.optional(__S(3552, __c111, 0)),
+          backupInformation: S.optional(__S(3553, __c111, 1)),
+          backupPolicy: S.optional(__S(3488, __c109, 0)),
           earliestRestoreDate: S.optional(S.String),
           createMode: S.optional(S.String),
           sourceDatabaseId: S.optional(S.String),
@@ -8693,29 +8906,17 @@ function __c105(j: number): any {
           restorePointInTime: S.optional(S.String),
           provisioningState: S.optional(S.String),
           lastDatabaseUploadTime: S.optional(S.String),
-          migration: S.optional(__S(3367, __c105, 7)),
+          migration: S.optional(__S(3559, __c111, 7)),
         }),
       ).annotate({ identifier: "SqlServerDatabaseResourceProperties" });
-    case 9:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c1, 0)),
-          tags: S.optional(__S(96, __c3, 0)),
-          location: S.String,
-          properties: __S(3368, __c105, 8),
-        }),
-      ).annotate({ identifier: "CreateSqlServerDatabaseResponse" });
   }
 }
-function __c106(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          assessment: S.optional(__S(2240, __c70, 0)),
+          assessment: S.optional(__S(2336, __c73, 0)),
         }),
       ).annotate({ identifier: "DataBaseMigrationInput" });
     case 1:
@@ -8731,13 +8932,13 @@ function __c106(j: number): any {
           state: S.optional(S.String),
           isReadOnly: S.optional(S.Boolean),
           recoveryMode: S.optional(S.String),
-          databaseOptions: S.optional(__S(3360, __c105, 0)),
-          backupInformation: S.optional(__S(3361, __c105, 1)),
-          backupPolicy: S.optional(__S(3328, __c104, 0)),
+          databaseOptions: S.optional(__S(3552, __c111, 0)),
+          backupInformation: S.optional(__S(3553, __c111, 1)),
+          backupPolicy: S.optional(__S(3488, __c109, 0)),
           createMode: S.optional(S.String),
           sourceDatabaseId: S.optional(S.String),
           restorePointInTime: S.optional(S.String),
-          migration: S.optional(__S(3392, __c106, 0)),
+          migration: S.optional(__S(3584, __c112, 0)),
         }),
       ).annotate({ identifier: "SqlServerDatabaseResourcePropertiesInput" });
   }

@@ -701,7 +701,7 @@
         "target": "com.azure.apimanagement#DeleteApiGatewayRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.apimanagement#DeleteApiGatewayResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -712,6 +712,21 @@
         },
         "smithy.api#documentation": "Deletes an existing API Management gateway.",
         "com.distilled.openapi#apiVersion": "2024-05-01"
+      }
+    },
+    "com.azure.apimanagement#DeleteApiGatewayResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.apimanagement#DeleteApiGatewayRequest": {
@@ -823,6 +838,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "ETag of the resource."
+          }
+        },
+        "locationHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header"
           }
         }
       },
@@ -6627,6 +6649,20 @@
           "traits": {
             "smithy.api#documentation": "Properties of the API Schema."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header contains the URL where the status of the long running operation can be checked"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "Azure-AsyncOperation header contains the URL where the status of the long running operation can be checked"
+          }
         }
       },
       "traits": {
@@ -11349,7 +11385,7 @@
         "target": "com.azure.apimanagement#DeleteApiRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.apimanagement#DeleteApiResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11360,6 +11396,28 @@
         },
         "smithy.api#documentation": "Deletes the specified API of the API Management service instance.",
         "com.distilled.openapi#apiVersion": "2024-05-01"
+      }
+    },
+    "com.azure.apimanagement#DeleteApiResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "Azure-AsyncOperation header contains the URL where the status of the long running operation can be checked"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.apimanagement#DeleteApiRequest": {
@@ -12043,6 +12101,20 @@
           "target": "com.azure.apimanagement#ApiContractProperties",
           "traits": {
             "smithy.api#documentation": "API entity contract properties."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header contains the URL where the status of the long running operation can be checked"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "Azure-AsyncOperation header contains the URL where the status of the long running operation can be checked"
           }
         }
       },
@@ -18779,6 +18851,12 @@
           "traits": {
             "smithy.api#documentation": "Number of failed probes."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location"
+          }
         }
       },
       "traits": {
@@ -20098,7 +20176,7 @@
         "target": "com.azure.apimanagement#PurgeDeletedServiceRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.apimanagement#PurgeDeletedServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -20109,6 +20187,20 @@
         },
         "smithy.api#documentation": "Purges Api Management Service (deletes it with no option to undelete).",
         "com.distilled.openapi#apiVersion": "2024-05-01"
+      }
+    },
+    "com.azure.apimanagement#PurgeDeletedServiceResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.apimanagement#PurgeDeletedServiceRequest": {
@@ -20447,6 +20539,12 @@
           "target": "com.azure.apimanagement#ApplyApiManagementServiceNetworkConfigurationUpdatesResponseZonesList",
           "traits": {
             "smithy.api#documentation": "A list of availability zones denoting where the resource needs to come from."
+          }
+        },
+        "locationHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location"
           }
         }
       },
@@ -22482,6 +22580,12 @@
           "traits": {
             "smithy.api#documentation": "A list of availability zones denoting where the resource needs to come from."
           }
+        },
+        "locationHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location"
+          }
         }
       },
       "traits": {
@@ -22681,7 +22785,7 @@
         "target": "com.azure.apimanagement#DeleteApiManagementServiceRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.apimanagement#DeleteApiManagementServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -22692,6 +22796,21 @@
         },
         "smithy.api#documentation": "Deletes an existing API Management service.",
         "com.distilled.openapi#apiVersion": "2024-05-01"
+      }
+    },
+    "com.azure.apimanagement#DeleteApiManagementServiceResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.apimanagement#DeleteApiManagementServiceRequest": {
@@ -22815,6 +22934,13 @@
           "target": "com.azure.apimanagement#UpdateApiManagementServiceResponseZonesList",
           "traits": {
             "smithy.api#documentation": "A list of availability zones denoting where the resource needs to come from."
+          }
+        },
+        "locationHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header"
           }
         }
       },
@@ -24542,6 +24668,12 @@
           "traits": {
             "smithy.api#documentation": "A list of availability zones denoting where the resource needs to come from."
           }
+        },
+        "locationHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location"
+          }
         }
       },
       "traits": {
@@ -24863,6 +24995,12 @@
           "target": "com.azure.apimanagement#RestoreApiManagementServiceResponseZonesList",
           "traits": {
             "smithy.api#documentation": "A list of availability zones denoting where the resource needs to come from."
+          }
+        },
+        "locationHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location"
           }
         }
       },
@@ -27368,7 +27506,7 @@
         "target": "com.azure.apimanagement#DeleteApiGatewayConfigConnectionRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.apimanagement#DeleteApiGatewayConfigConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -27379,6 +27517,21 @@
         },
         "smithy.api#documentation": "Deletes an existing API Management gateway config connection.",
         "com.distilled.openapi#apiVersion": "2024-05-01"
+      }
+    },
+    "com.azure.apimanagement#DeleteApiGatewayConfigConnectionResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.apimanagement#DeleteApiGatewayConfigConnectionRequest": {
@@ -33260,6 +33413,20 @@
           "traits": {
             "smithy.api#documentation": "NamedValue entity contract properties."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header contains the URL where the status of the long running operation can be checked"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "Azure-AsyncOperation header contains the URL where the status of the long running operation can be checked"
+          }
         }
       },
       "traits": {
@@ -33537,6 +33704,20 @@
           "traits": {
             "smithy.api#documentation": "NamedValue entity contract properties."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header contains the URL where the status of the long running operation can be checked"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "Azure-AsyncOperation header contains the URL where the status of the long running operation can be checked"
+          }
         }
       },
       "traits": {
@@ -33680,6 +33861,20 @@
           "target": "com.azure.apimanagement#NamedValueContractProperties",
           "traits": {
             "smithy.api#documentation": "NamedValue entity contract properties."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header contains the URL where the status of the long running operation can be checked"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "Azure-AsyncOperation header contains the URL where the status of the long running operation can be checked"
           }
         }
       },
@@ -37297,6 +37492,20 @@
           "traits": {
             "smithy.api#documentation": "Properties of the Policy Fragment."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header contains the URL where the status of the long running operation can be checked"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "Azure-AsyncOperation header contains the URL where the status of the long running operation can be checked"
+          }
         }
       },
       "traits": {
@@ -38247,6 +38456,13 @@
           "traits": {
             "smithy.api#documentation": "Properties of the Operation Contract."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "location of the header."
+          }
         }
       },
       "traits": {
@@ -39110,6 +39326,20 @@
           "traits": {
             "smithy.api#documentation": "Properties of the portal revisions."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header contains the URL where the status of the long running operation can be checked"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "Azure-AsyncOperation header contains the URL where the status of the long running operation can be checked"
+          }
         }
       },
       "traits": {
@@ -39304,6 +39534,20 @@
           "target": "com.azure.apimanagement#PortalRevisionContractProperties",
           "traits": {
             "smithy.api#documentation": "Properties of the portal revisions."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header contains the URL where the status of the long running operation can be checked"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "Azure-AsyncOperation header contains the URL where the status of the long running operation can be checked"
           }
         }
       },
@@ -39828,7 +40072,7 @@
         "target": "com.azure.apimanagement#DeletePrivateEndpointConnectionRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.apimanagement#DeletePrivateEndpointConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -39839,6 +40083,21 @@
         },
         "smithy.api#documentation": "Deletes the specified Private Endpoint Connection.",
         "com.distilled.openapi#apiVersion": "2024-05-01"
+      }
+    },
+    "com.azure.apimanagement#DeletePrivateEndpointConnectionResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.apimanagement#DeletePrivateEndpointConnectionRequest": {
@@ -39925,6 +40184,13 @@
           "target": "com.azure.apimanagement#PrivateEndpointConnectionProperties",
           "traits": {
             "smithy.api#documentation": "Resource properties."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header"
           }
         }
       },
@@ -45826,6 +46092,20 @@
           "traits": {
             "smithy.api#documentation": "Properties of the Global Schema."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header contains the URL where the status of the long running operation can be checked"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "Azure-AsyncOperation header contains the URL where the status of the long running operation can be checked"
+          }
         }
       },
       "traits": {
@@ -49708,6 +49988,12 @@
           "traits": {
             "smithy.api#documentation": "Properties of the Operation Contract."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location"
+          }
         }
       },
       "traits": {
@@ -49838,6 +50124,12 @@
           "traits": {
             "smithy.api#documentation": "Properties of the Operation Contract."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location"
+          }
         }
       },
       "traits": {
@@ -49967,6 +50259,12 @@
           "target": "com.azure.apimanagement#OperationResultContractProperties",
           "traits": {
             "smithy.api#documentation": "Properties of the Operation Contract."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location"
           }
         }
       },
@@ -51698,7 +51996,7 @@
         "target": "com.azure.apimanagement#DeleteUserRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.apimanagement#DeleteUserResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -51709,6 +52007,28 @@
         },
         "smithy.api#documentation": "Deletes specific user.",
         "com.distilled.openapi#apiVersion": "2024-05-01"
+      }
+    },
+    "com.azure.apimanagement#DeleteUserResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "Azure-AsyncOperation header contains the URL where the status of the long running operation can be checked"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.apimanagement#DeleteUserRequest": {
@@ -59029,6 +59349,20 @@
           "traits": {
             "smithy.api#documentation": "Properties of the API Schema."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header contains the URL where the status of the long running operation can be checked"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "Azure-AsyncOperation header contains the URL where the status of the long running operation can be checked"
+          }
         }
       },
       "traits": {
@@ -61691,6 +62025,20 @@
           "traits": {
             "smithy.api#documentation": "API entity contract properties."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header contains the URL where the status of the long running operation can be checked"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "Azure-AsyncOperation header contains the URL where the status of the long running operation can be checked"
+          }
         }
       },
       "traits": {
@@ -64270,6 +64618,20 @@
           "traits": {
             "smithy.api#documentation": "Properties of the Policy Fragment."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header contains the URL where the status of the long running operation can be checked"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "Azure-AsyncOperation header contains the URL where the status of the long running operation can be checked"
+          }
         }
       },
       "traits": {
@@ -65946,6 +66308,20 @@
           "traits": {
             "smithy.api#documentation": "Properties of the Global Schema."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header contains the URL where the status of the long running operation can be checked"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "Azure-AsyncOperation header contains the URL where the status of the long running operation can be checked"
+          }
         }
       },
       "traits": {
@@ -66265,6 +66641,20 @@
           "traits": {
             "smithy.api#documentation": "NamedValue entity contract properties."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header contains the URL where the status of the long running operation can be checked"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "Azure-AsyncOperation header contains the URL where the status of the long running operation can be checked"
+          }
         }
       },
       "traits": {
@@ -66512,6 +66902,20 @@
           "traits": {
             "smithy.api#documentation": "NamedValue entity contract properties."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header contains the URL where the status of the long running operation can be checked"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "Azure-AsyncOperation header contains the URL where the status of the long running operation can be checked"
+          }
         }
       },
       "traits": {
@@ -66616,6 +67020,20 @@
           "target": "com.azure.apimanagement#NamedValueContractProperties",
           "traits": {
             "smithy.api#documentation": "NamedValue entity contract properties."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "location",
+            "smithy.api#documentation": "Location header contains the URL where the status of the long running operation can be checked"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "Azure-AsyncOperation header contains the URL where the status of the long running operation can be checked"
           }
         }
       },
@@ -67852,7 +68270,7 @@
         "target": "com.azure.apimanagement#GetOperationsResultRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.apimanagement#GetOperationsResultResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -67863,6 +68281,21 @@
         },
         "smithy.api#documentation": "Returns operation results for long running operations executing DELETE or PATCH on the resource.",
         "com.distilled.openapi#apiVersion": "2024-05-01"
+      }
+    },
+    "com.azure.apimanagement#GetOperationsResultResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "URL for determining when an operation has completed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.apimanagement#GetOperationsResultRequest": {

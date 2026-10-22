@@ -93,6 +93,8 @@ export interface AddonsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: AddonProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The properties of an ExpressRoute Circuit Authorization resource */
 export interface ExpressRouteAuthorizationPropertiesInput {
@@ -139,6 +141,8 @@ export interface AuthorizationsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: ExpressRouteAuthorizationProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface CheckLocationQuotaAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -191,7 +195,12 @@ export interface CheckServiceComponentAvailabilityRequest {
   /** A service component */
   serviceComponentName: string;
 }
-export interface CheckServiceComponentAvailabilityResponse {}
+export interface CheckServiceComponentAvailabilityResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** The properties of a cloud link. */
 export interface CloudLinkPropertiesInput {
   /** Identifier of the other private cloud participating in the link. */
@@ -233,6 +242,8 @@ export interface CloudLinksCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: CloudLinkProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The hosts */
 export type ClusterPropertiesInputHostsList = Array<string>;
@@ -319,6 +330,8 @@ export interface ClustersCreateOrUpdateResponse {
   properties?: ClusterProperties;
   /** The resource model definition representing SKU */
   sku: ClustersCreateOrUpdateResponseSku;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Type of DHCP: SERVER or RELAY. */
 export type DhcpTypeEnum = "SERVER" | "RELAY";
@@ -391,6 +404,8 @@ export interface CreateWorkloadNetworkDhcpResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDhcpEntity;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** FQDN zones of the DNS Service. */
 export type WorkloadNetworkDnsServicePropertiesInputFqdnZonesList = Array<string>;
@@ -465,6 +480,8 @@ export interface CreateWorkloadNetworkDnsServiceResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsServiceProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Domain names of the DNS Zone. */
 export type WorkloadNetworkDnsZonePropertiesInputDomainList = Array<string>;
@@ -535,6 +552,8 @@ export interface CreateWorkloadNetworkDnsZoneResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsZoneProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Port Mirroring Direction */
 export type PortMirroringDirectionEnum = "INGRESS" | "EGRESS" | "BIDIRECTIONAL";
@@ -601,6 +620,8 @@ export interface CreateWorkloadNetworkPortMirroringResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPortMirroringProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** NSX Public IP Block Properties */
 export interface WorkloadNetworkPublicIPPropertiesInput {
@@ -651,6 +672,8 @@ export interface CreateWorkloadNetworkPublicIPResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPublicIPProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** DHCP Range assigned for subnet. */
 export type WorkloadNetworkSegmentSubnetDhcpRangesList = Array<string>;
@@ -729,6 +752,8 @@ export interface CreateWorkloadNetworkSegmentsResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkSegmentProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Virtual machine members of this group. */
 export type WorkloadNetworkVMGroupPropertiesInputMembersList = Array<string>;
@@ -789,6 +814,8 @@ export interface CreateWorkloadNetworkVMGroupResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkVMGroupProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** An Azure NetApp Files volume from Microsoft.NetApp provider */
 export interface NetAppVolume {
@@ -901,6 +928,8 @@ export interface DatastoresCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: DatastoreProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteAddonRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -912,7 +941,12 @@ export interface DeleteAddonRequest {
   /** Name of the addon. */
   addonName: string;
 }
-export interface DeleteAddonResponse {}
+export interface DeleteAddonResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteAuthorizationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -923,7 +957,12 @@ export interface DeleteAuthorizationRequest {
   /** Name of the ExpressRoute Circuit Authorization */
   authorizationName: string;
 }
-export interface DeleteAuthorizationResponse {}
+export interface DeleteAuthorizationResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteCloudLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -934,7 +973,12 @@ export interface DeleteCloudLinkRequest {
   /** Name of the cloud link. */
   cloudLinkName: string;
 }
-export interface DeleteCloudLinkResponse {}
+export interface DeleteCloudLinkResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -945,7 +989,12 @@ export interface DeleteClusterRequest {
   /** Name of the cluster */
   clusterName: string;
 }
-export interface DeleteClusterResponse {}
+export interface DeleteClusterResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDatastoreRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -958,7 +1007,12 @@ export interface DeleteDatastoreRequest {
   /** Name of the datastore */
   datastoreName: string;
 }
-export interface DeleteDatastoreResponse {}
+export interface DeleteDatastoreResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteGlobalReachConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -969,7 +1023,12 @@ export interface DeleteGlobalReachConnectionRequest {
   /** Name of the global reach connection */
   globalReachConnectionName: string;
 }
-export interface DeleteGlobalReachConnectionResponse {}
+export interface DeleteGlobalReachConnectionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteHcxEnterpriseSiteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -989,7 +1048,12 @@ export interface DeleteIscsiPathRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export interface DeleteIscsiPathResponse {}
+export interface DeleteIscsiPathResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export type DeleteLicenseRequestLicenseName = "VmwareFirewall";
 export interface DeleteLicenseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1001,7 +1065,12 @@ export interface DeleteLicenseRequest {
   /** Name of the license. */
   licenseName: DeleteLicenseRequestLicenseName | (string & {});
 }
-export interface DeleteLicenseResponse {}
+export interface DeleteLicenseResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeletePlacementPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1014,7 +1083,12 @@ export interface DeletePlacementPolicyRequest {
   /** Name of the placement policy. */
   placementPolicyName: string;
 }
-export interface DeletePlacementPolicyResponse {}
+export interface DeletePlacementPolicyResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeletePrivateCloudRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1023,7 +1097,12 @@ export interface DeletePrivateCloudRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export interface DeletePrivateCloudResponse {}
+export interface DeletePrivateCloudResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeletePureStoragePolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1034,7 +1113,12 @@ export interface DeletePureStoragePolicyRequest {
   /** Name of the storage policy. */
   storagePolicyName: string;
 }
-export interface DeletePureStoragePolicyResponse {}
+export interface DeletePureStoragePolicyResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteScriptExecutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1045,7 +1129,12 @@ export interface DeleteScriptExecutionRequest {
   /** Name of the script cmdlet. */
   scriptExecutionName: string;
 }
-export interface DeleteScriptExecutionResponse {}
+export interface DeleteScriptExecutionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteWorkloadNetworkDhcpRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1056,7 +1145,12 @@ export interface DeleteWorkloadNetworkDhcpRequest {
   /** The ID of the DHCP configuration */
   dhcpId: string;
 }
-export interface DeleteWorkloadNetworkDhcpResponse {}
+export interface DeleteWorkloadNetworkDhcpResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteWorkloadNetworkDnsServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1067,7 +1161,12 @@ export interface DeleteWorkloadNetworkDnsServiceRequest {
   /** ID of the DNS service. */
   dnsServiceId: string;
 }
-export interface DeleteWorkloadNetworkDnsServiceResponse {}
+export interface DeleteWorkloadNetworkDnsServiceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteWorkloadNetworkDnsZoneRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1078,7 +1177,12 @@ export interface DeleteWorkloadNetworkDnsZoneRequest {
   /** ID of the DNS zone. */
   dnsZoneId: string;
 }
-export interface DeleteWorkloadNetworkDnsZoneResponse {}
+export interface DeleteWorkloadNetworkDnsZoneResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteWorkloadNetworkPortMirroringRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1089,7 +1193,12 @@ export interface DeleteWorkloadNetworkPortMirroringRequest {
   /** ID of the NSX port mirroring profile. */
   portMirroringId: string;
 }
-export interface DeleteWorkloadNetworkPortMirroringResponse {}
+export interface DeleteWorkloadNetworkPortMirroringResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteWorkloadNetworkPublicIPRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1100,7 +1209,12 @@ export interface DeleteWorkloadNetworkPublicIPRequest {
   /** ID of the DNS zone. */
   publicIPId: string;
 }
-export interface DeleteWorkloadNetworkPublicIPResponse {}
+export interface DeleteWorkloadNetworkPublicIPResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteWorkloadNetworkSegmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1111,7 +1225,12 @@ export interface DeleteWorkloadNetworkSegmentRequest {
   /** The ID of the NSX Segment */
   segmentId: string;
 }
-export interface DeleteWorkloadNetworkSegmentResponse {}
+export interface DeleteWorkloadNetworkSegmentResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteWorkloadNetworkVMGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1122,7 +1241,12 @@ export interface DeleteWorkloadNetworkVMGroupRequest {
   /** ID of the VM group. */
   vmGroupId: string;
 }
-export interface DeleteWorkloadNetworkVMGroupResponse {}
+export interface DeleteWorkloadNetworkVMGroupResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetAddonRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2589,6 +2713,8 @@ export interface GlobalReachConnectionsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: GlobalReachConnectionProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The properties of an HCX Enterprise Site */
 export interface HcxEnterpriseSitePropertiesInput {}
@@ -2642,6 +2768,8 @@ export interface IscsiPathsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: IscsiPathProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type LicensesCreateOrUpdateRequestLicenseName = "VmwareFirewall";
 /** The properties of a license */
@@ -2680,6 +2808,10 @@ export interface LicensesCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: LicenseProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ListAddonsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3912,6 +4044,8 @@ export interface PlacementPoliciesCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: PlacementPolicyProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type PrivateCloudsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -4043,6 +4177,8 @@ export interface PrivateCloudsCreateOrUpdateResponse {
   identity?: GetPrivateCloudResponseIdentity;
   /** The availability zones. */
   zones?: PrivateCloudsCreateOrUpdateResponseZonesList;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Properties of a Pure Storage Policy Based Management policy */
 export interface PureStoragePolicyPropertiesInput {
@@ -4074,6 +4210,10 @@ export interface PureStoragePoliciesCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: PureStoragePolicyProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface RotatePrivateCloudNsxtPasswordRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4083,7 +4223,12 @@ export interface RotatePrivateCloudNsxtPasswordRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export interface RotatePrivateCloudNsxtPasswordResponse {}
+export interface RotatePrivateCloudNsxtPasswordResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface RotatePrivateCloudVcenterPasswordRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4092,7 +4237,12 @@ export interface RotatePrivateCloudVcenterPasswordRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export interface RotatePrivateCloudVcenterPasswordResponse {}
+export interface RotatePrivateCloudVcenterPasswordResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Parameters the script will accept */
 export type ScriptExecutionPropertiesInputParametersList = Array<ScriptExecutionParameter>;
 /** Parameters that will be hidden/not visible to ARM, such as passwords and credentials */
@@ -4143,6 +4293,8 @@ export interface ScriptExecutionsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: ScriptExecutionProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The resource model definition representing SKU */
 export type UpdateClusterRequestSku = ClustersCreateOrUpdateRequestSku;
@@ -4184,6 +4336,10 @@ export interface UpdateClusterResponse {
   properties?: ClusterProperties;
   /** The resource model definition representing SKU */
   sku: ClustersCreateOrUpdateResponseSku;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The licenses assigned to the host. */
 export type HostUpdatePropertiesLicensesList = Array<HostLicense>;
@@ -4264,6 +4420,10 @@ export interface UpdatePlacementPolicyResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: PlacementPolicyProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdatePrivateCloudRequestTagsMap = { [key: string]: string | undefined };
@@ -4339,6 +4499,10 @@ export interface UpdatePrivateCloudResponse {
   identity?: GetPrivateCloudResponseIdentity;
   /** The availability zones. */
   zones?: UpdatePrivateCloudResponseZonesList;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface UpdateWorkloadNetworkDhcpRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4363,6 +4527,10 @@ export interface UpdateWorkloadNetworkDhcpResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDhcpEntity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface UpdateWorkloadNetworkDnsServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4387,6 +4555,10 @@ export interface UpdateWorkloadNetworkDnsServiceResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsServiceProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface UpdateWorkloadNetworkDnsZoneRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4411,6 +4583,10 @@ export interface UpdateWorkloadNetworkDnsZoneResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsZoneProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface UpdateWorkloadNetworkPortMirroringRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4435,6 +4611,10 @@ export interface UpdateWorkloadNetworkPortMirroringResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPortMirroringProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface UpdateWorkloadNetworkSegmentsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4459,6 +4639,10 @@ export interface UpdateWorkloadNetworkSegmentsResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkSegmentProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface UpdateWorkloadNetworkVMGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4483,6 +4667,10 @@ export interface UpdateWorkloadNetworkVMGroupResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkVMGroupProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface VirtualMachinesRestrictMovementRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4498,7 +4686,12 @@ export interface VirtualMachinesRestrictMovementRequest {
   /** Whether VM DRS-driven movement is restricted (enabled) or not (disabled) */
   restrictMovement?: VirtualMachineRestrictMovementState | (string & {});
 }
-export interface VirtualMachinesRestrictMovementResponse {}
+export interface VirtualMachinesRestrictMovementResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export type AddonsCreateOrUpdateError = AzureOpError;
 /** Create a Addon */
 export const AddonsCreateOrUpdate: API.OperationMethod<
@@ -4508,7 +4701,7 @@ export const AddonsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<AddonsCreateOrUpdateRequest>,
-  output: __S(33, __c2, 1) as any as S.Schema<AddonsCreateOrUpdateResponse>,
+  output: __S(2, __c0, 2) as any as S.Schema<AddonsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4523,7 +4716,7 @@ export const AuthorizationsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(49, __c3, 1) as any as S.Schema<AuthorizationsCreateOrUpdateRequest>,
-  output: __S(65, __c4, 1) as any as S.Schema<AuthorizationsCreateOrUpdateResponse>,
+  output: __S(50, __c3, 2) as any as S.Schema<AuthorizationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4552,8 +4745,8 @@ export const CheckLocationTrialAvailability: API.OperationMethod<
   CheckLocationTrialAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c60, 0) as any as S.Schema<CheckLocationTrialAvailabilityRequest>,
-  output: __S(961, __c60, 1) as any as S.Schema<Trial>,
+  input: __S(976, __c61, 0) as any as S.Schema<CheckLocationTrialAvailabilityRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<Trial>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4567,8 +4760,8 @@ export const CheckServiceComponentAvailability: API.OperationMethod<
   CheckServiceComponentAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1136, __c71, 0) as any as S.Schema<CheckServiceComponentAvailabilityRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<CheckServiceComponentAvailabilityResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<CheckServiceComponentAvailabilityRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<CheckServiceComponentAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4582,8 +4775,8 @@ export const CloudLinksCreateOrUpdate: API.OperationMethod<
   CloudLinksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1521, __c95, 1) as any as S.Schema<CloudLinksCreateOrUpdateRequest>,
-  output: __S(1537, __c96, 1) as any as S.Schema<CloudLinksCreateOrUpdateResponse>,
+  input: __S(1681, __c105, 1) as any as S.Schema<CloudLinksCreateOrUpdateRequest>,
+  output: __S(1682, __c105, 2) as any as S.Schema<CloudLinksCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4597,8 +4790,8 @@ export const ClustersCreateOrUpdate: API.OperationMethod<
   ClustersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1824, __c114, 0) as any as S.Schema<ClustersCreateOrUpdateRequest>,
-  output: __S(1888, __c118, 0) as any as S.Schema<ClustersCreateOrUpdateResponse>,
+  input: __S(2048, __c128, 0) as any as S.Schema<ClustersCreateOrUpdateRequest>,
+  output: __S(2049, __c128, 1) as any as S.Schema<ClustersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4612,8 +4805,8 @@ export const CreateWorkloadNetworkDhcp: API.OperationMethod<
   CreateWorkloadNetworkDhcpError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2112, __c132, 0) as any as S.Schema<CreateWorkloadNetworkDhcpRequest>,
-  output: __S(2145, __c134, 1) as any as S.Schema<CreateWorkloadNetworkDhcpResponse>,
+  input: __S(2400, __c150, 0) as any as S.Schema<CreateWorkloadNetworkDhcpRequest>,
+  output: __S(2401, __c150, 1) as any as S.Schema<CreateWorkloadNetworkDhcpResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4627,8 +4820,8 @@ export const CreateWorkloadNetworkDnsService: API.OperationMethod<
   CreateWorkloadNetworkDnsServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2320, __c145, 0) as any as S.Schema<CreateWorkloadNetworkDnsServiceRequest>,
-  output: __S(2353, __c147, 1) as any as S.Schema<CreateWorkloadNetworkDnsServiceResponse>,
+  input: __S(2608, __c163, 0) as any as S.Schema<CreateWorkloadNetworkDnsServiceRequest>,
+  output: __S(2609, __c163, 1) as any as S.Schema<CreateWorkloadNetworkDnsServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4642,8 +4835,8 @@ export const CreateWorkloadNetworkDnsZone: API.OperationMethod<
   CreateWorkloadNetworkDnsZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2544, __c159, 0) as any as S.Schema<CreateWorkloadNetworkDnsZoneRequest>,
-  output: __S(2577, __c161, 1) as any as S.Schema<CreateWorkloadNetworkDnsZoneResponse>,
+  input: __S(2832, __c177, 0) as any as S.Schema<CreateWorkloadNetworkDnsZoneRequest>,
+  output: __S(2833, __c177, 1) as any as S.Schema<CreateWorkloadNetworkDnsZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4658,7 +4851,7 @@ export const CreateWorkloadNetworkPortMirroring: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(80, __c5, 0) as any as S.Schema<CreateWorkloadNetworkPortMirroringRequest>,
-  output: __S(113, __c7, 1) as any as S.Schema<CreateWorkloadNetworkPortMirroringResponse>,
+  output: __S(81, __c5, 1) as any as S.Schema<CreateWorkloadNetworkPortMirroringResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4673,7 +4866,7 @@ export const CreateWorkloadNetworkPublicIP: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(305, __c19, 1) as any as S.Schema<CreateWorkloadNetworkPublicIPRequest>,
-  output: __S(321, __c20, 1) as any as S.Schema<CreateWorkloadNetworkPublicIPResponse>,
+  output: __S(306, __c19, 2) as any as S.Schema<CreateWorkloadNetworkPublicIPResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4688,7 +4881,7 @@ export const CreateWorkloadNetworkSegments: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(496, __c31, 0) as any as S.Schema<CreateWorkloadNetworkSegmentsRequest>,
-  output: __S(532, __c33, 4) as any as S.Schema<CreateWorkloadNetworkSegmentsResponse>,
+  output: __S(497, __c31, 1) as any as S.Schema<CreateWorkloadNetworkSegmentsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4703,7 +4896,7 @@ export const CreateWorkloadNetworkVMGroup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(624, __c39, 0) as any as S.Schema<CreateWorkloadNetworkVMGroupRequest>,
-  output: __S(657, __c41, 1) as any as S.Schema<CreateWorkloadNetworkVMGroupResponse>,
+  output: __S(625, __c39, 1) as any as S.Schema<CreateWorkloadNetworkVMGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4718,7 +4911,7 @@ export const DatastoresCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(674, __c42, 2) as any as S.Schema<DatastoresCreateOrUpdateRequest>,
-  output: __S(693, __c43, 5) as any as S.Schema<DatastoresCreateOrUpdateResponse>,
+  output: __S(675, __c42, 3) as any as S.Schema<DatastoresCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4733,7 +4926,7 @@ export const DeleteAddon: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(704, __c44, 0) as any as S.Schema<DeleteAddonRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<DeleteAddonResponse>,
+  output: __S(1248, __c78, 0) as any as S.Schema<DeleteAddonResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4748,7 +4941,7 @@ export const DeleteAuthorization: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(720, __c45, 0) as any as S.Schema<DeleteAuthorizationRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<DeleteAuthorizationResponse>,
+  output: __S(1248, __c78, 0) as any as S.Schema<DeleteAuthorizationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4763,7 +4956,7 @@ export const DeleteCloudLink: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(736, __c46, 0) as any as S.Schema<DeleteCloudLinkRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<DeleteCloudLinkResponse>,
+  output: __S(1248, __c78, 0) as any as S.Schema<DeleteCloudLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4778,7 +4971,7 @@ export const DeleteCluster: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(752, __c47, 0) as any as S.Schema<DeleteClusterRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<DeleteClusterResponse>,
+  output: __S(1248, __c78, 0) as any as S.Schema<DeleteClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4793,7 +4986,7 @@ export const DeleteDatastore: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(768, __c48, 0) as any as S.Schema<DeleteDatastoreRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<DeleteDatastoreResponse>,
+  output: __S(1248, __c78, 0) as any as S.Schema<DeleteDatastoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4808,7 +5001,7 @@ export const DeleteGlobalReachConnection: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(800, __c50, 0) as any as S.Schema<DeleteGlobalReachConnectionRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<DeleteGlobalReachConnectionResponse>,
+  output: __S(1248, __c78, 0) as any as S.Schema<DeleteGlobalReachConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4823,7 +5016,7 @@ export const DeleteHcxEnterpriseSite: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(816, __c51, 0) as any as S.Schema<DeleteHcxEnterpriseSiteRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<DeleteHcxEnterpriseSiteResponse>,
+  output: __S(832, __c52, 0) as any as S.Schema<DeleteHcxEnterpriseSiteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4837,8 +5030,8 @@ export const DeleteIscsiPath: API.OperationMethod<
   DeleteIscsiPathError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c52, 0) as any as S.Schema<DeleteIscsiPathRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<DeleteIscsiPathResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<DeleteIscsiPathRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<DeleteIscsiPathResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4852,8 +5045,8 @@ export const DeleteLicense: API.OperationMethod<
   DeleteLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(848, __c53, 0) as any as S.Schema<DeleteLicenseRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<DeleteLicenseResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<DeleteLicenseRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<DeleteLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4867,8 +5060,8 @@ export const DeletePlacementPolicy: API.OperationMethod<
   DeletePlacementPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c54, 0) as any as S.Schema<DeletePlacementPolicyRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<DeletePlacementPolicyResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<DeletePlacementPolicyRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<DeletePlacementPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4882,8 +5075,8 @@ export const DeletePrivateCloud: API.OperationMethod<
   DeletePrivateCloudError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(880, __c55, 0) as any as S.Schema<DeletePrivateCloudRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<DeletePrivateCloudResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<DeletePrivateCloudRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<DeletePrivateCloudResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4897,8 +5090,8 @@ export const DeletePureStoragePolicy: API.OperationMethod<
   DeletePureStoragePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c56, 0) as any as S.Schema<DeletePureStoragePolicyRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<DeletePureStoragePolicyResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<DeletePureStoragePolicyRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<DeletePureStoragePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4912,8 +5105,8 @@ export const DeleteScriptExecution: API.OperationMethod<
   DeleteScriptExecutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(912, __c57, 0) as any as S.Schema<DeleteScriptExecutionRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<DeleteScriptExecutionResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<DeleteScriptExecutionRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<DeleteScriptExecutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4927,8 +5120,8 @@ export const DeleteWorkloadNetworkDhcp: API.OperationMethod<
   DeleteWorkloadNetworkDhcpError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c58, 0) as any as S.Schema<DeleteWorkloadNetworkDhcpRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<DeleteWorkloadNetworkDhcpResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<DeleteWorkloadNetworkDhcpRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<DeleteWorkloadNetworkDhcpResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4942,8 +5135,8 @@ export const DeleteWorkloadNetworkDnsService: API.OperationMethod<
   DeleteWorkloadNetworkDnsServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(944, __c59, 0) as any as S.Schema<DeleteWorkloadNetworkDnsServiceRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<DeleteWorkloadNetworkDnsServiceResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<DeleteWorkloadNetworkDnsServiceRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<DeleteWorkloadNetworkDnsServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4957,8 +5150,8 @@ export const DeleteWorkloadNetworkDnsZone: API.OperationMethod<
   DeleteWorkloadNetworkDnsZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(976, __c61, 0) as any as S.Schema<DeleteWorkloadNetworkDnsZoneRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<DeleteWorkloadNetworkDnsZoneResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<DeleteWorkloadNetworkDnsZoneRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<DeleteWorkloadNetworkDnsZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4972,8 +5165,8 @@ export const DeleteWorkloadNetworkPortMirroring: API.OperationMethod<
   DeleteWorkloadNetworkPortMirroringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c62, 0) as any as S.Schema<DeleteWorkloadNetworkPortMirroringRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<DeleteWorkloadNetworkPortMirroringResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<DeleteWorkloadNetworkPortMirroringRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<DeleteWorkloadNetworkPortMirroringResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4987,8 +5180,8 @@ export const DeleteWorkloadNetworkPublicIP: API.OperationMethod<
   DeleteWorkloadNetworkPublicIPError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1008, __c63, 0) as any as S.Schema<DeleteWorkloadNetworkPublicIPRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<DeleteWorkloadNetworkPublicIPResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<DeleteWorkloadNetworkPublicIPRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<DeleteWorkloadNetworkPublicIPResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5002,8 +5195,8 @@ export const DeleteWorkloadNetworkSegment: API.OperationMethod<
   DeleteWorkloadNetworkSegmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c64, 0) as any as S.Schema<DeleteWorkloadNetworkSegmentRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<DeleteWorkloadNetworkSegmentResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<DeleteWorkloadNetworkSegmentRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<DeleteWorkloadNetworkSegmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5017,8 +5210,8 @@ export const DeleteWorkloadNetworkVMGroup: API.OperationMethod<
   DeleteWorkloadNetworkVMGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1040, __c65, 0) as any as S.Schema<DeleteWorkloadNetworkVMGroupRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<DeleteWorkloadNetworkVMGroupResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<DeleteWorkloadNetworkVMGroupRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<DeleteWorkloadNetworkVMGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5032,8 +5225,8 @@ export const GetAddon: API.OperationMethod<
   GetAddonError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c66, 0) as any as S.Schema<GetAddonRequest>,
-  output: __S(33, __c2, 1) as any as S.Schema<GetAddonResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<GetAddonRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<GetAddonResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5047,8 +5240,8 @@ export const GetAuthorization: API.OperationMethod<
   GetAuthorizationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1072, __c67, 0) as any as S.Schema<GetAuthorizationRequest>,
-  output: __S(65, __c4, 1) as any as S.Schema<GetAuthorizationResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<GetAuthorizationRequest>,
+  output: __S(1120, __c70, 0) as any as S.Schema<GetAuthorizationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5062,8 +5255,8 @@ export const GetCloudLink: API.OperationMethod<
   GetCloudLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c68, 0) as any as S.Schema<GetCloudLinkRequest>,
-  output: __S(1537, __c96, 1) as any as S.Schema<GetCloudLinkResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<GetCloudLinkRequest>,
+  output: __S(1152, __c72, 0) as any as S.Schema<GetCloudLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5077,8 +5270,8 @@ export const GetCluster: API.OperationMethod<
   GetClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1104, __c69, 0) as any as S.Schema<GetClusterRequest>,
-  output: __S(1888, __c118, 0) as any as S.Schema<GetClusterResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<GetClusterRequest>,
+  output: __S(1184, __c74, 0) as any as S.Schema<GetClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5092,8 +5285,8 @@ export const GetDatastore: API.OperationMethod<
   GetDatastoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c70, 0) as any as S.Schema<GetDatastoreRequest>,
-  output: __S(693, __c43, 5) as any as S.Schema<GetDatastoreResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<GetDatastoreRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<GetDatastoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5107,8 +5300,8 @@ export const GetGlobalReachConnection: API.OperationMethod<
   GetGlobalReachConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1168, __c73, 0) as any as S.Schema<GetGlobalReachConnectionRequest>,
-  output: __S(1185, __c74, 1) as any as S.Schema<GetGlobalReachConnectionResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<GetGlobalReachConnectionRequest>,
+  output: __S(1296, __c81, 0) as any as S.Schema<GetGlobalReachConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5122,8 +5315,8 @@ export const GetHcxEnterpriseSite: API.OperationMethod<
   GetHcxEnterpriseSiteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1200, __c75, 0) as any as S.Schema<GetHcxEnterpriseSiteRequest>,
-  output: __S(1217, __c76, 1) as any as S.Schema<GetHcxEnterpriseSiteResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<GetHcxEnterpriseSiteRequest>,
+  output: __S(1329, __c83, 1) as any as S.Schema<GetHcxEnterpriseSiteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5137,8 +5330,8 @@ export const GetHost: API.OperationMethod<
   GetHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1232, __c77, 0) as any as S.Schema<GetHostRequest>,
-  output: __S(1281, __c80, 1) as any as S.Schema<GetHostResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<GetHostRequest>,
+  output: __S(1393, __c87, 1) as any as S.Schema<GetHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5152,8 +5345,8 @@ export const GetIscsiPath: API.OperationMethod<
   GetIscsiPathError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1296, __c81, 0) as any as S.Schema<GetIscsiPathRequest>,
-  output: __S(1313, __c82, 1) as any as S.Schema<GetIscsiPathResponse>,
+  input: __S(1408, __c88, 0) as any as S.Schema<GetIscsiPathRequest>,
+  output: __S(1440, __c90, 0) as any as S.Schema<GetIscsiPathResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5167,8 +5360,8 @@ export const GetLicense: API.OperationMethod<
   GetLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1328, __c83, 0) as any as S.Schema<GetLicenseRequest>,
-  output: __S(1360, __c85, 0) as any as S.Schema<GetLicenseResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<GetLicenseRequest>,
+  output: __S(1488, __c93, 0) as any as S.Schema<GetLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5182,8 +5375,8 @@ export const GetLicenseProperties: API.OperationMethod<
   GetLicensePropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c86, 0) as any as S.Schema<GetLicensePropertiesRequest>,
-  output: __S(1344, __c84, 0) as any as S.Schema<LicenseProperties>,
+  input: __S(1504, __c94, 0) as any as S.Schema<GetLicensePropertiesRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<LicenseProperties>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5197,8 +5390,8 @@ export const GetMaintenance: API.OperationMethod<
   GetMaintenanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1392, __c87, 0) as any as S.Schema<GetMaintenanceRequest>,
-  output: __S(1421, __c88, 13) as any as S.Schema<GetMaintenanceResponse>,
+  input: __S(1520, __c95, 0) as any as S.Schema<GetMaintenanceRequest>,
+  output: __S(1549, __c96, 13) as any as S.Schema<GetMaintenanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5212,8 +5405,8 @@ export const GetPlacementPolicy: API.OperationMethod<
   GetPlacementPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1424, __c89, 0) as any as S.Schema<GetPlacementPolicyRequest>,
-  output: __S(1441, __c90, 1) as any as S.Schema<GetPlacementPolicyResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<GetPlacementPolicyRequest>,
+  output: __S(1568, __c98, 0) as any as S.Schema<GetPlacementPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5227,8 +5420,8 @@ export const GetPrivateCloud: API.OperationMethod<
   GetPrivateCloudError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1456, __c91, 0) as any as S.Schema<GetPrivateCloudRequest>,
-  output: __S(1498, __c93, 10) as any as S.Schema<GetPrivateCloudResponse>,
+  input: __S(1600, __c100, 0) as any as S.Schema<GetPrivateCloudRequest>,
+  output: __S(1632, __c102, 0) as any as S.Schema<GetPrivateCloudResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5242,8 +5435,8 @@ export const GetPrivateCloudVcfLicense: API.OperationMethod<
   GetPrivateCloudVcfLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c94, 0) as any as S.Schema<GetPrivateCloudVcfLicenseRequest>,
-  output: __S(1472, __c92, 0) as any as S.Schema<VcfLicense>,
+  input: __S(1664, __c104, 0) as any as S.Schema<GetPrivateCloudVcfLicenseRequest>,
+  output: __S(1616, __c101, 0) as any as S.Schema<VcfLicense>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5257,8 +5450,8 @@ export const GetProvisionedNetwork: API.OperationMethod<
   GetProvisionedNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1552, __c97, 0) as any as S.Schema<GetProvisionedNetworkRequest>,
-  output: __S(1569, __c98, 1) as any as S.Schema<GetProvisionedNetworkResponse>,
+  input: __S(1712, __c107, 0) as any as S.Schema<GetProvisionedNetworkRequest>,
+  output: __S(1729, __c108, 1) as any as S.Schema<GetProvisionedNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5272,8 +5465,8 @@ export const GetPureStoragePolicy: API.OperationMethod<
   GetPureStoragePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1584, __c99, 0) as any as S.Schema<GetPureStoragePolicyRequest>,
-  output: __S(1601, __c100, 1) as any as S.Schema<GetPureStoragePolicyResponse>,
+  input: __S(1744, __c109, 0) as any as S.Schema<GetPureStoragePolicyRequest>,
+  output: __S(1760, __c110, 0) as any as S.Schema<GetPureStoragePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5287,8 +5480,8 @@ export const GetScriptCmdlet: API.OperationMethod<
   GetScriptCmdletError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1616, __c101, 0) as any as S.Schema<GetScriptCmdletRequest>,
-  output: __S(1635, __c102, 3) as any as S.Schema<GetScriptCmdletResponse>,
+  input: __S(1792, __c112, 0) as any as S.Schema<GetScriptCmdletRequest>,
+  output: __S(1811, __c113, 3) as any as S.Schema<GetScriptCmdletResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5302,8 +5495,8 @@ export const GetScriptExecution: API.OperationMethod<
   GetScriptExecutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1648, __c103, 0) as any as S.Schema<GetScriptExecutionRequest>,
-  output: __S(1668, __c104, 4) as any as S.Schema<GetScriptExecutionResponse>,
+  input: __S(1824, __c114, 0) as any as S.Schema<GetScriptExecutionRequest>,
+  output: __S(1840, __c115, 0) as any as S.Schema<GetScriptExecutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5317,8 +5510,8 @@ export const GetScriptExecutionExecutionLogs: API.OperationMethod<
   GetScriptExecutionExecutionLogsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1681, __c105, 1) as any as S.Schema<GetScriptExecutionExecutionLogsRequest>,
-  output: __S(1668, __c104, 4) as any as S.Schema<GetScriptExecutionExecutionLogsResponse>,
+  input: __S(1873, __c117, 1) as any as S.Schema<GetScriptExecutionExecutionLogsRequest>,
+  output: __S(1840, __c115, 0) as any as S.Schema<GetScriptExecutionExecutionLogsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5332,8 +5525,8 @@ export const GetScriptPackage: API.OperationMethod<
   GetScriptPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c106, 0) as any as S.Schema<GetScriptPackageRequest>,
-  output: __S(1713, __c107, 1) as any as S.Schema<GetScriptPackageResponse>,
+  input: __S(1888, __c118, 0) as any as S.Schema<GetScriptPackageRequest>,
+  output: __S(1905, __c119, 1) as any as S.Schema<GetScriptPackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5347,8 +5540,8 @@ export const GetVirtualMachine: API.OperationMethod<
   GetVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c108, 0) as any as S.Schema<GetVirtualMachineRequest>,
-  output: __S(1745, __c109, 1) as any as S.Schema<GetVirtualMachineResponse>,
+  input: __S(1920, __c120, 0) as any as S.Schema<GetVirtualMachineRequest>,
+  output: __S(1937, __c121, 1) as any as S.Schema<GetVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5362,8 +5555,8 @@ export const GetWorkloadNetwork: API.OperationMethod<
   GetWorkloadNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c110, 0) as any as S.Schema<GetWorkloadNetworkRequest>,
-  output: __S(1777, __c111, 1) as any as S.Schema<GetWorkloadNetworkResponse>,
+  input: __S(1952, __c122, 0) as any as S.Schema<GetWorkloadNetworkRequest>,
+  output: __S(1969, __c123, 1) as any as S.Schema<GetWorkloadNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5377,8 +5570,8 @@ export const GetWorkloadNetworkDhcp: API.OperationMethod<
   GetWorkloadNetworkDhcpError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1792, __c112, 0) as any as S.Schema<GetWorkloadNetworkDhcpRequest>,
-  output: __S(2145, __c134, 1) as any as S.Schema<GetWorkloadNetworkDhcpResponse>,
+  input: __S(1984, __c124, 0) as any as S.Schema<GetWorkloadNetworkDhcpRequest>,
+  output: __S(2000, __c125, 0) as any as S.Schema<GetWorkloadNetworkDhcpResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5392,8 +5585,8 @@ export const GetWorkloadNetworkDnsService: API.OperationMethod<
   GetWorkloadNetworkDnsServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1808, __c113, 0) as any as S.Schema<GetWorkloadNetworkDnsServiceRequest>,
-  output: __S(2353, __c147, 1) as any as S.Schema<GetWorkloadNetworkDnsServiceResponse>,
+  input: __S(2016, __c126, 0) as any as S.Schema<GetWorkloadNetworkDnsServiceRequest>,
+  output: __S(2032, __c127, 0) as any as S.Schema<GetWorkloadNetworkDnsServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5407,8 +5600,8 @@ export const GetWorkloadNetworkDnsZone: API.OperationMethod<
   GetWorkloadNetworkDnsZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1920, __c120, 0) as any as S.Schema<GetWorkloadNetworkDnsZoneRequest>,
-  output: __S(2577, __c161, 1) as any as S.Schema<GetWorkloadNetworkDnsZoneResponse>,
+  input: __S(2128, __c133, 0) as any as S.Schema<GetWorkloadNetworkDnsZoneRequest>,
+  output: __S(2144, __c134, 0) as any as S.Schema<GetWorkloadNetworkDnsZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5422,8 +5615,8 @@ export const GetWorkloadNetworkGateway: API.OperationMethod<
   GetWorkloadNetworkGatewayError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1936, __c121, 0) as any as S.Schema<GetWorkloadNetworkGatewayRequest>,
-  output: __S(1953, __c122, 1) as any as S.Schema<GetWorkloadNetworkGatewayResponse>,
+  input: __S(2160, __c135, 0) as any as S.Schema<GetWorkloadNetworkGatewayRequest>,
+  output: __S(2177, __c136, 1) as any as S.Schema<GetWorkloadNetworkGatewayResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5437,8 +5630,8 @@ export const GetWorkloadNetworkPortMirroring: API.OperationMethod<
   GetWorkloadNetworkPortMirroringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1968, __c123, 0) as any as S.Schema<GetWorkloadNetworkPortMirroringRequest>,
-  output: __S(113, __c7, 1) as any as S.Schema<GetWorkloadNetworkPortMirroringResponse>,
+  input: __S(2192, __c137, 0) as any as S.Schema<GetWorkloadNetworkPortMirroringRequest>,
+  output: __S(2208, __c138, 0) as any as S.Schema<GetWorkloadNetworkPortMirroringResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5452,8 +5645,8 @@ export const GetWorkloadNetworkPublicIP: API.OperationMethod<
   GetWorkloadNetworkPublicIPError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1984, __c124, 0) as any as S.Schema<GetWorkloadNetworkPublicIPRequest>,
-  output: __S(321, __c20, 1) as any as S.Schema<GetWorkloadNetworkPublicIPResponse>,
+  input: __S(2224, __c139, 0) as any as S.Schema<GetWorkloadNetworkPublicIPRequest>,
+  output: __S(2240, __c140, 0) as any as S.Schema<GetWorkloadNetworkPublicIPResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5467,8 +5660,8 @@ export const GetWorkloadNetworkSegment: API.OperationMethod<
   GetWorkloadNetworkSegmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2000, __c125, 0) as any as S.Schema<GetWorkloadNetworkSegmentRequest>,
-  output: __S(532, __c33, 4) as any as S.Schema<GetWorkloadNetworkSegmentResponse>,
+  input: __S(2256, __c141, 0) as any as S.Schema<GetWorkloadNetworkSegmentRequest>,
+  output: __S(2272, __c142, 0) as any as S.Schema<GetWorkloadNetworkSegmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5482,8 +5675,8 @@ export const GetWorkloadNetworkVirtualMachine: API.OperationMethod<
   GetWorkloadNetworkVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2016, __c126, 0) as any as S.Schema<GetWorkloadNetworkVirtualMachineRequest>,
-  output: __S(2033, __c127, 1) as any as S.Schema<GetWorkloadNetworkVirtualMachineResponse>,
+  input: __S(2288, __c143, 0) as any as S.Schema<GetWorkloadNetworkVirtualMachineRequest>,
+  output: __S(2305, __c144, 1) as any as S.Schema<GetWorkloadNetworkVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5497,8 +5690,8 @@ export const GetWorkloadNetworkVMGroup: API.OperationMethod<
   GetWorkloadNetworkVMGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2048, __c128, 0) as any as S.Schema<GetWorkloadNetworkVMGroupRequest>,
-  output: __S(657, __c41, 1) as any as S.Schema<GetWorkloadNetworkVMGroupResponse>,
+  input: __S(2320, __c145, 0) as any as S.Schema<GetWorkloadNetworkVMGroupRequest>,
+  output: __S(2336, __c146, 0) as any as S.Schema<GetWorkloadNetworkVMGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5512,8 +5705,8 @@ export const GlobalReachConnectionsCreateOrUpdate: API.OperationMethod<
   GlobalReachConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2065, __c129, 1) as any as S.Schema<GlobalReachConnectionsCreateOrUpdateRequest>,
-  output: __S(1185, __c74, 1) as any as S.Schema<GlobalReachConnectionsCreateOrUpdateResponse>,
+  input: __S(2353, __c147, 1) as any as S.Schema<GlobalReachConnectionsCreateOrUpdateRequest>,
+  output: __S(2354, __c147, 2) as any as S.Schema<GlobalReachConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5527,8 +5720,8 @@ export const HcxEnterpriseSitesCreateOrUpdate: API.OperationMethod<
   HcxEnterpriseSitesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2080, __c130, 0) as any as S.Schema<HcxEnterpriseSitesCreateOrUpdateRequest>,
-  output: __S(1217, __c76, 1) as any as S.Schema<HcxEnterpriseSitesCreateOrUpdateResponse>,
+  input: __S(2368, __c148, 0) as any as S.Schema<HcxEnterpriseSitesCreateOrUpdateRequest>,
+  output: __S(1329, __c83, 1) as any as S.Schema<HcxEnterpriseSitesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5542,8 +5735,8 @@ export const IscsiPathsCreateOrUpdate: API.OperationMethod<
   IscsiPathsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2097, __c131, 1) as any as S.Schema<IscsiPathsCreateOrUpdateRequest>,
-  output: __S(1313, __c82, 1) as any as S.Schema<IscsiPathsCreateOrUpdateResponse>,
+  input: __S(2385, __c149, 1) as any as S.Schema<IscsiPathsCreateOrUpdateRequest>,
+  output: __S(2386, __c149, 2) as any as S.Schema<IscsiPathsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5557,8 +5750,8 @@ export const LicensesCreateOrUpdate: API.OperationMethod<
   LicensesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2161, __c135, 1) as any as S.Schema<LicensesCreateOrUpdateRequest>,
-  output: __S(1360, __c85, 0) as any as S.Schema<LicensesCreateOrUpdateResponse>,
+  input: __S(2449, __c153, 1) as any as S.Schema<LicensesCreateOrUpdateRequest>,
+  output: __S(2450, __c153, 2) as any as S.Schema<LicensesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5572,8 +5765,8 @@ export const ListAddons: API.OperationMethod<
   ListAddonsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2176, __c136, 0) as any as S.Schema<ListAddonsRequest>,
-  output: __S(2178, __c136, 2) as any as S.Schema<AddonList>,
+  input: __S(2464, __c154, 0) as any as S.Schema<ListAddonsRequest>,
+  output: __S(2466, __c154, 2) as any as S.Schema<AddonList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5587,8 +5780,8 @@ export const ListAuthorizations: API.OperationMethod<
   ListAuthorizationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2192, __c137, 0) as any as S.Schema<ListAuthorizationsRequest>,
-  output: __S(2194, __c137, 2) as any as S.Schema<ExpressRouteAuthorizationList>,
+  input: __S(2480, __c155, 0) as any as S.Schema<ListAuthorizationsRequest>,
+  output: __S(2482, __c155, 2) as any as S.Schema<ExpressRouteAuthorizationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5602,8 +5795,8 @@ export const ListCloudLinks: API.OperationMethod<
   ListCloudLinksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2208, __c138, 0) as any as S.Schema<ListCloudLinksRequest>,
-  output: __S(2210, __c138, 2) as any as S.Schema<CloudLinkList>,
+  input: __S(2496, __c156, 0) as any as S.Schema<ListCloudLinksRequest>,
+  output: __S(2498, __c156, 2) as any as S.Schema<CloudLinkList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5617,8 +5810,8 @@ export const ListClusters: API.OperationMethod<
   ListClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2224, __c139, 0) as any as S.Schema<ListClustersRequest>,
-  output: __S(2226, __c139, 2) as any as S.Schema<ClusterList>,
+  input: __S(2512, __c157, 0) as any as S.Schema<ListClustersRequest>,
+  output: __S(2514, __c157, 2) as any as S.Schema<ClusterList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5632,8 +5825,8 @@ export const ListClusterZones: API.OperationMethod<
   ListClusterZonesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2240, __c140, 0) as any as S.Schema<ListClusterZonesRequest>,
-  output: __S(2243, __c140, 3) as any as S.Schema<ClusterZoneList>,
+  input: __S(2528, __c158, 0) as any as S.Schema<ListClusterZonesRequest>,
+  output: __S(2531, __c158, 3) as any as S.Schema<ClusterZoneList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5647,8 +5840,8 @@ export const ListDatastores: API.OperationMethod<
   ListDatastoresError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2256, __c141, 0) as any as S.Schema<ListDatastoresRequest>,
-  output: __S(2258, __c141, 2) as any as S.Schema<DatastoreList>,
+  input: __S(2544, __c159, 0) as any as S.Schema<ListDatastoresRequest>,
+  output: __S(2546, __c159, 2) as any as S.Schema<DatastoreList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5662,8 +5855,8 @@ export const ListGlobalReachConnections: API.OperationMethod<
   ListGlobalReachConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2272, __c142, 0) as any as S.Schema<ListGlobalReachConnectionsRequest>,
-  output: __S(2274, __c142, 2) as any as S.Schema<GlobalReachConnectionList>,
+  input: __S(2560, __c160, 0) as any as S.Schema<ListGlobalReachConnectionsRequest>,
+  output: __S(2562, __c160, 2) as any as S.Schema<GlobalReachConnectionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5677,8 +5870,8 @@ export const ListHcxEnterpriseSites: API.OperationMethod<
   ListHcxEnterpriseSitesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2288, __c143, 0) as any as S.Schema<ListHcxEnterpriseSitesRequest>,
-  output: __S(2290, __c143, 2) as any as S.Schema<HcxEnterpriseSiteList>,
+  input: __S(2576, __c161, 0) as any as S.Schema<ListHcxEnterpriseSitesRequest>,
+  output: __S(2578, __c161, 2) as any as S.Schema<HcxEnterpriseSiteList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5692,8 +5885,8 @@ export const ListHosts: API.OperationMethod<
   ListHostsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c144, 0) as any as S.Schema<ListHostsRequest>,
-  output: __S(2306, __c144, 2) as any as S.Schema<HostListResult>,
+  input: __S(2592, __c162, 0) as any as S.Schema<ListHostsRequest>,
+  output: __S(2594, __c162, 2) as any as S.Schema<HostListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5707,8 +5900,8 @@ export const ListIscsiPathByPrivateCloud: API.OperationMethod<
   ListIscsiPathByPrivateCloudError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2368, __c148, 0) as any as S.Schema<ListIscsiPathByPrivateCloudRequest>,
-  output: __S(2370, __c148, 2) as any as S.Schema<IscsiPathListResult>,
+  input: __S(2656, __c166, 0) as any as S.Schema<ListIscsiPathByPrivateCloudRequest>,
+  output: __S(2658, __c166, 2) as any as S.Schema<IscsiPathListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5722,8 +5915,8 @@ export const ListLicenses: API.OperationMethod<
   ListLicensesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2384, __c149, 0) as any as S.Schema<ListLicensesRequest>,
-  output: __S(2386, __c149, 2) as any as S.Schema<LicenseListResult>,
+  input: __S(2672, __c167, 0) as any as S.Schema<ListLicensesRequest>,
+  output: __S(2674, __c167, 2) as any as S.Schema<LicenseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5737,8 +5930,8 @@ export const ListMaintenances: API.OperationMethod<
   ListMaintenancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2400, __c150, 0) as any as S.Schema<ListMaintenancesRequest>,
-  output: __S(2402, __c150, 2) as any as S.Schema<MaintenanceListResult>,
+  input: __S(2688, __c168, 0) as any as S.Schema<ListMaintenancesRequest>,
+  output: __S(2690, __c168, 2) as any as S.Schema<MaintenanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5752,8 +5945,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2416, __c151, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(2420, __c151, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(2704, __c169, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(2708, __c169, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5767,8 +5960,8 @@ export const ListPlacementPolicies: API.OperationMethod<
   ListPlacementPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2432, __c152, 0) as any as S.Schema<ListPlacementPoliciesRequest>,
-  output: __S(2434, __c152, 2) as any as S.Schema<PlacementPoliciesList>,
+  input: __S(2720, __c170, 0) as any as S.Schema<ListPlacementPoliciesRequest>,
+  output: __S(2722, __c170, 2) as any as S.Schema<PlacementPoliciesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5782,8 +5975,8 @@ export const ListPrivateCloudAdminCredentials: API.OperationMethod<
   ListPrivateCloudAdminCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2448, __c153, 0) as any as S.Schema<ListPrivateCloudAdminCredentialsRequest>,
-  output: __S(2449, __c153, 1) as any as S.Schema<AdminCredentials>,
+  input: __S(2736, __c171, 0) as any as S.Schema<ListPrivateCloudAdminCredentialsRequest>,
+  output: __S(2737, __c171, 1) as any as S.Schema<AdminCredentials>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5797,8 +5990,8 @@ export const ListPrivateCloudInSubscription: API.OperationMethod<
   ListPrivateCloudInSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2464, __c154, 0) as any as S.Schema<ListPrivateCloudInSubscriptionRequest>,
-  output: __S(2481, __c155, 1) as any as S.Schema<PrivateCloudList>,
+  input: __S(2752, __c172, 0) as any as S.Schema<ListPrivateCloudInSubscriptionRequest>,
+  output: __S(2769, __c173, 1) as any as S.Schema<PrivateCloudList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5812,8 +6005,8 @@ export const ListPrivateClouds: API.OperationMethod<
   ListPrivateCloudsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2496, __c156, 0) as any as S.Schema<ListPrivateCloudsRequest>,
-  output: __S(2481, __c155, 1) as any as S.Schema<PrivateCloudList>,
+  input: __S(2784, __c174, 0) as any as S.Schema<ListPrivateCloudsRequest>,
+  output: __S(2769, __c173, 1) as any as S.Schema<PrivateCloudList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5827,8 +6020,8 @@ export const ListProvisionedNetworks: API.OperationMethod<
   ListProvisionedNetworksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2512, __c157, 0) as any as S.Schema<ListProvisionedNetworksRequest>,
-  output: __S(2514, __c157, 2) as any as S.Schema<ProvisionedNetworkListResult>,
+  input: __S(2800, __c175, 0) as any as S.Schema<ListProvisionedNetworksRequest>,
+  output: __S(2802, __c175, 2) as any as S.Schema<ProvisionedNetworkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5842,8 +6035,8 @@ export const ListPureStoragePolicies: API.OperationMethod<
   ListPureStoragePoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2528, __c158, 0) as any as S.Schema<ListPureStoragePoliciesRequest>,
-  output: __S(2530, __c158, 2) as any as S.Schema<PureStoragePolicyListResult>,
+  input: __S(2816, __c176, 0) as any as S.Schema<ListPureStoragePoliciesRequest>,
+  output: __S(2818, __c176, 2) as any as S.Schema<PureStoragePolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5857,8 +6050,8 @@ export const ListScriptCmdlets: API.OperationMethod<
   ListScriptCmdletsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2592, __c162, 0) as any as S.Schema<ListScriptCmdletsRequest>,
-  output: __S(2594, __c162, 2) as any as S.Schema<ScriptCmdletsList>,
+  input: __S(2880, __c180, 0) as any as S.Schema<ListScriptCmdletsRequest>,
+  output: __S(2882, __c180, 2) as any as S.Schema<ScriptCmdletsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5872,8 +6065,8 @@ export const ListScriptExecutions: API.OperationMethod<
   ListScriptExecutionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2608, __c163, 0) as any as S.Schema<ListScriptExecutionsRequest>,
-  output: __S(2610, __c163, 2) as any as S.Schema<ScriptExecutionsList>,
+  input: __S(2896, __c181, 0) as any as S.Schema<ListScriptExecutionsRequest>,
+  output: __S(2898, __c181, 2) as any as S.Schema<ScriptExecutionsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5887,8 +6080,8 @@ export const ListScriptPackages: API.OperationMethod<
   ListScriptPackagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2624, __c164, 0) as any as S.Schema<ListScriptPackagesRequest>,
-  output: __S(2626, __c164, 2) as any as S.Schema<ScriptPackagesList>,
+  input: __S(2912, __c182, 0) as any as S.Schema<ListScriptPackagesRequest>,
+  output: __S(2914, __c182, 2) as any as S.Schema<ScriptPackagesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5902,8 +6095,8 @@ export const ListSkus: API.OperationMethod<
   ListSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2640, __c165, 0) as any as S.Schema<ListSkusRequest>,
-  output: __S(2652, __c165, 12) as any as S.Schema<PagedResourceSku>,
+  input: __S(2928, __c183, 0) as any as S.Schema<ListSkusRequest>,
+  output: __S(2940, __c183, 12) as any as S.Schema<PagedResourceSku>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5917,8 +6110,8 @@ export const ListVirtualMachines: API.OperationMethod<
   ListVirtualMachinesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2656, __c166, 0) as any as S.Schema<ListVirtualMachinesRequest>,
-  output: __S(2658, __c166, 2) as any as S.Schema<VirtualMachinesList>,
+  input: __S(2944, __c184, 0) as any as S.Schema<ListVirtualMachinesRequest>,
+  output: __S(2946, __c184, 2) as any as S.Schema<VirtualMachinesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5932,8 +6125,8 @@ export const ListWorkloadNetworkDhcp: API.OperationMethod<
   ListWorkloadNetworkDhcpError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2672, __c167, 0) as any as S.Schema<ListWorkloadNetworkDhcpRequest>,
-  output: __S(2674, __c167, 2) as any as S.Schema<WorkloadNetworkDhcpList>,
+  input: __S(2960, __c185, 0) as any as S.Schema<ListWorkloadNetworkDhcpRequest>,
+  output: __S(2962, __c185, 2) as any as S.Schema<WorkloadNetworkDhcpList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5947,8 +6140,8 @@ export const ListWorkloadNetworkDnsServices: API.OperationMethod<
   ListWorkloadNetworkDnsServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2688, __c168, 0) as any as S.Schema<ListWorkloadNetworkDnsServicesRequest>,
-  output: __S(2690, __c168, 2) as any as S.Schema<WorkloadNetworkDnsServicesList>,
+  input: __S(2976, __c186, 0) as any as S.Schema<ListWorkloadNetworkDnsServicesRequest>,
+  output: __S(2978, __c186, 2) as any as S.Schema<WorkloadNetworkDnsServicesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5962,8 +6155,8 @@ export const ListWorkloadNetworkDnsZones: API.OperationMethod<
   ListWorkloadNetworkDnsZonesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2704, __c169, 0) as any as S.Schema<ListWorkloadNetworkDnsZonesRequest>,
-  output: __S(2706, __c169, 2) as any as S.Schema<WorkloadNetworkDnsZonesList>,
+  input: __S(2992, __c187, 0) as any as S.Schema<ListWorkloadNetworkDnsZonesRequest>,
+  output: __S(2994, __c187, 2) as any as S.Schema<WorkloadNetworkDnsZonesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5977,8 +6170,8 @@ export const ListWorkloadNetworkGateways: API.OperationMethod<
   ListWorkloadNetworkGatewaysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2720, __c170, 0) as any as S.Schema<ListWorkloadNetworkGatewaysRequest>,
-  output: __S(2722, __c170, 2) as any as S.Schema<WorkloadNetworkGatewayList>,
+  input: __S(3008, __c188, 0) as any as S.Schema<ListWorkloadNetworkGatewaysRequest>,
+  output: __S(3010, __c188, 2) as any as S.Schema<WorkloadNetworkGatewayList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5992,8 +6185,8 @@ export const ListWorkloadNetworkPortMirroring: API.OperationMethod<
   ListWorkloadNetworkPortMirroringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2736, __c171, 0) as any as S.Schema<ListWorkloadNetworkPortMirroringRequest>,
-  output: __S(2738, __c171, 2) as any as S.Schema<WorkloadNetworkPortMirroringList>,
+  input: __S(3024, __c189, 0) as any as S.Schema<ListWorkloadNetworkPortMirroringRequest>,
+  output: __S(3026, __c189, 2) as any as S.Schema<WorkloadNetworkPortMirroringList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6083,7 +6276,7 @@ export const MaintenancesInitiateChecks: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(208, __c13, 0) as any as S.Schema<MaintenancesInitiateChecksRequest>,
-  output: __S(1421, __c88, 13) as any as S.Schema<MaintenancesInitiateChecksResponse>,
+  output: __S(1549, __c96, 13) as any as S.Schema<MaintenancesInitiateChecksResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6098,7 +6291,7 @@ export const MaintenancesReschedule: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(224, __c14, 0) as any as S.Schema<MaintenancesRescheduleRequest>,
-  output: __S(1421, __c88, 13) as any as S.Schema<MaintenancesRescheduleResponse>,
+  output: __S(1549, __c96, 13) as any as S.Schema<MaintenancesRescheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6113,7 +6306,7 @@ export const MaintenancesSchedule: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(240, __c15, 0) as any as S.Schema<MaintenancesScheduleRequest>,
-  output: __S(1421, __c88, 13) as any as S.Schema<MaintenancesScheduleResponse>,
+  output: __S(1549, __c96, 13) as any as S.Schema<MaintenancesScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6128,7 +6321,7 @@ export const PlacementPoliciesCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(257, __c16, 1) as any as S.Schema<PlacementPoliciesCreateOrUpdateRequest>,
-  output: __S(1441, __c90, 1) as any as S.Schema<PlacementPoliciesCreateOrUpdateResponse>,
+  output: __S(258, __c16, 2) as any as S.Schema<PlacementPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6143,7 +6336,7 @@ export const PrivateCloudsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(273, __c17, 1) as any as S.Schema<PrivateCloudsCreateOrUpdateRequest>,
-  output: __S(1498, __c93, 10) as any as S.Schema<PrivateCloudsCreateOrUpdateResponse>,
+  output: __S(274, __c17, 2) as any as S.Schema<PrivateCloudsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6158,7 +6351,7 @@ export const PureStoragePoliciesCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(337, __c21, 1) as any as S.Schema<PureStoragePoliciesCreateOrUpdateRequest>,
-  output: __S(1601, __c100, 1) as any as S.Schema<PureStoragePoliciesCreateOrUpdateResponse>,
+  output: __S(338, __c21, 2) as any as S.Schema<PureStoragePoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6173,7 +6366,7 @@ export const RotatePrivateCloudNsxtPassword: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(352, __c22, 0) as any as S.Schema<RotatePrivateCloudNsxtPasswordRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<RotatePrivateCloudNsxtPasswordResponse>,
+  output: __S(1248, __c78, 0) as any as S.Schema<RotatePrivateCloudNsxtPasswordResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6188,7 +6381,7 @@ export const RotatePrivateCloudVcenterPassword: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(368, __c23, 0) as any as S.Schema<RotatePrivateCloudVcenterPasswordRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<RotatePrivateCloudVcenterPasswordResponse>,
+  output: __S(1248, __c78, 0) as any as S.Schema<RotatePrivateCloudVcenterPasswordResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6203,7 +6396,7 @@ export const ScriptExecutionsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(385, __c24, 1) as any as S.Schema<ScriptExecutionsCreateOrUpdateRequest>,
-  output: __S(1668, __c104, 4) as any as S.Schema<ScriptExecutionsCreateOrUpdateResponse>,
+  output: __S(386, __c24, 2) as any as S.Schema<ScriptExecutionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6218,7 +6411,7 @@ export const UpdateCluster: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(401, __c25, 1) as any as S.Schema<UpdateClusterRequest>,
-  output: __S(1888, __c118, 0) as any as S.Schema<UpdateClusterResponse>,
+  output: __S(402, __c25, 2) as any as S.Schema<UpdateClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6233,7 +6426,7 @@ export const UpdateHost: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(417, __c26, 1) as any as S.Schema<UpdateHostRequest>,
-  output: __S(1281, __c80, 1) as any as S.Schema<UpdateHostResponse>,
+  output: __S(1393, __c87, 1) as any as S.Schema<UpdateHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6248,7 +6441,7 @@ export const UpdatePlacementPolicy: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(433, __c27, 1) as any as S.Schema<UpdatePlacementPolicyRequest>,
-  output: __S(1441, __c90, 1) as any as S.Schema<UpdatePlacementPolicyResponse>,
+  output: __S(434, __c27, 2) as any as S.Schema<UpdatePlacementPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6263,7 +6456,7 @@ export const UpdatePrivateCloud: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(449, __c28, 1) as any as S.Schema<UpdatePrivateCloudRequest>,
-  output: __S(1498, __c93, 10) as any as S.Schema<UpdatePrivateCloudResponse>,
+  output: __S(450, __c28, 2) as any as S.Schema<UpdatePrivateCloudResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6278,7 +6471,7 @@ export const UpdateWorkloadNetworkDhcp: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(464, __c29, 0) as any as S.Schema<UpdateWorkloadNetworkDhcpRequest>,
-  output: __S(2145, __c134, 1) as any as S.Schema<UpdateWorkloadNetworkDhcpResponse>,
+  output: __S(465, __c29, 1) as any as S.Schema<UpdateWorkloadNetworkDhcpResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6293,7 +6486,7 @@ export const UpdateWorkloadNetworkDnsService: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(480, __c30, 0) as any as S.Schema<UpdateWorkloadNetworkDnsServiceRequest>,
-  output: __S(2353, __c147, 1) as any as S.Schema<UpdateWorkloadNetworkDnsServiceResponse>,
+  output: __S(481, __c30, 1) as any as S.Schema<UpdateWorkloadNetworkDnsServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6308,7 +6501,7 @@ export const UpdateWorkloadNetworkDnsZone: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(544, __c34, 0) as any as S.Schema<UpdateWorkloadNetworkDnsZoneRequest>,
-  output: __S(2577, __c161, 1) as any as S.Schema<UpdateWorkloadNetworkDnsZoneResponse>,
+  output: __S(545, __c34, 1) as any as S.Schema<UpdateWorkloadNetworkDnsZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6323,7 +6516,7 @@ export const UpdateWorkloadNetworkPortMirroring: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(560, __c35, 0) as any as S.Schema<UpdateWorkloadNetworkPortMirroringRequest>,
-  output: __S(113, __c7, 1) as any as S.Schema<UpdateWorkloadNetworkPortMirroringResponse>,
+  output: __S(561, __c35, 1) as any as S.Schema<UpdateWorkloadNetworkPortMirroringResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6338,7 +6531,7 @@ export const UpdateWorkloadNetworkSegments: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(576, __c36, 0) as any as S.Schema<UpdateWorkloadNetworkSegmentsRequest>,
-  output: __S(532, __c33, 4) as any as S.Schema<UpdateWorkloadNetworkSegmentsResponse>,
+  output: __S(577, __c36, 1) as any as S.Schema<UpdateWorkloadNetworkSegmentsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6353,7 +6546,7 @@ export const UpdateWorkloadNetworkVMGroup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(592, __c37, 0) as any as S.Schema<UpdateWorkloadNetworkVMGroupRequest>,
-  output: __S(657, __c41, 1) as any as S.Schema<UpdateWorkloadNetworkVMGroupResponse>,
+  output: __S(593, __c37, 1) as any as S.Schema<UpdateWorkloadNetworkVMGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6368,7 +6561,7 @@ export const VirtualMachinesRestrictMovement: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(608, __c38, 0) as any as S.Schema<VirtualMachinesRestrictMovementRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<VirtualMachinesRestrictMovementResponse>,
+  output: __S(1248, __c78, 0) as any as S.Schema<VirtualMachinesRestrictMovementResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6404,6 +6597,17 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AddonsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(32, __c2, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AddonsCreateOrUpdateResponse" });
   }
 }
 function __c1(j: number): any {
@@ -6434,16 +6638,6 @@ function __c2(j: number): any {
           vCenter: S.optional(S.String),
         }),
       ).annotate({ identifier: "AddonProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(32, __c2, 0)),
-        }),
-      ).annotate({ identifier: "AddonsCreateOrUpdateResponse" });
   }
 }
 function __c3(j: number): any {
@@ -6471,6 +6665,17 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AuthorizationsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(64, __c4, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AuthorizationsCreateOrUpdateResponse" });
   }
 }
 function __c4(j: number): any {
@@ -6484,16 +6689,6 @@ function __c4(j: number): any {
           expressRouteId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExpressRouteAuthorizationProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(64, __c4, 0)),
-        }),
-      ).annotate({ identifier: "AuthorizationsCreateOrUpdateResponse" });
   }
 }
 function __c5(j: number): any {
@@ -6515,6 +6710,17 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateWorkloadNetworkPortMirroringRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(112, __c7, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateWorkloadNetworkPortMirroringResponse" });
   }
 }
 function __c6(j: number): any {
@@ -6545,16 +6751,6 @@ function __c7(j: number): any {
           revision: S.optional(S.Number),
         }),
       ).annotate({ identifier: "WorkloadNetworkPortMirroringProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(112, __c7, 0)),
-        }),
-      ).annotate({ identifier: "CreateWorkloadNetworkPortMirroringResponse" });
   }
 }
 function __c8(j: number): any {
@@ -6575,7 +6771,7 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "ListWorkloadNetworkPublicIPsRequest" });
     case 1:
-      return S.Array(__S(321, __c20, 1));
+      return S.Array(__S(2240, __c140, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6603,7 +6799,7 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "ListWorkloadNetworksRequest" });
     case 1:
-      return S.Array(__S(1777, __c111, 1));
+      return S.Array(__S(1969, __c123, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6631,7 +6827,7 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "ListWorkloadNetworkSegmentsRequest" });
     case 1:
-      return S.Array(__S(532, __c33, 4));
+      return S.Array(__S(2272, __c142, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6659,7 +6855,7 @@ function __c11(j: number): any {
         ),
       ).annotate({ identifier: "ListWorkloadNetworkVirtualMachinesRequest" });
     case 1:
-      return S.Array(__S(2033, __c127, 1));
+      return S.Array(__S(2305, __c144, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6687,7 +6883,7 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "ListWorkloadNetworkVMGroupsRequest" });
     case 1:
-      return S.Array(__S(657, __c41, 1));
+      return S.Array(__S(2336, __c146, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6769,8 +6965,8 @@ function __c16(j: number): any {
           type: S.String,
           state: S.optional(S.String),
           displayName: S.optional(S.String),
-          vmMembers: S.optional(__S(1904, __c119, 0)),
-          hostMembers: S.optional(__S(1904, __c119, 0)),
+          vmMembers: S.optional(__S(2112, __c132, 0)),
+          hostMembers: S.optional(__S(2112, __c132, 0)),
           affinityType: S.optional(S.String),
           affinityStrength: S.optional(S.String),
           azureHybridBenefitType: S.optional(S.String),
@@ -6794,6 +6990,17 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PlacementPoliciesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1584, __c99, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "PlacementPoliciesCreateOrUpdateResponse" });
   }
 }
 function __c17(j: number): any {
@@ -6801,20 +7008,20 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          managementCluster: __S(1840, __c115, 0),
+          managementCluster: __S(2064, __c129, 0),
           internet: S.optional(S.String),
-          identitySources: S.optional(__S(1490, __c93, 2)),
-          availability: S.optional(__S(1491, __c93, 3)),
+          identitySources: S.optional(__S(1650, __c103, 2)),
+          availability: S.optional(__S(1651, __c103, 3)),
           encryption: S.optional(__S(289, __c18, 1)),
-          extendedNetworkBlocks: S.optional(__S(1904, __c119, 0)),
-          circuit: S.optional(__S(1152, __c72, 0)),
+          extendedNetworkBlocks: S.optional(__S(2112, __c132, 0)),
+          circuit: S.optional(__S(832, __c52, 0)),
           networkBlock: S.String,
           vcenterPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           nsxtPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          secondaryCircuit: S.optional(__S(1152, __c72, 0)),
+          secondaryCircuit: S.optional(__S(832, __c52, 0)),
           virtualNetworkId: S.optional(S.String),
           dnsZoneType: S.optional(S.String),
-          vcfLicense: S.optional(__S(1248, __c78, 0)),
+          vcfLicense: S.optional(__S(1360, __c85, 0)),
         }),
       ).annotate({ identifier: "PrivateCloudPropertiesInput" });
     case 1:
@@ -6823,12 +7030,12 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1488, __c93, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
           location: S.String,
           properties: S.optional(__S(272, __c17, 0)),
-          sku: __S(1856, __c116, 0),
+          sku: __S(2080, __c130, 0),
           identity: S.optional(__S(290, __c18, 2)),
-          zones: S.optional(__S(1904, __c119, 0)),
+          zones: S.optional(__S(2112, __c132, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6838,6 +7045,22 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PrivateCloudsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.String,
+          properties: S.optional(__S(1656, __c103, 8)),
+          sku: __S(2080, __c130, 0),
+          identity: S.optional(__S(1657, __c103, 9)),
+          zones: S.optional(__S(2112, __c132, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "PrivateCloudsCreateOrUpdateResponse" });
   }
 }
 function __c18(j: number): any {
@@ -6891,6 +7114,17 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateWorkloadNetworkPublicIPRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(320, __c20, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateWorkloadNetworkPublicIPResponse" });
   }
 }
 function __c20(j: number): any {
@@ -6904,16 +7138,6 @@ function __c20(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkloadNetworkPublicIPProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(320, __c20, 0)),
-        }),
-      ).annotate({ identifier: "CreateWorkloadNetworkPublicIPResponse" });
   }
 }
 function __c21(j: number): any {
@@ -6942,6 +7166,18 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PureStoragePoliciesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1776, __c111, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "PureStoragePoliciesCreateOrUpdateResponse" });
   }
 }
 function __c22(j: number): any {
@@ -6988,13 +7224,13 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scriptCmdletId: S.optional(S.String),
-          parameters: S.optional(__S(1665, __c104, 1)),
-          hiddenParameters: S.optional(__S(1665, __c104, 1)),
+          parameters: S.optional(__S(1857, __c116, 1)),
+          hiddenParameters: S.optional(__S(1857, __c116, 1)),
           failureReason: S.optional(S.String),
           timeout: S.String,
           retention: S.optional(S.String),
-          output: S.optional(__S(1904, __c119, 0)),
-          namedOutputs: S.optional(__S(1666, __c104, 2)),
+          output: S.optional(__S(2112, __c132, 0)),
+          namedOutputs: S.optional(__S(1858, __c116, 2)),
         }),
       ).annotate({ identifier: "ScriptExecutionPropertiesInput" });
     case 1:
@@ -7014,6 +7250,17 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ScriptExecutionsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1859, __c116, 3)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ScriptExecutionsCreateOrUpdateResponse" });
   }
 }
 function __c25(j: number): any {
@@ -7022,7 +7269,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           clusterSize: S.optional(S.Number),
-          hosts: S.optional(__S(1904, __c119, 0)),
+          hosts: S.optional(__S(2112, __c132, 0)),
         }),
       ).annotate({ identifier: "ClusterUpdateProperties" });
     case 1:
@@ -7032,7 +7279,7 @@ function __c25(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          sku: S.optional(__S(1856, __c116, 0)),
+          sku: S.optional(__S(2080, __c130, 0)),
           properties: S.optional(__S(400, __c25, 0)),
         }).pipe(
           T.Http({
@@ -7043,6 +7290,19 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateClusterRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(2096, __c131, 0)),
+          sku: __S(2080, __c130, 0),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateClusterResponse" });
   }
 }
 function __c26(j: number): any {
@@ -7050,7 +7310,7 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          licenses: S.optional(__S(1264, __c79, 0)),
+          licenses: S.optional(__S(1376, __c86, 0)),
         }),
       ).annotate({ identifier: "HostUpdateProperties" });
     case 1:
@@ -7079,8 +7339,8 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
-          vmMembers: S.optional(__S(1904, __c119, 0)),
-          hostMembers: S.optional(__S(1904, __c119, 0)),
+          vmMembers: S.optional(__S(2112, __c132, 0)),
+          hostMembers: S.optional(__S(2112, __c132, 0)),
           affinityStrength: S.optional(S.String),
           azureHybridBenefitType: S.optional(S.String),
         }),
@@ -7103,6 +7363,18 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdatePlacementPolicyRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1584, __c99, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdatePlacementPolicyResponse" });
   }
 }
 function __c28(j: number): any {
@@ -7110,12 +7382,12 @@ function __c28(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          managementCluster: S.optional(__S(1840, __c115, 0)),
+          managementCluster: S.optional(__S(2064, __c129, 0)),
           internet: S.optional(S.String),
-          identitySources: S.optional(__S(1490, __c93, 2)),
-          availability: S.optional(__S(1491, __c93, 3)),
+          identitySources: S.optional(__S(1650, __c103, 2)),
+          availability: S.optional(__S(1651, __c103, 3)),
           encryption: S.optional(__S(289, __c18, 1)),
-          extendedNetworkBlocks: S.optional(__S(1904, __c119, 0)),
+          extendedNetworkBlocks: S.optional(__S(2112, __c132, 0)),
           dnsZoneType: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateCloudUpdatePropertiesInput" });
@@ -7125,8 +7397,8 @@ function __c28(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1488, __c93, 0)),
-          sku: S.optional(__S(1856, __c116, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          sku: S.optional(__S(2080, __c130, 0)),
           identity: S.optional(__S(290, __c18, 2)),
           properties: S.optional(__S(448, __c28, 0)),
         }).pipe(
@@ -7138,6 +7410,23 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdatePrivateCloudRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.String,
+          properties: S.optional(__S(1656, __c103, 8)),
+          sku: __S(2080, __c130, 0),
+          identity: S.optional(__S(1657, __c103, 9)),
+          zones: S.optional(__S(2112, __c132, 0)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdatePrivateCloudResponse" });
   }
 }
 function __c29(j: number): any {
@@ -7149,7 +7438,7 @@ function __c29(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           dhcpId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2128, __c133, 0)),
+          properties: S.optional(__S(2416, __c151, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7159,6 +7448,18 @@ function __c29(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWorkloadNetworkDhcpRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(2432, __c152, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateWorkloadNetworkDhcpResponse" });
   }
 }
 function __c30(j: number): any {
@@ -7170,7 +7471,7 @@ function __c30(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           dnsServiceId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2336, __c146, 0)),
+          properties: S.optional(__S(2624, __c164, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7180,6 +7481,18 @@ function __c30(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWorkloadNetworkDnsServiceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(2640, __c165, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateWorkloadNetworkDnsServiceResponse" });
   }
 }
 function __c31(j: number): any {
@@ -7201,6 +7514,17 @@ function __c31(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateWorkloadNetworkSegmentsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(531, __c33, 3)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateWorkloadNetworkSegmentsResponse" });
   }
 }
 function __c32(j: number): any {
@@ -7221,7 +7545,7 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dhcpRanges: S.optional(__S(1904, __c119, 0)),
+          dhcpRanges: S.optional(__S(2112, __c132, 0)),
           gatewayAddress: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkloadNetworkSegmentSubnet" });
@@ -7245,16 +7569,6 @@ function __c33(j: number): any {
           revision: S.optional(S.Number),
         }),
       ).annotate({ identifier: "WorkloadNetworkSegmentProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(531, __c33, 3)),
-        }),
-      ).annotate({ identifier: "CreateWorkloadNetworkSegmentsResponse" });
   }
 }
 function __c34(j: number): any {
@@ -7266,7 +7580,7 @@ function __c34(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           dnsZoneId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2560, __c160, 0)),
+          properties: S.optional(__S(2848, __c178, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7276,6 +7590,18 @@ function __c34(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWorkloadNetworkDnsZoneRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(2864, __c179, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateWorkloadNetworkDnsZoneResponse" });
   }
 }
 function __c35(j: number): any {
@@ -7297,6 +7623,18 @@ function __c35(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWorkloadNetworkPortMirroringRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(112, __c7, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateWorkloadNetworkPortMirroringResponse" });
   }
 }
 function __c36(j: number): any {
@@ -7318,6 +7656,18 @@ function __c36(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWorkloadNetworkSegmentsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(531, __c33, 3)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateWorkloadNetworkSegmentsResponse" });
   }
 }
 function __c37(j: number): any {
@@ -7339,6 +7689,18 @@ function __c37(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWorkloadNetworkVMGroupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(656, __c41, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateWorkloadNetworkVMGroupResponse" });
   }
 }
 function __c38(j: number): any {
@@ -7382,6 +7744,17 @@ function __c39(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateWorkloadNetworkVMGroupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(656, __c41, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateWorkloadNetworkVMGroupResponse" });
   }
 }
 function __c40(j: number): any {
@@ -7390,7 +7763,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          members: S.optional(__S(1904, __c119, 0)),
+          members: S.optional(__S(2112, __c132, 0)),
           revision: S.optional(S.Number),
         }),
       ).annotate({ identifier: "WorkloadNetworkVMGroupPropertiesInput" });
@@ -7402,22 +7775,12 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          members: S.optional(__S(1904, __c119, 0)),
+          members: S.optional(__S(2112, __c132, 0)),
           status: S.optional(S.String),
           provisioningState: S.optional(S.String),
           revision: S.optional(S.Number),
         }),
       ).annotate({ identifier: "WorkloadNetworkVMGroupProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(656, __c41, 0)),
-        }),
-      ).annotate({ identifier: "CreateWorkloadNetworkVMGroupResponse" });
   }
 }
 function __c42(j: number): any {
@@ -7457,6 +7820,17 @@ function __c42(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DatastoresCreateOrUpdateRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(692, __c43, 4)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DatastoresCreateOrUpdateResponse" });
   }
 }
 function __c43(j: number): any {
@@ -7500,16 +7874,6 @@ function __c43(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatastoreProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(692, __c43, 4)),
-        }),
-      ).annotate({ identifier: "DatastoresCreateOrUpdateResponse" });
   }
 }
 function __c44(j: number): any {
@@ -7683,6 +8047,14 @@ function __c51(j: number): any {
 function __c52(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteHcxEnterpriseSiteResponse",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7699,7 +8071,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "DeleteIscsiPathRequest" });
   }
 }
-function __c53(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7719,7 +8091,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "DeleteLicenseRequest" });
   }
 }
-function __c54(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7740,7 +8112,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "DeletePlacementPolicyRequest" });
   }
 }
-function __c55(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7759,7 +8131,7 @@ function __c55(j: number): any {
       ).annotate({ identifier: "DeletePrivateCloudRequest" });
   }
 }
-function __c56(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7779,7 +8151,7 @@ function __c56(j: number): any {
       ).annotate({ identifier: "DeletePureStoragePolicyRequest" });
   }
 }
-function __c57(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7799,7 +8171,7 @@ function __c57(j: number): any {
       ).annotate({ identifier: "DeleteScriptExecutionRequest" });
   }
 }
-function __c58(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7819,7 +8191,7 @@ function __c58(j: number): any {
       ).annotate({ identifier: "DeleteWorkloadNetworkDhcpRequest" });
   }
 }
-function __c59(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7839,7 +8211,7 @@ function __c59(j: number): any {
       ).annotate({ identifier: "DeleteWorkloadNetworkDnsServiceRequest" });
   }
 }
-function __c60(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7869,7 +8241,7 @@ function __c60(j: number): any {
       ).annotate({ identifier: "Trial" });
   }
 }
-function __c61(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7889,7 +8261,7 @@ function __c61(j: number): any {
       ).annotate({ identifier: "DeleteWorkloadNetworkDnsZoneRequest" });
   }
 }
-function __c62(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7909,7 +8281,7 @@ function __c62(j: number): any {
       ).annotate({ identifier: "DeleteWorkloadNetworkPortMirroringRequest" });
   }
 }
-function __c63(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7929,7 +8301,7 @@ function __c63(j: number): any {
       ).annotate({ identifier: "DeleteWorkloadNetworkPublicIPRequest" });
   }
 }
-function __c64(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7949,7 +8321,7 @@ function __c64(j: number): any {
       ).annotate({ identifier: "DeleteWorkloadNetworkSegmentRequest" });
   }
 }
-function __c65(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7969,7 +8341,7 @@ function __c65(j: number): any {
       ).annotate({ identifier: "DeleteWorkloadNetworkVMGroupRequest" });
   }
 }
-function __c66(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7989,7 +8361,21 @@ function __c66(j: number): any {
       ).annotate({ identifier: "GetAddonRequest" });
   }
 }
-function __c67(j: number): any {
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(32, __c2, 0)),
+        }),
+      ).annotate({ identifier: "GetAddonResponse" });
+  }
+}
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8009,7 +8395,21 @@ function __c67(j: number): any {
       ).annotate({ identifier: "GetAuthorizationRequest" });
   }
 }
-function __c68(j: number): any {
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(64, __c4, 0)),
+        }),
+      ).annotate({ identifier: "GetAuthorizationResponse" });
+  }
+}
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8029,7 +8429,21 @@ function __c68(j: number): any {
       ).annotate({ identifier: "GetCloudLinkRequest" });
   }
 }
-function __c69(j: number): any {
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1696, __c106, 0)),
+        }),
+      ).annotate({ identifier: "GetCloudLinkResponse" });
+  }
+}
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8049,7 +8463,22 @@ function __c69(j: number): any {
       ).annotate({ identifier: "GetClusterRequest" });
   }
 }
-function __c70(j: number): any {
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(2096, __c131, 0)),
+          sku: __S(2080, __c130, 0),
+        }),
+      ).annotate({ identifier: "GetClusterResponse" });
+  }
+}
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8070,7 +8499,21 @@ function __c70(j: number): any {
       ).annotate({ identifier: "GetDatastoreRequest" });
   }
 }
-function __c71(j: number): any {
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(692, __c43, 4)),
+        }),
+      ).annotate({ identifier: "GetDatastoreResponse" });
+  }
+}
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8089,15 +8532,18 @@ function __c71(j: number): any {
       ).annotate({ identifier: "CheckServiceComponentAvailabilityRequest" });
   }
 }
-function __c72(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CheckServiceComponentAvailabilityResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CheckServiceComponentAvailabilityResponse" });
   }
 }
-function __c73(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8117,7 +8563,7 @@ function __c73(j: number): any {
       ).annotate({ identifier: "GetGlobalReachConnectionRequest" });
   }
 }
-function __c74(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8130,19 +8576,23 @@ function __c74(j: number): any {
           expressRouteId: S.optional(S.String),
         }),
       ).annotate({ identifier: "GlobalReachConnectionProperties" });
-    case 1:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1184, __c74, 0)),
+          properties: S.optional(__S(1280, __c80, 0)),
         }),
       ).annotate({ identifier: "GetGlobalReachConnectionResponse" });
   }
 }
-function __c75(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8162,7 +8612,7 @@ function __c75(j: number): any {
       ).annotate({ identifier: "GetHcxEnterpriseSiteRequest" });
   }
 }
-function __c76(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8179,12 +8629,12 @@ function __c76(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1216, __c76, 0)),
+          properties: S.optional(__S(1328, __c83, 0)),
         }),
       ).annotate({ identifier: "GetHcxEnterpriseSiteResponse" });
   }
 }
-function __c77(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8205,7 +8655,7 @@ function __c77(j: number): any {
       ).annotate({ identifier: "GetHostRequest" });
   }
 }
-function __c78(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8215,13 +8665,13 @@ function __c78(j: number): any {
       ).annotate({ identifier: "HostLicense" });
   }
 }
-function __c79(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1248, __c78, 0));
+      return S.Array(__S(1360, __c85, 0));
   }
 }
-function __c80(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8233,7 +8683,7 @@ function __c80(j: number): any {
           fqdn: S.optional(S.String),
           maintenance: S.optional(S.String),
           faultDomain: S.optional(S.String),
-          licenses: S.optional(__S(1264, __c79, 0)),
+          licenses: S.optional(__S(1376, __c86, 0)),
         }),
       ).annotate({ identifier: "HostProperties" });
     case 1:
@@ -8243,14 +8693,14 @@ function __c80(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1280, __c80, 0)),
-          zones: S.optional(__S(1904, __c119, 0)),
-          sku: S.optional(__S(1856, __c116, 0)),
+          properties: S.optional(__S(1392, __c87, 0)),
+          zones: S.optional(__S(2112, __c132, 0)),
+          sku: S.optional(__S(2080, __c130, 0)),
         }),
       ).annotate({ identifier: "GetHostResponse" });
   }
 }
-function __c81(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8269,7 +8719,7 @@ function __c81(j: number): any {
       ).annotate({ identifier: "GetIscsiPathRequest" });
   }
 }
-function __c82(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8278,19 +8728,23 @@ function __c82(j: number): any {
           networkBlock: S.String,
         }),
       ).annotate({ identifier: "IscsiPathProperties" });
-    case 1:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1312, __c82, 0)),
+          properties: S.optional(__S(1424, __c89, 0)),
         }),
       ).annotate({ identifier: "GetIscsiPathResponse" });
   }
 }
-function __c83(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8310,7 +8764,7 @@ function __c83(j: number): any {
       ).annotate({ identifier: "GetLicenseRequest" });
   }
 }
-function __c84(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8325,7 +8779,7 @@ function __c84(j: number): any {
       ).annotate({ identifier: "LicenseProperties" });
   }
 }
-function __c85(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8334,12 +8788,12 @@ function __c85(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1344, __c84, 0)),
+          properties: S.optional(__S(1472, __c92, 0)),
         }),
       ).annotate({ identifier: "GetLicenseResponse" });
   }
 }
-function __c86(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8359,7 +8813,7 @@ function __c86(j: number): any {
       ).annotate({ identifier: "GetLicensePropertiesRequest" });
   }
 }
-function __c87(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8379,7 +8833,7 @@ function __c87(j: number): any {
       ).annotate({ identifier: "GetMaintenanceRequest" });
   }
 }
-function __c88(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8392,7 +8846,7 @@ function __c88(j: number): any {
         }),
       ).annotate({ identifier: "MaintenanceActivity" });
     case 1:
-      return S.Array(__S(1408, __c88, 0));
+      return S.Array(__S(1536, __c96, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -8404,8 +8858,8 @@ function __c88(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dependencies: S.optional(__S(1904, __c119, 0)),
-          prerequisites: S.optional(__S(1904, __c119, 0)),
+          dependencies: S.optional(__S(2112, __c132, 0)),
+          prerequisites: S.optional(__S(2112, __c132, 0)),
         }),
       ).annotate({ identifier: "MaintenanceRelationships" });
     case 4:
@@ -8423,37 +8877,37 @@ function __c88(j: number): any {
           errorCode: S.optional(S.String),
           name: S.optional(S.String),
           details: S.optional(S.String),
-          resolutionSteps: S.optional(__S(1904, __c119, 0)),
+          resolutionSteps: S.optional(__S(2112, __c132, 0)),
           actionRequired: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ImpactedMaintenanceResourceError" });
     case 6:
-      return S.Array(__S(1413, __c88, 5));
+      return S.Array(__S(1541, __c96, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          errors: S.optional(__S(1414, __c88, 6)),
+          errors: S.optional(__S(1542, __c96, 6)),
         }),
       ).annotate({ identifier: "ImpactedMaintenanceResource" });
     case 8:
-      return S.Array(__S(1415, __c88, 7));
+      return S.Array(__S(1543, __c96, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          impactedResources: S.optional(__S(1416, __c88, 8)),
+          impactedResources: S.optional(__S(1544, __c96, 8)),
         }),
       ).annotate({ identifier: "MaintenanceFailedCheck" });
     case 10:
-      return S.Array(__S(1417, __c88, 9));
+      return S.Array(__S(1545, __c96, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           status: S.String,
           message: S.optional(S.String),
-          failedChecks: S.optional(__S(1418, __c88, 10)),
+          failedChecks: S.optional(__S(1546, __c96, 10)),
           lastUpdated: S.optional(S.String),
         }),
       ).annotate({ identifier: "MaintenanceReadiness" });
@@ -8463,18 +8917,18 @@ function __c88(j: number): any {
           component: S.optional(S.String),
           displayName: S.optional(S.String),
           clusterId: S.optional(S.Number),
-          activities: S.optional(__S(1409, __c88, 1)),
-          group: S.optional(__S(1410, __c88, 2)),
-          relationships: S.optional(__S(1411, __c88, 3)),
+          activities: S.optional(__S(1537, __c96, 1)),
+          group: S.optional(__S(1538, __c96, 2)),
+          relationships: S.optional(__S(1539, __c96, 3)),
           infoLink: S.optional(S.String),
           impact: S.optional(S.String),
           scheduledByMicrosoft: S.optional(S.Boolean),
-          state: S.optional(__S(1412, __c88, 4)),
+          state: S.optional(__S(1540, __c96, 4)),
           scheduledStartTime: S.optional(S.String),
           estimatedDurationInMinutes: S.optional(S.Number),
           provisioningState: S.optional(S.String),
-          operations: S.optional(__S(1264, __c79, 0)),
-          maintenanceReadiness: S.optional(__S(1419, __c88, 11)),
+          operations: S.optional(__S(1376, __c86, 0)),
+          maintenanceReadiness: S.optional(__S(1547, __c96, 11)),
         }),
       ).annotate({ identifier: "MaintenanceProperties" });
     case 13:
@@ -8484,12 +8938,12 @@ function __c88(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1420, __c88, 12)),
+          properties: S.optional(__S(1548, __c96, 12)),
         }),
       ).annotate({ identifier: "GetMaintenanceResponse" });
   }
 }
-function __c89(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8510,7 +8964,21 @@ function __c89(j: number): any {
       ).annotate({ identifier: "GetPlacementPolicyRequest" });
   }
 }
-function __c90(j: number): any {
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1584, __c99, 0)),
+        }),
+      ).annotate({ identifier: "GetPlacementPolicyResponse" });
+  }
+}
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8519,26 +8987,16 @@ function __c90(j: number): any {
           state: S.optional(S.String),
           displayName: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          vmMembers: S.optional(__S(1904, __c119, 0)),
-          hostMembers: S.optional(__S(1904, __c119, 0)),
+          vmMembers: S.optional(__S(2112, __c132, 0)),
+          hostMembers: S.optional(__S(2112, __c132, 0)),
           affinityType: S.optional(S.String),
           affinityStrength: S.optional(S.String),
           azureHybridBenefitType: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlacementPolicyProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1440, __c90, 0)),
-        }),
-      ).annotate({ identifier: "GetPlacementPolicyResponse" });
   }
 }
-function __c91(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8557,7 +9015,7 @@ function __c91(j: number): any {
       ).annotate({ identifier: "GetPrivateCloudRequest" });
   }
 }
-function __c92(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8568,7 +9026,26 @@ function __c92(j: number): any {
       ).annotate({ identifier: "VcfLicense" });
   }
 }
-function __c93(j: number): any {
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.String,
+          properties: S.optional(__S(1656, __c103, 8)),
+          sku: __S(2080, __c130, 0),
+          identity: S.optional(__S(1657, __c103, 9)),
+          zones: S.optional(__S(2112, __c132, 0)),
+        }),
+      ).annotate({ identifier: "GetPrivateCloudResponse" });
+  }
+}
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
@@ -8588,7 +9065,7 @@ function __c93(j: number): any {
         }),
       ).annotate({ identifier: "IdentitySource" });
     case 2:
-      return S.Array(__S(1489, __c93, 1));
+      return S.Array(__S(1649, __c103, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -8612,7 +9089,7 @@ function __c93(j: number): any {
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(1492, __c93, 4)),
+          keyVaultProperties: S.optional(__S(1652, __c103, 4)),
         }),
       ).annotate({ identifier: "Encryption" });
     case 6:
@@ -8638,15 +9115,15 @@ function __c93(j: number): any {
     case 8:
       return S.suspend(() =>
         S.Struct({
-          managementCluster: __S(1872, __c117, 0),
+          managementCluster: __S(2096, __c131, 0),
           internet: S.optional(S.String),
-          identitySources: S.optional(__S(1490, __c93, 2)),
-          availability: S.optional(__S(1491, __c93, 3)),
-          encryption: S.optional(__S(1493, __c93, 5)),
-          extendedNetworkBlocks: S.optional(__S(1904, __c119, 0)),
+          identitySources: S.optional(__S(1650, __c103, 2)),
+          availability: S.optional(__S(1651, __c103, 3)),
+          encryption: S.optional(__S(1653, __c103, 5)),
+          extendedNetworkBlocks: S.optional(__S(2112, __c132, 0)),
           provisioningState: S.optional(S.String),
-          circuit: S.optional(__S(1494, __c93, 6)),
-          endpoints: S.optional(__S(1495, __c93, 7)),
+          circuit: S.optional(__S(1654, __c103, 6)),
+          endpoints: S.optional(__S(1655, __c103, 7)),
           networkBlock: S.String,
           managementNetwork: S.optional(S.String),
           provisioningNetwork: S.optional(S.String),
@@ -8655,12 +9132,12 @@ function __c93(j: number): any {
           nsxtPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           vcenterCertificateThumbprint: S.optional(S.String),
           nsxtCertificateThumbprint: S.optional(S.String),
-          externalCloudLinks: S.optional(__S(1904, __c119, 0)),
-          secondaryCircuit: S.optional(__S(1494, __c93, 6)),
+          externalCloudLinks: S.optional(__S(2112, __c132, 0)),
+          secondaryCircuit: S.optional(__S(1654, __c103, 6)),
           nsxPublicIpQuotaRaised: S.optional(S.String),
           virtualNetworkId: S.optional(S.String),
           dnsZoneType: S.optional(S.String),
-          vcfLicense: S.optional(__S(1472, __c92, 0)),
+          vcfLicense: S.optional(__S(1616, __c101, 0)),
         }),
       ).annotate({ identifier: "PrivateCloudProperties" });
     case 9:
@@ -8671,24 +9148,9 @@ function __c93(j: number): any {
           type: S.String,
         }),
       ).annotate({ identifier: "GetPrivateCloudResponseIdentity" });
-    case 10:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          tags: S.optional(__S(1488, __c93, 0)),
-          location: S.String,
-          properties: S.optional(__S(1496, __c93, 8)),
-          sku: __S(1856, __c116, 0),
-          identity: S.optional(__S(1497, __c93, 9)),
-          zones: S.optional(__S(1904, __c119, 0)),
-        }),
-      ).annotate({ identifier: "GetPrivateCloudResponse" });
   }
 }
-function __c94(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8707,7 +9169,7 @@ function __c94(j: number): any {
       ).annotate({ identifier: "GetPrivateCloudVcfLicenseRequest" });
   }
 }
-function __c95(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8722,7 +9184,7 @@ function __c95(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           cloudLinkName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1520, __c95, 0)),
+          properties: S.optional(__S(1680, __c105, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8732,9 +9194,20 @@ function __c95(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CloudLinksCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1696, __c106, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CloudLinksCreateOrUpdateResponse" });
   }
 }
-function __c96(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8744,19 +9217,9 @@ function __c96(j: number): any {
           linkedCloud: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudLinkProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1536, __c96, 0)),
-        }),
-      ).annotate({ identifier: "CloudLinksCreateOrUpdateResponse" });
   }
 }
-function __c97(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8776,7 +9239,7 @@ function __c97(j: number): any {
       ).annotate({ identifier: "GetProvisionedNetworkRequest" });
   }
 }
-function __c98(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8793,12 +9256,12 @@ function __c98(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1568, __c98, 0)),
+          properties: S.optional(__S(1728, __c108, 0)),
         }),
       ).annotate({ identifier: "GetProvisionedNetworkResponse" });
   }
 }
-function __c99(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8818,7 +9281,21 @@ function __c99(j: number): any {
       ).annotate({ identifier: "GetPureStoragePolicyRequest" });
   }
 }
-function __c100(j: number): any {
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1776, __c111, 0)),
+        }),
+      ).annotate({ identifier: "GetPureStoragePolicyResponse" });
+  }
+}
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8828,19 +9305,9 @@ function __c100(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "PureStoragePolicyProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1600, __c100, 0)),
-        }),
-      ).annotate({ identifier: "GetPureStoragePolicyResponse" });
   }
 }
-function __c101(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8861,7 +9328,7 @@ function __c101(j: number): any {
       ).annotate({ identifier: "GetScriptCmdletRequest" });
   }
 }
-function __c102(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8874,7 +9341,7 @@ function __c102(j: number): any {
         }),
       ).annotate({ identifier: "ScriptParameter" });
     case 1:
-      return S.Array(__S(1632, __c102, 0));
+      return S.Array(__S(1808, __c113, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -8882,7 +9349,7 @@ function __c102(j: number): any {
           description: S.optional(S.String),
           timeout: S.optional(S.String),
           audience: S.optional(S.String),
-          parameters: S.optional(__S(1633, __c102, 1)),
+          parameters: S.optional(__S(1809, __c113, 1)),
         }),
       ).annotate({ identifier: "ScriptCmdletProperties" });
     case 3:
@@ -8892,12 +9359,12 @@ function __c102(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1634, __c102, 2)),
+          properties: S.optional(__S(1810, __c113, 2)),
         }),
       ).annotate({ identifier: "GetScriptCmdletResponse" });
   }
 }
-function __c103(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8917,7 +9384,21 @@ function __c103(j: number): any {
       ).annotate({ identifier: "GetScriptExecutionRequest" });
   }
 }
-function __c104(j: number): any {
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1859, __c116, 3)),
+        }),
+      ).annotate({ identifier: "GetScriptExecutionResponse" });
+  }
+}
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8927,15 +9408,15 @@ function __c104(j: number): any {
         }),
       ).annotate({ identifier: "ScriptExecutionParameter" });
     case 1:
-      return S.Array(__S(1664, __c104, 0));
+      return S.Array(__S(1856, __c116, 0));
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
       return S.suspend(() =>
         S.Struct({
           scriptCmdletId: S.optional(S.String),
-          parameters: S.optional(__S(1665, __c104, 1)),
-          hiddenParameters: S.optional(__S(1665, __c104, 1)),
+          parameters: S.optional(__S(1857, __c116, 1)),
+          hiddenParameters: S.optional(__S(1857, __c116, 1)),
           failureReason: S.optional(S.String),
           timeout: S.String,
           retention: S.optional(S.String),
@@ -8943,26 +9424,16 @@ function __c104(j: number): any {
           startedAt: S.optional(S.String),
           finishedAt: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          output: S.optional(__S(1904, __c119, 0)),
-          namedOutputs: S.optional(__S(1666, __c104, 2)),
-          information: S.optional(__S(1904, __c119, 0)),
-          warnings: S.optional(__S(1904, __c119, 0)),
-          errors: S.optional(__S(1904, __c119, 0)),
+          output: S.optional(__S(2112, __c132, 0)),
+          namedOutputs: S.optional(__S(1858, __c116, 2)),
+          information: S.optional(__S(2112, __c132, 0)),
+          warnings: S.optional(__S(2112, __c132, 0)),
+          errors: S.optional(__S(2112, __c132, 0)),
         }),
       ).annotate({ identifier: "ScriptExecutionProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1667, __c104, 3)),
-        }),
-      ).annotate({ identifier: "GetScriptExecutionResponse" });
   }
 }
-function __c105(j: number): any {
+function __c117(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -8973,7 +9444,7 @@ function __c105(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           scriptExecutionName: S.String.pipe(T.Label()),
-          body: S.optional(__S(1680, __c105, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1872, __c117, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8985,7 +9456,7 @@ function __c105(j: number): any {
       ).annotate({ identifier: "GetScriptExecutionExecutionLogsRequest" });
   }
 }
-function __c106(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9005,7 +9476,7 @@ function __c106(j: number): any {
       ).annotate({ identifier: "GetScriptPackageRequest" });
   }
 }
-function __c107(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9024,12 +9495,12 @@ function __c107(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1712, __c107, 0)),
+          properties: S.optional(__S(1904, __c119, 0)),
         }),
       ).annotate({ identifier: "GetScriptPackageResponse" });
   }
 }
-function __c108(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9050,7 +9521,7 @@ function __c108(j: number): any {
       ).annotate({ identifier: "GetVirtualMachineRequest" });
   }
 }
-function __c109(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9069,12 +9540,12 @@ function __c109(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1744, __c109, 0)),
+          properties: S.optional(__S(1936, __c121, 0)),
         }),
       ).annotate({ identifier: "GetVirtualMachineResponse" });
   }
 }
-function __c110(j: number): any {
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9093,7 +9564,7 @@ function __c110(j: number): any {
       ).annotate({ identifier: "GetWorkloadNetworkRequest" });
   }
 }
-function __c111(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9108,12 +9579,12 @@ function __c111(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1776, __c111, 0)),
+          properties: S.optional(__S(1968, __c123, 0)),
         }),
       ).annotate({ identifier: "GetWorkloadNetworkResponse" });
   }
 }
-function __c112(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9133,7 +9604,21 @@ function __c112(j: number): any {
       ).annotate({ identifier: "GetWorkloadNetworkDhcpRequest" });
   }
 }
-function __c113(j: number): any {
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(2432, __c152, 0)),
+        }),
+      ).annotate({ identifier: "GetWorkloadNetworkDhcpResponse" });
+  }
+}
+function __c126(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9153,7 +9638,21 @@ function __c113(j: number): any {
       ).annotate({ identifier: "GetWorkloadNetworkDnsServiceRequest" });
   }
 }
-function __c114(j: number): any {
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(2640, __c165, 0)),
+        }),
+      ).annotate({ identifier: "GetWorkloadNetworkDnsServiceResponse" });
+  }
+}
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9162,8 +9661,8 @@ function __c114(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1840, __c115, 0)),
-          sku: __S(1856, __c116, 0),
+          properties: S.optional(__S(2064, __c129, 0)),
+          sku: __S(2080, __c130, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9173,21 +9672,33 @@ function __c114(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ClustersCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(2096, __c131, 0)),
+          sku: __S(2080, __c130, 0),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ClustersCreateOrUpdateResponse" });
   }
 }
-function __c115(j: number): any {
+function __c129(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           clusterSize: S.optional(S.Number),
-          hosts: S.optional(__S(1904, __c119, 0)),
+          hosts: S.optional(__S(2112, __c132, 0)),
           vsanDatastoreName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterPropertiesInput" });
   }
 }
-function __c116(j: number): any {
+function __c130(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9201,7 +9712,7 @@ function __c116(j: number): any {
       ).annotate({ identifier: "ClustersCreateOrUpdateRequestSku" });
   }
 }
-function __c117(j: number): any {
+function __c131(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9209,34 +9720,19 @@ function __c117(j: number): any {
           clusterSize: S.optional(S.Number),
           provisioningState: S.optional(S.String),
           clusterId: S.optional(S.Number),
-          hosts: S.optional(__S(1904, __c119, 0)),
+          hosts: S.optional(__S(2112, __c132, 0)),
           vsanDatastoreName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterProperties" });
   }
 }
-function __c118(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1872, __c117, 0)),
-          sku: __S(1856, __c116, 0),
-        }),
-      ).annotate({ identifier: "ClustersCreateOrUpdateResponse" });
-  }
-}
-function __c119(j: number): any {
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c120(j: number): any {
+function __c133(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9256,7 +9752,21 @@ function __c120(j: number): any {
       ).annotate({ identifier: "GetWorkloadNetworkDnsZoneRequest" });
   }
 }
-function __c121(j: number): any {
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(2864, __c179, 0)),
+        }),
+      ).annotate({ identifier: "GetWorkloadNetworkDnsZoneResponse" });
+  }
+}
+function __c135(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9276,7 +9786,7 @@ function __c121(j: number): any {
       ).annotate({ identifier: "GetWorkloadNetworkGatewayRequest" });
   }
 }
-function __c122(j: number): any {
+function __c136(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9293,12 +9803,12 @@ function __c122(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1952, __c122, 0)),
+          properties: S.optional(__S(2176, __c136, 0)),
         }),
       ).annotate({ identifier: "GetWorkloadNetworkGatewayResponse" });
   }
 }
-function __c123(j: number): any {
+function __c137(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9318,7 +9828,21 @@ function __c123(j: number): any {
       ).annotate({ identifier: "GetWorkloadNetworkPortMirroringRequest" });
   }
 }
-function __c124(j: number): any {
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(112, __c7, 0)),
+        }),
+      ).annotate({ identifier: "GetWorkloadNetworkPortMirroringResponse" });
+  }
+}
+function __c139(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9338,7 +9862,21 @@ function __c124(j: number): any {
       ).annotate({ identifier: "GetWorkloadNetworkPublicIPRequest" });
   }
 }
-function __c125(j: number): any {
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(320, __c20, 0)),
+        }),
+      ).annotate({ identifier: "GetWorkloadNetworkPublicIPResponse" });
+  }
+}
+function __c141(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9358,7 +9896,21 @@ function __c125(j: number): any {
       ).annotate({ identifier: "GetWorkloadNetworkSegmentRequest" });
   }
 }
-function __c126(j: number): any {
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(531, __c33, 3)),
+        }),
+      ).annotate({ identifier: "GetWorkloadNetworkSegmentResponse" });
+  }
+}
+function __c143(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9378,7 +9930,7 @@ function __c126(j: number): any {
       ).annotate({ identifier: "GetWorkloadNetworkVirtualMachineRequest" });
   }
 }
-function __c127(j: number): any {
+function __c144(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9395,12 +9947,12 @@ function __c127(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(2032, __c127, 0)),
+          properties: S.optional(__S(2304, __c144, 0)),
         }),
       ).annotate({ identifier: "GetWorkloadNetworkVirtualMachineResponse" });
   }
 }
-function __c128(j: number): any {
+function __c145(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9420,7 +9972,21 @@ function __c128(j: number): any {
       ).annotate({ identifier: "GetWorkloadNetworkVMGroupRequest" });
   }
 }
-function __c129(j: number): any {
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(656, __c41, 0)),
+        }),
+      ).annotate({ identifier: "GetWorkloadNetworkVMGroupResponse" });
+  }
+}
+function __c147(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9437,7 +10003,7 @@ function __c129(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           globalReachConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2064, __c129, 0)),
+          properties: S.optional(__S(2352, __c147, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9447,9 +10013,20 @@ function __c129(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GlobalReachConnectionsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1280, __c80, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "GlobalReachConnectionsCreateOrUpdateResponse" });
   }
 }
-function __c130(j: number): any {
+function __c148(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9458,7 +10035,7 @@ function __c130(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           hcxEnterpriseSiteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1152, __c72, 0)),
+          properties: S.optional(__S(832, __c52, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9470,7 +10047,7 @@ function __c130(j: number): any {
       ).annotate({ identifier: "HcxEnterpriseSitesCreateOrUpdateRequest" });
   }
 }
-function __c131(j: number): any {
+function __c149(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9484,7 +10061,7 @@ function __c131(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(2384, __c149, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9494,9 +10071,20 @@ function __c131(j: number): any {
           }),
         ),
       ).annotate({ identifier: "IscsiPathsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1424, __c89, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "IscsiPathsCreateOrUpdateResponse" });
   }
 }
-function __c132(j: number): any {
+function __c150(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9505,7 +10093,7 @@ function __c132(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           dhcpId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2128, __c133, 0)),
+          properties: S.optional(__S(2416, __c151, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9515,38 +10103,6 @@ function __c132(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateWorkloadNetworkDhcpRequest" });
-  }
-}
-function __c133(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dhcpType: S.String,
-          displayName: S.optional(S.String),
-          revision: S.optional(S.Number),
-          serverAddress: S.optional(S.String),
-          leaseTime: S.optional(S.Number),
-          serverAddresses: S.optional(__S(1904, __c119, 0)),
-        }),
-      ).annotate({ identifier: "WorkloadNetworkDhcpEntityInput" });
-  }
-}
-function __c134(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dhcpType: S.String,
-          displayName: S.optional(S.String),
-          segments: S.optional(__S(1904, __c119, 0)),
-          provisioningState: S.optional(S.String),
-          revision: S.optional(S.Number),
-          serverAddress: S.optional(S.String),
-          leaseTime: S.optional(S.Number),
-          serverAddresses: S.optional(__S(1904, __c119, 0)),
-        }),
-      ).annotate({ identifier: "WorkloadNetworkDhcpEntity" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9554,12 +10110,45 @@ function __c134(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(2144, __c134, 0)),
+          properties: S.optional(__S(2432, __c152, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CreateWorkloadNetworkDhcpResponse" });
   }
 }
-function __c135(j: number): any {
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dhcpType: S.String,
+          displayName: S.optional(S.String),
+          revision: S.optional(S.Number),
+          serverAddress: S.optional(S.String),
+          leaseTime: S.optional(S.Number),
+          serverAddresses: S.optional(__S(2112, __c132, 0)),
+        }),
+      ).annotate({ identifier: "WorkloadNetworkDhcpEntityInput" });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dhcpType: S.String,
+          displayName: S.optional(S.String),
+          segments: S.optional(__S(2112, __c132, 0)),
+          provisioningState: S.optional(S.String),
+          revision: S.optional(S.Number),
+          serverAddress: S.optional(S.String),
+          leaseTime: S.optional(S.Number),
+          serverAddresses: S.optional(__S(2112, __c132, 0)),
+        }),
+      ).annotate({ identifier: "WorkloadNetworkDhcpEntity" });
+  }
+}
+function __c153(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9578,7 +10167,7 @@ function __c135(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           licenseName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2160, __c135, 0)),
+          properties: S.optional(__S(2448, __c153, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9588,9 +10177,21 @@ function __c135(j: number): any {
           }),
         ),
       ).annotate({ identifier: "LicensesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1472, __c92, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "LicensesCreateOrUpdateResponse" });
   }
 }
-function __c136(j: number): any {
+function __c154(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9608,17 +10209,17 @@ function __c136(j: number): any {
         ),
       ).annotate({ identifier: "ListAddonsRequest" });
     case 1:
-      return S.Array(__S(33, __c2, 1));
+      return S.Array(__S(1088, __c68, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2177, __c136, 1),
+          value: __S(2465, __c154, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AddonList" });
   }
 }
-function __c137(j: number): any {
+function __c155(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9636,17 +10237,17 @@ function __c137(j: number): any {
         ),
       ).annotate({ identifier: "ListAuthorizationsRequest" });
     case 1:
-      return S.Array(__S(65, __c4, 1));
+      return S.Array(__S(1120, __c70, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2193, __c137, 1),
+          value: __S(2481, __c155, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExpressRouteAuthorizationList" });
   }
 }
-function __c138(j: number): any {
+function __c156(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9664,17 +10265,17 @@ function __c138(j: number): any {
         ),
       ).annotate({ identifier: "ListCloudLinksRequest" });
     case 1:
-      return S.Array(__S(1537, __c96, 1));
+      return S.Array(__S(1152, __c72, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2209, __c138, 1),
+          value: __S(2497, __c156, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudLinkList" });
   }
 }
-function __c139(j: number): any {
+function __c157(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9692,17 +10293,17 @@ function __c139(j: number): any {
         ),
       ).annotate({ identifier: "ListClustersRequest" });
     case 1:
-      return S.Array(__S(1888, __c118, 0));
+      return S.Array(__S(1184, __c74, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2225, __c139, 1),
+          value: __S(2513, __c157, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterList" });
   }
 }
-function __c140(j: number): any {
+function __c158(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9723,21 +10324,21 @@ function __c140(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          hosts: S.optional(__S(1904, __c119, 0)),
+          hosts: S.optional(__S(2112, __c132, 0)),
           zone: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterZone" });
     case 2:
-      return S.Array(__S(2241, __c140, 1));
+      return S.Array(__S(2529, __c158, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          zones: S.optional(__S(2242, __c140, 2)),
+          zones: S.optional(__S(2530, __c158, 2)),
         }),
       ).annotate({ identifier: "ClusterZoneList" });
   }
 }
-function __c141(j: number): any {
+function __c159(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9756,17 +10357,17 @@ function __c141(j: number): any {
         ),
       ).annotate({ identifier: "ListDatastoresRequest" });
     case 1:
-      return S.Array(__S(693, __c43, 5));
+      return S.Array(__S(1216, __c76, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2257, __c141, 1),
+          value: __S(2545, __c159, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatastoreList" });
   }
 }
-function __c142(j: number): any {
+function __c160(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9784,17 +10385,17 @@ function __c142(j: number): any {
         ),
       ).annotate({ identifier: "ListGlobalReachConnectionsRequest" });
     case 1:
-      return S.Array(__S(1185, __c74, 1));
+      return S.Array(__S(1296, __c81, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2273, __c142, 1),
+          value: __S(2561, __c160, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GlobalReachConnectionList" });
   }
 }
-function __c143(j: number): any {
+function __c161(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9812,17 +10413,17 @@ function __c143(j: number): any {
         ),
       ).annotate({ identifier: "ListHcxEnterpriseSitesRequest" });
     case 1:
-      return S.Array(__S(1217, __c76, 1));
+      return S.Array(__S(1329, __c83, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2289, __c143, 1),
+          value: __S(2577, __c161, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "HcxEnterpriseSiteList" });
   }
 }
-function __c144(j: number): any {
+function __c162(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9841,17 +10442,17 @@ function __c144(j: number): any {
         ),
       ).annotate({ identifier: "ListHostsRequest" });
     case 1:
-      return S.Array(__S(1281, __c80, 1));
+      return S.Array(__S(1393, __c87, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2305, __c144, 1),
+          value: __S(2593, __c162, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostListResult" });
   }
 }
-function __c145(j: number): any {
+function __c163(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9860,7 +10461,7 @@ function __c145(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           dnsServiceId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2336, __c146, 0)),
+          properties: S.optional(__S(2624, __c164, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9870,38 +10471,6 @@ function __c145(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateWorkloadNetworkDnsServiceRequest" });
-  }
-}
-function __c146(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          dnsServiceIp: S.optional(S.String),
-          defaultDnsZone: S.optional(S.String),
-          fqdnZones: S.optional(__S(1904, __c119, 0)),
-          logLevel: S.optional(S.String),
-          revision: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "WorkloadNetworkDnsServicePropertiesInput" });
-  }
-}
-function __c147(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          dnsServiceIp: S.optional(S.String),
-          defaultDnsZone: S.optional(S.String),
-          fqdnZones: S.optional(__S(1904, __c119, 0)),
-          logLevel: S.optional(S.String),
-          status: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          revision: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "WorkloadNetworkDnsServiceProperties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9909,12 +10478,45 @@ function __c147(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(2352, __c147, 0)),
+          properties: S.optional(__S(2640, __c165, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CreateWorkloadNetworkDnsServiceResponse" });
   }
 }
-function __c148(j: number): any {
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          dnsServiceIp: S.optional(S.String),
+          defaultDnsZone: S.optional(S.String),
+          fqdnZones: S.optional(__S(2112, __c132, 0)),
+          logLevel: S.optional(S.String),
+          revision: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "WorkloadNetworkDnsServicePropertiesInput" });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          dnsServiceIp: S.optional(S.String),
+          defaultDnsZone: S.optional(S.String),
+          fqdnZones: S.optional(__S(2112, __c132, 0)),
+          logLevel: S.optional(S.String),
+          status: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          revision: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "WorkloadNetworkDnsServiceProperties" });
+  }
+}
+function __c166(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9932,17 +10534,17 @@ function __c148(j: number): any {
         ),
       ).annotate({ identifier: "ListIscsiPathByPrivateCloudRequest" });
     case 1:
-      return S.Array(__S(1313, __c82, 1));
+      return S.Array(__S(1440, __c90, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2369, __c148, 1),
+          value: __S(2657, __c166, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IscsiPathListResult" });
   }
 }
-function __c149(j: number): any {
+function __c167(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9960,17 +10562,17 @@ function __c149(j: number): any {
         ),
       ).annotate({ identifier: "ListLicensesRequest" });
     case 1:
-      return S.Array(__S(1360, __c85, 0));
+      return S.Array(__S(1488, __c93, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2385, __c149, 1),
+          value: __S(2673, __c167, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "LicenseListResult" });
   }
 }
-function __c150(j: number): any {
+function __c168(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9992,17 +10594,17 @@ function __c150(j: number): any {
         ),
       ).annotate({ identifier: "ListMaintenancesRequest" });
     case 1:
-      return S.Array(__S(1421, __c88, 13));
+      return S.Array(__S(1549, __c96, 13));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2401, __c150, 1),
+          value: __S(2689, __c168, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MaintenanceListResult" });
   }
 }
-function __c151(j: number): any {
+function __c169(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10029,23 +10631,23 @@ function __c151(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(2417, __c151, 1)),
+          display: S.optional(__S(2705, __c169, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(2418, __c151, 2));
+      return S.Array(__S(2706, __c169, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2419, __c151, 3)),
+          value: S.optional(__S(2707, __c169, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c152(j: number): any {
+function __c170(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10064,17 +10666,17 @@ function __c152(j: number): any {
         ),
       ).annotate({ identifier: "ListPlacementPoliciesRequest" });
     case 1:
-      return S.Array(__S(1441, __c90, 1));
+      return S.Array(__S(1568, __c98, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2433, __c152, 1),
+          value: __S(2721, __c170, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlacementPoliciesList" });
   }
 }
-function __c153(j: number): any {
+function __c171(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10102,7 +10704,7 @@ function __c153(j: number): any {
       ).annotate({ identifier: "AdminCredentials" });
   }
 }
-function __c154(j: number): any {
+function __c172(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10119,20 +10721,20 @@ function __c154(j: number): any {
       ).annotate({ identifier: "ListPrivateCloudInSubscriptionRequest" });
   }
 }
-function __c155(j: number): any {
+function __c173(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1498, __c93, 10));
+      return S.Array(__S(1632, __c102, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2480, __c155, 0),
+          value: __S(2768, __c173, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateCloudList" });
   }
 }
-function __c156(j: number): any {
+function __c174(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10150,7 +10752,7 @@ function __c156(j: number): any {
       ).annotate({ identifier: "ListPrivateCloudsRequest" });
   }
 }
-function __c157(j: number): any {
+function __c175(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10168,17 +10770,17 @@ function __c157(j: number): any {
         ),
       ).annotate({ identifier: "ListProvisionedNetworksRequest" });
     case 1:
-      return S.Array(__S(1569, __c98, 1));
+      return S.Array(__S(1729, __c108, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2513, __c157, 1),
+          value: __S(2801, __c175, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProvisionedNetworkListResult" });
   }
 }
-function __c158(j: number): any {
+function __c176(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10196,17 +10798,17 @@ function __c158(j: number): any {
         ),
       ).annotate({ identifier: "ListPureStoragePoliciesRequest" });
     case 1:
-      return S.Array(__S(1601, __c100, 1));
+      return S.Array(__S(1760, __c110, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2529, __c158, 1),
+          value: __S(2817, __c176, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PureStoragePolicyListResult" });
   }
 }
-function __c159(j: number): any {
+function __c177(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10215,7 +10817,7 @@ function __c159(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           dnsZoneId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2560, __c160, 0)),
+          properties: S.optional(__S(2848, __c178, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10225,37 +10827,6 @@ function __c159(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateWorkloadNetworkDnsZoneRequest" });
-  }
-}
-function __c160(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          domain: S.optional(__S(1904, __c119, 0)),
-          dnsServerIps: S.optional(__S(1904, __c119, 0)),
-          sourceIp: S.optional(S.String),
-          dnsServices: S.optional(S.Number),
-          revision: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "WorkloadNetworkDnsZonePropertiesInput" });
-  }
-}
-function __c161(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          domain: S.optional(__S(1904, __c119, 0)),
-          dnsServerIps: S.optional(__S(1904, __c119, 0)),
-          sourceIp: S.optional(S.String),
-          dnsServices: S.optional(S.Number),
-          provisioningState: S.optional(S.String),
-          revision: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "WorkloadNetworkDnsZoneProperties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10263,12 +10834,44 @@ function __c161(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(2576, __c161, 0)),
+          properties: S.optional(__S(2864, __c179, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CreateWorkloadNetworkDnsZoneResponse" });
   }
 }
-function __c162(j: number): any {
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          domain: S.optional(__S(2112, __c132, 0)),
+          dnsServerIps: S.optional(__S(2112, __c132, 0)),
+          sourceIp: S.optional(S.String),
+          dnsServices: S.optional(S.Number),
+          revision: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "WorkloadNetworkDnsZonePropertiesInput" });
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          domain: S.optional(__S(2112, __c132, 0)),
+          dnsServerIps: S.optional(__S(2112, __c132, 0)),
+          sourceIp: S.optional(S.String),
+          dnsServices: S.optional(S.Number),
+          provisioningState: S.optional(S.String),
+          revision: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "WorkloadNetworkDnsZoneProperties" });
+  }
+}
+function __c180(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10287,17 +10890,17 @@ function __c162(j: number): any {
         ),
       ).annotate({ identifier: "ListScriptCmdletsRequest" });
     case 1:
-      return S.Array(__S(1635, __c102, 3));
+      return S.Array(__S(1811, __c113, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2593, __c162, 1),
+          value: __S(2881, __c180, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScriptCmdletsList" });
   }
 }
-function __c163(j: number): any {
+function __c181(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10315,17 +10918,17 @@ function __c163(j: number): any {
         ),
       ).annotate({ identifier: "ListScriptExecutionsRequest" });
     case 1:
-      return S.Array(__S(1668, __c104, 4));
+      return S.Array(__S(1840, __c115, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2609, __c163, 1),
+          value: __S(2897, __c181, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScriptExecutionsList" });
   }
 }
-function __c164(j: number): any {
+function __c182(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10343,17 +10946,17 @@ function __c164(j: number): any {
         ),
       ).annotate({ identifier: "ListScriptPackagesRequest" });
     case 1:
-      return S.Array(__S(1713, __c107, 1));
+      return S.Array(__S(1905, __c119, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2625, __c164, 1),
+          value: __S(2913, __c182, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScriptPackagesList" });
   }
 }
-function __c165(j: number): any {
+function __c183(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10376,44 +10979,44 @@ function __c165(j: number): any {
         }),
       ).annotate({ identifier: "ResourceSkuCapabilities" });
     case 2:
-      return S.Array(__S(2641, __c165, 1));
+      return S.Array(__S(2929, __c183, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          name: __S(1904, __c119, 0),
-          capabilities: __S(2642, __c165, 2),
+          name: __S(2112, __c132, 0),
+          capabilities: __S(2930, __c183, 2),
         }),
       ).annotate({ identifier: "ResourceSkuZoneDetails" });
     case 4:
-      return S.Array(__S(2643, __c165, 3));
+      return S.Array(__S(2931, __c183, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           location: S.String,
-          zones: __S(1904, __c119, 0),
-          zoneDetails: __S(2644, __c165, 4),
+          zones: __S(2112, __c132, 0),
+          zoneDetails: __S(2932, __c183, 4),
         }),
       ).annotate({ identifier: "ResourceSkuLocationInfo" });
     case 6:
-      return S.Array(__S(2645, __c165, 5));
+      return S.Array(__S(2933, __c183, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(1904, __c119, 0)),
-          zones: S.optional(__S(1904, __c119, 0)),
+          locations: S.optional(__S(2112, __c132, 0)),
+          zones: S.optional(__S(2112, __c132, 0)),
         }),
       ).annotate({ identifier: "ResourceSkuRestrictionInfo" });
     case 8:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          values: __S(1904, __c119, 0),
-          restrictionInfo: __S(2647, __c165, 7),
+          values: __S(2112, __c132, 0),
+          restrictionInfo: __S(2935, __c183, 7),
           reasonCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSkuRestrictions" });
     case 9:
-      return S.Array(__S(2648, __c165, 8));
+      return S.Array(__S(2936, __c183, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -10422,24 +11025,24 @@ function __c165(j: number): any {
           tier: S.optional(S.String),
           size: S.optional(S.String),
           family: S.optional(S.String),
-          locations: __S(1904, __c119, 0),
-          locationInfo: __S(2646, __c165, 6),
-          capabilities: S.optional(__S(2642, __c165, 2)),
-          restrictions: __S(2649, __c165, 9),
+          locations: __S(2112, __c132, 0),
+          locationInfo: __S(2934, __c183, 6),
+          capabilities: S.optional(__S(2930, __c183, 2)),
+          restrictions: __S(2937, __c183, 9),
         }),
       ).annotate({ identifier: "ResourceSku" });
     case 11:
-      return S.Array(__S(2650, __c165, 10));
+      return S.Array(__S(2938, __c183, 10));
     case 12:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2651, __c165, 11),
+          value: __S(2939, __c183, 11),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagedResourceSku" });
   }
 }
-function __c166(j: number): any {
+function __c184(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10458,17 +11061,17 @@ function __c166(j: number): any {
         ),
       ).annotate({ identifier: "ListVirtualMachinesRequest" });
     case 1:
-      return S.Array(__S(1745, __c109, 1));
+      return S.Array(__S(1937, __c121, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2657, __c166, 1),
+          value: __S(2945, __c184, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualMachinesList" });
   }
 }
-function __c167(j: number): any {
+function __c185(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10486,17 +11089,17 @@ function __c167(j: number): any {
         ),
       ).annotate({ identifier: "ListWorkloadNetworkDhcpRequest" });
     case 1:
-      return S.Array(__S(2145, __c134, 1));
+      return S.Array(__S(2000, __c125, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2673, __c167, 1),
+          value: __S(2961, __c185, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkloadNetworkDhcpList" });
   }
 }
-function __c168(j: number): any {
+function __c186(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10514,17 +11117,17 @@ function __c168(j: number): any {
         ),
       ).annotate({ identifier: "ListWorkloadNetworkDnsServicesRequest" });
     case 1:
-      return S.Array(__S(2353, __c147, 1));
+      return S.Array(__S(2032, __c127, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2689, __c168, 1),
+          value: __S(2977, __c186, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkloadNetworkDnsServicesList" });
   }
 }
-function __c169(j: number): any {
+function __c187(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10542,17 +11145,17 @@ function __c169(j: number): any {
         ),
       ).annotate({ identifier: "ListWorkloadNetworkDnsZonesRequest" });
     case 1:
-      return S.Array(__S(2577, __c161, 1));
+      return S.Array(__S(2144, __c134, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2705, __c169, 1),
+          value: __S(2993, __c187, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkloadNetworkDnsZonesList" });
   }
 }
-function __c170(j: number): any {
+function __c188(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10570,17 +11173,17 @@ function __c170(j: number): any {
         ),
       ).annotate({ identifier: "ListWorkloadNetworkGatewaysRequest" });
     case 1:
-      return S.Array(__S(1953, __c122, 1));
+      return S.Array(__S(2177, __c136, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2721, __c170, 1),
+          value: __S(3009, __c188, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkloadNetworkGatewayList" });
   }
 }
-function __c171(j: number): any {
+function __c189(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10598,11 +11201,11 @@ function __c171(j: number): any {
         ),
       ).annotate({ identifier: "ListWorkloadNetworkPortMirroringRequest" });
     case 1:
-      return S.Array(__S(113, __c7, 1));
+      return S.Array(__S(2208, __c138, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2737, __c171, 1),
+          value: __S(3025, __c189, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkloadNetworkPortMirroringList" });

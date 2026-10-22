@@ -664,7 +664,9 @@ export interface DeleteCaCertificateRequest {
   /** Name of the CA certificate. */
   caCertificateName: string;
 }
-export interface DeleteCaCertificateResponse {}
+export interface DeleteCaCertificateResponse {
+  location?: string;
+}
 export interface DeleteChannelRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -675,7 +677,9 @@ export interface DeleteChannelRequest {
   /** Name of the channel. */
   channelName: string;
 }
-export interface DeleteChannelResponse {}
+export interface DeleteChannelResponse {
+  location?: string;
+}
 export interface DeleteClientRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -686,7 +690,9 @@ export interface DeleteClientRequest {
   /** Name of the client. */
   clientName: string;
 }
-export interface DeleteClientResponse {}
+export interface DeleteClientResponse {
+  location?: string;
+}
 export interface DeleteClientGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -697,7 +703,9 @@ export interface DeleteClientGroupRequest {
   /** Name of the client group. */
   clientGroupName: string;
 }
-export interface DeleteClientGroupResponse {}
+export interface DeleteClientGroupResponse {
+  location?: string;
+}
 export interface DeleteDomainRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -706,7 +714,9 @@ export interface DeleteDomainRequest {
   /** Name of the domain. */
   domainName: string;
 }
-export interface DeleteDomainResponse {}
+export interface DeleteDomainResponse {
+  location?: string;
+}
 export interface DeleteDomainEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -717,7 +727,9 @@ export interface DeleteDomainEventSubscriptionRequest {
   /** Name of the event subscription to be deleted. */
   eventSubscriptionName: string;
 }
-export interface DeleteDomainEventSubscriptionResponse {}
+export interface DeleteDomainEventSubscriptionResponse {
+  location?: string;
+}
 export interface DeleteDomainTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -728,7 +740,9 @@ export interface DeleteDomainTopicRequest {
   /** Name of the domain topic. */
   domainTopicName: string;
 }
-export interface DeleteDomainTopicResponse {}
+export interface DeleteDomainTopicResponse {
+  location?: string;
+}
 export interface DeleteDomainTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -741,14 +755,18 @@ export interface DeleteDomainTopicEventSubscriptionRequest {
   /** Name of the event subscription to be deleted. */
   eventSubscriptionName: string;
 }
-export interface DeleteDomainTopicEventSubscriptionResponse {}
+export interface DeleteDomainTopicEventSubscriptionResponse {
+  location?: string;
+}
 export interface DeleteEventSubscriptionRequest {
   /** The scope of the event subscription. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic. */
   scope: string;
   /** Name of the event subscription to be deleted. */
   eventSubscriptionName: string;
 }
-export interface DeleteEventSubscriptionResponse {}
+export interface DeleteEventSubscriptionResponse {
+  location?: string;
+}
 export interface DeleteNamespaceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -757,7 +775,9 @@ export interface DeleteNamespaceRequest {
   /** Name of the namespace. */
   namespaceName: string;
 }
-export interface DeleteNamespaceResponse {}
+export interface DeleteNamespaceResponse {
+  location?: string;
+}
 export interface DeleteNamespaceTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -768,7 +788,9 @@ export interface DeleteNamespaceTopicRequest {
   /** Name of the topic. */
   topicName: string;
 }
-export interface DeleteNamespaceTopicResponse {}
+export interface DeleteNamespaceTopicResponse {
+  location?: string;
+}
 export interface DeleteNamespaceTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -781,14 +803,18 @@ export interface DeleteNamespaceTopicEventSubscriptionRequest {
   /** Name of the event subscription to be deleted. */
   eventSubscriptionName: string;
 }
-export interface DeleteNamespaceTopicEventSubscriptionResponse {}
+export interface DeleteNamespaceTopicEventSubscriptionResponse {
+  location?: string;
+}
 export interface DeletePartnerConfigurationRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group within the user's subscription. */
   resourceGroupName: string;
 }
-export interface DeletePartnerConfigurationResponse {}
+export interface DeletePartnerConfigurationResponse {
+  location?: string;
+}
 export interface DeletePartnerNamespaceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -797,7 +823,9 @@ export interface DeletePartnerNamespaceRequest {
   /** Name of the partner namespace. */
   partnerNamespaceName: string;
 }
-export interface DeletePartnerNamespaceResponse {}
+export interface DeletePartnerNamespaceResponse {
+  location?: string;
+}
 export interface DeletePartnerRegistrationRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -806,7 +834,9 @@ export interface DeletePartnerRegistrationRequest {
   /** Name of the partner registration. */
   partnerRegistrationName: string;
 }
-export interface DeletePartnerRegistrationResponse {}
+export interface DeletePartnerRegistrationResponse {
+  location?: string;
+}
 export interface DeletePartnerTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -815,7 +845,9 @@ export interface DeletePartnerTopicRequest {
   /** Name of the partner topic. */
   partnerTopicName: string;
 }
-export interface DeletePartnerTopicResponse {}
+export interface DeletePartnerTopicResponse {
+  location?: string;
+}
 export interface DeletePartnerTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -826,7 +858,9 @@ export interface DeletePartnerTopicEventSubscriptionRequest {
   /** Name of the event subscription to be deleted. */
   eventSubscriptionName: string;
 }
-export interface DeletePartnerTopicEventSubscriptionResponse {}
+export interface DeletePartnerTopicEventSubscriptionResponse {
+  location?: string;
+}
 export interface DeletePermissionBindingRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -837,7 +871,9 @@ export interface DeletePermissionBindingRequest {
   /** Name of the permission binding. */
   permissionBindingName: string;
 }
-export interface DeletePermissionBindingResponse {}
+export interface DeletePermissionBindingResponse {
+  location?: string;
+}
 export type DeletePrivateEndpointConnectionRequestParentType =
   | "topics"
   | "domains"
@@ -855,7 +891,9 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection connection. */
   privateEndpointConnectionName: string;
 }
-export interface DeletePrivateEndpointConnectionResponse {}
+export interface DeletePrivateEndpointConnectionResponse {
+  location?: string;
+}
 export interface DeleteSystemTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -864,7 +902,9 @@ export interface DeleteSystemTopicRequest {
   /** Name of the system topic. */
   systemTopicName: string;
 }
-export interface DeleteSystemTopicResponse {}
+export interface DeleteSystemTopicResponse {
+  location?: string;
+}
 export interface DeleteSystemTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -875,7 +915,9 @@ export interface DeleteSystemTopicEventSubscriptionRequest {
   /** Name of the event subscription to be deleted. */
   eventSubscriptionName: string;
 }
-export interface DeleteSystemTopicEventSubscriptionResponse {}
+export interface DeleteSystemTopicEventSubscriptionResponse {
+  location?: string;
+}
 export interface DeleteTopicRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -884,7 +926,9 @@ export interface DeleteTopicRequest {
   /** Name of the topic. */
   topicName: string;
 }
-export interface DeleteTopicResponse {}
+export interface DeleteTopicResponse {
+  location?: string;
+}
 export interface DeleteTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -895,7 +939,9 @@ export interface DeleteTopicEventSubscriptionRequest {
   /** Name of the event subscription to be deleted. */
   eventSubscriptionName: string;
 }
-export interface DeleteTopicEventSubscriptionResponse {}
+export interface DeleteTopicEventSubscriptionResponse {
+  location?: string;
+}
 export interface DeleteTopicSpaceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -906,7 +952,9 @@ export interface DeleteTopicSpaceRequest {
   /** Name of the Topic space. */
   topicSpaceName: string;
 }
-export interface DeleteTopicSpaceResponse {}
+export interface DeleteTopicSpaceResponse {
+  location?: string;
+}
 /** Type of the endpoint for the event subscription destination. */
 export type EventSubscriptionDestinationEndpointType =
   | "WebHook"
@@ -5902,6 +5950,14 @@ export interface RegenerateNamespaceKeyRequest {
   /** Key name to regenerate key1 or key2. */
   keyName: string;
 }
+/** Shared access keys of the Namespace. */
+export interface RegenerateNamespaceKeyResponse {
+  /** Shared access key1 for the namespace. */
+  key1?: string;
+  /** Shared access key2 for the namespace. */
+  key2?: string;
+  location?: string;
+}
 export interface RegenerateNamespaceTopicKeyRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -5913,6 +5969,14 @@ export interface RegenerateNamespaceTopicKeyRequest {
   topicName: string;
   /** Key name to regenerate key1 or key2 */
   keyName: string;
+}
+/** Shared access keys of the Topic */
+export interface RegenerateNamespaceTopicKeyResponse {
+  /** Shared access key1 for the topic. */
+  key1?: string;
+  /** Shared access key2 for the topic. */
+  key2?: string;
+  location?: string;
 }
 export interface RegeneratePartnerNamespaceKeyRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -5933,6 +5997,14 @@ export interface RegenerateTopicKeyRequest {
   topicName: string;
   /** Key name to regenerate key1 or key2 */
   keyName: string;
+}
+/** Shared access keys of the Topic */
+export interface RegenerateTopicKeyResponse {
+  /** Shared access key1 for the topic. */
+  key1?: string;
+  /** Shared access key2 for the topic. */
+  key2?: string;
+  location?: string;
 }
 export interface SystemTopicEventSubscriptionsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -6666,6 +6738,7 @@ export interface UpdateNamespaceResponse {
   identity?: IdentityInfo;
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateNamespaceResponseSystemData;
+  locationHeader?: string;
 }
 /** Information of namespace topic update parameter properties. */
 export interface NamespaceTopicUpdateParameterProperties {
@@ -6722,6 +6795,7 @@ export interface UpdateNamespaceTopicResponse {
   properties?: NamespaceTopicProperties;
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateNamespaceTopicResponseSystemData;
+  location?: string;
 }
 /** The event delivery schema for the event subscription. */
 export type SubscriptionUpdateParametersPropertiesEventDeliverySchema = "CloudEventSchemaV1_0";
@@ -6787,6 +6861,7 @@ export interface UpdateNamespaceTopicEventSubscriptionResponse {
   properties?: SubscriptionProperties;
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateNamespaceTopicEventSubscriptionResponseSystemData;
+  location?: string;
 }
 /** Tags of the partner configuration resource. */
 export type UpdatePartnerConfigurationRequestTagsMap = { [key: string]: string | undefined };
@@ -7293,6 +7368,7 @@ export interface CustomDomainOwnershipValidationResult {
   customDomainsForTopicsConfiguration?: CustomDomainOwnershipValidationResultCustomDomainsForTopicsConfigurationList;
   /** List of custom domain configurations for the namespace under topic spaces configuration. */
   customDomainsForTopicSpacesConfiguration?: CustomDomainOwnershipValidationResultCustomDomainsForTopicSpacesConfigurationList;
+  location?: string;
 }
 export type ActivatePartnerTopicError = AzureOpError;
 /** Activate a partner topic. Activate a newly created partner topic. */
@@ -7332,8 +7408,8 @@ export const CaCertificatesCreateOrUpdate: API.OperationMethod<
   CaCertificatesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1553, __c97, 1) as any as S.Schema<CaCertificatesCreateOrUpdateRequest>,
-  output: __S(1569, __c98, 1) as any as S.Schema<CaCertificatesCreateOrUpdateResponse>,
+  input: __S(1585, __c99, 1) as any as S.Schema<CaCertificatesCreateOrUpdateRequest>,
+  output: __S(1601, __c100, 1) as any as S.Schema<CaCertificatesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7347,8 +7423,8 @@ export const ChannelsCreateOrUpdate: API.OperationMethod<
   ChannelsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1744, __c109, 0) as any as S.Schema<ChannelsCreateOrUpdateRequest>,
-  output: __S(1762, __c110, 2) as any as S.Schema<ChannelsCreateOrUpdateResponse>,
+  input: __S(1776, __c111, 0) as any as S.Schema<ChannelsCreateOrUpdateRequest>,
+  output: __S(1794, __c112, 2) as any as S.Schema<ChannelsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7362,8 +7438,8 @@ export const ClientGroupsCreateOrUpdate: API.OperationMethod<
   ClientGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2113, __c132, 1) as any as S.Schema<ClientGroupsCreateOrUpdateRequest>,
-  output: __S(2129, __c133, 1) as any as S.Schema<ClientGroupsCreateOrUpdateResponse>,
+  input: __S(2145, __c134, 1) as any as S.Schema<ClientGroupsCreateOrUpdateRequest>,
+  output: __S(2161, __c135, 1) as any as S.Schema<ClientGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7377,8 +7453,8 @@ export const ClientsCreateOrUpdate: API.OperationMethod<
   ClientsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2321, __c145, 1) as any as S.Schema<ClientsCreateOrUpdateRequest>,
-  output: __S(2355, __c147, 3) as any as S.Schema<ClientsCreateOrUpdateResponse>,
+  input: __S(2353, __c147, 1) as any as S.Schema<ClientsCreateOrUpdateRequest>,
+  output: __S(2387, __c149, 3) as any as S.Schema<ClientsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7392,7 +7468,7 @@ export const DeactivatePartnerTopic: API.OperationMethod<
   DeactivatePartnerTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2608, __c163, 0) as any as S.Schema<DeactivatePartnerTopicRequest>,
+  input: __S(2688, __c168, 0) as any as S.Schema<DeactivatePartnerTopicRequest>,
   output: __S(81, __c5, 1) as any as S.Schema<DeactivatePartnerTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7407,8 +7483,8 @@ export const DeleteCaCertificate: API.OperationMethod<
   DeleteCaCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2848, __c178, 0) as any as S.Schema<DeleteCaCertificateRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeleteCaCertificateResponse>,
+  input: __S(2928, __c183, 0) as any as S.Schema<DeleteCaCertificateRequest>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeleteCaCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7422,8 +7498,8 @@ export const DeleteChannel: API.OperationMethod<
   DeleteChannelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3104, __c194, 0) as any as S.Schema<DeleteChannelRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeleteChannelResponse>,
+  input: __S(3184, __c199, 0) as any as S.Schema<DeleteChannelRequest>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeleteChannelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7437,8 +7513,8 @@ export const DeleteClient: API.OperationMethod<
   DeleteClientError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3328, __c208, 0) as any as S.Schema<DeleteClientRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeleteClientResponse>,
+  input: __S(3408, __c213, 0) as any as S.Schema<DeleteClientRequest>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeleteClientResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7453,7 +7529,7 @@ export const DeleteClientGroup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(128, __c8, 0) as any as S.Schema<DeleteClientGroupRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeleteClientGroupResponse>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeleteClientGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7468,7 +7544,7 @@ export const DeleteDomain: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(336, __c21, 0) as any as S.Schema<DeleteDomainRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeleteDomainResponse>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeleteDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7483,7 +7559,7 @@ export const DeleteDomainEventSubscription: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(560, __c35, 0) as any as S.Schema<DeleteDomainEventSubscriptionRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeleteDomainEventSubscriptionResponse>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeleteDomainEventSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7498,7 +7574,7 @@ export const DeleteDomainTopic: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(768, __c48, 0) as any as S.Schema<DeleteDomainTopicRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeleteDomainTopicResponse>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeleteDomainTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7513,7 +7589,7 @@ export const DeleteDomainTopicEventSubscription: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(976, __c61, 0) as any as S.Schema<DeleteDomainTopicEventSubscriptionRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeleteDomainTopicEventSubscriptionResponse>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeleteDomainTopicEventSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7527,8 +7603,8 @@ export const DeleteEventSubscription: API.OperationMethod<
   DeleteEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1152, __c72, 0) as any as S.Schema<DeleteEventSubscriptionRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeleteEventSubscriptionResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<DeleteEventSubscriptionRequest>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeleteEventSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7542,8 +7618,8 @@ export const DeleteNamespace: API.OperationMethod<
   DeleteNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1328, __c83, 0) as any as S.Schema<DeleteNamespaceRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeleteNamespaceResponse>,
+  input: __S(1360, __c85, 0) as any as S.Schema<DeleteNamespaceRequest>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeleteNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7557,8 +7633,8 @@ export const DeleteNamespaceTopic: API.OperationMethod<
   DeleteNamespaceTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c94, 0) as any as S.Schema<DeleteNamespaceTopicRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeleteNamespaceTopicResponse>,
+  input: __S(1536, __c96, 0) as any as S.Schema<DeleteNamespaceTopicRequest>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeleteNamespaceTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7572,8 +7648,8 @@ export const DeleteNamespaceTopicEventSubscription: API.OperationMethod<
   DeleteNamespaceTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1520, __c95, 0) as any as S.Schema<DeleteNamespaceTopicEventSubscriptionRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeleteNamespaceTopicEventSubscriptionResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<DeleteNamespaceTopicEventSubscriptionRequest>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeleteNamespaceTopicEventSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7587,8 +7663,8 @@ export const DeletePartnerConfiguration: API.OperationMethod<
   DeletePartnerConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c96, 0) as any as S.Schema<DeletePartnerConfigurationRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeletePartnerConfigurationResponse>,
+  input: __S(1568, __c98, 0) as any as S.Schema<DeletePartnerConfigurationRequest>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeletePartnerConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7602,8 +7678,8 @@ export const DeletePartnerNamespace: API.OperationMethod<
   DeletePartnerNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1584, __c99, 0) as any as S.Schema<DeletePartnerNamespaceRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeletePartnerNamespaceResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<DeletePartnerNamespaceRequest>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeletePartnerNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7617,8 +7693,8 @@ export const DeletePartnerRegistration: API.OperationMethod<
   DeletePartnerRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1600, __c100, 0) as any as S.Schema<DeletePartnerRegistrationRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeletePartnerRegistrationResponse>,
+  input: __S(1632, __c102, 0) as any as S.Schema<DeletePartnerRegistrationRequest>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeletePartnerRegistrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7632,8 +7708,8 @@ export const DeletePartnerTopic: API.OperationMethod<
   DeletePartnerTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1616, __c101, 0) as any as S.Schema<DeletePartnerTopicRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeletePartnerTopicResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<DeletePartnerTopicRequest>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeletePartnerTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7647,8 +7723,8 @@ export const DeletePartnerTopicEventSubscription: API.OperationMethod<
   DeletePartnerTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1632, __c102, 0) as any as S.Schema<DeletePartnerTopicEventSubscriptionRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeletePartnerTopicEventSubscriptionResponse>,
+  input: __S(1664, __c104, 0) as any as S.Schema<DeletePartnerTopicEventSubscriptionRequest>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeletePartnerTopicEventSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7662,8 +7738,8 @@ export const DeletePermissionBinding: API.OperationMethod<
   DeletePermissionBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1648, __c103, 0) as any as S.Schema<DeletePermissionBindingRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeletePermissionBindingResponse>,
+  input: __S(1680, __c105, 0) as any as S.Schema<DeletePermissionBindingRequest>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeletePermissionBindingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7677,8 +7753,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1664, __c104, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(1696, __c106, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7692,8 +7768,8 @@ export const DeleteSystemTopic: API.OperationMethod<
   DeleteSystemTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1680, __c105, 0) as any as S.Schema<DeleteSystemTopicRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeleteSystemTopicResponse>,
+  input: __S(1712, __c107, 0) as any as S.Schema<DeleteSystemTopicRequest>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeleteSystemTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7707,8 +7783,8 @@ export const DeleteSystemTopicEventSubscription: API.OperationMethod<
   DeleteSystemTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c106, 0) as any as S.Schema<DeleteSystemTopicEventSubscriptionRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeleteSystemTopicEventSubscriptionResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<DeleteSystemTopicEventSubscriptionRequest>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeleteSystemTopicEventSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7722,8 +7798,8 @@ export const DeleteTopic: API.OperationMethod<
   DeleteTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1712, __c107, 0) as any as S.Schema<DeleteTopicRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeleteTopicResponse>,
+  input: __S(1744, __c109, 0) as any as S.Schema<DeleteTopicRequest>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeleteTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7737,8 +7813,8 @@ export const DeleteTopicEventSubscription: API.OperationMethod<
   DeleteTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c108, 0) as any as S.Schema<DeleteTopicEventSubscriptionRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeleteTopicEventSubscriptionResponse>,
+  input: __S(1760, __c110, 0) as any as S.Schema<DeleteTopicEventSubscriptionRequest>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeleteTopicEventSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7752,8 +7828,8 @@ export const DeleteTopicSpace: API.OperationMethod<
   DeleteTopicSpaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1776, __c111, 0) as any as S.Schema<DeleteTopicSpaceRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<DeleteTopicSpaceResponse>,
+  input: __S(1808, __c113, 0) as any as S.Schema<DeleteTopicSpaceRequest>,
+  output: __S(2944, __c184, 0) as any as S.Schema<DeleteTopicSpaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7767,8 +7843,8 @@ export const DomainEventSubscriptionsCreateOrUpdate: API.OperationMethod<
   DomainEventSubscriptionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1792, __c112, 0) as any as S.Schema<DomainEventSubscriptionsCreateOrUpdateRequest>,
-  output: __S(1859, __c116, 3) as any as S.Schema<DomainEventSubscriptionsCreateOrUpdateResponse>,
+  input: __S(1824, __c114, 0) as any as S.Schema<DomainEventSubscriptionsCreateOrUpdateRequest>,
+  output: __S(1891, __c118, 3) as any as S.Schema<DomainEventSubscriptionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7782,8 +7858,8 @@ export const DomainsCreateOrUpdate: API.OperationMethod<
   DomainsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1873, __c117, 1) as any as S.Schema<DomainsCreateOrUpdateRequest>,
-  output: __S(1953, __c122, 1) as any as S.Schema<DomainsCreateOrUpdateResponse>,
+  input: __S(1905, __c119, 1) as any as S.Schema<DomainsCreateOrUpdateRequest>,
+  output: __S(1985, __c124, 1) as any as S.Schema<DomainsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7798,13 +7874,13 @@ export const DomainTopicEventSubscriptionsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1968,
-    __c123,
+    2000,
+    __c125,
     0,
   ) as any as S.Schema<DomainTopicEventSubscriptionsCreateOrUpdateRequest>,
   output: __S(
-    1859,
-    __c116,
+    1891,
+    __c118,
     3,
   ) as any as S.Schema<DomainTopicEventSubscriptionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -7820,8 +7896,8 @@ export const DomainTopicsCreateOrUpdate: API.OperationMethod<
   DomainTopicsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1984, __c124, 0) as any as S.Schema<DomainTopicsCreateOrUpdateRequest>,
-  output: __S(2001, __c125, 1) as any as S.Schema<DomainTopicsCreateOrUpdateResponse>,
+  input: __S(2016, __c126, 0) as any as S.Schema<DomainTopicsCreateOrUpdateRequest>,
+  output: __S(2033, __c127, 1) as any as S.Schema<DomainTopicsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7835,8 +7911,8 @@ export const EventSubscriptionsCreateOrUpdate: API.OperationMethod<
   EventSubscriptionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2016, __c126, 0) as any as S.Schema<EventSubscriptionsCreateOrUpdateRequest>,
-  output: __S(1859, __c116, 3) as any as S.Schema<EventSubscriptionsCreateOrUpdateResponse>,
+  input: __S(2048, __c128, 0) as any as S.Schema<EventSubscriptionsCreateOrUpdateRequest>,
+  output: __S(1891, __c118, 3) as any as S.Schema<EventSubscriptionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7850,8 +7926,8 @@ export const GetCaCertificate: API.OperationMethod<
   GetCaCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2032, __c127, 0) as any as S.Schema<GetCaCertificateRequest>,
-  output: __S(1569, __c98, 1) as any as S.Schema<GetCaCertificateResponse>,
+  input: __S(2064, __c129, 0) as any as S.Schema<GetCaCertificateRequest>,
+  output: __S(1601, __c100, 1) as any as S.Schema<GetCaCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7865,8 +7941,8 @@ export const GetChannel: API.OperationMethod<
   GetChannelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2048, __c128, 0) as any as S.Schema<GetChannelRequest>,
-  output: __S(1762, __c110, 2) as any as S.Schema<GetChannelResponse>,
+  input: __S(2080, __c130, 0) as any as S.Schema<GetChannelRequest>,
+  output: __S(1794, __c112, 2) as any as S.Schema<GetChannelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7880,8 +7956,8 @@ export const GetChannelFullUrl: API.OperationMethod<
   GetChannelFullUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2064, __c129, 0) as any as S.Schema<GetChannelFullUrlRequest>,
-  output: __S(2080, __c130, 0) as any as S.Schema<EventSubscriptionFullUrl>,
+  input: __S(2096, __c131, 0) as any as S.Schema<GetChannelFullUrlRequest>,
+  output: __S(2112, __c132, 0) as any as S.Schema<EventSubscriptionFullUrl>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7895,8 +7971,8 @@ export const GetClient: API.OperationMethod<
   GetClientError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2096, __c131, 0) as any as S.Schema<GetClientRequest>,
-  output: __S(2355, __c147, 3) as any as S.Schema<GetClientResponse>,
+  input: __S(2128, __c133, 0) as any as S.Schema<GetClientRequest>,
+  output: __S(2387, __c149, 3) as any as S.Schema<GetClientResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7910,8 +7986,8 @@ export const GetClientGroup: API.OperationMethod<
   GetClientGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2144, __c134, 0) as any as S.Schema<GetClientGroupRequest>,
-  output: __S(2129, __c133, 1) as any as S.Schema<GetClientGroupResponse>,
+  input: __S(2176, __c136, 0) as any as S.Schema<GetClientGroupRequest>,
+  output: __S(2161, __c135, 1) as any as S.Schema<GetClientGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7925,8 +8001,8 @@ export const GetDomain: API.OperationMethod<
   GetDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2160, __c135, 0) as any as S.Schema<GetDomainRequest>,
-  output: __S(1953, __c122, 1) as any as S.Schema<GetDomainResponse>,
+  input: __S(2192, __c137, 0) as any as S.Schema<GetDomainRequest>,
+  output: __S(1985, __c124, 1) as any as S.Schema<GetDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7940,8 +8016,8 @@ export const GetDomainEventSubscription: API.OperationMethod<
   GetDomainEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2176, __c136, 0) as any as S.Schema<GetDomainEventSubscriptionRequest>,
-  output: __S(1859, __c116, 3) as any as S.Schema<GetDomainEventSubscriptionResponse>,
+  input: __S(2208, __c138, 0) as any as S.Schema<GetDomainEventSubscriptionRequest>,
+  output: __S(1891, __c118, 3) as any as S.Schema<GetDomainEventSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7956,11 +8032,11 @@ export const GetDomainEventSubscriptionDeliveryAttributes: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2192,
-    __c137,
+    2224,
+    __c139,
     0,
   ) as any as S.Schema<GetDomainEventSubscriptionDeliveryAttributesRequest>,
-  output: __S(2210, __c138, 2) as any as S.Schema<DeliveryAttributeListResult>,
+  output: __S(2242, __c140, 2) as any as S.Schema<DeliveryAttributeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7974,8 +8050,8 @@ export const GetDomainEventSubscriptionFullUrl: API.OperationMethod<
   GetDomainEventSubscriptionFullUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2224, __c139, 0) as any as S.Schema<GetDomainEventSubscriptionFullUrlRequest>,
-  output: __S(2080, __c130, 0) as any as S.Schema<EventSubscriptionFullUrl>,
+  input: __S(2256, __c141, 0) as any as S.Schema<GetDomainEventSubscriptionFullUrlRequest>,
+  output: __S(2112, __c132, 0) as any as S.Schema<EventSubscriptionFullUrl>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7989,8 +8065,8 @@ export const GetDomainTopic: API.OperationMethod<
   GetDomainTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2240, __c140, 0) as any as S.Schema<GetDomainTopicRequest>,
-  output: __S(2001, __c125, 1) as any as S.Schema<GetDomainTopicResponse>,
+  input: __S(2272, __c142, 0) as any as S.Schema<GetDomainTopicRequest>,
+  output: __S(2033, __c127, 1) as any as S.Schema<GetDomainTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8004,8 +8080,8 @@ export const GetDomainTopicEventSubscription: API.OperationMethod<
   GetDomainTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2256, __c141, 0) as any as S.Schema<GetDomainTopicEventSubscriptionRequest>,
-  output: __S(1859, __c116, 3) as any as S.Schema<GetDomainTopicEventSubscriptionResponse>,
+  input: __S(2288, __c143, 0) as any as S.Schema<GetDomainTopicEventSubscriptionRequest>,
+  output: __S(1891, __c118, 3) as any as S.Schema<GetDomainTopicEventSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8020,11 +8096,11 @@ export const GetDomainTopicEventSubscriptionDeliveryAttributes: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2272,
-    __c142,
+    2304,
+    __c144,
     0,
   ) as any as S.Schema<GetDomainTopicEventSubscriptionDeliveryAttributesRequest>,
-  output: __S(2210, __c138, 2) as any as S.Schema<DeliveryAttributeListResult>,
+  output: __S(2242, __c140, 2) as any as S.Schema<DeliveryAttributeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8038,8 +8114,8 @@ export const GetDomainTopicEventSubscriptionFullUrl: API.OperationMethod<
   GetDomainTopicEventSubscriptionFullUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2288, __c143, 0) as any as S.Schema<GetDomainTopicEventSubscriptionFullUrlRequest>,
-  output: __S(2080, __c130, 0) as any as S.Schema<EventSubscriptionFullUrl>,
+  input: __S(2320, __c145, 0) as any as S.Schema<GetDomainTopicEventSubscriptionFullUrlRequest>,
+  output: __S(2112, __c132, 0) as any as S.Schema<EventSubscriptionFullUrl>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8053,8 +8129,8 @@ export const GetEventSubscription: API.OperationMethod<
   GetEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c144, 0) as any as S.Schema<GetEventSubscriptionRequest>,
-  output: __S(1859, __c116, 3) as any as S.Schema<GetEventSubscriptionResponse>,
+  input: __S(2336, __c146, 0) as any as S.Schema<GetEventSubscriptionRequest>,
+  output: __S(1891, __c118, 3) as any as S.Schema<GetEventSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8068,8 +8144,8 @@ export const GetEventSubscriptionDeliveryAttributes: API.OperationMethod<
   GetEventSubscriptionDeliveryAttributesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2368, __c148, 0) as any as S.Schema<GetEventSubscriptionDeliveryAttributesRequest>,
-  output: __S(2210, __c138, 2) as any as S.Schema<DeliveryAttributeListResult>,
+  input: __S(2400, __c150, 0) as any as S.Schema<GetEventSubscriptionDeliveryAttributesRequest>,
+  output: __S(2242, __c140, 2) as any as S.Schema<DeliveryAttributeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8083,8 +8159,8 @@ export const GetEventSubscriptionFullUrl: API.OperationMethod<
   GetEventSubscriptionFullUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2384, __c149, 0) as any as S.Schema<GetEventSubscriptionFullUrlRequest>,
-  output: __S(2080, __c130, 0) as any as S.Schema<EventSubscriptionFullUrl>,
+  input: __S(2416, __c151, 0) as any as S.Schema<GetEventSubscriptionFullUrlRequest>,
+  output: __S(2112, __c132, 0) as any as S.Schema<EventSubscriptionFullUrl>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8098,8 +8174,8 @@ export const GetExtensionTopic: API.OperationMethod<
   GetExtensionTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2400, __c150, 0) as any as S.Schema<GetExtensionTopicRequest>,
-  output: __S(2402, __c150, 2) as any as S.Schema<GetExtensionTopicResponse>,
+  input: __S(2432, __c152, 0) as any as S.Schema<GetExtensionTopicRequest>,
+  output: __S(2434, __c152, 2) as any as S.Schema<GetExtensionTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8113,8 +8189,8 @@ export const GetNamespace: API.OperationMethod<
   GetNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2416, __c151, 0) as any as S.Schema<GetNamespaceRequest>,
-  output: __S(2441, __c152, 9) as any as S.Schema<GetNamespaceResponse>,
+  input: __S(2448, __c153, 0) as any as S.Schema<GetNamespaceRequest>,
+  output: __S(2464, __c154, 0) as any as S.Schema<GetNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8128,8 +8204,8 @@ export const GetNamespaceTopic: API.OperationMethod<
   GetNamespaceTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2464, __c154, 0) as any as S.Schema<GetNamespaceTopicRequest>,
-  output: __S(2481, __c155, 1) as any as S.Schema<GetNamespaceTopicResponse>,
+  input: __S(2512, __c157, 0) as any as S.Schema<GetNamespaceTopicRequest>,
+  output: __S(2528, __c158, 0) as any as S.Schema<GetNamespaceTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8143,8 +8219,8 @@ export const GetNamespaceTopicEventSubscription: API.OperationMethod<
   GetNamespaceTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2496, __c156, 0) as any as S.Schema<GetNamespaceTopicEventSubscriptionRequest>,
-  output: __S(2517, __c157, 5) as any as S.Schema<GetNamespaceTopicEventSubscriptionResponse>,
+  input: __S(2560, __c160, 0) as any as S.Schema<GetNamespaceTopicEventSubscriptionRequest>,
+  output: __S(2576, __c161, 0) as any as S.Schema<GetNamespaceTopicEventSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8159,11 +8235,11 @@ export const GetNamespaceTopicEventSubscriptionDeliveryAttributes: API.Operation
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2528,
-    __c158,
+    2608,
+    __c163,
     0,
   ) as any as S.Schema<GetNamespaceTopicEventSubscriptionDeliveryAttributesRequest>,
-  output: __S(2210, __c138, 2) as any as S.Schema<DeliveryAttributeListResult>,
+  output: __S(2242, __c140, 2) as any as S.Schema<DeliveryAttributeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8177,8 +8253,8 @@ export const GetNamespaceTopicEventSubscriptionFullUrl: API.OperationMethod<
   GetNamespaceTopicEventSubscriptionFullUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2544, __c159, 0) as any as S.Schema<GetNamespaceTopicEventSubscriptionFullUrlRequest>,
-  output: __S(2080, __c130, 0) as any as S.Schema<SubscriptionFullUrl>,
+  input: __S(2624, __c164, 0) as any as S.Schema<GetNamespaceTopicEventSubscriptionFullUrlRequest>,
+  output: __S(2112, __c132, 0) as any as S.Schema<SubscriptionFullUrl>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8192,7 +8268,7 @@ export const GetPartnerConfiguration: API.OperationMethod<
   GetPartnerConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2560, __c160, 0) as any as S.Schema<GetPartnerConfigurationRequest>,
+  input: __S(2640, __c165, 0) as any as S.Schema<GetPartnerConfigurationRequest>,
   output: __S(116, __c7, 4) as any as S.Schema<GetPartnerConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8207,8 +8283,8 @@ export const GetPartnerNamespace: API.OperationMethod<
   GetPartnerNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2576, __c161, 0) as any as S.Schema<GetPartnerNamespaceRequest>,
-  output: __S(2593, __c162, 1) as any as S.Schema<GetPartnerNamespaceResponse>,
+  input: __S(2656, __c166, 0) as any as S.Schema<GetPartnerNamespaceRequest>,
+  output: __S(2673, __c167, 1) as any as S.Schema<GetPartnerNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8222,8 +8298,8 @@ export const GetPartnerRegistration: API.OperationMethod<
   GetPartnerRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2624, __c164, 0) as any as S.Schema<GetPartnerRegistrationRequest>,
-  output: __S(2641, __c165, 1) as any as S.Schema<GetPartnerRegistrationResponse>,
+  input: __S(2704, __c169, 0) as any as S.Schema<GetPartnerRegistrationRequest>,
+  output: __S(2721, __c170, 1) as any as S.Schema<GetPartnerRegistrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8237,7 +8313,7 @@ export const GetPartnerTopic: API.OperationMethod<
   GetPartnerTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2656, __c166, 0) as any as S.Schema<GetPartnerTopicRequest>,
+  input: __S(2736, __c171, 0) as any as S.Schema<GetPartnerTopicRequest>,
   output: __S(81, __c5, 1) as any as S.Schema<GetPartnerTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8252,8 +8328,8 @@ export const GetPartnerTopicEventSubscription: API.OperationMethod<
   GetPartnerTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2672, __c167, 0) as any as S.Schema<GetPartnerTopicEventSubscriptionRequest>,
-  output: __S(1859, __c116, 3) as any as S.Schema<GetPartnerTopicEventSubscriptionResponse>,
+  input: __S(2752, __c172, 0) as any as S.Schema<GetPartnerTopicEventSubscriptionRequest>,
+  output: __S(1891, __c118, 3) as any as S.Schema<GetPartnerTopicEventSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8268,11 +8344,11 @@ export const GetPartnerTopicEventSubscriptionDeliveryAttributes: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2688,
-    __c168,
+    2768,
+    __c173,
     0,
   ) as any as S.Schema<GetPartnerTopicEventSubscriptionDeliveryAttributesRequest>,
-  output: __S(2210, __c138, 2) as any as S.Schema<DeliveryAttributeListResult>,
+  output: __S(2242, __c140, 2) as any as S.Schema<DeliveryAttributeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8286,8 +8362,8 @@ export const GetPartnerTopicEventSubscriptionFullUrl: API.OperationMethod<
   GetPartnerTopicEventSubscriptionFullUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2704, __c169, 0) as any as S.Schema<GetPartnerTopicEventSubscriptionFullUrlRequest>,
-  output: __S(2080, __c130, 0) as any as S.Schema<EventSubscriptionFullUrl>,
+  input: __S(2784, __c174, 0) as any as S.Schema<GetPartnerTopicEventSubscriptionFullUrlRequest>,
+  output: __S(2112, __c132, 0) as any as S.Schema<EventSubscriptionFullUrl>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8301,8 +8377,8 @@ export const GetPermissionBinding: API.OperationMethod<
   GetPermissionBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2720, __c170, 0) as any as S.Schema<GetPermissionBindingRequest>,
-  output: __S(2737, __c171, 1) as any as S.Schema<GetPermissionBindingResponse>,
+  input: __S(2800, __c175, 0) as any as S.Schema<GetPermissionBindingRequest>,
+  output: __S(2817, __c176, 1) as any as S.Schema<GetPermissionBindingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8316,8 +8392,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2752, __c172, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(1891, __c118, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(2832, __c177, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(1923, __c120, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8331,8 +8407,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2768, __c173, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(2785, __c174, 1) as any as S.Schema<PrivateLinkResource>,
+  input: __S(2848, __c178, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(2865, __c179, 1) as any as S.Schema<PrivateLinkResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8346,8 +8422,8 @@ export const GetSystemTopic: API.OperationMethod<
   GetSystemTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2800, __c175, 0) as any as S.Schema<GetSystemTopicRequest>,
-  output: __S(2817, __c176, 1) as any as S.Schema<GetSystemTopicResponse>,
+  input: __S(2880, __c180, 0) as any as S.Schema<GetSystemTopicRequest>,
+  output: __S(2897, __c181, 1) as any as S.Schema<GetSystemTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8361,8 +8437,8 @@ export const GetSystemTopicEventSubscription: API.OperationMethod<
   GetSystemTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2832, __c177, 0) as any as S.Schema<GetSystemTopicEventSubscriptionRequest>,
-  output: __S(1859, __c116, 3) as any as S.Schema<GetSystemTopicEventSubscriptionResponse>,
+  input: __S(2912, __c182, 0) as any as S.Schema<GetSystemTopicEventSubscriptionRequest>,
+  output: __S(1891, __c118, 3) as any as S.Schema<GetSystemTopicEventSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8377,11 +8453,11 @@ export const GetSystemTopicEventSubscriptionDeliveryAttributes: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2880,
-    __c180,
+    2960,
+    __c185,
     0,
   ) as any as S.Schema<GetSystemTopicEventSubscriptionDeliveryAttributesRequest>,
-  output: __S(2210, __c138, 2) as any as S.Schema<DeliveryAttributeListResult>,
+  output: __S(2242, __c140, 2) as any as S.Schema<DeliveryAttributeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8395,8 +8471,8 @@ export const GetSystemTopicEventSubscriptionFullUrl: API.OperationMethod<
   GetSystemTopicEventSubscriptionFullUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2896, __c181, 0) as any as S.Schema<GetSystemTopicEventSubscriptionFullUrlRequest>,
-  output: __S(2080, __c130, 0) as any as S.Schema<EventSubscriptionFullUrl>,
+  input: __S(2976, __c186, 0) as any as S.Schema<GetSystemTopicEventSubscriptionFullUrlRequest>,
+  output: __S(2112, __c132, 0) as any as S.Schema<EventSubscriptionFullUrl>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8410,8 +8486,8 @@ export const GetTopic: API.OperationMethod<
   GetTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2912, __c182, 0) as any as S.Schema<GetTopicRequest>,
-  output: __S(2929, __c183, 1) as any as S.Schema<GetTopicResponse>,
+  input: __S(2992, __c187, 0) as any as S.Schema<GetTopicRequest>,
+  output: __S(3009, __c188, 1) as any as S.Schema<GetTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8425,8 +8501,8 @@ export const GetTopicEventSubscription: API.OperationMethod<
   GetTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2944, __c184, 0) as any as S.Schema<GetTopicEventSubscriptionRequest>,
-  output: __S(1859, __c116, 3) as any as S.Schema<GetTopicEventSubscriptionResponse>,
+  input: __S(3024, __c189, 0) as any as S.Schema<GetTopicEventSubscriptionRequest>,
+  output: __S(1891, __c118, 3) as any as S.Schema<GetTopicEventSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8441,11 +8517,11 @@ export const GetTopicEventSubscriptionDeliveryAttributes: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2960,
-    __c185,
+    3040,
+    __c190,
     0,
   ) as any as S.Schema<GetTopicEventSubscriptionDeliveryAttributesRequest>,
-  output: __S(2210, __c138, 2) as any as S.Schema<DeliveryAttributeListResult>,
+  output: __S(2242, __c140, 2) as any as S.Schema<DeliveryAttributeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8459,8 +8535,8 @@ export const GetTopicEventSubscriptionFullUrl: API.OperationMethod<
   GetTopicEventSubscriptionFullUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2976, __c186, 0) as any as S.Schema<GetTopicEventSubscriptionFullUrlRequest>,
-  output: __S(2080, __c130, 0) as any as S.Schema<EventSubscriptionFullUrl>,
+  input: __S(3056, __c191, 0) as any as S.Schema<GetTopicEventSubscriptionFullUrlRequest>,
+  output: __S(2112, __c132, 0) as any as S.Schema<EventSubscriptionFullUrl>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8474,8 +8550,8 @@ export const GetTopicSpace: API.OperationMethod<
   GetTopicSpaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2992, __c187, 0) as any as S.Schema<GetTopicSpaceRequest>,
-  output: __S(3009, __c188, 1) as any as S.Schema<GetTopicSpaceResponse>,
+  input: __S(3072, __c192, 0) as any as S.Schema<GetTopicSpaceRequest>,
+  output: __S(3089, __c193, 1) as any as S.Schema<GetTopicSpaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8489,8 +8565,8 @@ export const GetTopicType: API.OperationMethod<
   GetTopicTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3024, __c189, 0) as any as S.Schema<GetTopicTypeRequest>,
-  output: __S(3044, __c190, 4) as any as S.Schema<GetTopicTypeResponse>,
+  input: __S(3104, __c194, 0) as any as S.Schema<GetTopicTypeRequest>,
+  output: __S(3124, __c195, 4) as any as S.Schema<GetTopicTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8504,8 +8580,8 @@ export const GetVerifiedPartner: API.OperationMethod<
   GetVerifiedPartnerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3056, __c191, 0) as any as S.Schema<GetVerifiedPartnerRequest>,
-  output: __S(3074, __c192, 2) as any as S.Schema<GetVerifiedPartnerResponse>,
+  input: __S(3136, __c196, 0) as any as S.Schema<GetVerifiedPartnerRequest>,
+  output: __S(3154, __c197, 2) as any as S.Schema<GetVerifiedPartnerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8519,8 +8595,8 @@ export const ListCaCertificateByNamespace: API.OperationMethod<
   ListCaCertificateByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3088, __c193, 0) as any as S.Schema<ListCaCertificateByNamespaceRequest>,
-  output: __S(3090, __c193, 2) as any as S.Schema<CaCertificatesListResult>,
+  input: __S(3168, __c198, 0) as any as S.Schema<ListCaCertificateByNamespaceRequest>,
+  output: __S(3170, __c198, 2) as any as S.Schema<CaCertificatesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8534,8 +8610,8 @@ export const ListChannelByPartnerNamespace: API.OperationMethod<
   ListChannelByPartnerNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3120, __c195, 0) as any as S.Schema<ListChannelByPartnerNamespaceRequest>,
-  output: __S(3122, __c195, 2) as any as S.Schema<ChannelsListResult>,
+  input: __S(3200, __c200, 0) as any as S.Schema<ListChannelByPartnerNamespaceRequest>,
+  output: __S(3202, __c200, 2) as any as S.Schema<ChannelsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8549,8 +8625,8 @@ export const ListClientByNamespace: API.OperationMethod<
   ListClientByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3136, __c196, 0) as any as S.Schema<ListClientByNamespaceRequest>,
-  output: __S(3138, __c196, 2) as any as S.Schema<ClientsListResult>,
+  input: __S(3216, __c201, 0) as any as S.Schema<ListClientByNamespaceRequest>,
+  output: __S(3218, __c201, 2) as any as S.Schema<ClientsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8564,8 +8640,8 @@ export const ListClientGroupByNamespace: API.OperationMethod<
   ListClientGroupByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3152, __c197, 0) as any as S.Schema<ListClientGroupByNamespaceRequest>,
-  output: __S(3154, __c197, 2) as any as S.Schema<ClientGroupsListResult>,
+  input: __S(3232, __c202, 0) as any as S.Schema<ListClientGroupByNamespaceRequest>,
+  output: __S(3234, __c202, 2) as any as S.Schema<ClientGroupsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8579,8 +8655,8 @@ export const ListDomainByResourceGroup: API.OperationMethod<
   ListDomainByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3168, __c198, 0) as any as S.Schema<ListDomainByResourceGroupRequest>,
-  output: __S(3185, __c199, 1) as any as S.Schema<DomainsListResult>,
+  input: __S(3248, __c203, 0) as any as S.Schema<ListDomainByResourceGroupRequest>,
+  output: __S(3265, __c204, 1) as any as S.Schema<DomainsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8594,8 +8670,8 @@ export const ListDomainBySubscription: API.OperationMethod<
   ListDomainBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3200, __c200, 0) as any as S.Schema<ListDomainBySubscriptionRequest>,
-  output: __S(3185, __c199, 1) as any as S.Schema<DomainsListResult>,
+  input: __S(3280, __c205, 0) as any as S.Schema<ListDomainBySubscriptionRequest>,
+  output: __S(3265, __c204, 1) as any as S.Schema<DomainsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8609,8 +8685,8 @@ export const ListDomainEventSubscriptions: API.OperationMethod<
   ListDomainEventSubscriptionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3216, __c201, 0) as any as S.Schema<ListDomainEventSubscriptionsRequest>,
-  output: __S(3233, __c202, 1) as any as S.Schema<EventSubscriptionsListResult>,
+  input: __S(3296, __c206, 0) as any as S.Schema<ListDomainEventSubscriptionsRequest>,
+  output: __S(3313, __c207, 1) as any as S.Schema<EventSubscriptionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8624,8 +8700,8 @@ export const ListDomainSharedAccessKeys: API.OperationMethod<
   ListDomainSharedAccessKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3248, __c203, 0) as any as S.Schema<ListDomainSharedAccessKeysRequest>,
-  output: __S(3264, __c204, 0) as any as S.Schema<DomainSharedAccessKeys>,
+  input: __S(3328, __c208, 0) as any as S.Schema<ListDomainSharedAccessKeysRequest>,
+  output: __S(3344, __c209, 0) as any as S.Schema<DomainSharedAccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8639,8 +8715,8 @@ export const ListDomainTopicByDomain: API.OperationMethod<
   ListDomainTopicByDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3280, __c205, 0) as any as S.Schema<ListDomainTopicByDomainRequest>,
-  output: __S(3282, __c205, 2) as any as S.Schema<DomainTopicsListResult>,
+  input: __S(3360, __c210, 0) as any as S.Schema<ListDomainTopicByDomainRequest>,
+  output: __S(3362, __c210, 2) as any as S.Schema<DomainTopicsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8654,8 +8730,8 @@ export const ListDomainTopicEventSubscriptions: API.OperationMethod<
   ListDomainTopicEventSubscriptionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3296, __c206, 0) as any as S.Schema<ListDomainTopicEventSubscriptionsRequest>,
-  output: __S(3233, __c202, 1) as any as S.Schema<EventSubscriptionsListResult>,
+  input: __S(3376, __c211, 0) as any as S.Schema<ListDomainTopicEventSubscriptionsRequest>,
+  output: __S(3313, __c207, 1) as any as S.Schema<EventSubscriptionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8669,8 +8745,8 @@ export const ListEventSubscriptionByDomainTopic: API.OperationMethod<
   ListEventSubscriptionByDomainTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3312, __c207, 0) as any as S.Schema<ListEventSubscriptionByDomainTopicRequest>,
-  output: __S(3233, __c202, 1) as any as S.Schema<EventSubscriptionsListResult>,
+  input: __S(3392, __c212, 0) as any as S.Schema<ListEventSubscriptionByDomainTopicRequest>,
+  output: __S(3313, __c207, 1) as any as S.Schema<EventSubscriptionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8684,8 +8760,8 @@ export const ListEventSubscriptionByResource: API.OperationMethod<
   ListEventSubscriptionByResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3344, __c209, 0) as any as S.Schema<ListEventSubscriptionByResourceRequest>,
-  output: __S(3233, __c202, 1) as any as S.Schema<EventSubscriptionsListResult>,
+  input: __S(3424, __c214, 0) as any as S.Schema<ListEventSubscriptionByResourceRequest>,
+  output: __S(3313, __c207, 1) as any as S.Schema<EventSubscriptionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8699,8 +8775,8 @@ export const ListEventSubscriptionGlobalByResourceGroup: API.OperationMethod<
   ListEventSubscriptionGlobalByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3360, __c210, 0) as any as S.Schema<ListEventSubscriptionGlobalByResourceGroupRequest>,
-  output: __S(3233, __c202, 1) as any as S.Schema<EventSubscriptionsListResult>,
+  input: __S(3440, __c215, 0) as any as S.Schema<ListEventSubscriptionGlobalByResourceGroupRequest>,
+  output: __S(3313, __c207, 1) as any as S.Schema<EventSubscriptionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8715,11 +8791,11 @@ export const ListEventSubscriptionGlobalByResourceGroupForTopicType: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3376,
-    __c211,
+    3456,
+    __c216,
     0,
   ) as any as S.Schema<ListEventSubscriptionGlobalByResourceGroupForTopicTypeRequest>,
-  output: __S(3233, __c202, 1) as any as S.Schema<EventSubscriptionsListResult>,
+  output: __S(3313, __c207, 1) as any as S.Schema<EventSubscriptionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8733,8 +8809,8 @@ export const ListEventSubscriptionGlobalBySubscription: API.OperationMethod<
   ListEventSubscriptionGlobalBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3392, __c212, 0) as any as S.Schema<ListEventSubscriptionGlobalBySubscriptionRequest>,
-  output: __S(3233, __c202, 1) as any as S.Schema<EventSubscriptionsListResult>,
+  input: __S(3472, __c217, 0) as any as S.Schema<ListEventSubscriptionGlobalBySubscriptionRequest>,
+  output: __S(3313, __c207, 1) as any as S.Schema<EventSubscriptionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8749,11 +8825,11 @@ export const ListEventSubscriptionGlobalBySubscriptionForTopicType: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3408,
-    __c213,
+    3488,
+    __c218,
     0,
   ) as any as S.Schema<ListEventSubscriptionGlobalBySubscriptionForTopicTypeRequest>,
-  output: __S(3233, __c202, 1) as any as S.Schema<EventSubscriptionsListResult>,
+  output: __S(3313, __c207, 1) as any as S.Schema<EventSubscriptionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8768,11 +8844,11 @@ export const ListEventSubscriptionRegionalByResourceGroup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3424,
-    __c214,
+    3504,
+    __c219,
     0,
   ) as any as S.Schema<ListEventSubscriptionRegionalByResourceGroupRequest>,
-  output: __S(3233, __c202, 1) as any as S.Schema<EventSubscriptionsListResult>,
+  output: __S(3313, __c207, 1) as any as S.Schema<EventSubscriptionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8787,11 +8863,11 @@ export const ListEventSubscriptionRegionalByResourceGroupForTopicType: API.Opera
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3440,
-    __c215,
+    3520,
+    __c220,
     0,
   ) as any as S.Schema<ListEventSubscriptionRegionalByResourceGroupForTopicTypeRequest>,
-  output: __S(3233, __c202, 1) as any as S.Schema<EventSubscriptionsListResult>,
+  output: __S(3313, __c207, 1) as any as S.Schema<EventSubscriptionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8806,11 +8882,11 @@ export const ListEventSubscriptionRegionalBySubscription: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3456,
-    __c216,
+    3536,
+    __c221,
     0,
   ) as any as S.Schema<ListEventSubscriptionRegionalBySubscriptionRequest>,
-  output: __S(3233, __c202, 1) as any as S.Schema<EventSubscriptionsListResult>,
+  output: __S(3313, __c207, 1) as any as S.Schema<EventSubscriptionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8825,11 +8901,11 @@ export const ListEventSubscriptionRegionalBySubscriptionForTopicType: API.Operat
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3472,
-    __c217,
+    3552,
+    __c222,
     0,
   ) as any as S.Schema<ListEventSubscriptionRegionalBySubscriptionForTopicTypeRequest>,
-  output: __S(3233, __c202, 1) as any as S.Schema<EventSubscriptionsListResult>,
+  output: __S(3313, __c207, 1) as any as S.Schema<EventSubscriptionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8843,8 +8919,8 @@ export const ListNamespaceByResourceGroup: API.OperationMethod<
   ListNamespaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3488, __c218, 0) as any as S.Schema<ListNamespaceByResourceGroupRequest>,
-  output: __S(3505, __c219, 1) as any as S.Schema<NamespacesListResult>,
+  input: __S(3568, __c223, 0) as any as S.Schema<ListNamespaceByResourceGroupRequest>,
+  output: __S(3585, __c224, 1) as any as S.Schema<NamespacesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8859,7 +8935,7 @@ export const ListNamespaceBySubscription: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(144, __c9, 0) as any as S.Schema<ListNamespaceBySubscriptionRequest>,
-  output: __S(3505, __c219, 1) as any as S.Schema<NamespacesListResult>,
+  output: __S(3585, __c224, 1) as any as S.Schema<NamespacesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8874,7 +8950,7 @@ export const ListNamespaceSharedAccessKeys: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c10, 0) as any as S.Schema<ListNamespaceSharedAccessKeysRequest>,
-  output: __S(3264, __c204, 0) as any as S.Schema<NamespaceSharedAccessKeys>,
+  output: __S(3344, __c209, 0) as any as S.Schema<NamespaceSharedAccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8923,7 +8999,7 @@ export const ListNamespaceTopicSharedAccessKeys: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(208, __c13, 0) as any as S.Schema<ListNamespaceTopicSharedAccessKeysRequest>,
-  output: __S(3264, __c204, 0) as any as S.Schema<TopicSharedAccessKeys>,
+  output: __S(3344, __c209, 0) as any as S.Schema<TopicSharedAccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9013,7 +9089,7 @@ export const ListPartnerNamespaceSharedAccessKeys: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(352, __c22, 0) as any as S.Schema<ListPartnerNamespaceSharedAccessKeysRequest>,
-  output: __S(3264, __c204, 0) as any as S.Schema<PartnerNamespaceSharedAccessKeys>,
+  output: __S(3344, __c209, 0) as any as S.Schema<PartnerNamespaceSharedAccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9092,7 +9168,7 @@ export const ListPartnerTopicEventSubscriptionByPartnerTopic: API.OperationMetho
     __c29,
     0,
   ) as any as S.Schema<ListPartnerTopicEventSubscriptionByPartnerTopicRequest>,
-  output: __S(3233, __c202, 1) as any as S.Schema<EventSubscriptionsListResult>,
+  output: __S(3313, __c207, 1) as any as S.Schema<EventSubscriptionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9186,7 +9262,7 @@ export const ListSystemTopicEventSubscriptionBySystemTopic: API.OperationMethod<
     __c37,
     0,
   ) as any as S.Schema<ListSystemTopicEventSubscriptionBySystemTopicRequest>,
-  output: __S(3233, __c202, 1) as any as S.Schema<EventSubscriptionsListResult>,
+  output: __S(3313, __c207, 1) as any as S.Schema<EventSubscriptionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9231,7 +9307,7 @@ export const ListTopicEventSubscriptions: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(656, __c41, 0) as any as S.Schema<ListTopicEventSubscriptionsRequest>,
-  output: __S(3233, __c202, 1) as any as S.Schema<EventSubscriptionsListResult>,
+  output: __S(3313, __c207, 1) as any as S.Schema<EventSubscriptionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9261,7 +9337,7 @@ export const ListTopicSharedAccessKeys: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(704, __c44, 0) as any as S.Schema<ListTopicSharedAccessKeysRequest>,
-  output: __S(3264, __c204, 0) as any as S.Schema<TopicSharedAccessKeys>,
+  output: __S(3344, __c209, 0) as any as S.Schema<TopicSharedAccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9336,7 +9412,7 @@ export const NamespacesCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(803, __c50, 3) as any as S.Schema<NamespacesCreateOrUpdateRequest>,
-  output: __S(2441, __c152, 9) as any as S.Schema<NamespacesCreateOrUpdateResponse>,
+  output: __S(2464, __c154, 0) as any as S.Schema<NamespacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9356,9 +9432,9 @@ export const NamespaceTopicEventSubscriptionsCreateOrUpdate: API.OperationMethod
     0,
   ) as any as S.Schema<NamespaceTopicEventSubscriptionsCreateOrUpdateRequest>,
   output: __S(
-    2517,
-    __c157,
-    5,
+    2576,
+    __c161,
+    0,
   ) as any as S.Schema<NamespaceTopicEventSubscriptionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9374,7 +9450,7 @@ export const NamespaceTopicsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(865, __c54, 1) as any as S.Schema<NamespaceTopicsCreateOrUpdateRequest>,
-  output: __S(2481, __c155, 1) as any as S.Schema<NamespaceTopicsCreateOrUpdateResponse>,
+  output: __S(2528, __c158, 0) as any as S.Schema<NamespaceTopicsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9419,7 +9495,7 @@ export const PartnerNamespacesCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(913, __c57, 1) as any as S.Schema<PartnerNamespacesCreateOrUpdateRequest>,
-  output: __S(2593, __c162, 1) as any as S.Schema<PartnerNamespacesCreateOrUpdateResponse>,
+  output: __S(2673, __c167, 1) as any as S.Schema<PartnerNamespacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9434,7 +9510,7 @@ export const PartnerRegistrationsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(929, __c58, 1) as any as S.Schema<PartnerRegistrationsCreateOrUpdateRequest>,
-  output: __S(2641, __c165, 1) as any as S.Schema<PartnerRegistrationsCreateOrUpdateResponse>,
+  output: __S(2721, __c170, 1) as any as S.Schema<PartnerRegistrationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9450,8 +9526,8 @@ export const PartnerTopicEventSubscriptionsCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(944, __c59, 0) as any as S.Schema<PartnerTopicEventSubscriptionsCreateOrUpdateRequest>,
   output: __S(
-    1859,
-    __c116,
+    1891,
+    __c118,
     3,
   ) as any as S.Schema<PartnerTopicEventSubscriptionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -9483,7 +9559,7 @@ export const PermissionBindingsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(993, __c62, 1) as any as S.Schema<PermissionBindingsCreateOrUpdateRequest>,
-  output: __S(2737, __c171, 1) as any as S.Schema<PermissionBindingsCreateOrUpdateResponse>,
+  output: __S(2817, __c176, 1) as any as S.Schema<PermissionBindingsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9498,7 +9574,7 @@ export const RegenerateDomainKey: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1008, __c63, 0) as any as S.Schema<RegenerateDomainKeyRequest>,
-  output: __S(3264, __c204, 0) as any as S.Schema<DomainSharedAccessKeys>,
+  output: __S(3344, __c209, 0) as any as S.Schema<DomainSharedAccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9508,12 +9584,12 @@ export type RegenerateNamespaceKeyError = AzureOpError;
 /** Regenerate key for a namespace. Regenerate a shared access key for a namespace. */
 export const RegenerateNamespaceKey: API.OperationMethod<
   RegenerateNamespaceKeyRequest,
-  NamespaceSharedAccessKeys,
+  RegenerateNamespaceKeyResponse,
   RegenerateNamespaceKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1024, __c64, 0) as any as S.Schema<RegenerateNamespaceKeyRequest>,
-  output: __S(3264, __c204, 0) as any as S.Schema<NamespaceSharedAccessKeys>,
+  output: __S(1040, __c65, 0) as any as S.Schema<RegenerateNamespaceKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9523,12 +9599,12 @@ export type RegenerateNamespaceTopicKeyError = AzureOpError;
 /** Regenerate key for a namespace topic. Regenerate a shared access key for a namespace topic. */
 export const RegenerateNamespaceTopicKey: API.OperationMethod<
   RegenerateNamespaceTopicKeyRequest,
-  TopicSharedAccessKeys,
+  RegenerateNamespaceTopicKeyResponse,
   RegenerateNamespaceTopicKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1040, __c65, 0) as any as S.Schema<RegenerateNamespaceTopicKeyRequest>,
-  output: __S(3264, __c204, 0) as any as S.Schema<TopicSharedAccessKeys>,
+  input: __S(1056, __c66, 0) as any as S.Schema<RegenerateNamespaceTopicKeyRequest>,
+  output: __S(1040, __c65, 0) as any as S.Schema<RegenerateNamespaceTopicKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9542,8 +9618,8 @@ export const RegeneratePartnerNamespaceKey: API.OperationMethod<
   RegeneratePartnerNamespaceKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c66, 0) as any as S.Schema<RegeneratePartnerNamespaceKeyRequest>,
-  output: __S(3264, __c204, 0) as any as S.Schema<PartnerNamespaceSharedAccessKeys>,
+  input: __S(1072, __c67, 0) as any as S.Schema<RegeneratePartnerNamespaceKeyRequest>,
+  output: __S(3344, __c209, 0) as any as S.Schema<PartnerNamespaceSharedAccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9553,12 +9629,12 @@ export type RegenerateTopicKeyError = AzureOpError;
 /** Regenerate key for a topic. Regenerate a shared access key for a topic. */
 export const RegenerateTopicKey: API.OperationMethod<
   RegenerateTopicKeyRequest,
-  TopicSharedAccessKeys,
+  RegenerateTopicKeyResponse,
   RegenerateTopicKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1072, __c67, 0) as any as S.Schema<RegenerateTopicKeyRequest>,
-  output: __S(3264, __c204, 0) as any as S.Schema<TopicSharedAccessKeys>,
+  input: __S(1088, __c68, 0) as any as S.Schema<RegenerateTopicKeyRequest>,
+  output: __S(1040, __c65, 0) as any as S.Schema<RegenerateTopicKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9572,10 +9648,10 @@ export const SystemTopicEventSubscriptionsCreateOrUpdate: API.OperationMethod<
   SystemTopicEventSubscriptionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c68, 0) as any as S.Schema<SystemTopicEventSubscriptionsCreateOrUpdateRequest>,
+  input: __S(1104, __c69, 0) as any as S.Schema<SystemTopicEventSubscriptionsCreateOrUpdateRequest>,
   output: __S(
-    1859,
-    __c116,
+    1891,
+    __c118,
     3,
   ) as any as S.Schema<SystemTopicEventSubscriptionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -9591,8 +9667,8 @@ export const SystemTopicsCreateOrUpdate: API.OperationMethod<
   SystemTopicsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1105, __c69, 1) as any as S.Schema<SystemTopicsCreateOrUpdateRequest>,
-  output: __S(2817, __c176, 1) as any as S.Schema<SystemTopicsCreateOrUpdateResponse>,
+  input: __S(1121, __c70, 1) as any as S.Schema<SystemTopicsCreateOrUpdateRequest>,
+  output: __S(2897, __c181, 1) as any as S.Schema<SystemTopicsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9606,8 +9682,8 @@ export const TopicEventSubscriptionsCreateOrUpdate: API.OperationMethod<
   TopicEventSubscriptionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c70, 0) as any as S.Schema<TopicEventSubscriptionsCreateOrUpdateRequest>,
-  output: __S(1859, __c116, 3) as any as S.Schema<TopicEventSubscriptionsCreateOrUpdateResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<TopicEventSubscriptionsCreateOrUpdateRequest>,
+  output: __S(1891, __c118, 3) as any as S.Schema<TopicEventSubscriptionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9621,8 +9697,8 @@ export const TopicsCreateOrUpdate: API.OperationMethod<
   TopicsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1137, __c71, 1) as any as S.Schema<TopicsCreateOrUpdateRequest>,
-  output: __S(2929, __c183, 1) as any as S.Schema<TopicsCreateOrUpdateResponse>,
+  input: __S(1153, __c72, 1) as any as S.Schema<TopicsCreateOrUpdateRequest>,
+  output: __S(3009, __c188, 1) as any as S.Schema<TopicsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9636,8 +9712,8 @@ export const TopicSpacesCreateOrUpdate: API.OperationMethod<
   TopicSpacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1169, __c73, 1) as any as S.Schema<TopicSpacesCreateOrUpdateRequest>,
-  output: __S(3009, __c188, 1) as any as S.Schema<TopicSpacesCreateOrUpdateResponse>,
+  input: __S(1185, __c74, 1) as any as S.Schema<TopicSpacesCreateOrUpdateRequest>,
+  output: __S(3089, __c193, 1) as any as S.Schema<TopicSpacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9651,8 +9727,8 @@ export const UpdateChannel: API.OperationMethod<
   UpdateChannelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1186, __c74, 2) as any as S.Schema<UpdateChannelRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<UpdateChannelResponse>,
+  input: __S(1202, __c75, 2) as any as S.Schema<UpdateChannelRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<UpdateChannelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9666,8 +9742,8 @@ export const UpdateDomain: API.OperationMethod<
   UpdateDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1201, __c75, 1) as any as S.Schema<UpdateDomainRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<UpdateDomainResponse>,
+  input: __S(1233, __c77, 1) as any as S.Schema<UpdateDomainRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<UpdateDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9681,8 +9757,8 @@ export const UpdateDomainEventSubscription: API.OperationMethod<
   UpdateDomainEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c76, 0) as any as S.Schema<UpdateDomainEventSubscriptionRequest>,
-  output: __S(1859, __c116, 3) as any as S.Schema<UpdateDomainEventSubscriptionResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<UpdateDomainEventSubscriptionRequest>,
+  output: __S(1891, __c118, 3) as any as S.Schema<UpdateDomainEventSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9696,8 +9772,8 @@ export const UpdateDomainTopicEventSubscription: API.OperationMethod<
   UpdateDomainTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1232, __c77, 0) as any as S.Schema<UpdateDomainTopicEventSubscriptionRequest>,
-  output: __S(1859, __c116, 3) as any as S.Schema<UpdateDomainTopicEventSubscriptionResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<UpdateDomainTopicEventSubscriptionRequest>,
+  output: __S(1891, __c118, 3) as any as S.Schema<UpdateDomainTopicEventSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9711,8 +9787,8 @@ export const UpdateEventSubscription: API.OperationMethod<
   UpdateEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c78, 0) as any as S.Schema<UpdateEventSubscriptionRequest>,
-  output: __S(1859, __c116, 3) as any as S.Schema<UpdateEventSubscriptionResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<UpdateEventSubscriptionRequest>,
+  output: __S(1891, __c118, 3) as any as S.Schema<UpdateEventSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9726,8 +9802,8 @@ export const UpdateNamespace: API.OperationMethod<
   UpdateNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1265, __c79, 1) as any as S.Schema<UpdateNamespaceRequest>,
-  output: __S(2441, __c152, 9) as any as S.Schema<UpdateNamespaceResponse>,
+  input: __S(1297, __c81, 1) as any as S.Schema<UpdateNamespaceRequest>,
+  output: __S(1298, __c81, 2) as any as S.Schema<UpdateNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9741,8 +9817,8 @@ export const UpdateNamespaceTopic: API.OperationMethod<
   UpdateNamespaceTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1281, __c80, 1) as any as S.Schema<UpdateNamespaceTopicRequest>,
-  output: __S(2481, __c155, 1) as any as S.Schema<UpdateNamespaceTopicResponse>,
+  input: __S(1313, __c82, 1) as any as S.Schema<UpdateNamespaceTopicRequest>,
+  output: __S(1314, __c82, 2) as any as S.Schema<UpdateNamespaceTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9756,8 +9832,8 @@ export const UpdateNamespaceTopicEventSubscription: API.OperationMethod<
   UpdateNamespaceTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1296, __c81, 0) as any as S.Schema<UpdateNamespaceTopicEventSubscriptionRequest>,
-  output: __S(2517, __c157, 5) as any as S.Schema<UpdateNamespaceTopicEventSubscriptionResponse>,
+  input: __S(1328, __c83, 0) as any as S.Schema<UpdateNamespaceTopicEventSubscriptionRequest>,
+  output: __S(1329, __c83, 1) as any as S.Schema<UpdateNamespaceTopicEventSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9771,7 +9847,7 @@ export const UpdatePartnerConfiguration: API.OperationMethod<
   UpdatePartnerConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1313, __c82, 1) as any as S.Schema<UpdatePartnerConfigurationRequest>,
+  input: __S(1345, __c84, 1) as any as S.Schema<UpdatePartnerConfigurationRequest>,
   output: __S(116, __c7, 4) as any as S.Schema<UpdatePartnerConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9786,8 +9862,8 @@ export const UpdatePartnerNamespace: API.OperationMethod<
   UpdatePartnerNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1345, __c84, 1) as any as S.Schema<UpdatePartnerNamespaceRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<UpdatePartnerNamespaceResponse>,
+  input: __S(1377, __c86, 1) as any as S.Schema<UpdatePartnerNamespaceRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<UpdatePartnerNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9801,8 +9877,8 @@ export const UpdatePartnerRegistration: API.OperationMethod<
   UpdatePartnerRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1360, __c85, 0) as any as S.Schema<UpdatePartnerRegistrationRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<UpdatePartnerRegistrationResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<UpdatePartnerRegistrationRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<UpdatePartnerRegistrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9816,8 +9892,8 @@ export const UpdatePartnerTopic: API.OperationMethod<
   UpdatePartnerTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c86, 0) as any as S.Schema<UpdatePartnerTopicRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<UpdatePartnerTopicResponse>,
+  input: __S(1408, __c88, 0) as any as S.Schema<UpdatePartnerTopicRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<UpdatePartnerTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9831,8 +9907,8 @@ export const UpdatePartnerTopicEventSubscription: API.OperationMethod<
   UpdatePartnerTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1392, __c87, 0) as any as S.Schema<UpdatePartnerTopicEventSubscriptionRequest>,
-  output: __S(1859, __c116, 3) as any as S.Schema<UpdatePartnerTopicEventSubscriptionResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<UpdatePartnerTopicEventSubscriptionRequest>,
+  output: __S(1891, __c118, 3) as any as S.Schema<UpdatePartnerTopicEventSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9846,8 +9922,8 @@ export const UpdatePrivateEndpointConnection: API.OperationMethod<
   UpdatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c88, 0) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>,
-  output: __S(1891, __c118, 3) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>,
+  input: __S(1440, __c90, 0) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>,
+  output: __S(1923, __c120, 3) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9861,8 +9937,8 @@ export const UpdateSystemTopic: API.OperationMethod<
   UpdateSystemTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1424, __c89, 0) as any as S.Schema<UpdateSystemTopicRequest>,
-  output: __S(2817, __c176, 1) as any as S.Schema<UpdateSystemTopicResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<UpdateSystemTopicRequest>,
+  output: __S(2897, __c181, 1) as any as S.Schema<UpdateSystemTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9876,8 +9952,8 @@ export const UpdateSystemTopicEventSubscription: API.OperationMethod<
   UpdateSystemTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c90, 0) as any as S.Schema<UpdateSystemTopicEventSubscriptionRequest>,
-  output: __S(1859, __c116, 3) as any as S.Schema<UpdateSystemTopicEventSubscriptionResponse>,
+  input: __S(1472, __c92, 0) as any as S.Schema<UpdateSystemTopicEventSubscriptionRequest>,
+  output: __S(1891, __c118, 3) as any as S.Schema<UpdateSystemTopicEventSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9891,8 +9967,8 @@ export const UpdateTopic: API.OperationMethod<
   UpdateTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1457, __c91, 1) as any as S.Schema<UpdateTopicRequest>,
-  output: __S(2864, __c179, 0) as any as S.Schema<UpdateTopicResponse>,
+  input: __S(1489, __c93, 1) as any as S.Schema<UpdateTopicRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<UpdateTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9906,8 +9982,8 @@ export const UpdateTopicEventSubscription: API.OperationMethod<
   UpdateTopicEventSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c92, 0) as any as S.Schema<UpdateTopicEventSubscriptionRequest>,
-  output: __S(1859, __c116, 3) as any as S.Schema<UpdateTopicEventSubscriptionResponse>,
+  input: __S(1504, __c94, 0) as any as S.Schema<UpdateTopicEventSubscriptionRequest>,
+  output: __S(1891, __c118, 3) as any as S.Schema<UpdateTopicEventSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9921,8 +9997,8 @@ export const ValidateNamespaceCustomDomainOwnership: API.OperationMethod<
   ValidateNamespaceCustomDomainOwnershipError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1488, __c93, 0) as any as S.Schema<ValidateNamespaceCustomDomainOwnershipRequest>,
-  output: __S(1489, __c93, 1) as any as S.Schema<CustomDomainOwnershipValidationResult>,
+  input: __S(1520, __c95, 0) as any as S.Schema<ValidateNamespaceCustomDomainOwnershipRequest>,
+  output: __S(1521, __c95, 1) as any as S.Schema<CustomDomainOwnershipValidationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10182,7 +10258,7 @@ function __c11(j: number): any {
         ),
       ).annotate({ identifier: "ListNamespaceTopicByNamespaceRequest" });
     case 1:
-      return S.Array(__S(2481, __c155, 1));
+      return S.Array(__S(2528, __c158, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10213,7 +10289,7 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "ListNamespaceTopicEventSubscriptionByNamespaceTopicRequest" });
     case 1:
-      return S.Array(__S(2517, __c157, 5));
+      return S.Array(__S(2576, __c161, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10358,7 +10434,7 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2593, __c162, 1));
+      return S.Array(__S(2673, __c167, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10448,7 +10524,7 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2641, __c165, 1));
+      return S.Array(__S(2721, __c170, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10570,7 +10646,7 @@ function __c30(j: number): any {
         ),
       ).annotate({ identifier: "ListPermissionBindingByNamespaceRequest" });
     case 1:
-      return S.Array(__S(2737, __c171, 1));
+      return S.Array(__S(2817, __c176, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10603,7 +10679,7 @@ function __c31(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1904, __c119, 0)),
+          value: S.optional(__S(1936, __c121, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
@@ -10630,7 +10706,7 @@ function __c32(j: number): any {
         ),
       ).annotate({ identifier: "ListPrivateLinkResourceByResourceRequest" });
     case 1:
-      return S.Array(__S(2785, __c174, 1));
+      return S.Array(__S(2865, __c179, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10663,7 +10739,7 @@ function __c33(j: number): any {
 function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2817, __c176, 1));
+      return S.Array(__S(2897, __c181, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10756,7 +10832,7 @@ function __c38(j: number): any {
 function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2929, __c183, 1));
+      return S.Array(__S(3009, __c188, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10896,7 +10972,7 @@ function __c45(j: number): any {
         ),
       ).annotate({ identifier: "ListTopicSpaceByNamespaceRequest" });
     case 1:
-      return S.Array(__S(3009, __c188, 1));
+      return S.Array(__S(3089, __c193, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10937,7 +11013,7 @@ function __c47(j: number): any {
         ),
       ).annotate({ identifier: "ListTopicTypesRequest" });
     case 1:
-      return S.Array(__S(3044, __c190, 4));
+      return S.Array(__S(3124, __c195, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10983,7 +11059,7 @@ function __c49(j: number): any {
         ),
       ).annotate({ identifier: "ListVerifiedPartnersRequest" });
     case 1:
-      return S.Array(__S(3074, __c192, 2));
+      return S.Array(__S(3154, __c197, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10998,7 +11074,7 @@ function __c50(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(1890, __c118, 2)),
+          properties: S.optional(__S(1922, __c120, 2)),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionInput" });
     case 1:
@@ -11011,7 +11087,7 @@ function __c50(j: number): any {
           topicSpacesConfiguration: S.optional(__S(817, __c51, 1)),
           isZoneRedundant: S.optional(S.Boolean),
           publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(1921, __c120, 1)),
+          inboundIpRules: S.optional(__S(1953, __c122, 1)),
           minimumTlsVersionAllowed: S.optional(S.String),
         }),
       ).annotate({ identifier: "NamespacePropertiesInput" });
@@ -11024,7 +11100,7 @@ function __c50(j: number): any {
           location: S.String,
           tags: S.optional(__S(32, __c2, 0)),
           properties: S.optional(__S(802, __c50, 2)),
-          sku: S.optional(__S(2440, __c152, 8)),
+          sku: S.optional(__S(2488, __c155, 8)),
           identity: S.optional(__S(66, __c4, 2)),
         }).pipe(
           T.Http({
@@ -11042,7 +11118,7 @@ function __c51(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          customDomains: S.optional(__S(2449, __c153, 1)),
+          customDomains: S.optional(__S(2497, __c156, 1)),
         }),
       ).annotate({ identifier: "TopicsConfigurationInput" });
     case 1:
@@ -11050,11 +11126,11 @@ function __c51(j: number): any {
         S.Struct({
           state: S.optional(S.String),
           routeTopicResourceId: S.optional(S.String),
-          routingEnrichments: S.optional(__S(2437, __c152, 5)),
+          routingEnrichments: S.optional(__S(2485, __c155, 5)),
           maximumSessionExpiryInHours: S.optional(S.Number),
           maximumClientSessionsPerAuthenticationName: S.optional(S.Number),
-          routingIdentityInfo: S.optional(__S(1824, __c114, 0)),
-          customDomains: S.optional(__S(2449, __c153, 1)),
+          routingIdentityInfo: S.optional(__S(1856, __c116, 0)),
+          customDomains: S.optional(__S(2497, __c156, 1)),
         }),
       ).annotate({ identifier: "TopicSpacesConfigurationInput" });
   }
@@ -11086,9 +11162,9 @@ function __c53(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          deliveryConfiguration: S.optional(__S(2514, __c157, 2)),
+          deliveryConfiguration: S.optional(__S(2594, __c162, 2)),
           eventDeliverySchema: S.optional(S.String),
-          filtersConfiguration: S.optional(__S(2515, __c157, 3)),
+          filtersConfiguration: S.optional(__S(2595, __c162, 3)),
           expirationTimeUtc: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubscriptionPropertiesInput" });
@@ -11173,7 +11249,7 @@ function __c57(j: number): any {
           partnerRegistrationFullyQualifiedId: S.optional(S.String),
           minimumTlsVersionAllowed: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(1921, __c120, 1)),
+          inboundIpRules: S.optional(__S(1953, __c122, 1)),
           disableLocalAuth: S.optional(S.Boolean),
           partnerTopicRoutingMode: S.optional(S.String),
         }),
@@ -11235,7 +11311,7 @@ function __c59(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           partnerTopicName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1808, __c113, 0)),
+          properties: S.optional(__S(1840, __c115, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11378,6 +11454,18 @@ function __c65(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          key1: S.optional(S.String),
+          key2: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "RegenerateNamespaceKeyResponse" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
@@ -11394,7 +11482,7 @@ function __c65(j: number): any {
       ).annotate({ identifier: "RegenerateNamespaceTopicKeyRequest" });
   }
 }
-function __c66(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11414,7 +11502,7 @@ function __c66(j: number): any {
       ).annotate({ identifier: "RegeneratePartnerNamespaceKeyRequest" });
   }
 }
-function __c67(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11434,7 +11522,7 @@ function __c67(j: number): any {
       ).annotate({ identifier: "RegenerateTopicKeyRequest" });
   }
 }
-function __c68(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11443,7 +11531,7 @@ function __c68(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           systemTopicName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1808, __c113, 0)),
+          properties: S.optional(__S(1840, __c115, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11455,7 +11543,7 @@ function __c68(j: number): any {
       ).annotate({ identifier: "SystemTopicEventSubscriptionsCreateOrUpdateRequest" });
   }
 }
-function __c69(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11472,7 +11560,7 @@ function __c69(j: number): any {
           systemTopicName: S.String.pipe(T.Label()),
           location: S.String,
           tags: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(1104, __c69, 0)),
+          properties: S.optional(__S(1120, __c70, 0)),
           identity: S.optional(__S(66, __c4, 2)),
         }).pipe(
           T.Http({
@@ -11485,7 +11573,7 @@ function __c69(j: number): any {
       ).annotate({ identifier: "SystemTopicsCreateOrUpdateRequest" });
   }
 }
-function __c70(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11494,7 +11582,7 @@ function __c70(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           topicName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1808, __c113, 0)),
+          properties: S.optional(__S(1840, __c115, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11506,7 +11594,7 @@ function __c70(j: number): any {
       ).annotate({ identifier: "TopicEventSubscriptionsCreateOrUpdateRequest" });
   }
 }
-function __c71(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11514,9 +11602,9 @@ function __c71(j: number): any {
           eventTypeInfo: S.optional(__S(50, __c3, 2)),
           minimumTlsVersionAllowed: S.optional(S.String),
           inputSchema: S.optional(S.String),
-          inputSchemaMapping: S.optional(__S(1936, __c121, 0)),
+          inputSchemaMapping: S.optional(__S(1968, __c123, 0)),
           publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(1921, __c120, 1)),
+          inboundIpRules: S.optional(__S(1953, __c122, 1)),
           disableLocalAuth: S.optional(S.Boolean),
           dataResidencyBoundary: S.optional(S.String),
         }),
@@ -11529,7 +11617,7 @@ function __c71(j: number): any {
           topicName: S.String.pipe(T.Label()),
           location: S.String,
           tags: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(1136, __c71, 0)),
+          properties: S.optional(__S(1152, __c72, 0)),
           identity: S.optional(__S(66, __c4, 2)),
         }).pipe(
           T.Http({
@@ -11542,7 +11630,7 @@ function __c71(j: number): any {
       ).annotate({ identifier: "TopicsCreateOrUpdateRequest" });
   }
 }
-function __c72(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11560,13 +11648,13 @@ function __c72(j: number): any {
       ).annotate({ identifier: "DeleteEventSubscriptionRequest" });
   }
 }
-function __c73(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          topicTemplates: S.optional(__S(2336, __c146, 0)),
+          topicTemplates: S.optional(__S(2368, __c148, 0)),
         }),
       ).annotate({ identifier: "TopicSpacePropertiesInput" });
     case 1:
@@ -11576,7 +11664,7 @@ function __c73(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           topicSpaceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1168, __c73, 0)),
+          properties: S.optional(__S(1184, __c74, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11588,7 +11676,7 @@ function __c73(j: number): any {
       ).annotate({ identifier: "TopicSpacesCreateOrUpdateRequest" });
   }
 }
-function __c74(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11600,7 +11688,7 @@ function __c74(j: number): any {
       return S.suspend(() =>
         S.Struct({
           expirationTimeIfNotActivatedUtc: S.optional(S.String),
-          partnerTopicInfo: S.optional(__S(1184, __c74, 0)),
+          partnerTopicInfo: S.optional(__S(1200, __c75, 0)),
         }),
       ).annotate({ identifier: "ChannelUpdateParametersProperties" });
     case 2:
@@ -11610,7 +11698,7 @@ function __c74(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           partnerNamespaceName: S.String.pipe(T.Label()),
           channelName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1185, __c74, 1)),
+          properties: S.optional(__S(1201, __c75, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11622,13 +11710,19 @@ function __c74(j: number): any {
       ).annotate({ identifier: "UpdateChannelRequest" });
   }
 }
-function __c75(j: number): any {
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "UpdateChannelResponse" });
+  }
+}
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(1921, __c120, 1)),
+          inboundIpRules: S.optional(__S(1953, __c122, 1)),
           minimumTlsVersionAllowed: S.optional(S.String),
           disableLocalAuth: S.optional(S.Boolean),
           autoCreateTopicWithFirstSubscription: S.optional(S.Boolean),
@@ -11644,7 +11738,7 @@ function __c75(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
           tags: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(1200, __c75, 0)),
+          properties: S.optional(__S(1232, __c77, 0)),
           identity: S.optional(__S(66, __c4, 2)),
         }).pipe(
           T.Http({
@@ -11657,7 +11751,7 @@ function __c75(j: number): any {
       ).annotate({ identifier: "UpdateDomainRequest" });
   }
 }
-function __c76(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11666,15 +11760,15 @@ function __c76(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          destination: S.optional(__S(1840, __c115, 0)),
-          deliveryWithResourceIdentity: S.optional(__S(1841, __c115, 1)),
-          filter: S.optional(__S(1856, __c116, 0)),
-          labels: S.optional(__S(2336, __c146, 0)),
+          destination: S.optional(__S(1872, __c117, 0)),
+          deliveryWithResourceIdentity: S.optional(__S(1873, __c117, 1)),
+          filter: S.optional(__S(1888, __c118, 0)),
+          labels: S.optional(__S(2368, __c148, 0)),
           expirationTimeUtc: S.optional(S.String),
           eventDeliverySchema: S.optional(S.String),
-          retryPolicy: S.optional(__S(1857, __c116, 1)),
-          deadLetterDestination: S.optional(__S(1840, __c115, 0)),
-          deadLetterWithResourceIdentity: S.optional(__S(1844, __c115, 4)),
+          retryPolicy: S.optional(__S(1889, __c118, 1)),
+          deadLetterDestination: S.optional(__S(1872, __c117, 0)),
+          deadLetterWithResourceIdentity: S.optional(__S(1876, __c117, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11686,7 +11780,7 @@ function __c76(j: number): any {
       ).annotate({ identifier: "UpdateDomainEventSubscriptionRequest" });
   }
 }
-function __c77(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11696,15 +11790,15 @@ function __c77(j: number): any {
           domainName: S.String.pipe(T.Label()),
           topicName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          destination: S.optional(__S(1840, __c115, 0)),
-          deliveryWithResourceIdentity: S.optional(__S(1841, __c115, 1)),
-          filter: S.optional(__S(1856, __c116, 0)),
-          labels: S.optional(__S(2336, __c146, 0)),
+          destination: S.optional(__S(1872, __c117, 0)),
+          deliveryWithResourceIdentity: S.optional(__S(1873, __c117, 1)),
+          filter: S.optional(__S(1888, __c118, 0)),
+          labels: S.optional(__S(2368, __c148, 0)),
           expirationTimeUtc: S.optional(S.String),
           eventDeliverySchema: S.optional(S.String),
-          retryPolicy: S.optional(__S(1857, __c116, 1)),
-          deadLetterDestination: S.optional(__S(1840, __c115, 0)),
-          deadLetterWithResourceIdentity: S.optional(__S(1844, __c115, 4)),
+          retryPolicy: S.optional(__S(1889, __c118, 1)),
+          deadLetterDestination: S.optional(__S(1872, __c117, 0)),
+          deadLetterWithResourceIdentity: S.optional(__S(1876, __c117, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11716,22 +11810,22 @@ function __c77(j: number): any {
       ).annotate({ identifier: "UpdateDomainTopicEventSubscriptionRequest" });
   }
 }
-function __c78(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          destination: S.optional(__S(1840, __c115, 0)),
-          deliveryWithResourceIdentity: S.optional(__S(1841, __c115, 1)),
-          filter: S.optional(__S(1856, __c116, 0)),
-          labels: S.optional(__S(2336, __c146, 0)),
+          destination: S.optional(__S(1872, __c117, 0)),
+          deliveryWithResourceIdentity: S.optional(__S(1873, __c117, 1)),
+          filter: S.optional(__S(1888, __c118, 0)),
+          labels: S.optional(__S(2368, __c148, 0)),
           expirationTimeUtc: S.optional(S.String),
           eventDeliverySchema: S.optional(S.String),
-          retryPolicy: S.optional(__S(1857, __c116, 1)),
-          deadLetterDestination: S.optional(__S(1840, __c115, 0)),
-          deadLetterWithResourceIdentity: S.optional(__S(1844, __c115, 4)),
+          retryPolicy: S.optional(__S(1889, __c118, 1)),
+          deadLetterDestination: S.optional(__S(1872, __c117, 0)),
+          deadLetterWithResourceIdentity: S.optional(__S(1876, __c117, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11743,7 +11837,7 @@ function __c78(j: number): any {
       ).annotate({ identifier: "UpdateEventSubscriptionRequest" });
   }
 }
-function __c79(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11751,7 +11845,7 @@ function __c79(j: number): any {
           topicSpacesConfiguration: S.optional(__S(817, __c51, 1)),
           topicsConfiguration: S.optional(__S(816, __c51, 0)),
           publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(1921, __c120, 1)),
+          inboundIpRules: S.optional(__S(1953, __c122, 1)),
         }),
       ).annotate({ identifier: "NamespaceUpdateParameterProperties" });
     case 1:
@@ -11762,8 +11856,8 @@ function __c79(j: number): any {
           namespaceName: S.String.pipe(T.Label()),
           tags: S.optional(__S(32, __c2, 0)),
           identity: S.optional(__S(66, __c4, 2)),
-          sku: S.optional(__S(2440, __c152, 8)),
-          properties: S.optional(__S(1264, __c79, 0)),
+          sku: S.optional(__S(2488, __c155, 8)),
+          properties: S.optional(__S(1296, __c81, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11773,9 +11867,24 @@ function __c79(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateNamespaceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.String,
+          tags: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(2487, __c155, 7)),
+          sku: S.optional(__S(2488, __c155, 8)),
+          identity: S.optional(__S(66, __c4, 2)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateNamespaceResponse" });
   }
 }
-function __c80(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11790,7 +11899,7 @@ function __c80(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           topicName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1280, __c80, 0)),
+          properties: S.optional(__S(1312, __c82, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11800,9 +11909,20 @@ function __c80(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateNamespaceTopicRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(2544, __c159, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateNamespaceTopicResponse" });
   }
 }
-function __c81(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11822,9 +11942,20 @@ function __c81(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateNamespaceTopicEventSubscriptionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(2596, __c162, 4)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateNamespaceTopicEventSubscriptionResponse" });
   }
 }
-function __c82(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11838,7 +11969,7 @@ function __c82(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           tags: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(1312, __c82, 0)),
+          properties: S.optional(__S(1344, __c84, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11850,7 +11981,7 @@ function __c82(j: number): any {
       ).annotate({ identifier: "UpdatePartnerConfigurationRequest" });
   }
 }
-function __c83(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11869,13 +12000,13 @@ function __c83(j: number): any {
       ).annotate({ identifier: "DeleteNamespaceRequest" });
   }
 }
-function __c84(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(1921, __c120, 1)),
+          inboundIpRules: S.optional(__S(1953, __c122, 1)),
           minimumTlsVersionAllowed: S.optional(S.String),
           disableLocalAuth: S.optional(S.Boolean),
         }),
@@ -11887,7 +12018,7 @@ function __c84(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           partnerNamespaceName: S.String.pipe(T.Label()),
           tags: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(1344, __c84, 0)),
+          properties: S.optional(__S(1376, __c86, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11899,7 +12030,7 @@ function __c84(j: number): any {
       ).annotate({ identifier: "UpdatePartnerNamespaceRequest" });
   }
 }
-function __c85(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11919,7 +12050,7 @@ function __c85(j: number): any {
       ).annotate({ identifier: "UpdatePartnerRegistrationRequest" });
   }
 }
-function __c86(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11940,7 +12071,7 @@ function __c86(j: number): any {
       ).annotate({ identifier: "UpdatePartnerTopicRequest" });
   }
 }
-function __c87(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11949,15 +12080,15 @@ function __c87(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           partnerTopicName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          destination: S.optional(__S(1840, __c115, 0)),
-          deliveryWithResourceIdentity: S.optional(__S(1841, __c115, 1)),
-          filter: S.optional(__S(1856, __c116, 0)),
-          labels: S.optional(__S(2336, __c146, 0)),
+          destination: S.optional(__S(1872, __c117, 0)),
+          deliveryWithResourceIdentity: S.optional(__S(1873, __c117, 1)),
+          filter: S.optional(__S(1888, __c118, 0)),
+          labels: S.optional(__S(2368, __c148, 0)),
           expirationTimeUtc: S.optional(S.String),
           eventDeliverySchema: S.optional(S.String),
-          retryPolicy: S.optional(__S(1857, __c116, 1)),
-          deadLetterDestination: S.optional(__S(1840, __c115, 0)),
-          deadLetterWithResourceIdentity: S.optional(__S(1844, __c115, 4)),
+          retryPolicy: S.optional(__S(1889, __c118, 1)),
+          deadLetterDestination: S.optional(__S(1872, __c117, 0)),
+          deadLetterWithResourceIdentity: S.optional(__S(1876, __c117, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11969,7 +12100,7 @@ function __c87(j: number): any {
       ).annotate({ identifier: "UpdatePartnerTopicEventSubscriptionRequest" });
   }
 }
-function __c88(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11979,7 +12110,7 @@ function __c88(j: number): any {
           parentType: S.String.pipe(T.Label()),
           parentName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1890, __c118, 2)),
+          properties: S.optional(__S(1922, __c120, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11991,7 +12122,7 @@ function __c88(j: number): any {
       ).annotate({ identifier: "UpdatePrivateEndpointConnectionRequest" });
   }
 }
-function __c89(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12012,7 +12143,7 @@ function __c89(j: number): any {
       ).annotate({ identifier: "UpdateSystemTopicRequest" });
   }
 }
-function __c90(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12021,15 +12152,15 @@ function __c90(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           systemTopicName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          destination: S.optional(__S(1840, __c115, 0)),
-          deliveryWithResourceIdentity: S.optional(__S(1841, __c115, 1)),
-          filter: S.optional(__S(1856, __c116, 0)),
-          labels: S.optional(__S(2336, __c146, 0)),
+          destination: S.optional(__S(1872, __c117, 0)),
+          deliveryWithResourceIdentity: S.optional(__S(1873, __c117, 1)),
+          filter: S.optional(__S(1888, __c118, 0)),
+          labels: S.optional(__S(2368, __c148, 0)),
           expirationTimeUtc: S.optional(S.String),
           eventDeliverySchema: S.optional(S.String),
-          retryPolicy: S.optional(__S(1857, __c116, 1)),
-          deadLetterDestination: S.optional(__S(1840, __c115, 0)),
-          deadLetterWithResourceIdentity: S.optional(__S(1844, __c115, 4)),
+          retryPolicy: S.optional(__S(1889, __c118, 1)),
+          deadLetterDestination: S.optional(__S(1872, __c117, 0)),
+          deadLetterWithResourceIdentity: S.optional(__S(1876, __c117, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12041,13 +12172,13 @@ function __c90(j: number): any {
       ).annotate({ identifier: "UpdateSystemTopicEventSubscriptionRequest" });
   }
 }
-function __c91(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(1921, __c120, 1)),
+          inboundIpRules: S.optional(__S(1953, __c122, 1)),
           minimumTlsVersionAllowed: S.optional(S.String),
           disableLocalAuth: S.optional(S.Boolean),
           dataResidencyBoundary: S.optional(S.String),
@@ -12062,7 +12193,7 @@ function __c91(j: number): any {
           topicName: S.String.pipe(T.Label()),
           tags: S.optional(__S(32, __c2, 0)),
           identity: S.optional(__S(66, __c4, 2)),
-          properties: S.optional(__S(1456, __c91, 0)),
+          properties: S.optional(__S(1488, __c93, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12074,7 +12205,7 @@ function __c91(j: number): any {
       ).annotate({ identifier: "UpdateTopicRequest" });
   }
 }
-function __c92(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12083,15 +12214,15 @@ function __c92(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           topicName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          destination: S.optional(__S(1840, __c115, 0)),
-          deliveryWithResourceIdentity: S.optional(__S(1841, __c115, 1)),
-          filter: S.optional(__S(1856, __c116, 0)),
-          labels: S.optional(__S(2336, __c146, 0)),
+          destination: S.optional(__S(1872, __c117, 0)),
+          deliveryWithResourceIdentity: S.optional(__S(1873, __c117, 1)),
+          filter: S.optional(__S(1888, __c118, 0)),
+          labels: S.optional(__S(2368, __c148, 0)),
           expirationTimeUtc: S.optional(S.String),
           eventDeliverySchema: S.optional(S.String),
-          retryPolicy: S.optional(__S(1857, __c116, 1)),
-          deadLetterDestination: S.optional(__S(1840, __c115, 0)),
-          deadLetterWithResourceIdentity: S.optional(__S(1844, __c115, 4)),
+          retryPolicy: S.optional(__S(1889, __c118, 1)),
+          deadLetterDestination: S.optional(__S(1872, __c117, 0)),
+          deadLetterWithResourceIdentity: S.optional(__S(1876, __c117, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12103,7 +12234,7 @@ function __c92(j: number): any {
       ).annotate({ identifier: "UpdateTopicEventSubscriptionRequest" });
   }
 }
-function __c93(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12123,13 +12254,14 @@ function __c93(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          customDomainsForTopicsConfiguration: S.optional(__S(2449, __c153, 1)),
-          customDomainsForTopicSpacesConfiguration: S.optional(__S(2449, __c153, 1)),
+          customDomainsForTopicsConfiguration: S.optional(__S(2497, __c156, 1)),
+          customDomainsForTopicSpacesConfiguration: S.optional(__S(2497, __c156, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "CustomDomainOwnershipValidationResult" });
   }
 }
-function __c94(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12149,7 +12281,7 @@ function __c94(j: number): any {
       ).annotate({ identifier: "DeleteNamespaceTopicRequest" });
   }
 }
-function __c95(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12170,7 +12302,7 @@ function __c95(j: number): any {
       ).annotate({ identifier: "DeleteNamespaceTopicEventSubscriptionRequest" });
   }
 }
-function __c96(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12188,7 +12320,7 @@ function __c96(j: number): any {
       ).annotate({ identifier: "DeletePartnerConfigurationRequest" });
   }
 }
-function __c97(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12204,7 +12336,7 @@ function __c97(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           caCertificateName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1552, __c97, 0)),
+          properties: S.optional(__S(1584, __c99, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12216,7 +12348,7 @@ function __c97(j: number): any {
       ).annotate({ identifier: "CaCertificatesCreateOrUpdateRequest" });
   }
 }
-function __c98(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12234,13 +12366,13 @@ function __c98(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(1568, __c98, 0)),
+          properties: S.optional(__S(1600, __c100, 0)),
           systemData: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "CaCertificatesCreateOrUpdateResponse" });
   }
 }
-function __c99(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12259,7 +12391,7 @@ function __c99(j: number): any {
       ).annotate({ identifier: "DeletePartnerNamespaceRequest" });
   }
 }
-function __c100(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12278,7 +12410,7 @@ function __c100(j: number): any {
       ).annotate({ identifier: "DeletePartnerRegistrationRequest" });
   }
 }
-function __c101(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12297,7 +12429,7 @@ function __c101(j: number): any {
       ).annotate({ identifier: "DeletePartnerTopicRequest" });
   }
 }
-function __c102(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12317,7 +12449,7 @@ function __c102(j: number): any {
       ).annotate({ identifier: "DeletePartnerTopicEventSubscriptionRequest" });
   }
 }
-function __c103(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12337,7 +12469,7 @@ function __c103(j: number): any {
       ).annotate({ identifier: "DeletePermissionBindingRequest" });
   }
 }
-function __c104(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12358,7 +12490,7 @@ function __c104(j: number): any {
       ).annotate({ identifier: "DeletePrivateEndpointConnectionRequest" });
   }
 }
-function __c105(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12377,7 +12509,7 @@ function __c105(j: number): any {
       ).annotate({ identifier: "DeleteSystemTopicRequest" });
   }
 }
-function __c106(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12397,7 +12529,7 @@ function __c106(j: number): any {
       ).annotate({ identifier: "DeleteSystemTopicEventSubscriptionRequest" });
   }
 }
-function __c107(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12416,7 +12548,7 @@ function __c107(j: number): any {
       ).annotate({ identifier: "DeleteTopicRequest" });
   }
 }
-function __c108(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12436,7 +12568,7 @@ function __c108(j: number): any {
       ).annotate({ identifier: "DeleteTopicEventSubscriptionRequest" });
   }
 }
-function __c109(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12445,7 +12577,7 @@ function __c109(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           partnerNamespaceName: S.String.pipe(T.Label()),
           channelName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1761, __c110, 1)),
+          properties: S.optional(__S(1793, __c112, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12457,7 +12589,7 @@ function __c109(j: number): any {
       ).annotate({ identifier: "ChannelsCreateOrUpdateRequest" });
   }
 }
-function __c110(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12473,7 +12605,7 @@ function __c110(j: number): any {
       return S.suspend(() =>
         S.Struct({
           channelType: S.optional(S.String),
-          partnerTopicInfo: S.optional(__S(1760, __c110, 0)),
+          partnerTopicInfo: S.optional(__S(1792, __c112, 0)),
           messageForActivation: S.optional(S.String),
           provisioningState: S.optional(S.String),
           readinessState: S.optional(S.String),
@@ -12486,13 +12618,13 @@ function __c110(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(1761, __c110, 1)),
+          properties: S.optional(__S(1793, __c112, 1)),
           systemData: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "ChannelsCreateOrUpdateResponse" });
   }
 }
-function __c111(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12512,7 +12644,7 @@ function __c111(j: number): any {
       ).annotate({ identifier: "DeleteTopicSpaceRequest" });
   }
 }
-function __c112(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12521,7 +12653,7 @@ function __c112(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1808, __c113, 0)),
+          properties: S.optional(__S(1840, __c115, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12533,25 +12665,25 @@ function __c112(j: number): any {
       ).annotate({ identifier: "DomainEventSubscriptionsCreateOrUpdateRequest" });
   }
 }
-function __c113(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          destination: S.optional(__S(1840, __c115, 0)),
-          deliveryWithResourceIdentity: S.optional(__S(1841, __c115, 1)),
-          filter: S.optional(__S(1856, __c116, 0)),
-          labels: S.optional(__S(2336, __c146, 0)),
+          destination: S.optional(__S(1872, __c117, 0)),
+          deliveryWithResourceIdentity: S.optional(__S(1873, __c117, 1)),
+          filter: S.optional(__S(1888, __c118, 0)),
+          labels: S.optional(__S(2368, __c148, 0)),
           expirationTimeUtc: S.optional(S.String),
           eventDeliverySchema: S.optional(S.String),
-          retryPolicy: S.optional(__S(1857, __c116, 1)),
-          deadLetterDestination: S.optional(__S(1840, __c115, 0)),
-          deadLetterWithResourceIdentity: S.optional(__S(1844, __c115, 4)),
+          retryPolicy: S.optional(__S(1889, __c118, 1)),
+          deadLetterDestination: S.optional(__S(1872, __c117, 0)),
+          deadLetterWithResourceIdentity: S.optional(__S(1876, __c117, 4)),
         }),
       ).annotate({ identifier: "EventSubscriptionPropertiesInput" });
   }
 }
-function __c114(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12562,7 +12694,7 @@ function __c114(j: number): any {
       ).annotate({ identifier: "EventSubscriptionIdentity" });
   }
 }
-function __c115(j: number): any {
+function __c117(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12574,8 +12706,8 @@ function __c115(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          identity: S.optional(__S(1824, __c114, 0)),
-          destination: S.optional(__S(1840, __c115, 0)),
+          identity: S.optional(__S(1856, __c116, 0)),
+          destination: S.optional(__S(1872, __c117, 0)),
         }),
       ).annotate({ identifier: "DeliveryWithResourceIdentity" });
     case 2:
@@ -12588,27 +12720,27 @@ function __c115(j: number): any {
         }),
       ).annotate({ identifier: "AdvancedFilter" });
     case 3:
-      return S.Array(__S(1842, __c115, 2));
+      return S.Array(__S(1874, __c117, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          identity: S.optional(__S(1824, __c114, 0)),
-          deadLetterDestination: S.optional(__S(1840, __c115, 0)),
+          identity: S.optional(__S(1856, __c116, 0)),
+          deadLetterDestination: S.optional(__S(1872, __c117, 0)),
         }),
       ).annotate({ identifier: "DeadLetterWithResourceIdentity" });
   }
 }
-function __c116(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           subjectBeginsWith: S.optional(S.String),
           subjectEndsWith: S.optional(S.String),
-          includedEventTypes: S.optional(__S(2336, __c146, 0)),
+          includedEventTypes: S.optional(__S(2368, __c148, 0)),
           isSubjectCaseSensitive: S.optional(S.Boolean),
           enableAdvancedFilteringOnArrays: S.optional(S.Boolean),
-          advancedFilters: S.optional(__S(1843, __c115, 3)),
+          advancedFilters: S.optional(__S(1875, __c117, 3)),
         }),
       ).annotate({ identifier: "EventSubscriptionFilter" });
     case 1:
@@ -12623,15 +12755,15 @@ function __c116(j: number): any {
         S.Struct({
           topic: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          destination: S.optional(__S(1840, __c115, 0)),
-          deliveryWithResourceIdentity: S.optional(__S(1841, __c115, 1)),
-          filter: S.optional(__S(1856, __c116, 0)),
-          labels: S.optional(__S(2336, __c146, 0)),
+          destination: S.optional(__S(1872, __c117, 0)),
+          deliveryWithResourceIdentity: S.optional(__S(1873, __c117, 1)),
+          filter: S.optional(__S(1888, __c118, 0)),
+          labels: S.optional(__S(2368, __c148, 0)),
           expirationTimeUtc: S.optional(S.String),
           eventDeliverySchema: S.optional(S.String),
-          retryPolicy: S.optional(__S(1857, __c116, 1)),
-          deadLetterDestination: S.optional(__S(1840, __c115, 0)),
-          deadLetterWithResourceIdentity: S.optional(__S(1844, __c115, 4)),
+          retryPolicy: S.optional(__S(1889, __c118, 1)),
+          deadLetterDestination: S.optional(__S(1872, __c117, 0)),
+          deadLetterWithResourceIdentity: S.optional(__S(1876, __c117, 4)),
         }),
       ).annotate({ identifier: "EventSubscriptionProperties" });
     case 3:
@@ -12640,13 +12772,13 @@ function __c116(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(1858, __c116, 2)),
+          properties: S.optional(__S(1890, __c118, 2)),
           systemData: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "DomainEventSubscriptionsCreateOrUpdateResponse" });
   }
 }
-function __c117(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12654,9 +12786,9 @@ function __c117(j: number): any {
           minimumTlsVersionAllowed: S.optional(S.String),
           inputSchema: S.optional(S.String),
           eventTypeInfo: S.optional(__S(50, __c3, 2)),
-          inputSchemaMapping: S.optional(__S(1936, __c121, 0)),
+          inputSchemaMapping: S.optional(__S(1968, __c123, 0)),
           publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(1921, __c120, 1)),
+          inboundIpRules: S.optional(__S(1953, __c122, 1)),
           disableLocalAuth: S.optional(S.Boolean),
           autoCreateTopicWithFirstSubscription: S.optional(S.Boolean),
           autoDeleteTopicWithLastSubscription: S.optional(S.Boolean),
@@ -12671,7 +12803,7 @@ function __c117(j: number): any {
           domainName: S.String.pipe(T.Label()),
           location: S.String,
           tags: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(1872, __c117, 0)),
+          properties: S.optional(__S(1904, __c119, 0)),
           identity: S.optional(__S(66, __c4, 2)),
         }).pipe(
           T.Http({
@@ -12684,7 +12816,7 @@ function __c117(j: number): any {
       ).annotate({ identifier: "DomainsCreateOrUpdateRequest" });
   }
 }
-function __c118(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12703,9 +12835,9 @@ function __c118(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(1888, __c118, 0)),
-          groupIds: S.optional(__S(2336, __c146, 0)),
-          privateLinkServiceConnectionState: S.optional(__S(1889, __c118, 1)),
+          privateEndpoint: S.optional(__S(1920, __c120, 0)),
+          groupIds: S.optional(__S(2368, __c148, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(1921, __c120, 1)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionProperties" });
@@ -12715,18 +12847,18 @@ function __c118(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(1890, __c118, 2)),
+          properties: S.optional(__S(1922, __c120, 2)),
         }),
       ).annotate({ identifier: "PrivateEndpointConnection" });
   }
 }
-function __c119(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1891, __c118, 3));
+      return S.Array(__S(1923, __c120, 3));
   }
 }
-function __c120(j: number): any {
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12736,10 +12868,10 @@ function __c120(j: number): any {
         }),
       ).annotate({ identifier: "InboundIpRule" });
     case 1:
-      return S.Array(__S(1920, __c120, 0));
+      return S.Array(__S(1952, __c122, 0));
   }
 }
-function __c121(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12750,21 +12882,21 @@ function __c121(j: number): any {
       ).annotate({ identifier: "InputSchemaMapping" });
   }
 }
-function __c122(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpointConnections: S.optional(__S(1904, __c119, 0)),
+          privateEndpointConnections: S.optional(__S(1936, __c121, 0)),
           provisioningState: S.optional(S.String),
           minimumTlsVersionAllowed: S.optional(S.String),
           endpoint: S.optional(S.String),
           inputSchema: S.optional(S.String),
           eventTypeInfo: S.optional(__S(50, __c3, 2)),
-          inputSchemaMapping: S.optional(__S(1936, __c121, 0)),
+          inputSchemaMapping: S.optional(__S(1968, __c123, 0)),
           metricResourceId: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(1921, __c120, 1)),
+          inboundIpRules: S.optional(__S(1953, __c122, 1)),
           disableLocalAuth: S.optional(S.Boolean),
           autoCreateTopicWithFirstSubscription: S.optional(S.Boolean),
           autoDeleteTopicWithLastSubscription: S.optional(S.Boolean),
@@ -12779,14 +12911,14 @@ function __c122(j: number): any {
           type: S.optional(S.String),
           location: S.String,
           tags: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(1952, __c122, 0)),
+          properties: S.optional(__S(1984, __c124, 0)),
           identity: S.optional(__S(66, __c4, 2)),
           systemData: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "DomainsCreateOrUpdateResponse" });
   }
 }
-function __c123(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12796,7 +12928,7 @@ function __c123(j: number): any {
           domainName: S.String.pipe(T.Label()),
           topicName: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1808, __c113, 0)),
+          properties: S.optional(__S(1840, __c115, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12808,7 +12940,7 @@ function __c123(j: number): any {
       ).annotate({ identifier: "DomainTopicEventSubscriptionsCreateOrUpdateRequest" });
   }
 }
-function __c124(j: number): any {
+function __c126(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12828,7 +12960,7 @@ function __c124(j: number): any {
       ).annotate({ identifier: "DomainTopicsCreateOrUpdateRequest" });
   }
 }
-function __c125(j: number): any {
+function __c127(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12842,20 +12974,20 @@ function __c125(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(2000, __c125, 0)),
+          properties: S.optional(__S(2032, __c127, 0)),
           systemData: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "DomainTopicsCreateOrUpdateResponse" });
   }
 }
-function __c126(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
           eventSubscriptionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1808, __c113, 0)),
+          properties: S.optional(__S(1840, __c115, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12867,7 +12999,7 @@ function __c126(j: number): any {
       ).annotate({ identifier: "EventSubscriptionsCreateOrUpdateRequest" });
   }
 }
-function __c127(j: number): any {
+function __c129(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12887,7 +13019,7 @@ function __c127(j: number): any {
       ).annotate({ identifier: "GetCaCertificateRequest" });
   }
 }
-function __c128(j: number): any {
+function __c130(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12907,7 +13039,7 @@ function __c128(j: number): any {
       ).annotate({ identifier: "GetChannelRequest" });
   }
 }
-function __c129(j: number): any {
+function __c131(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12927,7 +13059,7 @@ function __c129(j: number): any {
       ).annotate({ identifier: "GetChannelFullUrlRequest" });
   }
 }
-function __c130(j: number): any {
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12937,7 +13069,7 @@ function __c130(j: number): any {
       ).annotate({ identifier: "EventSubscriptionFullUrl" });
   }
 }
-function __c131(j: number): any {
+function __c133(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12957,7 +13089,7 @@ function __c131(j: number): any {
       ).annotate({ identifier: "GetClientRequest" });
   }
 }
-function __c132(j: number): any {
+function __c134(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12973,7 +13105,7 @@ function __c132(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           clientGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2112, __c132, 0)),
+          properties: S.optional(__S(2144, __c134, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12985,7 +13117,7 @@ function __c132(j: number): any {
       ).annotate({ identifier: "ClientGroupsCreateOrUpdateRequest" });
   }
 }
-function __c133(j: number): any {
+function __c135(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13001,13 +13133,13 @@ function __c133(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(2128, __c133, 0)),
+          properties: S.optional(__S(2160, __c135, 0)),
           systemData: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "ClientGroupsCreateOrUpdateResponse" });
   }
 }
-function __c134(j: number): any {
+function __c136(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13027,7 +13159,7 @@ function __c134(j: number): any {
       ).annotate({ identifier: "GetClientGroupRequest" });
   }
 }
-function __c135(j: number): any {
+function __c137(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13046,7 +13178,7 @@ function __c135(j: number): any {
       ).annotate({ identifier: "GetDomainRequest" });
   }
 }
-function __c136(j: number): any {
+function __c138(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13066,7 +13198,7 @@ function __c136(j: number): any {
       ).annotate({ identifier: "GetDomainEventSubscriptionRequest" });
   }
 }
-function __c137(j: number): any {
+function __c139(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13086,7 +13218,7 @@ function __c137(j: number): any {
       ).annotate({ identifier: "GetDomainEventSubscriptionDeliveryAttributesRequest" });
   }
 }
-function __c138(j: number): any {
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13096,16 +13228,16 @@ function __c138(j: number): any {
         }),
       ).annotate({ identifier: "DeliveryAttributeMapping" });
     case 1:
-      return S.Array(__S(2208, __c138, 0));
+      return S.Array(__S(2240, __c140, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2209, __c138, 1)),
+          value: S.optional(__S(2241, __c140, 1)),
         }),
       ).annotate({ identifier: "DeliveryAttributeListResult" });
   }
 }
-function __c139(j: number): any {
+function __c141(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13125,7 +13257,7 @@ function __c139(j: number): any {
       ).annotate({ identifier: "GetDomainEventSubscriptionFullUrlRequest" });
   }
 }
-function __c140(j: number): any {
+function __c142(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13145,7 +13277,7 @@ function __c140(j: number): any {
       ).annotate({ identifier: "GetDomainTopicRequest" });
   }
 }
-function __c141(j: number): any {
+function __c143(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13166,7 +13298,7 @@ function __c141(j: number): any {
       ).annotate({ identifier: "GetDomainTopicEventSubscriptionRequest" });
   }
 }
-function __c142(j: number): any {
+function __c144(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13187,7 +13319,7 @@ function __c142(j: number): any {
       ).annotate({ identifier: "GetDomainTopicEventSubscriptionDeliveryAttributesRequest" });
   }
 }
-function __c143(j: number): any {
+function __c145(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13208,7 +13340,7 @@ function __c143(j: number): any {
       ).annotate({ identifier: "GetDomainTopicEventSubscriptionFullUrlRequest" });
   }
 }
-function __c144(j: number): any {
+function __c146(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13226,16 +13358,16 @@ function __c144(j: number): any {
       ).annotate({ identifier: "GetEventSubscriptionRequest" });
   }
 }
-function __c145(j: number): any {
+function __c147(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           authenticationName: S.optional(S.String),
-          clientCertificateAuthentication: S.optional(__S(2352, __c147, 0)),
+          clientCertificateAuthentication: S.optional(__S(2384, __c149, 0)),
           state: S.optional(S.String),
-          attributes: S.optional(__S(2353, __c147, 1)),
+          attributes: S.optional(__S(2385, __c149, 1)),
         }),
       ).annotate({ identifier: "ClientPropertiesInput" });
     case 1:
@@ -13245,7 +13377,7 @@ function __c145(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           clientName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2320, __c145, 0)),
+          properties: S.optional(__S(2352, __c147, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13257,19 +13389,19 @@ function __c145(j: number): any {
       ).annotate({ identifier: "ClientsCreateOrUpdateRequest" });
   }
 }
-function __c146(j: number): any {
+function __c148(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c147(j: number): any {
+function __c149(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           validationScheme: S.optional(S.String),
-          allowedThumbprints: S.optional(__S(2336, __c146, 0)),
+          allowedThumbprints: S.optional(__S(2368, __c148, 0)),
         }),
       ).annotate({ identifier: "ClientCertificateAuthentication" });
     case 1:
@@ -13279,9 +13411,9 @@ function __c147(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           authenticationName: S.optional(S.String),
-          clientCertificateAuthentication: S.optional(__S(2352, __c147, 0)),
+          clientCertificateAuthentication: S.optional(__S(2384, __c149, 0)),
           state: S.optional(S.String),
-          attributes: S.optional(__S(2353, __c147, 1)),
+          attributes: S.optional(__S(2385, __c149, 1)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClientProperties" });
@@ -13291,13 +13423,13 @@ function __c147(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(2354, __c147, 2)),
+          properties: S.optional(__S(2386, __c149, 2)),
           systemData: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "ClientsCreateOrUpdateResponse" });
   }
 }
-function __c148(j: number): any {
+function __c150(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13315,7 +13447,7 @@ function __c148(j: number): any {
       ).annotate({ identifier: "GetEventSubscriptionDeliveryAttributesRequest" });
   }
 }
-function __c149(j: number): any {
+function __c151(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13333,7 +13465,7 @@ function __c149(j: number): any {
       ).annotate({ identifier: "GetEventSubscriptionFullUrlRequest" });
   }
 }
-function __c150(j: number): any {
+function __c152(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13361,13 +13493,13 @@ function __c150(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(2401, __c150, 1)),
+          properties: S.optional(__S(2433, __c152, 1)),
           systemData: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "GetExtensionTopicResponse" });
   }
 }
-function __c151(j: number): any {
+function __c153(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13386,13 +13518,31 @@ function __c151(j: number): any {
       ).annotate({ identifier: "GetNamespaceRequest" });
   }
 }
-function __c152(j: number): any {
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.String,
+          tags: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(2487, __c155, 7)),
+          sku: S.optional(__S(2488, __c155, 8)),
+          identity: S.optional(__S(66, __c4, 2)),
+          systemData: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({ identifier: "GetNamespaceResponse" });
+  }
+}
+function __c155(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           hostname: S.optional(S.String),
-          customDomains: S.optional(__S(2449, __c153, 1)),
+          customDomains: S.optional(__S(2497, __c156, 1)),
         }),
       ).annotate({ identifier: "TopicsConfiguration" });
     case 1:
@@ -13403,7 +13553,7 @@ function __c152(j: number): any {
         }),
       ).annotate({ identifier: "StaticRoutingEnrichment" });
     case 2:
-      return S.Array(__S(2433, __c152, 1));
+      return S.Array(__S(2481, __c155, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -13412,12 +13562,12 @@ function __c152(j: number): any {
         }),
       ).annotate({ identifier: "DynamicRoutingEnrichment" });
     case 4:
-      return S.Array(__S(2435, __c152, 3));
+      return S.Array(__S(2483, __c155, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          static: S.optional(__S(2434, __c152, 2)),
-          dynamic: S.optional(__S(2436, __c152, 4)),
+          static: S.optional(__S(2482, __c155, 2)),
+          dynamic: S.optional(__S(2484, __c155, 4)),
         }),
       ).annotate({ identifier: "RoutingEnrichments" });
     case 6:
@@ -13426,23 +13576,23 @@ function __c152(j: number): any {
           state: S.optional(S.String),
           routeTopicResourceId: S.optional(S.String),
           hostname: S.optional(S.String),
-          routingEnrichments: S.optional(__S(2437, __c152, 5)),
+          routingEnrichments: S.optional(__S(2485, __c155, 5)),
           maximumSessionExpiryInHours: S.optional(S.Number),
           maximumClientSessionsPerAuthenticationName: S.optional(S.Number),
-          routingIdentityInfo: S.optional(__S(1824, __c114, 0)),
-          customDomains: S.optional(__S(2449, __c153, 1)),
+          routingIdentityInfo: S.optional(__S(1856, __c116, 0)),
+          customDomains: S.optional(__S(2497, __c156, 1)),
         }),
       ).annotate({ identifier: "TopicSpacesConfiguration" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          privateEndpointConnections: S.optional(__S(1904, __c119, 0)),
+          privateEndpointConnections: S.optional(__S(1936, __c121, 0)),
           provisioningState: S.optional(S.String),
-          topicsConfiguration: S.optional(__S(2432, __c152, 0)),
-          topicSpacesConfiguration: S.optional(__S(2438, __c152, 6)),
+          topicsConfiguration: S.optional(__S(2480, __c155, 0)),
+          topicSpacesConfiguration: S.optional(__S(2486, __c155, 6)),
           isZoneRedundant: S.optional(S.Boolean),
           publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(1921, __c120, 1)),
+          inboundIpRules: S.optional(__S(1953, __c122, 1)),
           minimumTlsVersionAllowed: S.optional(S.String),
         }),
       ).annotate({ identifier: "NamespaceProperties" });
@@ -13453,40 +13603,26 @@ function __c152(j: number): any {
           capacity: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NamespaceSku" });
-    case 9:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.String,
-          tags: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(2439, __c152, 7)),
-          sku: S.optional(__S(2440, __c152, 8)),
-          identity: S.optional(__S(66, __c4, 2)),
-          systemData: S.optional(__S(16, __c1, 0)),
-        }),
-      ).annotate({ identifier: "GetNamespaceResponse" });
   }
 }
-function __c153(j: number): any {
+function __c156(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           fullyQualifiedDomainName: S.String,
           validationState: S.optional(S.String),
-          identity: S.optional(__S(1824, __c114, 0)),
+          identity: S.optional(__S(1856, __c116, 0)),
           certificateUrl: S.optional(S.String),
           expectedTxtRecordName: S.optional(S.String),
           expectedTxtRecordValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomDomainConfiguration" });
     case 1:
-      return S.Array(__S(2448, __c153, 0));
+      return S.Array(__S(2496, __c156, 0));
   }
 }
-function __c154(j: number): any {
+function __c157(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13506,7 +13642,21 @@ function __c154(j: number): any {
       ).annotate({ identifier: "GetNamespaceTopicRequest" });
   }
 }
-function __c155(j: number): any {
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(2544, __c159, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({ identifier: "GetNamespaceTopicResponse" });
+  }
+}
+function __c159(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13517,19 +13667,9 @@ function __c155(j: number): any {
           eventRetentionInDays: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NamespaceTopicProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(2480, __c155, 0)),
-          systemData: S.optional(__S(16, __c1, 0)),
-        }),
-      ).annotate({ identifier: "GetNamespaceTopicResponse" });
   }
 }
-function __c156(j: number): any {
+function __c160(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13550,14 +13690,28 @@ function __c156(j: number): any {
       ).annotate({ identifier: "GetNamespaceTopicEventSubscriptionRequest" });
   }
 }
-function __c157(j: number): any {
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(2596, __c162, 4)),
+          systemData: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({ identifier: "GetNamespaceTopicEventSubscriptionResponse" });
+  }
+}
+function __c162(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           receiveLockDurationInSeconds: S.optional(S.Number),
           maxDeliveryCount: S.optional(S.Number),
-          deadLetterDestinationWithResourceIdentity: S.optional(__S(1844, __c115, 4)),
+          deadLetterDestinationWithResourceIdentity: S.optional(__S(1876, __c117, 4)),
           eventTimeToLive: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueueInfo" });
@@ -13566,49 +13720,39 @@ function __c157(j: number): any {
         S.Struct({
           maxDeliveryCount: S.optional(S.Number),
           eventTimeToLive: S.optional(S.String),
-          deadLetterDestinationWithResourceIdentity: S.optional(__S(1844, __c115, 4)),
-          deliveryWithResourceIdentity: S.optional(__S(1841, __c115, 1)),
-          destination: S.optional(__S(1840, __c115, 0)),
+          deadLetterDestinationWithResourceIdentity: S.optional(__S(1876, __c117, 4)),
+          deliveryWithResourceIdentity: S.optional(__S(1873, __c117, 1)),
+          destination: S.optional(__S(1872, __c117, 0)),
         }),
       ).annotate({ identifier: "PushInfo" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           deliveryMode: S.optional(S.String),
-          queue: S.optional(__S(2512, __c157, 0)),
-          push: S.optional(__S(2513, __c157, 1)),
+          queue: S.optional(__S(2592, __c162, 0)),
+          push: S.optional(__S(2593, __c162, 1)),
         }),
       ).annotate({ identifier: "DeliveryConfiguration" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          includedEventTypes: S.optional(__S(2336, __c146, 0)),
-          filters: S.optional(__S(1843, __c115, 3)),
+          includedEventTypes: S.optional(__S(2368, __c148, 0)),
+          filters: S.optional(__S(1875, __c117, 3)),
         }),
       ).annotate({ identifier: "FiltersConfiguration" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          deliveryConfiguration: S.optional(__S(2514, __c157, 2)),
+          deliveryConfiguration: S.optional(__S(2594, __c162, 2)),
           eventDeliverySchema: S.optional(S.String),
-          filtersConfiguration: S.optional(__S(2515, __c157, 3)),
+          filtersConfiguration: S.optional(__S(2595, __c162, 3)),
           expirationTimeUtc: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubscriptionProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(2516, __c157, 4)),
-          systemData: S.optional(__S(16, __c1, 0)),
-        }),
-      ).annotate({ identifier: "GetNamespaceTopicEventSubscriptionResponse" });
   }
 }
-function __c158(j: number): any {
+function __c163(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13629,7 +13773,7 @@ function __c158(j: number): any {
       ).annotate({ identifier: "GetNamespaceTopicEventSubscriptionDeliveryAttributesRequest" });
   }
 }
-function __c159(j: number): any {
+function __c164(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13650,7 +13794,7 @@ function __c159(j: number): any {
       ).annotate({ identifier: "GetNamespaceTopicEventSubscriptionFullUrlRequest" });
   }
 }
-function __c160(j: number): any {
+function __c165(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13668,7 +13812,7 @@ function __c160(j: number): any {
       ).annotate({ identifier: "GetPartnerConfigurationRequest" });
   }
 }
-function __c161(j: number): any {
+function __c166(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13687,18 +13831,18 @@ function __c161(j: number): any {
       ).annotate({ identifier: "GetPartnerNamespaceRequest" });
   }
 }
-function __c162(j: number): any {
+function __c167(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpointConnections: S.optional(__S(1904, __c119, 0)),
+          privateEndpointConnections: S.optional(__S(1936, __c121, 0)),
           provisioningState: S.optional(S.String),
           partnerRegistrationFullyQualifiedId: S.optional(S.String),
           minimumTlsVersionAllowed: S.optional(S.String),
           endpoint: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(1921, __c120, 1)),
+          inboundIpRules: S.optional(__S(1953, __c122, 1)),
           disableLocalAuth: S.optional(S.Boolean),
           partnerTopicRoutingMode: S.optional(S.String),
         }),
@@ -13711,13 +13855,13 @@ function __c162(j: number): any {
           type: S.optional(S.String),
           location: S.String,
           tags: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(2592, __c162, 0)),
+          properties: S.optional(__S(2672, __c167, 0)),
           systemData: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "GetPartnerNamespaceResponse" });
   }
 }
-function __c163(j: number): any {
+function __c168(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13736,7 +13880,7 @@ function __c163(j: number): any {
       ).annotate({ identifier: "DeactivatePartnerTopicRequest" });
   }
 }
-function __c164(j: number): any {
+function __c169(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13755,7 +13899,7 @@ function __c164(j: number): any {
       ).annotate({ identifier: "GetPartnerRegistrationRequest" });
   }
 }
-function __c165(j: number): any {
+function __c170(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13772,13 +13916,13 @@ function __c165(j: number): any {
           type: S.optional(S.String),
           location: S.String,
           tags: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(2640, __c165, 0)),
+          properties: S.optional(__S(2720, __c170, 0)),
           systemData: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "GetPartnerRegistrationResponse" });
   }
 }
-function __c166(j: number): any {
+function __c171(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13797,7 +13941,7 @@ function __c166(j: number): any {
       ).annotate({ identifier: "GetPartnerTopicRequest" });
   }
 }
-function __c167(j: number): any {
+function __c172(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13817,7 +13961,7 @@ function __c167(j: number): any {
       ).annotate({ identifier: "GetPartnerTopicEventSubscriptionRequest" });
   }
 }
-function __c168(j: number): any {
+function __c173(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13837,7 +13981,7 @@ function __c168(j: number): any {
       ).annotate({ identifier: "GetPartnerTopicEventSubscriptionDeliveryAttributesRequest" });
   }
 }
-function __c169(j: number): any {
+function __c174(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13857,7 +14001,7 @@ function __c169(j: number): any {
       ).annotate({ identifier: "GetPartnerTopicEventSubscriptionFullUrlRequest" });
   }
 }
-function __c170(j: number): any {
+function __c175(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13877,7 +14021,7 @@ function __c170(j: number): any {
       ).annotate({ identifier: "GetPermissionBindingRequest" });
   }
 }
-function __c171(j: number): any {
+function __c176(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13895,13 +14039,13 @@ function __c171(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(2736, __c171, 0)),
+          properties: S.optional(__S(2816, __c176, 0)),
           systemData: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "GetPermissionBindingResponse" });
   }
 }
-function __c172(j: number): any {
+function __c177(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13922,7 +14066,7 @@ function __c172(j: number): any {
       ).annotate({ identifier: "GetPrivateEndpointConnectionRequest" });
   }
 }
-function __c173(j: number): any {
+function __c178(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13943,21 +14087,21 @@ function __c173(j: number): any {
       ).annotate({ identifier: "GetPrivateLinkResourceRequest" });
   }
 }
-function __c174(j: number): any {
+function __c179(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
           displayName: S.optional(S.String),
-          requiredMembers: S.optional(__S(2336, __c146, 0)),
-          requiredZoneNames: S.optional(__S(2336, __c146, 0)),
+          requiredMembers: S.optional(__S(2368, __c148, 0)),
+          requiredZoneNames: S.optional(__S(2368, __c148, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResourceProperties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(2784, __c174, 0)),
+          properties: S.optional(__S(2864, __c179, 0)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
@@ -13965,7 +14109,7 @@ function __c174(j: number): any {
       ).annotate({ identifier: "PrivateLinkResource" });
   }
 }
-function __c175(j: number): any {
+function __c180(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13984,7 +14128,7 @@ function __c175(j: number): any {
       ).annotate({ identifier: "GetSystemTopicRequest" });
   }
 }
-function __c176(j: number): any {
+function __c181(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14003,14 +14147,14 @@ function __c176(j: number): any {
           type: S.optional(S.String),
           location: S.String,
           tags: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(2816, __c176, 0)),
+          properties: S.optional(__S(2896, __c181, 0)),
           systemData: S.optional(__S(16, __c1, 0)),
           identity: S.optional(__S(66, __c4, 2)),
         }),
       ).annotate({ identifier: "GetSystemTopicResponse" });
   }
 }
-function __c177(j: number): any {
+function __c182(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14030,7 +14174,7 @@ function __c177(j: number): any {
       ).annotate({ identifier: "GetSystemTopicEventSubscriptionRequest" });
   }
 }
-function __c178(j: number): any {
+function __c183(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14050,13 +14194,17 @@ function __c178(j: number): any {
       ).annotate({ identifier: "DeleteCaCertificateRequest" });
   }
 }
-function __c179(j: number): any {
+function __c184(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteCaCertificateResponse" });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "DeleteCaCertificateResponse" });
   }
 }
-function __c180(j: number): any {
+function __c185(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14076,7 +14224,7 @@ function __c180(j: number): any {
       ).annotate({ identifier: "GetSystemTopicEventSubscriptionDeliveryAttributesRequest" });
   }
 }
-function __c181(j: number): any {
+function __c186(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14096,7 +14244,7 @@ function __c181(j: number): any {
       ).annotate({ identifier: "GetSystemTopicEventSubscriptionFullUrlRequest" });
   }
 }
-function __c182(j: number): any {
+function __c187(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14115,21 +14263,21 @@ function __c182(j: number): any {
       ).annotate({ identifier: "GetTopicRequest" });
   }
 }
-function __c183(j: number): any {
+function __c188(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpointConnections: S.optional(__S(1904, __c119, 0)),
+          privateEndpointConnections: S.optional(__S(1936, __c121, 0)),
           provisioningState: S.optional(S.String),
           endpoint: S.optional(S.String),
           eventTypeInfo: S.optional(__S(50, __c3, 2)),
           minimumTlsVersionAllowed: S.optional(S.String),
           inputSchema: S.optional(S.String),
-          inputSchemaMapping: S.optional(__S(1936, __c121, 0)),
+          inputSchemaMapping: S.optional(__S(1968, __c123, 0)),
           metricResourceId: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
-          inboundIpRules: S.optional(__S(1921, __c120, 1)),
+          inboundIpRules: S.optional(__S(1953, __c122, 1)),
           disableLocalAuth: S.optional(S.Boolean),
           dataResidencyBoundary: S.optional(S.String),
         }),
@@ -14142,14 +14290,14 @@ function __c183(j: number): any {
           type: S.optional(S.String),
           location: S.String,
           tags: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(2928, __c183, 0)),
+          properties: S.optional(__S(3008, __c188, 0)),
           identity: S.optional(__S(66, __c4, 2)),
           systemData: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "GetTopicResponse" });
   }
 }
-function __c184(j: number): any {
+function __c189(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14169,7 +14317,7 @@ function __c184(j: number): any {
       ).annotate({ identifier: "GetTopicEventSubscriptionRequest" });
   }
 }
-function __c185(j: number): any {
+function __c190(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14189,7 +14337,7 @@ function __c185(j: number): any {
       ).annotate({ identifier: "GetTopicEventSubscriptionDeliveryAttributesRequest" });
   }
 }
-function __c186(j: number): any {
+function __c191(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14209,7 +14357,7 @@ function __c186(j: number): any {
       ).annotate({ identifier: "GetTopicEventSubscriptionFullUrlRequest" });
   }
 }
-function __c187(j: number): any {
+function __c192(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14229,13 +14377,13 @@ function __c187(j: number): any {
       ).annotate({ identifier: "GetTopicSpaceRequest" });
   }
 }
-function __c188(j: number): any {
+function __c193(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          topicTemplates: S.optional(__S(2336, __c146, 0)),
+          topicTemplates: S.optional(__S(2368, __c148, 0)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "TopicSpaceProperties" });
@@ -14245,13 +14393,13 @@ function __c188(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(3008, __c188, 0)),
+          properties: S.optional(__S(3088, __c193, 0)),
           systemData: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "GetTopicSpaceResponse" });
   }
 }
-function __c189(j: number): any {
+function __c194(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14268,7 +14416,7 @@ function __c189(j: number): any {
       ).annotate({ identifier: "GetTopicTypeRequest" });
   }
 }
-function __c190(j: number): any {
+function __c195(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -14280,7 +14428,7 @@ function __c190(j: number): any {
         }),
       ).annotate({ identifier: "TopicTypeAdditionalEnforcedPermission" });
     case 2:
-      return S.Array(__S(3041, __c190, 1));
+      return S.Array(__S(3121, __c195, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -14289,11 +14437,11 @@ function __c190(j: number): any {
           description: S.optional(S.String),
           resourceRegionType: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          supportedLocations: S.optional(__S(2336, __c146, 0)),
+          supportedLocations: S.optional(__S(2368, __c148, 0)),
           sourceResourceFormat: S.optional(S.String),
-          supportedScopesForSource: S.optional(__S(3040, __c190, 0)),
+          supportedScopesForSource: S.optional(__S(3120, __c195, 0)),
           areRegionalAndGlobalSourcesSupported: S.optional(S.Boolean),
-          additionalEnforcedPermissions: S.optional(__S(3042, __c190, 2)),
+          additionalEnforcedPermissions: S.optional(__S(3122, __c195, 2)),
         }),
       ).annotate({ identifier: "TopicTypeProperties" });
     case 4:
@@ -14302,12 +14450,12 @@ function __c190(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(3043, __c190, 3)),
+          properties: S.optional(__S(3123, __c195, 3)),
         }),
       ).annotate({ identifier: "GetTopicTypeResponse" });
   }
 }
-function __c191(j: number): any {
+function __c196(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14324,7 +14472,7 @@ function __c191(j: number): any {
       ).annotate({ identifier: "GetVerifiedPartnerRequest" });
   }
 }
-function __c192(j: number): any {
+function __c197(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14340,7 +14488,7 @@ function __c192(j: number): any {
           partnerRegistrationImmutableId: S.optional(S.String),
           organizationName: S.optional(S.String),
           partnerDisplayName: S.optional(S.String),
-          partnerTopicDetails: S.optional(__S(3072, __c192, 0)),
+          partnerTopicDetails: S.optional(__S(3152, __c197, 0)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "VerifiedPartnerProperties" });
@@ -14350,13 +14498,13 @@ function __c192(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(3073, __c192, 1)),
+          properties: S.optional(__S(3153, __c197, 1)),
           systemData: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "GetVerifiedPartnerResponse" });
   }
 }
-function __c193(j: number): any {
+function __c198(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14376,17 +14524,17 @@ function __c193(j: number): any {
         ),
       ).annotate({ identifier: "ListCaCertificateByNamespaceRequest" });
     case 1:
-      return S.Array(__S(1569, __c98, 1));
+      return S.Array(__S(1601, __c100, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3089, __c193, 1)),
+          value: S.optional(__S(3169, __c198, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CaCertificatesListResult" });
   }
 }
-function __c194(j: number): any {
+function __c199(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14406,7 +14554,7 @@ function __c194(j: number): any {
       ).annotate({ identifier: "DeleteChannelRequest" });
   }
 }
-function __c195(j: number): any {
+function __c200(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14426,17 +14574,17 @@ function __c195(j: number): any {
         ),
       ).annotate({ identifier: "ListChannelByPartnerNamespaceRequest" });
     case 1:
-      return S.Array(__S(1762, __c110, 2));
+      return S.Array(__S(1794, __c112, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3121, __c195, 1)),
+          value: S.optional(__S(3201, __c200, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChannelsListResult" });
   }
 }
-function __c196(j: number): any {
+function __c201(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14456,17 +14604,17 @@ function __c196(j: number): any {
         ),
       ).annotate({ identifier: "ListClientByNamespaceRequest" });
     case 1:
-      return S.Array(__S(2355, __c147, 3));
+      return S.Array(__S(2387, __c149, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3137, __c196, 1)),
+          value: S.optional(__S(3217, __c201, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClientsListResult" });
   }
 }
-function __c197(j: number): any {
+function __c202(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14486,17 +14634,17 @@ function __c197(j: number): any {
         ),
       ).annotate({ identifier: "ListClientGroupByNamespaceRequest" });
     case 1:
-      return S.Array(__S(2129, __c133, 1));
+      return S.Array(__S(2161, __c135, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3153, __c197, 1)),
+          value: S.optional(__S(3233, __c202, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClientGroupsListResult" });
   }
 }
-function __c198(j: number): any {
+function __c203(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14516,20 +14664,20 @@ function __c198(j: number): any {
       ).annotate({ identifier: "ListDomainByResourceGroupRequest" });
   }
 }
-function __c199(j: number): any {
+function __c204(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1953, __c122, 1));
+      return S.Array(__S(1985, __c124, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3184, __c199, 0)),
+          value: S.optional(__S(3264, __c204, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainsListResult" });
   }
 }
-function __c200(j: number): any {
+function __c205(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14548,7 +14696,7 @@ function __c200(j: number): any {
       ).annotate({ identifier: "ListDomainBySubscriptionRequest" });
   }
 }
-function __c201(j: number): any {
+function __c206(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14569,20 +14717,20 @@ function __c201(j: number): any {
       ).annotate({ identifier: "ListDomainEventSubscriptionsRequest" });
   }
 }
-function __c202(j: number): any {
+function __c207(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1859, __c116, 3));
+      return S.Array(__S(1891, __c118, 3));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3232, __c202, 0)),
+          value: S.optional(__S(3312, __c207, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventSubscriptionsListResult" });
   }
 }
-function __c203(j: number): any {
+function __c208(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14601,7 +14749,7 @@ function __c203(j: number): any {
       ).annotate({ identifier: "ListDomainSharedAccessKeysRequest" });
   }
 }
-function __c204(j: number): any {
+function __c209(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14612,7 +14760,7 @@ function __c204(j: number): any {
       ).annotate({ identifier: "DomainSharedAccessKeys" });
   }
 }
-function __c205(j: number): any {
+function __c210(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14632,17 +14780,17 @@ function __c205(j: number): any {
         ),
       ).annotate({ identifier: "ListDomainTopicByDomainRequest" });
     case 1:
-      return S.Array(__S(2001, __c125, 1));
+      return S.Array(__S(2033, __c127, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3281, __c205, 1)),
+          value: S.optional(__S(3361, __c210, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainTopicsListResult" });
   }
 }
-function __c206(j: number): any {
+function __c211(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14664,7 +14812,7 @@ function __c206(j: number): any {
       ).annotate({ identifier: "ListDomainTopicEventSubscriptionsRequest" });
   }
 }
-function __c207(j: number): any {
+function __c212(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14686,7 +14834,7 @@ function __c207(j: number): any {
       ).annotate({ identifier: "ListEventSubscriptionByDomainTopicRequest" });
   }
 }
-function __c208(j: number): any {
+function __c213(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14706,7 +14854,7 @@ function __c208(j: number): any {
       ).annotate({ identifier: "DeleteClientRequest" });
   }
 }
-function __c209(j: number): any {
+function __c214(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14729,7 +14877,7 @@ function __c209(j: number): any {
       ).annotate({ identifier: "ListEventSubscriptionByResourceRequest" });
   }
 }
-function __c210(j: number): any {
+function __c215(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14749,7 +14897,7 @@ function __c210(j: number): any {
       ).annotate({ identifier: "ListEventSubscriptionGlobalByResourceGroupRequest" });
   }
 }
-function __c211(j: number): any {
+function __c216(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14770,7 +14918,7 @@ function __c211(j: number): any {
       ).annotate({ identifier: "ListEventSubscriptionGlobalByResourceGroupForTopicTypeRequest" });
   }
 }
-function __c212(j: number): any {
+function __c217(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14789,7 +14937,7 @@ function __c212(j: number): any {
       ).annotate({ identifier: "ListEventSubscriptionGlobalBySubscriptionRequest" });
   }
 }
-function __c213(j: number): any {
+function __c218(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14809,7 +14957,7 @@ function __c213(j: number): any {
       ).annotate({ identifier: "ListEventSubscriptionGlobalBySubscriptionForTopicTypeRequest" });
   }
 }
-function __c214(j: number): any {
+function __c219(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14830,7 +14978,7 @@ function __c214(j: number): any {
       ).annotate({ identifier: "ListEventSubscriptionRegionalByResourceGroupRequest" });
   }
 }
-function __c215(j: number): any {
+function __c220(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14852,7 +15000,7 @@ function __c215(j: number): any {
       ).annotate({ identifier: "ListEventSubscriptionRegionalByResourceGroupForTopicTypeRequest" });
   }
 }
-function __c216(j: number): any {
+function __c221(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14872,7 +15020,7 @@ function __c216(j: number): any {
       ).annotate({ identifier: "ListEventSubscriptionRegionalBySubscriptionRequest" });
   }
 }
-function __c217(j: number): any {
+function __c222(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14893,7 +15041,7 @@ function __c217(j: number): any {
       ).annotate({ identifier: "ListEventSubscriptionRegionalBySubscriptionForTopicTypeRequest" });
   }
 }
-function __c218(j: number): any {
+function __c223(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14913,14 +15061,14 @@ function __c218(j: number): any {
       ).annotate({ identifier: "ListNamespaceByResourceGroupRequest" });
   }
 }
-function __c219(j: number): any {
+function __c224(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2441, __c152, 9));
+      return S.Array(__S(2464, __c154, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3504, __c219, 0)),
+          value: S.optional(__S(3584, __c224, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NamespacesListResult" });

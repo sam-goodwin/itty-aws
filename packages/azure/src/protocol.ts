@@ -6,7 +6,13 @@ import {
   InternalServerError,
   type API_ERRORS,
 } from "@distilled.cloud/core/errors";
-import { buildRequest, getAnn, mapKeys } from "@distilled.cloud/core/protocol-http";
+import {
+  buildRequest,
+  getAnn,
+  mapKeys,
+  responseHeaderMembers,
+  withResponseHeaders,
+} from "@distilled.cloud/core/protocol-http";
 import { unwrapRedactedDeep, wrapSensitive } from "@distilled.cloud/core/protocol-rest";
 import { validateResponse } from "@distilled.cloud/core/response-validation";
 import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
@@ -279,7 +285,10 @@ const decode = ({
       );
     }
 
-    // 2xx: the response body IS the payload (ARM has no success envelope).
+    // 2xx: the response body IS the payload (ARM has no success envelope),
+    // plus the response headers the output declares -- the
+    // `Azure-AsyncOperation` / `Location` status monitor of a long-running
+    // operation's 202, for example.
     // Wire->TS key mapping is schema-driven; `RawResponseRoot` responses are
     // the body verbatim (mapKeys handles arrays/scalars structurally either
     // way). Strict mode (core/response-validation) checks the mapped body
@@ -288,7 +297,11 @@ const decode = ({
     const body: unknown = nonJson ? text : (json ?? {});
     const mapped = yield* validateResponse(
       outputAst,
-      mapKeys(outputAst, body, "decode"),
+      withResponseHeaders(
+        responseHeaderMembers(outputAst),
+        mapKeys(outputAst, body, "decode"),
+        headers,
+      ),
       (cause) => new AzureParseError({ body: nonJson ? text : json, cause }),
     ).pipe(Effect.catch(fail));
     return wrapSensitive(outputAst, mapped);

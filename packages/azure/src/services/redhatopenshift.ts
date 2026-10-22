@@ -20,7 +20,12 @@ export interface DeleteOpenShiftClusterRequest {
   /** The name of the OpenShift cluster resource. */
   resourceName: string;
 }
-export interface DeleteOpenShiftClusterResponse {}
+export interface DeleteOpenShiftClusterResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetOpenShiftClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -653,6 +658,10 @@ export interface OpenShiftClustersCreateOrUpdateResponse {
   properties?: OpenShiftClusterProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: OpenShiftClustersCreateOrUpdateResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The resource tags. */
 export type UpdateOpenShiftClusterRequestTagsMap = { [key: string]: string | undefined };
@@ -713,6 +722,10 @@ export interface UpdateOpenShiftClusterResponse {
   properties?: OpenShiftClusterProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdateOpenShiftClusterResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type DeleteOpenShiftClusterError = AzureOpError;
 /** Deletes a OpenShift cluster with the specified subscription, resource group and resource name. The operation returns nothing. */
@@ -723,7 +736,7 @@ export const DeleteOpenShiftCluster: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteOpenShiftClusterRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteOpenShiftClusterResponse>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteOpenShiftClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -737,8 +750,8 @@ export const GetOpenShiftCluster: API.OperationMethod<
   GetOpenShiftClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c2, 0) as any as S.Schema<GetOpenShiftClusterRequest>,
-  output: __S(150, __c4, 22) as any as S.Schema<GetOpenShiftClusterResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetOpenShiftClusterRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<GetOpenShiftClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -888,7 +901,7 @@ export const OpenShiftClustersCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c6, 0) as any as S.Schema<OpenShiftClustersCreateOrUpdateRequest>,
-  output: __S(150, __c4, 22) as any as S.Schema<OpenShiftClustersCreateOrUpdateResponse>,
+  output: __S(237, __c7, 13) as any as S.Schema<OpenShiftClustersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -903,7 +916,7 @@ export const UpdateOpenShiftCluster: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(256, __c8, 0) as any as S.Schema<UpdateOpenShiftClusterRequest>,
-  output: __S(150, __c4, 22) as any as S.Schema<UpdateOpenShiftClusterResponse>,
+  output: __S(237, __c7, 13) as any as S.Schema<UpdateOpenShiftClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -927,17 +940,16 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteOpenShiftClusterRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteOpenShiftClusterResponse" });
   }
 }
 function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteOpenShiftClusterResponse",
-      });
-  }
-}
-function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -956,7 +968,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "GetOpenShiftClusterRequest" });
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -969,6 +981,23 @@ function __c3(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(146, __c4, 18)),
+          identity: S.optional(__S(149, __c4, 21)),
+        }),
+      ).annotate({ identifier: "GetOpenShiftClusterResponse" });
   }
 }
 function __c4(j: number): any {
@@ -1122,19 +1151,6 @@ function __c4(j: number): any {
           userAssignedIdentities: S.optional(__S(148, __c4, 20)),
         }),
       ).annotate({ identifier: "GetOpenShiftClusterResponseIdentity" });
-    case 22:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(96, __c3, 0)),
-          tags: S.optional(__S(128, __c4, 0)),
-          location: S.String,
-          properties: S.optional(__S(146, __c4, 18)),
-          identity: S.optional(__S(149, __c4, 21)),
-        }),
-      ).annotate({ identifier: "GetOpenShiftClusterResponse" });
   }
 }
 function __c5(j: number): any {
@@ -1174,8 +1190,8 @@ function __c6(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           tags: S.optional(__S(128, __c4, 0)),
           location: S.String,
-          properties: S.optional(__S(233, __c7, 9)),
-          identity: S.optional(__S(235, __c7, 11)),
+          properties: S.optional(__S(234, __c7, 10)),
+          identity: S.optional(__S(236, __c7, 12)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1200,75 +1216,92 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "ClusterProfileInput" });
     case 1:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "ConsoleProfileInput" });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlatformWorkloadIdentityInput" });
-    case 2:
-      return S.Record(S.String, __S(225, __c7, 1));
     case 3:
+      return S.Record(S.String, __S(226, __c7, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           upgradeableTo: S.optional(S.String),
-          platformWorkloadIdentities: S.optional(__S(226, __c7, 2)),
+          platformWorkloadIdentities: S.optional(__S(227, __c7, 3)),
         }),
       ).annotate({ identifier: "PlatformWorkloadIdentityProfileInput" });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           managedOutboundIps: S.optional(__S(135, __c4, 7)),
         }),
       ).annotate({ identifier: "LoadBalancerProfileInput" });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           podCidr: S.optional(S.String),
           serviceCidr: S.optional(S.String),
           outboundType: S.optional(S.String),
-          loadBalancerProfile: S.optional(__S(228, __c7, 4)),
+          loadBalancerProfile: S.optional(__S(229, __c7, 5)),
           preconfiguredNSG: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkProfileInput" });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           visibility: S.optional(S.String),
         }),
       ).annotate({ identifier: "APIServerProfileInput" });
-    case 7:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           visibility: S.optional(S.String),
         }),
       ).annotate({ identifier: "IngressProfileInput" });
-    case 8:
-      return S.Array(__S(231, __c7, 7));
     case 9:
+      return S.Array(__S(232, __c7, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           clusterProfile: S.optional(__S(224, __c7, 0)),
-          consoleProfile: S.optional(__S(32, __c1, 0)),
+          consoleProfile: S.optional(__S(225, __c7, 1)),
           servicePrincipalProfile: S.optional(__S(131, __c4, 3)),
-          platformWorkloadIdentityProfile: S.optional(__S(227, __c7, 3)),
-          networkProfile: S.optional(__S(229, __c7, 5)),
+          platformWorkloadIdentityProfile: S.optional(__S(228, __c7, 4)),
+          networkProfile: S.optional(__S(230, __c7, 6)),
           masterProfile: S.optional(__S(140, __c4, 12)),
           workerProfiles: S.optional(__S(142, __c4, 14)),
-          apiserverProfile: S.optional(__S(230, __c7, 6)),
-          ingressProfiles: S.optional(__S(232, __c7, 8)),
+          apiserverProfile: S.optional(__S(231, __c7, 7)),
+          ingressProfiles: S.optional(__S(233, __c7, 9)),
         }),
       ).annotate({ identifier: "OpenShiftClusterPropertiesInput" });
-    case 10:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(32, __c1, 0)));
     case 11:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(225, __c7, 1)));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(234, __c7, 10)),
+          userAssignedIdentities: S.optional(__S(235, __c7, 11)),
         }),
       ).annotate({ identifier: "OpenShiftClustersCreateOrUpdateRequestIdentity" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(146, __c4, 18)),
+          identity: S.optional(__S(149, __c4, 21)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "OpenShiftClustersCreateOrUpdateResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1280,8 +1313,8 @@ function __c8(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           tags: S.optional(__S(128, __c4, 0)),
-          properties: S.optional(__S(233, __c7, 9)),
-          identity: S.optional(__S(235, __c7, 11)),
+          properties: S.optional(__S(234, __c7, 10)),
+          identity: S.optional(__S(236, __c7, 12)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1326,7 +1359,7 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(96, __c3, 0)),
+          systemData: S.optional(__S(64, __c2, 0)),
           properties: S.optional(__S(320, __c10, 0)),
         }),
       ).annotate({ identifier: "GetOpenShiftVersionResponse" });
@@ -1376,7 +1409,7 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(96, __c3, 0)),
+          systemData: S.optional(__S(64, __c2, 0)),
           properties: S.optional(__S(386, __c12, 2)),
         }),
       ).annotate({ identifier: "GetPlatformWorkloadIdentityRoleSetResponse" });
@@ -1428,7 +1461,7 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(150, __c4, 22));
+      return S.Array(__S(96, __c3, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({

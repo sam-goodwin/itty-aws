@@ -211,7 +211,12 @@ export interface DeleteAgentRequest {
   /** The name of the Agent resource. */
   agentName: string;
 }
-export interface DeleteAgentResponse {}
+export interface DeleteAgentResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -222,7 +227,12 @@ export interface DeleteConnectionRequest {
   /** The name of the Connection resource. */
   connectionName: string;
 }
-export interface DeleteConnectionResponse {}
+export interface DeleteConnectionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteEndpointRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -233,7 +243,12 @@ export interface DeleteEndpointRequest {
   /** The name of the Endpoint resource. */
   endpointName: string;
 }
-export interface DeleteEndpointResponse {}
+export interface DeleteEndpointResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteJobDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -246,7 +261,12 @@ export interface DeleteJobDefinitionRequest {
   /** The name of the Job Definition resource. */
   jobDefinitionName: string;
 }
-export interface DeleteJobDefinitionResponse {}
+export interface DeleteJobDefinitionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -257,7 +277,12 @@ export interface DeleteProjectRequest {
   /** The name of the Project resource. */
   projectName: string;
 }
-export interface DeleteProjectResponse {}
+export interface DeleteProjectResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteStorageMoverRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -266,7 +291,12 @@ export interface DeleteStorageMoverRequest {
   /** The name of the Storage Mover resource. */
   storageMoverName: string;
 }
-export interface DeleteStorageMoverResponse {}
+export interface DeleteStorageMoverResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** The Endpoint resource type. */
 export type EndpointType =
   | "AzureStorageBlobContainer"
@@ -1620,7 +1650,7 @@ export const GetAgent: API.OperationMethod<
   GetAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c50, 0) as any as S.Schema<GetAgentRequest>,
+  input: __S(816, __c51, 0) as any as S.Schema<GetAgentRequest>,
   output: __S(39, __c2, 7) as any as S.Schema<GetAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2539,7 +2569,7 @@ function __c17(j: number): any {
           targetName: S.String,
           targetSubpath: S.optional(S.String),
           agentName: S.optional(S.String),
-          sourceTargetMap: S.optional(__S(368, __c23, 0)),
+          sourceTargetMap: S.optional(__S(784, __c49, 0)),
           connections: S.optional(__S(64, __c4, 0)),
           schedule: S.optional(__S(153, __c9, 9)),
           dataIntegrityValidation: S.optional(S.String),
@@ -2681,7 +2711,12 @@ function __c22(j: number): any {
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteAgentResponse" });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteAgentResponse" });
   }
 }
 function __c24(j: number): any {
@@ -3053,7 +3088,7 @@ function __c39(j: number): any {
           storageMoverName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           properties: S.optional(__S(624, __c39, 0)),
-          identity: S.optional(__S(785, __c49, 1)),
+          identity: S.optional(__S(801, __c50, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3255,7 +3290,7 @@ function __c47(j: number): any {
           storageMoverName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
           properties: __S(752, __c47, 0),
-          identity: S.optional(__S(785, __c49, 1)),
+          identity: S.optional(__S(801, __c50, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3327,17 +3362,23 @@ function __c48(j: number): any {
 function __c49(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(368, __c23, 0));
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "UserAssignedIdentityInput" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(784, __c49, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(S.NullOr(__S(784, __c49, 0))),
+          userAssignedIdentities: S.optional(S.NullOr(__S(800, __c50, 0))),
         }),
       ).annotate({ identifier: "EndpointsCreateOrUpdateRequestIdentity" });
   }
 }
-function __c50(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

@@ -125,6 +125,10 @@ export interface AkriConnectorCreateOrUpdateResponse {
   properties?: AkriConnectorProperties;
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** AkriConnectorTemplateAioMetadata properties. */
 export interface AkriConnectorTemplateAioMetadata {
@@ -271,6 +275,10 @@ export interface AkriConnectorTemplateCreateOrUpdateResponse {
   properties?: AkriConnectorTemplateProperties;
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** AkriService properties. */
 export type AkriServicePropertiesInput = AkriConnectorPropertiesInput;
@@ -313,6 +321,10 @@ export interface AkriServiceCreateOrUpdateResponse {
   properties?: AkriServiceProperties;
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Broker Authentication Mode */
 export type BrokerAuthenticationMethod = "Custom" | "ServiceAccountToken" | "X509";
@@ -438,6 +450,10 @@ export interface BrokerAuthenticationCreateOrUpdateResponse {
   properties?: BrokerAuthenticationProperties;
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Enable caching of the authorization rules. */
 export type AuthorizationConfigCache = "Enabled" | "Disabled";
@@ -558,6 +574,10 @@ export interface BrokerAuthorizationCreateOrUpdateResponse {
   properties?: BrokerAuthorizationProperties;
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The strategy to use for dropping messages from the queue. */
 export type SubscriberQueueLimitStrategy = "None" | "DropOldest";
@@ -929,6 +949,10 @@ export interface BrokerCreateOrUpdateResponse {
   properties?: BrokerProperties;
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Protocol to use for client connections. */
 export type ListenerPortProtocol = "Mqtt" | "WebSockets";
@@ -1060,6 +1084,10 @@ export interface BrokerListenerCreateOrUpdateResponse {
   properties?: BrokerListenerProperties;
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Mode for Dataflow. Optional; defaults to Enabled. */
 export type DataflowPropertiesInputMode = "Enabled" | "Disabled";
@@ -1259,6 +1287,10 @@ export interface DataflowCreateOrUpdateResponse {
   properties?: DataflowProperties;
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** DataflowEndpoint Type properties */
 export type EndpointType =
@@ -1620,6 +1652,10 @@ export interface DataflowEndpointCreateOrUpdateResponse {
   properties?: DataflowEndpointProperties;
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The mode of the dataflow graph. */
 export type DataflowGraphPropertiesInputMode = "Enabled" | "Disabled";
@@ -1748,6 +1784,10 @@ export interface DataflowGraphCreateOrUpdateResponse {
   properties?: DataflowGraphProperties;
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** DataflowProfile Diagnostics properties */
 export interface ProfileDiagnostics {
@@ -1814,6 +1854,10 @@ export interface DataflowProfileCreateOrUpdateResponse {
   properties?: DataflowProfileProperties;
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteAkriConnectorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1827,7 +1871,12 @@ export interface DeleteAkriConnectorRequest {
   /** Name of AkriConnector resource. */
   connectorName: string;
 }
-export interface DeleteAkriConnectorResponse {}
+export interface DeleteAkriConnectorResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteAkriConnectorTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1838,7 +1887,12 @@ export interface DeleteAkriConnectorTemplateRequest {
   /** Name of AkriConnectorTemplate resource. */
   akriConnectorTemplateName: string;
 }
-export interface DeleteAkriConnectorTemplateResponse {}
+export interface DeleteAkriConnectorTemplateResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteAkriServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1849,7 +1903,12 @@ export interface DeleteAkriServiceRequest {
   /** Name of AkriService resource. */
   akriServiceName: string;
 }
-export interface DeleteAkriServiceResponse {}
+export interface DeleteAkriServiceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteBrokerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1860,7 +1919,12 @@ export interface DeleteBrokerRequest {
   /** Name of broker. */
   brokerName: string;
 }
-export interface DeleteBrokerResponse {}
+export interface DeleteBrokerResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteBrokerAuthenticationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1873,7 +1937,12 @@ export interface DeleteBrokerAuthenticationRequest {
   /** Name of Instance broker authentication resource */
   authenticationName: string;
 }
-export interface DeleteBrokerAuthenticationResponse {}
+export interface DeleteBrokerAuthenticationResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteBrokerAuthorizationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1886,7 +1955,12 @@ export interface DeleteBrokerAuthorizationRequest {
   /** Name of Instance broker authorization resource */
   authorizationName: string;
 }
-export interface DeleteBrokerAuthorizationResponse {}
+export interface DeleteBrokerAuthorizationResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteBrokerListenerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1899,7 +1973,12 @@ export interface DeleteBrokerListenerRequest {
   /** Name of Instance broker listener resource */
   listenerName: string;
 }
-export interface DeleteBrokerListenerResponse {}
+export interface DeleteBrokerListenerResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDataflowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1912,7 +1991,12 @@ export interface DeleteDataflowRequest {
   /** Name of Instance dataflowProfile dataflow resource */
   dataflowName: string;
 }
-export interface DeleteDataflowResponse {}
+export interface DeleteDataflowResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDataflowEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1923,7 +2007,12 @@ export interface DeleteDataflowEndpointRequest {
   /** Name of Instance dataflowEndpoint resource */
   dataflowEndpointName: string;
 }
-export interface DeleteDataflowEndpointResponse {}
+export interface DeleteDataflowEndpointResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDataflowGraphRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1936,7 +2025,12 @@ export interface DeleteDataflowGraphRequest {
   /** Name of Instance dataflowEndpoint resource. */
   dataflowGraphName: string;
 }
-export interface DeleteDataflowGraphResponse {}
+export interface DeleteDataflowGraphResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDataflowProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1947,7 +2041,12 @@ export interface DeleteDataflowProfileRequest {
   /** Name of Instance dataflowProfile resource */
   dataflowProfileName: string;
 }
-export interface DeleteDataflowProfileResponse {}
+export interface DeleteDataflowProfileResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1956,7 +2055,12 @@ export interface DeleteInstanceRequest {
   /** Name of instance. */
   instanceName: string;
 }
-export interface DeleteInstanceResponse {}
+export interface DeleteInstanceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteRegistryEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1967,7 +2071,12 @@ export interface DeleteRegistryEndpointRequest {
   /** Name of RegistryEndpoint resource */
   registryEndpointName: string;
 }
-export interface DeleteRegistryEndpointResponse {}
+export interface DeleteRegistryEndpointResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetAkriConnectorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2506,6 +2615,10 @@ export interface InstanceCreateOrUpdateResponse {
   identity?: GetInstanceResponseIdentity;
   /** The billing SKU for the AIO Instance. Defaults to Standard. */
   sku?: InstanceSku;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ListAkriConnectorByTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3025,6 +3138,10 @@ export interface RegistryEndpointCreateOrUpdateResponse {
   properties?: RegistryEndpointProperties;
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateInstanceRequestTagsMap = { [key: string]: string | undefined };
@@ -3077,7 +3194,7 @@ export const AkriConnectorCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AkriConnectorCreateOrUpdateRequest>,
-  output: __S(131, __c4, 3) as any as S.Schema<AkriConnectorCreateOrUpdateResponse>,
+  output: __S(1, __c0, 1) as any as S.Schema<AkriConnectorCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3092,7 +3209,7 @@ export const AkriConnectorTemplateCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(161, __c5, 1) as any as S.Schema<AkriConnectorTemplateCreateOrUpdateRequest>,
-  output: __S(200, __c6, 8) as any as S.Schema<AkriConnectorTemplateCreateOrUpdateResponse>,
+  output: __S(162, __c5, 2) as any as S.Schema<AkriConnectorTemplateCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3106,7 +3223,7 @@ export const AkriServiceCreateOrUpdate: API.OperationMethod<
   AkriServiceCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c20, 0) as any as S.Schema<AkriServiceCreateOrUpdateRequest>,
+  input: __S(672, __c21, 0) as any as S.Schema<AkriServiceCreateOrUpdateRequest>,
   output: __S(673, __c21, 1) as any as S.Schema<AkriServiceCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3121,8 +3238,8 @@ export const BrokerAuthenticationCreateOrUpdate: API.OperationMethod<
   BrokerAuthenticationCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1025, __c32, 1) as any as S.Schema<BrokerAuthenticationCreateOrUpdateRequest>,
-  output: __S(1065, __c33, 9) as any as S.Schema<BrokerAuthenticationCreateOrUpdateResponse>,
+  input: __S(1249, __c39, 1) as any as S.Schema<BrokerAuthenticationCreateOrUpdateRequest>,
+  output: __S(1250, __c39, 2) as any as S.Schema<BrokerAuthenticationCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3136,8 +3253,8 @@ export const BrokerAuthorizationCreateOrUpdate: API.OperationMethod<
   BrokerAuthorizationCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1601, __c50, 1) as any as S.Schema<BrokerAuthorizationCreateOrUpdateRequest>,
-  output: __S(1642, __c51, 10) as any as S.Schema<BrokerAuthorizationCreateOrUpdateResponse>,
+  input: __S(2049, __c64, 1) as any as S.Schema<BrokerAuthorizationCreateOrUpdateRequest>,
+  output: __S(2050, __c64, 2) as any as S.Schema<BrokerAuthorizationCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3151,8 +3268,8 @@ export const BrokerCreateOrUpdate: API.OperationMethod<
   BrokerCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2017, __c63, 1) as any as S.Schema<BrokerCreateOrUpdateRequest>,
-  output: __S(2107, __c65, 27) as any as S.Schema<BrokerCreateOrUpdateResponse>,
+  input: __S(2465, __c77, 1) as any as S.Schema<BrokerCreateOrUpdateRequest>,
+  output: __S(2466, __c77, 2) as any as S.Schema<BrokerCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3166,8 +3283,8 @@ export const BrokerListenerCreateOrUpdate: API.OperationMethod<
   BrokerListenerCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2337, __c73, 1) as any as S.Schema<BrokerListenerCreateOrUpdateRequest>,
-  output: __S(2375, __c74, 7) as any as S.Schema<BrokerListenerCreateOrUpdateResponse>,
+  input: __S(2785, __c87, 1) as any as S.Schema<BrokerListenerCreateOrUpdateRequest>,
+  output: __S(2786, __c87, 2) as any as S.Schema<BrokerListenerCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3181,8 +3298,8 @@ export const DataflowCreateOrUpdate: API.OperationMethod<
   DataflowCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2401, __c75, 1) as any as S.Schema<DataflowCreateOrUpdateRequest>,
-  output: __S(2446, __c76, 14) as any as S.Schema<DataflowCreateOrUpdateResponse>,
+  input: __S(2849, __c89, 1) as any as S.Schema<DataflowCreateOrUpdateRequest>,
+  output: __S(2850, __c89, 2) as any as S.Schema<DataflowCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3196,8 +3313,8 @@ export const DataflowEndpointCreateOrUpdate: API.OperationMethod<
   DataflowEndpointCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2465, __c77, 1) as any as S.Schema<DataflowEndpointCreateOrUpdateRequest>,
-  output: __S(2516, __c78, 20) as any as S.Schema<DataflowEndpointCreateOrUpdateResponse>,
+  input: __S(2913, __c91, 1) as any as S.Schema<DataflowEndpointCreateOrUpdateRequest>,
+  output: __S(2914, __c91, 2) as any as S.Schema<DataflowEndpointCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3211,8 +3328,8 @@ export const DataflowGraphCreateOrUpdate: API.OperationMethod<
   DataflowGraphCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2529, __c79, 1) as any as S.Schema<DataflowGraphCreateOrUpdateRequest>,
-  output: __S(2567, __c80, 7) as any as S.Schema<DataflowGraphCreateOrUpdateResponse>,
+  input: __S(2977, __c93, 1) as any as S.Schema<DataflowGraphCreateOrUpdateRequest>,
+  output: __S(2978, __c93, 2) as any as S.Schema<DataflowGraphCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3227,7 +3344,7 @@ export const DataflowProfileCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(289, __c9, 1) as any as S.Schema<DataflowProfileCreateOrUpdateRequest>,
-  output: __S(322, __c10, 2) as any as S.Schema<DataflowProfileCreateOrUpdateResponse>,
+  output: __S(290, __c9, 2) as any as S.Schema<DataflowProfileCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3242,7 +3359,7 @@ export const DeleteAkriConnector: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(352, __c11, 0) as any as S.Schema<DeleteAkriConnectorRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteAkriConnectorResponse>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteAkriConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3256,8 +3373,8 @@ export const DeleteAkriConnectorTemplate: API.OperationMethod<
   DeleteAkriConnectorTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c12, 0) as any as S.Schema<DeleteAkriConnectorTemplateRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteAkriConnectorTemplateResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteAkriConnectorTemplateRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteAkriConnectorTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3271,8 +3388,8 @@ export const DeleteAkriService: API.OperationMethod<
   DeleteAkriServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c13, 0) as any as S.Schema<DeleteAkriServiceRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteAkriServiceResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteAkriServiceRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteAkriServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3286,8 +3403,8 @@ export const DeleteBroker: API.OperationMethod<
   DeleteBrokerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c14, 0) as any as S.Schema<DeleteBrokerRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteBrokerResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<DeleteBrokerRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteBrokerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3301,8 +3418,8 @@ export const DeleteBrokerAuthentication: API.OperationMethod<
   DeleteBrokerAuthenticationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c15, 0) as any as S.Schema<DeleteBrokerAuthenticationRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteBrokerAuthenticationResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<DeleteBrokerAuthenticationRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteBrokerAuthenticationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3316,8 +3433,8 @@ export const DeleteBrokerAuthorization: API.OperationMethod<
   DeleteBrokerAuthorizationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c16, 0) as any as S.Schema<DeleteBrokerAuthorizationRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteBrokerAuthorizationResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<DeleteBrokerAuthorizationRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteBrokerAuthorizationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3331,8 +3448,8 @@ export const DeleteBrokerListener: API.OperationMethod<
   DeleteBrokerListenerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<DeleteBrokerListenerRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteBrokerListenerResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<DeleteBrokerListenerRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteBrokerListenerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3346,8 +3463,8 @@ export const DeleteDataflow: API.OperationMethod<
   DeleteDataflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c18, 0) as any as S.Schema<DeleteDataflowRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteDataflowResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<DeleteDataflowRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteDataflowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3361,8 +3478,8 @@ export const DeleteDataflowEndpoint: API.OperationMethod<
   DeleteDataflowEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c19, 0) as any as S.Schema<DeleteDataflowEndpointRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteDataflowEndpointResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<DeleteDataflowEndpointRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteDataflowEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3376,8 +3493,8 @@ export const DeleteDataflowGraph: API.OperationMethod<
   DeleteDataflowGraphError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c22, 0) as any as S.Schema<DeleteDataflowGraphRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteDataflowGraphResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<DeleteDataflowGraphRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteDataflowGraphResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3391,8 +3508,8 @@ export const DeleteDataflowProfile: API.OperationMethod<
   DeleteDataflowProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c23, 0) as any as S.Schema<DeleteDataflowProfileRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteDataflowProfileResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<DeleteDataflowProfileRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteDataflowProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3406,8 +3523,8 @@ export const DeleteInstance: API.OperationMethod<
   DeleteInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c24, 0) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteInstanceResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<DeleteInstanceRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3421,8 +3538,8 @@ export const DeleteRegistryEndpoint: API.OperationMethod<
   DeleteRegistryEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c25, 0) as any as S.Schema<DeleteRegistryEndpointRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeleteRegistryEndpointResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<DeleteRegistryEndpointRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeleteRegistryEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3436,8 +3553,8 @@ export const GetAkriConnector: API.OperationMethod<
   GetAkriConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c26, 0) as any as S.Schema<GetAkriConnectorRequest>,
-  output: __S(131, __c4, 3) as any as S.Schema<GetAkriConnectorResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetAkriConnectorRequest>,
+  output: __S(896, __c28, 0) as any as S.Schema<GetAkriConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3451,8 +3568,8 @@ export const GetAkriConnectorTemplate: API.OperationMethod<
   GetAkriConnectorTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<GetAkriConnectorTemplateRequest>,
-  output: __S(200, __c6, 8) as any as S.Schema<GetAkriConnectorTemplateResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetAkriConnectorTemplateRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<GetAkriConnectorTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3466,8 +3583,8 @@ export const GetAkriService: API.OperationMethod<
   GetAkriServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<GetAkriServiceRequest>,
-  output: __S(673, __c21, 1) as any as S.Schema<GetAkriServiceResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetAkriServiceRequest>,
+  output: __S(1024, __c32, 0) as any as S.Schema<GetAkriServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3481,8 +3598,8 @@ export const GetBroker: API.OperationMethod<
   GetBrokerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<GetBrokerRequest>,
-  output: __S(2107, __c65, 27) as any as S.Schema<GetBrokerResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetBrokerRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<GetBrokerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3496,8 +3613,8 @@ export const GetBrokerAuthentication: API.OperationMethod<
   GetBrokerAuthenticationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c30, 0) as any as S.Schema<GetBrokerAuthenticationRequest>,
-  output: __S(1065, __c33, 9) as any as S.Schema<GetBrokerAuthenticationResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetBrokerAuthenticationRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<GetBrokerAuthenticationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3511,8 +3628,8 @@ export const GetBrokerAuthorization: API.OperationMethod<
   GetBrokerAuthorizationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<GetBrokerAuthorizationRequest>,
-  output: __S(1642, __c51, 10) as any as S.Schema<GetBrokerAuthorizationResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetBrokerAuthorizationRequest>,
+  output: __S(1216, __c38, 0) as any as S.Schema<GetBrokerAuthorizationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3526,8 +3643,8 @@ export const GetBrokerListener: API.OperationMethod<
   GetBrokerListenerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c37, 0) as any as S.Schema<GetBrokerListenerRequest>,
-  output: __S(2375, __c74, 7) as any as S.Schema<GetBrokerListenerResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<GetBrokerListenerRequest>,
+  output: __S(1440, __c45, 0) as any as S.Schema<GetBrokerListenerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3541,8 +3658,8 @@ export const GetDataflow: API.OperationMethod<
   GetDataflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c38, 0) as any as S.Schema<GetDataflowRequest>,
-  output: __S(2446, __c76, 14) as any as S.Schema<GetDataflowResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<GetDataflowRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<GetDataflowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3556,8 +3673,8 @@ export const GetDataflowEndpoint: API.OperationMethod<
   GetDataflowEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c39, 0) as any as S.Schema<GetDataflowEndpointRequest>,
-  output: __S(2516, __c78, 20) as any as S.Schema<GetDataflowEndpointResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<GetDataflowEndpointRequest>,
+  output: __S(1568, __c49, 0) as any as S.Schema<GetDataflowEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3571,8 +3688,8 @@ export const GetDataflowGraph: API.OperationMethod<
   GetDataflowGraphError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c40, 0) as any as S.Schema<GetDataflowGraphRequest>,
-  output: __S(2567, __c80, 7) as any as S.Schema<GetDataflowGraphResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<GetDataflowGraphRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<GetDataflowGraphResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3586,8 +3703,8 @@ export const GetDataflowProfile: API.OperationMethod<
   GetDataflowProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c41, 0) as any as S.Schema<GetDataflowProfileRequest>,
-  output: __S(322, __c10, 2) as any as S.Schema<GetDataflowProfileResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<GetDataflowProfileRequest>,
+  output: __S(1696, __c53, 0) as any as S.Schema<GetDataflowProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3601,8 +3718,8 @@ export const GetInstance: API.OperationMethod<
   GetInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c42, 0) as any as S.Schema<GetInstanceRequest>,
-  output: __S(1385, __c43, 9) as any as S.Schema<GetInstanceResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<GetInstanceRequest>,
+  output: __S(1792, __c56, 0) as any as S.Schema<GetInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3616,8 +3733,8 @@ export const GetRegistryEndpoint: API.OperationMethod<
   GetRegistryEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c44, 0) as any as S.Schema<GetRegistryEndpointRequest>,
-  output: __S(1444, __c45, 4) as any as S.Schema<GetRegistryEndpointResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<GetRegistryEndpointRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<GetRegistryEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3631,8 +3748,8 @@ export const InstanceCreateOrUpdate: API.OperationMethod<
   InstanceCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1473, __c46, 1) as any as S.Schema<InstanceCreateOrUpdateRequest>,
-  output: __S(1385, __c43, 9) as any as S.Schema<InstanceCreateOrUpdateResponse>,
+  input: __S(1921, __c60, 1) as any as S.Schema<InstanceCreateOrUpdateRequest>,
+  output: __S(1922, __c60, 2) as any as S.Schema<InstanceCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3646,8 +3763,8 @@ export const ListAkriConnectorByTemplate: API.OperationMethod<
   ListAkriConnectorByTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c48, 0) as any as S.Schema<ListAkriConnectorByTemplateRequest>,
-  output: __S(1538, __c48, 2) as any as S.Schema<AkriConnectorResourceListResult>,
+  input: __S(1984, __c62, 0) as any as S.Schema<ListAkriConnectorByTemplateRequest>,
+  output: __S(1986, __c62, 2) as any as S.Schema<AkriConnectorResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3661,8 +3778,8 @@ export const ListAkriConnectorTemplateByInstanceResource: API.OperationMethod<
   ListAkriConnectorTemplateByInstanceResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c49, 0) as any as S.Schema<ListAkriConnectorTemplateByInstanceResourceRequest>,
-  output: __S(1570, __c49, 2) as any as S.Schema<AkriConnectorTemplateResourceListResult>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ListAkriConnectorTemplateByInstanceResourceRequest>,
+  output: __S(2018, __c63, 2) as any as S.Schema<AkriConnectorTemplateResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3676,8 +3793,8 @@ export const ListAkriServiceByInstanceResource: API.OperationMethod<
   ListAkriServiceByInstanceResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1664, __c52, 0) as any as S.Schema<ListAkriServiceByInstanceResourceRequest>,
-  output: __S(1666, __c52, 2) as any as S.Schema<AkriServiceResourceListResult>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListAkriServiceByInstanceResourceRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<AkriServiceResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3691,8 +3808,8 @@ export const ListBrokerAuthenticationByResourceGroup: API.OperationMethod<
   ListBrokerAuthenticationByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<ListBrokerAuthenticationByResourceGroupRequest>,
-  output: __S(1698, __c53, 2) as any as S.Schema<BrokerAuthenticationResourceListResult>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListBrokerAuthenticationByResourceGroupRequest>,
+  output: __S(2146, __c67, 2) as any as S.Schema<BrokerAuthenticationResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3706,8 +3823,8 @@ export const ListBrokerAuthorizationByResourceGroup: API.OperationMethod<
   ListBrokerAuthorizationByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c54, 0) as any as S.Schema<ListBrokerAuthorizationByResourceGroupRequest>,
-  output: __S(1730, __c54, 2) as any as S.Schema<BrokerAuthorizationResourceListResult>,
+  input: __S(2176, __c68, 0) as any as S.Schema<ListBrokerAuthorizationByResourceGroupRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<BrokerAuthorizationResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3721,8 +3838,8 @@ export const ListBrokerByResourceGroup: API.OperationMethod<
   ListBrokerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c55, 0) as any as S.Schema<ListBrokerByResourceGroupRequest>,
-  output: __S(1762, __c55, 2) as any as S.Schema<BrokerResourceListResult>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListBrokerByResourceGroupRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<BrokerResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3736,8 +3853,8 @@ export const ListBrokerListenerByResourceGroup: API.OperationMethod<
   ListBrokerListenerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1792, __c56, 0) as any as S.Schema<ListBrokerListenerByResourceGroupRequest>,
-  output: __S(1794, __c56, 2) as any as S.Schema<BrokerListenerResourceListResult>,
+  input: __S(2240, __c70, 0) as any as S.Schema<ListBrokerListenerByResourceGroupRequest>,
+  output: __S(2242, __c70, 2) as any as S.Schema<BrokerListenerResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3751,8 +3868,8 @@ export const ListDataflowByProfileResource: API.OperationMethod<
   ListDataflowByProfileResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1824, __c57, 0) as any as S.Schema<ListDataflowByProfileResourceRequest>,
-  output: __S(1826, __c57, 2) as any as S.Schema<DataflowResourceListResult>,
+  input: __S(2272, __c71, 0) as any as S.Schema<ListDataflowByProfileResourceRequest>,
+  output: __S(2274, __c71, 2) as any as S.Schema<DataflowResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3766,8 +3883,8 @@ export const ListDataflowEndpointByResourceGroup: API.OperationMethod<
   ListDataflowEndpointByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1856, __c58, 0) as any as S.Schema<ListDataflowEndpointByResourceGroupRequest>,
-  output: __S(1858, __c58, 2) as any as S.Schema<DataflowEndpointResourceListResult>,
+  input: __S(2304, __c72, 0) as any as S.Schema<ListDataflowEndpointByResourceGroupRequest>,
+  output: __S(2306, __c72, 2) as any as S.Schema<DataflowEndpointResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3781,8 +3898,8 @@ export const ListDataflowGraphByDataflowProfile: API.OperationMethod<
   ListDataflowGraphByDataflowProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1888, __c59, 0) as any as S.Schema<ListDataflowGraphByDataflowProfileRequest>,
-  output: __S(1890, __c59, 2) as any as S.Schema<DataflowGraphResourceListResult>,
+  input: __S(2336, __c73, 0) as any as S.Schema<ListDataflowGraphByDataflowProfileRequest>,
+  output: __S(2338, __c73, 2) as any as S.Schema<DataflowGraphResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3796,8 +3913,8 @@ export const ListDataflowProfileByResourceGroup: API.OperationMethod<
   ListDataflowProfileByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1920, __c60, 0) as any as S.Schema<ListDataflowProfileByResourceGroupRequest>,
-  output: __S(1922, __c60, 2) as any as S.Schema<DataflowProfileResourceListResult>,
+  input: __S(2368, __c74, 0) as any as S.Schema<ListDataflowProfileByResourceGroupRequest>,
+  output: __S(2370, __c74, 2) as any as S.Schema<DataflowProfileResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3811,8 +3928,8 @@ export const ListInstanceByResourceGroup: API.OperationMethod<
   ListInstanceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1952, __c61, 0) as any as S.Schema<ListInstanceByResourceGroupRequest>,
-  output: __S(1985, __c62, 1) as any as S.Schema<InstanceResourceListResult>,
+  input: __S(2400, __c75, 0) as any as S.Schema<ListInstanceByResourceGroupRequest>,
+  output: __S(2433, __c76, 1) as any as S.Schema<InstanceResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3826,8 +3943,8 @@ export const ListInstanceBySubscription: API.OperationMethod<
   ListInstanceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2176, __c68, 0) as any as S.Schema<ListInstanceBySubscriptionRequest>,
-  output: __S(1985, __c62, 1) as any as S.Schema<InstanceResourceListResult>,
+  input: __S(2624, __c82, 0) as any as S.Schema<ListInstanceBySubscriptionRequest>,
+  output: __S(2433, __c76, 1) as any as S.Schema<InstanceResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3841,8 +3958,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2208, __c69, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(2212, __c69, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(2660, __c83, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3856,8 +3973,8 @@ export const ListRegistryEndpointByInstanceResource: API.OperationMethod<
   ListRegistryEndpointByInstanceResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2240, __c70, 0) as any as S.Schema<ListRegistryEndpointByInstanceResourceRequest>,
-  output: __S(2242, __c70, 2) as any as S.Schema<RegistryEndpointResourceListResult>,
+  input: __S(2688, __c84, 0) as any as S.Schema<ListRegistryEndpointByInstanceResourceRequest>,
+  output: __S(2690, __c84, 2) as any as S.Schema<RegistryEndpointResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3871,8 +3988,8 @@ export const RegistryEndpointCreateOrUpdate: API.OperationMethod<
   RegistryEndpointCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2273, __c71, 1) as any as S.Schema<RegistryEndpointCreateOrUpdateRequest>,
-  output: __S(1444, __c45, 4) as any as S.Schema<RegistryEndpointCreateOrUpdateResponse>,
+  input: __S(2721, __c85, 1) as any as S.Schema<RegistryEndpointCreateOrUpdateRequest>,
+  output: __S(2722, __c85, 2) as any as S.Schema<RegistryEndpointCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3886,8 +4003,8 @@ export const UpdateInstance: API.OperationMethod<
   UpdateInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c72, 0) as any as S.Schema<UpdateInstanceRequest>,
-  output: __S(1385, __c43, 9) as any as S.Schema<UpdateInstanceResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<UpdateInstanceRequest>,
+  output: __S(1792, __c56, 0) as any as S.Schema<UpdateInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3915,6 +4032,19 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AkriConnectorCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(130, __c4, 2)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AkriConnectorCreateOrUpdateResponse" });
   }
 }
 function __c1(j: number): any {
@@ -3985,17 +4115,6 @@ function __c4(j: number): any {
           healthState: S.optional(S.String),
         }),
       ).annotate({ identifier: "AkriConnectorProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(33, __c1, 1)),
-          properties: S.optional(__S(130, __c4, 2)),
-          extendedLocation: S.optional(__S(32, __c1, 0)),
-        }),
-      ).annotate({ identifier: "AkriConnectorCreateOrUpdateResponse" });
   }
 }
 function __c5(j: number): any {
@@ -4029,6 +4148,19 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AkriConnectorTemplateCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(199, __c6, 7)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AkriConnectorTemplateCreateOrUpdateResponse" });
   }
 }
 function __c6(j: number): any {
@@ -4095,17 +4227,6 @@ function __c6(j: number): any {
           healthState: S.optional(S.String),
         }),
       ).annotate({ identifier: "AkriConnectorTemplateProperties" });
-    case 8:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(33, __c1, 1)),
-          properties: S.optional(__S(199, __c6, 7)),
-          extendedLocation: S.optional(__S(32, __c1, 0)),
-        }),
-      ).annotate({ identifier: "AkriConnectorTemplateCreateOrUpdateResponse" });
   }
 }
 function __c7(j: number): any {
@@ -4156,6 +4277,19 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DataflowProfileCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(321, __c10, 1)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DataflowProfileCreateOrUpdateResponse" });
   }
 }
 function __c10(j: number): any {
@@ -4164,7 +4298,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           logs: S.optional(__S(224, __c7, 0)),
-          metrics: S.optional(__S(2048, __c64, 0)),
+          metrics: S.optional(__S(2496, __c78, 0)),
         }),
       ).annotate({ identifier: "ProfileDiagnostics" });
     case 1:
@@ -4177,17 +4311,6 @@ function __c10(j: number): any {
           healthState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataflowProfileProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(33, __c1, 1)),
-          properties: S.optional(__S(321, __c10, 1)),
-          extendedLocation: S.optional(__S(32, __c1, 0)),
-        }),
-      ).annotate({ identifier: "DataflowProfileCreateOrUpdateResponse" });
   }
 }
 function __c11(j: number): any {
@@ -4216,6 +4339,17 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteAkriConnectorResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
@@ -4231,7 +4365,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "DeleteAkriConnectorTemplateRequest" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4251,7 +4385,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "DeleteAkriServiceRequest" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4271,7 +4405,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "DeleteBrokerRequest" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4292,7 +4426,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "DeleteBrokerAuthenticationRequest" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4313,7 +4447,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "DeleteBrokerAuthorizationRequest" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4334,7 +4468,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "DeleteBrokerListenerRequest" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4355,7 +4489,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "DeleteDataflowRequest" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4375,7 +4509,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "DeleteDataflowEndpointRequest" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4395,9 +4529,22 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AkriServiceCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(704, __c22, 0)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AkriServiceCreateOrUpdateResponse" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4406,20 +4553,9 @@ function __c21(j: number): any {
           status: S.optional(__S(97, __c3, 1)),
         }),
       ).annotate({ identifier: "AkriServiceProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(33, __c1, 1)),
-          properties: S.optional(__S(672, __c21, 0)),
-          extendedLocation: S.optional(__S(32, __c1, 0)),
-        }),
-      ).annotate({ identifier: "AkriServiceCreateOrUpdateResponse" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4440,7 +4576,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "DeleteDataflowGraphRequest" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4460,7 +4596,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "DeleteDataflowProfileRequest" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4479,7 +4615,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "DeleteInstanceRequest" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4499,7 +4635,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "DeleteRegistryEndpointRequest" });
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4520,7 +4656,22 @@ function __c26(j: number): any {
       ).annotate({ identifier: "GetAkriConnectorRequest" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(130, __c4, 2)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({ identifier: "GetAkriConnectorResponse" });
+  }
+}
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4540,7 +4691,22 @@ function __c27(j: number): any {
       ).annotate({ identifier: "GetAkriConnectorTemplateRequest" });
   }
 }
-function __c28(j: number): any {
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(199, __c6, 7)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({ identifier: "GetAkriConnectorTemplateResponse" });
+  }
+}
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4560,7 +4726,22 @@ function __c28(j: number): any {
       ).annotate({ identifier: "GetAkriServiceRequest" });
   }
 }
-function __c29(j: number): any {
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(704, __c22, 0)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({ identifier: "GetAkriServiceResponse" });
+  }
+}
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4580,7 +4761,22 @@ function __c29(j: number): any {
       ).annotate({ identifier: "GetBrokerRequest" });
   }
 }
-function __c30(j: number): any {
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(2554, __c79, 26)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({ identifier: "GetBrokerResponse" });
+  }
+}
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4601,7 +4797,22 @@ function __c30(j: number): any {
       ).annotate({ identifier: "GetBrokerAuthenticationRequest" });
   }
 }
-function __c31(j: number): any {
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(1288, __c40, 8)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({ identifier: "GetBrokerAuthenticationResponse" });
+  }
+}
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4622,12 +4833,27 @@ function __c31(j: number): any {
       ).annotate({ identifier: "GetBrokerAuthorizationRequest" });
   }
 }
-function __c32(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          authenticationMethods: __S(1063, __c33, 7),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(2089, __c65, 9)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({ identifier: "GetBrokerAuthorizationResponse" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          authenticationMethods: __S(1287, __c40, 7),
         }),
       ).annotate({ identifier: "BrokerAuthenticationPropertiesInput" });
     case 1:
@@ -4638,7 +4864,7 @@ function __c32(j: number): any {
           instanceName: S.String.pipe(T.Label()),
           brokerName: S.String.pipe(T.Label()),
           authenticationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1024, __c32, 0)),
+          properties: S.optional(__S(1248, __c39, 0)),
           extendedLocation: S.optional(__S(32, __c1, 0)),
         }).pipe(
           T.Http({
@@ -4649,44 +4875,57 @@ function __c32(j: number): any {
           }),
         ),
       ).annotate({ identifier: "BrokerAuthenticationCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(1288, __c40, 8)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "BrokerAuthenticationCreateOrUpdateResponse" });
   }
 }
-function __c33(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          x509: __S(1152, __c36, 0),
+          x509: __S(1376, __c43, 0),
         }),
       ).annotate({ identifier: "BrokerAuthenticatorCustomAuth" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          auth: S.optional(__S(1056, __c33, 0)),
+          auth: S.optional(__S(1280, __c40, 0)),
           caCertConfigMap: S.optional(S.String),
           endpoint: S.String,
-          headers: S.optional(__S(1088, __c34, 0)),
+          headers: S.optional(__S(1312, __c41, 0)),
         }),
       ).annotate({ identifier: "BrokerAuthenticatorMethodCustom" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          audiences: __S(1120, __c35, 0),
+          audiences: __S(1344, __c42, 0),
         }),
       ).annotate({ identifier: "BrokerAuthenticatorMethodSat" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          attributes: __S(1088, __c34, 0),
+          attributes: __S(1312, __c41, 0),
           subject: S.String,
         }),
       ).annotate({ identifier: "BrokerAuthenticatorMethodX509Attributes" });
     case 4:
-      return S.Record(S.String, __S(1059, __c33, 3));
+      return S.Record(S.String, __S(1283, __c40, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          authorizationAttributes: S.optional(__S(1060, __c33, 4)),
+          authorizationAttributes: S.optional(__S(1284, __c40, 4)),
           trustedClientCaCert: S.optional(S.String),
           additionalValidation: S.optional(S.String),
         }),
@@ -4695,47 +4934,36 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           method: S.String,
-          customSettings: S.optional(__S(1057, __c33, 1)),
-          serviceAccountTokenSettings: S.optional(__S(1058, __c33, 2)),
-          x509Settings: S.optional(__S(1061, __c33, 5)),
+          customSettings: S.optional(__S(1281, __c40, 1)),
+          serviceAccountTokenSettings: S.optional(__S(1282, __c40, 2)),
+          x509Settings: S.optional(__S(1285, __c40, 5)),
         }),
       ).annotate({ identifier: "BrokerAuthenticatorMethods" });
     case 7:
-      return S.Array(__S(1062, __c33, 6));
+      return S.Array(__S(1286, __c40, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
-          authenticationMethods: __S(1063, __c33, 7),
+          authenticationMethods: __S(1287, __c40, 7),
           provisioningState: S.optional(S.String),
           healthState: S.optional(S.String),
         }),
       ).annotate({ identifier: "BrokerAuthenticationProperties" });
-    case 9:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(33, __c1, 1)),
-          properties: S.optional(__S(1064, __c33, 8)),
-          extendedLocation: S.optional(__S(32, __c1, 0)),
-        }),
-      ).annotate({ identifier: "BrokerAuthenticationCreateOrUpdateResponse" });
   }
 }
-function __c34(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
   }
 }
-function __c35(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c36(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4745,7 +4973,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "X509ManualCertificate" });
   }
 }
-function __c37(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4766,7 +4994,22 @@ function __c37(j: number): any {
       ).annotate({ identifier: "GetBrokerListenerRequest" });
   }
 }
-function __c38(j: number): any {
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(2822, __c88, 6)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({ identifier: "GetBrokerListenerResponse" });
+  }
+}
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4787,7 +5030,22 @@ function __c38(j: number): any {
       ).annotate({ identifier: "GetDataflowRequest" });
   }
 }
-function __c39(j: number): any {
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(2893, __c90, 13)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({ identifier: "GetDataflowResponse" });
+  }
+}
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4807,7 +5065,22 @@ function __c39(j: number): any {
       ).annotate({ identifier: "GetDataflowEndpointRequest" });
   }
 }
-function __c40(j: number): any {
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(2963, __c92, 19)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({ identifier: "GetDataflowEndpointResponse" });
+  }
+}
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4828,7 +5101,22 @@ function __c40(j: number): any {
       ).annotate({ identifier: "GetDataflowGraphRequest" });
   }
 }
-function __c41(j: number): any {
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(3014, __c94, 6)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({ identifier: "GetDataflowGraphResponse" });
+  }
+}
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4848,7 +5136,22 @@ function __c41(j: number): any {
       ).annotate({ identifier: "GetDataflowProfileRequest" });
   }
 }
-function __c42(j: number): any {
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(321, __c10, 1)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({ identifier: "GetDataflowProfileResponse" });
+  }
+}
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4867,7 +5170,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "GetInstanceRequest" });
   }
 }
-function __c43(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4881,21 +5184,21 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
-          settings: S.optional(__S(1377, __c43, 1)),
+          settings: S.optional(__S(1761, __c55, 1)),
         }),
       ).annotate({ identifier: "InstanceFeature" });
     case 3:
-      return S.Record(S.String, __S(1378, __c43, 2));
+      return S.Record(S.String, __S(1762, __c55, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           provisioningState: S.optional(S.String),
           version: S.optional(S.String),
-          schemaRegistryRef: __S(1376, __c43, 0),
-          defaultSecretProviderClassRef: S.optional(__S(1376, __c43, 0)),
-          features: S.optional(__S(1379, __c43, 3)),
-          adrNamespaceRef: S.optional(__S(1376, __c43, 0)),
+          schemaRegistryRef: __S(1760, __c55, 0),
+          defaultSecretProviderClassRef: S.optional(__S(1760, __c55, 0)),
+          features: S.optional(__S(1763, __c55, 3)),
+          adrNamespaceRef: S.optional(__S(1760, __c55, 0)),
           healthState: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceProperties" });
@@ -4907,14 +5210,14 @@ function __c43(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1381, __c43, 5)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1765, __c55, 5)));
     case 7:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(1382, __c43, 6)),
+          userAssignedIdentities: S.optional(__S(1766, __c55, 6)),
         }),
       ).annotate({ identifier: "GetInstanceResponseIdentity" });
     case 8:
@@ -4923,24 +5226,28 @@ function __c43(j: number): any {
           name: S.String,
         }),
       ).annotate({ identifier: "InstanceSku" });
-    case 9:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(33, __c1, 1)),
-          tags: S.optional(__S(1088, __c34, 0)),
+          tags: S.optional(__S(1312, __c41, 0)),
           location: S.String,
-          properties: S.optional(__S(1380, __c43, 4)),
+          properties: S.optional(__S(1764, __c55, 4)),
           extendedLocation: __S(32, __c1, 0),
-          identity: S.optional(__S(1383, __c43, 7)),
-          sku: S.optional(__S(1384, __c43, 8)),
+          identity: S.optional(__S(1767, __c55, 7)),
+          sku: S.optional(__S(1768, __c55, 8)),
         }),
       ).annotate({ identifier: "GetInstanceResponse" });
   }
 }
-function __c44(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4960,7 +5267,22 @@ function __c44(j: number): any {
       ).annotate({ identifier: "GetRegistryEndpointRequest" });
   }
 }
-function __c45(j: number): any {
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(1891, __c59, 3)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({ identifier: "GetRegistryEndpointResponse" });
+  }
+}
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4981,40 +5303,29 @@ function __c45(j: number): any {
         }),
       ).annotate({ identifier: "RegistryEndpointTrustedSigningKey" });
     case 2:
-      return S.Array(__S(1441, __c45, 1));
+      return S.Array(__S(1889, __c59, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           host: S.String,
-          authentication: __S(1440, __c45, 0),
+          authentication: __S(1888, __c59, 0),
           provisioningState: S.optional(S.String),
           healthState: S.optional(S.String),
-          codeSigningCas: S.optional(__S(1442, __c45, 2)),
+          codeSigningCas: S.optional(__S(1890, __c59, 2)),
         }),
       ).annotate({ identifier: "RegistryEndpointProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(33, __c1, 1)),
-          properties: S.optional(__S(1443, __c45, 3)),
-          extendedLocation: S.optional(__S(32, __c1, 0)),
-        }),
-      ).annotate({ identifier: "GetRegistryEndpointResponse" });
   }
 }
-function __c46(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          schemaRegistryRef: __S(1376, __c43, 0),
-          defaultSecretProviderClassRef: S.optional(__S(1376, __c43, 0)),
-          features: S.optional(__S(1379, __c43, 3)),
-          adrNamespaceRef: S.optional(__S(1376, __c43, 0)),
+          schemaRegistryRef: __S(1760, __c55, 0),
+          defaultSecretProviderClassRef: S.optional(__S(1760, __c55, 0)),
+          features: S.optional(__S(1763, __c55, 3)),
+          adrNamespaceRef: S.optional(__S(1760, __c55, 0)),
         }),
       ).annotate({ identifier: "InstancePropertiesInput" });
     case 1:
@@ -5023,12 +5334,12 @@ function __c46(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1088, __c34, 0)),
+          tags: S.optional(__S(1312, __c41, 0)),
           location: S.String,
-          properties: S.optional(__S(1472, __c46, 0)),
+          properties: S.optional(__S(1920, __c60, 0)),
           extendedLocation: __S(32, __c1, 0),
-          identity: S.optional(__S(1505, __c47, 1)),
-          sku: S.optional(__S(1384, __c43, 8)),
+          identity: S.optional(__S(1953, __c61, 1)),
+          sku: S.optional(__S(1768, __c55, 8)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5038,9 +5349,26 @@ function __c46(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InstanceCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          tags: S.optional(__S(1312, __c41, 0)),
+          location: S.String,
+          properties: S.optional(__S(1764, __c55, 4)),
+          extendedLocation: __S(32, __c1, 0),
+          identity: S.optional(__S(1767, __c55, 7)),
+          sku: S.optional(__S(1768, __c55, 8)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "InstanceCreateOrUpdateResponse" });
   }
 }
-function __c47(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(64, __c2, 0)));
@@ -5048,12 +5376,12 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(1504, __c47, 0)),
+          userAssignedIdentities: S.optional(__S(1952, __c61, 0)),
         }),
       ).annotate({ identifier: "InstanceCreateOrUpdateRequestIdentity" });
   }
 }
-function __c48(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5072,17 +5400,17 @@ function __c48(j: number): any {
         ),
       ).annotate({ identifier: "ListAkriConnectorByTemplateRequest" });
     case 1:
-      return S.Array(__S(131, __c4, 3));
+      return S.Array(__S(896, __c28, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1537, __c48, 1),
+          value: __S(1985, __c62, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AkriConnectorResourceListResult" });
   }
 }
-function __c49(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5100,22 +5428,22 @@ function __c49(j: number): any {
         ),
       ).annotate({ identifier: "ListAkriConnectorTemplateByInstanceResourceRequest" });
     case 1:
-      return S.Array(__S(200, __c6, 8));
+      return S.Array(__S(960, __c30, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1569, __c49, 1),
+          value: __S(2017, __c63, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AkriConnectorTemplateResourceListResult" });
   }
 }
-function __c50(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          authorizationPolicies: __S(1640, __c51, 8),
+          authorizationPolicies: __S(2088, __c65, 8),
         }),
       ).annotate({ identifier: "BrokerAuthorizationPropertiesInput" });
     case 1:
@@ -5126,7 +5454,7 @@ function __c50(j: number): any {
           instanceName: S.String.pipe(T.Label()),
           brokerName: S.String.pipe(T.Label()),
           authorizationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1600, __c50, 0)),
+          properties: S.optional(__S(2048, __c64, 0)),
           extendedLocation: S.optional(__S(32, __c1, 0)),
         }).pipe(
           T.Http({
@@ -5137,79 +5465,81 @@ function __c50(j: number): any {
           }),
         ),
       ).annotate({ identifier: "BrokerAuthorizationCreateOrUpdateRequest" });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          method: S.String,
-          clientIds: S.optional(__S(1120, __c35, 0)),
-          topics: S.optional(__S(1120, __c35, 0)),
-        }),
-      ).annotate({ identifier: "BrokerResourceRule" });
-    case 1:
-      return S.Array(__S(1632, __c51, 0));
     case 2:
-      return S.Array(__S(1088, __c34, 0));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          attributes: S.optional(__S(1634, __c51, 2)),
-          clientIds: S.optional(__S(1120, __c35, 0)),
-          usernames: S.optional(__S(1120, __c35, 0)),
-        }),
-      ).annotate({ identifier: "PrincipalDefinition" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          keyType: S.String,
-          keys: __S(1120, __c35, 0),
-          method: S.String,
-        }),
-      ).annotate({ identifier: "StateStoreResourceRule" });
-    case 5:
-      return S.Array(__S(1636, __c51, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          brokerResources: __S(1633, __c51, 1),
-          principals: __S(1635, __c51, 3),
-          stateStoreResources: S.optional(__S(1637, __c51, 5)),
-        }),
-      ).annotate({ identifier: "AuthorizationRule" });
-    case 7:
-      return S.Array(__S(1638, __c51, 6));
-    case 8:
-      return S.suspend(() =>
-        S.Struct({
-          cache: S.optional(S.String),
-          rules: S.optional(__S(1639, __c51, 7)),
-        }),
-      ).annotate({ identifier: "AuthorizationConfig" });
-    case 9:
-      return S.suspend(() =>
-        S.Struct({
-          authorizationPolicies: __S(1640, __c51, 8),
-          provisioningState: S.optional(S.String),
-          healthState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BrokerAuthorizationProperties" });
-    case 10:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(33, __c1, 1)),
-          properties: S.optional(__S(1641, __c51, 9)),
+          properties: S.optional(__S(2089, __c65, 9)),
           extendedLocation: S.optional(__S(32, __c1, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "BrokerAuthorizationCreateOrUpdateResponse" });
   }
 }
-function __c52(j: number): any {
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          method: S.String,
+          clientIds: S.optional(__S(1344, __c42, 0)),
+          topics: S.optional(__S(1344, __c42, 0)),
+        }),
+      ).annotate({ identifier: "BrokerResourceRule" });
+    case 1:
+      return S.Array(__S(2080, __c65, 0));
+    case 2:
+      return S.Array(__S(1312, __c41, 0));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          attributes: S.optional(__S(2082, __c65, 2)),
+          clientIds: S.optional(__S(1344, __c42, 0)),
+          usernames: S.optional(__S(1344, __c42, 0)),
+        }),
+      ).annotate({ identifier: "PrincipalDefinition" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          keyType: S.String,
+          keys: __S(1344, __c42, 0),
+          method: S.String,
+        }),
+      ).annotate({ identifier: "StateStoreResourceRule" });
+    case 5:
+      return S.Array(__S(2084, __c65, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          brokerResources: __S(2081, __c65, 1),
+          principals: __S(2083, __c65, 3),
+          stateStoreResources: S.optional(__S(2085, __c65, 5)),
+        }),
+      ).annotate({ identifier: "AuthorizationRule" });
+    case 7:
+      return S.Array(__S(2086, __c65, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          cache: S.optional(S.String),
+          rules: S.optional(__S(2087, __c65, 7)),
+        }),
+      ).annotate({ identifier: "AuthorizationConfig" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          authorizationPolicies: __S(2088, __c65, 8),
+          provisioningState: S.optional(S.String),
+          healthState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BrokerAuthorizationProperties" });
+  }
+}
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5227,17 +5557,17 @@ function __c52(j: number): any {
         ),
       ).annotate({ identifier: "ListAkriServiceByInstanceResourceRequest" });
     case 1:
-      return S.Array(__S(673, __c21, 1));
+      return S.Array(__S(1024, __c32, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1665, __c52, 1),
+          value: __S(2113, __c66, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AkriServiceResourceListResult" });
   }
 }
-function __c53(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5256,17 +5586,17 @@ function __c53(j: number): any {
         ),
       ).annotate({ identifier: "ListBrokerAuthenticationByResourceGroupRequest" });
     case 1:
-      return S.Array(__S(1065, __c33, 9));
+      return S.Array(__S(1152, __c36, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1697, __c53, 1),
+          value: __S(2145, __c67, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BrokerAuthenticationResourceListResult" });
   }
 }
-function __c54(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5285,17 +5615,17 @@ function __c54(j: number): any {
         ),
       ).annotate({ identifier: "ListBrokerAuthorizationByResourceGroupRequest" });
     case 1:
-      return S.Array(__S(1642, __c51, 10));
+      return S.Array(__S(1216, __c38, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1729, __c54, 1),
+          value: __S(2177, __c68, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BrokerAuthorizationResourceListResult" });
   }
 }
-function __c55(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5313,17 +5643,17 @@ function __c55(j: number): any {
         ),
       ).annotate({ identifier: "ListBrokerByResourceGroupRequest" });
     case 1:
-      return S.Array(__S(2107, __c65, 27));
+      return S.Array(__S(1088, __c34, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1761, __c55, 1),
+          value: __S(2209, __c69, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BrokerResourceListResult" });
   }
 }
-function __c56(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5342,17 +5672,17 @@ function __c56(j: number): any {
         ),
       ).annotate({ identifier: "ListBrokerListenerByResourceGroupRequest" });
     case 1:
-      return S.Array(__S(2375, __c74, 7));
+      return S.Array(__S(1440, __c45, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1793, __c56, 1),
+          value: __S(2241, __c70, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BrokerListenerResourceListResult" });
   }
 }
-function __c57(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5371,17 +5701,17 @@ function __c57(j: number): any {
         ),
       ).annotate({ identifier: "ListDataflowByProfileResourceRequest" });
     case 1:
-      return S.Array(__S(2446, __c76, 14));
+      return S.Array(__S(1504, __c47, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1825, __c57, 1),
+          value: __S(2273, __c71, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataflowResourceListResult" });
   }
 }
-function __c58(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5399,17 +5729,17 @@ function __c58(j: number): any {
         ),
       ).annotate({ identifier: "ListDataflowEndpointByResourceGroupRequest" });
     case 1:
-      return S.Array(__S(2516, __c78, 20));
+      return S.Array(__S(1568, __c49, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1857, __c58, 1),
+          value: __S(2305, __c72, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataflowEndpointResourceListResult" });
   }
 }
-function __c59(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5428,17 +5758,17 @@ function __c59(j: number): any {
         ),
       ).annotate({ identifier: "ListDataflowGraphByDataflowProfileRequest" });
     case 1:
-      return S.Array(__S(2567, __c80, 7));
+      return S.Array(__S(1632, __c51, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1889, __c59, 1),
+          value: __S(2337, __c73, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataflowGraphResourceListResult" });
   }
 }
-function __c60(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5456,17 +5786,17 @@ function __c60(j: number): any {
         ),
       ).annotate({ identifier: "ListDataflowProfileByResourceGroupRequest" });
     case 1:
-      return S.Array(__S(322, __c10, 2));
+      return S.Array(__S(1696, __c53, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1921, __c60, 1),
+          value: __S(2369, __c74, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataflowProfileResourceListResult" });
   }
 }
-function __c61(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5484,32 +5814,32 @@ function __c61(j: number): any {
       ).annotate({ identifier: "ListInstanceByResourceGroupRequest" });
   }
 }
-function __c62(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1385, __c43, 9));
+      return S.Array(__S(1792, __c56, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1984, __c62, 0),
+          value: __S(2432, __c76, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceResourceListResult" });
   }
 }
-function __c63(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          advanced: S.optional(__S(2083, __c65, 3)),
-          cardinality: S.optional(__S(2086, __c65, 6)),
-          diagnostics: S.optional(__S(2090, __c65, 10)),
-          diskBackedMessageBuffer: S.optional(__S(2099, __c65, 19)),
-          generateResourceLimits: S.optional(__S(2100, __c65, 20)),
+          advanced: S.optional(__S(2531, __c79, 3)),
+          cardinality: S.optional(__S(2534, __c79, 6)),
+          diagnostics: S.optional(__S(2538, __c79, 10)),
+          diskBackedMessageBuffer: S.optional(__S(2547, __c79, 19)),
+          generateResourceLimits: S.optional(__S(2548, __c79, 20)),
           highPriorityMessagesBackpressureHandling: S.optional(S.String),
           memoryProfile: S.optional(S.String),
-          persistence: S.optional(__S(2105, __c65, 25)),
+          persistence: S.optional(__S(2553, __c79, 25)),
         }),
       ).annotate({ identifier: "BrokerPropertiesInput" });
     case 1:
@@ -5519,7 +5849,7 @@ function __c63(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
           brokerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2016, __c63, 0)),
+          properties: S.optional(__S(2464, __c77, 0)),
           extendedLocation: S.optional(__S(32, __c1, 0)),
         }).pipe(
           T.Http({
@@ -5530,9 +5860,22 @@ function __c63(j: number): any {
           }),
         ),
       ).annotate({ identifier: "BrokerCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(2554, __c79, 26)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "BrokerCreateOrUpdateResponse" });
   }
 }
-function __c64(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5542,7 +5885,7 @@ function __c64(j: number): any {
       ).annotate({ identifier: "Metrics" });
   }
 }
-function __c65(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5557,7 +5900,7 @@ function __c65(j: number): any {
           maxSessionExpirySeconds: S.optional(S.Number),
           maxMessageExpirySeconds: S.optional(S.Number),
           maxPacketSizeBytes: S.optional(S.Number),
-          subscriberQueueLimit: S.optional(__S(2080, __c65, 0)),
+          subscriberQueueLimit: S.optional(__S(2528, __c79, 0)),
           maxReceiveMaximum: S.optional(S.Number),
           maxKeepAliveSeconds: S.optional(S.Number),
         }),
@@ -5567,15 +5910,15 @@ function __c65(j: number): any {
         S.Struct({
           duration: S.String,
           renewBefore: S.String,
-          privateKey: __S(2112, __c66, 0),
+          privateKey: __S(2560, __c80, 0),
         }),
       ).annotate({ identifier: "CertManagerCertOptions" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          clients: S.optional(__S(2081, __c65, 1)),
+          clients: S.optional(__S(2529, __c79, 1)),
           encryptInternalTraffic: S.optional(S.String),
-          internalCerts: S.optional(__S(2082, __c65, 2)),
+          internalCerts: S.optional(__S(2530, __c79, 2)),
         }),
       ).annotate({ identifier: "AdvancedSettings" });
     case 4:
@@ -5596,8 +5939,8 @@ function __c65(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          backendChain: __S(2084, __c65, 4),
-          frontend: __S(2085, __c65, 5),
+          backendChain: __S(2532, __c79, 4),
+          frontend: __S(2533, __c79, 5),
         }),
       ).annotate({ identifier: "Cardinality" });
     case 7:
@@ -5620,7 +5963,7 @@ function __c65(j: number): any {
         S.Struct({
           mode: S.optional(S.String),
           cacheSizeMegabytes: S.optional(S.Number),
-          selfTracing: S.optional(__S(2088, __c65, 8)),
+          selfTracing: S.optional(__S(2536, __c79, 8)),
           spanChannelCapacity: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Traces" });
@@ -5628,9 +5971,9 @@ function __c65(j: number): any {
       return S.suspend(() =>
         S.Struct({
           logs: S.optional(__S(224, __c7, 0)),
-          metrics: S.optional(__S(2048, __c64, 0)),
-          selfCheck: S.optional(__S(2087, __c65, 7)),
-          traces: S.optional(__S(2089, __c65, 9)),
+          metrics: S.optional(__S(2496, __c78, 0)),
+          selfCheck: S.optional(__S(2535, __c79, 7)),
+          traces: S.optional(__S(2537, __c79, 9)),
         }),
       ).annotate({ identifier: "BrokerDiagnostics" });
     case 11:
@@ -5651,13 +5994,13 @@ function __c65(j: number): any {
         }),
       ).annotate({ identifier: "KubernetesReference" });
     case 13:
-      return S.Array(__S(2144, __c67, 0));
+      return S.Array(__S(2592, __c81, 0));
     case 14:
       return S.suspend(() =>
         S.Struct({
-          limits: S.optional(__S(1088, __c34, 0)),
-          requests: S.optional(__S(1088, __c34, 0)),
-          claims: S.optional(__S(2093, __c65, 13)),
+          limits: S.optional(__S(1312, __c41, 0)),
+          requests: S.optional(__S(1312, __c41, 0)),
+          claims: S.optional(__S(2541, __c79, 13)),
         }),
       ).annotate({ identifier: "VolumeClaimResourceRequirements" });
     case 15:
@@ -5665,16 +6008,16 @@ function __c65(j: number): any {
         S.Struct({
           key: S.String,
           operator: S.String,
-          values: S.optional(__S(1120, __c35, 0)),
+          values: S.optional(__S(1344, __c42, 0)),
         }),
       ).annotate({ identifier: "VolumeClaimSpecSelectorMatchExpressions" });
     case 16:
-      return S.Array(__S(2095, __c65, 15));
+      return S.Array(__S(2543, __c79, 15));
     case 17:
       return S.suspend(() =>
         S.Struct({
-          matchExpressions: S.optional(__S(2096, __c65, 16)),
-          matchLabels: S.optional(__S(1088, __c34, 0)),
+          matchExpressions: S.optional(__S(2544, __c79, 16)),
+          matchLabels: S.optional(__S(1312, __c41, 0)),
         }),
       ).annotate({ identifier: "VolumeClaimSpecSelector" });
     case 18:
@@ -5683,19 +6026,19 @@ function __c65(j: number): any {
           volumeName: S.optional(S.String),
           volumeMode: S.optional(S.String),
           storageClassName: S.optional(S.String),
-          accessModes: S.optional(__S(1120, __c35, 0)),
-          dataSource: S.optional(__S(2091, __c65, 11)),
-          dataSourceRef: S.optional(__S(2092, __c65, 12)),
-          resources: S.optional(__S(2094, __c65, 14)),
-          selector: S.optional(__S(2097, __c65, 17)),
+          accessModes: S.optional(__S(1344, __c42, 0)),
+          dataSource: S.optional(__S(2539, __c79, 11)),
+          dataSourceRef: S.optional(__S(2540, __c79, 12)),
+          resources: S.optional(__S(2542, __c79, 14)),
+          selector: S.optional(__S(2545, __c79, 17)),
         }),
       ).annotate({ identifier: "VolumeClaimSpec" });
     case 19:
       return S.suspend(() =>
         S.Struct({
           maxSize: S.String,
-          ephemeralVolumeClaimSpec: S.optional(__S(2098, __c65, 18)),
-          persistentVolumeClaimSpec: S.optional(__S(2098, __c65, 18)),
+          ephemeralVolumeClaimSpec: S.optional(__S(2546, __c79, 18)),
+          persistentVolumeClaimSpec: S.optional(__S(2546, __c79, 18)),
         }),
       ).annotate({ identifier: "DiskBackedMessageBuffer" });
     case 20:
@@ -5735,43 +6078,32 @@ function __c65(j: number): any {
       return S.suspend(() =>
         S.Struct({
           maxSize: S.String,
-          persistentVolumeClaimSpec: S.optional(__S(2098, __c65, 18)),
-          retain: S.optional(__S(2101, __c65, 21)),
-          stateStore: S.optional(__S(2102, __c65, 22)),
-          subscriberQueue: S.optional(__S(2103, __c65, 23)),
-          encryption: S.optional(__S(2104, __c65, 24)),
+          persistentVolumeClaimSpec: S.optional(__S(2546, __c79, 18)),
+          retain: S.optional(__S(2549, __c79, 21)),
+          stateStore: S.optional(__S(2550, __c79, 22)),
+          subscriberQueue: S.optional(__S(2551, __c79, 23)),
+          encryption: S.optional(__S(2552, __c79, 24)),
         }),
       ).annotate({ identifier: "BrokerPersistence" });
     case 26:
       return S.suspend(() =>
         S.Struct({
-          advanced: S.optional(__S(2083, __c65, 3)),
-          cardinality: S.optional(__S(2086, __c65, 6)),
-          diagnostics: S.optional(__S(2090, __c65, 10)),
-          diskBackedMessageBuffer: S.optional(__S(2099, __c65, 19)),
-          generateResourceLimits: S.optional(__S(2100, __c65, 20)),
+          advanced: S.optional(__S(2531, __c79, 3)),
+          cardinality: S.optional(__S(2534, __c79, 6)),
+          diagnostics: S.optional(__S(2538, __c79, 10)),
+          diskBackedMessageBuffer: S.optional(__S(2547, __c79, 19)),
+          generateResourceLimits: S.optional(__S(2548, __c79, 20)),
           highPriorityMessagesBackpressureHandling: S.optional(S.String),
           memoryProfile: S.optional(S.String),
-          persistence: S.optional(__S(2105, __c65, 25)),
+          persistence: S.optional(__S(2553, __c79, 25)),
           provisioningState: S.optional(S.String),
           status: S.optional(__S(97, __c3, 1)),
           healthState: S.optional(S.String),
         }),
       ).annotate({ identifier: "BrokerProperties" });
-    case 27:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(33, __c1, 1)),
-          properties: S.optional(__S(2106, __c65, 26)),
-          extendedLocation: S.optional(__S(32, __c1, 0)),
-        }),
-      ).annotate({ identifier: "BrokerCreateOrUpdateResponse" });
   }
 }
-function __c66(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5782,7 +6114,7 @@ function __c66(j: number): any {
       ).annotate({ identifier: "CertManagerPrivateKey" });
   }
 }
-function __c67(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5792,7 +6124,7 @@ function __c67(j: number): any {
       ).annotate({ identifier: "VolumeClaimResourceRequirementsClaims" });
   }
 }
-function __c68(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5809,7 +6141,7 @@ function __c68(j: number): any {
       ).annotate({ identifier: "ListInstanceBySubscriptionRequest" });
   }
 }
-function __c69(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5836,23 +6168,23 @@ function __c69(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(2209, __c69, 1)),
+          display: S.optional(__S(2657, __c83, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(2210, __c69, 2));
+      return S.Array(__S(2658, __c83, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2211, __c69, 3)),
+          value: S.optional(__S(2659, __c83, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c70(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5870,24 +6202,24 @@ function __c70(j: number): any {
         ),
       ).annotate({ identifier: "ListRegistryEndpointByInstanceResourceRequest" });
     case 1:
-      return S.Array(__S(1444, __c45, 4));
+      return S.Array(__S(1856, __c58, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2241, __c70, 1),
+          value: __S(2689, __c84, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegistryEndpointResourceListResult" });
   }
 }
-function __c71(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           host: S.String,
-          authentication: __S(1440, __c45, 0),
-          codeSigningCas: S.optional(__S(1442, __c45, 2)),
+          authentication: __S(1888, __c59, 0),
+          codeSigningCas: S.optional(__S(1890, __c59, 2)),
         }),
       ).annotate({ identifier: "RegistryEndpointPropertiesInput" });
     case 1:
@@ -5897,7 +6229,7 @@ function __c71(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
           registryEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2272, __c71, 0)),
+          properties: S.optional(__S(2720, __c85, 0)),
           extendedLocation: S.optional(__S(32, __c1, 0)),
         }).pipe(
           T.Http({
@@ -5908,9 +6240,22 @@ function __c71(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RegistryEndpointCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(1891, __c59, 3)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "RegistryEndpointCreateOrUpdateResponse" });
   }
 }
-function __c72(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5918,8 +6263,8 @@ function __c72(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1088, __c34, 0)),
-          identity: S.optional(__S(1505, __c47, 1)),
+          tags: S.optional(__S(1312, __c41, 0)),
+          identity: S.optional(__S(1953, __c61, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5931,13 +6276,13 @@ function __c72(j: number): any {
       ).annotate({ identifier: "UpdateInstanceRequest" });
   }
 }
-function __c73(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.optional(S.String),
-          ports: __S(2373, __c74, 5),
+          ports: __S(2821, __c88, 5),
           serviceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "BrokerListenerPropertiesInput" });
@@ -5949,7 +6294,7 @@ function __c73(j: number): any {
           instanceName: S.String.pipe(T.Label()),
           brokerName: S.String.pipe(T.Label()),
           listenerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2336, __c73, 0)),
+          properties: S.optional(__S(2784, __c87, 0)),
           extendedLocation: S.optional(__S(32, __c1, 0)),
         }).pipe(
           T.Http({
@@ -5960,9 +6305,22 @@ function __c73(j: number): any {
           }),
         ),
       ).annotate({ identifier: "BrokerListenerCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(2822, __c88, 6)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "BrokerListenerCreateOrUpdateResponse" });
   }
 }
-function __c74(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5975,8 +6333,8 @@ function __c74(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dns: __S(1120, __c35, 0),
-          ip: __S(1120, __c35, 0),
+          dns: __S(1344, __c42, 0),
+          ip: __S(1344, __c42, 0),
         }),
       ).annotate({ identifier: "SanForCert" });
     case 2:
@@ -5985,17 +6343,17 @@ function __c74(j: number): any {
           duration: S.optional(S.String),
           secretName: S.optional(S.String),
           renewBefore: S.optional(S.String),
-          issuerRef: __S(2368, __c74, 0),
-          privateKey: S.optional(__S(2112, __c66, 0)),
-          san: S.optional(__S(2369, __c74, 1)),
+          issuerRef: __S(2816, __c88, 0),
+          privateKey: S.optional(__S(2560, __c80, 0)),
+          san: S.optional(__S(2817, __c88, 1)),
         }),
       ).annotate({ identifier: "CertManagerCertificateSpec" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           mode: S.String,
-          certManagerCertificateSpec: S.optional(__S(2370, __c74, 2)),
-          manual: S.optional(__S(1152, __c36, 0)),
+          certManagerCertificateSpec: S.optional(__S(2818, __c88, 2)),
+          manual: S.optional(__S(1376, __c43, 0)),
         }),
       ).annotate({ identifier: "TlsCertMethod" });
     case 4:
@@ -6006,42 +6364,31 @@ function __c74(j: number): any {
           nodePort: S.optional(S.Number),
           port: S.Number,
           protocol: S.optional(S.String),
-          tls: S.optional(__S(2371, __c74, 3)),
+          tls: S.optional(__S(2819, __c88, 3)),
         }),
       ).annotate({ identifier: "ListenerPort" });
     case 5:
-      return S.Array(__S(2372, __c74, 4));
+      return S.Array(__S(2820, __c88, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.optional(S.String),
-          ports: __S(2373, __c74, 5),
+          ports: __S(2821, __c88, 5),
           serviceType: S.optional(S.String),
           provisioningState: S.optional(S.String),
           healthState: S.optional(S.String),
         }),
       ).annotate({ identifier: "BrokerListenerProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(33, __c1, 1)),
-          properties: S.optional(__S(2374, __c74, 6)),
-          extendedLocation: S.optional(__S(32, __c1, 0)),
-        }),
-      ).annotate({ identifier: "BrokerListenerCreateOrUpdateResponse" });
   }
 }
-function __c75(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
           requestDiskPersistence: S.optional(S.String),
-          operations: __S(2444, __c76, 12),
+          operations: __S(2892, __c90, 12),
         }),
       ).annotate({ identifier: "DataflowPropertiesInput" });
     case 1:
@@ -6052,7 +6399,7 @@ function __c75(j: number): any {
           instanceName: S.String.pipe(T.Label()),
           dataflowProfileName: S.String.pipe(T.Label()),
           dataflowName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2400, __c75, 0)),
+          properties: S.optional(__S(2848, __c89, 0)),
           extendedLocation: S.optional(__S(32, __c1, 0)),
         }).pipe(
           T.Http({
@@ -6063,9 +6410,22 @@ function __c75(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DataflowCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(2893, __c90, 13)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DataflowCreateOrUpdateResponse" });
   }
 }
-function __c76(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6074,7 +6434,7 @@ function __c76(j: number): any {
           assetRef: S.optional(S.String),
           serializationFormat: S.optional(S.String),
           schemaRef: S.optional(S.String),
-          dataSources: __S(1120, __c35, 0),
+          dataSources: __S(1344, __c42, 0),
         }),
       ).annotate({ identifier: "DataflowSourceOperationSettings" });
     case 1:
@@ -6083,43 +6443,43 @@ function __c76(j: number): any {
           key: S.String,
           description: S.optional(S.String),
           schemaRef: S.optional(S.String),
-          inputs: __S(1120, __c35, 0),
+          inputs: __S(1344, __c42, 0),
           expression: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataflowBuiltInTransformationDataset" });
     case 2:
-      return S.Array(__S(2433, __c76, 1));
+      return S.Array(__S(2881, __c90, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           description: S.optional(S.String),
-          inputs: __S(1120, __c35, 0),
+          inputs: __S(1344, __c42, 0),
           expression: S.String,
         }),
       ).annotate({ identifier: "DataflowBuiltInTransformationFilter" });
     case 4:
-      return S.Array(__S(2435, __c76, 3));
+      return S.Array(__S(2883, __c90, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           description: S.optional(S.String),
-          inputs: __S(1120, __c35, 0),
+          inputs: __S(1344, __c42, 0),
           expression: S.optional(S.String),
           output: S.String,
         }),
       ).annotate({ identifier: "DataflowBuiltInTransformationMap" });
     case 6:
-      return S.Array(__S(2437, __c76, 5));
+      return S.Array(__S(2885, __c90, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           serializationFormat: S.optional(S.String),
           schemaRef: S.optional(S.String),
-          datasets: S.optional(__S(2434, __c76, 2)),
-          filter: S.optional(__S(2436, __c76, 4)),
-          map: S.optional(__S(2438, __c76, 6)),
+          datasets: S.optional(__S(2882, __c90, 2)),
+          filter: S.optional(__S(2884, __c90, 4)),
+          map: S.optional(__S(2886, __c90, 6)),
         }),
       ).annotate({ identifier: "DataflowBuiltInTransformationSettings" });
     case 8:
@@ -6131,13 +6491,13 @@ function __c76(j: number): any {
         }),
       ).annotate({ identifier: "DataflowDestinationHeaderAction" });
     case 9:
-      return S.Array(__S(2440, __c76, 8));
+      return S.Array(__S(2888, __c90, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
           endpointRef: S.String,
           dataDestination: S.String,
-          headers: S.optional(__S(2441, __c76, 9)),
+          headers: S.optional(__S(2889, __c90, 9)),
         }),
       ).annotate({ identifier: "DataflowDestinationOperationSettings" });
     case 11:
@@ -6145,51 +6505,40 @@ function __c76(j: number): any {
         S.Struct({
           operationType: S.String,
           name: S.optional(S.String),
-          sourceSettings: S.optional(__S(2432, __c76, 0)),
-          builtInTransformationSettings: S.optional(__S(2439, __c76, 7)),
-          destinationSettings: S.optional(__S(2442, __c76, 10)),
+          sourceSettings: S.optional(__S(2880, __c90, 0)),
+          builtInTransformationSettings: S.optional(__S(2887, __c90, 7)),
+          destinationSettings: S.optional(__S(2890, __c90, 10)),
         }),
       ).annotate({ identifier: "DataflowOperation" });
     case 12:
-      return S.Array(__S(2443, __c76, 11));
+      return S.Array(__S(2891, __c90, 11));
     case 13:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
           requestDiskPersistence: S.optional(S.String),
-          operations: __S(2444, __c76, 12),
+          operations: __S(2892, __c90, 12),
           provisioningState: S.optional(S.String),
           status: S.optional(__S(97, __c3, 1)),
           healthState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataflowProperties" });
-    case 14:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(33, __c1, 1)),
-          properties: S.optional(__S(2445, __c76, 13)),
-          extendedLocation: S.optional(__S(32, __c1, 0)),
-        }),
-      ).annotate({ identifier: "DataflowCreateOrUpdateResponse" });
   }
 }
-function __c77(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           endpointType: S.String,
           hostType: S.optional(S.String),
-          dataExplorerSettings: S.optional(__S(2500, __c78, 4)),
-          dataLakeStorageSettings: S.optional(__S(2502, __c78, 6)),
-          fabricOneLakeSettings: S.optional(__S(2504, __c78, 8)),
-          kafkaSettings: S.optional(__S(2508, __c78, 12)),
-          localStorageSettings: S.optional(__S(2509, __c78, 13)),
-          mqttSettings: S.optional(__S(2512, __c78, 16)),
-          openTelemetrySettings: S.optional(__S(2514, __c78, 18)),
+          dataExplorerSettings: S.optional(__S(2948, __c92, 4)),
+          dataLakeStorageSettings: S.optional(__S(2950, __c92, 6)),
+          fabricOneLakeSettings: S.optional(__S(2952, __c92, 8)),
+          kafkaSettings: S.optional(__S(2956, __c92, 12)),
+          localStorageSettings: S.optional(__S(2957, __c92, 13)),
+          mqttSettings: S.optional(__S(2960, __c92, 16)),
+          openTelemetrySettings: S.optional(__S(2962, __c92, 18)),
         }),
       ).annotate({ identifier: "DataflowEndpointPropertiesInput" });
     case 1:
@@ -6199,7 +6548,7 @@ function __c77(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
           dataflowEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2464, __c77, 0)),
+          properties: S.optional(__S(2912, __c91, 0)),
           extendedLocation: S.optional(__S(32, __c1, 0)),
         }).pipe(
           T.Http({
@@ -6210,9 +6559,22 @@ function __c77(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DataflowEndpointCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(2963, __c92, 19)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DataflowEndpointCreateOrUpdateResponse" });
   }
 }
-function __c78(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6232,8 +6594,8 @@ function __c78(j: number): any {
       return S.suspend(() =>
         S.Struct({
           method: S.String,
-          systemAssignedManagedIdentitySettings: S.optional(__S(2496, __c78, 0)),
-          userAssignedManagedIdentitySettings: S.optional(__S(2497, __c78, 1)),
+          systemAssignedManagedIdentitySettings: S.optional(__S(2944, __c92, 0)),
+          userAssignedManagedIdentitySettings: S.optional(__S(2945, __c92, 1)),
         }),
       ).annotate({ identifier: "DataflowEndpointDataExplorerAuthentication" });
     case 3:
@@ -6246,27 +6608,27 @@ function __c78(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          authentication: __S(2498, __c78, 2),
+          authentication: __S(2946, __c92, 2),
           database: S.String,
           host: S.String,
-          batching: S.optional(__S(2499, __c78, 3)),
+          batching: S.optional(__S(2947, __c92, 3)),
         }),
       ).annotate({ identifier: "DataflowEndpointDataExplorer" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           method: S.String,
-          accessTokenSettings: S.optional(__S(1152, __c36, 0)),
-          systemAssignedManagedIdentitySettings: S.optional(__S(2496, __c78, 0)),
-          userAssignedManagedIdentitySettings: S.optional(__S(2497, __c78, 1)),
+          accessTokenSettings: S.optional(__S(1376, __c43, 0)),
+          systemAssignedManagedIdentitySettings: S.optional(__S(2944, __c92, 0)),
+          userAssignedManagedIdentitySettings: S.optional(__S(2945, __c92, 1)),
         }),
       ).annotate({ identifier: "DataflowEndpointDataLakeStorageAuthentication" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          authentication: __S(2501, __c78, 5),
+          authentication: __S(2949, __c92, 5),
           host: S.String,
-          batching: S.optional(__S(2499, __c78, 3)),
+          batching: S.optional(__S(2947, __c92, 3)),
         }),
       ).annotate({ identifier: "DataflowEndpointDataLakeStorage" });
     case 7:
@@ -6279,11 +6641,11 @@ function __c78(j: number): any {
     case 8:
       return S.suspend(() =>
         S.Struct({
-          authentication: __S(2498, __c78, 2),
-          names: __S(2503, __c78, 7),
+          authentication: __S(2946, __c92, 2),
+          names: __S(2951, __c92, 7),
           oneLakePathType: S.String,
           host: S.String,
-          batching: S.optional(__S(2499, __c78, 3)),
+          batching: S.optional(__S(2947, __c92, 3)),
         }),
       ).annotate({ identifier: "DataflowEndpointFabricOneLake" });
     case 9:
@@ -6297,10 +6659,10 @@ function __c78(j: number): any {
       return S.suspend(() =>
         S.Struct({
           method: S.String,
-          systemAssignedManagedIdentitySettings: S.optional(__S(2496, __c78, 0)),
-          userAssignedManagedIdentitySettings: S.optional(__S(2497, __c78, 1)),
-          saslSettings: S.optional(__S(2505, __c78, 9)),
-          x509CertificateSettings: S.optional(__S(1152, __c36, 0)),
+          systemAssignedManagedIdentitySettings: S.optional(__S(2944, __c92, 0)),
+          userAssignedManagedIdentitySettings: S.optional(__S(2945, __c92, 1)),
+          saslSettings: S.optional(__S(2953, __c92, 9)),
+          x509CertificateSettings: S.optional(__S(1376, __c43, 0)),
         }),
       ).annotate({ identifier: "DataflowEndpointKafkaAuthentication" });
     case 11:
@@ -6315,10 +6677,10 @@ function __c78(j: number): any {
     case 12:
       return S.suspend(() =>
         S.Struct({
-          authentication: __S(2506, __c78, 10),
+          authentication: __S(2954, __c92, 10),
           consumerGroupId: S.optional(S.String),
           host: S.String,
-          batching: S.optional(__S(2507, __c78, 11)),
+          batching: S.optional(__S(2955, __c92, 11)),
           copyMqttProperties: S.optional(S.String),
           compression: S.optional(S.String),
           kafkaAcks: S.optional(S.String),
@@ -6343,16 +6705,16 @@ function __c78(j: number): any {
       return S.suspend(() =>
         S.Struct({
           method: S.String,
-          systemAssignedManagedIdentitySettings: S.optional(__S(2496, __c78, 0)),
-          userAssignedManagedIdentitySettings: S.optional(__S(2497, __c78, 1)),
-          serviceAccountTokenSettings: S.optional(__S(2510, __c78, 14)),
-          x509CertificateSettings: S.optional(__S(1152, __c36, 0)),
+          systemAssignedManagedIdentitySettings: S.optional(__S(2944, __c92, 0)),
+          userAssignedManagedIdentitySettings: S.optional(__S(2945, __c92, 1)),
+          serviceAccountTokenSettings: S.optional(__S(2958, __c92, 14)),
+          x509CertificateSettings: S.optional(__S(1376, __c43, 0)),
         }),
       ).annotate({ identifier: "DataflowEndpointMqttAuthentication" });
     case 16:
       return S.suspend(() =>
         S.Struct({
-          authentication: __S(2511, __c78, 15),
+          authentication: __S(2959, __c92, 15),
           clientIdPrefix: S.optional(S.String),
           host: S.optional(S.String),
           protocol: S.optional(S.String),
@@ -6370,17 +6732,17 @@ function __c78(j: number): any {
         S.Struct({
           method: S.String,
           anonymousSettings: S.optional(S.Unknown),
-          serviceAccountTokenSettings: S.optional(__S(2510, __c78, 14)),
-          x509CertificateSettings: S.optional(__S(1152, __c36, 0)),
+          serviceAccountTokenSettings: S.optional(__S(2958, __c92, 14)),
+          x509CertificateSettings: S.optional(__S(1376, __c43, 0)),
         }),
       ).annotate({ identifier: "DataflowOpenTelemetryAuthentication" });
     case 18:
       return S.suspend(() =>
         S.Struct({
           host: S.String,
-          batching: S.optional(__S(2499, __c78, 3)),
+          batching: S.optional(__S(2947, __c92, 3)),
           tls: S.optional(__S(256, __c8, 0)),
-          authentication: __S(2513, __c78, 17),
+          authentication: __S(2961, __c92, 17),
         }),
       ).annotate({ identifier: "DataflowEndpointOpenTelemetry" });
     case 19:
@@ -6388,39 +6750,28 @@ function __c78(j: number): any {
         S.Struct({
           endpointType: S.String,
           hostType: S.optional(S.String),
-          dataExplorerSettings: S.optional(__S(2500, __c78, 4)),
-          dataLakeStorageSettings: S.optional(__S(2502, __c78, 6)),
-          fabricOneLakeSettings: S.optional(__S(2504, __c78, 8)),
-          kafkaSettings: S.optional(__S(2508, __c78, 12)),
-          localStorageSettings: S.optional(__S(2509, __c78, 13)),
-          mqttSettings: S.optional(__S(2512, __c78, 16)),
-          openTelemetrySettings: S.optional(__S(2514, __c78, 18)),
+          dataExplorerSettings: S.optional(__S(2948, __c92, 4)),
+          dataLakeStorageSettings: S.optional(__S(2950, __c92, 6)),
+          fabricOneLakeSettings: S.optional(__S(2952, __c92, 8)),
+          kafkaSettings: S.optional(__S(2956, __c92, 12)),
+          localStorageSettings: S.optional(__S(2957, __c92, 13)),
+          mqttSettings: S.optional(__S(2960, __c92, 16)),
+          openTelemetrySettings: S.optional(__S(2962, __c92, 18)),
           provisioningState: S.optional(S.String),
           healthState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataflowEndpointProperties" });
-    case 20:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(33, __c1, 1)),
-          properties: S.optional(__S(2515, __c78, 19)),
-          extendedLocation: S.optional(__S(32, __c1, 0)),
-        }),
-      ).annotate({ identifier: "DataflowEndpointCreateOrUpdateResponse" });
   }
 }
-function __c79(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
           requestDiskPersistence: S.optional(S.String),
-          nodes: __S(2561, __c80, 1),
-          nodeConnections: __S(2565, __c80, 5),
+          nodes: __S(3009, __c94, 1),
+          nodeConnections: __S(3013, __c94, 5),
         }),
       ).annotate({ identifier: "DataflowGraphPropertiesInput" });
     case 1:
@@ -6431,7 +6782,7 @@ function __c79(j: number): any {
           instanceName: S.String.pipe(T.Label()),
           dataflowProfileName: S.String.pipe(T.Label()),
           dataflowGraphName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2528, __c79, 0)),
+          properties: S.optional(__S(2976, __c93, 0)),
           extendedLocation: S.optional(__S(32, __c1, 0)),
         }).pipe(
           T.Http({
@@ -6442,9 +6793,22 @@ function __c79(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DataflowGraphCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(33, __c1, 1)),
+          properties: S.optional(__S(3014, __c94, 6)),
+          extendedLocation: S.optional(__S(32, __c1, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DataflowGraphCreateOrUpdateResponse" });
   }
 }
-function __c80(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6457,7 +6821,7 @@ function __c80(j: number): any {
         }),
       ).annotate({ identifier: "DataflowGraphNode" });
     case 1:
-      return S.Array(__S(2560, __c80, 0));
+      return S.Array(__S(3008, __c94, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6469,41 +6833,30 @@ function __c80(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          schema: S.optional(__S(2562, __c80, 2)),
+          schema: S.optional(__S(3010, __c94, 2)),
         }),
       ).annotate({ identifier: "DataflowGraphConnectionInput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          from: __S(2563, __c80, 3),
-          to: __S(2144, __c67, 0),
+          from: __S(3011, __c94, 3),
+          to: __S(2592, __c81, 0),
         }),
       ).annotate({ identifier: "DataflowGraphNodeConnection" });
     case 5:
-      return S.Array(__S(2564, __c80, 4));
+      return S.Array(__S(3012, __c94, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
           requestDiskPersistence: S.optional(S.String),
-          nodes: __S(2561, __c80, 1),
-          nodeConnections: __S(2565, __c80, 5),
+          nodes: __S(3009, __c94, 1),
+          nodeConnections: __S(3013, __c94, 5),
           provisioningState: S.optional(S.String),
           status: S.optional(__S(97, __c3, 1)),
           healthState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataflowGraphProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(33, __c1, 1)),
-          properties: S.optional(__S(2566, __c80, 6)),
-          extendedLocation: S.optional(__S(32, __c1, 0)),
-        }),
-      ).annotate({ identifier: "DataflowGraphCreateOrUpdateResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

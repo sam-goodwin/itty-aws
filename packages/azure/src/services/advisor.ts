@@ -167,7 +167,12 @@ export interface GenerateRecommendationRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
 }
-export interface GenerateRecommendationResponse {}
+export interface GenerateRecommendationResponse {
+  /** The URL where the status of the asynchronous operation can be checked. */
+  location?: string;
+  /** The amount of delay to use while the status of the operation is checked. The value is expressed in seconds. */
+  retryAfter?: string;
+}
 export interface GetAdvisorScoreRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -686,7 +691,7 @@ export const GenerateRecommendation: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(144, __c18, 0) as any as S.Schema<GenerateRecommendationRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<GenerateRecommendationResponse>,
+  output: __S(145, __c18, 1) as any as S.Schema<GenerateRecommendationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1305,6 +1310,13 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GenerateRecommendationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.String.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "GenerateRecommendationResponse" });
   }
 }
 function __c19(j: number): any {

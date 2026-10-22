@@ -21,7 +21,12 @@ export interface DeleteEnterpriseMccCacheNodesOperationRequest {
   /** Name of the ConnectedCache resource */
   cacheNodeResourceName: string;
 }
-export interface DeleteEnterpriseMccCacheNodesOperationResponse {}
+export interface DeleteEnterpriseMccCacheNodesOperationResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteEnterpriseMccCustomerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -30,7 +35,12 @@ export interface DeleteEnterpriseMccCustomerRequest {
   /** Name of the Customer resource */
   customerResourceName: string;
 }
-export interface DeleteEnterpriseMccCustomerResponse {}
+export interface DeleteEnterpriseMccCustomerResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteIspCacheNodesOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -41,7 +51,12 @@ export interface DeleteIspCacheNodesOperationRequest {
   /** Name of the ConnectedCache resource */
   cacheNodeResourceName: string;
 }
-export interface DeleteIspCacheNodesOperationResponse {}
+export interface DeleteIspCacheNodesOperationResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteIspCustomerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -50,7 +65,12 @@ export interface DeleteIspCustomerRequest {
   /** Name of the Customer resource */
   customerResourceName: string;
 }
-export interface DeleteIspCustomerResponse {}
+export interface DeleteIspCustomerResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Resource tags. */
 export type EnterpriseMccCacheNodesOperationsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
@@ -599,6 +619,10 @@ export interface EnterpriseMccCacheNodesOperationsCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: CacheNodeProperty;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface EnterpriseMccCacheNodesOperationsGetCacheNodeAutoUpdateHistoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -939,6 +963,10 @@ export interface EnterpriseMccCustomersCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: CustomerProperty;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetEnterpriseMccCacheNodesOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1254,6 +1282,10 @@ export interface IspCacheNodesOperationsCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: CacheNodeProperty;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface IspCacheNodesOperationsGetCacheNodeAutoUpdateHistoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1348,6 +1380,10 @@ export interface IspCustomersCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: CustomerProperty;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ListEnterpriseMccCacheNodesOperationByEnterpriseMccCustomerResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1701,7 +1737,7 @@ export const DeleteIspCacheNodesOperation: API.OperationMethod<
   DeleteIspCacheNodesOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<DeleteIspCacheNodesOperationRequest>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteIspCacheNodesOperationRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<DeleteIspCacheNodesOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1716,7 +1752,7 @@ export const DeleteIspCustomer: API.OperationMethod<
   DeleteIspCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<DeleteIspCustomerRequest>,
+  input: __S(216, __c27, 0) as any as S.Schema<DeleteIspCustomerRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<DeleteIspCustomerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1732,14 +1768,14 @@ export const EnterpriseMccCacheNodesOperationsCreateOrUpdate: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    224,
-    __c28,
+    232,
+    __c29,
     0,
   ) as any as S.Schema<EnterpriseMccCacheNodesOperationsCreateOrUpdateRequest>,
   output: __S(
-    292,
-    __c36,
-    4,
+    243,
+    __c30,
+    3,
   ) as any as S.Schema<EnterpriseMccCacheNodesOperationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1755,13 +1791,13 @@ export const EnterpriseMccCacheNodesOperationsGetCacheNodeAutoUpdateHistory: API
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    296,
-    __c37,
+    312,
+    __c39,
     0,
   ) as any as S.Schema<EnterpriseMccCacheNodesOperationsGetCacheNodeAutoUpdateHistoryRequest>,
   output: __S(
-    306,
-    __c38,
+    322,
+    __c40,
     2,
   ) as any as S.Schema<EnterpriseMccCacheNodesOperationsGetCacheNodeAutoUpdateHistoryResponse>,
   errors: [UnknownAzureError],
@@ -1778,13 +1814,13 @@ export const EnterpriseMccCacheNodesOperationsGetCacheNodeInstallDetails: API.Op
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    312,
-    __c39,
+    328,
+    __c41,
     0,
   ) as any as S.Schema<EnterpriseMccCacheNodesOperationsGetCacheNodeInstallDetailsRequest>,
   output: __S(
-    321,
-    __c40,
+    337,
+    __c42,
     1,
   ) as any as S.Schema<EnterpriseMccCacheNodesOperationsGetCacheNodeInstallDetailsResponse>,
   errors: [UnknownAzureError],
@@ -1800,8 +1836,8 @@ export const EnterpriseMccCustomersCreateOrUpdate: API.OperationMethod<
   EnterpriseMccCustomersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<EnterpriseMccCustomersCreateOrUpdateRequest>,
-  output: __S(339, __c42, 3) as any as S.Schema<EnterpriseMccCustomersCreateOrUpdateResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<EnterpriseMccCustomersCreateOrUpdateRequest>,
+  output: __S(363, __c45, 3) as any as S.Schema<EnterpriseMccCustomersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1815,8 +1851,8 @@ export const GetEnterpriseMccCacheNodesOperation: API.OperationMethod<
   GetEnterpriseMccCacheNodesOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<GetEnterpriseMccCacheNodesOperationRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<GetEnterpriseMccCacheNodesOperationResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<GetEnterpriseMccCacheNodesOperationRequest>,
+  output: __S(376, __c47, 0) as any as S.Schema<GetEnterpriseMccCacheNodesOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1831,13 +1867,13 @@ export const GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistory:
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    360,
-    __c45,
+    384,
+    __c48,
     0,
   ) as any as S.Schema<GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryRequest>,
   output: __S(
-    371,
-    __c46,
+    395,
+    __c49,
     3,
   ) as any as S.Schema<GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryResponse>,
   errors: [UnknownAzureError],
@@ -1877,7 +1913,7 @@ export const GetEnterpriseMccCustomer: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c4, 0) as any as S.Schema<GetEnterpriseMccCustomerRequest>,
-  output: __S(339, __c42, 3) as any as S.Schema<GetEnterpriseMccCustomerResponse>,
+  output: __S(40, __c5, 0) as any as S.Schema<GetEnterpriseMccCustomerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1891,8 +1927,8 @@ export const GetIspCacheNodesOperation: API.OperationMethod<
   GetIspCacheNodesOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetIspCacheNodesOperationRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<GetIspCacheNodesOperationResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetIspCacheNodesOperationRequest>,
+  output: __S(376, __c47, 0) as any as S.Schema<GetIspCacheNodesOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1906,8 +1942,8 @@ export const GetIspCacheNodesOperationBgpCidrs: API.OperationMethod<
   GetIspCacheNodesOperationBgpCidrsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetIspCacheNodesOperationBgpCidrsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GetIspCacheNodesOperationBgpCidrsResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetIspCacheNodesOperationBgpCidrsRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<GetIspCacheNodesOperationBgpCidrsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1922,13 +1958,13 @@ export const GetIspCacheNodesOperationCacheNodeMccIssueDetailsHistory: API.Opera
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    56,
-    __c7,
+    64,
+    __c8,
     0,
   ) as any as S.Schema<GetIspCacheNodesOperationCacheNodeMccIssueDetailsHistoryRequest>,
   output: __S(
-    371,
-    __c46,
+    395,
+    __c49,
     3,
   ) as any as S.Schema<GetIspCacheNodesOperationCacheNodeMccIssueDetailsHistoryResponse>,
   errors: [UnknownAzureError],
@@ -1944,8 +1980,8 @@ export const GetIspCustomer: API.OperationMethod<
   GetIspCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetIspCustomerRequest>,
-  output: __S(339, __c42, 3) as any as S.Schema<GetIspCustomerResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetIspCustomerRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<GetIspCustomerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1959,8 +1995,8 @@ export const IspCacheNodesOperationsCreateOrUpdate: API.OperationMethod<
   IspCacheNodesOperationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<IspCacheNodesOperationsCreateOrUpdateRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<IspCacheNodesOperationsCreateOrUpdateResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<IspCacheNodesOperationsCreateOrUpdateRequest>,
+  output: __S(243, __c30, 3) as any as S.Schema<IspCacheNodesOperationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1975,13 +2011,13 @@ export const IspCacheNodesOperationsGetCacheNodeAutoUpdateHistory: API.Operation
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    80,
-    __c10,
+    88,
+    __c11,
     0,
   ) as any as S.Schema<IspCacheNodesOperationsGetCacheNodeAutoUpdateHistoryRequest>,
   output: __S(
-    306,
-    __c38,
+    322,
+    __c40,
     2,
   ) as any as S.Schema<IspCacheNodesOperationsGetCacheNodeAutoUpdateHistoryResponse>,
   errors: [UnknownAzureError],
@@ -1998,13 +2034,13 @@ export const IspCacheNodesOperationsGetCacheNodeInstallDetails: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    88,
-    __c11,
+    96,
+    __c12,
     0,
   ) as any as S.Schema<IspCacheNodesOperationsGetCacheNodeInstallDetailsRequest>,
   output: __S(
-    321,
-    __c40,
+    337,
+    __c42,
     1,
   ) as any as S.Schema<IspCacheNodesOperationsGetCacheNodeInstallDetailsResponse>,
   errors: [UnknownAzureError],
@@ -2020,8 +2056,8 @@ export const IspCustomersCreateOrUpdate: API.OperationMethod<
   IspCustomersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<IspCustomersCreateOrUpdateRequest>,
-  output: __S(339, __c42, 3) as any as S.Schema<IspCustomersCreateOrUpdateResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<IspCustomersCreateOrUpdateRequest>,
+  output: __S(363, __c45, 3) as any as S.Schema<IspCustomersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2036,11 +2072,11 @@ export const ListEnterpriseMccCacheNodesOperationByEnterpriseMccCustomerResource
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    112,
-    __c14,
+    120,
+    __c15,
     0,
   ) as any as S.Schema<ListEnterpriseMccCacheNodesOperationByEnterpriseMccCustomerResourceRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<EnterpriseMccCacheNodeResourceListResult>,
+  output: __S(129, __c16, 1) as any as S.Schema<EnterpriseMccCacheNodeResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2054,8 +2090,8 @@ export const ListEnterpriseMccCustomerByResourceGroup: API.OperationMethod<
   ListEnterpriseMccCustomerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListEnterpriseMccCustomerByResourceGroupRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<EnterpriseMccCustomerResourceListResult>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListEnterpriseMccCustomerByResourceGroupRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<EnterpriseMccCustomerResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2069,8 +2105,8 @@ export const ListEnterpriseMccCustomerBySubscription: API.OperationMethod<
   ListEnterpriseMccCustomerBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListEnterpriseMccCustomerBySubscriptionRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<EnterpriseMccCustomerResourceListResult>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListEnterpriseMccCustomerBySubscriptionRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<EnterpriseMccCustomerResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2085,11 +2121,11 @@ export const ListIspCacheNodesOperationByIspCustomerResource: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    152,
-    __c19,
+    160,
+    __c20,
     0,
   ) as any as S.Schema<ListIspCacheNodesOperationByIspCustomerResourceRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<IspCacheNodeResourceListResult>,
+  output: __S(129, __c16, 1) as any as S.Schema<IspCacheNodeResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2103,8 +2139,8 @@ export const ListIspCustomerByResourceGroup: API.OperationMethod<
   ListIspCustomerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<ListIspCustomerByResourceGroupRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<IspCustomerResourceListResult>,
+  input: __S(168, __c21, 0) as any as S.Schema<ListIspCustomerByResourceGroupRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<IspCustomerResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2118,8 +2154,8 @@ export const ListIspCustomerBySubscription: API.OperationMethod<
   ListIspCustomerBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<ListIspCustomerBySubscriptionRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<IspCustomerResourceListResult>,
+  input: __S(176, __c22, 0) as any as S.Schema<ListIspCustomerBySubscriptionRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<IspCustomerResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2133,8 +2169,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(188, __c23, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2148,8 +2184,8 @@ export const UpdateEnterpriseMccCacheNodesOperation: API.OperationMethod<
   UpdateEnterpriseMccCacheNodesOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<UpdateEnterpriseMccCacheNodesOperationRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<UpdateEnterpriseMccCacheNodesOperationResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<UpdateEnterpriseMccCacheNodesOperationRequest>,
+  output: __S(376, __c47, 0) as any as S.Schema<UpdateEnterpriseMccCacheNodesOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2163,8 +2199,8 @@ export const UpdateEnterpriseMccCustomer: API.OperationMethod<
   UpdateEnterpriseMccCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<UpdateEnterpriseMccCustomerRequest>,
-  output: __S(339, __c42, 3) as any as S.Schema<UpdateEnterpriseMccCustomerResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<UpdateEnterpriseMccCustomerRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<UpdateEnterpriseMccCustomerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2178,8 +2214,8 @@ export const UpdateIspCacheNodesOperation: API.OperationMethod<
   UpdateIspCacheNodesOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<UpdateIspCacheNodesOperationRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<UpdateIspCacheNodesOperationResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<UpdateIspCacheNodesOperationRequest>,
+  output: __S(376, __c47, 0) as any as S.Schema<UpdateIspCacheNodesOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2193,8 +2229,8 @@ export const UpdateIspCustomer: API.OperationMethod<
   UpdateIspCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<UpdateIspCustomerRequest>,
-  output: __S(339, __c42, 3) as any as S.Schema<UpdateIspCustomerResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<UpdateIspCustomerRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<UpdateIspCustomerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2224,9 +2260,12 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteEnterpriseMccCacheNodesOperationResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteEnterpriseMccCacheNodesOperationResponse" });
   }
 }
 function __c2(j: number): any {
@@ -2269,7 +2308,7 @@ function __c3(j: number): any {
         identifier: "GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryRequest",
       });
     case 1:
-      return S.Array(__S(272, __c34, 0));
+      return S.Array(__S(288, __c36, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2284,8 +2323,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(241, __c30, 1)),
-          tags: S.optional(__S(240, __c30, 0)),
+          systemData: S.optional(__S(249, __c31, 1)),
+          tags: S.optional(__S(248, __c31, 0)),
           location: S.String,
           properties: S.optional(__S(26, __c3, 2)),
         }),
@@ -2318,6 +2357,22 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(249, __c31, 1)),
+          tags: S.optional(__S(248, __c31, 0)),
+          location: S.String,
+          properties: S.optional(__S(354, __c44, 2)),
+        }),
+      ).annotate({ identifier: "GetEnterpriseMccCustomerResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           customerResourceName: S.String.pipe(T.Label()),
@@ -2333,7 +2388,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "GetIspCacheNodesOperationRequest" });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2354,7 +2409,7 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          bgpCidrs: S.optional(__S(280, __c35, 0)),
+          bgpCidrs: S.optional(__S(296, __c37, 0)),
         }),
       ).annotate({ identifier: "BgpCidrsConfiguration" });
     case 2:
@@ -2363,15 +2418,15 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(241, __c30, 1)),
-          tags: S.optional(__S(240, __c30, 0)),
+          systemData: S.optional(__S(249, __c31, 1)),
+          tags: S.optional(__S(248, __c31, 0)),
           location: S.String,
-          properties: S.optional(__S(49, __c6, 1)),
+          properties: S.optional(__S(57, __c7, 1)),
         }),
       ).annotate({ identifier: "GetIspCacheNodesOperationBgpCidrsResponse" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2391,7 +2446,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "GetIspCacheNodesOperationCacheNodeMccIssueDetailsHistoryRequest" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2410,7 +2465,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "GetIspCustomerRequest" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2419,9 +2474,9 @@ function __c9(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           customerResourceName: S.String.pipe(T.Label()),
           cacheNodeResourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(240, __c30, 0)),
+          tags: S.optional(__S(248, __c31, 0)),
           location: S.String,
-          properties: S.optional(__S(234, __c29, 2)),
+          properties: S.optional(__S(242, __c30, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2433,7 +2488,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "IspCacheNodesOperationsCreateOrUpdateRequest" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2453,7 +2508,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "IspCacheNodesOperationsGetCacheNodeAutoUpdateHistoryRequest" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2473,7 +2528,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "IspCacheNodesOperationsGetCacheNodeInstallDetailsRequest" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2481,9 +2536,9 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           customerResourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(240, __c30, 0)),
+          tags: S.optional(__S(248, __c31, 0)),
           location: S.String,
-          properties: S.optional(__S(346, __c43, 2)),
+          properties: S.optional(__S(362, __c45, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2495,7 +2550,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "IspCustomersCreateOrUpdateRequest" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2515,7 +2570,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "DeleteIspCacheNodesOperationRequest" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2536,20 +2591,20 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(292, __c36, 4));
+      return S.Array(__S(376, __c47, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(120, __c15, 0),
+          value: __S(128, __c16, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnterpriseMccCacheNodeResourceListResult" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2567,20 +2622,20 @@ function __c16(j: number): any {
       ).annotate({ identifier: "ListEnterpriseMccCustomerByResourceGroupRequest" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(339, __c42, 3));
+      return S.Array(__S(40, __c5, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(136, __c17, 0),
+          value: __S(144, __c18, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnterpriseMccCustomerResourceListResult" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2597,7 +2652,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "ListEnterpriseMccCustomerBySubscriptionRequest" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2616,7 +2671,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "ListIspCacheNodesOperationByIspCustomerResourceRequest" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2634,7 +2689,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "ListIspCustomerByResourceGroupRequest" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2651,7 +2706,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "ListIspCustomerBySubscriptionRequest" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2678,23 +2733,23 @@ function __c22(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(177, __c22, 1)),
+          display: S.optional(__S(185, __c23, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(178, __c22, 2));
+      return S.Array(__S(186, __c23, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(179, __c22, 3)),
+          value: S.optional(__S(187, __c23, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2703,7 +2758,7 @@ function __c23(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           customerResourceName: S.String.pipe(T.Label()),
           cacheNodeResourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(240, __c30, 0)),
+          tags: S.optional(__S(248, __c31, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2715,7 +2770,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "UpdateEnterpriseMccCacheNodesOperationRequest" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2723,7 +2778,7 @@ function __c24(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           customerResourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(240, __c30, 0)),
+          tags: S.optional(__S(248, __c31, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2735,7 +2790,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "UpdateEnterpriseMccCustomerRequest" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2744,7 +2799,7 @@ function __c25(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           customerResourceName: S.String.pipe(T.Label()),
           cacheNodeResourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(240, __c30, 0)),
+          tags: S.optional(__S(248, __c31, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2756,7 +2811,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "UpdateIspCacheNodesOperationRequest" });
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2775,7 +2830,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "DeleteIspCustomerRequest" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2783,7 +2838,7 @@ function __c27(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           customerResourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(240, __c30, 0)),
+          tags: S.optional(__S(248, __c31, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2795,7 +2850,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "UpdateIspCustomerRequest" });
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2804,9 +2859,9 @@ function __c28(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           customerResourceName: S.String.pipe(T.Label()),
           cacheNodeResourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(240, __c30, 0)),
+          tags: S.optional(__S(248, __c31, 0)),
           location: S.String,
-          properties: S.optional(__S(234, __c29, 2)),
+          properties: S.optional(__S(242, __c30, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2818,7 +2873,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "EnterpriseMccCacheNodesOperationsCreateOrUpdateRequest" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2833,7 +2888,7 @@ function __c29(j: number): any {
           isEnabled: S.optional(S.Boolean),
           maxAllowableEgressInMbps: S.optional(S.Number),
           isEnterpriseManaged: S.optional(S.Boolean),
-          cidrCsv: S.optional(__S(280, __c35, 0)),
+          cidrCsv: S.optional(__S(296, __c37, 0)),
           bgpNetworkInterface: S.optional(S.String),
           shouldMigrate: S.optional(S.Boolean),
           cidrSelectionType: S.optional(S.Number),
@@ -2852,10 +2907,10 @@ function __c29(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          cacheNodePropertiesDetailsIssuesList: S.optional(__S(280, __c35, 0)),
-          driveConfiguration: S.optional(__S(257, __c32, 1)),
-          bgpConfiguration: S.optional(__S(288, __c36, 0)),
-          proxyUrlConfiguration: S.optional(__S(258, __c32, 2)),
+          cacheNodePropertiesDetailsIssuesList: S.optional(__S(296, __c37, 0)),
+          driveConfiguration: S.optional(__S(265, __c33, 1)),
+          bgpConfiguration: S.optional(__S(304, __c38, 0)),
+          proxyUrlConfiguration: S.optional(__S(266, __c33, 2)),
           isProxyRequired: S.optional(S.String),
           osType: S.optional(S.String),
           autoUpdateVersion: S.optional(S.String),
@@ -2872,17 +2927,31 @@ function __c29(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cacheNode: S.optional(__S(232, __c29, 0)),
-          additionalCacheNodeProperties: S.optional(__S(233, __c29, 1)),
+          cacheNode: S.optional(__S(240, __c30, 0)),
+          additionalCacheNodeProperties: S.optional(__S(241, __c30, 1)),
           statusCode: S.optional(S.String),
           statusText: S.optional(S.String),
           statusDetails: S.optional(S.String),
-          error: S.optional(__S(8, __c1, 0)),
+          error: S.optional(__S(272, __c34, 0)),
         }),
       ).annotate({ identifier: "CacheNodePropertyInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(249, __c31, 1)),
+          tags: S.optional(__S(248, __c31, 0)),
+          location: S.String,
+          properties: S.optional(__S(307, __c38, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "EnterpriseMccCacheNodesOperationsCreateOrUpdateResponse" });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
@@ -2899,7 +2968,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c31(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2925,7 +2994,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "MccCacheNodeAutoUpdateInfo" });
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2937,7 +3006,7 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "CacheNodeDriveConfiguration" });
     case 1:
-      return S.Array(__S(256, __c32, 0));
+      return S.Array(__S(264, __c33, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2946,10 +3015,16 @@ function __c32(j: number): any {
       ).annotate({ identifier: "ProxyUrlConfiguration" });
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(267, __c33, 3)));
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "CacheNodePropertyInputError" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(283, __c35, 3)));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2958,32 +3033,32 @@ function __c33(j: number): any {
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
     case 2:
-      return S.Array(__S(265, __c33, 1));
+      return S.Array(__S(281, __c35, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(264, __c33, 0)),
-          additionalInfo: S.optional(__S(266, __c33, 2)),
+          details: S.optional(__S(280, __c35, 0)),
+          additionalInfo: S.optional(__S(282, __c35, 2)),
         }),
       ).annotate({ identifier: "ErrorDetail" });
     case 4:
-      return S.Array(__S(267, __c33, 3));
+      return S.Array(__S(283, __c35, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(268, __c33, 4)),
-          additionalInfo: S.optional(__S(266, __c33, 2)),
+          details: S.optional(__S(284, __c35, 4)),
+          additionalInfo: S.optional(__S(282, __c35, 2)),
         }),
       ).annotate({ identifier: "CacheNodePropertyError" });
   }
 }
-function __c34(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3000,13 +3075,13 @@ function __c34(j: number): any {
       ).annotate({ identifier: "MccCacheNodeTlsCertificate" });
   }
 }
-function __c35(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c36(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3039,7 +3114,7 @@ function __c36(j: number): any {
           lastUpdatedTimestamp: S.optional(S.String),
           synchWithAzureAttemptsCount: S.optional(S.Number),
           containerConfigurations: S.optional(S.String),
-          cidrCsv: S.optional(__S(280, __c35, 0)),
+          cidrCsv: S.optional(__S(296, __c37, 0)),
           cidrCsvLastUpdateTime: S.optional(S.String),
           bgpNetworkInterface: S.optional(S.String),
           bgpCidrCsvLastUpdateTime: S.optional(S.String),
@@ -3080,11 +3155,11 @@ function __c36(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cacheNodePropertiesDetailsIssuesList: S.optional(__S(280, __c35, 0)),
-          issuesList: S.optional(__S(280, __c35, 0)),
+          cacheNodePropertiesDetailsIssuesList: S.optional(__S(296, __c37, 0)),
+          issuesList: S.optional(__S(296, __c37, 0)),
           issuesCount: S.optional(S.Number),
-          currentTlsCertificate: S.optional(__S(272, __c34, 0)),
-          lastAutoUpdateInfo: S.optional(__S(248, __c31, 0)),
+          currentTlsCertificate: S.optional(__S(288, __c36, 0)),
+          lastAutoUpdateInfo: S.optional(__S(256, __c32, 0)),
           aggregatedStatusDetails: S.optional(S.String),
           aggregatedStatusText: S.optional(S.String),
           aggregatedStatusCode: S.optional(S.Number),
@@ -3093,9 +3168,9 @@ function __c36(j: number): any {
           cacheNodeStateDetailedText: S.optional(S.String),
           cacheNodeStateShortText: S.optional(S.String),
           cacheNodeState: S.optional(S.Number),
-          driveConfiguration: S.optional(__S(257, __c32, 1)),
-          bgpConfiguration: S.optional(__S(288, __c36, 0)),
-          proxyUrlConfiguration: S.optional(__S(258, __c32, 2)),
+          driveConfiguration: S.optional(__S(265, __c33, 1)),
+          bgpConfiguration: S.optional(__S(304, __c38, 0)),
+          proxyUrlConfiguration: S.optional(__S(266, __c33, 2)),
           isProxyRequired: S.optional(S.String),
           osType: S.optional(S.String),
           autoUpdateVersion: S.optional(S.String),
@@ -3133,30 +3208,18 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          cacheNode: S.optional(__S(289, __c36, 1)),
-          additionalCacheNodeProperties: S.optional(__S(290, __c36, 2)),
+          cacheNode: S.optional(__S(305, __c38, 1)),
+          additionalCacheNodeProperties: S.optional(__S(306, __c38, 2)),
           statusCode: S.optional(S.String),
           statusText: S.optional(S.String),
           statusDetails: S.optional(S.String),
           status: S.optional(S.String),
-          error: S.optional(__S(269, __c33, 5)),
+          error: S.optional(__S(285, __c35, 5)),
         }),
       ).annotate({ identifier: "CacheNodeProperty" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(241, __c30, 1)),
-          tags: S.optional(__S(240, __c30, 0)),
-          location: S.String,
-          properties: S.optional(__S(291, __c36, 3)),
-        }),
-      ).annotate({ identifier: "EnterpriseMccCacheNodesOperationsCreateOrUpdateResponse" });
   }
 }
-function __c37(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3178,16 +3241,16 @@ function __c37(j: number): any {
       });
   }
 }
-function __c38(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(248, __c31, 0));
+      return S.Array(__S(256, __c32, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           customerId: S.optional(S.String),
           cacheNodeId: S.optional(S.String),
-          autoUpdateHistory: S.optional(__S(304, __c38, 0)),
+          autoUpdateHistory: S.optional(__S(320, __c40, 0)),
         }),
       ).annotate({ identifier: "MccCacheNodeAutoUpdateHistoryProperties" });
     case 2:
@@ -3196,17 +3259,17 @@ function __c38(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(241, __c30, 1)),
-          tags: S.optional(__S(240, __c30, 0)),
+          systemData: S.optional(__S(249, __c31, 1)),
+          tags: S.optional(__S(248, __c31, 0)),
           location: S.String,
-          properties: S.optional(__S(305, __c38, 1)),
+          properties: S.optional(__S(321, __c40, 1)),
         }),
       ).annotate({
         identifier: "EnterpriseMccCacheNodesOperationsGetCacheNodeAutoUpdateHistoryResponse",
       });
   }
 }
-function __c39(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3228,7 +3291,7 @@ function __c39(j: number): any {
       });
   }
 }
-function __c40(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3239,8 +3302,8 @@ function __c40(j: number): any {
           secondaryAccountKey: S.optional(S.String),
           registrationKey: S.optional(S.String),
           tlsCertificateProvisioningKey: S.optional(S.String),
-          driveConfiguration: S.optional(__S(257, __c32, 1)),
-          proxyUrlConfiguration: S.optional(__S(258, __c32, 2)),
+          driveConfiguration: S.optional(__S(265, __c33, 1)),
+          proxyUrlConfiguration: S.optional(__S(266, __c33, 2)),
         }),
       ).annotate({ identifier: "CacheNodeInstallProperties" });
     case 1:
@@ -3249,17 +3312,17 @@ function __c40(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(241, __c30, 1)),
-          tags: S.optional(__S(240, __c30, 0)),
+          systemData: S.optional(__S(249, __c31, 1)),
+          tags: S.optional(__S(248, __c31, 0)),
           location: S.String,
-          properties: S.optional(__S(320, __c40, 0)),
+          properties: S.optional(__S(336, __c42, 0)),
         }),
       ).annotate({
         identifier: "EnterpriseMccCacheNodesOperationsGetCacheNodeInstallDetailsResponse",
       });
   }
 }
-function __c41(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3267,9 +3330,9 @@ function __c41(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           customerResourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(240, __c30, 0)),
+          tags: S.optional(__S(248, __c31, 0)),
           location: S.String,
-          properties: S.optional(__S(346, __c43, 2)),
+          properties: S.optional(__S(362, __c45, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3281,7 +3344,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "EnterpriseMccCustomersCreateOrUpdateRequest" });
   }
 }
-function __c42(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3345,30 +3408,18 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          customer: S.optional(__S(336, __c42, 0)),
-          additionalCustomerProperties: S.optional(__S(337, __c42, 1)),
+          customer: S.optional(__S(352, __c44, 0)),
+          additionalCustomerProperties: S.optional(__S(353, __c44, 1)),
           statusCode: S.optional(S.String),
           statusText: S.optional(S.String),
           statusDetails: S.optional(S.String),
           status: S.optional(S.String),
-          error: S.optional(__S(269, __c33, 5)),
+          error: S.optional(__S(285, __c35, 5)),
         }),
       ).annotate({ identifier: "CustomerProperty" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(241, __c30, 1)),
-          tags: S.optional(__S(240, __c30, 0)),
-          location: S.String,
-          properties: S.optional(__S(338, __c42, 2)),
-        }),
-      ).annotate({ identifier: "EnterpriseMccCustomersCreateOrUpdateResponse" });
   }
 }
-function __c43(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3409,14 +3460,28 @@ function __c43(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          customer: S.optional(__S(344, __c43, 0)),
-          additionalCustomerProperties: S.optional(__S(345, __c43, 1)),
-          error: S.optional(__S(8, __c1, 0)),
+          customer: S.optional(__S(360, __c45, 0)),
+          additionalCustomerProperties: S.optional(__S(361, __c45, 1)),
+          error: S.optional(__S(272, __c34, 0)),
         }),
       ).annotate({ identifier: "CustomerPropertyInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(249, __c31, 1)),
+          tags: S.optional(__S(248, __c31, 0)),
+          location: S.String,
+          properties: S.optional(__S(354, __c44, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "EnterpriseMccCustomersCreateOrUpdateResponse" });
   }
 }
-function __c44(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3436,7 +3501,23 @@ function __c44(j: number): any {
       ).annotate({ identifier: "GetEnterpriseMccCacheNodesOperationRequest" });
   }
 }
-function __c45(j: number): any {
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(249, __c31, 1)),
+          tags: S.optional(__S(248, __c31, 0)),
+          location: S.String,
+          properties: S.optional(__S(307, __c38, 3)),
+        }),
+      ).annotate({ identifier: "GetEnterpriseMccCacheNodesOperationResponse" });
+  }
+}
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3458,7 +3539,7 @@ function __c45(j: number): any {
       });
   }
 }
-function __c46(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3472,13 +3553,13 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "MccIssue" });
     case 1:
-      return S.Array(__S(368, __c46, 0));
+      return S.Array(__S(392, __c49, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           customerId: S.optional(S.String),
           cacheNodeId: S.optional(S.String),
-          mccIssueHistory: S.optional(__S(369, __c46, 1)),
+          mccIssueHistory: S.optional(__S(393, __c49, 1)),
         }),
       ).annotate({ identifier: "MccCacheNodeIssueHistoryProperties" });
     case 3:
@@ -3487,10 +3568,10 @@ function __c46(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(241, __c30, 1)),
-          tags: S.optional(__S(240, __c30, 0)),
+          systemData: S.optional(__S(249, __c31, 1)),
+          tags: S.optional(__S(248, __c31, 0)),
           location: S.String,
-          properties: S.optional(__S(370, __c46, 2)),
+          properties: S.optional(__S(394, __c49, 2)),
         }),
       ).annotate({
         identifier: "GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryResponse",

@@ -705,7 +705,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Policy state record."
+        "smithy.api#documentation": "Policy state record.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.policyinsights#PolicyStateComponentsList": {
@@ -752,7 +753,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Component state details."
+        "smithy.api#documentation": "Component state details.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.policyinsights#PolicyStatePolicyDefinitionGroupNamesList": {
@@ -1253,7 +1255,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Policy event record."
+        "smithy.api#documentation": "Policy event record.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.policyinsights#PolicyEventComponentsList": {
@@ -1312,7 +1315,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Component event details."
+        "smithy.api#documentation": "Component event details.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.policyinsights#ListPolicyEventQueryResultsForResourceGroupLevelPolicyAssignmentRequest": {
@@ -2492,7 +2496,7 @@
         "target": "com.azure.policyinsights#TriggerPolicyStateResourceGroupEvaluationRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.policyinsights#TriggerPolicyStateResourceGroupEvaluationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2503,6 +2507,28 @@
         },
         "smithy.api#documentation": "Triggers a policy evaluation scan for all the resources under the resource group.",
         "com.distilled.openapi#apiVersion": "2024-10-01"
+      }
+    },
+    "com.azure.policyinsights#TriggerPolicyStateResourceGroupEvaluationResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.policyinsights#TriggerPolicyStateResourceGroupEvaluationRequest": {
@@ -3119,7 +3145,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Component Policy State record."
+        "smithy.api#documentation": "Component Policy State record.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.policyinsights#ComponentPolicyStatePolicyDefinitionGroupNamesList": {
@@ -3812,6 +3839,20 @@
           "traits": {
             "smithy.api#documentation": "Properties for the attestation.",
             "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -4851,7 +4892,7 @@
         "target": "com.azure.policyinsights#TriggerPolicyStateSubscriptionEvaluationRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.policyinsights#TriggerPolicyStateSubscriptionEvaluationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4862,6 +4903,28 @@
         },
         "smithy.api#documentation": "Triggers a policy evaluation scan for all the resources under the subscription",
         "com.distilled.openapi#apiVersion": "2024-10-01"
+      }
+    },
+    "com.azure.policyinsights#TriggerPolicyStateSubscriptionEvaluationResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.policyinsights#TriggerPolicyStateSubscriptionEvaluationRequest": {
@@ -5452,6 +5515,20 @@
           "traits": {
             "smithy.api#documentation": "Properties for the attestation.",
             "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -9401,6 +9478,20 @@
           "traits": {
             "smithy.api#documentation": "Properties for the attestation.",
             "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },

@@ -185,6 +185,10 @@ export interface CreateStorageTaskResponse {
   properties: StorageTaskProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity: CreateStorageTaskResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteStorageTaskRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -194,7 +198,14 @@ export interface DeleteStorageTaskRequest {
   /** The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only. */
   storageTaskName: string;
 }
-export interface DeleteStorageTaskResponse {}
+export interface DeleteStorageTaskResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetStorageTaskRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -477,7 +488,14 @@ export interface StopStorageTaskAllAssignmentsRequest {
   /** The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only. */
   storageTaskName: string;
 }
-export interface StopStorageTaskAllAssignmentsResponse {}
+export interface StopStorageTaskAllAssignmentsResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateStorageTaskRequestIdentity = CreateStorageTaskRequestIdentity;
 /** Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters. */
@@ -526,6 +544,12 @@ export interface UpdateStorageTaskResponse {
   properties: StorageTaskProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity: CreateStorageTaskResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type CreateStorageTaskError = AzureOpError;
 /** Asynchronously creates a new storage task resource with the specified parameters. If a storage task is already created and a subsequent create request is issued with different properties, the storage task properties will be updated. If a storage task is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed. */
@@ -536,7 +560,7 @@ export const CreateStorageTask: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<CreateStorageTaskRequest>,
-  output: __S(58, __c3, 10) as any as S.Schema<CreateStorageTaskResponse>,
+  output: __S(2, __c0, 2) as any as S.Schema<CreateStorageTaskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -550,8 +574,8 @@ export const DeleteStorageTask: API.OperationMethod<
   DeleteStorageTaskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c5, 0) as any as S.Schema<DeleteStorageTaskRequest>,
-  output: __S(16, __c1, 0) as any as S.Schema<DeleteStorageTaskResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<DeleteStorageTaskRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeleteStorageTaskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -566,7 +590,7 @@ export const GetStorageTask: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(112, __c7, 0) as any as S.Schema<GetStorageTaskRequest>,
-  output: __S(58, __c3, 10) as any as S.Schema<GetStorageTaskResponse>,
+  output: __S(128, __c8, 0) as any as S.Schema<GetStorageTaskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -580,8 +604,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c8, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(132, __c8, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(148, __c9, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -595,8 +619,8 @@ export const ListStorageTaskAssignment: API.OperationMethod<
   ListStorageTaskAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c9, 0) as any as S.Schema<ListStorageTaskAssignmentRequest>,
-  output: __S(147, __c9, 3) as any as S.Schema<StorageTaskAssignmentsListResult>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListStorageTaskAssignmentRequest>,
+  output: __S(163, __c10, 3) as any as S.Schema<StorageTaskAssignmentsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -610,8 +634,8 @@ export const ListStorageTaskByResourceGroup: API.OperationMethod<
   ListStorageTaskByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c10, 0) as any as S.Schema<ListStorageTaskByResourceGroupRequest>,
-  output: __S(177, __c11, 1) as any as S.Schema<StorageTasksListResult>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListStorageTaskByResourceGroupRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<StorageTasksListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -625,8 +649,8 @@ export const ListStorageTaskBySubscription: API.OperationMethod<
   ListStorageTaskBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c12, 0) as any as S.Schema<ListStorageTaskBySubscriptionRequest>,
-  output: __S(177, __c11, 1) as any as S.Schema<StorageTasksListResult>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListStorageTaskBySubscriptionRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<StorageTasksListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -640,8 +664,8 @@ export const ListStorageTasksReport: API.OperationMethod<
   ListStorageTasksReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<ListStorageTasksReportRequest>,
-  output: __S(212, __c13, 4) as any as S.Schema<StorageTaskReportSummary>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListStorageTasksReportRequest>,
+  output: __S(228, __c14, 4) as any as S.Schema<StorageTaskReportSummary>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -655,8 +679,8 @@ export const PreviewStorageTaskActions: API.OperationMethod<
   PreviewStorageTaskActionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c14, 8) as any as S.Schema<PreviewStorageTaskActionsRequest>,
-  output: __S(233, __c14, 9) as any as S.Schema<StorageTaskPreviewAction>,
+  input: __S(248, __c15, 8) as any as S.Schema<PreviewStorageTaskActionsRequest>,
+  output: __S(249, __c15, 9) as any as S.Schema<StorageTaskPreviewAction>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -670,8 +694,8 @@ export const StopStorageTaskAllAssignments: API.OperationMethod<
   StopStorageTaskAllAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c15, 0) as any as S.Schema<StopStorageTaskAllAssignmentsRequest>,
-  output: __S(16, __c1, 0) as any as S.Schema<StopStorageTaskAllAssignmentsResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<StopStorageTaskAllAssignmentsRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<StopStorageTaskAllAssignmentsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -686,7 +710,7 @@ export const UpdateStorageTask: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(97, __c6, 1) as any as S.Schema<UpdateStorageTaskRequest>,
-  output: __S(58, __c3, 10) as any as S.Schema<UpdateStorageTaskResponse>,
+  output: __S(98, __c6, 2) as any as S.Schema<UpdateStorageTaskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -700,7 +724,7 @@ function __c0(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           description: S.String,
-          action: __S(53, __c3, 5),
+          action: __S(37, __c2, 5),
         }),
       ).annotate({ identifier: "StorageTaskPropertiesInput" });
     case 1:
@@ -709,10 +733,10 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageTaskName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
           properties: __S(0, __c0, 0),
-          identity: __S(33, __c2, 1),
+          identity: __S(18, __c1, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -722,28 +746,39 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateStorageTaskRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          properties: __S(38, __c2, 6),
+          identity: __S(41, __c2, 9),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateStorageTaskResponse" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({ identifier: "UserAssignedIdentityInput" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(16, __c1, 0)));
     case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(16, __c1, 0)));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(32, __c2, 0)),
+          userAssignedIdentities: S.optional(__S(17, __c1, 1)),
         }),
       ).annotate({ identifier: "CreateStorageTaskRequestIdentity" });
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
@@ -751,31 +786,31 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          parameters: S.optional(__S(48, __c3, 0)),
+          parameters: S.optional(__S(32, __c2, 0)),
           onSuccess: S.optional(S.String),
           onFailure: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageTaskOperation" });
     case 2:
-      return S.Array(__S(49, __c3, 1));
+      return S.Array(__S(33, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           condition: S.String,
-          operations: __S(50, __c3, 2),
+          operations: __S(34, __c2, 2),
         }),
       ).annotate({ identifier: "IfCondition" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          operations: __S(50, __c3, 2),
+          operations: __S(34, __c2, 2),
         }),
       ).annotate({ identifier: "ElseCondition" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          if: __S(51, __c3, 3),
-          else: S.optional(__S(52, __c3, 4)),
+          if: __S(35, __c2, 3),
+          else: S.optional(__S(36, __c2, 4)),
         }),
       ).annotate({ identifier: "StorageTaskAction" });
     case 6:
@@ -784,7 +819,7 @@ function __c3(j: number): any {
           taskVersion: S.optional(S.Number),
           enabled: S.Boolean,
           description: S.String,
-          action: __S(53, __c3, 5),
+          action: __S(37, __c2, 5),
           provisioningState: S.optional(S.String),
           creationTimeInUtc: S.optional(S.String),
         }),
@@ -797,32 +832,19 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 8:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(55, __c3, 7)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(39, __c2, 7)));
     case 9:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(56, __c3, 8)),
+          userAssignedIdentities: S.optional(__S(40, __c2, 8)),
         }),
       ).annotate({ identifier: "CreateStorageTaskResponseIdentity" });
-    case 10:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(64, __c4, 0)),
-          tags: S.optional(__S(48, __c3, 0)),
-          location: S.String,
-          properties: __S(54, __c3, 6),
-          identity: __S(57, __c3, 9),
-        }),
-      ).annotate({ identifier: "CreateStorageTaskResponse" });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -837,7 +859,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -856,6 +878,18 @@ function __c5(j: number): any {
       ).annotate({ identifier: "DeleteStorageTaskRequest" });
   }
 }
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteStorageTaskResponse" });
+  }
+}
 function __c6(j: number): any {
   switch (j) {
     case 0:
@@ -863,7 +897,7 @@ function __c6(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           description: S.optional(S.String),
-          action: S.optional(__S(53, __c3, 5)),
+          action: S.optional(__S(37, __c2, 5)),
         }),
       ).annotate({ identifier: "StorageTaskUpdatePropertiesInput" });
     case 1:
@@ -872,8 +906,8 @@ function __c6(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageTaskName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(33, __c2, 1)),
-          tags: S.optional(__S(48, __c3, 0)),
+          identity: S.optional(__S(18, __c1, 2)),
+          tags: S.optional(__S(32, __c2, 0)),
           properties: S.optional(__S(96, __c6, 0)),
         }).pipe(
           T.Http({
@@ -884,6 +918,22 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateStorageTaskRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          properties: __S(38, __c2, 6),
+          identity: __S(41, __c2, 9),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateStorageTaskResponse" });
   }
 }
 function __c7(j: number): any {
@@ -906,6 +956,23 @@ function __c7(j: number): any {
   }
 }
 function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          properties: __S(38, __c2, 6),
+          identity: __S(41, __c2, 9),
+        }),
+      ).annotate({ identifier: "GetStorageTaskResponse" });
+  }
+}
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -932,23 +999,23 @@ function __c8(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(129, __c8, 1)),
+          display: S.optional(__S(145, __c9, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(130, __c8, 2));
+      return S.Array(__S(146, __c9, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(131, __c8, 3)),
+          value: S.optional(__S(147, __c9, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -973,17 +1040,17 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "StorageTaskAssignment" });
     case 2:
-      return S.Array(__S(145, __c9, 1));
+      return S.Array(__S(161, __c10, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(146, __c9, 2),
+          value: __S(162, __c10, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageTaskAssignmentsListResult" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1001,20 +1068,20 @@ function __c10(j: number): any {
       ).annotate({ identifier: "ListStorageTaskByResourceGroupRequest" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(58, __c3, 10));
+      return S.Array(__S(128, __c8, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(176, __c11, 0),
+          value: __S(192, __c12, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageTasksListResult" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1031,7 +1098,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "ListStorageTaskBySubscriptionRequest" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1075,22 +1142,22 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(64, __c4, 0)),
-          properties: S.optional(__S(209, __c13, 1)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(225, __c14, 1)),
         }),
       ).annotate({ identifier: "StorageTaskReportInstance" });
     case 3:
-      return S.Array(__S(210, __c13, 2));
+      return S.Array(__S(226, __c14, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(211, __c13, 3),
+          value: __S(227, __c14, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageTaskReportSummary" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1100,25 +1167,25 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "StorageTaskPreviewKeyValueProperties" });
     case 1:
-      return S.Array(__S(224, __c14, 0));
+      return S.Array(__S(240, __c15, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          metadata: S.optional(__S(225, __c14, 1)),
+          metadata: S.optional(__S(241, __c15, 1)),
         }),
       ).annotate({ identifier: "StorageTaskPreviewContainerProperties" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(__S(225, __c14, 1)),
-          metadata: S.optional(__S(225, __c14, 1)),
-          tags: S.optional(__S(225, __c14, 1)),
+          properties: S.optional(__S(241, __c15, 1)),
+          metadata: S.optional(__S(241, __c15, 1)),
+          tags: S.optional(__S(241, __c15, 1)),
         }),
       ).annotate({ identifier: "StorageTaskPreviewBlobProperties" });
     case 4:
-      return S.Array(__S(227, __c14, 3));
+      return S.Array(__S(243, __c15, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1128,16 +1195,16 @@ function __c14(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          if: __S(229, __c14, 5),
+          if: __S(245, __c15, 5),
           elseBlockExists: S.Boolean,
         }),
       ).annotate({ identifier: "StorageTaskPreviewActionCondition" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          container: __S(226, __c14, 2),
-          blobs: __S(228, __c14, 4),
-          action: __S(230, __c14, 6),
+          container: __S(242, __c15, 2),
+          blobs: __S(244, __c15, 4),
+          action: __S(246, __c15, 6),
         }),
       ).annotate({ identifier: "StorageTaskPreviewActionProperties" });
     case 8:
@@ -1145,7 +1212,7 @@ function __c14(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          properties: __S(231, __c14, 7),
+          properties: __S(247, __c15, 7),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1158,12 +1225,12 @@ function __c14(j: number): any {
     case 9:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(231, __c14, 7),
+          properties: __S(247, __c15, 7),
         }),
       ).annotate({ identifier: "StorageTaskPreviewAction" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
