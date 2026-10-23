@@ -295,6 +295,12 @@
           "errors": [],
           "description": "The unique identifier of the entity."
         },
+        "promptAuthor": {
+          "type": "User",
+          "args": {},
+          "errors": [],
+          "description": "The user who sent this prompt, including stop requests. Null for other activity types or if the user is not accessible."
+        },
         "pushSummary": {
           "type": "AgentActivityPushSummary",
           "args": {},
@@ -1856,6 +1862,12 @@
           "errors": [],
           "description": "The time when the current user marked the conversation as read. Null if the user hasn't read the conversation."
         },
+        "setupWorkflowDefinition": {
+          "type": "WorkflowDefinition",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] The published loop edited by this private setup conversation."
+        },
         "slugId": {
           "type": "String!",
           "args": {},
@@ -1867,6 +1879,12 @@
           "args": {},
           "errors": [],
           "description": "The materialized conversation-level processing summary used by list and gating surfaces. Assistant response lifecycle is recorded on its turn."
+        },
+        "subscriberIds": {
+          "type": "[String!]",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] Users subscribed to this run."
         },
         "summary": {
           "type": "String",
@@ -2030,6 +2048,7 @@
         "AiConversationRestoreEntityToolCall",
         "AiConversationRunLoopToolCall",
         "AiConversationSpawnSubagentToolCall",
+        "AiConversationMessageSubagentToolCall",
         "AiConversationResearchToolCall",
         "AiConversationCodeIntelligenceToolCall",
         "AiConversationStartCodingSessionToolCall",
@@ -2045,12 +2064,16 @@
         "AiConversationGetPullRequestFileToolCall",
         "AiConversationGetPullRequestCheckLogsToolCall",
         "AiConversationRetryPullRequestCheckToolCall",
+        "AiConversationRerunPullRequestReviewToolCall",
+        "AiConversationUpdatePullRequestReviewFindingToolCall",
         "AiConversationHandoffToCodingSessionToolCall",
         "AiConversationSubscribeToEventToolCall",
         "AiConversationUnsubscribeFromEventToolCall",
         "AiConversationTranscribeVideoToolCall",
         "AiConversationTranscribeMediaToolCall",
         "AiConversationMemoryToolCall",
+        "AiConversationCreateAgentChatToolCall",
+        "AiConversationRenameAgentChatToolCall",
         "AiConversationSearchDocumentationToolCall",
         "AiConversationContactSupportToolCall",
         "AiConversationWebSearchToolCall",
@@ -2061,6 +2084,7 @@
         "AiConversationSetSpendLimitToolCall",
         "AiConversationRemoveSpendLimitToolCall",
         "AiConversationNavigateToPageToolCall",
+        "AiConversationCodeModeToolCall",
         "AiConversationInvokeMcpToolToolCall"
       ],
       "interfaces": []
@@ -2191,9 +2215,55 @@
       },
       "interfaces": []
     },
+    "AiConversationCodeModeToolCall": {
+      "kind": "OBJECT",
+      "fields": {
+        "args": {
+          "type": "AiConversationCodeModeToolCallArgs",
+          "args": {},
+          "errors": [],
+          "description": "The arguments to the tool call."
+        },
+        "displayInfo": {
+          "type": "AiConversationToolDisplayInfo!",
+          "args": {},
+          "errors": []
+        },
+        "name": {
+          "type": "AiConversationTool!",
+          "args": {},
+          "errors": [],
+          "description": "The name of the tool that was called."
+        },
+        "rawArgs": {
+          "type": "JSON",
+          "args": {},
+          "errors": [],
+          "description": "The arguments of the tool call."
+        },
+        "rawResult": {
+          "type": "JSON",
+          "args": {},
+          "errors": [],
+          "description": "The result of the tool call."
+        }
+      },
+      "interfaces": ["AiConversationBaseToolCall"]
+    },
+    "AiConversationCodeModeToolCallArgs": {
+      "kind": "OBJECT",
+      "fields": {
+        "description": {
+          "type": "String!",
+          "args": {},
+          "errors": []
+        }
+      },
+      "interfaces": []
+    },
     "AiConversationConfirmationElicitationResponseData": {
       "kind": "OBJECT",
-      "description": "The affirmative response recorded for a confirmation elicitation.",
+      "description": "The response recorded for a confirmation elicitation.",
       "fields": {
         "confirmed": {
           "type": "Boolean!",
@@ -2238,6 +2308,58 @@
         }
       },
       "interfaces": ["AiConversationBaseToolCall"]
+    },
+    "AiConversationCreateAgentChatToolCall": {
+      "kind": "OBJECT",
+      "fields": {
+        "args": {
+          "type": "JSONObject",
+          "args": {},
+          "errors": [],
+          "description": "The arguments to the tool call."
+        },
+        "displayInfo": {
+          "type": "AiConversationToolDisplayInfo!",
+          "args": {},
+          "errors": []
+        },
+        "name": {
+          "type": "AiConversationTool!",
+          "args": {},
+          "errors": [],
+          "description": "The name of the tool that was called."
+        },
+        "rawArgs": {
+          "type": "JSON",
+          "args": {},
+          "errors": [],
+          "description": "The arguments of the tool call."
+        },
+        "rawResult": {
+          "type": "JSON",
+          "args": {},
+          "errors": [],
+          "description": "The result of the tool call."
+        },
+        "result": {
+          "type": "AiConversationCreateAgentChatToolCallResult",
+          "args": {},
+          "errors": [],
+          "description": "The result of the tool call."
+        }
+      },
+      "interfaces": ["AiConversationBaseToolCall"]
+    },
+    "AiConversationCreateAgentChatToolCallResult": {
+      "kind": "OBJECT",
+      "fields": {
+        "conversationId": {
+          "type": "String!",
+          "args": {},
+          "errors": []
+        }
+      },
+      "interfaces": []
     },
     "AiConversationCreateEntityToolCall": {
       "kind": "OBJECT",
@@ -2450,7 +2572,13 @@
     "AiConversationElicitationKind": {
       "kind": "ENUM",
       "description": "The kind of input an AI conversation elicitation asks for.",
-      "enumValues": ["multipleChoice", "mcpServerConnection", "confirmation", "entitySelection"]
+      "enumValues": [
+        "multipleChoice",
+        "mcpServerConnection",
+        "integrationConnection",
+        "confirmation",
+        "entitySelection"
+      ]
     },
     "AiConversationElicitationOption": {
       "kind": "OBJECT",
@@ -2492,6 +2620,12 @@
           "args": {},
           "errors": [],
           "description": "The existing MCP integration to reconnect. Null when creating a new connection."
+        },
+        "integrationService": {
+          "type": "IntegrationService",
+          "args": {},
+          "errors": [],
+          "description": "The service of the integration to connect. Null for other elicitation kinds."
         },
         "kind": {
           "type": "AiConversationElicitationKind!",
@@ -2557,6 +2691,7 @@
         "AiConversationMultipleChoiceElicitationResponseData",
         "AiConversationConfirmationElicitationResponseData",
         "AiConversationMcpServerConnectionElicitationResponseData",
+        "AiConversationIntegrationConnectionElicitationResponseData",
         "AiConversationEntitySelectionElicitationResponseData"
       ]
     },
@@ -3293,6 +3428,25 @@
         "subAgent"
       ]
     },
+    "AiConversationIntegrationConnectionElicitationResponseData": {
+      "kind": "OBJECT",
+      "description": "The integration connected to a Loop and its current run by a conversation.",
+      "fields": {
+        "integrationId": {
+          "type": "String!",
+          "args": {},
+          "errors": [],
+          "description": "The identifier of the integration that was connected."
+        },
+        "kind": {
+          "type": "AiConversationElicitationKind!",
+          "args": {},
+          "errors": [],
+          "description": "The kind of elicitation that was answered."
+        }
+      },
+      "interfaces": []
+    },
     "AiConversationInvokeMcpToolToolCall": {
       "kind": "OBJECT",
       "fields": {
@@ -3579,6 +3733,79 @@
     "AiConversationMemoryToolCallArgsAction": {
       "kind": "ENUM",
       "enumValues": ["list", "read", "save", "delete"]
+    },
+    "AiConversationMessageSubagentToolCall": {
+      "kind": "OBJECT",
+      "fields": {
+        "args": {
+          "type": "AiConversationMessageSubagentToolCallArgs",
+          "args": {},
+          "errors": [],
+          "description": "The arguments to the tool call."
+        },
+        "displayInfo": {
+          "type": "AiConversationToolDisplayInfo!",
+          "args": {},
+          "errors": []
+        },
+        "name": {
+          "type": "AiConversationTool!",
+          "args": {},
+          "errors": [],
+          "description": "The name of the tool that was called."
+        },
+        "rawArgs": {
+          "type": "JSON",
+          "args": {},
+          "errors": [],
+          "description": "The arguments of the tool call."
+        },
+        "rawResult": {
+          "type": "JSON",
+          "args": {},
+          "errors": [],
+          "description": "The result of the tool call."
+        },
+        "result": {
+          "type": "AiConversationMessageSubagentToolCallResult",
+          "args": {},
+          "errors": [],
+          "description": "The result of the tool call."
+        }
+      },
+      "interfaces": ["AiConversationBaseToolCall"]
+    },
+    "AiConversationMessageSubagentToolCallArgs": {
+      "kind": "OBJECT",
+      "fields": {
+        "conversationId": {
+          "type": "String!",
+          "args": {},
+          "errors": []
+        },
+        "prompt": {
+          "type": "String!",
+          "args": {},
+          "errors": []
+        },
+        "wait": {
+          "type": "Boolean",
+          "args": {},
+          "errors": []
+        }
+      },
+      "interfaces": []
+    },
+    "AiConversationMessageSubagentToolCallResult": {
+      "kind": "OBJECT",
+      "fields": {
+        "turnId": {
+          "type": "String!",
+          "args": {},
+          "errors": []
+        }
+      },
+      "interfaces": []
     },
     "AiConversationMultipleChoiceElicitationResponseData": {
       "kind": "OBJECT",
@@ -4569,6 +4796,98 @@
       "fields": {
         "summary": {
           "type": "String",
+          "args": {},
+          "errors": []
+        }
+      },
+      "interfaces": []
+    },
+    "AiConversationRenameAgentChatToolCall": {
+      "kind": "OBJECT",
+      "fields": {
+        "args": {
+          "type": "AiConversationRenameAgentChatToolCallArgs",
+          "args": {},
+          "errors": [],
+          "description": "The arguments to the tool call."
+        },
+        "displayInfo": {
+          "type": "AiConversationToolDisplayInfo!",
+          "args": {},
+          "errors": []
+        },
+        "name": {
+          "type": "AiConversationTool!",
+          "args": {},
+          "errors": [],
+          "description": "The name of the tool that was called."
+        },
+        "rawArgs": {
+          "type": "JSON",
+          "args": {},
+          "errors": [],
+          "description": "The arguments of the tool call."
+        },
+        "rawResult": {
+          "type": "JSON",
+          "args": {},
+          "errors": [],
+          "description": "The result of the tool call."
+        }
+      },
+      "interfaces": ["AiConversationBaseToolCall"]
+    },
+    "AiConversationRenameAgentChatToolCallArgs": {
+      "kind": "OBJECT",
+      "fields": {
+        "name": {
+          "type": "String!",
+          "args": {},
+          "errors": []
+        }
+      },
+      "interfaces": []
+    },
+    "AiConversationRerunPullRequestReviewToolCall": {
+      "kind": "OBJECT",
+      "fields": {
+        "args": {
+          "type": "AiConversationRerunPullRequestReviewToolCallArgs",
+          "args": {},
+          "errors": [],
+          "description": "The arguments to the tool call."
+        },
+        "displayInfo": {
+          "type": "AiConversationToolDisplayInfo!",
+          "args": {},
+          "errors": []
+        },
+        "name": {
+          "type": "AiConversationTool!",
+          "args": {},
+          "errors": [],
+          "description": "The name of the tool that was called."
+        },
+        "rawArgs": {
+          "type": "JSON",
+          "args": {},
+          "errors": [],
+          "description": "The arguments of the tool call."
+        },
+        "rawResult": {
+          "type": "JSON",
+          "args": {},
+          "errors": [],
+          "description": "The result of the tool call."
+        }
+      },
+      "interfaces": ["AiConversationBaseToolCall"]
+    },
+    "AiConversationRerunPullRequestReviewToolCallArgs": {
+      "kind": "OBJECT",
+      "fields": {
+        "entity": {
+          "type": "AiConversationSearchEntitiesToolCallResultEntities!",
           "args": {},
           "errors": []
         }
@@ -5637,6 +5956,7 @@
         "RestoreEntity",
         "RunLoop",
         "SpawnSubagent",
+        "MessageSubagent",
         "Research",
         "CodeIntelligence",
         "StartCodingSession",
@@ -5652,12 +5972,16 @@
         "GetPullRequestFile",
         "GetPullRequestCheckLogs",
         "RetryPullRequestCheck",
+        "RerunPullRequestReview",
+        "UpdatePullRequestReviewFinding",
         "HandoffToCodingSession",
         "SubscribeToEvent",
         "UnsubscribeFromEvent",
         "TranscribeVideo",
         "TranscribeMedia",
         "Memory",
+        "CreateAgentChat",
+        "RenameAgentChat",
         "SearchDocumentation",
         "ContactSupport",
         "WebSearch",
@@ -5668,6 +5992,7 @@
         "SetSpendLimit",
         "RemoveSpendLimit",
         "NavigateToPage",
+        "CodeMode",
         "InvokeMcpTool"
       ]
     },
@@ -5691,6 +6016,7 @@
         "AiConversationRestoreEntityToolCall",
         "AiConversationRunLoopToolCall",
         "AiConversationSpawnSubagentToolCall",
+        "AiConversationMessageSubagentToolCall",
         "AiConversationResearchToolCall",
         "AiConversationCodeIntelligenceToolCall",
         "AiConversationStartCodingSessionToolCall",
@@ -5706,12 +6032,16 @@
         "AiConversationGetPullRequestFileToolCall",
         "AiConversationGetPullRequestCheckLogsToolCall",
         "AiConversationRetryPullRequestCheckToolCall",
+        "AiConversationRerunPullRequestReviewToolCall",
+        "AiConversationUpdatePullRequestReviewFindingToolCall",
         "AiConversationHandoffToCodingSessionToolCall",
         "AiConversationSubscribeToEventToolCall",
         "AiConversationUnsubscribeFromEventToolCall",
         "AiConversationTranscribeVideoToolCall",
         "AiConversationTranscribeMediaToolCall",
         "AiConversationMemoryToolCall",
+        "AiConversationCreateAgentChatToolCall",
+        "AiConversationRenameAgentChatToolCall",
         "AiConversationSearchDocumentationToolCall",
         "AiConversationContactSupportToolCall",
         "AiConversationWebSearchToolCall",
@@ -5722,6 +6052,7 @@
         "AiConversationSetSpendLimitToolCall",
         "AiConversationRemoveSpendLimitToolCall",
         "AiConversationNavigateToPageToolCall",
+        "AiConversationCodeModeToolCall",
         "AiConversationInvokeMcpToolToolCall"
       ]
     },
@@ -5963,6 +6294,62 @@
         },
         "updatedEntities": {
           "type": "[AiConversationCreateEntityToolCallResultCreatedEntities!]",
+          "args": {},
+          "errors": []
+        }
+      },
+      "interfaces": []
+    },
+    "AiConversationUpdatePullRequestReviewFindingToolCall": {
+      "kind": "OBJECT",
+      "fields": {
+        "args": {
+          "type": "AiConversationUpdatePullRequestReviewFindingToolCallArgs",
+          "args": {},
+          "errors": [],
+          "description": "The arguments to the tool call."
+        },
+        "displayInfo": {
+          "type": "AiConversationToolDisplayInfo!",
+          "args": {},
+          "errors": []
+        },
+        "name": {
+          "type": "AiConversationTool!",
+          "args": {},
+          "errors": [],
+          "description": "The name of the tool that was called."
+        },
+        "rawArgs": {
+          "type": "JSON",
+          "args": {},
+          "errors": [],
+          "description": "The arguments of the tool call."
+        },
+        "rawResult": {
+          "type": "JSON",
+          "args": {},
+          "errors": [],
+          "description": "The result of the tool call."
+        }
+      },
+      "interfaces": ["AiConversationBaseToolCall"]
+    },
+    "AiConversationUpdatePullRequestReviewFindingToolCallArgs": {
+      "kind": "OBJECT",
+      "fields": {
+        "entity": {
+          "type": "AiConversationSearchEntitiesToolCallResultEntities!",
+          "args": {},
+          "errors": []
+        },
+        "findingId": {
+          "type": "String!",
+          "args": {},
+          "errors": []
+        },
+        "rejected": {
+          "type": "Boolean!",
           "args": {},
           "errors": []
         }
@@ -6331,7 +6718,7 @@
     },
     "AiPromptType": {
       "kind": "ENUM",
-      "description": "[Internal] The type of AI prompt workflow.",
+      "description": "The type of AI prompt workflow.",
       "enumValues": [
         "productIntelligence",
         "internalResearch",
@@ -6378,7 +6765,7 @@
       "inputFields": {
         "apiKey": {
           "type": "String!",
-          "description": "Linear export API key."
+          "description": "Linear export API key. Must be 40 random letters and digits, optionally prefixed with `lin_integration_`."
         }
       }
     },
@@ -7586,7 +7973,7 @@
     },
     "AuthUser": {
       "kind": "OBJECT",
-      "description": "A user that has access to the the resources of an organization.",
+      "description": "A user that has access to the resources of an organization.",
       "fields": {
         "active": {
           "type": "Boolean!",
@@ -7798,6 +8185,71 @@
         }
       },
       "interfaces": []
+    },
+    "CodingInferenceKey": {
+      "kind": "OBJECT",
+      "description": "[Internal] A saved workspace inference credential, without the key.",
+      "fields": {
+        "baseUrl": {
+          "type": "String!",
+          "args": {},
+          "errors": [],
+          "description": "The inference endpoint."
+        },
+        "harness": {
+          "type": "String!",
+          "args": {},
+          "errors": [],
+          "description": "The coding harness that uses this credential: codex or claude."
+        },
+        "provider": {
+          "type": "String!",
+          "args": {},
+          "errors": [],
+          "description": "The inference provider: openai, anthropic, or amazon-bedrock."
+        },
+        "updatedAt": {
+          "type": "DateTime!",
+          "args": {},
+          "errors": [],
+          "description": "When the credential was last saved."
+        }
+      },
+      "interfaces": []
+    },
+    "CodingInferenceKeyTestPayload": {
+      "kind": "OBJECT",
+      "description": "[Internal] Result of testing a workspace inference credential.",
+      "fields": {
+        "baseUrl": {
+          "type": "String",
+          "args": {},
+          "errors": [],
+          "description": "The endpoint that will be saved, normalized from the input."
+        },
+        "message": {
+          "type": "String",
+          "args": {},
+          "errors": [],
+          "description": "Why the test failed."
+        },
+        "success": {
+          "type": "Boolean!",
+          "args": {},
+          "errors": [],
+          "description": "Whether the provider accepted the request."
+        }
+      },
+      "interfaces": []
+    },
+    "CodingSessionsDisabledReason": {
+      "kind": "ENUM",
+      "description": "A reason the workspace cannot trust content from the authenticated OAuth application for Coding Sessions.",
+      "enumValues": [
+        "CODING_SESSIONS_DISABLED",
+        "TRUSTED_EXTERNAL_SOURCES_UNAVAILABLE",
+        "APP_NOT_TRUSTED"
+      ]
     },
     "Comment": {
       "kind": "OBJECT",
@@ -8387,6 +8839,14 @@
         "quotedText": {
           "type": "String",
           "description": "The text that this comment references. Only defined for inline comments."
+        },
+        "inlineAnchorFrom": {
+          "type": "String",
+          "description": "[Internal] Where the commented text starts, as a base64-encoded Y.js relative position created on the commenter's copy of the document content. Requires `inlineAnchorTo` and `documentContentId`."
+        },
+        "inlineAnchorTo": {
+          "type": "String",
+          "description": "[Internal] Where the commented text ends, as a base64-encoded Y.js relative position created on the commenter's copy of the document content. Requires `inlineAnchorFrom` and `documentContentId`."
         },
         "subscriberIds": {
           "type": "[String!]",
@@ -9648,7 +10108,7 @@
       "inputFields": {
         "id": {
           "type": "String",
-          "description": "An optional identifier in UUID v4 format. If provided, will be set as the customer need's ID."
+          "description": "Ignored. The mutation's id argument selects the customer need to update."
         },
         "customerId": {
           "type": "String",
@@ -12543,6 +13003,103 @@
       },
       "interfaces": []
     },
+    "Deployment": {
+      "kind": "OBJECT",
+      "description": "[Internal] A deployment of a pull request's commit reported by the code host, with its latest status. Preview links derive from the latest deployment of each environment.",
+      "fields": {
+        "archivedAt": {
+          "type": "DateTime",
+          "args": {},
+          "errors": [],
+          "description": "The time at which the entity was archived. Null if the entity has not been archived."
+        },
+        "createdAt": {
+          "type": "DateTime!",
+          "args": {},
+          "errors": [],
+          "description": "The time at which the entity was created."
+        },
+        "environment": {
+          "type": "String!",
+          "args": {},
+          "errors": [],
+          "description": "The environment the deployment targets, as the code host names it."
+        },
+        "externalCreatedAt": {
+          "type": "DateTime!",
+          "args": {},
+          "errors": [],
+          "description": "When the code host created the deployment. Orders the deployments of one environment."
+        },
+        "externalId": {
+          "type": "String!",
+          "args": {},
+          "errors": [],
+          "description": "The deployment's id on the code host."
+        },
+        "id": {
+          "type": "ID!",
+          "args": {},
+          "errors": [],
+          "description": "The unique identifier of the entity."
+        },
+        "logUrl": {
+          "type": "String",
+          "args": {},
+          "errors": [],
+          "description": "The URL of the deployer's log from the latest status. Null when that status had none."
+        },
+        "provider": {
+          "type": "String!",
+          "args": {},
+          "errors": [],
+          "description": "The code host that reported the deployment."
+        },
+        "pullRequest": {
+          "type": "PullRequest!",
+          "args": {},
+          "errors": [],
+          "description": "The pull request the deployment belongs to."
+        },
+        "sha": {
+          "type": "String!",
+          "args": {},
+          "errors": [],
+          "description": "The deployed commit."
+        },
+        "state": {
+          "type": "String!",
+          "args": {},
+          "errors": [],
+          "description": "The state of the latest status: `pending`, `building`, `success`, `failure`, or `inactive`. Provider states are collapsed to these."
+        },
+        "statusCreatedAt": {
+          "type": "DateTime!",
+          "args": {},
+          "errors": [],
+          "description": "When the code host created the latest status."
+        },
+        "statusExternalId": {
+          "type": "String",
+          "args": {},
+          "errors": [],
+          "description": "The id of the latest status on the code host. Null for a status read by a sync."
+        },
+        "updatedAt": {
+          "type": "DateTime!",
+          "args": {},
+          "errors": [],
+          "description": "The last time at which the entity was meaningfully updated. This is the same as the creation time if the entity hasn't\n    been updated after creation."
+        },
+        "url": {
+          "type": "String",
+          "args": {},
+          "errors": [],
+          "description": "The URL of the deployed environment from the latest status. Null when that status had none."
+        }
+      },
+      "interfaces": ["Node"]
+    },
     "Diff": {
       "kind": "OBJECT",
       "description": "[Internal] A first-class code diff. Starts as the live working-tree state of a coding session and is promoted to a review by linking it to a pull request, while continuing to represent local, uncommitted changes.",
@@ -12826,6 +13383,12 @@
           "errors": [],
           "description": "The owner of the document. Null if no owner is assigned or the owner's account has been deleted."
         },
+        "parentDocument": {
+          "type": "Document",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] The parent document. Null if the document is not a sub-document."
+        },
         "project": {
           "type": "Project",
           "args": {},
@@ -12849,6 +13412,12 @@
           "args": {},
           "errors": [],
           "description": "The sort order of the document in its parent entity's resources list. This order is shared with other resource types such as external links."
+        },
+        "subDocumentSortOrder": {
+          "type": "Float",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] The sort order of the sub-document among its siblings. Null if the document is not a sub-document."
         },
         "subscribers": {
           "type": "UserConnection!",
@@ -13443,9 +14012,21 @@
           "type": "String",
           "description": "[Internal] Related cycle for the document."
         },
+        "parentOrganizationId": {
+          "type": "String",
+          "description": "[Internal] The workspace for a workspace-level document. Must be the acting user's workspace."
+        },
         "resourceFolderId": {
           "type": "String",
           "description": "[Internal] The resource folder containing the document."
+        },
+        "parentDocumentId": {
+          "type": "String",
+          "description": "[Internal] The parent document of the sub-document. The container of the document must match the container of the parent document."
+        },
+        "subDocumentSortOrder": {
+          "type": "Float",
+          "description": "[Internal] The sort order of the sub-document among its siblings. Defaults to the last position. Requires `parentDocumentId`."
         },
         "lastAppliedTemplateId": {
           "type": "String",
@@ -13973,6 +14554,12 @@
           "errors": [],
           "description": "The owner of the document. Null if no owner is assigned or the owner's account has been deleted."
         },
+        "parentDocument": {
+          "type": "Document",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] The parent document. Null if the document is not a sub-document."
+        },
         "project": {
           "type": "Project",
           "args": {},
@@ -13996,6 +14583,12 @@
           "args": {},
           "errors": [],
           "description": "The sort order of the document in its parent entity's resources list. This order is shared with other resource types such as external links."
+        },
+        "subDocumentSortOrder": {
+          "type": "Float",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] The sort order of the sub-document among its siblings. Null if the document is not a sub-document."
         },
         "subscribers": {
           "type": "UserConnection!",
@@ -14098,6 +14691,11 @@
       },
       "interfaces": []
     },
+    "DocumentShareRole": {
+      "kind": "ENUM",
+      "description": "[Internal] The role of a user a personal document is shared with.",
+      "enumValues": ["edit", "comment", "view"]
+    },
     "DocumentSortInput": {
       "kind": "INPUT_OBJECT",
       "description": "Document sorting options.",
@@ -14198,9 +14796,21 @@
           "type": "String",
           "description": "[Internal] Related cycle for the document."
         },
+        "parentOrganizationId": {
+          "type": "String",
+          "description": "[Internal] Moves the document and its sub-documents to the workspace level. Must be the acting user's workspace."
+        },
         "resourceFolderId": {
           "type": "String",
           "description": "[Internal] The resource folder containing the document."
+        },
+        "parentDocumentId": {
+          "type": "String",
+          "description": "[Internal] The parent document of the sub-document. The document and its sub-documents move to the container of the parent document. Set to null to make the document a top-level document in its container."
+        },
+        "subDocumentSortOrder": {
+          "type": "Float",
+          "description": "[Internal] The sort order of the sub-document among its siblings."
         },
         "lastAppliedTemplateId": {
           "type": "String",
@@ -14225,6 +14835,10 @@
         "subscriberIds": {
           "type": "[String!]",
           "description": "[INTERNAL] The identifiers of the users subscribing to this document."
+        },
+        "personalUserId": {
+          "type": "String",
+          "description": "[Internal] Moves the document and its sub-documents into this user's personal space. Must be the acting user."
         }
       }
     },
@@ -15101,6 +15715,14 @@
         }
       },
       "possibleTypes": [
+        "CustomerNotificationSubscription",
+        "CustomViewNotificationSubscription",
+        "CycleNotificationSubscription",
+        "LabelNotificationSubscription",
+        "ProjectNotificationSubscription",
+        "InitiativeNotificationSubscription",
+        "TeamNotificationSubscription",
+        "UserNotificationSubscription",
         "IssueNotification",
         "ProjectNotification",
         "InitiativeNotification",
@@ -15114,15 +15736,7 @@
         "WorkspaceAnnouncementNotification",
         "UsageAlertNotification",
         "ProductAnnouncementNotification",
-        "WorkflowDefinitionNotification",
-        "CustomerNotificationSubscription",
-        "CustomViewNotificationSubscription",
-        "CycleNotificationSubscription",
-        "LabelNotificationSubscription",
-        "ProjectNotificationSubscription",
-        "InitiativeNotificationSubscription",
-        "TeamNotificationSubscription",
-        "UserNotificationSubscription"
+        "WorkflowDefinitionNotification"
       ],
       "interfaces": ["Node"]
     },
@@ -17793,7 +18407,7 @@
           "type": "String",
           "args": {},
           "errors": [],
-          "description": "[Internal] The human-readable identifier of the initiative. Returns the custom identifier override when set, otherwise the workspace default `<prefix>-<number>`. Null for legacy initiatives that have not been backfilled and while initiative identifiers are not enabled for the workspace."
+          "description": "[Internal] The human-readable identifier of the initiative. Returns the custom identifier override when set, otherwise the workspace default `<prefix>-<number>`. Null for legacy initiatives that have not been backfilled."
         },
         "initiativeUpdates": {
           "type": "InitiativeUpdateConnection!",
@@ -18733,6 +19347,12 @@
           "errors": [],
           "description": "The label's description."
         },
+        "groupType": {
+          "type": "LabelGroupType",
+          "args": {},
+          "errors": [],
+          "description": "The selection mode of this label group. Null for regular labels. Groups without a type use single-select behavior."
+        },
         "id": {
           "type": "ID!",
           "args": {},
@@ -18939,6 +19559,10 @@
         "retiredAt": {
           "type": "DateTime",
           "description": "The time at which the label was retired. Set to null to restore a retired label."
+        },
+        "groupType": {
+          "type": "LabelGroupType",
+          "description": "The selection mode of the label group. Null uses single-select behavior."
         }
       }
     },
@@ -19053,6 +19677,10 @@
         "retiredAt": {
           "type": "DateTime",
           "description": "The time at which the label was retired. Set to null to restore a retired label."
+        },
+        "groupType": {
+          "type": "LabelGroupType",
+          "description": "The selection mode of the label group. Omit to keep the current value. Null uses single-select behavior."
         }
       }
     },
@@ -20789,6 +21417,9 @@
         "microsoftTeamsProjectPost": {
           "type": "MicrosoftTeamsPostSettingsInput"
         },
+        "origin": {
+          "type": "OriginSettingsInput"
+        },
         "jira": {
           "type": "JiraSettingsInput"
         },
@@ -21420,6 +22051,12 @@
           },
           "errors": [],
           "description": "[Internal] Agent sessions associated with the issue."
+        },
+        "aiAnalysis": {
+          "type": "JSONObject",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] AI-generated analyses of the issue, keyed by feature, such as coding-agent suitability. Null if no analysis has run."
         },
         "aiPromptProgresses": {
           "type": "AiPromptProgressConnection!",
@@ -25287,6 +25924,12 @@
           "errors": [],
           "description": "[Internal] Agent sessions associated with the issue."
         },
+        "aiAnalysis": {
+          "type": "JSONObject",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] AI-generated analyses of the issue, keyed by feature, such as coding-agent suitability. Null if no analysis has run."
+        },
         "aiPromptProgresses": {
           "type": "AiPromptProgressConnection!",
           "args": {
@@ -27335,11 +27978,23 @@
     "JiraProjectStatusesPayload": {
       "kind": "OBJECT",
       "fields": {
+        "issueStatusCategories": {
+          "type": "[JiraStatusNameCategoriesPayload!]!",
+          "args": {},
+          "errors": [],
+          "description": "The status categories of each of the Jira project's issue statuses (non-Epic)."
+        },
         "issueStatuses": {
           "type": "[String!]!",
           "args": {},
           "errors": [],
           "description": "The Jira project's issue statuses (non-Epic)."
+        },
+        "projectStatusCategories": {
+          "type": "[JiraStatusNameCategoriesPayload!]!",
+          "args": {},
+          "errors": [],
+          "description": "The status categories of each of the Jira project's project statuses (Epic)."
         },
         "projectStatuses": {
           "type": "[String!]!",
@@ -27395,6 +28050,24 @@
           "description": "The label of the Jira instance, for visual identification purposes only"
         }
       }
+    },
+    "JiraStatusNameCategoriesPayload": {
+      "kind": "OBJECT",
+      "fields": {
+        "categories": {
+          "type": "[String!]!",
+          "args": {},
+          "errors": [],
+          "description": "The distinct status category keys (new, indeterminate, or done) of the Jira statuses with this name."
+        },
+        "name": {
+          "type": "String!",
+          "args": {},
+          "errors": [],
+          "description": "The name of the Jira status."
+        }
+      },
+      "interfaces": []
     },
     "JiraUpdateInput": {
       "kind": "INPUT_OBJECT",
@@ -27477,7 +28150,7 @@
     },
     "LabelGroupType": {
       "kind": "ENUM",
-      "description": "The selection mode of an issue label group.",
+      "description": "The selection mode of a label group.",
       "enumValues": ["singleSelect", "multiSelect"]
     },
     "LabelNotificationSubscription": {
@@ -29073,6 +29746,10 @@
         "documentDelete": {
           "type": "DocumentArchivePayload!",
           "args": {
+            "ifParentDocumentId": {
+              "type": "String",
+              "description": "[Internal] Only trash the document if it is still a sub-document of this document. Otherwise the mutation fails and the document is left unchanged."
+            },
             "id": {
               "type": "String!",
               "description": "The identifier of the document to delete."
@@ -29080,6 +29757,26 @@
           },
           "errors": [],
           "description": "Deletes (trashes) a document. The document is marked as trashed and archived, but not permanently removed."
+        },
+        "documentShare": {
+          "type": "DocumentPayload!",
+          "args": {
+            "role": {
+              "type": "DocumentShareRole",
+              "description": "The role of the collaborators. Defaults to edit.",
+              "defaultValue": "edit"
+            },
+            "userIds": {
+              "type": "[String!]!",
+              "description": "The identifiers of the users to share the document with."
+            },
+            "id": {
+              "type": "String!",
+              "description": "The identifier of the document to share."
+            }
+          },
+          "errors": [],
+          "description": "[Internal] Shares a document and its sub-documents with workspace members at a role. On a personal document only the owner can share it. On any other document the owner, an owner of one of its teams, or a workspace admin can, the people must be able to see the document, and the role must be above its general access. New collaborators are subscribed to the document. Users who already have another role move to the given one."
         },
         "documentUnarchive": {
           "type": "DocumentArchivePayload!",
@@ -29091,6 +29788,21 @@
           },
           "errors": [],
           "description": "Restores a previously trashed document by unarchiving it."
+        },
+        "documentUnshare": {
+          "type": "DocumentPayload!",
+          "args": {
+            "userIds": {
+              "type": "[String!]!",
+              "description": "The identifiers of the users to remove from the document."
+            },
+            "id": {
+              "type": "String!",
+              "description": "The identifier of the document to stop sharing."
+            }
+          },
+          "errors": [],
+          "description": "[Internal] Stops sharing a document and its sub-documents with users. Whoever can manage access to the document can remove any collaborator; a collaborator can only remove themselves."
         },
         "documentUpdate": {
           "type": "DocumentPayload!",
@@ -29106,6 +29818,58 @@
           },
           "errors": [],
           "description": "Updates a document."
+        },
+        "documentUpdateCollaboratorRole": {
+          "type": "DocumentPayload!",
+          "args": {
+            "previousRole": {
+              "type": "DocumentShareRole",
+              "description": "The role the users had on this document when the change was confirmed. When given, the change fails if any of the users has another role on the document now."
+            },
+            "applyToSubDocuments": {
+              "type": "Boolean",
+              "description": "Whether to also change the sub-documents where each user has the role they had on this document before the change. Sub-documents where they have a different role keep it.",
+              "defaultValue": "false"
+            },
+            "role": {
+              "type": "DocumentShareRole!",
+              "description": "The new role of the collaborators."
+            },
+            "userIds": {
+              "type": "[String!]!",
+              "description": "The identifiers of the collaborators whose role changes."
+            },
+            "id": {
+              "type": "String!",
+              "description": "The identifier of the document."
+            }
+          },
+          "errors": [],
+          "description": "[Internal] Changes the role of users a document is shared with. On a personal document only the owner can change roles. On any other document the owner, an owner of one of its teams, or a workspace admin can, and the role must be above its general access. Only users who already collaborate on the document change; no one is added. With applyToSubDocuments, sub-documents where a user has the role they had on this document before the change are also changed."
+        },
+        "documentUpdateGeneralAccess": {
+          "type": "DocumentPayload!",
+          "args": {
+            "previousGeneralAccess": {
+              "type": "String",
+              "description": "The general access level of this document when the change was confirmed. When given, the change fails if the document has another level now."
+            },
+            "applyToSubDocuments": {
+              "type": "Boolean",
+              "description": "Whether to also change the sub-documents whose level equals the document's level before the change. Sub-documents with another level, without an owner who can access them, or that the user cannot loosen keep their level.",
+              "defaultValue": "false"
+            },
+            "generalAccess": {
+              "type": "String!",
+              "description": "The new general access level: edit, comment, or view."
+            },
+            "id": {
+              "type": "String!",
+              "description": "The identifier of the document."
+            }
+          },
+          "errors": [],
+          "description": "[Internal] Changes what users other than the owner can do with a document that is not personal: edit, comment, or view. Only the owner of the document, an owner of one of its teams, or a workspace admin can change it. Comment and view need an owner who can access the document."
         },
         "emailIntakeAddressCreate": {
           "type": "EmailIntakeAddressPayload!",
@@ -30369,6 +31133,28 @@
           "errors": [],
           "description": "[INTERNAL] Refresh Opsgenie schedule mappings."
         },
+        "integrationOriginConnect": {
+          "type": "IntegrationPayload!",
+          "args": {
+            "installationReceipt": {
+              "type": "String!",
+              "description": "The signed `installation_receipt` Origin returned to the install callback."
+            }
+          },
+          "errors": [],
+          "description": "[Internal] Completes the Origin app installation so the workspace receives Origin webhooks."
+        },
+        "integrationOriginConnectInstallation": {
+          "type": "IntegrationPayload!",
+          "args": {
+            "installationId": {
+              "type": "String!",
+              "description": "The Origin installation id from the install redirect."
+            }
+          },
+          "errors": [],
+          "description": "[Internal] Connects an Origin installation that started on Origin, after the workspace admin who installed it confirms."
+        },
         "integrationPagerDutyConnect": {
           "type": "IntegrationPayload!",
           "args": {
@@ -30823,7 +31609,7 @@
           "args": {
             "trash": {
               "type": "Boolean",
-              "description": "Whether to trash the issue."
+              "description": "Whether to trash the issue and its sub-issues."
             },
             "id": {
               "type": "String!",
@@ -30883,7 +31669,7 @@
             }
           },
           "errors": [],
-          "description": "Deletes (trashes) an issue."
+          "description": "Deletes (trashes) an issue and its sub-issues."
         },
         "issueDescriptionUpdateFromFront": {
           "type": "IssuePayload!",
@@ -30929,6 +31715,10 @@
             "asanaTeamName": {
               "type": "String!",
               "description": "Asana team name to choose which issues we should import."
+            },
+            "asanaProjectNames": {
+              "type": "[String!]",
+              "description": "Names of Asana projects in the team. When set, only tasks from these projects are imported. When empty, all projects are imported."
             },
             "instantProcess": {
               "type": "Boolean",
@@ -31283,6 +32073,17 @@
           },
           "errors": [],
           "description": "Removes a label from an issue."
+        },
+        "issueRequestSolubilityPrediction": {
+          "type": "SuccessPayload!",
+          "args": {
+            "id": {
+              "type": "String!",
+              "description": "The identifier of the issue to predict suitability for."
+            }
+          },
+          "errors": [],
+          "description": "[Internal] Requests a coding-agent suitability prediction for an issue without a current one, such as an issue created before predictions existed."
         },
         "issueShare": {
           "type": "IssuePayload!",
@@ -31718,6 +32519,37 @@
           "errors": [],
           "description": "Cancels a previously requested workspace deletion, if the workspace has not yet been fully deleted."
         },
+        "organizationCodingInferenceKeyDelete": {
+          "type": "OrganizationPayload!",
+          "args": {
+            "harness": {
+              "type": "String!",
+              "description": "The coding harness whose credential to remove: codex or claude."
+            }
+          },
+          "errors": [],
+          "description": "[Internal] Removes a workspace inference credential and switches the harness to Linear inference."
+        },
+        "organizationCodingInferenceKeyTest": {
+          "type": "CodingInferenceKeyTestPayload!",
+          "args": {
+            "input": {
+              "type": "OrganizationCodingInferenceKeyInput!"
+            }
+          },
+          "errors": [],
+          "description": "[Internal] Sends a minimal inference request with a workspace credential without saving it."
+        },
+        "organizationCodingInferenceKeyUpdate": {
+          "type": "OrganizationPayload!",
+          "args": {
+            "input": {
+              "type": "OrganizationCodingInferenceKeyInput!"
+            }
+          },
+          "errors": [],
+          "description": "[Internal] Tests and stores a workspace inference credential and selects it for new sessions."
+        },
         "organizationDelete": {
           "type": "OrganizationDeletePayload!",
           "args": {
@@ -31863,6 +32695,17 @@
           },
           "errors": [],
           "description": "Updates the user's workspace settings. Different settings require different permission levels; most require the workspaceSettings admin permission."
+        },
+        "originInstallationCancel": {
+          "type": "OriginInstallationCancelPayload!",
+          "args": {
+            "installationId": {
+              "type": "String!",
+              "description": "The Origin installation id from the install redirect."
+            }
+          },
+          "errors": [],
+          "description": "[Internal] Removes Linear's app from an Origin installation that started on Origin and that no workspace connected."
         },
         "partnerApplicationCreate": {
           "type": "ContactPayload!",
@@ -32661,7 +33504,7 @@
             }
           },
           "errors": [],
-          "description": "Updates a release by pipeline identifier. Finds the release by version or latest started/planned release, and optionally transitions it to a new stage by name."
+          "description": "Updates a release by pipeline identifier. Finds the release by version, otherwise the latest started release or else the planned release with the earliest target date, and optionally transitions it to a new stage by name."
         },
         "releaseUpdateByPipelineByAccessKey": {
           "type": "AccessKeyReleasePayload!",
@@ -33417,7 +34260,7 @@
         }
       },
       "possibleTypes": [
-        "IssueNotification",
+        "CustomerNotificationSubscription",
         "User",
         "Organization",
         "Facet",
@@ -33438,6 +34281,7 @@
         "DocumentContent",
         "PullRequest",
         "ExternalUser",
+        "Deployment",
         "ProjectMilestone",
         "Meeting",
         "AiPromptRules",
@@ -33494,6 +34338,14 @@
         "IdentityProvider",
         "IssueDraft",
         "Draft",
+        "CustomViewNotificationSubscription",
+        "CycleNotificationSubscription",
+        "LabelNotificationSubscription",
+        "ProjectNotificationSubscription",
+        "InitiativeNotificationSubscription",
+        "TeamNotificationSubscription",
+        "UserNotificationSubscription",
+        "IssueNotification",
         "ProjectNotification",
         "InitiativeNotification",
         "OauthClientApprovalNotification",
@@ -33510,14 +34362,6 @@
         "ProductAnnouncementNotification",
         "ProductAnnouncement",
         "WorkflowDefinitionNotification",
-        "CustomerNotificationSubscription",
-        "CustomViewNotificationSubscription",
-        "CycleNotificationSubscription",
-        "LabelNotificationSubscription",
-        "ProjectNotificationSubscription",
-        "InitiativeNotificationSubscription",
-        "TeamNotificationSubscription",
-        "UserNotificationSubscription",
         "AgentSkill",
         "AuditEntry",
         "EmailIntakeAddress",
@@ -33527,6 +34371,7 @@
         "IntegrationTemplate",
         "IssueToRelease",
         "OrganizationInvite",
+        "OrganizationQuota",
         "Roadmap",
         "RoadmapToProject",
         "DocumentSearchResult",
@@ -33536,8 +34381,8 @@
         "UserSettings",
         "OrganizationDomain",
         "PushSubscription",
-        "DocumentContentDraft",
-        "DocumentContentRevision"
+        "DocumentContentRevision",
+        "DocumentContentDraft"
       ],
       "interfaces": []
     },
@@ -36255,6 +37100,25 @@
       },
       "interfaces": []
     },
+    "OAuthApplicationCodingSessionTrustedSource": {
+      "kind": "OBJECT",
+      "description": "The authenticated OAuth application's trusted-source status for Coding Sessions in the token's workspace. Combines workspace availability with the application's trust setting. This status does not grant permissions or account for team and repository access.",
+      "fields": {
+        "disabledReason": {
+          "type": "CodingSessionsDisabledReason",
+          "args": {},
+          "errors": [],
+          "description": "The first reason that enabled is false, or null when enabled is true. Checks run in this order: workspace availability, trusted external source availability, then application approval."
+        },
+        "enabled": {
+          "type": "Boolean!",
+          "args": {},
+          "errors": [],
+          "description": "Whether Coding Sessions are available and enabled in the workspace, trusted external sources are available, and the authenticated OAuth application is trusted. A true value does not guarantee that a specific session can start."
+        }
+      },
+      "interfaces": []
+    },
     "OAuthApplicationCreateInput": {
       "kind": "INPUT_OBJECT",
       "description": "Input for creating an OAuth application through the public API.",
@@ -36837,7 +37701,7 @@
           "type": "JSONObject!",
           "args": {},
           "errors": [],
-          "description": "[Internal] Settings for Coding Sessions features."
+          "description": "[Internal] Settings for Coding Sessions features. OAuth responses omit the trusted external source list."
         },
         "createdAt": {
           "type": "DateTime!",
@@ -37068,6 +37932,43 @@
           "errors": [],
           "description": "The URL of the workspace's logo image. Null if no logo has been uploaded."
         },
+        "loops": {
+          "type": "WorkflowDefinitionConnection!",
+          "args": {
+            "before": {
+              "type": "String",
+              "description": "A cursor to be used with last for backward pagination."
+            },
+            "after": {
+              "type": "String",
+              "description": "A cursor to be used with first for forward pagination"
+            },
+            "first": {
+              "type": "Int",
+              "description": "The number of items to forward paginate (used with after). Defaults to 50."
+            },
+            "last": {
+              "type": "Int",
+              "description": "The number of items to backward paginate (used with before). Defaults to 50."
+            },
+            "includeArchived": {
+              "type": "Boolean",
+              "description": "Should archived resources be included (default: false)"
+            },
+            "orderBy": {
+              "type": "PaginationOrderBy",
+              "description": "By which field should the pagination order by. Available options are createdAt (default) and updatedAt."
+            }
+          },
+          "errors": [],
+          "description": "Loops in the workspace that are visible to the requesting user, including workspace and team loops. Includes enabled and disabled loops."
+        },
+        "managedTeamFeatures": {
+          "type": "JSONObject!",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] The teams each managed team feature is limited to, keyed by feature. The workspace's own setting for each feature still applies."
+        },
         "name": {
           "type": "String!",
           "args": {},
@@ -37269,6 +38170,12 @@
           "errors": [],
           "description": "The workspace's subscription to a paid plan."
         },
+        "suggestedBranchNameEnabled": {
+          "type": "Boolean!",
+          "args": {},
+          "errors": [],
+          "description": "Whether the default prompt for copying an issue or opening it in a coding tool includes a suggested Git branch name."
+        },
         "teams": {
           "type": "TeamConnection!",
           "args": {
@@ -37303,6 +38210,12 @@
           },
           "errors": [],
           "description": "Teams in the workspace. Returns only teams visible to the requesting user (all public teams plus private teams the user is a member of)."
+        },
+        "teamSecuritySettings": {
+          "type": "JSONObject!",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] Workspace restrictions for team permissions."
         },
         "templates": {
           "type": "TemplateConnection!",
@@ -37470,6 +38383,22 @@
       "kind": "INPUT_OBJECT",
       "description": "[Internal] Input for updating Coding Sessions settings for the workspace.",
       "inputFields": {
+        "trustedExternalSources": {
+          "type": "[String!]",
+          "description": "[Internal] Approval snapshot. Ignored on writes; use trustedExternalSourceUpdate to change approvals."
+        },
+        "trustedExternalSourceUpdate": {
+          "type": "OrganizationCodingAgentTrustedSourceUpdateInput",
+          "description": "[Internal] Approve or remove one external source for coding-session delegation."
+        },
+        "codexInference": {
+          "type": "String",
+          "description": "[Internal] Inference credential source for Codex."
+        },
+        "claudeInference": {
+          "type": "String",
+          "description": "[Internal] Inference credential source for Claude Code."
+        },
         "model": {
           "type": "String",
           "description": "[Internal] The model preference used for Coding Sessions."
@@ -37489,6 +38418,38 @@
         "regionPinning": {
           "type": "Boolean",
           "description": "[Internal] Whether new Coding Session sandboxes should use workspace region pinning."
+        }
+      }
+    },
+    "OrganizationCodingAgentTrustedSourceUpdateInput": {
+      "kind": "INPUT_OBJECT",
+      "description": "[Internal] An approval change for one external coding-session source.",
+      "inputFields": {
+        "key": {
+          "type": "String!",
+          "description": "[Internal] The external source whose approval to change."
+        },
+        "allowed": {
+          "type": "Boolean!",
+          "description": "[Internal] Whether this source may start coding sessions."
+        }
+      }
+    },
+    "OrganizationCodingInferenceKeyInput": {
+      "kind": "INPUT_OBJECT",
+      "description": "[Internal] Workspace inference credential for Codex or Claude Code.",
+      "inputFields": {
+        "harness": {
+          "type": "String!",
+          "description": "The coding harness that will use this credential: codex or claude."
+        },
+        "baseUrl": {
+          "type": "String",
+          "description": "Inference endpoint. OpenAI-compatible for codex; Anthropic-compatible or Amazon Bedrock runtime for claude. Defaults to the provider's public API."
+        },
+        "apiKey": {
+          "type": "String!",
+          "description": "Provider API key."
         }
       }
     },
@@ -38081,6 +39042,34 @@
         }
       }
     },
+    "OrganizationManagedFeatureTeamInput": {
+      "kind": "INPUT_OBJECT",
+      "description": "[Internal] One team a managed team feature is limited to.",
+      "inputFields": {
+        "teamId": {
+          "type": "UUID!",
+          "description": "[Internal] The identifier of the team."
+        },
+        "includeSubTeams": {
+          "type": "Boolean!",
+          "description": "[Internal] Whether the team's sub-teams, at any depth, can use the feature too."
+        }
+      }
+    },
+    "OrganizationManagedTeamFeaturesInput": {
+      "kind": "INPUT_OBJECT",
+      "description": "[Internal] The teams each managed team feature is limited to in the workspace.",
+      "inputFields": {
+        "codingSessions": {
+          "type": "[OrganizationManagedFeatureTeamInput!]",
+          "description": "[Internal] The teams coding sessions are limited to. Omit it to not limit coding sessions by team, or pass an empty list to allow no team. `codingAgentEnabled` still turns coding sessions on or off for the workspace."
+        },
+        "loops": {
+          "type": "[OrganizationManagedFeatureTeamInput!]",
+          "description": "[Internal] The teams Loops are limited to. Omit it to not limit Loops by team, or pass an empty list to allow no team. `agentAutomationEnabled` still turns Loops on or off for the workspace."
+        }
+      }
+    },
     "OrganizationMeta": {
       "kind": "OBJECT",
       "description": "[INTERNAL] Workspace metadata including region and allowed authentication providers.",
@@ -38124,6 +39113,153 @@
         }
       },
       "interfaces": []
+    },
+    "OrganizationQuota": {
+      "kind": "OBJECT",
+      "description": "A public resource quota for the current workspace.",
+      "fields": {
+        "description": {
+          "type": "String!",
+          "args": {},
+          "errors": []
+        },
+        "id": {
+          "type": "ID!",
+          "args": {},
+          "errors": [],
+          "description": "The unique identifier of the entity."
+        },
+        "key": {
+          "type": "String!",
+          "args": {},
+          "errors": [],
+          "description": "Stable quota key."
+        },
+        "limit": {
+          "type": "Float!",
+          "args": {},
+          "errors": [],
+          "description": "Effective quota limit, including workspace overrides. Scoped quotas apply this limit to each entity."
+        },
+        "maxUsage": {
+          "type": "OrganizationQuotaMaxUsage",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] The highest usage of the quota in any team, project, or initiative, and the entity with that usage. Counts include data that the user cannot see. Null for workspace quotas, which return their usage in `usage`. The value is cached because it counts every row in the workspace. It can be up to 1 hour old for `max-issues-per-team` and `max-issues-per-project`, and up to 10 minutes old for other quotas. Changes to the data do not refresh the cache. For a current value, query `usage` with the ID of that entity."
+        },
+        "name": {
+          "type": "String!",
+          "args": {},
+          "errors": []
+        },
+        "scope": {
+          "type": "OrganizationQuotaScope!",
+          "args": {},
+          "errors": [],
+          "description": "The entity that the limit applies to. Workspace quotas limit the whole workspace. Team, project, and initiative quotas limit each of those entities separately. To get their usage, pass the ID of the entity to `usage`."
+        },
+        "usage": {
+          "type": "Float",
+          "args": {
+            "initiativeId": {
+              "type": "String",
+              "description": "The initiative to count usage for initiative quotas in."
+            },
+            "projectId": {
+              "type": "String",
+              "description": "The project to count usage for project quotas in."
+            },
+            "teamId": {
+              "type": "String",
+              "description": "The team to count usage for team quotas in."
+            }
+          },
+          "errors": [],
+          "description": "[Internal] Current usage of the quota, counted with the same rules as quota enforcement. The value is not cached. Counts include data that the user cannot see. Workspace quotas ignore the arguments. Team, project, and initiative quotas return null unless you pass `teamId`, `projectId`, or `initiativeId` that matches their scope. The user must have access to that entity."
+        }
+      },
+      "interfaces": ["Node"]
+    },
+    "OrganizationQuotaConnection": {
+      "kind": "OBJECT",
+      "fields": {
+        "edges": {
+          "type": "[OrganizationQuotaEdge!]!",
+          "args": {},
+          "errors": []
+        },
+        "nodes": {
+          "type": "[OrganizationQuota!]!",
+          "args": {},
+          "errors": []
+        },
+        "pageInfo": {
+          "type": "PageInfo!",
+          "args": {},
+          "errors": []
+        }
+      },
+      "interfaces": []
+    },
+    "OrganizationQuotaEdge": {
+      "kind": "OBJECT",
+      "fields": {
+        "cursor": {
+          "type": "String!",
+          "args": {},
+          "errors": [],
+          "description": "Used in `before` and `after` args"
+        },
+        "node": {
+          "type": "OrganizationQuota!",
+          "args": {},
+          "errors": []
+        }
+      },
+      "interfaces": []
+    },
+    "OrganizationQuotaFilter": {
+      "kind": "INPUT_OBJECT",
+      "description": "Filter public workspace quotas by key or scope.",
+      "inputFields": {
+        "key": {
+          "type": "StringComparator"
+        },
+        "scope": {
+          "type": "StringComparator",
+          "description": "Comparator for the quota scope: workspace, team, project, or initiative."
+        },
+        "and": {
+          "type": "[OrganizationQuotaFilter!]"
+        },
+        "or": {
+          "type": "[OrganizationQuotaFilter!]"
+        }
+      }
+    },
+    "OrganizationQuotaMaxUsage": {
+      "kind": "OBJECT",
+      "description": "The team, project, or initiative with the highest usage of a scoped quota. The limit applies to each entity, so this entity is the closest to the limit.",
+      "fields": {
+        "entityId": {
+          "type": "String",
+          "args": {},
+          "errors": [],
+          "description": "The ID of the entity with the highest usage. Null if the user cannot see the entity, if no entity uses the quota, or if workspace-level templates have the highest usage of a template quota."
+        },
+        "usage": {
+          "type": "Float!",
+          "args": {},
+          "errors": [],
+          "description": "The usage of the quota in the entity with the highest usage."
+        }
+      },
+      "interfaces": []
+    },
+    "OrganizationQuotaScope": {
+      "kind": "ENUM",
+      "description": "The entity that a quota limit applies to.",
+      "enumValues": ["workspace", "team", "project", "initiative"]
     },
     "OrganizationSecuritySettingsInput": {
       "kind": "INPUT_OBJECT",
@@ -38251,6 +39387,10 @@
         "gitLinkbackDescriptionsEnabled": {
           "type": "Boolean",
           "description": "Whether issue descriptions should be included in Git integration linkback messages."
+        },
+        "suggestedBranchNameEnabled": {
+          "type": "Boolean",
+          "description": "Whether the default prompt for copying an issue or opening it in a coding tool includes a suggested Git branch name."
         },
         "roadmapEnabled": {
           "type": "Boolean",
@@ -38388,6 +39528,10 @@
           "type": "OrganizationSecuritySettingsInput",
           "description": "The security settings for the workspace."
         },
+        "teamSecuritySettings": {
+          "type": "WorkspaceTeamSecuritySettingsInput",
+          "description": "[Internal] Workspace restrictions for team permissions."
+        },
         "authSettings": {
           "type": "OrganizationAuthSettingsInput",
           "description": "The authentication settings for the workspace."
@@ -38423,6 +39567,79 @@
         "codingAgentSettings": {
           "type": "OrganizationCodingAgentSettingsInput",
           "description": "[Internal] Settings for Coding Sessions features."
+        },
+        "managedTeamFeatures": {
+          "type": "OrganizationManagedTeamFeaturesInput",
+          "description": "[Internal] The teams each managed team feature is limited to. Replaces the current lists, and updates each team's matching setting."
+        }
+      }
+    },
+    "OriginInstallationCancelPayload": {
+      "kind": "OBJECT",
+      "fields": {
+        "success": {
+          "type": "Boolean!",
+          "args": {},
+          "errors": [],
+          "description": "Whether Linear's app was removed from the installation."
+        }
+      },
+      "interfaces": []
+    },
+    "OriginInstallationDetails": {
+      "kind": "OBJECT",
+      "fields": {
+        "connectedToWorkspace": {
+          "type": "Boolean!",
+          "args": {},
+          "errors": [],
+          "description": "Whether the installation is already connected to the current workspace, as after a reinstall that updated it."
+        },
+        "installationId": {
+          "type": "String!",
+          "args": {},
+          "errors": [],
+          "description": "The Origin installation id."
+        },
+        "ownerSlug": {
+          "type": "String!",
+          "args": {},
+          "errors": [],
+          "description": "The slug of the Origin owner the app was installed on."
+        },
+        "ownerType": {
+          "type": "String",
+          "args": {},
+          "errors": [],
+          "description": "Whether the Origin owner is a `team` or a `user`."
+        },
+        "repositorySelection": {
+          "type": "String!",
+          "args": {},
+          "errors": [],
+          "description": "Whether the installation covers `all` repositories of the owner or only `selected` ones."
+        }
+      },
+      "interfaces": []
+    },
+    "OriginInstallUrlPayload": {
+      "kind": "OBJECT",
+      "fields": {
+        "installUrl": {
+          "type": "String!",
+          "args": {},
+          "errors": [],
+          "description": "The Origin URL to send the user to in order to install Linear's app."
+        }
+      },
+      "interfaces": []
+    },
+    "OriginSettingsInput": {
+      "kind": "INPUT_OBJECT",
+      "inputFields": {
+        "ownerSlug": {
+          "type": "String",
+          "description": "The slug of the Origin team or user that owns the installation."
         }
       }
     },
@@ -39775,7 +40992,7 @@
           "type": "String",
           "args": {},
           "errors": [],
-          "description": "[Internal] The human-readable identifier of the project. Returns the custom identifier override when set, otherwise the default `P-<leadTeamKey>-<number>`. Null for projects without a lead team, for legacy projects that have not been backfilled, and while project identifiers are not enabled for the workspace."
+          "description": "[Internal] The human-readable identifier of the project. Returns the custom identifier override when set, otherwise the default `P-<leadTeamKey>-<number>`. Null for projects without a lead team and for legacy projects that have not been backfilled."
         },
         "initiatives": {
           "type": "InitiativeConnection!",
@@ -41244,6 +42461,12 @@
           "errors": [],
           "description": "The label's description."
         },
+        "groupType": {
+          "type": "LabelGroupType",
+          "args": {},
+          "errors": [],
+          "description": "The selection mode of this label group. Null for regular labels. Groups without a type use single-select behavior."
+        },
         "id": {
           "type": "ID!",
           "args": {},
@@ -41467,6 +42690,10 @@
           "type": "DateTime",
           "description": "The time at which the label was retired. Set to null to restore a retired label."
         },
+        "groupType": {
+          "type": "LabelGroupType",
+          "description": "The selection mode of the label group. Null uses single-select behavior."
+        },
         "teamId": {
           "type": "String",
           "description": "The identifier of the team to scope the label to. If not given, the label is a workspace-level label available to all teams."
@@ -41588,6 +42815,10 @@
         "retiredAt": {
           "type": "DateTime",
           "description": "The time at which the label was retired. Set to null to restore a retired label."
+        },
+        "groupType": {
+          "type": "LabelGroupType",
+          "description": "The selection mode of the label group. Omit to keep the current value. Null uses single-select behavior."
         }
       }
     },
@@ -43065,7 +44296,7 @@
           "type": "String",
           "args": {},
           "errors": [],
-          "description": "[Internal] The human-readable identifier of the project. Returns the custom identifier override when set, otherwise the default `P-<leadTeamKey>-<number>`. Null for projects without a lead team, for legacy projects that have not been backfilled, and while project identifiers are not enabled for the workspace."
+          "description": "[Internal] The human-readable identifier of the project. Returns the custom identifier override when set, otherwise the default `P-<leadTeamKey>-<number>`. Null for projects without a lead team and for legacy projects that have not been backfilled."
         },
         "initiatives": {
           "type": "InitiativeConnection!",
@@ -44765,6 +45996,18 @@
           "errors": [],
           "description": "[Internal] The Linear user who created the pull request. Null if the creator is an external user not mapped to a Linear account, or if the creator's account has been deleted."
         },
+        "deployments": {
+          "type": "[Deployment!]!",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] The deployments of the pull request's commits, each with its latest status."
+        },
+        "externalCreator": {
+          "type": "ExternalUser",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] The external user who opened the pull request, when the author is not mapped to a Linear account, such as a bot. Null if the author is a Linear user."
+        },
         "hasConflicts": {
           "type": "Boolean!",
           "args": {},
@@ -45391,7 +46634,7 @@
           "type": "String!",
           "args": {},
           "errors": [],
-          "description": "The URL of the preview."
+          "description": "The URL of the preview. Empty for a deployment that is still building and has not reported its URL."
         }
       },
       "interfaces": []
@@ -46875,6 +48118,17 @@
           "errors": [],
           "description": "Retrieves a specific integration settings configuration by its identifier."
         },
+        "integrationSyncResourceIds": {
+          "type": "[String!]!",
+          "args": {
+            "integrationId": {
+              "type": "String!",
+              "description": "The workspace integration to configure."
+            }
+          },
+          "errors": [],
+          "description": "[INTERNAL] Jira project IDs available for issue sync."
+        },
         "integrationTemplate": {
           "type": "IntegrationTemplate!",
           "args": {
@@ -47407,6 +48661,12 @@
           "errors": [],
           "description": "[ALPHA] A specific OAuth application created by the calling OAuth application through the public API."
         },
+        "oauthApplicationCodingSessionTrustedSource": {
+          "type": "OAuthApplicationCodingSessionTrustedSource!",
+          "args": {},
+          "errors": [],
+          "description": "Returns the authenticated OAuth application's trusted-source status for Coding Sessions in the workspace. Requires an OAuth access token with the `read` scope."
+        },
         "oauthApplications": {
           "type": "[OAuthApplication!]!",
           "args": {},
@@ -47418,6 +48678,12 @@
           "args": {},
           "errors": [],
           "description": "The authenticated user's workspace."
+        },
+        "organizationCodingInferenceKeys": {
+          "type": "[CodingInferenceKey!]!",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] Saved workspace inference credentials for Coding Sessions, without their keys."
         },
         "organizationDomainClaimRequest": {
           "type": "OrganizationDomainClaimPayload!",
@@ -47504,6 +48770,29 @@
           },
           "errors": [],
           "description": "[INTERNAL] Get workspace metadata by URL key or workspace ID."
+        },
+        "originInstallation": {
+          "type": "OriginInstallationDetails!",
+          "args": {
+            "installationId": {
+              "type": "String!",
+              "description": "The Origin installation id from the install redirect."
+            }
+          },
+          "errors": [],
+          "description": "[Internal] Describes an Origin installation that started on Origin, for its installer to confirm before connecting."
+        },
+        "originInstallUrl": {
+          "type": "OriginInstallUrlPayload!",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] Builds the URL that starts installing Linear's Origin app into a codebase, or reinstalling it to grant new scopes."
+        },
+        "originPendingInstallations": {
+          "type": "[OriginInstallationDetails!]!",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] Lists the Origin installations the current user started on Origin that no workspace has connected yet, matched by the user's email."
         },
         "partnerOfferDetails": {
           "type": "PartnerOfferDetailsPayload",
@@ -47845,6 +49134,32 @@
           },
           "errors": [],
           "description": "Sends a test push notification to the authenticated user's registered devices. Useful for verifying that push notification delivery is working correctly."
+        },
+        "quotas": {
+          "type": "OrganizationQuotaConnection!",
+          "args": {
+            "filter": {
+              "type": "OrganizationQuotaFilter"
+            },
+            "before": {
+              "type": "String",
+              "description": "A cursor to be used with last for backward pagination."
+            },
+            "after": {
+              "type": "String",
+              "description": "A cursor to be used with first for forward pagination"
+            },
+            "first": {
+              "type": "Int",
+              "description": "The number of items to forward paginate (used with after). Defaults to 50."
+            },
+            "last": {
+              "type": "Int",
+              "description": "The number of items to backward paginate (used with before). Defaults to 50."
+            }
+          },
+          "errors": [],
+          "description": "Public resource quotas for the authenticated workspace. These are not subscription limits."
         },
         "rateLimitStatus": {
           "type": "RateLimitPayload!",
@@ -51156,7 +52471,7 @@
       "inputFields": {
         "version": {
           "type": "String",
-          "description": "The version of the release to update. If not provided, the latest started or latest planned release will be updated."
+          "description": "The version of the release to update. If not provided, the latest started release is updated, or else the planned release with the earliest target date."
         },
         "stage": {
           "type": "String",
@@ -51194,7 +52509,7 @@
       "inputFields": {
         "version": {
           "type": "String",
-          "description": "The version of the release to update. If not provided, the latest started or latest planned release will be updated."
+          "description": "The version of the release to update. If not provided, the latest started release is updated, or else the planned release with the earliest target date."
         },
         "stage": {
           "type": "String",
@@ -51926,6 +53241,10 @@
         "defaultTeam": {
           "type": "String",
           "description": "The Salesforce team to use when a template doesn't specify a team."
+        },
+        "syncCommentsFromChatter": {
+          "type": "Boolean",
+          "description": "Whether replies posted on the Chatter feed of a linked Salesforce case are synced back into the Linear issue's synced comment thread. Requires a managed package version that ships the Chatter feed trigger."
         }
       }
     },
@@ -53033,7 +54352,7 @@
           "type": "Comment!",
           "args": {},
           "errors": [],
-          "description": "Triggered when a a comment is unarchived"
+          "description": "Triggered when a comment is unarchived"
         },
         "commentUpdated": {
           "type": "Comment!",
@@ -53123,7 +54442,7 @@
           "type": "Document!",
           "args": {},
           "errors": [],
-          "description": "Triggered when a a document is unarchived"
+          "description": "Triggered when a document is unarchived"
         },
         "documentUpdated": {
           "type": "Document!",
@@ -53272,7 +54591,7 @@
           "type": "Issue!",
           "args": {},
           "errors": [],
-          "description": "Triggered when a an issue is unarchived"
+          "description": "Triggered when an issue is unarchived"
         },
         "issueUpdated": {
           "type": "Issue!",
@@ -53307,7 +54626,7 @@
           "type": "Notification!",
           "args": {},
           "errors": [],
-          "description": "Triggered when a a notification is unarchived"
+          "description": "Triggered when a notification is unarchived"
         },
         "notificationUpdated": {
           "type": "Notification!",
@@ -53355,7 +54674,7 @@
           "type": "Project!",
           "args": {},
           "errors": [],
-          "description": "Triggered when a a project is unarchived"
+          "description": "Triggered when a project is unarchived"
         },
         "projectUpdateArchived": {
           "type": "ProjectUpdate!",
@@ -53682,6 +55001,12 @@
           "errors": [],
           "description": "Team's currently active cycle."
         },
+        "agentAutomationEnabled": {
+          "type": "Boolean!",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] Whether the team can use Loops. The workspace's Loops team list sets it."
+        },
         "aiDiscussionSummariesEnabled": {
           "type": "Boolean!",
           "args": {},
@@ -53747,6 +55072,12 @@
           "args": {},
           "errors": [],
           "description": "[Internal] The team's sub-teams."
+        },
+        "codingAgentEnabled": {
+          "type": "Boolean!",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] Whether the team can use coding sessions. The workspace's coding sessions team list sets it."
         },
         "color": {
           "type": "String",
@@ -53955,6 +55286,12 @@
           "errors": [],
           "description": "Whether to group recent issue history entries."
         },
+        "hierarchySettings": {
+          "type": "JSONObject!",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] Inheritance requirements that this team applies to its descendants."
+        },
         "icon": {
           "type": "String",
           "args": {},
@@ -54146,6 +55483,37 @@
           "args": {},
           "errors": [],
           "description": "The number of initiatives led by this team that would be deleted along with it. Counts every led initiative, including ones not otherwise visible to the caller, to mirror what deleting the team cascades."
+        },
+        "loops": {
+          "type": "WorkflowDefinitionConnection!",
+          "args": {
+            "before": {
+              "type": "String",
+              "description": "A cursor to be used with last for backward pagination."
+            },
+            "after": {
+              "type": "String",
+              "description": "A cursor to be used with first for forward pagination"
+            },
+            "first": {
+              "type": "Int",
+              "description": "The number of items to forward paginate (used with after). Defaults to 50."
+            },
+            "last": {
+              "type": "Int",
+              "description": "The number of items to backward paginate (used with before). Defaults to 50."
+            },
+            "includeArchived": {
+              "type": "Boolean",
+              "description": "Should archived resources be included (default: false)"
+            },
+            "orderBy": {
+              "type": "PaginationOrderBy",
+              "description": "By which field should the pagination order by. Available options are createdAt (default) and updatedAt."
+            }
+          },
+          "errors": [],
+          "description": "Loops owned by the team that are visible to the requesting user. Includes enabled and disabled loops."
         },
         "markedAsDuplicateWorkflowState": {
           "type": "WorkflowState",
@@ -54590,6 +55958,24 @@
           "errors": [],
           "description": "The last time at which the entity was meaningfully updated. This is the same as the creation time if the entity hasn't\n    been updated after creation."
         },
+        "viewerCanJoin": {
+          "type": "Boolean!",
+          "args": {},
+          "errors": [],
+          "description": "Whether the viewer can add themselves to the team. False when the viewer is already a member, the team is archived, retired, or SCIM-managed, the viewer lacks the plan access or permission to add themselves, or the viewer has reached their team membership limit. Runs the same checks `teamMembershipCreate` applies to a viewer joining on their own."
+        },
+        "viewerCanLeave": {
+          "type": "Boolean!",
+          "args": {},
+          "errors": [],
+          "description": "Whether the viewer can remove themselves from the team. False when the viewer is not a member, the team is SCIM-managed, the viewer is an app user the team does not accept, or leaving would leave the viewer without an active team. Otherwise mirrors the checks `teamMembershipDelete` applies to a viewer leaving on their own."
+        },
+        "viewerMembership": {
+          "type": "TeamMembership",
+          "args": {},
+          "errors": [],
+          "description": "The viewer's membership in the team. Null when the viewer is not a member."
+        },
         "visibility": {
           "type": "TeamVisibility!",
           "args": {},
@@ -54775,7 +56161,7 @@
         },
         "cycleLockToActive": {
           "type": "Boolean",
-          "description": "Only allow issues issues with cycles in Active Issues."
+          "description": "Only allow issues with cycles in Active Issues."
         },
         "upcomingCycleCount": {
           "type": "Float",
@@ -54983,6 +56369,23 @@
         "or": {
           "type": "[TeamFilter!]",
           "description": "Compound filters, one of which need to be matched by the team."
+        }
+      }
+    },
+    "TeamHierarchySettingsInput": {
+      "kind": "INPUT_OBJECT",
+      "inputFields": {
+        "requireWorkflowStatusInheritance": {
+          "type": "Boolean",
+          "description": "Require sub-teams to inherit their parent’s issue statuses."
+        },
+        "requireProjectStatusInheritance": {
+          "type": "Boolean",
+          "description": "Require sub-teams to inherit their parent’s project statuses."
+        },
+        "requireIssueEstimationInheritance": {
+          "type": "Boolean",
+          "description": "Require sub-teams to inherit their parent’s estimate settings."
         }
       }
     },
@@ -55686,6 +57089,10 @@
         "slackAutoCreateProjectChannel": {
           "type": "Boolean",
           "description": "[Internal] Whether to automatically create a Slack channel when a new project is created in this team."
+        },
+        "hierarchySettings": {
+          "type": "TeamHierarchySettingsInput",
+          "description": "[Internal] Inheritance requirements that this team applies to its descendants. Omitted keys retain their current values."
         },
         "securitySettings": {
           "type": "TeamSecuritySettingsInput",
@@ -57471,7 +58878,13 @@
         },
         "supportsAgentSessions": {
           "type": "Boolean!",
-          "args": {},
+          "args": {
+            "forCurrentUser": {
+              "type": "Boolean!",
+              "description": "Whether to require an active webhook for sessions started by the current user.",
+              "defaultValue": "false"
+            }
+          },
           "errors": [],
           "description": "Whether this agent user supports agent sessions."
         },
@@ -58724,6 +60137,12 @@
           "errors": [],
           "description": "Whether to show disabled loops."
         },
+        "automationShowTemplates": {
+          "type": "Boolean",
+          "args": {},
+          "errors": [],
+          "description": "Whether to show templates above the workspace loops list."
+        },
         "automationStatsPeriod": {
           "type": "String",
           "args": {},
@@ -58928,6 +60347,12 @@
           "errors": [],
           "description": "The dashboards ordering."
         },
+        "documentFieldCollaborators": {
+          "type": "Boolean",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] Whether to show the collaborators column in documents lists."
+        },
         "documentFieldCreator": {
           "type": "Boolean",
           "args": {},
@@ -58957,6 +60382,66 @@
           "args": {},
           "errors": [],
           "description": "Whether to show the parent field for documents."
+        },
+        "documentFieldProject": {
+          "type": "Boolean",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] Whether to show the project column in documents lists."
+        },
+        "documentsListCreatedDateDirection": {
+          "type": "String",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] Direction of a documents list when ordered by created date."
+        },
+        "documentsListGrouping": {
+          "type": "String",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] Grouping of a documents list."
+        },
+        "documentsListLastEditedDirection": {
+          "type": "String",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] Direction of a documents list when ordered by last edited."
+        },
+        "documentsListNameDirection": {
+          "type": "String",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] Direction of a documents list when ordered by name."
+        },
+        "documentsListOrdering": {
+          "type": "String",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] Ordering of a documents list."
+        },
+        "documentsListOwnerDirection": {
+          "type": "String",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] Direction of a documents list when ordered by owner."
+        },
+        "documentsListProjectDirection": {
+          "type": "String",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] Direction of a documents list when ordered by project."
+        },
+        "documentsListShowInactiveProjects": {
+          "type": "Boolean",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] Whether a documents list shows documents from completed or canceled projects."
+        },
+        "documentsListShowOnlyMyProjects": {
+          "type": "Boolean",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] Whether a documents list only shows documents from projects the user is part of."
         },
         "embeddedCustomerNeedsShowImportantFirst": {
           "type": "Boolean",
@@ -59350,6 +60835,12 @@
           "args": {},
           "errors": [],
           "description": "Whether to show the member teams field."
+        },
+        "pinnedDocumentIds": {
+          "type": "[String!]",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] Ordered ids of the documents pinned to the top of a documents list."
         },
         "projectCustomerNeedsShowCompletedIssuesLast": {
           "type": "Boolean",
@@ -60151,6 +61642,12 @@
           "errors": [],
           "description": "The triage view ordering."
         },
+        "userDiffsScope": {
+          "type": "String",
+          "args": {},
+          "errors": [],
+          "description": "[Internal] Which of a user's pull requests the Diffs tab on their profile lists."
+        },
         "viewOrdering": {
           "type": "String",
           "args": {},
@@ -60186,6 +61683,8 @@
         "myIssuesSharedWithMe",
         "userProfile",
         "userProfileCreatedByUser",
+        "userProfileDiffs",
+        "userProfileProjects",
         "board",
         "completedCycle",
         "cycle",
@@ -60239,6 +61738,10 @@
         "feedFollowing",
         "feedPopular",
         "workspaceMembers",
+        "myDocuments",
+        "sharedDocuments",
+        "allDocuments",
+        "teamDocuments",
         "releasePipelines",
         "automations",
         "automationRunHistory",
@@ -60968,7 +62471,7 @@
           "type": "WorkflowDefinitionEditAccess",
           "args": {},
           "errors": [],
-          "description": "The edit access setting for this workflow definition. When unset, access is derived from restrictEditing."
+          "description": "The edit access setting for this workflow definition. When unset, everyone can edit the workflow."
         },
         "enabled": {
           "type": "Boolean!",
@@ -61035,6 +62538,12 @@
           "args": {},
           "errors": [],
           "description": "The user who owns the workflow. If not defined, it means the creator should be considered as the owner."
+        },
+        "postResultsToEntity": {
+          "type": "Boolean!",
+          "args": {},
+          "errors": [],
+          "description": "Whether an issue-triggered workflow posts its results as a comment on the triggering issue. When false, results stay in the run. Approval requests and questions are still posted."
         },
         "project": {
           "type": "Project",
@@ -61129,6 +62638,44 @@
         }
       },
       "interfaces": ["Node"]
+    },
+    "WorkflowDefinitionConnection": {
+      "kind": "OBJECT",
+      "fields": {
+        "edges": {
+          "type": "[WorkflowDefinitionEdge!]!",
+          "args": {},
+          "errors": []
+        },
+        "nodes": {
+          "type": "[WorkflowDefinition!]!",
+          "args": {},
+          "errors": []
+        },
+        "pageInfo": {
+          "type": "PageInfo!",
+          "args": {},
+          "errors": []
+        }
+      },
+      "interfaces": []
+    },
+    "WorkflowDefinitionEdge": {
+      "kind": "OBJECT",
+      "fields": {
+        "cursor": {
+          "type": "String!",
+          "args": {},
+          "errors": [],
+          "description": "Used in `before` and `after` args"
+        },
+        "node": {
+          "type": "WorkflowDefinition!",
+          "args": {},
+          "errors": []
+        }
+      },
+      "interfaces": []
     },
     "WorkflowDefinitionEditAccess": {
       "kind": "ENUM",
@@ -61654,6 +63201,11 @@
           "type": "Boolean",
           "description": "Whether to sort closed issues by recency",
           "defaultValue": "false"
+        },
+        "typeOnly": {
+          "type": "Boolean",
+          "description": "Whether to sort by status type without ordering individual statuses within each type.",
+          "defaultValue": "false"
         }
       }
     },
@@ -61692,10 +63244,13 @@
         "commentAdded",
         "commentResolved",
         "reviewSubmitted",
+        "addedToMergeQueue",
+        "removedFromMergeQueue",
         "updatePosted",
         "chatMessagePosted",
         "chatReactionAdded",
-        "customerRequestAdded"
+        "customerRequestAdded",
+        "webhookReceived"
       ]
     },
     "WorkflowTriggerType": {
@@ -61709,6 +63264,7 @@
         "release",
         "cycle",
         "schedule",
+        "webhook",
         "chat",
         "pullRequest"
       ]
@@ -61904,6 +63460,23 @@
         }
       },
       "interfaces": ["Notification", "Entity", "Node"]
+    },
+    "WorkspaceTeamSecuritySettingsInput": {
+      "kind": "INPUT_OBJECT",
+      "inputFields": {
+        "teamManagement": {
+          "type": "TeamRoleType",
+          "description": "Minimum role required to manage team settings."
+        },
+        "memberManagement": {
+          "type": "TeamRoleType",
+          "description": "Minimum role required to manage team members."
+        },
+        "allMembersCanJoin": {
+          "type": "Boolean",
+          "description": "Whether members may join teams without an invitation."
+        }
+      }
     },
     "ZendeskSettingsInput": {
       "kind": "INPUT_OBJECT",

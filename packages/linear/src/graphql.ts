@@ -144,6 +144,7 @@ export type AiConversationClientPlatform = "web" | "desktop" | "mobile";
 export type AiConversationElicitationKind =
   | "multipleChoice"
   | "mcpServerConnection"
+  | "integrationConnection"
   | "confirmation"
   | "entitySelection";
 
@@ -297,6 +298,7 @@ export type AiConversationTool =
   | "RestoreEntity"
   | "RunLoop"
   | "SpawnSubagent"
+  | "MessageSubagent"
   | "Research"
   | "CodeIntelligence"
   | "StartCodingSession"
@@ -312,12 +314,16 @@ export type AiConversationTool =
   | "GetPullRequestFile"
   | "GetPullRequestCheckLogs"
   | "RetryPullRequestCheck"
+  | "RerunPullRequestReview"
+  | "UpdatePullRequestReviewFinding"
   | "HandoffToCodingSession"
   | "SubscribeToEvent"
   | "UnsubscribeFromEvent"
   | "TranscribeVideo"
   | "TranscribeMedia"
   | "Memory"
+  | "CreateAgentChat"
+  | "RenameAgentChat"
   | "SearchDocumentation"
   | "ContactSupport"
   | "WebSearch"
@@ -328,6 +334,7 @@ export type AiConversationTool =
   | "SetSpendLimit"
   | "RemoveSpendLimit"
   | "NavigateToPage"
+  | "CodeMode"
   | "InvokeMcpTool";
 
 /** The name of a widget in an AI conversation. */
@@ -336,7 +343,7 @@ export type AiConversationWidgetName = "EntityCard" | "EntityList" | "Setting";
 /** [Internal] The status of a prompt workflow. */
 export type AiPromptProgressStatus = "created" | "inProgress" | "finished" | "failed" | "canceled";
 
-/** [Internal] The type of AI prompt workflow. */
+/** The type of AI prompt workflow. */
 export type AiPromptType =
   | "productIntelligence"
   | "internalResearch"
@@ -352,6 +359,12 @@ export type AiPromptType =
   | "microsoftTeamsIssueIntake";
 
 export type AuthenticationSessionType = "web" | "desktop" | "ios" | "android";
+
+/** A reason the workspace cannot trust content from the authenticated OAuth application for Coding Sessions. */
+export type CodingSessionsDisabledReason =
+  | "CODING_SESSIONS_DISABLED"
+  | "TRUSTED_EXTERNAL_SOURCES_UNAVAILABLE"
+  | "APP_NOT_TRUSTED";
 
 export type ContextViewType =
   | "activeIssues"
@@ -397,6 +410,9 @@ export type DiffFileState =
 
 /** Whether the checkpoint belongs to a draft-only or live document agent flow. */
 export type DocumentContentAgentCheckpointMode = "draft" | "live";
+
+/** [Internal] The role of a user a personal document is shared with. */
+export type DocumentShareRole = "edit" | "comment" | "view";
 
 /** The health status carried by a project update or initiative update draft. */
 export type DraftUpdateHealthType = "onTrack" | "atRisk" | "offTrack";
@@ -520,7 +536,7 @@ export type IssueSuggestionType =
   | "similarIssue"
   | "relatedIssue";
 
-/** The selection mode of an issue label group. */
+/** The selection mode of a label group. */
 export type LabelGroupType = "singleSelect" | "multiSelect";
 
 /** How workspace MCP server access is restricted for Linear Agent. */
@@ -582,6 +598,9 @@ export type OrganizationDomainAuthType = "saml" | "general";
 
 /** The different statuses possible for an organization invite. */
 export type OrganizationInviteStatus = "pending" | "accepted" | "expired";
+
+/** The entity that a quota limit applies to. */
+export type OrganizationQuotaScope = "workspace" | "team" | "project" | "initiative";
 
 /** How to treat NULL values, whether they should appear first or last */
 export type PaginationNulls = "first" | "last";
@@ -813,6 +832,8 @@ export type ViewType =
   | "myIssuesSharedWithMe"
   | "userProfile"
   | "userProfileCreatedByUser"
+  | "userProfileDiffs"
+  | "userProfileProjects"
   | "board"
   | "completedCycle"
   | "cycle"
@@ -866,6 +887,10 @@ export type ViewType =
   | "feedFollowing"
   | "feedPopular"
   | "workspaceMembers"
+  | "myDocuments"
+  | "sharedDocuments"
+  | "allDocuments"
+  | "teamDocuments"
   | "releasePipelines"
   | "automations"
   | "automationRunHistory"
@@ -921,10 +946,13 @@ export type WorkflowTrigger =
   | "commentAdded"
   | "commentResolved"
   | "reviewSubmitted"
+  | "addedToMergeQueue"
+  | "removedFromMergeQueue"
   | "updatePosted"
   | "chatMessagePosted"
   | "chatReactionAdded"
-  | "customerRequestAdded";
+  | "customerRequestAdded"
+  | "webhookReceived";
 
 export type WorkflowTriggerType =
   | "issue"
@@ -935,6 +963,7 @@ export type WorkflowTriggerType =
   | "release"
   | "cycle"
   | "schedule"
+  | "webhook"
   | "chat"
   | "pullRequest";
 
@@ -1328,6 +1357,8 @@ export interface CommentCreateInput {
   readonly doNotSubscribeToIssue?: boolean | null;
   readonly createOnSyncedSlackThread?: boolean | null;
   readonly quotedText?: string | null;
+  readonly inlineAnchorFrom?: string | null;
+  readonly inlineAnchorTo?: string | null;
   readonly subscriberIds?: ReadonlyArray<string> | null;
 }
 
@@ -1919,7 +1950,10 @@ export interface DocumentCreateInput {
   readonly issueId?: string | null;
   readonly releaseId?: string | null;
   readonly cycleId?: string | null;
+  readonly parentOrganizationId?: string | null;
   readonly resourceFolderId?: string | null;
+  readonly parentDocumentId?: string | null;
+  readonly subDocumentSortOrder?: number | null;
   readonly lastAppliedTemplateId?: string | null;
   readonly ownerId?: string | null;
   readonly sortOrder?: number | null;
@@ -1991,13 +2025,17 @@ export interface DocumentUpdateInput {
   readonly issueId?: string | null;
   readonly releaseId?: string | null;
   readonly cycleId?: string | null;
+  readonly parentOrganizationId?: string | null;
   readonly resourceFolderId?: string | null;
+  readonly parentDocumentId?: string | null;
+  readonly subDocumentSortOrder?: number | null;
   readonly lastAppliedTemplateId?: string | null;
   readonly ownerId?: string | null;
   readonly hiddenAt?: string | null;
   readonly sortOrder?: number | null;
   readonly trashed?: boolean | null;
   readonly subscriberIds?: ReadonlyArray<string> | null;
+  readonly personalUserId?: string | null;
 }
 
 /** Document update date sorting options. */
@@ -2489,6 +2527,7 @@ export interface InitiativeLabelCreateInput {
   readonly parentId?: string | null;
   readonly isGroup?: boolean | null;
   readonly retiredAt?: string | null;
+  readonly groupType?: "singleSelect" | "multiSelect" | null;
 }
 
 /** Initiative label filtering options. */
@@ -2512,6 +2551,7 @@ export interface InitiativeLabelUpdateInput {
   readonly color?: string | null;
   readonly isGroup?: boolean | null;
   readonly retiredAt?: string | null;
+  readonly groupType?: "singleSelect" | "multiSelect" | null;
 }
 
 /** Initiative manual sorting options. */
@@ -2704,6 +2744,7 @@ export interface IntegrationSettingsInput {
   readonly gong?: GongSettingsInput | null;
   readonly microsoftTeams?: MicrosoftTeamsSettingsInput | null;
   readonly microsoftTeamsProjectPost?: MicrosoftTeamsPostSettingsInput | null;
+  readonly origin?: OriginSettingsInput | null;
   readonly jira?: JiraSettingsInput | null;
   readonly notion?: NotionSettingsInput | null;
   readonly opsgenie?: OpsgenieInput | null;
@@ -4007,11 +4048,28 @@ export interface OrganizationAuthSettingsInput {
 
 /** [Internal] Input for updating Coding Sessions settings for the workspace. */
 export interface OrganizationCodingAgentSettingsInput {
+  readonly trustedExternalSources?: ReadonlyArray<string> | null;
+  readonly trustedExternalSourceUpdate?: OrganizationCodingAgentTrustedSourceUpdateInput | null;
+  readonly codexInference?: string | null;
+  readonly claudeInference?: string | null;
   readonly model?: string | null;
   readonly effort?: string | null;
   readonly commitSigningEnabled?: boolean | null;
   readonly sandboxSize?: string | null;
   readonly regionPinning?: boolean | null;
+}
+
+/** [Internal] An approval change for one external coding-session source. */
+export interface OrganizationCodingAgentTrustedSourceUpdateInput {
+  readonly key: string;
+  readonly allowed: boolean;
+}
+
+/** [Internal] Workspace inference credential for Codex or Claude Code. */
+export interface OrganizationCodingInferenceKeyInput {
+  readonly harness: string;
+  readonly baseUrl?: string | null;
+  readonly apiKey: string;
 }
 
 export interface OrganizationDomainCreateInput {
@@ -4072,6 +4130,26 @@ export interface OrganizationLinearAgentTrustedSourcesAllowlistEntryInput {
   readonly key: string;
 }
 
+/** [Internal] One team a managed team feature is limited to. */
+export interface OrganizationManagedFeatureTeamInput {
+  readonly teamId: string;
+  readonly includeSubTeams: boolean;
+}
+
+/** [Internal] The teams each managed team feature is limited to in the workspace. */
+export interface OrganizationManagedTeamFeaturesInput {
+  readonly codingSessions?: ReadonlyArray<OrganizationManagedFeatureTeamInput> | null;
+  readonly loops?: ReadonlyArray<OrganizationManagedFeatureTeamInput> | null;
+}
+
+/** Filter public workspace quotas by key or scope. */
+export interface OrganizationQuotaFilter {
+  readonly key?: StringComparator | null;
+  readonly scope?: StringComparator | null;
+  readonly and?: ReadonlyArray<OrganizationQuotaFilter> | null;
+  readonly or?: ReadonlyArray<OrganizationQuotaFilter> | null;
+}
+
 /** Input for updating workspace security settings such as role-based access controls. */
 export interface OrganizationSecuritySettingsInput {
   readonly adminManagementRole?: "owner" | "admin" | "guest" | "user" | "app" | null;
@@ -4109,6 +4187,7 @@ export interface OrganizationUpdateInput {
   readonly gitLinkbackMessagesEnabled?: boolean | null;
   readonly gitPublicLinkbackMessagesEnabled?: boolean | null;
   readonly gitLinkbackDescriptionsEnabled?: boolean | null;
+  readonly suggestedBranchNameEnabled?: boolean | null;
   readonly roadmapEnabled?: boolean | null;
   readonly projectUpdateReminderFrequencyInWeeks?: number | null;
   readonly projectUpdateRemindersDay?:
@@ -4159,6 +4238,7 @@ export interface OrganizationUpdateInput {
   readonly pullRequestIssueMode?: string | null;
   readonly hipaaComplianceEnabled?: boolean | null;
   readonly securitySettings?: OrganizationSecuritySettingsInput | null;
+  readonly teamSecuritySettings?: WorkspaceTeamSecuritySettingsInput | null;
   readonly authSettings?: OrganizationAuthSettingsInput | null;
   readonly slackProjectChannelIntegrationId?: string | null;
   readonly slackProjectChannelPrefix?: string | null;
@@ -4168,6 +4248,11 @@ export interface OrganizationUpdateInput {
   readonly linearAgentSettings?: OrganizationLinearAgentSettingsInput | null;
   readonly codingAgentEnabled?: boolean | null;
   readonly codingAgentSettings?: OrganizationCodingAgentSettingsInput | null;
+  readonly managedTeamFeatures?: OrganizationManagedTeamFeaturesInput | null;
+}
+
+export interface OriginSettingsInput {
+  readonly ownerSlug?: string | null;
 }
 
 /** Customer owner sorting options. */
@@ -4379,6 +4464,7 @@ export interface ProjectLabelCreateInput {
   readonly parentId?: string | null;
   readonly isGroup?: boolean | null;
   readonly retiredAt?: string | null;
+  readonly groupType?: "singleSelect" | "multiSelect" | null;
   readonly teamId?: string | null;
 }
 
@@ -4404,6 +4490,7 @@ export interface ProjectLabelUpdateInput {
   readonly color?: string | null;
   readonly isGroup?: boolean | null;
   readonly retiredAt?: string | null;
+  readonly groupType?: "singleSelect" | "multiSelect" | null;
 }
 
 /** Project lead sorting options. */
@@ -5182,6 +5269,7 @@ export interface SalesforceSettingsInput {
   readonly reopenCaseStatus?: string | null;
   readonly restrictVisibility?: boolean | null;
   readonly defaultTeam?: string | null;
+  readonly syncCommentsFromChatter?: boolean | null;
 }
 
 /** Filters for semantic search results. */
@@ -5470,6 +5558,12 @@ export interface TeamFilter {
   readonly or?: ReadonlyArray<TeamFilter> | null;
 }
 
+export interface TeamHierarchySettingsInput {
+  readonly requireWorkflowStatusInheritance?: boolean | null;
+  readonly requireProjectStatusInheritance?: boolean | null;
+  readonly requireIssueEstimationInheritance?: boolean | null;
+}
+
 /** Input for creating a new team membership. */
 export interface TeamMembershipCreateInput {
   readonly id?: string | null;
@@ -5554,6 +5648,7 @@ export interface TeamUpdateInput {
   readonly initiativesEnabled?: boolean | null;
   readonly inheritSlackAutoCreateProjectChannel?: boolean | null;
   readonly slackAutoCreateProjectChannel?: boolean | null;
+  readonly hierarchySettings?: TeamHierarchySettingsInput | null;
   readonly securitySettings?: TeamSecuritySettingsInput | null;
   readonly allMembersCanJoin?: boolean | null;
   readonly retiredAt?: string | null;
@@ -5820,6 +5915,8 @@ export interface ViewPreferencesCreateInput {
     | "myIssuesSharedWithMe"
     | "userProfile"
     | "userProfileCreatedByUser"
+    | "userProfileDiffs"
+    | "userProfileProjects"
     | "board"
     | "completedCycle"
     | "cycle"
@@ -5873,6 +5970,10 @@ export interface ViewPreferencesCreateInput {
     | "feedFollowing"
     | "feedPopular"
     | "workspaceMembers"
+    | "myDocuments"
+    | "sharedDocuments"
+    | "allDocuments"
+    | "teamDocuments"
     | "releasePipelines"
     | "automations"
     | "automationRunHistory"
@@ -5961,6 +6062,7 @@ export interface WorkflowStateSort {
   readonly nulls?: "first" | "last" | null;
   readonly order?: "Ascending" | "Descending" | null;
   readonly closedIssuesOrderedByRecency?: boolean | null;
+  readonly typeOnly?: boolean | null;
 }
 
 /** Input for updating an existing workflow state. All fields are optional; only provided fields will be updated. The state type cannot be changed after creation. */
@@ -5969,6 +6071,12 @@ export interface WorkflowStateUpdateInput {
   readonly color?: string | null;
   readonly description?: string | null;
   readonly position?: number | null;
+}
+
+export interface WorkspaceTeamSecuritySettingsInput {
+  readonly teamManagement?: "owner" | "member" | null;
+  readonly memberManagement?: "owner" | "member" | null;
+  readonly allMembersCanJoin?: boolean | null;
 }
 
 export interface ZendeskSettingsInput {
@@ -6006,6 +6114,7 @@ export type AiConversationElicitationResponseData =
   | AiConversationMultipleChoiceElicitationResponseData
   | AiConversationConfirmationElicitationResponseData
   | AiConversationMcpServerConnectionElicitationResponseData
+  | AiConversationIntegrationConnectionElicitationResponseData
   | AiConversationEntitySelectionElicitationResponseData;
 
 /** A part in an AI conversation. */
@@ -6039,6 +6148,7 @@ export type AiConversationToolCall =
   | AiConversationRestoreEntityToolCall
   | AiConversationRunLoopToolCall
   | AiConversationSpawnSubagentToolCall
+  | AiConversationMessageSubagentToolCall
   | AiConversationResearchToolCall
   | AiConversationCodeIntelligenceToolCall
   | AiConversationStartCodingSessionToolCall
@@ -6054,12 +6164,16 @@ export type AiConversationToolCall =
   | AiConversationGetPullRequestFileToolCall
   | AiConversationGetPullRequestCheckLogsToolCall
   | AiConversationRetryPullRequestCheckToolCall
+  | AiConversationRerunPullRequestReviewToolCall
+  | AiConversationUpdatePullRequestReviewFindingToolCall
   | AiConversationHandoffToCodingSessionToolCall
   | AiConversationSubscribeToEventToolCall
   | AiConversationUnsubscribeFromEventToolCall
   | AiConversationTranscribeVideoToolCall
   | AiConversationTranscribeMediaToolCall
   | AiConversationMemoryToolCall
+  | AiConversationCreateAgentChatToolCall
+  | AiConversationRenameAgentChatToolCall
   | AiConversationSearchDocumentationToolCall
   | AiConversationContactSupportToolCall
   | AiConversationWebSearchToolCall
@@ -6070,6 +6184,7 @@ export type AiConversationToolCall =
   | AiConversationSetSpendLimitToolCall
   | AiConversationRemoveSpendLimitToolCall
   | AiConversationNavigateToPageToolCall
+  | AiConversationCodeModeToolCall
   | AiConversationInvokeMcpToolToolCall;
 
 /** The widget. */
@@ -6145,6 +6260,7 @@ export interface AgentActivity {
   readonly ephemeral: boolean;
   readonly executionSkippedReason: "quotaExceeded" | "permissionDenied" | null;
   readonly id: string;
+  readonly promptAuthor: User | null;
   readonly pushSummary: AgentActivityPushSummary | null;
   readonly queued: boolean;
   readonly sentAt: string | null;
@@ -6214,7 +6330,7 @@ export interface AgentActivityPushCommit {
   readonly sha: string;
 }
 
-/** [Internal] What a coding agent turn pushed to its branch, measured in the sandbox at push time. The range is cumulative within a turn, so a turn that pushes several times reports every commit each time — consumers use the last summary in a turn rather than combining across pushes. */
+/** [Internal] What a coding agent turn pushed to its branch, measured in the sandbox at push time. The range is cumulative within a turn, so a turn that pushes several times reports every commit each time -- consumers use the last summary in a turn rather than combining across pushes. */
 export interface AgentActivityPushSummary {
   readonly additionalCommitShas: ReadonlyArray<string>;
   readonly baseSha: string;
@@ -6425,8 +6541,10 @@ export interface AiConversation {
   readonly project: Project | null;
   readonly pullRequest: PullRequest | null;
   readonly readAt: string | null;
+  readonly setupWorkflowDefinition: WorkflowDefinition | null;
   readonly slugId: string;
   readonly status: "active" | "complete" | "awaitingInput" | "error" | "pending" | "waiting";
+  readonly subscriberIds: ReadonlyArray<string> | null;
   readonly summary: string | null;
   readonly updatedAt: string;
   readonly user: User | null;
@@ -6492,6 +6610,7 @@ export interface AiConversationBaseToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -6507,12 +6626,16 @@ export interface AiConversationBaseToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -6523,6 +6646,7 @@ export interface AiConversationBaseToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -6554,6 +6678,7 @@ export interface AiConversationBashToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -6569,12 +6694,16 @@ export interface AiConversationBashToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -6585,6 +6714,7 @@ export interface AiConversationBashToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -6614,6 +6744,7 @@ export interface AiConversationCodeIntelligenceToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -6629,12 +6760,16 @@ export interface AiConversationCodeIntelligenceToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -6645,6 +6780,7 @@ export interface AiConversationCodeIntelligenceToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -6654,10 +6790,81 @@ export interface AiConversationCodeIntelligenceToolCallArgs {
   readonly question: string;
 }
 
-/** The affirmative response recorded for a confirmation elicitation. */
+export interface AiConversationCodeModeToolCall {
+  readonly args: AiConversationCodeModeToolCallArgs | null;
+  readonly displayInfo: AiConversationToolDisplayInfo;
+  readonly name:
+    | "SearchEntities"
+    | "SearchSettings"
+    | "ReadSetting"
+    | "PatchSettings"
+    | "NotifyUsers"
+    | "RetrieveEntities"
+    | "QueryView"
+    | "QueryActivity"
+    | "QueryUpdates"
+    | "SuggestValues"
+    | "CreateEntity"
+    | "UpdateEntity"
+    | "DeleteEntity"
+    | "RestoreEntity"
+    | "RunLoop"
+    | "SpawnSubagent"
+    | "MessageSubagent"
+    | "Research"
+    | "CodeIntelligence"
+    | "StartCodingSession"
+    | "PromptCodingSession"
+    | "ListCodingSessions"
+    | "SuggestRepository"
+    | "CreateSandbox"
+    | "Bash"
+    | "SandboxGitHistory"
+    | "ReadSandboxFile"
+    | "ReadFile"
+    | "GetPullRequestDiff"
+    | "GetPullRequestFile"
+    | "GetPullRequestCheckLogs"
+    | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
+    | "HandoffToCodingSession"
+    | "SubscribeToEvent"
+    | "UnsubscribeFromEvent"
+    | "TranscribeVideo"
+    | "TranscribeMedia"
+    | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
+    | "SearchDocumentation"
+    | "ContactSupport"
+    | "WebSearch"
+    | "GetSlackConversationHistory"
+    | "PostChatMessage"
+    | "SearchChatChannels"
+    | "GetMicrosoftTeamsConversationHistory"
+    | "SetSpendLimit"
+    | "RemoveSpendLimit"
+    | "NavigateToPage"
+    | "CodeMode"
+    | "InvokeMcpTool";
+  readonly rawArgs: unknown | null;
+  readonly rawResult: unknown | null;
+}
+
+export interface AiConversationCodeModeToolCallArgs {
+  readonly description: string;
+}
+
+/** The response recorded for a confirmation elicitation. */
 export interface AiConversationConfirmationElicitationResponseData {
   readonly confirmed: boolean;
-  readonly kind: "multipleChoice" | "mcpServerConnection" | "confirmation" | "entitySelection";
+  readonly kind:
+    | "multipleChoice"
+    | "mcpServerConnection"
+    | "integrationConnection"
+    | "confirmation"
+    | "entitySelection";
 }
 
 export interface AiConversationContactSupportToolCall {
@@ -6679,6 +6886,7 @@ export interface AiConversationContactSupportToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -6694,12 +6902,16 @@ export interface AiConversationContactSupportToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -6710,9 +6922,77 @@ export interface AiConversationContactSupportToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
+}
+
+export interface AiConversationCreateAgentChatToolCall {
+  readonly args: unknown | null;
+  readonly displayInfo: AiConversationToolDisplayInfo;
+  readonly name:
+    | "SearchEntities"
+    | "SearchSettings"
+    | "ReadSetting"
+    | "PatchSettings"
+    | "NotifyUsers"
+    | "RetrieveEntities"
+    | "QueryView"
+    | "QueryActivity"
+    | "QueryUpdates"
+    | "SuggestValues"
+    | "CreateEntity"
+    | "UpdateEntity"
+    | "DeleteEntity"
+    | "RestoreEntity"
+    | "RunLoop"
+    | "SpawnSubagent"
+    | "MessageSubagent"
+    | "Research"
+    | "CodeIntelligence"
+    | "StartCodingSession"
+    | "PromptCodingSession"
+    | "ListCodingSessions"
+    | "SuggestRepository"
+    | "CreateSandbox"
+    | "Bash"
+    | "SandboxGitHistory"
+    | "ReadSandboxFile"
+    | "ReadFile"
+    | "GetPullRequestDiff"
+    | "GetPullRequestFile"
+    | "GetPullRequestCheckLogs"
+    | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
+    | "HandoffToCodingSession"
+    | "SubscribeToEvent"
+    | "UnsubscribeFromEvent"
+    | "TranscribeVideo"
+    | "TranscribeMedia"
+    | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
+    | "SearchDocumentation"
+    | "ContactSupport"
+    | "WebSearch"
+    | "GetSlackConversationHistory"
+    | "PostChatMessage"
+    | "SearchChatChannels"
+    | "GetMicrosoftTeamsConversationHistory"
+    | "SetSpendLimit"
+    | "RemoveSpendLimit"
+    | "NavigateToPage"
+    | "CodeMode"
+    | "InvokeMcpTool";
+  readonly rawArgs: unknown | null;
+  readonly rawResult: unknown | null;
+  readonly result: AiConversationCreateAgentChatToolCallResult | null;
+}
+
+export interface AiConversationCreateAgentChatToolCallResult {
+  readonly conversationId: string;
 }
 
 export interface AiConversationCreateEntityToolCall {
@@ -6735,6 +7015,7 @@ export interface AiConversationCreateEntityToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -6750,12 +7031,16 @@ export interface AiConversationCreateEntityToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -6766,6 +7051,7 @@ export interface AiConversationCreateEntityToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -6809,6 +7095,7 @@ export interface AiConversationCreateSandboxToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -6824,12 +7111,16 @@ export interface AiConversationCreateSandboxToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -6840,6 +7131,7 @@ export interface AiConversationCreateSandboxToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -6869,6 +7161,7 @@ export interface AiConversationDeleteEntityToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -6884,12 +7177,16 @@ export interface AiConversationDeleteEntityToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -6900,6 +7197,7 @@ export interface AiConversationDeleteEntityToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -6925,7 +7223,60 @@ export interface AiConversationElicitationPart {
   readonly entityType: string | null;
   readonly id: string;
   readonly integrationId: string | null;
-  readonly kind: "multipleChoice" | "mcpServerConnection" | "confirmation" | "entitySelection";
+  readonly integrationService:
+    | "airbyte"
+    | "datadog"
+    | "discord"
+    | "figma"
+    | "figmaPlugin"
+    | "front"
+    | "github"
+    | "gong"
+    | "githubEnterpriseServer"
+    | "githubCommit"
+    | "githubImport"
+    | "githubPersonal"
+    | "githubCodeAccessPersonal"
+    | "gitlab"
+    | "origin"
+    | "googleCalendarPersonal"
+    | "googleSheets"
+    | "intercom"
+    | "jira"
+    | "jiraPersonal"
+    | "launchDarkly"
+    | "launchDarklyPersonal"
+    | "loom"
+    | "notion"
+    | "opsgenie"
+    | "pagerDuty"
+    | "salesforce"
+    | "slack"
+    | "slackAsks"
+    | "asksWeb"
+    | "slackCustomViewNotifications"
+    | "slackOrgProjectUpdatesPost"
+    | "slackOrgInitiativeUpdatesPost"
+    | "slackPersonal"
+    | "slackPost"
+    | "slackProjectPost"
+    | "slackProjectUpdatesPost"
+    | "slackInitiativePost"
+    | "sentry"
+    | "zendesk"
+    | "email"
+    | "mcpServerPersonal"
+    | "mcpServer"
+    | "microsoftTeams"
+    | "microsoftPersonal"
+    | "microsoftTeamsProjectPost"
+    | null;
+  readonly kind:
+    | "multipleChoice"
+    | "mcpServerConnection"
+    | "integrationConnection"
+    | "confirmation"
+    | "entitySelection";
   readonly metadata: AiConversationPartMetadata;
   readonly options: ReadonlyArray<AiConversationElicitationOption>;
   readonly scope: AiConversationMcpServerConnectionScope | null;
@@ -6954,6 +7305,7 @@ export interface AiConversationElicitationResponsePart {
     | AiConversationMultipleChoiceElicitationResponseData
     | AiConversationConfirmationElicitationResponseData
     | AiConversationMcpServerConnectionElicitationResponseData
+    | AiConversationIntegrationConnectionElicitationResponseData
     | AiConversationEntitySelectionElicitationResponseData;
   readonly elicitationId: string;
   readonly id: string;
@@ -7060,7 +7412,12 @@ export interface AiConversationEntityListWidgetArgsEntities {
 
 /** Selected entities in an entity selection elicitation. */
 export interface AiConversationEntitySelectionElicitationResponseData {
-  readonly kind: "multipleChoice" | "mcpServerConnection" | "confirmation" | "entitySelection";
+  readonly kind:
+    | "multipleChoice"
+    | "mcpServerConnection"
+    | "integrationConnection"
+    | "confirmation"
+    | "entitySelection";
   readonly selectedEntityIds: ReadonlyArray<string>;
 }
 
@@ -7127,6 +7484,7 @@ export interface AiConversationGetMicrosoftTeamsConversationHistoryToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -7142,12 +7500,16 @@ export interface AiConversationGetMicrosoftTeamsConversationHistoryToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -7158,6 +7520,7 @@ export interface AiConversationGetMicrosoftTeamsConversationHistoryToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -7183,6 +7546,7 @@ export interface AiConversationGetPullRequestCheckLogsToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -7198,12 +7562,16 @@ export interface AiConversationGetPullRequestCheckLogsToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -7214,6 +7582,7 @@ export interface AiConversationGetPullRequestCheckLogsToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -7245,6 +7614,7 @@ export interface AiConversationGetPullRequestDiffToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -7260,12 +7630,16 @@ export interface AiConversationGetPullRequestDiffToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -7276,6 +7650,7 @@ export interface AiConversationGetPullRequestDiffToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -7305,6 +7680,7 @@ export interface AiConversationGetPullRequestFileToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -7320,12 +7696,16 @@ export interface AiConversationGetPullRequestFileToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -7336,6 +7716,7 @@ export interface AiConversationGetPullRequestFileToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -7366,6 +7747,7 @@ export interface AiConversationGetSlackConversationHistoryToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -7381,12 +7763,16 @@ export interface AiConversationGetSlackConversationHistoryToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -7397,6 +7783,7 @@ export interface AiConversationGetSlackConversationHistoryToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -7435,6 +7822,7 @@ export interface AiConversationHandoffToCodingSessionToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -7450,12 +7838,16 @@ export interface AiConversationHandoffToCodingSessionToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -7466,6 +7858,7 @@ export interface AiConversationHandoffToCodingSessionToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -7474,6 +7867,17 @@ export interface AiConversationHandoffToCodingSessionToolCall {
 export interface AiConversationHandoffToCodingSessionToolCallArgs {
   readonly entity: AiConversationSearchEntitiesToolCallResultEntities;
   readonly instructions: string | null;
+}
+
+/** The integration connected to a Loop and its current run by a conversation. */
+export interface AiConversationIntegrationConnectionElicitationResponseData {
+  readonly integrationId: string;
+  readonly kind:
+    | "multipleChoice"
+    | "mcpServerConnection"
+    | "integrationConnection"
+    | "confirmation"
+    | "entitySelection";
 }
 
 export interface AiConversationInvokeMcpToolToolCall {
@@ -7496,6 +7900,7 @@ export interface AiConversationInvokeMcpToolToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -7511,12 +7916,16 @@ export interface AiConversationInvokeMcpToolToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -7527,6 +7936,7 @@ export interface AiConversationInvokeMcpToolToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -7568,6 +7978,7 @@ export interface AiConversationListCodingSessionsToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -7583,12 +7994,16 @@ export interface AiConversationListCodingSessionsToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -7599,6 +8014,7 @@ export interface AiConversationListCodingSessionsToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -7623,7 +8039,12 @@ export interface AiConversationListCodingSessionsToolCallResultAgentSessions {
 /** The integration connected by an MCP server connection elicitation. */
 export interface AiConversationMcpServerConnectionElicitationResponseData {
   readonly integrationId: string;
-  readonly kind: "multipleChoice" | "mcpServerConnection" | "confirmation" | "entitySelection";
+  readonly kind:
+    | "multipleChoice"
+    | "mcpServerConnection"
+    | "integrationConnection"
+    | "confirmation"
+    | "entitySelection";
 }
 
 /** The owner scope for an MCP server connection requested in an AI conversation. */
@@ -7654,6 +8075,7 @@ export interface AiConversationMemoryToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -7669,12 +8091,16 @@ export interface AiConversationMemoryToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -7685,6 +8111,7 @@ export interface AiConversationMemoryToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -7695,9 +8122,87 @@ export interface AiConversationMemoryToolCallArgs {
   readonly name: string | null;
 }
 
+export interface AiConversationMessageSubagentToolCall {
+  readonly args: AiConversationMessageSubagentToolCallArgs | null;
+  readonly displayInfo: AiConversationToolDisplayInfo;
+  readonly name:
+    | "SearchEntities"
+    | "SearchSettings"
+    | "ReadSetting"
+    | "PatchSettings"
+    | "NotifyUsers"
+    | "RetrieveEntities"
+    | "QueryView"
+    | "QueryActivity"
+    | "QueryUpdates"
+    | "SuggestValues"
+    | "CreateEntity"
+    | "UpdateEntity"
+    | "DeleteEntity"
+    | "RestoreEntity"
+    | "RunLoop"
+    | "SpawnSubagent"
+    | "MessageSubagent"
+    | "Research"
+    | "CodeIntelligence"
+    | "StartCodingSession"
+    | "PromptCodingSession"
+    | "ListCodingSessions"
+    | "SuggestRepository"
+    | "CreateSandbox"
+    | "Bash"
+    | "SandboxGitHistory"
+    | "ReadSandboxFile"
+    | "ReadFile"
+    | "GetPullRequestDiff"
+    | "GetPullRequestFile"
+    | "GetPullRequestCheckLogs"
+    | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
+    | "HandoffToCodingSession"
+    | "SubscribeToEvent"
+    | "UnsubscribeFromEvent"
+    | "TranscribeVideo"
+    | "TranscribeMedia"
+    | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
+    | "SearchDocumentation"
+    | "ContactSupport"
+    | "WebSearch"
+    | "GetSlackConversationHistory"
+    | "PostChatMessage"
+    | "SearchChatChannels"
+    | "GetMicrosoftTeamsConversationHistory"
+    | "SetSpendLimit"
+    | "RemoveSpendLimit"
+    | "NavigateToPage"
+    | "CodeMode"
+    | "InvokeMcpTool";
+  readonly rawArgs: unknown | null;
+  readonly rawResult: unknown | null;
+  readonly result: AiConversationMessageSubagentToolCallResult | null;
+}
+
+export interface AiConversationMessageSubagentToolCallArgs {
+  readonly conversationId: string;
+  readonly prompt: string;
+  readonly wait: boolean | null;
+}
+
+export interface AiConversationMessageSubagentToolCallResult {
+  readonly turnId: string;
+}
+
 /** The selected option in a multiple-choice AI conversation elicitation. */
 export interface AiConversationMultipleChoiceElicitationResponseData {
-  readonly kind: "multipleChoice" | "mcpServerConnection" | "confirmation" | "entitySelection";
+  readonly kind:
+    | "multipleChoice"
+    | "mcpServerConnection"
+    | "integrationConnection"
+    | "confirmation"
+    | "entitySelection";
   readonly selectedOptionIndex: number;
 }
 
@@ -7721,6 +8226,7 @@ export interface AiConversationNavigateToPageToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -7736,12 +8242,16 @@ export interface AiConversationNavigateToPageToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -7752,6 +8262,7 @@ export interface AiConversationNavigateToPageToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -7791,6 +8302,7 @@ export interface AiConversationNotifyUsersToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -7806,12 +8318,16 @@ export interface AiConversationNotifyUsersToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -7822,6 +8338,7 @@ export interface AiConversationNotifyUsersToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -7869,6 +8386,7 @@ export interface AiConversationPatchSettingsToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -7884,12 +8402,16 @@ export interface AiConversationPatchSettingsToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -7900,6 +8422,7 @@ export interface AiConversationPatchSettingsToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -7929,6 +8452,7 @@ export interface AiConversationPostChatMessageToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -7944,12 +8468,16 @@ export interface AiConversationPostChatMessageToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -7960,6 +8488,7 @@ export interface AiConversationPostChatMessageToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -8009,6 +8538,7 @@ export interface AiConversationPromptCodingSessionToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -8024,12 +8554,16 @@ export interface AiConversationPromptCodingSessionToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -8040,6 +8574,7 @@ export interface AiConversationPromptCodingSessionToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -8100,6 +8635,7 @@ export interface AiConversationQueryActivityToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -8115,12 +8651,16 @@ export interface AiConversationQueryActivityToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -8131,6 +8671,7 @@ export interface AiConversationQueryActivityToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -8160,6 +8701,7 @@ export interface AiConversationQueryUpdatesToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -8175,12 +8717,16 @@ export interface AiConversationQueryUpdatesToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -8191,6 +8737,7 @@ export interface AiConversationQueryUpdatesToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -8221,6 +8768,7 @@ export interface AiConversationQueryViewToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -8236,12 +8784,16 @@ export interface AiConversationQueryViewToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -8252,6 +8804,7 @@ export interface AiConversationQueryViewToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -8289,6 +8842,7 @@ export interface AiConversationReadFileToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -8304,12 +8858,16 @@ export interface AiConversationReadFileToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -8320,6 +8878,7 @@ export interface AiConversationReadFileToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -8352,6 +8911,7 @@ export interface AiConversationReadSandboxFileToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -8367,12 +8927,16 @@ export interface AiConversationReadSandboxFileToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -8383,6 +8947,7 @@ export interface AiConversationReadSandboxFileToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -8412,6 +8977,7 @@ export interface AiConversationReadSettingToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -8427,12 +8993,16 @@ export interface AiConversationReadSettingToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -8443,6 +9013,7 @@ export interface AiConversationReadSettingToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -8493,6 +9064,7 @@ export interface AiConversationRemoveSpendLimitToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -8508,12 +9080,16 @@ export interface AiConversationRemoveSpendLimitToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -8524,6 +9100,7 @@ export interface AiConversationRemoveSpendLimitToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -8531,6 +9108,138 @@ export interface AiConversationRemoveSpendLimitToolCall {
 
 export interface AiConversationRemoveSpendLimitToolCallArgs {
   readonly summary: string | null;
+}
+
+export interface AiConversationRenameAgentChatToolCall {
+  readonly args: AiConversationRenameAgentChatToolCallArgs | null;
+  readonly displayInfo: AiConversationToolDisplayInfo;
+  readonly name:
+    | "SearchEntities"
+    | "SearchSettings"
+    | "ReadSetting"
+    | "PatchSettings"
+    | "NotifyUsers"
+    | "RetrieveEntities"
+    | "QueryView"
+    | "QueryActivity"
+    | "QueryUpdates"
+    | "SuggestValues"
+    | "CreateEntity"
+    | "UpdateEntity"
+    | "DeleteEntity"
+    | "RestoreEntity"
+    | "RunLoop"
+    | "SpawnSubagent"
+    | "MessageSubagent"
+    | "Research"
+    | "CodeIntelligence"
+    | "StartCodingSession"
+    | "PromptCodingSession"
+    | "ListCodingSessions"
+    | "SuggestRepository"
+    | "CreateSandbox"
+    | "Bash"
+    | "SandboxGitHistory"
+    | "ReadSandboxFile"
+    | "ReadFile"
+    | "GetPullRequestDiff"
+    | "GetPullRequestFile"
+    | "GetPullRequestCheckLogs"
+    | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
+    | "HandoffToCodingSession"
+    | "SubscribeToEvent"
+    | "UnsubscribeFromEvent"
+    | "TranscribeVideo"
+    | "TranscribeMedia"
+    | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
+    | "SearchDocumentation"
+    | "ContactSupport"
+    | "WebSearch"
+    | "GetSlackConversationHistory"
+    | "PostChatMessage"
+    | "SearchChatChannels"
+    | "GetMicrosoftTeamsConversationHistory"
+    | "SetSpendLimit"
+    | "RemoveSpendLimit"
+    | "NavigateToPage"
+    | "CodeMode"
+    | "InvokeMcpTool";
+  readonly rawArgs: unknown | null;
+  readonly rawResult: unknown | null;
+}
+
+export interface AiConversationRenameAgentChatToolCallArgs {
+  readonly name: string;
+}
+
+export interface AiConversationRerunPullRequestReviewToolCall {
+  readonly args: AiConversationRerunPullRequestReviewToolCallArgs | null;
+  readonly displayInfo: AiConversationToolDisplayInfo;
+  readonly name:
+    | "SearchEntities"
+    | "SearchSettings"
+    | "ReadSetting"
+    | "PatchSettings"
+    | "NotifyUsers"
+    | "RetrieveEntities"
+    | "QueryView"
+    | "QueryActivity"
+    | "QueryUpdates"
+    | "SuggestValues"
+    | "CreateEntity"
+    | "UpdateEntity"
+    | "DeleteEntity"
+    | "RestoreEntity"
+    | "RunLoop"
+    | "SpawnSubagent"
+    | "MessageSubagent"
+    | "Research"
+    | "CodeIntelligence"
+    | "StartCodingSession"
+    | "PromptCodingSession"
+    | "ListCodingSessions"
+    | "SuggestRepository"
+    | "CreateSandbox"
+    | "Bash"
+    | "SandboxGitHistory"
+    | "ReadSandboxFile"
+    | "ReadFile"
+    | "GetPullRequestDiff"
+    | "GetPullRequestFile"
+    | "GetPullRequestCheckLogs"
+    | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
+    | "HandoffToCodingSession"
+    | "SubscribeToEvent"
+    | "UnsubscribeFromEvent"
+    | "TranscribeVideo"
+    | "TranscribeMedia"
+    | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
+    | "SearchDocumentation"
+    | "ContactSupport"
+    | "WebSearch"
+    | "GetSlackConversationHistory"
+    | "PostChatMessage"
+    | "SearchChatChannels"
+    | "GetMicrosoftTeamsConversationHistory"
+    | "SetSpendLimit"
+    | "RemoveSpendLimit"
+    | "NavigateToPage"
+    | "CodeMode"
+    | "InvokeMcpTool";
+  readonly rawArgs: unknown | null;
+  readonly rawResult: unknown | null;
+}
+
+export interface AiConversationRerunPullRequestReviewToolCallArgs {
+  readonly entity: AiConversationSearchEntitiesToolCallResultEntities;
 }
 
 export interface AiConversationResearchToolCall {
@@ -8553,6 +9262,7 @@ export interface AiConversationResearchToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -8568,12 +9278,16 @@ export interface AiConversationResearchToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -8584,6 +9298,7 @@ export interface AiConversationResearchToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -8620,6 +9335,7 @@ export interface AiConversationRestoreEntityToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -8635,12 +9351,16 @@ export interface AiConversationRestoreEntityToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -8651,6 +9371,7 @@ export interface AiConversationRestoreEntityToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -8685,6 +9406,7 @@ export interface AiConversationRetrieveEntitiesToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -8700,12 +9422,16 @@ export interface AiConversationRetrieveEntitiesToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -8716,6 +9442,7 @@ export interface AiConversationRetrieveEntitiesToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -8745,6 +9472,7 @@ export interface AiConversationRetryPullRequestCheckToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -8760,12 +9488,16 @@ export interface AiConversationRetryPullRequestCheckToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -8776,6 +9508,7 @@ export interface AiConversationRetryPullRequestCheckToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -8807,6 +9540,7 @@ export interface AiConversationRunLoopToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -8822,12 +9556,16 @@ export interface AiConversationRunLoopToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -8838,6 +9576,7 @@ export interface AiConversationRunLoopToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -8874,6 +9613,7 @@ export interface AiConversationSandboxGitHistoryToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -8889,12 +9629,16 @@ export interface AiConversationSandboxGitHistoryToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -8905,6 +9649,7 @@ export interface AiConversationSandboxGitHistoryToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -8935,6 +9680,7 @@ export interface AiConversationSearchChatChannelsToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -8950,12 +9696,16 @@ export interface AiConversationSearchChatChannelsToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -8966,6 +9716,7 @@ export interface AiConversationSearchChatChannelsToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -9000,6 +9751,7 @@ export interface AiConversationSearchDocumentationToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -9015,12 +9767,16 @@ export interface AiConversationSearchDocumentationToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -9031,6 +9787,7 @@ export interface AiConversationSearchDocumentationToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -9056,6 +9813,7 @@ export interface AiConversationSearchEntitiesToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -9071,12 +9829,16 @@ export interface AiConversationSearchEntitiesToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -9087,6 +9849,7 @@ export interface AiConversationSearchEntitiesToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -9127,6 +9890,7 @@ export interface AiConversationSearchSettingsToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -9142,12 +9906,16 @@ export interface AiConversationSearchSettingsToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -9158,6 +9926,7 @@ export interface AiConversationSearchSettingsToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -9188,6 +9957,7 @@ export interface AiConversationSetSpendLimitToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -9203,12 +9973,16 @@ export interface AiConversationSetSpendLimitToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -9219,6 +9993,7 @@ export interface AiConversationSetSpendLimitToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -9265,6 +10040,7 @@ export interface AiConversationSpawnSubagentToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -9280,12 +10056,16 @@ export interface AiConversationSpawnSubagentToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -9296,6 +10076,7 @@ export interface AiConversationSpawnSubagentToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -9330,6 +10111,7 @@ export interface AiConversationStartCodingSessionToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -9345,12 +10127,16 @@ export interface AiConversationStartCodingSessionToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -9361,6 +10147,7 @@ export interface AiConversationStartCodingSessionToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -9397,6 +10184,7 @@ export interface AiConversationSubscribeToEventToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -9412,12 +10200,16 @@ export interface AiConversationSubscribeToEventToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -9428,6 +10220,7 @@ export interface AiConversationSubscribeToEventToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -9460,6 +10253,7 @@ export interface AiConversationSuggestRepositoryToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -9475,12 +10269,16 @@ export interface AiConversationSuggestRepositoryToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -9491,6 +10289,7 @@ export interface AiConversationSuggestRepositoryToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -9516,6 +10315,7 @@ export interface AiConversationSuggestValuesToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -9531,12 +10331,16 @@ export interface AiConversationSuggestValuesToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -9547,6 +10351,7 @@ export interface AiConversationSuggestValuesToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -9598,6 +10403,7 @@ export interface AiConversationToolCallPart {
     | AiConversationRestoreEntityToolCall
     | AiConversationRunLoopToolCall
     | AiConversationSpawnSubagentToolCall
+    | AiConversationMessageSubagentToolCall
     | AiConversationResearchToolCall
     | AiConversationCodeIntelligenceToolCall
     | AiConversationStartCodingSessionToolCall
@@ -9613,12 +10419,16 @@ export interface AiConversationToolCallPart {
     | AiConversationGetPullRequestFileToolCall
     | AiConversationGetPullRequestCheckLogsToolCall
     | AiConversationRetryPullRequestCheckToolCall
+    | AiConversationRerunPullRequestReviewToolCall
+    | AiConversationUpdatePullRequestReviewFindingToolCall
     | AiConversationHandoffToCodingSessionToolCall
     | AiConversationSubscribeToEventToolCall
     | AiConversationUnsubscribeFromEventToolCall
     | AiConversationTranscribeVideoToolCall
     | AiConversationTranscribeMediaToolCall
     | AiConversationMemoryToolCall
+    | AiConversationCreateAgentChatToolCall
+    | AiConversationRenameAgentChatToolCall
     | AiConversationSearchDocumentationToolCall
     | AiConversationContactSupportToolCall
     | AiConversationWebSearchToolCall
@@ -9629,6 +10439,7 @@ export interface AiConversationToolCallPart {
     | AiConversationSetSpendLimitToolCall
     | AiConversationRemoveSpendLimitToolCall
     | AiConversationNavigateToPageToolCall
+    | AiConversationCodeModeToolCall
     | AiConversationInvokeMcpToolToolCall;
   readonly type:
     | "prompt"
@@ -9671,6 +10482,7 @@ export interface AiConversationTranscribeMediaToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -9686,12 +10498,16 @@ export interface AiConversationTranscribeMediaToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -9702,6 +10518,7 @@ export interface AiConversationTranscribeMediaToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -9726,6 +10543,7 @@ export interface AiConversationTranscribeVideoToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -9741,12 +10559,16 @@ export interface AiConversationTranscribeVideoToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -9757,6 +10579,7 @@ export interface AiConversationTranscribeVideoToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -9782,6 +10605,7 @@ export interface AiConversationUnsubscribeFromEventToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -9797,12 +10621,16 @@ export interface AiConversationUnsubscribeFromEventToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -9813,6 +10641,7 @@ export interface AiConversationUnsubscribeFromEventToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -9843,6 +10672,7 @@ export interface AiConversationUpdateEntityToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -9858,12 +10688,16 @@ export interface AiConversationUpdateEntityToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -9874,6 +10708,7 @@ export interface AiConversationUpdateEntityToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -9888,6 +10723,74 @@ export interface AiConversationUpdateEntityToolCallArgs {
 export interface AiConversationUpdateEntityToolCallResult {
   readonly startedAgentSessions: ReadonlyArray<AiConversationSearchEntitiesToolCallResultEntities> | null;
   readonly updatedEntities: ReadonlyArray<AiConversationCreateEntityToolCallResultCreatedEntities> | null;
+}
+
+export interface AiConversationUpdatePullRequestReviewFindingToolCall {
+  readonly args: AiConversationUpdatePullRequestReviewFindingToolCallArgs | null;
+  readonly displayInfo: AiConversationToolDisplayInfo;
+  readonly name:
+    | "SearchEntities"
+    | "SearchSettings"
+    | "ReadSetting"
+    | "PatchSettings"
+    | "NotifyUsers"
+    | "RetrieveEntities"
+    | "QueryView"
+    | "QueryActivity"
+    | "QueryUpdates"
+    | "SuggestValues"
+    | "CreateEntity"
+    | "UpdateEntity"
+    | "DeleteEntity"
+    | "RestoreEntity"
+    | "RunLoop"
+    | "SpawnSubagent"
+    | "MessageSubagent"
+    | "Research"
+    | "CodeIntelligence"
+    | "StartCodingSession"
+    | "PromptCodingSession"
+    | "ListCodingSessions"
+    | "SuggestRepository"
+    | "CreateSandbox"
+    | "Bash"
+    | "SandboxGitHistory"
+    | "ReadSandboxFile"
+    | "ReadFile"
+    | "GetPullRequestDiff"
+    | "GetPullRequestFile"
+    | "GetPullRequestCheckLogs"
+    | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
+    | "HandoffToCodingSession"
+    | "SubscribeToEvent"
+    | "UnsubscribeFromEvent"
+    | "TranscribeVideo"
+    | "TranscribeMedia"
+    | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
+    | "SearchDocumentation"
+    | "ContactSupport"
+    | "WebSearch"
+    | "GetSlackConversationHistory"
+    | "PostChatMessage"
+    | "SearchChatChannels"
+    | "GetMicrosoftTeamsConversationHistory"
+    | "SetSpendLimit"
+    | "RemoveSpendLimit"
+    | "NavigateToPage"
+    | "CodeMode"
+    | "InvokeMcpTool";
+  readonly rawArgs: unknown | null;
+  readonly rawResult: unknown | null;
+}
+
+export interface AiConversationUpdatePullRequestReviewFindingToolCallArgs {
+  readonly entity: AiConversationSearchEntitiesToolCallResultEntities;
+  readonly findingId: string;
+  readonly rejected: boolean;
 }
 
 /** [Internal] Per-user state for an AI conversation, tracking read status and other user-specific data. */
@@ -9917,6 +10820,7 @@ export interface AiConversationWebSearchToolCall {
     | "RestoreEntity"
     | "RunLoop"
     | "SpawnSubagent"
+    | "MessageSubagent"
     | "Research"
     | "CodeIntelligence"
     | "StartCodingSession"
@@ -9932,12 +10836,16 @@ export interface AiConversationWebSearchToolCall {
     | "GetPullRequestFile"
     | "GetPullRequestCheckLogs"
     | "RetryPullRequestCheck"
+    | "RerunPullRequestReview"
+    | "UpdatePullRequestReviewFinding"
     | "HandoffToCodingSession"
     | "SubscribeToEvent"
     | "UnsubscribeFromEvent"
     | "TranscribeVideo"
     | "TranscribeMedia"
     | "Memory"
+    | "CreateAgentChat"
+    | "RenameAgentChat"
     | "SearchDocumentation"
     | "ContactSupport"
     | "WebSearch"
@@ -9948,6 +10856,7 @@ export interface AiConversationWebSearchToolCall {
     | "SetSpendLimit"
     | "RemoveSpendLimit"
     | "NavigateToPage"
+    | "CodeMode"
     | "InvokeMcpTool";
   readonly rawArgs: unknown | null;
   readonly rawResult: unknown | null;
@@ -10210,7 +11119,7 @@ export interface AuthResolverResponse {
   readonly users: ReadonlyArray<AuthUser>;
 }
 
-/** A user that has access to the the resources of an organization. */
+/** A user that has access to the resources of an organization. */
 export interface AuthUser {
   readonly active: boolean;
   readonly avatarUrl: string | null;
@@ -10271,6 +11180,21 @@ export interface CodingAgentSandboxPayload {
   readonly datadogLogsUrl: string | null;
   readonly sandboxes: ReadonlyArray<CodingAgentSandboxEntry>;
   readonly temporalWorkflowsUrl: string | null;
+}
+
+/** [Internal] A saved workspace inference credential, without the key. */
+export interface CodingInferenceKey {
+  readonly baseUrl: string;
+  readonly harness: string;
+  readonly provider: string;
+  readonly updatedAt: string;
+}
+
+/** [Internal] Result of testing a workspace inference credential. */
+export interface CodingInferenceKeyTestPayload {
+  readonly baseUrl: string | null;
+  readonly message: string | null;
+  readonly success: boolean;
 }
 
 /** A comment associated with an issue, project update, initiative update, document content, post, project, or initiative. Comments support rich text (ProseMirror), emoji reactions, and threaded replies via parentId. Comments can be created by workspace users or by external users through integrations (e.g., Slack, Intercom). Each comment belongs to exactly one parent entity. */
@@ -10863,6 +11787,25 @@ export interface DependencyPackageMetadataResult {
   readonly weeklyDownloads: number | null;
 }
 
+/** [Internal] A deployment of a pull request's commit reported by the code host, with its latest status. Preview links derive from the latest deployment of each environment. */
+export interface Deployment {
+  readonly archivedAt: string | null;
+  readonly createdAt: string;
+  readonly environment: string;
+  readonly externalCreatedAt: string;
+  readonly externalId: string;
+  readonly id: string;
+  readonly logUrl: string | null;
+  readonly provider: string;
+  readonly pullRequest: PullRequest;
+  readonly sha: string;
+  readonly state: string;
+  readonly statusCreatedAt: string;
+  readonly statusExternalId: string | null;
+  readonly updatedAt: string;
+  readonly url: string | null;
+}
+
 /** [Internal] A first-class code diff. Starts as the live working-tree state of a coding session and is promoted to a review by linking it to a pull request, while continuing to represent local, uncommitted changes. */
 export interface Diff {
   readonly additions: number;
@@ -10918,10 +11861,12 @@ export interface Document {
   readonly issue: Issue | null;
   readonly lastAppliedTemplate: Template | null;
   readonly owner: User | null;
+  readonly parentDocument: Document | null;
   readonly project: Project | null;
   readonly release: Release | null;
   readonly slugId: string;
   readonly sortOrder: number;
+  readonly subDocumentSortOrder: number | null;
   readonly subscribers: ReadonlyArray<User>;
   readonly summary: string | null;
   readonly team: Team | null;
@@ -11120,10 +12065,12 @@ export interface DocumentSearchResult {
   readonly lastAppliedTemplate: Template | null;
   readonly metadata: unknown;
   readonly owner: User | null;
+  readonly parentDocument: Document | null;
   readonly project: Project | null;
   readonly release: Release | null;
   readonly slugId: string;
   readonly sortOrder: number;
+  readonly subDocumentSortOrder: number | null;
   readonly subscribers: ReadonlyArray<User>;
   readonly summary: string | null;
   readonly team: Team | null;
@@ -11747,6 +12694,7 @@ export interface InitiativeLabel {
   readonly createdAt: string;
   readonly creator: User | null;
   readonly description: string | null;
+  readonly groupType: "singleSelect" | "multiSelect" | null;
   readonly id: string;
   readonly initiatives: ReadonlyArray<Initiative>;
   readonly isGroup: boolean;
@@ -12136,6 +13084,7 @@ export interface Issue {
   readonly addedToProjectAt: string | null;
   readonly addedToTeamAt: string | null;
   readonly agentSessions: ReadonlyArray<AgentSession>;
+  readonly aiAnalysis: unknown | null;
   readonly aiPromptProgresses: ReadonlyArray<AiPromptProgress>;
   readonly archivedAt: string | null;
   readonly asksExternalUserRequester: ExternalUser | null;
@@ -12672,6 +13621,7 @@ export interface IssueSearchResult {
   readonly addedToProjectAt: string | null;
   readonly addedToTeamAt: string | null;
   readonly agentSessions: ReadonlyArray<AgentSession>;
+  readonly aiAnalysis: unknown | null;
   readonly aiPromptProgresses: ReadonlyArray<AiPromptProgress>;
   readonly archivedAt: string | null;
   readonly asksExternalUserRequester: ExternalUser | null;
@@ -12940,8 +13890,15 @@ export interface JiraFetchProjectStatusesPayload {
 }
 
 export interface JiraProjectStatusesPayload {
+  readonly issueStatusCategories: ReadonlyArray<JiraStatusNameCategoriesPayload>;
   readonly issueStatuses: ReadonlyArray<string>;
+  readonly projectStatusCategories: ReadonlyArray<JiraStatusNameCategoriesPayload>;
   readonly projectStatuses: ReadonlyArray<string>;
+}
+
+export interface JiraStatusNameCategoriesPayload {
+  readonly categories: ReadonlyArray<string>;
+  readonly name: string;
 }
 
 /** A notification subscription scoped to a specific issue label. The subscriber receives notifications for events related to issues with this label. */
@@ -13259,6 +14216,16 @@ export interface OAuthApplicationArchivePayload {
   readonly success: boolean;
 }
 
+/** The authenticated OAuth application's trusted-source status for Coding Sessions in the token's workspace. Combines workspace availability with the application's trust setting. This status does not grant permissions or account for team and repository access. */
+export interface OAuthApplicationCodingSessionTrustedSource {
+  readonly disabledReason:
+    | "CODING_SESSIONS_DISABLED"
+    | "TRUSTED_EXTERNAL_SOURCES_UNAVAILABLE"
+    | "APP_NOT_TRUSTED"
+    | null;
+  readonly enabled: boolean;
+}
+
 /** The result of creating an OAuth application. */
 export interface OAuthApplicationCreatePayload {
   readonly application: OAuthApplication;
@@ -13406,6 +14373,8 @@ export interface Organization {
   readonly linearAgentEnabled: boolean;
   readonly linearAgentSettings: unknown;
   readonly logoUrl: string | null;
+  readonly loops: ReadonlyArray<WorkflowDefinition>;
+  readonly managedTeamFeatures: unknown;
   readonly name: string;
   readonly periodUploadVolume: number;
   readonly previousUrlKeys: ReadonlyArray<string>;
@@ -13447,7 +14416,9 @@ export interface Organization {
   readonly slackProjectChannelsEnabled: boolean;
   readonly slaDayCount: "all" | "onlyBusinessDays";
   readonly subscription: PaidSubscription | null;
+  readonly suggestedBranchNameEnabled: boolean;
   readonly teams: ReadonlyArray<Team>;
+  readonly teamSecuritySettings: unknown;
   readonly templates: ReadonlyArray<Template>;
   readonly themeSettings: unknown | null;
   readonly trialEndsAt: string | null;
@@ -13582,9 +14553,54 @@ export interface OrganizationPayload {
   readonly success: boolean;
 }
 
+/** A public resource quota for the current workspace. */
+export interface OrganizationQuota {
+  readonly description: string;
+  readonly id: string;
+  readonly key: string;
+  readonly limit: number;
+  readonly maxUsage: OrganizationQuotaMaxUsage | null;
+  readonly name: string;
+  readonly scope: "workspace" | "team" | "project" | "initiative";
+  readonly usage: number | null;
+}
+
+export interface OrganizationQuotaConnection {
+  readonly edges: ReadonlyArray<OrganizationQuotaEdge>;
+  readonly nodes: ReadonlyArray<OrganizationQuota>;
+  readonly pageInfo: PageInfo;
+}
+
+export interface OrganizationQuotaEdge {
+  readonly cursor: string;
+  readonly node: OrganizationQuota;
+}
+
+/** The team, project, or initiative with the highest usage of a scoped quota. The limit applies to each entity, so this entity is the closest to the limit. */
+export interface OrganizationQuotaMaxUsage {
+  readonly entityId: string | null;
+  readonly usage: number;
+}
+
 /** Workspace trial start response. */
 export interface OrganizationStartTrialPayload {
   readonly success: boolean;
+}
+
+export interface OriginInstallUrlPayload {
+  readonly installUrl: string;
+}
+
+export interface OriginInstallationCancelPayload {
+  readonly success: boolean;
+}
+
+export interface OriginInstallationDetails {
+  readonly connectedToWorkspace: boolean;
+  readonly installationId: string;
+  readonly ownerSlug: string;
+  readonly ownerType: string | null;
+  readonly repositorySelection: string;
 }
 
 export interface PageInfo {
@@ -13975,6 +14991,7 @@ export interface ProjectLabel {
   readonly createdAt: string;
   readonly creator: User | null;
   readonly description: string | null;
+  readonly groupType: "singleSelect" | "multiSelect" | null;
   readonly id: string;
   readonly inheritedFrom: ProjectLabel | null;
   readonly isGroup: boolean;
@@ -14415,6 +15432,8 @@ export interface PullRequest {
   readonly commits: ReadonlyArray<PullRequestCommit>;
   readonly createdAt: string;
   readonly creator: User | null;
+  readonly deployments: ReadonlyArray<Deployment>;
+  readonly externalCreator: ExternalUser | null;
   readonly hasConflicts: boolean;
   readonly headSha: string | null;
   readonly id: string;
@@ -15025,6 +16044,7 @@ export interface SyncedExternalThread {
 /** A team is the primary organizational unit in Linear. Issues belong to teams, and each team has its own workflow states, cycles, labels, and settings. Teams can be public (visible to all workspace members), private (visible only to team members), or restricted (visible only within an enclosing private-team boundary). Teams can also have sub-teams that inherit settings from their parent. */
 export interface Team {
   readonly activeCycle: Cycle | null;
+  readonly agentAutomationEnabled: boolean;
   readonly aiDiscussionSummariesEnabled: boolean;
   readonly aiThreadSummariesEnabled: boolean;
   readonly allMembersCanJoin: boolean | null;
@@ -15036,6 +16056,7 @@ export interface Team {
   readonly autoClosePeriod: number | null;
   readonly autoCloseStateId: string | null;
   readonly children: ReadonlyArray<Team>;
+  readonly codingAgentEnabled: boolean;
   readonly color: string | null;
   readonly createdAt: string;
   readonly currentProgress: unknown;
@@ -15061,6 +16082,7 @@ export interface Team {
   readonly facets: ReadonlyArray<Facet>;
   readonly gitAutomationStates: ReadonlyArray<GitAutomationState>;
   readonly groupIssueHistory: boolean;
+  readonly hierarchySettings: unknown;
   readonly icon: string | null;
   readonly id: string;
   readonly inheritIssueEstimation: boolean;
@@ -15081,6 +16103,7 @@ export interface Team {
   readonly key: string;
   readonly labels: ReadonlyArray<IssueLabel>;
   readonly ledInitiativeCount: number;
+  readonly loops: ReadonlyArray<WorkflowDefinition>;
   readonly markedAsDuplicateWorkflowState: WorkflowState | null;
   readonly members: ReadonlyArray<User>;
   readonly membership: TeamMembership | null;
@@ -15121,6 +16144,9 @@ export interface Team {
   readonly triageResponsibility: TriageResponsibility | null;
   readonly upcomingCycleCount: number;
   readonly updatedAt: string;
+  readonly viewerCanJoin: boolean;
+  readonly viewerCanLeave: boolean;
+  readonly viewerMembership: TeamMembership | null;
   readonly visibility: "public" | "restricted" | "private";
   readonly webhooks: ReadonlyArray<Webhook>;
 }
@@ -15680,6 +16706,7 @@ export interface ViewPreferencesValues {
   readonly automationRunHistoryShowProjectIdentifier: boolean | null;
   readonly automationShowDescendants: boolean | null;
   readonly automationShowDisabled: boolean | null;
+  readonly automationShowTemplates: boolean | null;
   readonly automationStatsPeriod: string | null;
   readonly closedIssuesOrderedByRecency: boolean | null;
   readonly columnOrderBoard: ReadonlyArray<string> | null;
@@ -15714,11 +16741,22 @@ export interface ViewPreferencesValues {
   readonly dashboardFieldDateUpdated: boolean | null;
   readonly dashboardFieldOwner: boolean | null;
   readonly dashboardsOrdering: string | null;
+  readonly documentFieldCollaborators: boolean | null;
   readonly documentFieldCreator: boolean | null;
   readonly documentFieldDateCreated: boolean | null;
   readonly documentFieldDateUpdated: boolean | null;
   readonly documentFieldOwner: boolean | null;
   readonly documentFieldParent: boolean | null;
+  readonly documentFieldProject: boolean | null;
+  readonly documentsListCreatedDateDirection: string | null;
+  readonly documentsListGrouping: string | null;
+  readonly documentsListLastEditedDirection: string | null;
+  readonly documentsListNameDirection: string | null;
+  readonly documentsListOrdering: string | null;
+  readonly documentsListOwnerDirection: string | null;
+  readonly documentsListProjectDirection: string | null;
+  readonly documentsListShowInactiveProjects: boolean | null;
+  readonly documentsListShowOnlyMyProjects: boolean | null;
   readonly embeddedCustomerNeedsShowImportantFirst: boolean | null;
   readonly embeddedCustomerNeedsViewOrdering: string | null;
   readonly fieldAssignee: boolean | null;
@@ -15784,6 +16822,7 @@ export interface ViewPreferencesValues {
   readonly memberFieldJoined: boolean | null;
   readonly memberFieldStatus: boolean | null;
   readonly memberFieldTeams: boolean | null;
+  readonly pinnedDocumentIds: ReadonlyArray<string> | null;
   readonly projectCustomerNeedsShowCompletedIssuesLast: boolean | null;
   readonly projectCustomerNeedsShowImportantFirst: boolean | null;
   readonly projectCustomerNeedsViewGrouping: string | null;
@@ -15917,6 +16956,7 @@ export interface ViewPreferencesValues {
   readonly timelineShowProjectsAside: boolean | null;
   readonly timelineZoomScale: number | null;
   readonly triageViewOrdering: string | null;
+  readonly userDiffsScope: string | null;
   readonly viewOrdering: string | null;
   readonly viewOrderingDirection: string | null;
   readonly workspaceMembersViewOrdering: string | null;
@@ -16090,6 +17130,7 @@ export interface WorkflowDefinition {
   readonly lastUpdatedBy: User | null;
   readonly name: string;
   readonly owner: User | null;
+  readonly postResultsToEntity: boolean;
   readonly project: Project | null;
   readonly restrictEditing: boolean;
   readonly runOnce: boolean;
@@ -16109,10 +17150,13 @@ export interface WorkflowDefinition {
     | "commentAdded"
     | "commentResolved"
     | "reviewSubmitted"
+    | "addedToMergeQueue"
+    | "removedFromMergeQueue"
     | "updatePosted"
     | "chatMessagePosted"
     | "chatReactionAdded"
-    | "customerRequestAdded";
+    | "customerRequestAdded"
+    | "webhookReceived";
   readonly triggerConfig: unknown | null;
   readonly triggerType:
     | "issue"
@@ -16123,6 +17167,7 @@ export interface WorkflowDefinition {
     | "release"
     | "cycle"
     | "schedule"
+    | "webhook"
     | "chat"
     | "pullRequest";
   readonly type:
@@ -16135,6 +17180,17 @@ export interface WorkflowDefinition {
   readonly updatedAt: string;
   readonly user: User | null;
   readonly userContextViewType: "assigned" | null;
+}
+
+export interface WorkflowDefinitionConnection {
+  readonly edges: ReadonlyArray<WorkflowDefinitionEdge>;
+  readonly nodes: ReadonlyArray<WorkflowDefinition>;
+  readonly pageInfo: PageInfo;
+}
+
+export interface WorkflowDefinitionEdge {
+  readonly cursor: string;
+  readonly node: WorkflowDefinition;
 }
 
 /** A notification related to an automation workflow definition (loop), such as runs that failed to start. */
@@ -16280,1562 +17336,4122 @@ export interface WorkspaceAnnouncementNotification {
   readonly workspaceAnnouncementId: string;
 }
 
-export const AccessKeyRelease: TypeMeta = { name: "AccessKeyRelease", fields: {} };
-export const AccessKeyReleasePayload: TypeMeta = { name: "AccessKeyReleasePayload", fields: {} };
-export const AccessKeyReleasePipeline: TypeMeta = { name: "AccessKeyReleasePipeline", fields: {} };
-export const AccessKeyReleaseStage: TypeMeta = { name: "AccessKeyReleaseStage", fields: {} };
-export const ActorBot: TypeMeta = { name: "ActorBot", fields: {} };
-export const AgentActivity: TypeMeta = { name: "AgentActivity", fields: {} };
+export const AccessKeyRelease: TypeMeta = {
+  name: "AccessKeyRelease",
+  get fields() {
+    return AccessKeyReleaseFields;
+  },
+};
+export const AccessKeyReleasePayload: TypeMeta = {
+  name: "AccessKeyReleasePayload",
+  get fields() {
+    return AccessKeyReleasePayloadFields;
+  },
+};
+export const AccessKeyReleasePipeline: TypeMeta = {
+  name: "AccessKeyReleasePipeline",
+  get fields() {
+    return AccessKeyReleasePipelineFields;
+  },
+};
+export const AccessKeyReleaseStage: TypeMeta = {
+  name: "AccessKeyReleaseStage",
+  get fields() {
+    return AccessKeyReleaseStageFields;
+  },
+};
+export const ActorBot: TypeMeta = {
+  name: "ActorBot",
+  get fields() {
+    return ActorBotFields;
+  },
+};
+export const AgentActivity: TypeMeta = {
+  name: "AgentActivity",
+  get fields() {
+    return AgentActivityFields;
+  },
+};
 export const AgentActivityActionContent: TypeMeta = {
   name: "AgentActivityActionContent",
-  fields: {},
+  get fields() {
+    return AgentActivityActionContentFields;
+  },
 };
-export const AgentActivityConnection: TypeMeta = { name: "AgentActivityConnection", fields: {} };
-export const AgentActivityEdge: TypeMeta = { name: "AgentActivityEdge", fields: {} };
+export const AgentActivityConnection: TypeMeta = {
+  name: "AgentActivityConnection",
+  get fields() {
+    return AgentActivityConnectionFields;
+  },
+};
+export const AgentActivityEdge: TypeMeta = {
+  name: "AgentActivityEdge",
+  get fields() {
+    return AgentActivityEdgeFields;
+  },
+};
 export const AgentActivityElicitationContent: TypeMeta = {
   name: "AgentActivityElicitationContent",
-  fields: {},
+  get fields() {
+    return AgentActivityElicitationContentFields;
+  },
 };
 export const AgentActivityErrorContent: TypeMeta = {
   name: "AgentActivityErrorContent",
-  fields: {},
+  get fields() {
+    return AgentActivityErrorContentFields;
+  },
 };
-export const AgentActivityPayload: TypeMeta = { name: "AgentActivityPayload", fields: {} };
+export const AgentActivityPayload: TypeMeta = {
+  name: "AgentActivityPayload",
+  get fields() {
+    return AgentActivityPayloadFields;
+  },
+};
 export const AgentActivityPromptContent: TypeMeta = {
   name: "AgentActivityPromptContent",
-  fields: {},
+  get fields() {
+    return AgentActivityPromptContentFields;
+  },
 };
-export const AgentActivityPushCommit: TypeMeta = { name: "AgentActivityPushCommit", fields: {} };
-export const AgentActivityPushSummary: TypeMeta = { name: "AgentActivityPushSummary", fields: {} };
+export const AgentActivityPushCommit: TypeMeta = {
+  name: "AgentActivityPushCommit",
+  get fields() {
+    return AgentActivityPushCommitFields;
+  },
+};
+export const AgentActivityPushSummary: TypeMeta = {
+  name: "AgentActivityPushSummary",
+  get fields() {
+    return AgentActivityPushSummaryFields;
+  },
+};
 export const AgentActivityResponseContent: TypeMeta = {
   name: "AgentActivityResponseContent",
-  fields: {},
+  get fields() {
+    return AgentActivityResponseContentFields;
+  },
 };
 export const AgentActivityThoughtContent: TypeMeta = {
   name: "AgentActivityThoughtContent",
-  fields: {},
+  get fields() {
+    return AgentActivityThoughtContentFields;
+  },
 };
 export const AgentAutomationRetryResolution: TypeMeta = {
   name: "AgentAutomationRetryResolution",
-  fields: {},
+  get fields() {
+    return AgentAutomationRetryResolutionFields;
+  },
 };
-export const AgentSession: TypeMeta = { name: "AgentSession", fields: {} };
+export const AgentSession: TypeMeta = {
+  name: "AgentSession",
+  get fields() {
+    return AgentSessionFields;
+  },
+};
 export const AgentSessionCodingHarness: TypeMeta = {
   name: "AgentSessionCodingHarness",
-  fields: {},
+  get fields() {
+    return AgentSessionCodingHarnessFields;
+  },
 };
-export const AgentSessionConnection: TypeMeta = { name: "AgentSessionConnection", fields: {} };
-export const AgentSessionEdge: TypeMeta = { name: "AgentSessionEdge", fields: {} };
-export const AgentSessionExternalLink: TypeMeta = { name: "AgentSessionExternalLink", fields: {} };
-export const AgentSessionPayload: TypeMeta = { name: "AgentSessionPayload", fields: {} };
+export const AgentSessionConnection: TypeMeta = {
+  name: "AgentSessionConnection",
+  get fields() {
+    return AgentSessionConnectionFields;
+  },
+};
+export const AgentSessionEdge: TypeMeta = {
+  name: "AgentSessionEdge",
+  get fields() {
+    return AgentSessionEdgeFields;
+  },
+};
+export const AgentSessionExternalLink: TypeMeta = {
+  name: "AgentSessionExternalLink",
+  get fields() {
+    return AgentSessionExternalLinkFields;
+  },
+};
+export const AgentSessionPayload: TypeMeta = {
+  name: "AgentSessionPayload",
+  get fields() {
+    return AgentSessionPayloadFields;
+  },
+};
 export const AgentSessionToPullRequest: TypeMeta = {
   name: "AgentSessionToPullRequest",
-  fields: {},
+  get fields() {
+    return AgentSessionToPullRequestFields;
+  },
 };
 export const AgentSessionToPullRequestConnection: TypeMeta = {
   name: "AgentSessionToPullRequestConnection",
-  fields: {},
+  get fields() {
+    return AgentSessionToPullRequestConnectionFields;
+  },
 };
 export const AgentSessionToPullRequestEdge: TypeMeta = {
   name: "AgentSessionToPullRequestEdge",
-  fields: {},
+  get fields() {
+    return AgentSessionToPullRequestEdgeFields;
+  },
 };
 export const AgentSessionWorkspaceDiffFile: TypeMeta = {
   name: "AgentSessionWorkspaceDiffFile",
-  fields: {},
+  get fields() {
+    return AgentSessionWorkspaceDiffFileFields;
+  },
 };
-export const AgentSkill: TypeMeta = { name: "AgentSkill", fields: {} };
-export const AgentSkillConnection: TypeMeta = { name: "AgentSkillConnection", fields: {} };
-export const AgentSkillEdge: TypeMeta = { name: "AgentSkillEdge", fields: {} };
-export const AgentSkillPayload: TypeMeta = { name: "AgentSkillPayload", fields: {} };
-export const AiConversation: TypeMeta = { name: "AiConversation", fields: {} };
-export const AiConversationAckPart: TypeMeta = { name: "AiConversationAckPart", fields: {} };
-export const AiConversationBasePart: TypeMeta = { name: "AiConversationBasePart", fields: {} };
+export const AgentSkill: TypeMeta = {
+  name: "AgentSkill",
+  get fields() {
+    return AgentSkillFields;
+  },
+};
+export const AgentSkillConnection: TypeMeta = {
+  name: "AgentSkillConnection",
+  get fields() {
+    return AgentSkillConnectionFields;
+  },
+};
+export const AgentSkillEdge: TypeMeta = {
+  name: "AgentSkillEdge",
+  get fields() {
+    return AgentSkillEdgeFields;
+  },
+};
+export const AgentSkillPayload: TypeMeta = {
+  name: "AgentSkillPayload",
+  get fields() {
+    return AgentSkillPayloadFields;
+  },
+};
+export const AiConversation: TypeMeta = {
+  name: "AiConversation",
+  get fields() {
+    return AiConversationFields;
+  },
+};
+export const AiConversationAckPart: TypeMeta = {
+  name: "AiConversationAckPart",
+  get fields() {
+    return AiConversationAckPartFields;
+  },
+};
+export const AiConversationBasePart: TypeMeta = {
+  name: "AiConversationBasePart",
+  get fields() {
+    return AiConversationBasePartFields;
+  },
+};
 export const AiConversationBaseToolCall: TypeMeta = {
   name: "AiConversationBaseToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationBaseToolCallFields;
+  },
 };
-export const AiConversationBaseWidget: TypeMeta = { name: "AiConversationBaseWidget", fields: {} };
+export const AiConversationBaseWidget: TypeMeta = {
+  name: "AiConversationBaseWidget",
+  get fields() {
+    return AiConversationBaseWidgetFields;
+  },
+};
 export const AiConversationBashToolCall: TypeMeta = {
   name: "AiConversationBashToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationBashToolCallFields;
+  },
 };
 export const AiConversationBashToolCallArgs: TypeMeta = {
   name: "AiConversationBashToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationBashToolCallArgsFields;
+  },
 };
 export const AiConversationCodeIntelligenceToolCall: TypeMeta = {
   name: "AiConversationCodeIntelligenceToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationCodeIntelligenceToolCallFields;
+  },
 };
 export const AiConversationCodeIntelligenceToolCallArgs: TypeMeta = {
   name: "AiConversationCodeIntelligenceToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationCodeIntelligenceToolCallArgsFields;
+  },
+};
+export const AiConversationCodeModeToolCall: TypeMeta = {
+  name: "AiConversationCodeModeToolCall",
+  get fields() {
+    return AiConversationCodeModeToolCallFields;
+  },
+};
+export const AiConversationCodeModeToolCallArgs: TypeMeta = {
+  name: "AiConversationCodeModeToolCallArgs",
+  get fields() {
+    return AiConversationCodeModeToolCallArgsFields;
+  },
 };
 export const AiConversationConfirmationElicitationResponseData: TypeMeta = {
   name: "AiConversationConfirmationElicitationResponseData",
-  fields: {},
+  get fields() {
+    return AiConversationConfirmationElicitationResponseDataFields;
+  },
 };
 export const AiConversationContactSupportToolCall: TypeMeta = {
   name: "AiConversationContactSupportToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationContactSupportToolCallFields;
+  },
+};
+export const AiConversationCreateAgentChatToolCall: TypeMeta = {
+  name: "AiConversationCreateAgentChatToolCall",
+  get fields() {
+    return AiConversationCreateAgentChatToolCallFields;
+  },
+};
+export const AiConversationCreateAgentChatToolCallResult: TypeMeta = {
+  name: "AiConversationCreateAgentChatToolCallResult",
+  get fields() {
+    return AiConversationCreateAgentChatToolCallResultFields;
+  },
 };
 export const AiConversationCreateEntityToolCall: TypeMeta = {
   name: "AiConversationCreateEntityToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationCreateEntityToolCallFields;
+  },
 };
 export const AiConversationCreateEntityToolCallArgs: TypeMeta = {
   name: "AiConversationCreateEntityToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationCreateEntityToolCallArgsFields;
+  },
 };
 export const AiConversationCreateEntityToolCallResult: TypeMeta = {
   name: "AiConversationCreateEntityToolCallResult",
-  fields: {},
+  get fields() {
+    return AiConversationCreateEntityToolCallResultFields;
+  },
 };
 export const AiConversationCreateEntityToolCallResultCreatedEntities: TypeMeta = {
   name: "AiConversationCreateEntityToolCallResultCreatedEntities",
-  fields: {},
+  get fields() {
+    return AiConversationCreateEntityToolCallResultCreatedEntitiesFields;
+  },
 };
 export const AiConversationCreateSandboxToolCall: TypeMeta = {
   name: "AiConversationCreateSandboxToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationCreateSandboxToolCallFields;
+  },
 };
 export const AiConversationCreateSandboxToolCallArgs: TypeMeta = {
   name: "AiConversationCreateSandboxToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationCreateSandboxToolCallArgsFields;
+  },
 };
 export const AiConversationDeleteEntityToolCall: TypeMeta = {
   name: "AiConversationDeleteEntityToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationDeleteEntityToolCallFields;
+  },
 };
 export const AiConversationDeleteEntityToolCallArgs: TypeMeta = {
   name: "AiConversationDeleteEntityToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationDeleteEntityToolCallArgsFields;
+  },
 };
 export const AiConversationDeleteEntityToolCallResult: TypeMeta = {
   name: "AiConversationDeleteEntityToolCallResult",
-  fields: {},
+  get fields() {
+    return AiConversationDeleteEntityToolCallResultFields;
+  },
 };
 export const AiConversationElicitationOption: TypeMeta = {
   name: "AiConversationElicitationOption",
-  fields: {},
+  get fields() {
+    return AiConversationElicitationOptionFields;
+  },
 };
 export const AiConversationElicitationPart: TypeMeta = {
   name: "AiConversationElicitationPart",
-  fields: {},
+  get fields() {
+    return AiConversationElicitationPartFields;
+  },
 };
 export const AiConversationElicitationResponsePart: TypeMeta = {
   name: "AiConversationElicitationResponsePart",
-  fields: {},
+  get fields() {
+    return AiConversationElicitationResponsePartFields;
+  },
 };
 export const AiConversationEntityCardWidget: TypeMeta = {
   name: "AiConversationEntityCardWidget",
-  fields: {},
+  get fields() {
+    return AiConversationEntityCardWidgetFields;
+  },
 };
 export const AiConversationEntityCardWidgetArgs: TypeMeta = {
   name: "AiConversationEntityCardWidgetArgs",
-  fields: {},
+  get fields() {
+    return AiConversationEntityCardWidgetArgsFields;
+  },
 };
 export const AiConversationEntityListWidget: TypeMeta = {
   name: "AiConversationEntityListWidget",
-  fields: {},
+  get fields() {
+    return AiConversationEntityListWidgetFields;
+  },
 };
 export const AiConversationEntityListWidgetArgs: TypeMeta = {
   name: "AiConversationEntityListWidgetArgs",
-  fields: {},
+  get fields() {
+    return AiConversationEntityListWidgetArgsFields;
+  },
 };
 export const AiConversationEntityListWidgetArgsEntities: TypeMeta = {
   name: "AiConversationEntityListWidgetArgsEntities",
-  fields: {},
+  get fields() {
+    return AiConversationEntityListWidgetArgsEntitiesFields;
+  },
 };
 export const AiConversationEntitySelectionElicitationResponseData: TypeMeta = {
   name: "AiConversationEntitySelectionElicitationResponseData",
-  fields: {},
+  get fields() {
+    return AiConversationEntitySelectionElicitationResponseDataFields;
+  },
 };
-export const AiConversationErrorPart: TypeMeta = { name: "AiConversationErrorPart", fields: {} };
-export const AiConversationEventPart: TypeMeta = { name: "AiConversationEventPart", fields: {} };
+export const AiConversationErrorPart: TypeMeta = {
+  name: "AiConversationErrorPart",
+  get fields() {
+    return AiConversationErrorPartFields;
+  },
+};
+export const AiConversationEventPart: TypeMeta = {
+  name: "AiConversationEventPart",
+  get fields() {
+    return AiConversationEventPartFields;
+  },
+};
 export const AiConversationGetMicrosoftTeamsConversationHistoryToolCall: TypeMeta = {
   name: "AiConversationGetMicrosoftTeamsConversationHistoryToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationGetMicrosoftTeamsConversationHistoryToolCallFields;
+  },
 };
 export const AiConversationGetPullRequestCheckLogsToolCall: TypeMeta = {
   name: "AiConversationGetPullRequestCheckLogsToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationGetPullRequestCheckLogsToolCallFields;
+  },
 };
 export const AiConversationGetPullRequestCheckLogsToolCallArgs: TypeMeta = {
   name: "AiConversationGetPullRequestCheckLogsToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationGetPullRequestCheckLogsToolCallArgsFields;
+  },
 };
 export const AiConversationGetPullRequestDiffToolCall: TypeMeta = {
   name: "AiConversationGetPullRequestDiffToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationGetPullRequestDiffToolCallFields;
+  },
 };
 export const AiConversationGetPullRequestDiffToolCallArgs: TypeMeta = {
   name: "AiConversationGetPullRequestDiffToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationGetPullRequestDiffToolCallArgsFields;
+  },
 };
 export const AiConversationGetPullRequestFileToolCall: TypeMeta = {
   name: "AiConversationGetPullRequestFileToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationGetPullRequestFileToolCallFields;
+  },
 };
 export const AiConversationGetPullRequestFileToolCallArgs: TypeMeta = {
   name: "AiConversationGetPullRequestFileToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationGetPullRequestFileToolCallArgsFields;
+  },
 };
 export const AiConversationGetSlackConversationHistoryToolCall: TypeMeta = {
   name: "AiConversationGetSlackConversationHistoryToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationGetSlackConversationHistoryToolCallFields;
+  },
 };
 export const AiConversationGetSlackConversationHistoryToolCallArgs: TypeMeta = {
   name: "AiConversationGetSlackConversationHistoryToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationGetSlackConversationHistoryToolCallArgsFields;
+  },
 };
 export const AiConversationGetSlackConversationHistoryToolCallResult: TypeMeta = {
   name: "AiConversationGetSlackConversationHistoryToolCallResult",
-  fields: {},
+  get fields() {
+    return AiConversationGetSlackConversationHistoryToolCallResultFields;
+  },
 };
 export const AiConversationHandoffToCodingSessionToolCall: TypeMeta = {
   name: "AiConversationHandoffToCodingSessionToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationHandoffToCodingSessionToolCallFields;
+  },
 };
 export const AiConversationHandoffToCodingSessionToolCallArgs: TypeMeta = {
   name: "AiConversationHandoffToCodingSessionToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationHandoffToCodingSessionToolCallArgsFields;
+  },
+};
+export const AiConversationIntegrationConnectionElicitationResponseData: TypeMeta = {
+  name: "AiConversationIntegrationConnectionElicitationResponseData",
+  get fields() {
+    return AiConversationIntegrationConnectionElicitationResponseDataFields;
+  },
 };
 export const AiConversationInvokeMcpToolToolCall: TypeMeta = {
   name: "AiConversationInvokeMcpToolToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationInvokeMcpToolToolCallFields;
+  },
 };
 export const AiConversationInvokeMcpToolToolCallArgs: TypeMeta = {
   name: "AiConversationInvokeMcpToolToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationInvokeMcpToolToolCallArgsFields;
+  },
 };
 export const AiConversationInvokeMcpToolToolCallArgsServer: TypeMeta = {
   name: "AiConversationInvokeMcpToolToolCallArgsServer",
-  fields: {},
+  get fields() {
+    return AiConversationInvokeMcpToolToolCallArgsServerFields;
+  },
 };
 export const AiConversationInvokeMcpToolToolCallArgsTool: TypeMeta = {
   name: "AiConversationInvokeMcpToolToolCallArgsTool",
-  fields: {},
+  get fields() {
+    return AiConversationInvokeMcpToolToolCallArgsToolFields;
+  },
 };
 export const AiConversationListCodingSessionsToolCall: TypeMeta = {
   name: "AiConversationListCodingSessionsToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationListCodingSessionsToolCallFields;
+  },
 };
 export const AiConversationListCodingSessionsToolCallArgs: TypeMeta = {
   name: "AiConversationListCodingSessionsToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationListCodingSessionsToolCallArgsFields;
+  },
 };
 export const AiConversationListCodingSessionsToolCallResult: TypeMeta = {
   name: "AiConversationListCodingSessionsToolCallResult",
-  fields: {},
+  get fields() {
+    return AiConversationListCodingSessionsToolCallResultFields;
+  },
 };
 export const AiConversationListCodingSessionsToolCallResultAgentSessions: TypeMeta = {
   name: "AiConversationListCodingSessionsToolCallResultAgentSessions",
-  fields: {},
+  get fields() {
+    return AiConversationListCodingSessionsToolCallResultAgentSessionsFields;
+  },
 };
 export const AiConversationMcpServerConnectionElicitationResponseData: TypeMeta = {
   name: "AiConversationMcpServerConnectionElicitationResponseData",
-  fields: {},
+  get fields() {
+    return AiConversationMcpServerConnectionElicitationResponseDataFields;
+  },
 };
 export const AiConversationMcpServerConnectionScope: TypeMeta = {
   name: "AiConversationMcpServerConnectionScope",
-  fields: {},
+  get fields() {
+    return AiConversationMcpServerConnectionScopeFields;
+  },
 };
 export const AiConversationMemoryToolCall: TypeMeta = {
   name: "AiConversationMemoryToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationMemoryToolCallFields;
+  },
 };
 export const AiConversationMemoryToolCallArgs: TypeMeta = {
   name: "AiConversationMemoryToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationMemoryToolCallArgsFields;
+  },
+};
+export const AiConversationMessageSubagentToolCall: TypeMeta = {
+  name: "AiConversationMessageSubagentToolCall",
+  get fields() {
+    return AiConversationMessageSubagentToolCallFields;
+  },
+};
+export const AiConversationMessageSubagentToolCallArgs: TypeMeta = {
+  name: "AiConversationMessageSubagentToolCallArgs",
+  get fields() {
+    return AiConversationMessageSubagentToolCallArgsFields;
+  },
+};
+export const AiConversationMessageSubagentToolCallResult: TypeMeta = {
+  name: "AiConversationMessageSubagentToolCallResult",
+  get fields() {
+    return AiConversationMessageSubagentToolCallResultFields;
+  },
 };
 export const AiConversationMultipleChoiceElicitationResponseData: TypeMeta = {
   name: "AiConversationMultipleChoiceElicitationResponseData",
-  fields: {},
+  get fields() {
+    return AiConversationMultipleChoiceElicitationResponseDataFields;
+  },
 };
 export const AiConversationNavigateToPageToolCall: TypeMeta = {
   name: "AiConversationNavigateToPageToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationNavigateToPageToolCallFields;
+  },
 };
 export const AiConversationNavigateToPageToolCallArgs: TypeMeta = {
   name: "AiConversationNavigateToPageToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationNavigateToPageToolCallArgsFields;
+  },
 };
 export const AiConversationNavigateToPageToolCallArgsEntities: TypeMeta = {
   name: "AiConversationNavigateToPageToolCallArgsEntities",
-  fields: {},
+  get fields() {
+    return AiConversationNavigateToPageToolCallArgsEntitiesFields;
+  },
 };
 export const AiConversationNavigateToPageToolCallResult: TypeMeta = {
   name: "AiConversationNavigateToPageToolCallResult",
-  fields: {},
+  get fields() {
+    return AiConversationNavigateToPageToolCallResultFields;
+  },
 };
 export const AiConversationNotifyUsersToolCall: TypeMeta = {
   name: "AiConversationNotifyUsersToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationNotifyUsersToolCallFields;
+  },
 };
 export const AiConversationNotifyUsersToolCallArgs: TypeMeta = {
   name: "AiConversationNotifyUsersToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationNotifyUsersToolCallArgsFields;
+  },
 };
 export const AiConversationNotifyUsersToolCallResult: TypeMeta = {
   name: "AiConversationNotifyUsersToolCallResult",
-  fields: {},
+  get fields() {
+    return AiConversationNotifyUsersToolCallResultFields;
+  },
 };
 export const AiConversationPartMetadata: TypeMeta = {
   name: "AiConversationPartMetadata",
-  fields: {},
+  get fields() {
+    return AiConversationPartMetadataFields;
+  },
 };
 export const AiConversationPatchSettingsToolCall: TypeMeta = {
   name: "AiConversationPatchSettingsToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationPatchSettingsToolCallFields;
+  },
 };
 export const AiConversationPatchSettingsToolCallArgs: TypeMeta = {
   name: "AiConversationPatchSettingsToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationPatchSettingsToolCallArgsFields;
+  },
 };
 export const AiConversationPostChatMessageToolCall: TypeMeta = {
   name: "AiConversationPostChatMessageToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationPostChatMessageToolCallFields;
+  },
 };
 export const AiConversationPostChatMessageToolCallArgs: TypeMeta = {
   name: "AiConversationPostChatMessageToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationPostChatMessageToolCallArgsFields;
+  },
 };
 export const AiConversationPostChatMessageToolCallResult: TypeMeta = {
   name: "AiConversationPostChatMessageToolCallResult",
-  fields: {},
+  get fields() {
+    return AiConversationPostChatMessageToolCallResultFields;
+  },
 };
 export const AiConversationPostChatMessageToolCallResultDestination: TypeMeta = {
   name: "AiConversationPostChatMessageToolCallResultDestination",
-  fields: {},
+  get fields() {
+    return AiConversationPostChatMessageToolCallResultDestinationFields;
+  },
 };
 export const AiConversationPromptCodingSessionToolCall: TypeMeta = {
   name: "AiConversationPromptCodingSessionToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationPromptCodingSessionToolCallFields;
+  },
 };
 export const AiConversationPromptCodingSessionToolCallArgs: TypeMeta = {
   name: "AiConversationPromptCodingSessionToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationPromptCodingSessionToolCallArgsFields;
+  },
 };
 export const AiConversationPromptCodingSessionToolCallResult: TypeMeta = {
   name: "AiConversationPromptCodingSessionToolCallResult",
-  fields: {},
+  get fields() {
+    return AiConversationPromptCodingSessionToolCallResultFields;
+  },
 };
-export const AiConversationPromptPart: TypeMeta = { name: "AiConversationPromptPart", fields: {} };
+export const AiConversationPromptPart: TypeMeta = {
+  name: "AiConversationPromptPart",
+  get fields() {
+    return AiConversationPromptPartFields;
+  },
+};
 export const AiConversationQueryActivityToolCall: TypeMeta = {
   name: "AiConversationQueryActivityToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationQueryActivityToolCallFields;
+  },
 };
 export const AiConversationQueryActivityToolCallArgs: TypeMeta = {
   name: "AiConversationQueryActivityToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationQueryActivityToolCallArgsFields;
+  },
 };
 export const AiConversationQueryUpdatesToolCall: TypeMeta = {
   name: "AiConversationQueryUpdatesToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationQueryUpdatesToolCallFields;
+  },
 };
 export const AiConversationQueryUpdatesToolCallArgs: TypeMeta = {
   name: "AiConversationQueryUpdatesToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationQueryUpdatesToolCallArgsFields;
+  },
 };
 export const AiConversationQueryViewToolCall: TypeMeta = {
   name: "AiConversationQueryViewToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationQueryViewToolCallFields;
+  },
 };
 export const AiConversationQueryViewToolCallArgs: TypeMeta = {
   name: "AiConversationQueryViewToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationQueryViewToolCallArgsFields;
+  },
 };
 export const AiConversationQueryViewToolCallArgsView: TypeMeta = {
   name: "AiConversationQueryViewToolCallArgsView",
-  fields: {},
+  get fields() {
+    return AiConversationQueryViewToolCallArgsViewFields;
+  },
 };
 export const AiConversationReadFileToolCall: TypeMeta = {
   name: "AiConversationReadFileToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationReadFileToolCallFields;
+  },
 };
 export const AiConversationReadFileToolCallArgs: TypeMeta = {
   name: "AiConversationReadFileToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationReadFileToolCallArgsFields;
+  },
 };
 export const AiConversationReadSandboxFileToolCall: TypeMeta = {
   name: "AiConversationReadSandboxFileToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationReadSandboxFileToolCallFields;
+  },
 };
 export const AiConversationReadSandboxFileToolCallArgs: TypeMeta = {
   name: "AiConversationReadSandboxFileToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationReadSandboxFileToolCallArgsFields;
+  },
 };
 export const AiConversationReadSettingToolCall: TypeMeta = {
   name: "AiConversationReadSettingToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationReadSettingToolCallFields;
+  },
 };
 export const AiConversationReadSettingToolCallArgs: TypeMeta = {
   name: "AiConversationReadSettingToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationReadSettingToolCallArgsFields;
+  },
 };
 export const AiConversationReasoningPart: TypeMeta = {
   name: "AiConversationReasoningPart",
-  fields: {},
+  get fields() {
+    return AiConversationReasoningPartFields;
+  },
 };
 export const AiConversationRemoveSpendLimitToolCall: TypeMeta = {
   name: "AiConversationRemoveSpendLimitToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationRemoveSpendLimitToolCallFields;
+  },
 };
 export const AiConversationRemoveSpendLimitToolCallArgs: TypeMeta = {
   name: "AiConversationRemoveSpendLimitToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationRemoveSpendLimitToolCallArgsFields;
+  },
+};
+export const AiConversationRenameAgentChatToolCall: TypeMeta = {
+  name: "AiConversationRenameAgentChatToolCall",
+  get fields() {
+    return AiConversationRenameAgentChatToolCallFields;
+  },
+};
+export const AiConversationRenameAgentChatToolCallArgs: TypeMeta = {
+  name: "AiConversationRenameAgentChatToolCallArgs",
+  get fields() {
+    return AiConversationRenameAgentChatToolCallArgsFields;
+  },
+};
+export const AiConversationRerunPullRequestReviewToolCall: TypeMeta = {
+  name: "AiConversationRerunPullRequestReviewToolCall",
+  get fields() {
+    return AiConversationRerunPullRequestReviewToolCallFields;
+  },
+};
+export const AiConversationRerunPullRequestReviewToolCallArgs: TypeMeta = {
+  name: "AiConversationRerunPullRequestReviewToolCallArgs",
+  get fields() {
+    return AiConversationRerunPullRequestReviewToolCallArgsFields;
+  },
 };
 export const AiConversationResearchToolCall: TypeMeta = {
   name: "AiConversationResearchToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationResearchToolCallFields;
+  },
 };
 export const AiConversationResearchToolCallArgs: TypeMeta = {
   name: "AiConversationResearchToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationResearchToolCallArgsFields;
+  },
 };
 export const AiConversationResearchToolCallResult: TypeMeta = {
   name: "AiConversationResearchToolCallResult",
-  fields: {},
+  get fields() {
+    return AiConversationResearchToolCallResultFields;
+  },
 };
 export const AiConversationRestoreEntityToolCall: TypeMeta = {
   name: "AiConversationRestoreEntityToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationRestoreEntityToolCallFields;
+  },
 };
 export const AiConversationRestoreEntityToolCallArgs: TypeMeta = {
   name: "AiConversationRestoreEntityToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationRestoreEntityToolCallArgsFields;
+  },
 };
 export const AiConversationRestoreEntityToolCallResult: TypeMeta = {
   name: "AiConversationRestoreEntityToolCallResult",
-  fields: {},
+  get fields() {
+    return AiConversationRestoreEntityToolCallResultFields;
+  },
 };
 export const AiConversationRetrieveEntitiesToolCall: TypeMeta = {
   name: "AiConversationRetrieveEntitiesToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationRetrieveEntitiesToolCallFields;
+  },
 };
 export const AiConversationRetrieveEntitiesToolCallArgs: TypeMeta = {
   name: "AiConversationRetrieveEntitiesToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationRetrieveEntitiesToolCallArgsFields;
+  },
 };
 export const AiConversationRetryPullRequestCheckToolCall: TypeMeta = {
   name: "AiConversationRetryPullRequestCheckToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationRetryPullRequestCheckToolCallFields;
+  },
 };
 export const AiConversationRetryPullRequestCheckToolCallArgs: TypeMeta = {
   name: "AiConversationRetryPullRequestCheckToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationRetryPullRequestCheckToolCallArgsFields;
+  },
 };
 export const AiConversationRunLoopToolCall: TypeMeta = {
   name: "AiConversationRunLoopToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationRunLoopToolCallFields;
+  },
 };
 export const AiConversationRunLoopToolCallArgs: TypeMeta = {
   name: "AiConversationRunLoopToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationRunLoopToolCallArgsFields;
+  },
 };
 export const AiConversationRunLoopToolCallResult: TypeMeta = {
   name: "AiConversationRunLoopToolCallResult",
-  fields: {},
+  get fields() {
+    return AiConversationRunLoopToolCallResultFields;
+  },
 };
 export const AiConversationSandboxGitHistoryToolCall: TypeMeta = {
   name: "AiConversationSandboxGitHistoryToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationSandboxGitHistoryToolCallFields;
+  },
 };
 export const AiConversationSandboxGitHistoryToolCallArgs: TypeMeta = {
   name: "AiConversationSandboxGitHistoryToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationSandboxGitHistoryToolCallArgsFields;
+  },
 };
 export const AiConversationSearchChatChannelsToolCall: TypeMeta = {
   name: "AiConversationSearchChatChannelsToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationSearchChatChannelsToolCallFields;
+  },
 };
 export const AiConversationSearchChatChannelsToolCallArgs: TypeMeta = {
   name: "AiConversationSearchChatChannelsToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationSearchChatChannelsToolCallArgsFields;
+  },
 };
 export const AiConversationSearchChatChannelsToolCallResult: TypeMeta = {
   name: "AiConversationSearchChatChannelsToolCallResult",
-  fields: {},
+  get fields() {
+    return AiConversationSearchChatChannelsToolCallResultFields;
+  },
 };
 export const AiConversationSearchDocumentationToolCall: TypeMeta = {
   name: "AiConversationSearchDocumentationToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationSearchDocumentationToolCallFields;
+  },
 };
 export const AiConversationSearchEntitiesToolCall: TypeMeta = {
   name: "AiConversationSearchEntitiesToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationSearchEntitiesToolCallFields;
+  },
 };
 export const AiConversationSearchEntitiesToolCallArgs: TypeMeta = {
   name: "AiConversationSearchEntitiesToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationSearchEntitiesToolCallArgsFields;
+  },
 };
 export const AiConversationSearchEntitiesToolCallResult: TypeMeta = {
   name: "AiConversationSearchEntitiesToolCallResult",
-  fields: {},
+  get fields() {
+    return AiConversationSearchEntitiesToolCallResultFields;
+  },
 };
 export const AiConversationSearchEntitiesToolCallResultEntities: TypeMeta = {
   name: "AiConversationSearchEntitiesToolCallResultEntities",
-  fields: {},
+  get fields() {
+    return AiConversationSearchEntitiesToolCallResultEntitiesFields;
+  },
 };
 export const AiConversationSearchSettingsToolCall: TypeMeta = {
   name: "AiConversationSearchSettingsToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationSearchSettingsToolCallFields;
+  },
 };
 export const AiConversationSearchSettingsToolCallArgs: TypeMeta = {
   name: "AiConversationSearchSettingsToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationSearchSettingsToolCallArgsFields;
+  },
 };
 export const AiConversationSetSpendLimitToolCall: TypeMeta = {
   name: "AiConversationSetSpendLimitToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationSetSpendLimitToolCallFields;
+  },
 };
 export const AiConversationSetSpendLimitToolCallArgs: TypeMeta = {
   name: "AiConversationSetSpendLimitToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationSetSpendLimitToolCallArgsFields;
+  },
 };
 export const AiConversationSettingWidget: TypeMeta = {
   name: "AiConversationSettingWidget",
-  fields: {},
+  get fields() {
+    return AiConversationSettingWidgetFields;
+  },
 };
 export const AiConversationSettingWidgetArgs: TypeMeta = {
   name: "AiConversationSettingWidgetArgs",
-  fields: {},
+  get fields() {
+    return AiConversationSettingWidgetArgsFields;
+  },
 };
 export const AiConversationSettingWidgetArgsTarget: TypeMeta = {
   name: "AiConversationSettingWidgetArgsTarget",
-  fields: {},
+  get fields() {
+    return AiConversationSettingWidgetArgsTargetFields;
+  },
 };
 export const AiConversationSpawnSubagentToolCall: TypeMeta = {
   name: "AiConversationSpawnSubagentToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationSpawnSubagentToolCallFields;
+  },
 };
 export const AiConversationSpawnSubagentToolCallArgs: TypeMeta = {
   name: "AiConversationSpawnSubagentToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationSpawnSubagentToolCallArgsFields;
+  },
 };
 export const AiConversationSpawnSubagentToolCallResult: TypeMeta = {
   name: "AiConversationSpawnSubagentToolCallResult",
-  fields: {},
+  get fields() {
+    return AiConversationSpawnSubagentToolCallResultFields;
+  },
 };
 export const AiConversationStartCodingSessionToolCall: TypeMeta = {
   name: "AiConversationStartCodingSessionToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationStartCodingSessionToolCallFields;
+  },
 };
 export const AiConversationStartCodingSessionToolCallArgs: TypeMeta = {
   name: "AiConversationStartCodingSessionToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationStartCodingSessionToolCallArgsFields;
+  },
 };
 export const AiConversationStartCodingSessionToolCallResult: TypeMeta = {
   name: "AiConversationStartCodingSessionToolCallResult",
-  fields: {},
+  get fields() {
+    return AiConversationStartCodingSessionToolCallResultFields;
+  },
 };
 export const AiConversationSubscribeToEventToolCall: TypeMeta = {
   name: "AiConversationSubscribeToEventToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationSubscribeToEventToolCallFields;
+  },
 };
 export const AiConversationSubscribeToEventToolCallArgs: TypeMeta = {
   name: "AiConversationSubscribeToEventToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationSubscribeToEventToolCallArgsFields;
+  },
 };
 export const AiConversationSuggestRepositoryToolCall: TypeMeta = {
   name: "AiConversationSuggestRepositoryToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationSuggestRepositoryToolCallFields;
+  },
 };
 export const AiConversationSuggestValuesToolCall: TypeMeta = {
   name: "AiConversationSuggestValuesToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationSuggestValuesToolCallFields;
+  },
 };
 export const AiConversationSuggestValuesToolCallArgs: TypeMeta = {
   name: "AiConversationSuggestValuesToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationSuggestValuesToolCallArgsFields;
+  },
 };
-export const AiConversationTextPart: TypeMeta = { name: "AiConversationTextPart", fields: {} };
+export const AiConversationTextPart: TypeMeta = {
+  name: "AiConversationTextPart",
+  get fields() {
+    return AiConversationTextPartFields;
+  },
+};
 export const AiConversationToolCallPart: TypeMeta = {
   name: "AiConversationToolCallPart",
-  fields: {},
+  get fields() {
+    return AiConversationToolCallPartFields;
+  },
 };
 export const AiConversationToolDisplayInfo: TypeMeta = {
   name: "AiConversationToolDisplayInfo",
-  fields: {},
+  get fields() {
+    return AiConversationToolDisplayInfoFields;
+  },
 };
 export const AiConversationTranscribeMediaToolCall: TypeMeta = {
   name: "AiConversationTranscribeMediaToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationTranscribeMediaToolCallFields;
+  },
 };
 export const AiConversationTranscribeVideoToolCall: TypeMeta = {
   name: "AiConversationTranscribeVideoToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationTranscribeVideoToolCallFields;
+  },
 };
 export const AiConversationUnsubscribeFromEventToolCall: TypeMeta = {
   name: "AiConversationUnsubscribeFromEventToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationUnsubscribeFromEventToolCallFields;
+  },
 };
 export const AiConversationUnsubscribeFromEventToolCallArgs: TypeMeta = {
   name: "AiConversationUnsubscribeFromEventToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationUnsubscribeFromEventToolCallArgsFields;
+  },
 };
 export const AiConversationUpdateEntityToolCall: TypeMeta = {
   name: "AiConversationUpdateEntityToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationUpdateEntityToolCallFields;
+  },
 };
 export const AiConversationUpdateEntityToolCallArgs: TypeMeta = {
   name: "AiConversationUpdateEntityToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationUpdateEntityToolCallArgsFields;
+  },
 };
 export const AiConversationUpdateEntityToolCallResult: TypeMeta = {
   name: "AiConversationUpdateEntityToolCallResult",
-  fields: {},
+  get fields() {
+    return AiConversationUpdateEntityToolCallResultFields;
+  },
 };
-export const AiConversationUserState: TypeMeta = { name: "AiConversationUserState", fields: {} };
+export const AiConversationUpdatePullRequestReviewFindingToolCall: TypeMeta = {
+  name: "AiConversationUpdatePullRequestReviewFindingToolCall",
+  get fields() {
+    return AiConversationUpdatePullRequestReviewFindingToolCallFields;
+  },
+};
+export const AiConversationUpdatePullRequestReviewFindingToolCallArgs: TypeMeta = {
+  name: "AiConversationUpdatePullRequestReviewFindingToolCallArgs",
+  get fields() {
+    return AiConversationUpdatePullRequestReviewFindingToolCallArgsFields;
+  },
+};
+export const AiConversationUserState: TypeMeta = {
+  name: "AiConversationUserState",
+  get fields() {
+    return AiConversationUserStateFields;
+  },
+};
 export const AiConversationWebSearchToolCall: TypeMeta = {
   name: "AiConversationWebSearchToolCall",
-  fields: {},
+  get fields() {
+    return AiConversationWebSearchToolCallFields;
+  },
 };
 export const AiConversationWebSearchToolCallArgs: TypeMeta = {
   name: "AiConversationWebSearchToolCallArgs",
-  fields: {},
+  get fields() {
+    return AiConversationWebSearchToolCallArgsFields;
+  },
 };
 export const AiConversationWidgetDisplayInfo: TypeMeta = {
   name: "AiConversationWidgetDisplayInfo",
-  fields: {},
+  get fields() {
+    return AiConversationWidgetDisplayInfoFields;
+  },
 };
-export const AiConversationWidgetPart: TypeMeta = { name: "AiConversationWidgetPart", fields: {} };
-export const AiPromptProgress: TypeMeta = { name: "AiPromptProgress", fields: {} };
+export const AiConversationWidgetPart: TypeMeta = {
+  name: "AiConversationWidgetPart",
+  get fields() {
+    return AiConversationWidgetPartFields;
+  },
+};
+export const AiPromptProgress: TypeMeta = {
+  name: "AiPromptProgress",
+  get fields() {
+    return AiPromptProgressFields;
+  },
+};
 export const AiPromptProgressConnection: TypeMeta = {
   name: "AiPromptProgressConnection",
-  fields: {},
+  get fields() {
+    return AiPromptProgressConnectionFields;
+  },
 };
-export const AiPromptProgressEdge: TypeMeta = { name: "AiPromptProgressEdge", fields: {} };
-export const AiPromptRules: TypeMeta = { name: "AiPromptRules", fields: {} };
-export const Application: TypeMeta = { name: "Application", fields: {} };
-export const ArchivePayload: TypeMeta = { name: "ArchivePayload", fields: {} };
-export const ArchiveResponse: TypeMeta = { name: "ArchiveResponse", fields: {} };
+export const AiPromptProgressEdge: TypeMeta = {
+  name: "AiPromptProgressEdge",
+  get fields() {
+    return AiPromptProgressEdgeFields;
+  },
+};
+export const AiPromptRules: TypeMeta = {
+  name: "AiPromptRules",
+  get fields() {
+    return AiPromptRulesFields;
+  },
+};
+export const Application: TypeMeta = {
+  name: "Application",
+  get fields() {
+    return ApplicationFields;
+  },
+};
+export const ArchivePayload: TypeMeta = {
+  name: "ArchivePayload",
+  get fields() {
+    return ArchivePayloadFields;
+  },
+};
+export const ArchiveResponse: TypeMeta = {
+  name: "ArchiveResponse",
+  get fields() {
+    return ArchiveResponseFields;
+  },
+};
 export const ArchivedIntegrationPayload: TypeMeta = {
   name: "ArchivedIntegrationPayload",
-  fields: {},
+  get fields() {
+    return ArchivedIntegrationPayloadFields;
+  },
 };
 export const AsksChannelConnectPayload: TypeMeta = {
   name: "AsksChannelConnectPayload",
-  fields: {},
+  get fields() {
+    return AsksChannelConnectPayloadFields;
+  },
 };
-export const Attachment: TypeMeta = { name: "Attachment", fields: {} };
-export const AttachmentConnection: TypeMeta = { name: "AttachmentConnection", fields: {} };
-export const AttachmentEdge: TypeMeta = { name: "AttachmentEdge", fields: {} };
-export const AttachmentPayload: TypeMeta = { name: "AttachmentPayload", fields: {} };
-export const AttachmentSourcesPayload: TypeMeta = { name: "AttachmentSourcesPayload", fields: {} };
-export const AuditEntry: TypeMeta = { name: "AuditEntry", fields: {} };
-export const AuditEntryConnection: TypeMeta = { name: "AuditEntryConnection", fields: {} };
-export const AuditEntryEdge: TypeMeta = { name: "AuditEntryEdge", fields: {} };
-export const AuditEntryType: TypeMeta = { name: "AuditEntryType", fields: {} };
-export const AuthIdentityProvider: TypeMeta = { name: "AuthIdentityProvider", fields: {} };
-export const AuthOrganization: TypeMeta = { name: "AuthOrganization", fields: {} };
-export const AuthResolverResponse: TypeMeta = { name: "AuthResolverResponse", fields: {} };
-export const AuthUser: TypeMeta = { name: "AuthUser", fields: {} };
+export const Attachment: TypeMeta = {
+  name: "Attachment",
+  get fields() {
+    return AttachmentFields;
+  },
+};
+export const AttachmentConnection: TypeMeta = {
+  name: "AttachmentConnection",
+  get fields() {
+    return AttachmentConnectionFields;
+  },
+};
+export const AttachmentEdge: TypeMeta = {
+  name: "AttachmentEdge",
+  get fields() {
+    return AttachmentEdgeFields;
+  },
+};
+export const AttachmentPayload: TypeMeta = {
+  name: "AttachmentPayload",
+  get fields() {
+    return AttachmentPayloadFields;
+  },
+};
+export const AttachmentSourcesPayload: TypeMeta = {
+  name: "AttachmentSourcesPayload",
+  get fields() {
+    return AttachmentSourcesPayloadFields;
+  },
+};
+export const AuditEntry: TypeMeta = {
+  name: "AuditEntry",
+  get fields() {
+    return AuditEntryFields;
+  },
+};
+export const AuditEntryConnection: TypeMeta = {
+  name: "AuditEntryConnection",
+  get fields() {
+    return AuditEntryConnectionFields;
+  },
+};
+export const AuditEntryEdge: TypeMeta = {
+  name: "AuditEntryEdge",
+  get fields() {
+    return AuditEntryEdgeFields;
+  },
+};
+export const AuditEntryType: TypeMeta = {
+  name: "AuditEntryType",
+  get fields() {
+    return AuditEntryTypeFields;
+  },
+};
+export const AuthIdentityProvider: TypeMeta = {
+  name: "AuthIdentityProvider",
+  get fields() {
+    return AuthIdentityProviderFields;
+  },
+};
+export const AuthOrganization: TypeMeta = {
+  name: "AuthOrganization",
+  get fields() {
+    return AuthOrganizationFields;
+  },
+};
+export const AuthResolverResponse: TypeMeta = {
+  name: "AuthResolverResponse",
+  get fields() {
+    return AuthResolverResponseFields;
+  },
+};
+export const AuthUser: TypeMeta = {
+  name: "AuthUser",
+  get fields() {
+    return AuthUserFields;
+  },
+};
 export const AuthenticationSessionResponse: TypeMeta = {
   name: "AuthenticationSessionResponse",
-  fields: {},
+  get fields() {
+    return AuthenticationSessionResponseFields;
+  },
 };
-export const CodingAgentSandboxEntry: TypeMeta = { name: "CodingAgentSandboxEntry", fields: {} };
+export const CodingAgentSandboxEntry: TypeMeta = {
+  name: "CodingAgentSandboxEntry",
+  get fields() {
+    return CodingAgentSandboxEntryFields;
+  },
+};
 export const CodingAgentSandboxPayload: TypeMeta = {
   name: "CodingAgentSandboxPayload",
-  fields: {},
+  get fields() {
+    return CodingAgentSandboxPayloadFields;
+  },
 };
-export const Comment: TypeMeta = { name: "Comment", fields: {} };
-export const CommentConnection: TypeMeta = { name: "CommentConnection", fields: {} };
-export const CommentEdge: TypeMeta = { name: "CommentEdge", fields: {} };
-export const CommentPayload: TypeMeta = { name: "CommentPayload", fields: {} };
-export const ContactPayload: TypeMeta = { name: "ContactPayload", fields: {} };
+export const CodingInferenceKey: TypeMeta = {
+  name: "CodingInferenceKey",
+  get fields() {
+    return CodingInferenceKeyFields;
+  },
+};
+export const CodingInferenceKeyTestPayload: TypeMeta = {
+  name: "CodingInferenceKeyTestPayload",
+  get fields() {
+    return CodingInferenceKeyTestPayloadFields;
+  },
+};
+export const Comment: TypeMeta = {
+  name: "Comment",
+  get fields() {
+    return CommentFields;
+  },
+};
+export const CommentConnection: TypeMeta = {
+  name: "CommentConnection",
+  get fields() {
+    return CommentConnectionFields;
+  },
+};
+export const CommentEdge: TypeMeta = {
+  name: "CommentEdge",
+  get fields() {
+    return CommentEdgeFields;
+  },
+};
+export const CommentPayload: TypeMeta = {
+  name: "CommentPayload",
+  get fields() {
+    return CommentPayloadFields;
+  },
+};
+export const ContactPayload: TypeMeta = {
+  name: "ContactPayload",
+  get fields() {
+    return ContactPayloadFields;
+  },
+};
 export const CreateCsvExportReportPayload: TypeMeta = {
   name: "CreateCsvExportReportPayload",
-  fields: {},
+  get fields() {
+    return CreateCsvExportReportPayloadFields;
+  },
 };
 export const CreateOrJoinOrganizationResponse: TypeMeta = {
   name: "CreateOrJoinOrganizationResponse",
-  fields: {},
+  get fields() {
+    return CreateOrJoinOrganizationResponseFields;
+  },
 };
-export const CustomView: TypeMeta = { name: "CustomView", fields: {} };
-export const CustomViewConnection: TypeMeta = { name: "CustomViewConnection", fields: {} };
-export const CustomViewEdge: TypeMeta = { name: "CustomViewEdge", fields: {} };
+export const CustomView: TypeMeta = {
+  name: "CustomView",
+  get fields() {
+    return CustomViewFields;
+  },
+};
+export const CustomViewConnection: TypeMeta = {
+  name: "CustomViewConnection",
+  get fields() {
+    return CustomViewConnectionFields;
+  },
+};
+export const CustomViewEdge: TypeMeta = {
+  name: "CustomViewEdge",
+  get fields() {
+    return CustomViewEdgeFields;
+  },
+};
 export const CustomViewHasSubscribersPayload: TypeMeta = {
   name: "CustomViewHasSubscribersPayload",
-  fields: {},
+  get fields() {
+    return CustomViewHasSubscribersPayloadFields;
+  },
 };
 export const CustomViewNotificationSubscription: TypeMeta = {
   name: "CustomViewNotificationSubscription",
-  fields: {},
+  get fields() {
+    return CustomViewNotificationSubscriptionFields;
+  },
 };
-export const CustomViewPayload: TypeMeta = { name: "CustomViewPayload", fields: {} };
+export const CustomViewPayload: TypeMeta = {
+  name: "CustomViewPayload",
+  get fields() {
+    return CustomViewPayloadFields;
+  },
+};
 export const CustomViewSuggestionPayload: TypeMeta = {
   name: "CustomViewSuggestionPayload",
-  fields: {},
+  get fields() {
+    return CustomViewSuggestionPayloadFields;
+  },
 };
-export const Customer: TypeMeta = { name: "Customer", fields: {} };
-export const CustomerConnection: TypeMeta = { name: "CustomerConnection", fields: {} };
-export const CustomerEdge: TypeMeta = { name: "CustomerEdge", fields: {} };
-export const CustomerNeed: TypeMeta = { name: "CustomerNeed", fields: {} };
+export const Customer: TypeMeta = {
+  name: "Customer",
+  get fields() {
+    return CustomerFields;
+  },
+};
+export const CustomerConnection: TypeMeta = {
+  name: "CustomerConnection",
+  get fields() {
+    return CustomerConnectionFields;
+  },
+};
+export const CustomerEdge: TypeMeta = {
+  name: "CustomerEdge",
+  get fields() {
+    return CustomerEdgeFields;
+  },
+};
+export const CustomerNeed: TypeMeta = {
+  name: "CustomerNeed",
+  get fields() {
+    return CustomerNeedFields;
+  },
+};
 export const CustomerNeedArchivePayload: TypeMeta = {
   name: "CustomerNeedArchivePayload",
-  fields: {},
+  get fields() {
+    return CustomerNeedArchivePayloadFields;
+  },
 };
-export const CustomerNeedConnection: TypeMeta = { name: "CustomerNeedConnection", fields: {} };
-export const CustomerNeedEdge: TypeMeta = { name: "CustomerNeedEdge", fields: {} };
-export const CustomerNeedNotification: TypeMeta = { name: "CustomerNeedNotification", fields: {} };
-export const CustomerNeedPayload: TypeMeta = { name: "CustomerNeedPayload", fields: {} };
+export const CustomerNeedConnection: TypeMeta = {
+  name: "CustomerNeedConnection",
+  get fields() {
+    return CustomerNeedConnectionFields;
+  },
+};
+export const CustomerNeedEdge: TypeMeta = {
+  name: "CustomerNeedEdge",
+  get fields() {
+    return CustomerNeedEdgeFields;
+  },
+};
+export const CustomerNeedNotification: TypeMeta = {
+  name: "CustomerNeedNotification",
+  get fields() {
+    return CustomerNeedNotificationFields;
+  },
+};
+export const CustomerNeedPayload: TypeMeta = {
+  name: "CustomerNeedPayload",
+  get fields() {
+    return CustomerNeedPayloadFields;
+  },
+};
 export const CustomerNeedUpdatePayload: TypeMeta = {
   name: "CustomerNeedUpdatePayload",
-  fields: {},
+  get fields() {
+    return CustomerNeedUpdatePayloadFields;
+  },
 };
-export const CustomerNotification: TypeMeta = { name: "CustomerNotification", fields: {} };
+export const CustomerNotification: TypeMeta = {
+  name: "CustomerNotification",
+  get fields() {
+    return CustomerNotificationFields;
+  },
+};
 export const CustomerNotificationSubscription: TypeMeta = {
   name: "CustomerNotificationSubscription",
-  fields: {},
+  get fields() {
+    return CustomerNotificationSubscriptionFields;
+  },
 };
-export const CustomerPayload: TypeMeta = { name: "CustomerPayload", fields: {} };
-export const CustomerStatus: TypeMeta = { name: "CustomerStatus", fields: {} };
-export const CustomerStatusConnection: TypeMeta = { name: "CustomerStatusConnection", fields: {} };
-export const CustomerStatusEdge: TypeMeta = { name: "CustomerStatusEdge", fields: {} };
-export const CustomerStatusPayload: TypeMeta = { name: "CustomerStatusPayload", fields: {} };
-export const CustomerTier: TypeMeta = { name: "CustomerTier", fields: {} };
-export const CustomerTierConnection: TypeMeta = { name: "CustomerTierConnection", fields: {} };
-export const CustomerTierEdge: TypeMeta = { name: "CustomerTierEdge", fields: {} };
-export const CustomerTierPayload: TypeMeta = { name: "CustomerTierPayload", fields: {} };
-export const Cycle: TypeMeta = { name: "Cycle", fields: {} };
-export const CycleArchivePayload: TypeMeta = { name: "CycleArchivePayload", fields: {} };
-export const CycleConnection: TypeMeta = { name: "CycleConnection", fields: {} };
-export const CycleEdge: TypeMeta = { name: "CycleEdge", fields: {} };
+export const CustomerPayload: TypeMeta = {
+  name: "CustomerPayload",
+  get fields() {
+    return CustomerPayloadFields;
+  },
+};
+export const CustomerStatus: TypeMeta = {
+  name: "CustomerStatus",
+  get fields() {
+    return CustomerStatusFields;
+  },
+};
+export const CustomerStatusConnection: TypeMeta = {
+  name: "CustomerStatusConnection",
+  get fields() {
+    return CustomerStatusConnectionFields;
+  },
+};
+export const CustomerStatusEdge: TypeMeta = {
+  name: "CustomerStatusEdge",
+  get fields() {
+    return CustomerStatusEdgeFields;
+  },
+};
+export const CustomerStatusPayload: TypeMeta = {
+  name: "CustomerStatusPayload",
+  get fields() {
+    return CustomerStatusPayloadFields;
+  },
+};
+export const CustomerTier: TypeMeta = {
+  name: "CustomerTier",
+  get fields() {
+    return CustomerTierFields;
+  },
+};
+export const CustomerTierConnection: TypeMeta = {
+  name: "CustomerTierConnection",
+  get fields() {
+    return CustomerTierConnectionFields;
+  },
+};
+export const CustomerTierEdge: TypeMeta = {
+  name: "CustomerTierEdge",
+  get fields() {
+    return CustomerTierEdgeFields;
+  },
+};
+export const CustomerTierPayload: TypeMeta = {
+  name: "CustomerTierPayload",
+  get fields() {
+    return CustomerTierPayloadFields;
+  },
+};
+export const Cycle: TypeMeta = {
+  name: "Cycle",
+  get fields() {
+    return CycleFields;
+  },
+};
+export const CycleArchivePayload: TypeMeta = {
+  name: "CycleArchivePayload",
+  get fields() {
+    return CycleArchivePayloadFields;
+  },
+};
+export const CycleConnection: TypeMeta = {
+  name: "CycleConnection",
+  get fields() {
+    return CycleConnectionFields;
+  },
+};
+export const CycleEdge: TypeMeta = {
+  name: "CycleEdge",
+  get fields() {
+    return CycleEdgeFields;
+  },
+};
 export const CycleNotificationSubscription: TypeMeta = {
   name: "CycleNotificationSubscription",
-  fields: {},
+  get fields() {
+    return CycleNotificationSubscriptionFields;
+  },
 };
-export const CyclePayload: TypeMeta = { name: "CyclePayload", fields: {} };
-export const Dashboard: TypeMeta = { name: "Dashboard", fields: {} };
-export const DeletePayload: TypeMeta = { name: "DeletePayload", fields: {} };
+export const CyclePayload: TypeMeta = {
+  name: "CyclePayload",
+  get fields() {
+    return CyclePayloadFields;
+  },
+};
+export const Dashboard: TypeMeta = {
+  name: "Dashboard",
+  get fields() {
+    return DashboardFields;
+  },
+};
+export const DeletePayload: TypeMeta = {
+  name: "DeletePayload",
+  get fields() {
+    return DeletePayloadFields;
+  },
+};
 export const DependencyPackageMetadataResult: TypeMeta = {
   name: "DependencyPackageMetadataResult",
-  fields: {},
+  get fields() {
+    return DependencyPackageMetadataResultFields;
+  },
 };
-export const Diff: TypeMeta = { name: "Diff", fields: {} };
-export const DiffFile: TypeMeta = { name: "DiffFile", fields: {} };
-export const Document: TypeMeta = { name: "Document", fields: {} };
-export const DocumentArchivePayload: TypeMeta = { name: "DocumentArchivePayload", fields: {} };
-export const DocumentConnection: TypeMeta = { name: "DocumentConnection", fields: {} };
-export const DocumentContent: TypeMeta = { name: "DocumentContent", fields: {} };
-export const DocumentContentDraft: TypeMeta = { name: "DocumentContentDraft", fields: {} };
+export const Deployment: TypeMeta = {
+  name: "Deployment",
+  get fields() {
+    return DeploymentFields;
+  },
+};
+export const Diff: TypeMeta = {
+  name: "Diff",
+  get fields() {
+    return DiffFields;
+  },
+};
+export const DiffFile: TypeMeta = {
+  name: "DiffFile",
+  get fields() {
+    return DiffFileFields;
+  },
+};
+export const Document: TypeMeta = {
+  name: "Document",
+  get fields() {
+    return DocumentFields;
+  },
+};
+export const DocumentArchivePayload: TypeMeta = {
+  name: "DocumentArchivePayload",
+  get fields() {
+    return DocumentArchivePayloadFields;
+  },
+};
+export const DocumentConnection: TypeMeta = {
+  name: "DocumentConnection",
+  get fields() {
+    return DocumentConnectionFields;
+  },
+};
+export const DocumentContent: TypeMeta = {
+  name: "DocumentContent",
+  get fields() {
+    return DocumentContentFields;
+  },
+};
+export const DocumentContentDraft: TypeMeta = {
+  name: "DocumentContentDraft",
+  get fields() {
+    return DocumentContentDraftFields;
+  },
+};
 export const DocumentContentHistoryCheckpointType: TypeMeta = {
   name: "DocumentContentHistoryCheckpointType",
-  fields: {},
+  get fields() {
+    return DocumentContentHistoryCheckpointTypeFields;
+  },
 };
 export const DocumentContentHistoryPayload: TypeMeta = {
   name: "DocumentContentHistoryPayload",
-  fields: {},
+  get fields() {
+    return DocumentContentHistoryPayloadFields;
+  },
 };
 export const DocumentContentHistoryTimelinePayload: TypeMeta = {
   name: "DocumentContentHistoryTimelinePayload",
-  fields: {},
+  get fields() {
+    return DocumentContentHistoryTimelinePayloadFields;
+  },
 };
 export const DocumentContentHistoryType: TypeMeta = {
   name: "DocumentContentHistoryType",
-  fields: {},
+  get fields() {
+    return DocumentContentHistoryTypeFields;
+  },
 };
-export const DocumentContentRevision: TypeMeta = { name: "DocumentContentRevision", fields: {} };
-export const DocumentEdge: TypeMeta = { name: "DocumentEdge", fields: {} };
-export const DocumentNotification: TypeMeta = { name: "DocumentNotification", fields: {} };
-export const DocumentPayload: TypeMeta = { name: "DocumentPayload", fields: {} };
-export const DocumentSearchPayload: TypeMeta = { name: "DocumentSearchPayload", fields: {} };
-export const DocumentSearchResult: TypeMeta = { name: "DocumentSearchResult", fields: {} };
-export const DocumentSearchResultEdge: TypeMeta = { name: "DocumentSearchResultEdge", fields: {} };
-export const Draft: TypeMeta = { name: "Draft", fields: {} };
-export const DraftConnection: TypeMeta = { name: "DraftConnection", fields: {} };
-export const DraftEdge: TypeMeta = { name: "DraftEdge", fields: {} };
-export const DraftGenerationMetadata: TypeMeta = { name: "DraftGenerationMetadata", fields: {} };
-export const EmailIntakeAddress: TypeMeta = { name: "EmailIntakeAddress", fields: {} };
+export const DocumentContentRevision: TypeMeta = {
+  name: "DocumentContentRevision",
+  get fields() {
+    return DocumentContentRevisionFields;
+  },
+};
+export const DocumentEdge: TypeMeta = {
+  name: "DocumentEdge",
+  get fields() {
+    return DocumentEdgeFields;
+  },
+};
+export const DocumentNotification: TypeMeta = {
+  name: "DocumentNotification",
+  get fields() {
+    return DocumentNotificationFields;
+  },
+};
+export const DocumentPayload: TypeMeta = {
+  name: "DocumentPayload",
+  get fields() {
+    return DocumentPayloadFields;
+  },
+};
+export const DocumentSearchPayload: TypeMeta = {
+  name: "DocumentSearchPayload",
+  get fields() {
+    return DocumentSearchPayloadFields;
+  },
+};
+export const DocumentSearchResult: TypeMeta = {
+  name: "DocumentSearchResult",
+  get fields() {
+    return DocumentSearchResultFields;
+  },
+};
+export const DocumentSearchResultEdge: TypeMeta = {
+  name: "DocumentSearchResultEdge",
+  get fields() {
+    return DocumentSearchResultEdgeFields;
+  },
+};
+export const Draft: TypeMeta = {
+  name: "Draft",
+  get fields() {
+    return DraftFields;
+  },
+};
+export const DraftConnection: TypeMeta = {
+  name: "DraftConnection",
+  get fields() {
+    return DraftConnectionFields;
+  },
+};
+export const DraftEdge: TypeMeta = {
+  name: "DraftEdge",
+  get fields() {
+    return DraftEdgeFields;
+  },
+};
+export const DraftGenerationMetadata: TypeMeta = {
+  name: "DraftGenerationMetadata",
+  get fields() {
+    return DraftGenerationMetadataFields;
+  },
+};
+export const EmailIntakeAddress: TypeMeta = {
+  name: "EmailIntakeAddress",
+  get fields() {
+    return EmailIntakeAddressFields;
+  },
+};
 export const EmailIntakeAddressPayload: TypeMeta = {
   name: "EmailIntakeAddressPayload",
-  fields: {},
+  get fields() {
+    return EmailIntakeAddressPayloadFields;
+  },
 };
 export const EmailIntakeAddressRefreshSesDomainStatusPayload: TypeMeta = {
   name: "EmailIntakeAddressRefreshSesDomainStatusPayload",
-  fields: {},
+  get fields() {
+    return EmailIntakeAddressRefreshSesDomainStatusPayloadFields;
+  },
 };
-export const EmailUnsubscribePayload: TypeMeta = { name: "EmailUnsubscribePayload", fields: {} };
+export const EmailUnsubscribePayload: TypeMeta = {
+  name: "EmailUnsubscribePayload",
+  get fields() {
+    return EmailUnsubscribePayloadFields;
+  },
+};
 export const EmailUserAccountAuthChallengeResponse: TypeMeta = {
   name: "EmailUserAccountAuthChallengeResponse",
-  fields: {},
+  get fields() {
+    return EmailUserAccountAuthChallengeResponseFields;
+  },
 };
-export const Emoji: TypeMeta = { name: "Emoji", fields: {} };
-export const EmojiConnection: TypeMeta = { name: "EmojiConnection", fields: {} };
-export const EmojiEdge: TypeMeta = { name: "EmojiEdge", fields: {} };
-export const EmojiPayload: TypeMeta = { name: "EmojiPayload", fields: {} };
-export const Entity: TypeMeta = { name: "Entity", fields: {} };
-export const EntityExternalLink: TypeMeta = { name: "EntityExternalLink", fields: {} };
+export const Emoji: TypeMeta = {
+  name: "Emoji",
+  get fields() {
+    return EmojiFields;
+  },
+};
+export const EmojiConnection: TypeMeta = {
+  name: "EmojiConnection",
+  get fields() {
+    return EmojiConnectionFields;
+  },
+};
+export const EmojiEdge: TypeMeta = {
+  name: "EmojiEdge",
+  get fields() {
+    return EmojiEdgeFields;
+  },
+};
+export const EmojiPayload: TypeMeta = {
+  name: "EmojiPayload",
+  get fields() {
+    return EmojiPayloadFields;
+  },
+};
+export const Entity: TypeMeta = {
+  name: "Entity",
+  get fields() {
+    return EntityFields;
+  },
+};
+export const EntityExternalLink: TypeMeta = {
+  name: "EntityExternalLink",
+  get fields() {
+    return EntityExternalLinkFields;
+  },
+};
 export const EntityExternalLinkConnection: TypeMeta = {
   name: "EntityExternalLinkConnection",
-  fields: {},
+  get fields() {
+    return EntityExternalLinkConnectionFields;
+  },
 };
-export const EntityExternalLinkEdge: TypeMeta = { name: "EntityExternalLinkEdge", fields: {} };
+export const EntityExternalLinkEdge: TypeMeta = {
+  name: "EntityExternalLinkEdge",
+  get fields() {
+    return EntityExternalLinkEdgeFields;
+  },
+};
 export const EntityExternalLinkPayload: TypeMeta = {
   name: "EntityExternalLinkPayload",
-  fields: {},
+  get fields() {
+    return EntityExternalLinkPayloadFields;
+  },
 };
-export const EventTrackingPayload: TypeMeta = { name: "EventTrackingPayload", fields: {} };
-export const ExternalEntityInfo: TypeMeta = { name: "ExternalEntityInfo", fields: {} };
+export const EventTrackingPayload: TypeMeta = {
+  name: "EventTrackingPayload",
+  get fields() {
+    return EventTrackingPayloadFields;
+  },
+};
+export const ExternalEntityInfo: TypeMeta = {
+  name: "ExternalEntityInfo",
+  get fields() {
+    return ExternalEntityInfoFields;
+  },
+};
 export const ExternalEntityInfoGithubMetadata: TypeMeta = {
   name: "ExternalEntityInfoGithubMetadata",
-  fields: {},
+  get fields() {
+    return ExternalEntityInfoGithubMetadataFields;
+  },
 };
 export const ExternalEntityInfoJiraMetadata: TypeMeta = {
   name: "ExternalEntityInfoJiraMetadata",
-  fields: {},
+  get fields() {
+    return ExternalEntityInfoJiraMetadataFields;
+  },
 };
 export const ExternalEntitySlackMetadata: TypeMeta = {
   name: "ExternalEntitySlackMetadata",
-  fields: {},
+  get fields() {
+    return ExternalEntitySlackMetadataFields;
+  },
 };
-export const ExternalUser: TypeMeta = { name: "ExternalUser", fields: {} };
-export const ExternalUserConnection: TypeMeta = { name: "ExternalUserConnection", fields: {} };
-export const ExternalUserEdge: TypeMeta = { name: "ExternalUserEdge", fields: {} };
-export const Facet: TypeMeta = { name: "Facet", fields: {} };
-export const FacetConnection: TypeMeta = { name: "FacetConnection", fields: {} };
-export const FacetEdge: TypeMeta = { name: "FacetEdge", fields: {} };
-export const Favorite: TypeMeta = { name: "Favorite", fields: {} };
-export const FavoriteConnection: TypeMeta = { name: "FavoriteConnection", fields: {} };
-export const FavoriteEdge: TypeMeta = { name: "FavoriteEdge", fields: {} };
-export const FavoritePayload: TypeMeta = { name: "FavoritePayload", fields: {} };
-export const FeedItem: TypeMeta = { name: "FeedItem", fields: {} };
-export const FeedItemConnection: TypeMeta = { name: "FeedItemConnection", fields: {} };
-export const FeedItemEdge: TypeMeta = { name: "FeedItemEdge", fields: {} };
-export const FileUploadDeletePayload: TypeMeta = { name: "FileUploadDeletePayload", fields: {} };
-export const FrontAttachmentPayload: TypeMeta = { name: "FrontAttachmentPayload", fields: {} };
-export const GitAutomationState: TypeMeta = { name: "GitAutomationState", fields: {} };
+export const ExternalUser: TypeMeta = {
+  name: "ExternalUser",
+  get fields() {
+    return ExternalUserFields;
+  },
+};
+export const ExternalUserConnection: TypeMeta = {
+  name: "ExternalUserConnection",
+  get fields() {
+    return ExternalUserConnectionFields;
+  },
+};
+export const ExternalUserEdge: TypeMeta = {
+  name: "ExternalUserEdge",
+  get fields() {
+    return ExternalUserEdgeFields;
+  },
+};
+export const Facet: TypeMeta = {
+  name: "Facet",
+  get fields() {
+    return FacetFields;
+  },
+};
+export const FacetConnection: TypeMeta = {
+  name: "FacetConnection",
+  get fields() {
+    return FacetConnectionFields;
+  },
+};
+export const FacetEdge: TypeMeta = {
+  name: "FacetEdge",
+  get fields() {
+    return FacetEdgeFields;
+  },
+};
+export const Favorite: TypeMeta = {
+  name: "Favorite",
+  get fields() {
+    return FavoriteFields;
+  },
+};
+export const FavoriteConnection: TypeMeta = {
+  name: "FavoriteConnection",
+  get fields() {
+    return FavoriteConnectionFields;
+  },
+};
+export const FavoriteEdge: TypeMeta = {
+  name: "FavoriteEdge",
+  get fields() {
+    return FavoriteEdgeFields;
+  },
+};
+export const FavoritePayload: TypeMeta = {
+  name: "FavoritePayload",
+  get fields() {
+    return FavoritePayloadFields;
+  },
+};
+export const FeedItem: TypeMeta = {
+  name: "FeedItem",
+  get fields() {
+    return FeedItemFields;
+  },
+};
+export const FeedItemConnection: TypeMeta = {
+  name: "FeedItemConnection",
+  get fields() {
+    return FeedItemConnectionFields;
+  },
+};
+export const FeedItemEdge: TypeMeta = {
+  name: "FeedItemEdge",
+  get fields() {
+    return FeedItemEdgeFields;
+  },
+};
+export const FileUploadDeletePayload: TypeMeta = {
+  name: "FileUploadDeletePayload",
+  get fields() {
+    return FileUploadDeletePayloadFields;
+  },
+};
+export const FrontAttachmentPayload: TypeMeta = {
+  name: "FrontAttachmentPayload",
+  get fields() {
+    return FrontAttachmentPayloadFields;
+  },
+};
+export const GitAutomationState: TypeMeta = {
+  name: "GitAutomationState",
+  get fields() {
+    return GitAutomationStateFields;
+  },
+};
 export const GitAutomationStateConnection: TypeMeta = {
   name: "GitAutomationStateConnection",
-  fields: {},
+  get fields() {
+    return GitAutomationStateConnectionFields;
+  },
 };
-export const GitAutomationStateEdge: TypeMeta = { name: "GitAutomationStateEdge", fields: {} };
+export const GitAutomationStateEdge: TypeMeta = {
+  name: "GitAutomationStateEdge",
+  get fields() {
+    return GitAutomationStateEdgeFields;
+  },
+};
 export const GitAutomationStatePayload: TypeMeta = {
   name: "GitAutomationStatePayload",
-  fields: {},
+  get fields() {
+    return GitAutomationStatePayloadFields;
+  },
 };
 export const GitAutomationTargetBranch: TypeMeta = {
   name: "GitAutomationTargetBranch",
-  fields: {},
+  get fields() {
+    return GitAutomationTargetBranchFields;
+  },
 };
 export const GitAutomationTargetBranchPayload: TypeMeta = {
   name: "GitAutomationTargetBranchPayload",
-  fields: {},
+  get fields() {
+    return GitAutomationTargetBranchPayloadFields;
+  },
 };
 export const GitHubCommitIntegrationPayload: TypeMeta = {
   name: "GitHubCommitIntegrationPayload",
-  fields: {},
+  get fields() {
+    return GitHubCommitIntegrationPayloadFields;
+  },
 };
 export const GitHubEnterpriseServerInstallVerificationPayload: TypeMeta = {
   name: "GitHubEnterpriseServerInstallVerificationPayload",
-  fields: {},
+  get fields() {
+    return GitHubEnterpriseServerInstallVerificationPayloadFields;
+  },
 };
 export const GitHubEnterpriseServerPayload: TypeMeta = {
   name: "GitHubEnterpriseServerPayload",
-  fields: {},
+  get fields() {
+    return GitHubEnterpriseServerPayloadFields;
+  },
 };
 export const GitHubIntegrationConnectDetails: TypeMeta = {
   name: "GitHubIntegrationConnectDetails",
-  fields: {},
+  get fields() {
+    return GitHubIntegrationConnectDetailsFields;
+  },
 };
 export const GitLabIntegrationCreatePayload: TypeMeta = {
   name: "GitLabIntegrationCreatePayload",
-  fields: {},
+  get fields() {
+    return GitLabIntegrationCreatePayloadFields;
+  },
 };
 export const GitLabTestConnectionPayload: TypeMeta = {
   name: "GitLabTestConnectionPayload",
-  fields: {},
+  get fields() {
+    return GitLabTestConnectionPayloadFields;
+  },
 };
-export const IdentityProvider: TypeMeta = { name: "IdentityProvider", fields: {} };
+export const IdentityProvider: TypeMeta = {
+  name: "IdentityProvider",
+  get fields() {
+    return IdentityProviderFields;
+  },
+};
 export const ImageUploadFromUrlPayload: TypeMeta = {
   name: "ImageUploadFromUrlPayload",
-  fields: {},
+  get fields() {
+    return ImageUploadFromUrlPayloadFields;
+  },
 };
 export const InboxNotificationUpdatePayload: TypeMeta = {
   name: "InboxNotificationUpdatePayload",
-  fields: {},
+  get fields() {
+    return InboxNotificationUpdatePayloadFields;
+  },
 };
-export const Initiative: TypeMeta = { name: "Initiative", fields: {} };
-export const InitiativeArchivePayload: TypeMeta = { name: "InitiativeArchivePayload", fields: {} };
-export const InitiativeConnection: TypeMeta = { name: "InitiativeConnection", fields: {} };
-export const InitiativeEdge: TypeMeta = { name: "InitiativeEdge", fields: {} };
+export const Initiative: TypeMeta = {
+  name: "Initiative",
+  get fields() {
+    return InitiativeFields;
+  },
+};
+export const InitiativeArchivePayload: TypeMeta = {
+  name: "InitiativeArchivePayload",
+  get fields() {
+    return InitiativeArchivePayloadFields;
+  },
+};
+export const InitiativeConnection: TypeMeta = {
+  name: "InitiativeConnection",
+  get fields() {
+    return InitiativeConnectionFields;
+  },
+};
+export const InitiativeEdge: TypeMeta = {
+  name: "InitiativeEdge",
+  get fields() {
+    return InitiativeEdgeFields;
+  },
+};
 export const InitiativeFilterSuggestionPayload: TypeMeta = {
   name: "InitiativeFilterSuggestionPayload",
-  fields: {},
+  get fields() {
+    return InitiativeFilterSuggestionPayloadFields;
+  },
 };
-export const InitiativeHistory: TypeMeta = { name: "InitiativeHistory", fields: {} };
+export const InitiativeHistory: TypeMeta = {
+  name: "InitiativeHistory",
+  get fields() {
+    return InitiativeHistoryFields;
+  },
+};
 export const InitiativeHistoryConnection: TypeMeta = {
   name: "InitiativeHistoryConnection",
-  fields: {},
+  get fields() {
+    return InitiativeHistoryConnectionFields;
+  },
 };
-export const InitiativeHistoryEdge: TypeMeta = { name: "InitiativeHistoryEdge", fields: {} };
-export const InitiativeLabel: TypeMeta = { name: "InitiativeLabel", fields: {} };
+export const InitiativeHistoryEdge: TypeMeta = {
+  name: "InitiativeHistoryEdge",
+  get fields() {
+    return InitiativeHistoryEdgeFields;
+  },
+};
+export const InitiativeLabel: TypeMeta = {
+  name: "InitiativeLabel",
+  get fields() {
+    return InitiativeLabelFields;
+  },
+};
 export const InitiativeLabelConnection: TypeMeta = {
   name: "InitiativeLabelConnection",
-  fields: {},
+  get fields() {
+    return InitiativeLabelConnectionFields;
+  },
 };
-export const InitiativeLabelEdge: TypeMeta = { name: "InitiativeLabelEdge", fields: {} };
-export const InitiativeLabelPayload: TypeMeta = { name: "InitiativeLabelPayload", fields: {} };
+export const InitiativeLabelEdge: TypeMeta = {
+  name: "InitiativeLabelEdge",
+  get fields() {
+    return InitiativeLabelEdgeFields;
+  },
+};
+export const InitiativeLabelPayload: TypeMeta = {
+  name: "InitiativeLabelPayload",
+  get fields() {
+    return InitiativeLabelPayloadFields;
+  },
+};
 export const InitiativeLeadTeamChangeImpact: TypeMeta = {
   name: "InitiativeLeadTeamChangeImpact",
-  fields: {},
+  get fields() {
+    return InitiativeLeadTeamChangeImpactFields;
+  },
 };
 export const InitiativeLeadTeamUpdatePayload: TypeMeta = {
   name: "InitiativeLeadTeamUpdatePayload",
-  fields: {},
+  get fields() {
+    return InitiativeLeadTeamUpdatePayloadFields;
+  },
 };
-export const InitiativeNotification: TypeMeta = { name: "InitiativeNotification", fields: {} };
+export const InitiativeNotification: TypeMeta = {
+  name: "InitiativeNotification",
+  get fields() {
+    return InitiativeNotificationFields;
+  },
+};
 export const InitiativeNotificationSubscription: TypeMeta = {
   name: "InitiativeNotificationSubscription",
-  fields: {},
+  get fields() {
+    return InitiativeNotificationSubscriptionFields;
+  },
 };
-export const InitiativePayload: TypeMeta = { name: "InitiativePayload", fields: {} };
-export const InitiativeRelation: TypeMeta = { name: "InitiativeRelation", fields: {} };
+export const InitiativePayload: TypeMeta = {
+  name: "InitiativePayload",
+  get fields() {
+    return InitiativePayloadFields;
+  },
+};
+export const InitiativeRelation: TypeMeta = {
+  name: "InitiativeRelation",
+  get fields() {
+    return InitiativeRelationFields;
+  },
+};
 export const InitiativeRelationConnection: TypeMeta = {
   name: "InitiativeRelationConnection",
-  fields: {},
+  get fields() {
+    return InitiativeRelationConnectionFields;
+  },
 };
-export const InitiativeRelationEdge: TypeMeta = { name: "InitiativeRelationEdge", fields: {} };
+export const InitiativeRelationEdge: TypeMeta = {
+  name: "InitiativeRelationEdge",
+  get fields() {
+    return InitiativeRelationEdgeFields;
+  },
+};
 export const InitiativeRelationPayload: TypeMeta = {
   name: "InitiativeRelationPayload",
-  fields: {},
+  get fields() {
+    return InitiativeRelationPayloadFields;
+  },
 };
-export const InitiativeToProject: TypeMeta = { name: "InitiativeToProject", fields: {} };
+export const InitiativeToProject: TypeMeta = {
+  name: "InitiativeToProject",
+  get fields() {
+    return InitiativeToProjectFields;
+  },
+};
 export const InitiativeToProjectConnection: TypeMeta = {
   name: "InitiativeToProjectConnection",
-  fields: {},
+  get fields() {
+    return InitiativeToProjectConnectionFields;
+  },
 };
-export const InitiativeToProjectEdge: TypeMeta = { name: "InitiativeToProjectEdge", fields: {} };
+export const InitiativeToProjectEdge: TypeMeta = {
+  name: "InitiativeToProjectEdge",
+  get fields() {
+    return InitiativeToProjectEdgeFields;
+  },
+};
 export const InitiativeToProjectPayload: TypeMeta = {
   name: "InitiativeToProjectPayload",
-  fields: {},
+  get fields() {
+    return InitiativeToProjectPayloadFields;
+  },
 };
-export const InitiativeUpdate: TypeMeta = { name: "InitiativeUpdate", fields: {} };
+export const InitiativeUpdate: TypeMeta = {
+  name: "InitiativeUpdate",
+  get fields() {
+    return InitiativeUpdateFields;
+  },
+};
 export const InitiativeUpdateArchivePayload: TypeMeta = {
   name: "InitiativeUpdateArchivePayload",
-  fields: {},
+  get fields() {
+    return InitiativeUpdateArchivePayloadFields;
+  },
 };
 export const InitiativeUpdateConnection: TypeMeta = {
   name: "InitiativeUpdateConnection",
-  fields: {},
+  get fields() {
+    return InitiativeUpdateConnectionFields;
+  },
 };
-export const InitiativeUpdateEdge: TypeMeta = { name: "InitiativeUpdateEdge", fields: {} };
-export const InitiativeUpdatePayload: TypeMeta = { name: "InitiativeUpdatePayload", fields: {} };
+export const InitiativeUpdateEdge: TypeMeta = {
+  name: "InitiativeUpdateEdge",
+  get fields() {
+    return InitiativeUpdateEdgeFields;
+  },
+};
+export const InitiativeUpdatePayload: TypeMeta = {
+  name: "InitiativeUpdatePayload",
+  get fields() {
+    return InitiativeUpdatePayloadFields;
+  },
+};
 export const InitiativeUpdateReminderPayload: TypeMeta = {
   name: "InitiativeUpdateReminderPayload",
-  fields: {},
+  get fields() {
+    return InitiativeUpdateReminderPayloadFields;
+  },
 };
-export const Integration: TypeMeta = { name: "Integration", fields: {} };
-export const IntegrationConnection: TypeMeta = { name: "IntegrationConnection", fields: {} };
+export const Integration: TypeMeta = {
+  name: "Integration",
+  get fields() {
+    return IntegrationFields;
+  },
+};
+export const IntegrationConnection: TypeMeta = {
+  name: "IntegrationConnection",
+  get fields() {
+    return IntegrationConnectionFields;
+  },
+};
 export const IntegrationDatadogEnvironment: TypeMeta = {
   name: "IntegrationDatadogEnvironment",
-  fields: {},
+  get fields() {
+    return IntegrationDatadogEnvironmentFields;
+  },
 };
 export const IntegrationDatadogEnvironmentsPayload: TypeMeta = {
   name: "IntegrationDatadogEnvironmentsPayload",
-  fields: {},
+  get fields() {
+    return IntegrationDatadogEnvironmentsPayloadFields;
+  },
 };
-export const IntegrationEdge: TypeMeta = { name: "IntegrationEdge", fields: {} };
+export const IntegrationEdge: TypeMeta = {
+  name: "IntegrationEdge",
+  get fields() {
+    return IntegrationEdgeFields;
+  },
+};
 export const IntegrationGithubRemoveCodeAccessPayload: TypeMeta = {
   name: "IntegrationGithubRemoveCodeAccessPayload",
-  fields: {},
+  get fields() {
+    return IntegrationGithubRemoveCodeAccessPayloadFields;
+  },
 };
 export const IntegrationHasScopesPayload: TypeMeta = {
   name: "IntegrationHasScopesPayload",
-  fields: {},
+  get fields() {
+    return IntegrationHasScopesPayloadFields;
+  },
 };
-export const IntegrationPayload: TypeMeta = { name: "IntegrationPayload", fields: {} };
+export const IntegrationPayload: TypeMeta = {
+  name: "IntegrationPayload",
+  get fields() {
+    return IntegrationPayloadFields;
+  },
+};
 export const IntegrationRequestPayload: TypeMeta = {
   name: "IntegrationRequestPayload",
-  fields: {},
+  get fields() {
+    return IntegrationRequestPayloadFields;
+  },
 };
 export const IntegrationSlackWorkspaceNamePayload: TypeMeta = {
   name: "IntegrationSlackWorkspaceNamePayload",
-  fields: {},
+  get fields() {
+    return IntegrationSlackWorkspaceNamePayloadFields;
+  },
 };
-export const IntegrationTemplate: TypeMeta = { name: "IntegrationTemplate", fields: {} };
+export const IntegrationTemplate: TypeMeta = {
+  name: "IntegrationTemplate",
+  get fields() {
+    return IntegrationTemplateFields;
+  },
+};
 export const IntegrationTemplateConnection: TypeMeta = {
   name: "IntegrationTemplateConnection",
-  fields: {},
+  get fields() {
+    return IntegrationTemplateConnectionFields;
+  },
 };
-export const IntegrationTemplateEdge: TypeMeta = { name: "IntegrationTemplateEdge", fields: {} };
+export const IntegrationTemplateEdge: TypeMeta = {
+  name: "IntegrationTemplateEdge",
+  get fields() {
+    return IntegrationTemplateEdgeFields;
+  },
+};
 export const IntegrationTemplatePayload: TypeMeta = {
   name: "IntegrationTemplatePayload",
-  fields: {},
+  get fields() {
+    return IntegrationTemplatePayloadFields;
+  },
 };
-export const IntegrationsSettings: TypeMeta = { name: "IntegrationsSettings", fields: {} };
+export const IntegrationsSettings: TypeMeta = {
+  name: "IntegrationsSettings",
+  get fields() {
+    return IntegrationsSettingsFields;
+  },
+};
 export const IntegrationsSettingsPayload: TypeMeta = {
   name: "IntegrationsSettingsPayload",
-  fields: {},
+  get fields() {
+    return IntegrationsSettingsPayloadFields;
+  },
 };
-export const Issue: TypeMeta = { name: "Issue", fields: {} };
-export const IssueArchivePayload: TypeMeta = { name: "IssueArchivePayload", fields: {} };
-export const IssueBatchPayload: TypeMeta = { name: "IssueBatchPayload", fields: {} };
-export const IssueConnection: TypeMeta = { name: "IssueConnection", fields: {} };
-export const IssueDraft: TypeMeta = { name: "IssueDraft", fields: {} };
-export const IssueDraftConnection: TypeMeta = { name: "IssueDraftConnection", fields: {} };
-export const IssueDraftEdge: TypeMeta = { name: "IssueDraftEdge", fields: {} };
-export const IssueEdge: TypeMeta = { name: "IssueEdge", fields: {} };
+export const Issue: TypeMeta = {
+  name: "Issue",
+  get fields() {
+    return IssueFields;
+  },
+};
+export const IssueArchivePayload: TypeMeta = {
+  name: "IssueArchivePayload",
+  get fields() {
+    return IssueArchivePayloadFields;
+  },
+};
+export const IssueBatchPayload: TypeMeta = {
+  name: "IssueBatchPayload",
+  get fields() {
+    return IssueBatchPayloadFields;
+  },
+};
+export const IssueConnection: TypeMeta = {
+  name: "IssueConnection",
+  get fields() {
+    return IssueConnectionFields;
+  },
+};
+export const IssueDraft: TypeMeta = {
+  name: "IssueDraft",
+  get fields() {
+    return IssueDraftFields;
+  },
+};
+export const IssueDraftConnection: TypeMeta = {
+  name: "IssueDraftConnection",
+  get fields() {
+    return IssueDraftConnectionFields;
+  },
+};
+export const IssueDraftEdge: TypeMeta = {
+  name: "IssueDraftEdge",
+  get fields() {
+    return IssueDraftEdgeFields;
+  },
+};
+export const IssueEdge: TypeMeta = {
+  name: "IssueEdge",
+  get fields() {
+    return IssueEdgeFields;
+  },
+};
 export const IssueFilterSuggestionPayload: TypeMeta = {
   name: "IssueFilterSuggestionPayload",
-  fields: {},
+  get fields() {
+    return IssueFilterSuggestionPayloadFields;
+  },
 };
-export const IssueHistory: TypeMeta = { name: "IssueHistory", fields: {} };
-export const IssueHistoryConnection: TypeMeta = { name: "IssueHistoryConnection", fields: {} };
-export const IssueHistoryEdge: TypeMeta = { name: "IssueHistoryEdge", fields: {} };
+export const IssueHistory: TypeMeta = {
+  name: "IssueHistory",
+  get fields() {
+    return IssueHistoryFields;
+  },
+};
+export const IssueHistoryConnection: TypeMeta = {
+  name: "IssueHistoryConnection",
+  get fields() {
+    return IssueHistoryConnectionFields;
+  },
+};
+export const IssueHistoryEdge: TypeMeta = {
+  name: "IssueHistoryEdge",
+  get fields() {
+    return IssueHistoryEdgeFields;
+  },
+};
 export const IssueHistoryTriageRuleError: TypeMeta = {
   name: "IssueHistoryTriageRuleError",
-  fields: {},
+  get fields() {
+    return IssueHistoryTriageRuleErrorFields;
+  },
 };
 export const IssueHistoryTriageRuleMetadata: TypeMeta = {
   name: "IssueHistoryTriageRuleMetadata",
-  fields: {},
+  get fields() {
+    return IssueHistoryTriageRuleMetadataFields;
+  },
 };
 export const IssueHistoryWorkflowMetadata: TypeMeta = {
   name: "IssueHistoryWorkflowMetadata",
-  fields: {},
+  get fields() {
+    return IssueHistoryWorkflowMetadataFields;
+  },
 };
-export const IssueImport: TypeMeta = { name: "IssueImport", fields: {} };
-export const IssueImportCheckPayload: TypeMeta = { name: "IssueImportCheckPayload", fields: {} };
-export const IssueImportDeletePayload: TypeMeta = { name: "IssueImportDeletePayload", fields: {} };
+export const IssueImport: TypeMeta = {
+  name: "IssueImport",
+  get fields() {
+    return IssueImportFields;
+  },
+};
+export const IssueImportCheckPayload: TypeMeta = {
+  name: "IssueImportCheckPayload",
+  get fields() {
+    return IssueImportCheckPayloadFields;
+  },
+};
+export const IssueImportDeletePayload: TypeMeta = {
+  name: "IssueImportDeletePayload",
+  get fields() {
+    return IssueImportDeletePayloadFields;
+  },
+};
 export const IssueImportJqlCheckPayload: TypeMeta = {
   name: "IssueImportJqlCheckPayload",
-  fields: {},
+  get fields() {
+    return IssueImportJqlCheckPayloadFields;
+  },
 };
-export const IssueImportPayload: TypeMeta = { name: "IssueImportPayload", fields: {} };
+export const IssueImportPayload: TypeMeta = {
+  name: "IssueImportPayload",
+  get fields() {
+    return IssueImportPayloadFields;
+  },
+};
 export const IssueImportSyncCheckPayload: TypeMeta = {
   name: "IssueImportSyncCheckPayload",
-  fields: {},
+  get fields() {
+    return IssueImportSyncCheckPayloadFields;
+  },
 };
-export const IssueLabel: TypeMeta = { name: "IssueLabel", fields: {} };
-export const IssueLabelConnection: TypeMeta = { name: "IssueLabelConnection", fields: {} };
-export const IssueLabelEdge: TypeMeta = { name: "IssueLabelEdge", fields: {} };
-export const IssueLabelPayload: TypeMeta = { name: "IssueLabelPayload", fields: {} };
-export const IssueNotification: TypeMeta = { name: "IssueNotification", fields: {} };
-export const IssuePayload: TypeMeta = { name: "IssuePayload", fields: {} };
-export const IssuePriorityValue: TypeMeta = { name: "IssuePriorityValue", fields: {} };
-export const IssueRelation: TypeMeta = { name: "IssueRelation", fields: {} };
-export const IssueRelationConnection: TypeMeta = { name: "IssueRelationConnection", fields: {} };
-export const IssueRelationEdge: TypeMeta = { name: "IssueRelationEdge", fields: {} };
+export const IssueLabel: TypeMeta = {
+  name: "IssueLabel",
+  get fields() {
+    return IssueLabelFields;
+  },
+};
+export const IssueLabelConnection: TypeMeta = {
+  name: "IssueLabelConnection",
+  get fields() {
+    return IssueLabelConnectionFields;
+  },
+};
+export const IssueLabelEdge: TypeMeta = {
+  name: "IssueLabelEdge",
+  get fields() {
+    return IssueLabelEdgeFields;
+  },
+};
+export const IssueLabelPayload: TypeMeta = {
+  name: "IssueLabelPayload",
+  get fields() {
+    return IssueLabelPayloadFields;
+  },
+};
+export const IssueNotification: TypeMeta = {
+  name: "IssueNotification",
+  get fields() {
+    return IssueNotificationFields;
+  },
+};
+export const IssuePayload: TypeMeta = {
+  name: "IssuePayload",
+  get fields() {
+    return IssuePayloadFields;
+  },
+};
+export const IssuePriorityValue: TypeMeta = {
+  name: "IssuePriorityValue",
+  get fields() {
+    return IssuePriorityValueFields;
+  },
+};
+export const IssueRelation: TypeMeta = {
+  name: "IssueRelation",
+  get fields() {
+    return IssueRelationFields;
+  },
+};
+export const IssueRelationConnection: TypeMeta = {
+  name: "IssueRelationConnection",
+  get fields() {
+    return IssueRelationConnectionFields;
+  },
+};
+export const IssueRelationEdge: TypeMeta = {
+  name: "IssueRelationEdge",
+  get fields() {
+    return IssueRelationEdgeFields;
+  },
+};
 export const IssueRelationHistoryPayload: TypeMeta = {
   name: "IssueRelationHistoryPayload",
-  fields: {},
+  get fields() {
+    return IssueRelationHistoryPayloadFields;
+  },
 };
-export const IssueRelationPayload: TypeMeta = { name: "IssueRelationPayload", fields: {} };
-export const IssueSearchPayload: TypeMeta = { name: "IssueSearchPayload", fields: {} };
-export const IssueSearchResult: TypeMeta = { name: "IssueSearchResult", fields: {} };
-export const IssueSearchResultEdge: TypeMeta = { name: "IssueSearchResultEdge", fields: {} };
-export const IssueSharedAccess: TypeMeta = { name: "IssueSharedAccess", fields: {} };
-export const IssueStateSpan: TypeMeta = { name: "IssueStateSpan", fields: {} };
-export const IssueStateSpanConnection: TypeMeta = { name: "IssueStateSpanConnection", fields: {} };
-export const IssueStateSpanEdge: TypeMeta = { name: "IssueStateSpanEdge", fields: {} };
-export const IssueSuggestion: TypeMeta = { name: "IssueSuggestion", fields: {} };
+export const IssueRelationPayload: TypeMeta = {
+  name: "IssueRelationPayload",
+  get fields() {
+    return IssueRelationPayloadFields;
+  },
+};
+export const IssueSearchPayload: TypeMeta = {
+  name: "IssueSearchPayload",
+  get fields() {
+    return IssueSearchPayloadFields;
+  },
+};
+export const IssueSearchResult: TypeMeta = {
+  name: "IssueSearchResult",
+  get fields() {
+    return IssueSearchResultFields;
+  },
+};
+export const IssueSearchResultEdge: TypeMeta = {
+  name: "IssueSearchResultEdge",
+  get fields() {
+    return IssueSearchResultEdgeFields;
+  },
+};
+export const IssueSharedAccess: TypeMeta = {
+  name: "IssueSharedAccess",
+  get fields() {
+    return IssueSharedAccessFields;
+  },
+};
+export const IssueStateSpan: TypeMeta = {
+  name: "IssueStateSpan",
+  get fields() {
+    return IssueStateSpanFields;
+  },
+};
+export const IssueStateSpanConnection: TypeMeta = {
+  name: "IssueStateSpanConnection",
+  get fields() {
+    return IssueStateSpanConnectionFields;
+  },
+};
+export const IssueStateSpanEdge: TypeMeta = {
+  name: "IssueStateSpanEdge",
+  get fields() {
+    return IssueStateSpanEdgeFields;
+  },
+};
+export const IssueSuggestion: TypeMeta = {
+  name: "IssueSuggestion",
+  get fields() {
+    return IssueSuggestionFields;
+  },
+};
 export const IssueSuggestionConnection: TypeMeta = {
   name: "IssueSuggestionConnection",
-  fields: {},
+  get fields() {
+    return IssueSuggestionConnectionFields;
+  },
 };
-export const IssueSuggestionEdge: TypeMeta = { name: "IssueSuggestionEdge", fields: {} };
-export const IssueSuggestionMetadata: TypeMeta = { name: "IssueSuggestionMetadata", fields: {} };
+export const IssueSuggestionEdge: TypeMeta = {
+  name: "IssueSuggestionEdge",
+  get fields() {
+    return IssueSuggestionEdgeFields;
+  },
+};
+export const IssueSuggestionMetadata: TypeMeta = {
+  name: "IssueSuggestionMetadata",
+  get fields() {
+    return IssueSuggestionMetadataFields;
+  },
+};
 export const IssueSuggestionReasonReference: TypeMeta = {
   name: "IssueSuggestionReasonReference",
-  fields: {},
+  get fields() {
+    return IssueSuggestionReasonReferenceFields;
+  },
 };
 export const IssueTitleSuggestionFromCustomerRequestPayload: TypeMeta = {
   name: "IssueTitleSuggestionFromCustomerRequestPayload",
-  fields: {},
+  get fields() {
+    return IssueTitleSuggestionFromCustomerRequestPayloadFields;
+  },
 };
-export const IssueToRelease: TypeMeta = { name: "IssueToRelease", fields: {} };
-export const IssueToReleaseConnection: TypeMeta = { name: "IssueToReleaseConnection", fields: {} };
-export const IssueToReleaseEdge: TypeMeta = { name: "IssueToReleaseEdge", fields: {} };
-export const IssueToReleasePayload: TypeMeta = { name: "IssueToReleasePayload", fields: {} };
+export const IssueToRelease: TypeMeta = {
+  name: "IssueToRelease",
+  get fields() {
+    return IssueToReleaseFields;
+  },
+};
+export const IssueToReleaseConnection: TypeMeta = {
+  name: "IssueToReleaseConnection",
+  get fields() {
+    return IssueToReleaseConnectionFields;
+  },
+};
+export const IssueToReleaseEdge: TypeMeta = {
+  name: "IssueToReleaseEdge",
+  get fields() {
+    return IssueToReleaseEdgeFields;
+  },
+};
+export const IssueToReleasePayload: TypeMeta = {
+  name: "IssueToReleasePayload",
+  get fields() {
+    return IssueToReleasePayloadFields;
+  },
+};
 export const JiraFetchProjectStatusesPayload: TypeMeta = {
   name: "JiraFetchProjectStatusesPayload",
-  fields: {},
+  get fields() {
+    return JiraFetchProjectStatusesPayloadFields;
+  },
 };
 export const JiraProjectStatusesPayload: TypeMeta = {
   name: "JiraProjectStatusesPayload",
-  fields: {},
+  get fields() {
+    return JiraProjectStatusesPayloadFields;
+  },
+};
+export const JiraStatusNameCategoriesPayload: TypeMeta = {
+  name: "JiraStatusNameCategoriesPayload",
+  get fields() {
+    return JiraStatusNameCategoriesPayloadFields;
+  },
 };
 export const LabelNotificationSubscription: TypeMeta = {
   name: "LabelNotificationSubscription",
-  fields: {},
+  get fields() {
+    return LabelNotificationSubscriptionFields;
+  },
 };
-export const LogoutResponse: TypeMeta = { name: "LogoutResponse", fields: {} };
-export const LoopExecution: TypeMeta = { name: "LoopExecution", fields: {} };
-export const Meeting: TypeMeta = { name: "Meeting", fields: {} };
-export const MicrosoftTeamsChannel: TypeMeta = { name: "MicrosoftTeamsChannel", fields: {} };
+export const LogoutResponse: TypeMeta = {
+  name: "LogoutResponse",
+  get fields() {
+    return LogoutResponseFields;
+  },
+};
+export const LoopExecution: TypeMeta = {
+  name: "LoopExecution",
+  get fields() {
+    return LoopExecutionFields;
+  },
+};
+export const Meeting: TypeMeta = {
+  name: "Meeting",
+  get fields() {
+    return MeetingFields;
+  },
+};
+export const MicrosoftTeamsChannel: TypeMeta = {
+  name: "MicrosoftTeamsChannel",
+  get fields() {
+    return MicrosoftTeamsChannelFields;
+  },
+};
 export const MicrosoftTeamsChannelsPayload: TypeMeta = {
   name: "MicrosoftTeamsChannelsPayload",
-  fields: {},
+  get fields() {
+    return MicrosoftTeamsChannelsPayloadFields;
+  },
 };
-export const MicrosoftTeamsTeam: TypeMeta = { name: "MicrosoftTeamsTeam", fields: {} };
-export const Node: TypeMeta = { name: "Node", fields: {} };
-export const Notification: TypeMeta = { name: "Notification", fields: {} };
+export const MicrosoftTeamsTeam: TypeMeta = {
+  name: "MicrosoftTeamsTeam",
+  get fields() {
+    return MicrosoftTeamsTeamFields;
+  },
+};
+export const Node: TypeMeta = {
+  name: "Node",
+  get fields() {
+    return NodeFields;
+  },
+};
+export const Notification: TypeMeta = {
+  name: "Notification",
+  get fields() {
+    return NotificationFields;
+  },
+};
 export const NotificationArchivePayload: TypeMeta = {
   name: "NotificationArchivePayload",
-  fields: {},
+  get fields() {
+    return NotificationArchivePayloadFields;
+  },
 };
 export const NotificationBatchActionPayload: TypeMeta = {
   name: "NotificationBatchActionPayload",
-  fields: {},
+  get fields() {
+    return NotificationBatchActionPayloadFields;
+  },
 };
 export const NotificationCategoryPreferences: TypeMeta = {
   name: "NotificationCategoryPreferences",
-  fields: {},
+  get fields() {
+    return NotificationCategoryPreferencesFields;
+  },
 };
 export const NotificationChannelPreferences: TypeMeta = {
   name: "NotificationChannelPreferences",
-  fields: {},
+  get fields() {
+    return NotificationChannelPreferencesFields;
+  },
 };
-export const NotificationConnection: TypeMeta = { name: "NotificationConnection", fields: {} };
+export const NotificationConnection: TypeMeta = {
+  name: "NotificationConnection",
+  get fields() {
+    return NotificationConnectionFields;
+  },
+};
 export const NotificationDeliveryPreferences: TypeMeta = {
   name: "NotificationDeliveryPreferences",
-  fields: {},
+  get fields() {
+    return NotificationDeliveryPreferencesFields;
+  },
 };
 export const NotificationDeliveryPreferencesChannel: TypeMeta = {
   name: "NotificationDeliveryPreferencesChannel",
-  fields: {},
+  get fields() {
+    return NotificationDeliveryPreferencesChannelFields;
+  },
 };
 export const NotificationDeliveryPreferencesDay: TypeMeta = {
   name: "NotificationDeliveryPreferencesDay",
-  fields: {},
+  get fields() {
+    return NotificationDeliveryPreferencesDayFields;
+  },
 };
 export const NotificationDeliveryPreferencesSchedule: TypeMeta = {
   name: "NotificationDeliveryPreferencesSchedule",
-  fields: {},
+  get fields() {
+    return NotificationDeliveryPreferencesScheduleFields;
+  },
 };
-export const NotificationEdge: TypeMeta = { name: "NotificationEdge", fields: {} };
-export const NotificationPayload: TypeMeta = { name: "NotificationPayload", fields: {} };
-export const NotificationSubscription: TypeMeta = { name: "NotificationSubscription", fields: {} };
+export const NotificationEdge: TypeMeta = {
+  name: "NotificationEdge",
+  get fields() {
+    return NotificationEdgeFields;
+  },
+};
+export const NotificationPayload: TypeMeta = {
+  name: "NotificationPayload",
+  get fields() {
+    return NotificationPayloadFields;
+  },
+};
+export const NotificationSubscription: TypeMeta = {
+  name: "NotificationSubscription",
+  get fields() {
+    return NotificationSubscriptionFields;
+  },
+};
 export const NotificationSubscriptionConnection: TypeMeta = {
   name: "NotificationSubscriptionConnection",
-  fields: {},
+  get fields() {
+    return NotificationSubscriptionConnectionFields;
+  },
 };
 export const NotificationSubscriptionEdge: TypeMeta = {
   name: "NotificationSubscriptionEdge",
-  fields: {},
+  get fields() {
+    return NotificationSubscriptionEdgeFields;
+  },
 };
 export const NotificationSubscriptionPayload: TypeMeta = {
   name: "NotificationSubscriptionPayload",
-  fields: {},
+  get fields() {
+    return NotificationSubscriptionPayloadFields;
+  },
 };
-export const OAuthApplication: TypeMeta = { name: "OAuthApplication", fields: {} };
+export const OAuthApplication: TypeMeta = {
+  name: "OAuthApplication",
+  get fields() {
+    return OAuthApplicationFields;
+  },
+};
 export const OAuthApplicationArchivePayload: TypeMeta = {
   name: "OAuthApplicationArchivePayload",
-  fields: {},
+  get fields() {
+    return OAuthApplicationArchivePayloadFields;
+  },
+};
+export const OAuthApplicationCodingSessionTrustedSource: TypeMeta = {
+  name: "OAuthApplicationCodingSessionTrustedSource",
+  get fields() {
+    return OAuthApplicationCodingSessionTrustedSourceFields;
+  },
 };
 export const OAuthApplicationCreatePayload: TypeMeta = {
   name: "OAuthApplicationCreatePayload",
-  fields: {},
+  get fields() {
+    return OAuthApplicationCreatePayloadFields;
+  },
 };
-export const OAuthApplicationPayload: TypeMeta = { name: "OAuthApplicationPayload", fields: {} };
+export const OAuthApplicationPayload: TypeMeta = {
+  name: "OAuthApplicationPayload",
+  get fields() {
+    return OAuthApplicationPayloadFields;
+  },
+};
 export const OAuthApplicationRotateSecretPayload: TypeMeta = {
   name: "OAuthApplicationRotateSecretPayload",
-  fields: {},
+  get fields() {
+    return OAuthApplicationRotateSecretPayloadFields;
+  },
 };
 export const OAuthApplicationRotateWebhookSecretPayload: TypeMeta = {
   name: "OAuthApplicationRotateWebhookSecretPayload",
-  fields: {},
+  get fields() {
+    return OAuthApplicationRotateWebhookSecretPayloadFields;
+  },
 };
-export const OauthClientApproval: TypeMeta = { name: "OauthClientApproval", fields: {} };
+export const OauthClientApproval: TypeMeta = {
+  name: "OauthClientApproval",
+  get fields() {
+    return OauthClientApprovalFields;
+  },
+};
 export const OauthClientApprovalNotification: TypeMeta = {
   name: "OauthClientApprovalNotification",
-  fields: {},
+  get fields() {
+    return OauthClientApprovalNotificationFields;
+  },
 };
-export const Organization: TypeMeta = { name: "Organization", fields: {} };
+export const Organization: TypeMeta = {
+  name: "Organization",
+  get fields() {
+    return OrganizationFields;
+  },
+};
 export const OrganizationAcceptedOrExpiredInviteDetailsPayload: TypeMeta = {
   name: "OrganizationAcceptedOrExpiredInviteDetailsPayload",
-  fields: {},
+  get fields() {
+    return OrganizationAcceptedOrExpiredInviteDetailsPayloadFields;
+  },
 };
 export const OrganizationCancelDeletePayload: TypeMeta = {
   name: "OrganizationCancelDeletePayload",
-  fields: {},
+  get fields() {
+    return OrganizationCancelDeletePayloadFields;
+  },
 };
 export const OrganizationDeletePayload: TypeMeta = {
   name: "OrganizationDeletePayload",
-  fields: {},
+  get fields() {
+    return OrganizationDeletePayloadFields;
+  },
 };
-export const OrganizationDomain: TypeMeta = { name: "OrganizationDomain", fields: {} };
+export const OrganizationDomain: TypeMeta = {
+  name: "OrganizationDomain",
+  get fields() {
+    return OrganizationDomainFields;
+  },
+};
 export const OrganizationDomainClaimPayload: TypeMeta = {
   name: "OrganizationDomainClaimPayload",
-  fields: {},
+  get fields() {
+    return OrganizationDomainClaimPayloadFields;
+  },
 };
 export const OrganizationDomainPayload: TypeMeta = {
   name: "OrganizationDomainPayload",
-  fields: {},
+  get fields() {
+    return OrganizationDomainPayloadFields;
+  },
 };
 export const OrganizationDomainSimplePayload: TypeMeta = {
   name: "OrganizationDomainSimplePayload",
-  fields: {},
+  get fields() {
+    return OrganizationDomainSimplePayloadFields;
+  },
 };
 export const OrganizationExistsPayload: TypeMeta = {
   name: "OrganizationExistsPayload",
-  fields: {},
+  get fields() {
+    return OrganizationExistsPayloadFields;
+  },
 };
-export const OrganizationInvite: TypeMeta = { name: "OrganizationInvite", fields: {} };
+export const OrganizationInvite: TypeMeta = {
+  name: "OrganizationInvite",
+  get fields() {
+    return OrganizationInviteFields;
+  },
+};
 export const OrganizationInviteConnection: TypeMeta = {
   name: "OrganizationInviteConnection",
-  fields: {},
+  get fields() {
+    return OrganizationInviteConnectionFields;
+  },
 };
-export const OrganizationInviteEdge: TypeMeta = { name: "OrganizationInviteEdge", fields: {} };
+export const OrganizationInviteEdge: TypeMeta = {
+  name: "OrganizationInviteEdge",
+  get fields() {
+    return OrganizationInviteEdgeFields;
+  },
+};
 export const OrganizationInviteFullDetailsPayload: TypeMeta = {
   name: "OrganizationInviteFullDetailsPayload",
-  fields: {},
+  get fields() {
+    return OrganizationInviteFullDetailsPayloadFields;
+  },
 };
 export const OrganizationInvitePayload: TypeMeta = {
   name: "OrganizationInvitePayload",
-  fields: {},
+  get fields() {
+    return OrganizationInvitePayloadFields;
+  },
 };
 export const OrganizationIpRestriction: TypeMeta = {
   name: "OrganizationIpRestriction",
-  fields: {},
+  get fields() {
+    return OrganizationIpRestrictionFields;
+  },
 };
-export const OrganizationMeta: TypeMeta = { name: "OrganizationMeta", fields: {} };
-export const OrganizationPayload: TypeMeta = { name: "OrganizationPayload", fields: {} };
+export const OrganizationMeta: TypeMeta = {
+  name: "OrganizationMeta",
+  get fields() {
+    return OrganizationMetaFields;
+  },
+};
+export const OrganizationPayload: TypeMeta = {
+  name: "OrganizationPayload",
+  get fields() {
+    return OrganizationPayloadFields;
+  },
+};
+export const OrganizationQuota: TypeMeta = {
+  name: "OrganizationQuota",
+  get fields() {
+    return OrganizationQuotaFields;
+  },
+};
+export const OrganizationQuotaConnection: TypeMeta = {
+  name: "OrganizationQuotaConnection",
+  get fields() {
+    return OrganizationQuotaConnectionFields;
+  },
+};
+export const OrganizationQuotaEdge: TypeMeta = {
+  name: "OrganizationQuotaEdge",
+  get fields() {
+    return OrganizationQuotaEdgeFields;
+  },
+};
+export const OrganizationQuotaMaxUsage: TypeMeta = {
+  name: "OrganizationQuotaMaxUsage",
+  get fields() {
+    return OrganizationQuotaMaxUsageFields;
+  },
+};
 export const OrganizationStartTrialPayload: TypeMeta = {
   name: "OrganizationStartTrialPayload",
-  fields: {},
+  get fields() {
+    return OrganizationStartTrialPayloadFields;
+  },
 };
-export const PageInfo: TypeMeta = { name: "PageInfo", fields: {} };
-export const PaidSubscription: TypeMeta = { name: "PaidSubscription", fields: {} };
+export const OriginInstallUrlPayload: TypeMeta = {
+  name: "OriginInstallUrlPayload",
+  get fields() {
+    return OriginInstallUrlPayloadFields;
+  },
+};
+export const OriginInstallationCancelPayload: TypeMeta = {
+  name: "OriginInstallationCancelPayload",
+  get fields() {
+    return OriginInstallationCancelPayloadFields;
+  },
+};
+export const OriginInstallationDetails: TypeMeta = {
+  name: "OriginInstallationDetails",
+  get fields() {
+    return OriginInstallationDetailsFields;
+  },
+};
+export const PageInfo: TypeMeta = {
+  name: "PageInfo",
+  get fields() {
+    return PageInfoFields;
+  },
+};
+export const PaidSubscription: TypeMeta = {
+  name: "PaidSubscription",
+  get fields() {
+    return PaidSubscriptionFields;
+  },
+};
 export const PartnerOfferDetailsPayload: TypeMeta = {
   name: "PartnerOfferDetailsPayload",
-  fields: {},
+  get fields() {
+    return PartnerOfferDetailsPayloadFields;
+  },
 };
 export const PartnerOfferRedeemPayload: TypeMeta = {
   name: "PartnerOfferRedeemPayload",
-  fields: {},
+  get fields() {
+    return PartnerOfferRedeemPayloadFields;
+  },
 };
 export const PartnerOfferWorkspacePayload: TypeMeta = {
   name: "PartnerOfferWorkspacePayload",
-  fields: {},
+  get fields() {
+    return PartnerOfferWorkspacePayloadFields;
+  },
 };
 export const PartnerOfferWorkspacesPayload: TypeMeta = {
   name: "PartnerOfferWorkspacesPayload",
-  fields: {},
+  get fields() {
+    return PartnerOfferWorkspacesPayloadFields;
+  },
 };
 export const PartnerProgramPartnerPayload: TypeMeta = {
   name: "PartnerProgramPartnerPayload",
-  fields: {},
+  get fields() {
+    return PartnerProgramPartnerPayloadFields;
+  },
 };
 export const PasskeyLoginStartResponse: TypeMeta = {
   name: "PasskeyLoginStartResponse",
-  fields: {},
+  get fields() {
+    return PasskeyLoginStartResponseFields;
+  },
 };
-export const Post: TypeMeta = { name: "Post", fields: {} };
-export const PostNotification: TypeMeta = { name: "PostNotification", fields: {} };
+export const Post: TypeMeta = {
+  name: "Post",
+  get fields() {
+    return PostFields;
+  },
+};
+export const PostNotification: TypeMeta = {
+  name: "PostNotification",
+  get fields() {
+    return PostNotificationFields;
+  },
+};
 export const PresentedIssueSuggestionReason: TypeMeta = {
   name: "PresentedIssueSuggestionReason",
-  fields: {},
+  get fields() {
+    return PresentedIssueSuggestionReasonFields;
+  },
 };
-export const ProductAnnouncement: TypeMeta = { name: "ProductAnnouncement", fields: {} };
+export const ProductAnnouncement: TypeMeta = {
+  name: "ProductAnnouncement",
+  get fields() {
+    return ProductAnnouncementFields;
+  },
+};
 export const ProductAnnouncementNotification: TypeMeta = {
   name: "ProductAnnouncementNotification",
-  fields: {},
+  get fields() {
+    return ProductAnnouncementNotificationFields;
+  },
 };
-export const Project: TypeMeta = { name: "Project", fields: {} };
-export const ProjectArchivePayload: TypeMeta = { name: "ProjectArchivePayload", fields: {} };
-export const ProjectAttachment: TypeMeta = { name: "ProjectAttachment", fields: {} };
+export const Project: TypeMeta = {
+  name: "Project",
+  get fields() {
+    return ProjectFields;
+  },
+};
+export const ProjectArchivePayload: TypeMeta = {
+  name: "ProjectArchivePayload",
+  get fields() {
+    return ProjectArchivePayloadFields;
+  },
+};
+export const ProjectAttachment: TypeMeta = {
+  name: "ProjectAttachment",
+  get fields() {
+    return ProjectAttachmentFields;
+  },
+};
 export const ProjectAttachmentConnection: TypeMeta = {
   name: "ProjectAttachmentConnection",
-  fields: {},
+  get fields() {
+    return ProjectAttachmentConnectionFields;
+  },
 };
-export const ProjectAttachmentEdge: TypeMeta = { name: "ProjectAttachmentEdge", fields: {} };
-export const ProjectConnection: TypeMeta = { name: "ProjectConnection", fields: {} };
-export const ProjectEdge: TypeMeta = { name: "ProjectEdge", fields: {} };
+export const ProjectAttachmentEdge: TypeMeta = {
+  name: "ProjectAttachmentEdge",
+  get fields() {
+    return ProjectAttachmentEdgeFields;
+  },
+};
+export const ProjectConnection: TypeMeta = {
+  name: "ProjectConnection",
+  get fields() {
+    return ProjectConnectionFields;
+  },
+};
+export const ProjectEdge: TypeMeta = {
+  name: "ProjectEdge",
+  get fields() {
+    return ProjectEdgeFields;
+  },
+};
 export const ProjectFilterSuggestionPayload: TypeMeta = {
   name: "ProjectFilterSuggestionPayload",
-  fields: {},
+  get fields() {
+    return ProjectFilterSuggestionPayloadFields;
+  },
 };
-export const ProjectHistory: TypeMeta = { name: "ProjectHistory", fields: {} };
-export const ProjectHistoryConnection: TypeMeta = { name: "ProjectHistoryConnection", fields: {} };
-export const ProjectHistoryEdge: TypeMeta = { name: "ProjectHistoryEdge", fields: {} };
-export const ProjectLabel: TypeMeta = { name: "ProjectLabel", fields: {} };
-export const ProjectLabelConnection: TypeMeta = { name: "ProjectLabelConnection", fields: {} };
-export const ProjectLabelEdge: TypeMeta = { name: "ProjectLabelEdge", fields: {} };
-export const ProjectLabelPayload: TypeMeta = { name: "ProjectLabelPayload", fields: {} };
-export const ProjectMilestone: TypeMeta = { name: "ProjectMilestone", fields: {} };
+export const ProjectHistory: TypeMeta = {
+  name: "ProjectHistory",
+  get fields() {
+    return ProjectHistoryFields;
+  },
+};
+export const ProjectHistoryConnection: TypeMeta = {
+  name: "ProjectHistoryConnection",
+  get fields() {
+    return ProjectHistoryConnectionFields;
+  },
+};
+export const ProjectHistoryEdge: TypeMeta = {
+  name: "ProjectHistoryEdge",
+  get fields() {
+    return ProjectHistoryEdgeFields;
+  },
+};
+export const ProjectLabel: TypeMeta = {
+  name: "ProjectLabel",
+  get fields() {
+    return ProjectLabelFields;
+  },
+};
+export const ProjectLabelConnection: TypeMeta = {
+  name: "ProjectLabelConnection",
+  get fields() {
+    return ProjectLabelConnectionFields;
+  },
+};
+export const ProjectLabelEdge: TypeMeta = {
+  name: "ProjectLabelEdge",
+  get fields() {
+    return ProjectLabelEdgeFields;
+  },
+};
+export const ProjectLabelPayload: TypeMeta = {
+  name: "ProjectLabelPayload",
+  get fields() {
+    return ProjectLabelPayloadFields;
+  },
+};
+export const ProjectMilestone: TypeMeta = {
+  name: "ProjectMilestone",
+  get fields() {
+    return ProjectMilestoneFields;
+  },
+};
 export const ProjectMilestoneConnection: TypeMeta = {
   name: "ProjectMilestoneConnection",
-  fields: {},
+  get fields() {
+    return ProjectMilestoneConnectionFields;
+  },
 };
-export const ProjectMilestoneEdge: TypeMeta = { name: "ProjectMilestoneEdge", fields: {} };
+export const ProjectMilestoneEdge: TypeMeta = {
+  name: "ProjectMilestoneEdge",
+  get fields() {
+    return ProjectMilestoneEdgeFields;
+  },
+};
 export const ProjectMilestoneMoveIssueToTeam: TypeMeta = {
   name: "ProjectMilestoneMoveIssueToTeam",
-  fields: {},
+  get fields() {
+    return ProjectMilestoneMoveIssueToTeamFields;
+  },
 };
 export const ProjectMilestoneMovePayload: TypeMeta = {
   name: "ProjectMilestoneMovePayload",
-  fields: {},
+  get fields() {
+    return ProjectMilestoneMovePayloadFields;
+  },
 };
 export const ProjectMilestoneMoveProjectTeams: TypeMeta = {
   name: "ProjectMilestoneMoveProjectTeams",
-  fields: {},
+  get fields() {
+    return ProjectMilestoneMoveProjectTeamsFields;
+  },
 };
-export const ProjectMilestonePayload: TypeMeta = { name: "ProjectMilestonePayload", fields: {} };
-export const ProjectNotification: TypeMeta = { name: "ProjectNotification", fields: {} };
+export const ProjectMilestonePayload: TypeMeta = {
+  name: "ProjectMilestonePayload",
+  get fields() {
+    return ProjectMilestonePayloadFields;
+  },
+};
+export const ProjectNotification: TypeMeta = {
+  name: "ProjectNotification",
+  get fields() {
+    return ProjectNotificationFields;
+  },
+};
 export const ProjectNotificationSubscription: TypeMeta = {
   name: "ProjectNotificationSubscription",
-  fields: {},
+  get fields() {
+    return ProjectNotificationSubscriptionFields;
+  },
 };
-export const ProjectPayload: TypeMeta = { name: "ProjectPayload", fields: {} };
-export const ProjectRelation: TypeMeta = { name: "ProjectRelation", fields: {} };
+export const ProjectPayload: TypeMeta = {
+  name: "ProjectPayload",
+  get fields() {
+    return ProjectPayloadFields;
+  },
+};
+export const ProjectRelation: TypeMeta = {
+  name: "ProjectRelation",
+  get fields() {
+    return ProjectRelationFields;
+  },
+};
 export const ProjectRelationConnection: TypeMeta = {
   name: "ProjectRelationConnection",
-  fields: {},
+  get fields() {
+    return ProjectRelationConnectionFields;
+  },
 };
-export const ProjectRelationEdge: TypeMeta = { name: "ProjectRelationEdge", fields: {} };
-export const ProjectRelationPayload: TypeMeta = { name: "ProjectRelationPayload", fields: {} };
-export const ProjectSearchPayload: TypeMeta = { name: "ProjectSearchPayload", fields: {} };
-export const ProjectSearchResult: TypeMeta = { name: "ProjectSearchResult", fields: {} };
-export const ProjectSearchResultEdge: TypeMeta = { name: "ProjectSearchResultEdge", fields: {} };
-export const ProjectStatus: TypeMeta = { name: "ProjectStatus", fields: {} };
+export const ProjectRelationEdge: TypeMeta = {
+  name: "ProjectRelationEdge",
+  get fields() {
+    return ProjectRelationEdgeFields;
+  },
+};
+export const ProjectRelationPayload: TypeMeta = {
+  name: "ProjectRelationPayload",
+  get fields() {
+    return ProjectRelationPayloadFields;
+  },
+};
+export const ProjectSearchPayload: TypeMeta = {
+  name: "ProjectSearchPayload",
+  get fields() {
+    return ProjectSearchPayloadFields;
+  },
+};
+export const ProjectSearchResult: TypeMeta = {
+  name: "ProjectSearchResult",
+  get fields() {
+    return ProjectSearchResultFields;
+  },
+};
+export const ProjectSearchResultEdge: TypeMeta = {
+  name: "ProjectSearchResultEdge",
+  get fields() {
+    return ProjectSearchResultEdgeFields;
+  },
+};
+export const ProjectStatus: TypeMeta = {
+  name: "ProjectStatus",
+  get fields() {
+    return ProjectStatusFields;
+  },
+};
 export const ProjectStatusArchivePayload: TypeMeta = {
   name: "ProjectStatusArchivePayload",
-  fields: {},
+  get fields() {
+    return ProjectStatusArchivePayloadFields;
+  },
 };
-export const ProjectStatusConnection: TypeMeta = { name: "ProjectStatusConnection", fields: {} };
+export const ProjectStatusConnection: TypeMeta = {
+  name: "ProjectStatusConnection",
+  get fields() {
+    return ProjectStatusConnectionFields;
+  },
+};
 export const ProjectStatusCountPayload: TypeMeta = {
   name: "ProjectStatusCountPayload",
-  fields: {},
+  get fields() {
+    return ProjectStatusCountPayloadFields;
+  },
 };
-export const ProjectStatusEdge: TypeMeta = { name: "ProjectStatusEdge", fields: {} };
-export const ProjectStatusPayload: TypeMeta = { name: "ProjectStatusPayload", fields: {} };
-export const ProjectUpdate: TypeMeta = { name: "ProjectUpdate", fields: {} };
+export const ProjectStatusEdge: TypeMeta = {
+  name: "ProjectStatusEdge",
+  get fields() {
+    return ProjectStatusEdgeFields;
+  },
+};
+export const ProjectStatusPayload: TypeMeta = {
+  name: "ProjectStatusPayload",
+  get fields() {
+    return ProjectStatusPayloadFields;
+  },
+};
+export const ProjectUpdate: TypeMeta = {
+  name: "ProjectUpdate",
+  get fields() {
+    return ProjectUpdateFields;
+  },
+};
 export const ProjectUpdateArchivePayload: TypeMeta = {
   name: "ProjectUpdateArchivePayload",
-  fields: {},
+  get fields() {
+    return ProjectUpdateArchivePayloadFields;
+  },
 };
-export const ProjectUpdateConnection: TypeMeta = { name: "ProjectUpdateConnection", fields: {} };
-export const ProjectUpdateEdge: TypeMeta = { name: "ProjectUpdateEdge", fields: {} };
-export const ProjectUpdatePayload: TypeMeta = { name: "ProjectUpdatePayload", fields: {} };
+export const ProjectUpdateConnection: TypeMeta = {
+  name: "ProjectUpdateConnection",
+  get fields() {
+    return ProjectUpdateConnectionFields;
+  },
+};
+export const ProjectUpdateEdge: TypeMeta = {
+  name: "ProjectUpdateEdge",
+  get fields() {
+    return ProjectUpdateEdgeFields;
+  },
+};
+export const ProjectUpdatePayload: TypeMeta = {
+  name: "ProjectUpdatePayload",
+  get fields() {
+    return ProjectUpdatePayloadFields;
+  },
+};
 export const ProjectUpdateReminderPayload: TypeMeta = {
   name: "ProjectUpdateReminderPayload",
-  fields: {},
+  get fields() {
+    return ProjectUpdateReminderPayloadFields;
+  },
 };
-export const PullRequest: TypeMeta = { name: "PullRequest", fields: {} };
-export const PullRequestCheck: TypeMeta = { name: "PullRequestCheck", fields: {} };
-export const PullRequestCommit: TypeMeta = { name: "PullRequestCommit", fields: {} };
+export const PullRequest: TypeMeta = {
+  name: "PullRequest",
+  get fields() {
+    return PullRequestFields;
+  },
+};
+export const PullRequestCheck: TypeMeta = {
+  name: "PullRequestCheck",
+  get fields() {
+    return PullRequestCheckFields;
+  },
+};
+export const PullRequestCommit: TypeMeta = {
+  name: "PullRequestCommit",
+  get fields() {
+    return PullRequestCommitFields;
+  },
+};
 export const PullRequestCommitSignature: TypeMeta = {
   name: "PullRequestCommitSignature",
-  fields: {},
+  get fields() {
+    return PullRequestCommitSignatureFields;
+  },
 };
-export const PullRequestMergeSettings: TypeMeta = { name: "PullRequestMergeSettings", fields: {} };
-export const PullRequestNotification: TypeMeta = { name: "PullRequestNotification", fields: {} };
-export const PullRequestPreviewLink: TypeMeta = { name: "PullRequestPreviewLink", fields: {} };
-export const PushSubscription: TypeMeta = { name: "PushSubscription", fields: {} };
-export const PushSubscriptionPayload: TypeMeta = { name: "PushSubscriptionPayload", fields: {} };
+export const PullRequestMergeSettings: TypeMeta = {
+  name: "PullRequestMergeSettings",
+  get fields() {
+    return PullRequestMergeSettingsFields;
+  },
+};
+export const PullRequestNotification: TypeMeta = {
+  name: "PullRequestNotification",
+  get fields() {
+    return PullRequestNotificationFields;
+  },
+};
+export const PullRequestPreviewLink: TypeMeta = {
+  name: "PullRequestPreviewLink",
+  get fields() {
+    return PullRequestPreviewLinkFields;
+  },
+};
+export const PushSubscription: TypeMeta = {
+  name: "PushSubscription",
+  get fields() {
+    return PushSubscriptionFields;
+  },
+};
+export const PushSubscriptionPayload: TypeMeta = {
+  name: "PushSubscriptionPayload",
+  get fields() {
+    return PushSubscriptionPayloadFields;
+  },
+};
 export const PushSubscriptionTestPayload: TypeMeta = {
   name: "PushSubscriptionTestPayload",
-  fields: {},
+  get fields() {
+    return PushSubscriptionTestPayloadFields;
+  },
 };
-export const RateLimitPayload: TypeMeta = { name: "RateLimitPayload", fields: {} };
-export const RateLimitResultPayload: TypeMeta = { name: "RateLimitResultPayload", fields: {} };
-export const Reaction: TypeMeta = { name: "Reaction", fields: {} };
-export const ReactionPayload: TypeMeta = { name: "ReactionPayload", fields: {} };
-export const Release: TypeMeta = { name: "Release", fields: {} };
-export const ReleaseArchivePayload: TypeMeta = { name: "ReleaseArchivePayload", fields: {} };
-export const ReleaseConnection: TypeMeta = { name: "ReleaseConnection", fields: {} };
-export const ReleaseEdge: TypeMeta = { name: "ReleaseEdge", fields: {} };
-export const ReleaseHistory: TypeMeta = { name: "ReleaseHistory", fields: {} };
-export const ReleaseHistoryConnection: TypeMeta = { name: "ReleaseHistoryConnection", fields: {} };
-export const ReleaseHistoryEdge: TypeMeta = { name: "ReleaseHistoryEdge", fields: {} };
-export const ReleaseNote: TypeMeta = { name: "ReleaseNote", fields: {} };
-export const ReleaseNoteConnection: TypeMeta = { name: "ReleaseNoteConnection", fields: {} };
-export const ReleaseNoteEdge: TypeMeta = { name: "ReleaseNoteEdge", fields: {} };
-export const ReleaseNotePayload: TypeMeta = { name: "ReleaseNotePayload", fields: {} };
-export const ReleasePayload: TypeMeta = { name: "ReleasePayload", fields: {} };
-export const ReleasePipeline: TypeMeta = { name: "ReleasePipeline", fields: {} };
+export const RateLimitPayload: TypeMeta = {
+  name: "RateLimitPayload",
+  get fields() {
+    return RateLimitPayloadFields;
+  },
+};
+export const RateLimitResultPayload: TypeMeta = {
+  name: "RateLimitResultPayload",
+  get fields() {
+    return RateLimitResultPayloadFields;
+  },
+};
+export const Reaction: TypeMeta = {
+  name: "Reaction",
+  get fields() {
+    return ReactionFields;
+  },
+};
+export const ReactionPayload: TypeMeta = {
+  name: "ReactionPayload",
+  get fields() {
+    return ReactionPayloadFields;
+  },
+};
+export const Release: TypeMeta = {
+  name: "Release",
+  get fields() {
+    return ReleaseFields;
+  },
+};
+export const ReleaseArchivePayload: TypeMeta = {
+  name: "ReleaseArchivePayload",
+  get fields() {
+    return ReleaseArchivePayloadFields;
+  },
+};
+export const ReleaseConnection: TypeMeta = {
+  name: "ReleaseConnection",
+  get fields() {
+    return ReleaseConnectionFields;
+  },
+};
+export const ReleaseEdge: TypeMeta = {
+  name: "ReleaseEdge",
+  get fields() {
+    return ReleaseEdgeFields;
+  },
+};
+export const ReleaseHistory: TypeMeta = {
+  name: "ReleaseHistory",
+  get fields() {
+    return ReleaseHistoryFields;
+  },
+};
+export const ReleaseHistoryConnection: TypeMeta = {
+  name: "ReleaseHistoryConnection",
+  get fields() {
+    return ReleaseHistoryConnectionFields;
+  },
+};
+export const ReleaseHistoryEdge: TypeMeta = {
+  name: "ReleaseHistoryEdge",
+  get fields() {
+    return ReleaseHistoryEdgeFields;
+  },
+};
+export const ReleaseNote: TypeMeta = {
+  name: "ReleaseNote",
+  get fields() {
+    return ReleaseNoteFields;
+  },
+};
+export const ReleaseNoteConnection: TypeMeta = {
+  name: "ReleaseNoteConnection",
+  get fields() {
+    return ReleaseNoteConnectionFields;
+  },
+};
+export const ReleaseNoteEdge: TypeMeta = {
+  name: "ReleaseNoteEdge",
+  get fields() {
+    return ReleaseNoteEdgeFields;
+  },
+};
+export const ReleaseNotePayload: TypeMeta = {
+  name: "ReleaseNotePayload",
+  get fields() {
+    return ReleaseNotePayloadFields;
+  },
+};
+export const ReleasePayload: TypeMeta = {
+  name: "ReleasePayload",
+  get fields() {
+    return ReleasePayloadFields;
+  },
+};
+export const ReleasePipeline: TypeMeta = {
+  name: "ReleasePipeline",
+  get fields() {
+    return ReleasePipelineFields;
+  },
+};
 export const ReleasePipelineArchivePayload: TypeMeta = {
   name: "ReleasePipelineArchivePayload",
-  fields: {},
+  get fields() {
+    return ReleasePipelineArchivePayloadFields;
+  },
 };
 export const ReleasePipelineConnection: TypeMeta = {
   name: "ReleasePipelineConnection",
-  fields: {},
+  get fields() {
+    return ReleasePipelineConnectionFields;
+  },
 };
-export const ReleasePipelineEdge: TypeMeta = { name: "ReleasePipelineEdge", fields: {} };
-export const ReleasePipelinePayload: TypeMeta = { name: "ReleasePipelinePayload", fields: {} };
-export const ReleaseStage: TypeMeta = { name: "ReleaseStage", fields: {} };
+export const ReleasePipelineEdge: TypeMeta = {
+  name: "ReleasePipelineEdge",
+  get fields() {
+    return ReleasePipelineEdgeFields;
+  },
+};
+export const ReleasePipelinePayload: TypeMeta = {
+  name: "ReleasePipelinePayload",
+  get fields() {
+    return ReleasePipelinePayloadFields;
+  },
+};
+export const ReleaseStage: TypeMeta = {
+  name: "ReleaseStage",
+  get fields() {
+    return ReleaseStageFields;
+  },
+};
 export const ReleaseStageArchivePayload: TypeMeta = {
   name: "ReleaseStageArchivePayload",
-  fields: {},
+  get fields() {
+    return ReleaseStageArchivePayloadFields;
+  },
 };
-export const ReleaseStageConnection: TypeMeta = { name: "ReleaseStageConnection", fields: {} };
-export const ReleaseStageEdge: TypeMeta = { name: "ReleaseStageEdge", fields: {} };
-export const ReleaseStagePayload: TypeMeta = { name: "ReleaseStagePayload", fields: {} };
-export const RepositorySuggestion: TypeMeta = { name: "RepositorySuggestion", fields: {} };
+export const ReleaseStageConnection: TypeMeta = {
+  name: "ReleaseStageConnection",
+  get fields() {
+    return ReleaseStageConnectionFields;
+  },
+};
+export const ReleaseStageEdge: TypeMeta = {
+  name: "ReleaseStageEdge",
+  get fields() {
+    return ReleaseStageEdgeFields;
+  },
+};
+export const ReleaseStagePayload: TypeMeta = {
+  name: "ReleaseStagePayload",
+  get fields() {
+    return ReleaseStagePayloadFields;
+  },
+};
+export const RepositorySuggestion: TypeMeta = {
+  name: "RepositorySuggestion",
+  get fields() {
+    return RepositorySuggestionFields;
+  },
+};
 export const RepositorySuggestionsPayload: TypeMeta = {
   name: "RepositorySuggestionsPayload",
-  fields: {},
+  get fields() {
+    return RepositorySuggestionsPayloadFields;
+  },
 };
-export const Roadmap: TypeMeta = { name: "Roadmap", fields: {} };
-export const RoadmapArchivePayload: TypeMeta = { name: "RoadmapArchivePayload", fields: {} };
-export const RoadmapConnection: TypeMeta = { name: "RoadmapConnection", fields: {} };
-export const RoadmapEdge: TypeMeta = { name: "RoadmapEdge", fields: {} };
-export const RoadmapPayload: TypeMeta = { name: "RoadmapPayload", fields: {} };
-export const RoadmapToProject: TypeMeta = { name: "RoadmapToProject", fields: {} };
+export const Roadmap: TypeMeta = {
+  name: "Roadmap",
+  get fields() {
+    return RoadmapFields;
+  },
+};
+export const RoadmapArchivePayload: TypeMeta = {
+  name: "RoadmapArchivePayload",
+  get fields() {
+    return RoadmapArchivePayloadFields;
+  },
+};
+export const RoadmapConnection: TypeMeta = {
+  name: "RoadmapConnection",
+  get fields() {
+    return RoadmapConnectionFields;
+  },
+};
+export const RoadmapEdge: TypeMeta = {
+  name: "RoadmapEdge",
+  get fields() {
+    return RoadmapEdgeFields;
+  },
+};
+export const RoadmapPayload: TypeMeta = {
+  name: "RoadmapPayload",
+  get fields() {
+    return RoadmapPayloadFields;
+  },
+};
+export const RoadmapToProject: TypeMeta = {
+  name: "RoadmapToProject",
+  get fields() {
+    return RoadmapToProjectFields;
+  },
+};
 export const RoadmapToProjectConnection: TypeMeta = {
   name: "RoadmapToProjectConnection",
-  fields: {},
+  get fields() {
+    return RoadmapToProjectConnectionFields;
+  },
 };
-export const RoadmapToProjectEdge: TypeMeta = { name: "RoadmapToProjectEdge", fields: {} };
-export const RoadmapToProjectPayload: TypeMeta = { name: "RoadmapToProjectPayload", fields: {} };
-export const SemanticSearchPayload: TypeMeta = { name: "SemanticSearchPayload", fields: {} };
-export const SemanticSearchResult: TypeMeta = { name: "SemanticSearchResult", fields: {} };
-export const SesDomainIdentity: TypeMeta = { name: "SesDomainIdentity", fields: {} };
+export const RoadmapToProjectEdge: TypeMeta = {
+  name: "RoadmapToProjectEdge",
+  get fields() {
+    return RoadmapToProjectEdgeFields;
+  },
+};
+export const RoadmapToProjectPayload: TypeMeta = {
+  name: "RoadmapToProjectPayload",
+  get fields() {
+    return RoadmapToProjectPayloadFields;
+  },
+};
+export const SemanticSearchPayload: TypeMeta = {
+  name: "SemanticSearchPayload",
+  get fields() {
+    return SemanticSearchPayloadFields;
+  },
+};
+export const SemanticSearchResult: TypeMeta = {
+  name: "SemanticSearchResult",
+  get fields() {
+    return SemanticSearchResultFields;
+  },
+};
+export const SesDomainIdentity: TypeMeta = {
+  name: "SesDomainIdentity",
+  get fields() {
+    return SesDomainIdentityFields;
+  },
+};
 export const SesDomainIdentityDnsRecord: TypeMeta = {
   name: "SesDomainIdentityDnsRecord",
-  fields: {},
+  get fields() {
+    return SesDomainIdentityDnsRecordFields;
+  },
 };
-export const SlaConfiguration: TypeMeta = { name: "SlaConfiguration", fields: {} };
-export const SlackAsksTeamSettings: TypeMeta = { name: "SlackAsksTeamSettings", fields: {} };
+export const SlaConfiguration: TypeMeta = {
+  name: "SlaConfiguration",
+  get fields() {
+    return SlaConfigurationFields;
+  },
+};
+export const SlackAsksTeamSettings: TypeMeta = {
+  name: "SlackAsksTeamSettings",
+  get fields() {
+    return SlackAsksTeamSettingsFields;
+  },
+};
 export const SlackChannelConnectPayload: TypeMeta = {
   name: "SlackChannelConnectPayload",
-  fields: {},
+  get fields() {
+    return SlackChannelConnectPayloadFields;
+  },
 };
-export const SlackChannelNameMapping: TypeMeta = { name: "SlackChannelNameMapping", fields: {} };
-export const SsoUrlFromEmailResponse: TypeMeta = { name: "SsoUrlFromEmailResponse", fields: {} };
-export const SuccessPayload: TypeMeta = { name: "SuccessPayload", fields: {} };
-export const Summary: TypeMeta = { name: "Summary", fields: {} };
-export const SyncedExternalThread: TypeMeta = { name: "SyncedExternalThread", fields: {} };
-export const Team: TypeMeta = { name: "Team", fields: {} };
-export const TeamArchivePayload: TypeMeta = { name: "TeamArchivePayload", fields: {} };
-export const TeamConnection: TypeMeta = { name: "TeamConnection", fields: {} };
-export const TeamEdge: TypeMeta = { name: "TeamEdge", fields: {} };
-export const TeamMembership: TypeMeta = { name: "TeamMembership", fields: {} };
-export const TeamMembershipConnection: TypeMeta = { name: "TeamMembershipConnection", fields: {} };
-export const TeamMembershipEdge: TypeMeta = { name: "TeamMembershipEdge", fields: {} };
-export const TeamMembershipPayload: TypeMeta = { name: "TeamMembershipPayload", fields: {} };
+export const SlackChannelNameMapping: TypeMeta = {
+  name: "SlackChannelNameMapping",
+  get fields() {
+    return SlackChannelNameMappingFields;
+  },
+};
+export const SsoUrlFromEmailResponse: TypeMeta = {
+  name: "SsoUrlFromEmailResponse",
+  get fields() {
+    return SsoUrlFromEmailResponseFields;
+  },
+};
+export const SuccessPayload: TypeMeta = {
+  name: "SuccessPayload",
+  get fields() {
+    return SuccessPayloadFields;
+  },
+};
+export const Summary: TypeMeta = {
+  name: "Summary",
+  get fields() {
+    return SummaryFields;
+  },
+};
+export const SyncedExternalThread: TypeMeta = {
+  name: "SyncedExternalThread",
+  get fields() {
+    return SyncedExternalThreadFields;
+  },
+};
+export const Team: TypeMeta = {
+  name: "Team",
+  get fields() {
+    return TeamFields;
+  },
+};
+export const TeamArchivePayload: TypeMeta = {
+  name: "TeamArchivePayload",
+  get fields() {
+    return TeamArchivePayloadFields;
+  },
+};
+export const TeamConnection: TypeMeta = {
+  name: "TeamConnection",
+  get fields() {
+    return TeamConnectionFields;
+  },
+};
+export const TeamEdge: TypeMeta = {
+  name: "TeamEdge",
+  get fields() {
+    return TeamEdgeFields;
+  },
+};
+export const TeamMembership: TypeMeta = {
+  name: "TeamMembership",
+  get fields() {
+    return TeamMembershipFields;
+  },
+};
+export const TeamMembershipConnection: TypeMeta = {
+  name: "TeamMembershipConnection",
+  get fields() {
+    return TeamMembershipConnectionFields;
+  },
+};
+export const TeamMembershipEdge: TypeMeta = {
+  name: "TeamMembershipEdge",
+  get fields() {
+    return TeamMembershipEdgeFields;
+  },
+};
+export const TeamMembershipPayload: TypeMeta = {
+  name: "TeamMembershipPayload",
+  get fields() {
+    return TeamMembershipPayloadFields;
+  },
+};
 export const TeamNotificationSubscription: TypeMeta = {
   name: "TeamNotificationSubscription",
-  fields: {},
+  get fields() {
+    return TeamNotificationSubscriptionFields;
+  },
 };
-export const TeamPayload: TypeMeta = { name: "TeamPayload", fields: {} };
-export const TeamPinnedResource: TypeMeta = { name: "TeamPinnedResource", fields: {} };
-export const TeamResourceSection: TypeMeta = { name: "TeamResourceSection", fields: {} };
-export const Template: TypeMeta = { name: "Template", fields: {} };
-export const TemplateConnection: TypeMeta = { name: "TemplateConnection", fields: {} };
-export const TemplateEdge: TypeMeta = { name: "TemplateEdge", fields: {} };
-export const TemplatePayload: TypeMeta = { name: "TemplatePayload", fields: {} };
-export const TimeSchedule: TypeMeta = { name: "TimeSchedule", fields: {} };
-export const TimeScheduleConfig: TypeMeta = { name: "TimeScheduleConfig", fields: {} };
-export const TimeScheduleConnection: TypeMeta = { name: "TimeScheduleConnection", fields: {} };
-export const TimeScheduleEdge: TypeMeta = { name: "TimeScheduleEdge", fields: {} };
-export const TimeScheduleEntry: TypeMeta = { name: "TimeScheduleEntry", fields: {} };
-export const TimeSchedulePayload: TypeMeta = { name: "TimeSchedulePayload", fields: {} };
-export const TimeScheduleUser: TypeMeta = { name: "TimeScheduleUser", fields: {} };
-export const TriageResponsibility: TypeMeta = { name: "TriageResponsibility", fields: {} };
+export const TeamPayload: TypeMeta = {
+  name: "TeamPayload",
+  get fields() {
+    return TeamPayloadFields;
+  },
+};
+export const TeamPinnedResource: TypeMeta = {
+  name: "TeamPinnedResource",
+  get fields() {
+    return TeamPinnedResourceFields;
+  },
+};
+export const TeamResourceSection: TypeMeta = {
+  name: "TeamResourceSection",
+  get fields() {
+    return TeamResourceSectionFields;
+  },
+};
+export const Template: TypeMeta = {
+  name: "Template",
+  get fields() {
+    return TemplateFields;
+  },
+};
+export const TemplateConnection: TypeMeta = {
+  name: "TemplateConnection",
+  get fields() {
+    return TemplateConnectionFields;
+  },
+};
+export const TemplateEdge: TypeMeta = {
+  name: "TemplateEdge",
+  get fields() {
+    return TemplateEdgeFields;
+  },
+};
+export const TemplatePayload: TypeMeta = {
+  name: "TemplatePayload",
+  get fields() {
+    return TemplatePayloadFields;
+  },
+};
+export const TimeSchedule: TypeMeta = {
+  name: "TimeSchedule",
+  get fields() {
+    return TimeScheduleFields;
+  },
+};
+export const TimeScheduleConfig: TypeMeta = {
+  name: "TimeScheduleConfig",
+  get fields() {
+    return TimeScheduleConfigFields;
+  },
+};
+export const TimeScheduleConnection: TypeMeta = {
+  name: "TimeScheduleConnection",
+  get fields() {
+    return TimeScheduleConnectionFields;
+  },
+};
+export const TimeScheduleEdge: TypeMeta = {
+  name: "TimeScheduleEdge",
+  get fields() {
+    return TimeScheduleEdgeFields;
+  },
+};
+export const TimeScheduleEntry: TypeMeta = {
+  name: "TimeScheduleEntry",
+  get fields() {
+    return TimeScheduleEntryFields;
+  },
+};
+export const TimeSchedulePayload: TypeMeta = {
+  name: "TimeSchedulePayload",
+  get fields() {
+    return TimeSchedulePayloadFields;
+  },
+};
+export const TimeScheduleUser: TypeMeta = {
+  name: "TimeScheduleUser",
+  get fields() {
+    return TimeScheduleUserFields;
+  },
+};
+export const TriageResponsibility: TypeMeta = {
+  name: "TriageResponsibility",
+  get fields() {
+    return TriageResponsibilityFields;
+  },
+};
 export const TriageResponsibilityConnection: TypeMeta = {
   name: "TriageResponsibilityConnection",
-  fields: {},
+  get fields() {
+    return TriageResponsibilityConnectionFields;
+  },
 };
-export const TriageResponsibilityEdge: TypeMeta = { name: "TriageResponsibilityEdge", fields: {} };
+export const TriageResponsibilityEdge: TypeMeta = {
+  name: "TriageResponsibilityEdge",
+  get fields() {
+    return TriageResponsibilityEdgeFields;
+  },
+};
 export const TriageResponsibilityManualSelection: TypeMeta = {
   name: "TriageResponsibilityManualSelection",
-  fields: {},
+  get fields() {
+    return TriageResponsibilityManualSelectionFields;
+  },
 };
 export const TriageResponsibilityPayload: TypeMeta = {
   name: "TriageResponsibilityPayload",
-  fields: {},
+  get fields() {
+    return TriageResponsibilityPayloadFields;
+  },
 };
-export const UploadFile: TypeMeta = { name: "UploadFile", fields: {} };
-export const UploadFileHeader: TypeMeta = { name: "UploadFileHeader", fields: {} };
-export const UploadPayload: TypeMeta = { name: "UploadPayload", fields: {} };
-export const UsageAlert: TypeMeta = { name: "UsageAlert", fields: {} };
-export const UsageAlertConnection: TypeMeta = { name: "UsageAlertConnection", fields: {} };
-export const UsageAlertEdge: TypeMeta = { name: "UsageAlertEdge", fields: {} };
-export const UsageAlertNotification: TypeMeta = { name: "UsageAlertNotification", fields: {} };
-export const User: TypeMeta = { name: "User", fields: {} };
-export const UserAdminPayload: TypeMeta = { name: "UserAdminPayload", fields: {} };
-export const UserConnection: TypeMeta = { name: "UserConnection", fields: {} };
-export const UserEdge: TypeMeta = { name: "UserEdge", fields: {} };
+export const UploadFile: TypeMeta = {
+  name: "UploadFile",
+  get fields() {
+    return UploadFileFields;
+  },
+};
+export const UploadFileHeader: TypeMeta = {
+  name: "UploadFileHeader",
+  get fields() {
+    return UploadFileHeaderFields;
+  },
+};
+export const UploadPayload: TypeMeta = {
+  name: "UploadPayload",
+  get fields() {
+    return UploadPayloadFields;
+  },
+};
+export const UsageAlert: TypeMeta = {
+  name: "UsageAlert",
+  get fields() {
+    return UsageAlertFields;
+  },
+};
+export const UsageAlertConnection: TypeMeta = {
+  name: "UsageAlertConnection",
+  get fields() {
+    return UsageAlertConnectionFields;
+  },
+};
+export const UsageAlertEdge: TypeMeta = {
+  name: "UsageAlertEdge",
+  get fields() {
+    return UsageAlertEdgeFields;
+  },
+};
+export const UsageAlertNotification: TypeMeta = {
+  name: "UsageAlertNotification",
+  get fields() {
+    return UsageAlertNotificationFields;
+  },
+};
+export const User: TypeMeta = {
+  name: "User",
+  get fields() {
+    return UserFields;
+  },
+};
+export const UserAdminPayload: TypeMeta = {
+  name: "UserAdminPayload",
+  get fields() {
+    return UserAdminPayloadFields;
+  },
+};
+export const UserConnection: TypeMeta = {
+  name: "UserConnection",
+  get fields() {
+    return UserConnectionFields;
+  },
+};
+export const UserEdge: TypeMeta = {
+  name: "UserEdge",
+  get fields() {
+    return UserEdgeFields;
+  },
+};
 export const UserNotificationSubscription: TypeMeta = {
   name: "UserNotificationSubscription",
-  fields: {},
+  get fields() {
+    return UserNotificationSubscriptionFields;
+  },
 };
-export const UserPayload: TypeMeta = { name: "UserPayload", fields: {} };
-export const UserSettings: TypeMeta = { name: "UserSettings", fields: {} };
+export const UserPayload: TypeMeta = {
+  name: "UserPayload",
+  get fields() {
+    return UserPayloadFields;
+  },
+};
+export const UserSettings: TypeMeta = {
+  name: "UserSettings",
+  get fields() {
+    return UserSettingsFields;
+  },
+};
 export const UserSettingsCustomSidebarTheme: TypeMeta = {
   name: "UserSettingsCustomSidebarTheme",
-  fields: {},
+  get fields() {
+    return UserSettingsCustomSidebarThemeFields;
+  },
 };
-export const UserSettingsCustomTheme: TypeMeta = { name: "UserSettingsCustomTheme", fields: {} };
-export const UserSettingsFlagPayload: TypeMeta = { name: "UserSettingsFlagPayload", fields: {} };
+export const UserSettingsCustomTheme: TypeMeta = {
+  name: "UserSettingsCustomTheme",
+  get fields() {
+    return UserSettingsCustomThemeFields;
+  },
+};
+export const UserSettingsFlagPayload: TypeMeta = {
+  name: "UserSettingsFlagPayload",
+  get fields() {
+    return UserSettingsFlagPayloadFields;
+  },
+};
 export const UserSettingsFlagsResetPayload: TypeMeta = {
   name: "UserSettingsFlagsResetPayload",
-  fields: {},
+  get fields() {
+    return UserSettingsFlagsResetPayloadFields;
+  },
 };
-export const UserSettingsPayload: TypeMeta = { name: "UserSettingsPayload", fields: {} };
-export const UserSettingsTheme: TypeMeta = { name: "UserSettingsTheme", fields: {} };
-export const ViewPreferences: TypeMeta = { name: "ViewPreferences", fields: {} };
+export const UserSettingsPayload: TypeMeta = {
+  name: "UserSettingsPayload",
+  get fields() {
+    return UserSettingsPayloadFields;
+  },
+};
+export const UserSettingsTheme: TypeMeta = {
+  name: "UserSettingsTheme",
+  get fields() {
+    return UserSettingsThemeFields;
+  },
+};
+export const ViewPreferences: TypeMeta = {
+  name: "ViewPreferences",
+  get fields() {
+    return ViewPreferencesFields;
+  },
+};
 export const ViewPreferencesInitiativeLabelGroupColumn: TypeMeta = {
   name: "ViewPreferencesInitiativeLabelGroupColumn",
-  fields: {},
+  get fields() {
+    return ViewPreferencesInitiativeLabelGroupColumnFields;
+  },
 };
-export const ViewPreferencesPayload: TypeMeta = { name: "ViewPreferencesPayload", fields: {} };
+export const ViewPreferencesPayload: TypeMeta = {
+  name: "ViewPreferencesPayload",
+  get fields() {
+    return ViewPreferencesPayloadFields;
+  },
+};
 export const ViewPreferencesProjectLabelGroupColumn: TypeMeta = {
   name: "ViewPreferencesProjectLabelGroupColumn",
-  fields: {},
+  get fields() {
+    return ViewPreferencesProjectLabelGroupColumnFields;
+  },
 };
-export const ViewPreferencesValues: TypeMeta = { name: "ViewPreferencesValues", fields: {} };
-export const Webhook: TypeMeta = { name: "Webhook", fields: {} };
-export const WebhookConnection: TypeMeta = { name: "WebhookConnection", fields: {} };
-export const WebhookEdge: TypeMeta = { name: "WebhookEdge", fields: {} };
-export const WebhookFailureEvent: TypeMeta = { name: "WebhookFailureEvent", fields: {} };
-export const WebhookPayload: TypeMeta = { name: "WebhookPayload", fields: {} };
+export const ViewPreferencesValues: TypeMeta = {
+  name: "ViewPreferencesValues",
+  get fields() {
+    return ViewPreferencesValuesFields;
+  },
+};
+export const Webhook: TypeMeta = {
+  name: "Webhook",
+  get fields() {
+    return WebhookFields;
+  },
+};
+export const WebhookConnection: TypeMeta = {
+  name: "WebhookConnection",
+  get fields() {
+    return WebhookConnectionFields;
+  },
+};
+export const WebhookEdge: TypeMeta = {
+  name: "WebhookEdge",
+  get fields() {
+    return WebhookEdgeFields;
+  },
+};
+export const WebhookFailureEvent: TypeMeta = {
+  name: "WebhookFailureEvent",
+  get fields() {
+    return WebhookFailureEventFields;
+  },
+};
+export const WebhookPayload: TypeMeta = {
+  name: "WebhookPayload",
+  get fields() {
+    return WebhookPayloadFields;
+  },
+};
 export const WebhookRotateSecretPayload: TypeMeta = {
   name: "WebhookRotateSecretPayload",
-  fields: {},
+  get fields() {
+    return WebhookRotateSecretPayloadFields;
+  },
 };
-export const WelcomeMessage: TypeMeta = { name: "WelcomeMessage", fields: {} };
+export const WelcomeMessage: TypeMeta = {
+  name: "WelcomeMessage",
+  get fields() {
+    return WelcomeMessageFields;
+  },
+};
 export const WelcomeMessageNotification: TypeMeta = {
   name: "WelcomeMessageNotification",
-  fields: {},
+  get fields() {
+    return WelcomeMessageNotificationFields;
+  },
 };
 export const WorkflowCronJobDefinition: TypeMeta = {
   name: "WorkflowCronJobDefinition",
-  fields: {},
+  get fields() {
+    return WorkflowCronJobDefinitionFields;
+  },
 };
-export const WorkflowDefinition: TypeMeta = { name: "WorkflowDefinition", fields: {} };
+export const WorkflowDefinition: TypeMeta = {
+  name: "WorkflowDefinition",
+  get fields() {
+    return WorkflowDefinitionFields;
+  },
+};
+export const WorkflowDefinitionConnection: TypeMeta = {
+  name: "WorkflowDefinitionConnection",
+  get fields() {
+    return WorkflowDefinitionConnectionFields;
+  },
+};
+export const WorkflowDefinitionEdge: TypeMeta = {
+  name: "WorkflowDefinitionEdge",
+  get fields() {
+    return WorkflowDefinitionEdgeFields;
+  },
+};
 export const WorkflowDefinitionNotification: TypeMeta = {
   name: "WorkflowDefinitionNotification",
-  fields: {},
+  get fields() {
+    return WorkflowDefinitionNotificationFields;
+  },
 };
-export const WorkflowState: TypeMeta = { name: "WorkflowState", fields: {} };
+export const WorkflowState: TypeMeta = {
+  name: "WorkflowState",
+  get fields() {
+    return WorkflowStateFields;
+  },
+};
 export const WorkflowStateArchivePayload: TypeMeta = {
   name: "WorkflowStateArchivePayload",
-  fields: {},
+  get fields() {
+    return WorkflowStateArchivePayloadFields;
+  },
 };
-export const WorkflowStateConnection: TypeMeta = { name: "WorkflowStateConnection", fields: {} };
-export const WorkflowStateEdge: TypeMeta = { name: "WorkflowStateEdge", fields: {} };
-export const WorkflowStatePayload: TypeMeta = { name: "WorkflowStatePayload", fields: {} };
+export const WorkflowStateConnection: TypeMeta = {
+  name: "WorkflowStateConnection",
+  get fields() {
+    return WorkflowStateConnectionFields;
+  },
+};
+export const WorkflowStateEdge: TypeMeta = {
+  name: "WorkflowStateEdge",
+  get fields() {
+    return WorkflowStateEdgeFields;
+  },
+};
+export const WorkflowStatePayload: TypeMeta = {
+  name: "WorkflowStatePayload",
+  get fields() {
+    return WorkflowStatePayloadFields;
+  },
+};
 export const WorkspaceAnnouncementNotification: TypeMeta = {
   name: "WorkspaceAnnouncementNotification",
-  fields: {},
+  get fields() {
+    return WorkspaceAnnouncementNotificationFields;
+  },
 };
-export const AgentActivityContent: TypeMeta = { name: "AgentActivityContent", fields: {} };
+export const AgentActivityContent: TypeMeta = {
+  name: "AgentActivityContent",
+  fields: { __typename: scalarField("__typename") },
+};
 export const AiConversationElicitationResponseData: TypeMeta = {
   name: "AiConversationElicitationResponseData",
-  fields: {},
+  fields: { __typename: scalarField("__typename") },
 };
-export const AiConversationPart: TypeMeta = { name: "AiConversationPart", fields: {} };
-export const AiConversationToolCall: TypeMeta = { name: "AiConversationToolCall", fields: {} };
-export const AiConversationWidget: TypeMeta = { name: "AiConversationWidget", fields: {} };
+export const AiConversationPart: TypeMeta = {
+  name: "AiConversationPart",
+  fields: { __typename: scalarField("__typename") },
+};
+export const AiConversationToolCall: TypeMeta = {
+  name: "AiConversationToolCall",
+  fields: { __typename: scalarField("__typename") },
+};
+export const AiConversationWidget: TypeMeta = {
+  name: "AiConversationWidget",
+  fields: { __typename: scalarField("__typename") },
+};
 export const ExternalEntityInfoMetadata: TypeMeta = {
   name: "ExternalEntityInfoMetadata",
-  fields: {},
+  fields: { __typename: scalarField("__typename") },
 };
 export const OrganizationInviteDetailsPayload: TypeMeta = {
   name: "OrganizationInviteDetailsPayload",
-  fields: {},
+  fields: { __typename: scalarField("__typename") },
 };
 
-Object.assign(AccessKeyRelease.fields, {
+const AccessKeyReleaseFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   commitSha: scalarField("commitSha"),
   completedAt: scalarField("completedAt"),
@@ -17845,34 +21461,34 @@ Object.assign(AccessKeyRelease.fields, {
   stage: objectField("stage", AccessKeyReleaseStage),
   url: scalarField("url"),
   version: scalarField("version"),
-});
+};
 
-Object.assign(AccessKeyReleasePayload.fields, {
+const AccessKeyReleasePayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   release: objectField("release", AccessKeyRelease),
   success: scalarField("success"),
-});
+};
 
-Object.assign(AccessKeyReleasePipeline.fields, {
+const AccessKeyReleasePipelineFields: TypeMeta["fields"] = {
   id: scalarField("id"),
   includePathPatterns: scalarField("includePathPatterns"),
-});
+};
 
-Object.assign(AccessKeyReleaseStage.fields, {
+const AccessKeyReleaseStageFields: TypeMeta["fields"] = {
   name: scalarField("name"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(ActorBot.fields, {
+const ActorBotFields: TypeMeta["fields"] = {
   avatarUrl: scalarField("avatarUrl"),
   id: scalarField("id"),
   name: scalarField("name"),
   subType: scalarField("subType"),
   type: scalarField("type"),
   userDisplayName: scalarField("userDisplayName"),
-});
+};
 
-Object.assign(AgentActivity.fields, {
+const AgentActivityFields: TypeMeta["fields"] = {
   agentSession: objectField("agentSession", AgentSession),
   archivedAt: scalarField("archivedAt"),
   content: objectField("content", AgentActivityContent),
@@ -17881,6 +21497,7 @@ Object.assign(AgentActivity.fields, {
   ephemeral: scalarField("ephemeral"),
   executionSkippedReason: scalarField("executionSkippedReason"),
   id: scalarField("id"),
+  promptAuthor: objectField("promptAuthor", User),
   pushSummary: objectField("pushSummary", AgentActivityPushSummary),
   queued: scalarField("queued"),
   sentAt: scalarField("sentAt"),
@@ -17890,86 +21507,86 @@ Object.assign(AgentActivity.fields, {
   sourceMetadata: scalarField("sourceMetadata"),
   updatedAt: scalarField("updatedAt"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(AgentActivityActionContent.fields, {
+const AgentActivityActionContentFields: TypeMeta["fields"] = {
   action: scalarField("action"),
   parameter: scalarField("parameter"),
   result: scalarField("result"),
   resultData: scalarField("resultData"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AgentActivityConnection.fields, {
+const AgentActivityConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", AgentActivityEdge),
   nodes: listField("nodes", AgentActivity),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(AgentActivityEdge.fields, {
+const AgentActivityEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", AgentActivity),
-});
+};
 
-Object.assign(AgentActivityElicitationContent.fields, {
+const AgentActivityElicitationContentFields: TypeMeta["fields"] = {
   body: scalarField("body"),
   bodyData: scalarField("bodyData"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AgentActivityErrorContent.fields, {
+const AgentActivityErrorContentFields: TypeMeta["fields"] = {
   body: scalarField("body"),
   bodyData: scalarField("bodyData"),
   reasonCode: scalarField("reasonCode"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AgentActivityPayload.fields, {
+const AgentActivityPayloadFields: TypeMeta["fields"] = {
   agentActivity: objectField("agentActivity", AgentActivity),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(AgentActivityPromptContent.fields, {
+const AgentActivityPromptContentFields: TypeMeta["fields"] = {
   body: scalarField("body"),
   bodyData: scalarField("bodyData"),
   title: scalarField("title"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AgentActivityPushCommit.fields, {
+const AgentActivityPushCommitFields: TypeMeta["fields"] = {
   additions: scalarField("additions"),
   changedFiles: scalarField("changedFiles"),
   deletions: scalarField("deletions"),
   sha: scalarField("sha"),
-});
+};
 
-Object.assign(AgentActivityPushSummary.fields, {
+const AgentActivityPushSummaryFields: TypeMeta["fields"] = {
   additionalCommitShas: scalarField("additionalCommitShas"),
   baseSha: scalarField("baseSha"),
   commitCount: scalarField("commitCount"),
   commits: listField("commits", AgentActivityPushCommit),
   headSha: scalarField("headSha"),
-});
+};
 
-Object.assign(AgentActivityResponseContent.fields, {
+const AgentActivityResponseContentFields: TypeMeta["fields"] = {
   body: scalarField("body"),
   bodyData: scalarField("bodyData"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AgentActivityThoughtContent.fields, {
+const AgentActivityThoughtContentFields: TypeMeta["fields"] = {
   body: scalarField("body"),
   bodyData: scalarField("bodyData"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AgentAutomationRetryResolution.fields, {
+const AgentAutomationRetryResolutionFields: TypeMeta["fields"] = {
   aiConversationId: scalarField("aiConversationId"),
   status: scalarField("status"),
-});
+};
 
-Object.assign(AgentSession.fields, {
+const AgentSessionFields: TypeMeta["fields"] = {
   activities: connectionField("activities", AgentActivity, {
     filter: "AgentActivityFilter",
     before: "String",
@@ -18019,64 +21636,64 @@ Object.assign(AgentSession.fields, {
   workspaceDiffFiles: listField("workspaceDiffFiles", AgentSessionWorkspaceDiffFile, {
     contentHash: "String!",
   }),
-});
+};
 
-Object.assign(AgentSessionCodingHarness.fields, {
+const AgentSessionCodingHarnessFields: TypeMeta["fields"] = {
   harness: scalarField("harness"),
   modelLabel: scalarField("modelLabel"),
-});
+};
 
-Object.assign(AgentSessionConnection.fields, {
+const AgentSessionConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", AgentSessionEdge),
   nodes: listField("nodes", AgentSession),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(AgentSessionEdge.fields, {
+const AgentSessionEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", AgentSession),
-});
+};
 
-Object.assign(AgentSessionExternalLink.fields, {
+const AgentSessionExternalLinkFields: TypeMeta["fields"] = {
   label: scalarField("label"),
   url: scalarField("url"),
-});
+};
 
-Object.assign(AgentSessionPayload.fields, {
+const AgentSessionPayloadFields: TypeMeta["fields"] = {
   agentSession: objectField("agentSession", AgentSession),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(AgentSessionToPullRequest.fields, {
+const AgentSessionToPullRequestFields: TypeMeta["fields"] = {
   agentSession: objectField("agentSession", AgentSession),
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   id: scalarField("id"),
   pullRequest: objectField("pullRequest", PullRequest),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(AgentSessionToPullRequestConnection.fields, {
+const AgentSessionToPullRequestConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", AgentSessionToPullRequestEdge),
   nodes: listField("nodes", AgentSessionToPullRequest),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(AgentSessionToPullRequestEdge.fields, {
+const AgentSessionToPullRequestEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", AgentSessionToPullRequest),
-});
+};
 
-Object.assign(AgentSessionWorkspaceDiffFile.fields, {
+const AgentSessionWorkspaceDiffFileFields: TypeMeta["fields"] = {
   additions: scalarField("additions"),
   deletions: scalarField("deletions"),
   oldPath: scalarField("oldPath"),
   path: scalarField("path"),
   state: scalarField("state"),
-});
+};
 
-Object.assign(AgentSkill.fields, {
+const AgentSkillFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   body: scalarField("body"),
   color: scalarField("color"),
@@ -18095,26 +21712,26 @@ Object.assign(AgentSkill.fields, {
   teamId: scalarField("teamId"),
   title: scalarField("title"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(AgentSkillConnection.fields, {
+const AgentSkillConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", AgentSkillEdge),
   nodes: listField("nodes", AgentSkill),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(AgentSkillEdge.fields, {
+const AgentSkillEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", AgentSkill),
-});
+};
 
-Object.assign(AgentSkillPayload.fields, {
+const AgentSkillPayloadFields: TypeMeta["fields"] = {
   agentSkill: objectField("agentSkill", AgentSkill),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(AiConversation.fields, {
+const AiConversationFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   clientPlatform: scalarField("clientPlatform"),
   context: scalarField("context"),
@@ -18132,94 +21749,121 @@ Object.assign(AiConversation.fields, {
   project: objectField("project", Project),
   pullRequest: objectField("pullRequest", PullRequest),
   readAt: scalarField("readAt"),
+  setupWorkflowDefinition: objectField("setupWorkflowDefinition", WorkflowDefinition),
   slugId: scalarField("slugId"),
   status: scalarField("status"),
+  subscriberIds: scalarField("subscriberIds"),
   summary: scalarField("summary"),
   updatedAt: scalarField("updatedAt"),
   user: objectField("user", User),
   userState: listField("userState", AiConversationUserState),
   workflowCronJobDefinition: objectField("workflowCronJobDefinition", WorkflowCronJobDefinition),
   workflowDefinition: objectField("workflowDefinition", WorkflowDefinition),
-});
+};
 
-Object.assign(AiConversationAckPart.fields, {
+const AiConversationAckPartFields: TypeMeta["fields"] = {
   id: scalarField("id"),
   kind: scalarField("kind"),
   metadata: objectField("metadata", AiConversationPartMetadata),
   summary: scalarField("summary"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AiConversationBasePart.fields, {
+const AiConversationBasePartFields: TypeMeta["fields"] = {
   id: scalarField("id"),
   metadata: objectField("metadata", AiConversationPartMetadata),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AiConversationBaseToolCall.fields, {
+const AiConversationBaseToolCallFields: TypeMeta["fields"] = {
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationBaseWidget.fields, {
+const AiConversationBaseWidgetFields: TypeMeta["fields"] = {
   displayInfo: objectField("displayInfo", AiConversationWidgetDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
-});
+};
 
-Object.assign(AiConversationBashToolCall.fields, {
+const AiConversationBashToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationBashToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationBashToolCallArgs.fields, {
+const AiConversationBashToolCallArgsFields: TypeMeta["fields"] = {
   command: scalarField("command"),
-});
+};
 
-Object.assign(AiConversationCodeIntelligenceToolCall.fields, {
+const AiConversationCodeIntelligenceToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationCodeIntelligenceToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationCodeIntelligenceToolCallArgs.fields, {
+const AiConversationCodeIntelligenceToolCallArgsFields: TypeMeta["fields"] = {
   question: scalarField("question"),
-});
+};
 
-Object.assign(AiConversationConfirmationElicitationResponseData.fields, {
-  confirmed: scalarField("confirmed"),
-  kind: scalarField("kind"),
-});
-
-Object.assign(AiConversationContactSupportToolCall.fields, {
+const AiConversationCodeModeToolCallFields: TypeMeta["fields"] = {
+  args: objectField("args", AiConversationCodeModeToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationCreateEntityToolCall.fields, {
+const AiConversationCodeModeToolCallArgsFields: TypeMeta["fields"] = {
+  description: scalarField("description"),
+};
+
+const AiConversationConfirmationElicitationResponseDataFields: TypeMeta["fields"] = {
+  confirmed: scalarField("confirmed"),
+  kind: scalarField("kind"),
+};
+
+const AiConversationContactSupportToolCallFields: TypeMeta["fields"] = {
+  displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
+  name: scalarField("name"),
+  rawArgs: scalarField("rawArgs"),
+  rawResult: scalarField("rawResult"),
+};
+
+const AiConversationCreateAgentChatToolCallFields: TypeMeta["fields"] = {
+  args: scalarField("args"),
+  displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
+  name: scalarField("name"),
+  rawArgs: scalarField("rawArgs"),
+  rawResult: scalarField("rawResult"),
+  result: objectField("result", AiConversationCreateAgentChatToolCallResult),
+};
+
+const AiConversationCreateAgentChatToolCallResultFields: TypeMeta["fields"] = {
+  conversationId: scalarField("conversationId"),
+};
+
+const AiConversationCreateEntityToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationCreateEntityToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
   result: objectField("result", AiConversationCreateEntityToolCallResult),
-});
+};
 
-Object.assign(AiConversationCreateEntityToolCallArgs.fields, {
+const AiConversationCreateEntityToolCallArgsFields: TypeMeta["fields"] = {
   count: scalarField("count"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AiConversationCreateEntityToolCallResult.fields, {
+const AiConversationCreateEntityToolCallResultFields: TypeMeta["fields"] = {
   createdEntities: listField(
     "createdEntities",
     AiConversationCreateEntityToolCallResultCreatedEntities,
@@ -18228,56 +21872,57 @@ Object.assign(AiConversationCreateEntityToolCallResult.fields, {
     "startedAgentSessions",
     AiConversationSearchEntitiesToolCallResultEntities,
   ),
-});
+};
 
-Object.assign(AiConversationCreateEntityToolCallResultCreatedEntities.fields, {
+const AiConversationCreateEntityToolCallResultCreatedEntitiesFields: TypeMeta["fields"] = {
   id: scalarField("id"),
   label: scalarField("label"),
   parent: objectField("parent", AiConversationSearchEntitiesToolCallResultEntities),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AiConversationCreateSandboxToolCall.fields, {
+const AiConversationCreateSandboxToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationCreateSandboxToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationCreateSandboxToolCallArgs.fields, {
+const AiConversationCreateSandboxToolCallArgsFields: TypeMeta["fields"] = {
   repository: scalarField("repository"),
-});
+};
 
-Object.assign(AiConversationDeleteEntityToolCall.fields, {
+const AiConversationDeleteEntityToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationDeleteEntityToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
   result: objectField("result", AiConversationDeleteEntityToolCallResult),
-});
+};
 
-Object.assign(AiConversationDeleteEntityToolCallArgs.fields, {
+const AiConversationDeleteEntityToolCallArgsFields: TypeMeta["fields"] = {
   entity: objectField("entity", AiConversationSearchEntitiesToolCallResultEntities),
-});
+};
 
-Object.assign(AiConversationDeleteEntityToolCallResult.fields, {
+const AiConversationDeleteEntityToolCallResultFields: TypeMeta["fields"] = {
   deletedEntities: listField(
     "deletedEntities",
     AiConversationCreateEntityToolCallResultCreatedEntities,
   ),
-});
+};
 
-Object.assign(AiConversationElicitationOption.fields, {
+const AiConversationElicitationOptionFields: TypeMeta["fields"] = {
   label: scalarField("label"),
   prompt: scalarField("prompt"),
-});
+};
 
-Object.assign(AiConversationElicitationPart.fields, {
+const AiConversationElicitationPartFields: TypeMeta["fields"] = {
   entityType: scalarField("entityType"),
   id: scalarField("id"),
   integrationId: scalarField("integrationId"),
+  integrationService: scalarField("integrationService"),
   kind: scalarField("kind"),
   metadata: objectField("metadata", AiConversationPartMetadata),
   options: listField("options", AiConversationElicitationOption),
@@ -18287,9 +21932,9 @@ Object.assign(AiConversationElicitationPart.fields, {
   suggestedEntityIds: scalarField("suggestedEntityIds"),
   title: scalarField("title"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AiConversationElicitationResponsePart.fields, {
+const AiConversationElicitationResponsePartFields: TypeMeta["fields"] = {
   bodyData: scalarField("bodyData"),
   data: objectField("data", AiConversationElicitationResponseData),
   elicitationId: scalarField("elicitationId"),
@@ -18297,50 +21942,50 @@ Object.assign(AiConversationElicitationResponsePart.fields, {
   metadata: objectField("metadata", AiConversationPartMetadata),
   type: scalarField("type"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(AiConversationEntityCardWidget.fields, {
+const AiConversationEntityCardWidgetFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationEntityCardWidgetArgs),
   displayInfo: objectField("displayInfo", AiConversationWidgetDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
-});
+};
 
-Object.assign(AiConversationEntityCardWidgetArgs.fields, {
+const AiConversationEntityCardWidgetArgsFields: TypeMeta["fields"] = {
   action: scalarField("action"),
   actionSummary: scalarField("actionSummary"),
   id: scalarField("id"),
   note: scalarField("note"),
   snapshot: scalarField("snapshot"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AiConversationEntityListWidget.fields, {
+const AiConversationEntityListWidgetFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationEntityListWidgetArgs),
   displayInfo: objectField("displayInfo", AiConversationWidgetDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
-});
+};
 
-Object.assign(AiConversationEntityListWidgetArgs.fields, {
+const AiConversationEntityListWidgetArgsFields: TypeMeta["fields"] = {
   action: scalarField("action"),
   count: scalarField("count"),
   entities: listField("entities", AiConversationEntityListWidgetArgsEntities),
-});
+};
 
-Object.assign(AiConversationEntityListWidgetArgsEntities.fields, {
+const AiConversationEntityListWidgetArgsEntitiesFields: TypeMeta["fields"] = {
   id: scalarField("id"),
   note: scalarField("note"),
   snapshot: scalarField("snapshot"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AiConversationEntitySelectionElicitationResponseData.fields, {
+const AiConversationEntitySelectionElicitationResponseDataFields: TypeMeta["fields"] = {
   kind: scalarField("kind"),
   selectedEntityIds: scalarField("selectedEntityIds"),
-});
+};
 
-Object.assign(AiConversationErrorPart.fields, {
+const AiConversationErrorPartFields: TypeMeta["fields"] = {
   errorType: scalarField("errorType"),
   id: scalarField("id"),
   message: scalarField("message"),
@@ -18349,736 +21994,784 @@ Object.assign(AiConversationErrorPart.fields, {
   type: scalarField("type"),
   usageLimitResetsAt: scalarField("usageLimitResetsAt"),
   usageLimitScope: scalarField("usageLimitScope"),
-});
+};
 
-Object.assign(AiConversationEventPart.fields, {
+const AiConversationEventPartFields: TypeMeta["fields"] = {
   body: scalarField("body"),
   bodyData: scalarField("bodyData"),
   id: scalarField("id"),
   metadata: objectField("metadata", AiConversationPartMetadata),
   subscriptionId: scalarField("subscriptionId"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AiConversationGetMicrosoftTeamsConversationHistoryToolCall.fields, {
+const AiConversationGetMicrosoftTeamsConversationHistoryToolCallFields: TypeMeta["fields"] = {
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationGetPullRequestCheckLogsToolCall.fields, {
+const AiConversationGetPullRequestCheckLogsToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationGetPullRequestCheckLogsToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationGetPullRequestCheckLogsToolCallArgs.fields, {
+const AiConversationGetPullRequestCheckLogsToolCallArgsFields: TypeMeta["fields"] = {
   checkName: scalarField("checkName"),
   entity: objectField("entity", AiConversationSearchEntitiesToolCallResultEntities),
   workflowName: scalarField("workflowName"),
-});
+};
 
-Object.assign(AiConversationGetPullRequestDiffToolCall.fields, {
+const AiConversationGetPullRequestDiffToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationGetPullRequestDiffToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationGetPullRequestDiffToolCallArgs.fields, {
+const AiConversationGetPullRequestDiffToolCallArgsFields: TypeMeta["fields"] = {
   entity: objectField("entity", AiConversationSearchEntitiesToolCallResultEntities),
-});
+};
 
-Object.assign(AiConversationGetPullRequestFileToolCall.fields, {
+const AiConversationGetPullRequestFileToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationGetPullRequestFileToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationGetPullRequestFileToolCallArgs.fields, {
+const AiConversationGetPullRequestFileToolCallArgsFields: TypeMeta["fields"] = {
   entity: objectField("entity", AiConversationSearchEntitiesToolCallResultEntities),
   path: scalarField("path"),
-});
+};
 
-Object.assign(AiConversationGetSlackConversationHistoryToolCall.fields, {
+const AiConversationGetSlackConversationHistoryToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationGetSlackConversationHistoryToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
   result: objectField("result", AiConversationGetSlackConversationHistoryToolCallResult),
-});
+};
 
-Object.assign(AiConversationGetSlackConversationHistoryToolCallArgs.fields, {
+const AiConversationGetSlackConversationHistoryToolCallArgsFields: TypeMeta["fields"] = {
   channel: scalarField("channel"),
   targetType: scalarField("targetType"),
-});
+};
 
-Object.assign(AiConversationGetSlackConversationHistoryToolCallResult.fields, {
+const AiConversationGetSlackConversationHistoryToolCallResultFields: TypeMeta["fields"] = {
   conversationUrl: scalarField("conversationUrl"),
   error: scalarField("error"),
   hasMore: scalarField("hasMore"),
   messageCount: scalarField("messageCount"),
-});
+};
 
-Object.assign(AiConversationHandoffToCodingSessionToolCall.fields, {
+const AiConversationHandoffToCodingSessionToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationHandoffToCodingSessionToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationHandoffToCodingSessionToolCallArgs.fields, {
+const AiConversationHandoffToCodingSessionToolCallArgsFields: TypeMeta["fields"] = {
   entity: objectField("entity", AiConversationSearchEntitiesToolCallResultEntities),
   instructions: scalarField("instructions"),
-});
+};
 
-Object.assign(AiConversationInvokeMcpToolToolCall.fields, {
+const AiConversationIntegrationConnectionElicitationResponseDataFields: TypeMeta["fields"] = {
+  integrationId: scalarField("integrationId"),
+  kind: scalarField("kind"),
+};
+
+const AiConversationInvokeMcpToolToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationInvokeMcpToolToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationInvokeMcpToolToolCallArgs.fields, {
+const AiConversationInvokeMcpToolToolCallArgsFields: TypeMeta["fields"] = {
   server: objectField("server", AiConversationInvokeMcpToolToolCallArgsServer),
   tool: objectField("tool", AiConversationInvokeMcpToolToolCallArgsTool),
-});
+};
 
-Object.assign(AiConversationInvokeMcpToolToolCallArgsServer.fields, {
+const AiConversationInvokeMcpToolToolCallArgsServerFields: TypeMeta["fields"] = {
   integrationId: scalarField("integrationId"),
   name: scalarField("name"),
   title: scalarField("title"),
-});
+};
 
-Object.assign(AiConversationInvokeMcpToolToolCallArgsTool.fields, {
+const AiConversationInvokeMcpToolToolCallArgsToolFields: TypeMeta["fields"] = {
   name: scalarField("name"),
   title: scalarField("title"),
-});
+};
 
-Object.assign(AiConversationListCodingSessionsToolCall.fields, {
+const AiConversationListCodingSessionsToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationListCodingSessionsToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
   result: objectField("result", AiConversationListCodingSessionsToolCallResult),
-});
+};
 
-Object.assign(AiConversationListCodingSessionsToolCallArgs.fields, {
+const AiConversationListCodingSessionsToolCallArgsFields: TypeMeta["fields"] = {
   includeDismissed: scalarField("includeDismissed"),
-});
+};
 
-Object.assign(AiConversationListCodingSessionsToolCallResult.fields, {
+const AiConversationListCodingSessionsToolCallResultFields: TypeMeta["fields"] = {
   agentSessions: listField(
     "agentSessions",
     AiConversationListCodingSessionsToolCallResultAgentSessions,
   ),
   entities: listField("entities", AiConversationSearchEntitiesToolCallResultEntities),
-});
+};
 
-Object.assign(AiConversationListCodingSessionsToolCallResultAgentSessions.fields, {
+const AiConversationListCodingSessionsToolCallResultAgentSessionsFields: TypeMeta["fields"] = {
   id: scalarField("id"),
   pullRequests: listField("pullRequests", AiConversationSearchEntitiesToolCallResultEntities),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AiConversationMcpServerConnectionElicitationResponseData.fields, {
+const AiConversationMcpServerConnectionElicitationResponseDataFields: TypeMeta["fields"] = {
   integrationId: scalarField("integrationId"),
   kind: scalarField("kind"),
-});
+};
 
-Object.assign(AiConversationMcpServerConnectionScope.fields, {
+const AiConversationMcpServerConnectionScopeFields: TypeMeta["fields"] = {
   teamId: scalarField("teamId"),
   type: scalarField("type"),
   workflowDefinitionDraftId: scalarField("workflowDefinitionDraftId"),
   workflowDefinitionId: scalarField("workflowDefinitionId"),
-});
+};
 
-Object.assign(AiConversationMemoryToolCall.fields, {
+const AiConversationMemoryToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationMemoryToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationMemoryToolCallArgs.fields, {
+const AiConversationMemoryToolCallArgsFields: TypeMeta["fields"] = {
   action: scalarField("action"),
   name: scalarField("name"),
-});
+};
 
-Object.assign(AiConversationMultipleChoiceElicitationResponseData.fields, {
+const AiConversationMessageSubagentToolCallFields: TypeMeta["fields"] = {
+  args: objectField("args", AiConversationMessageSubagentToolCallArgs),
+  displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
+  name: scalarField("name"),
+  rawArgs: scalarField("rawArgs"),
+  rawResult: scalarField("rawResult"),
+  result: objectField("result", AiConversationMessageSubagentToolCallResult),
+};
+
+const AiConversationMessageSubagentToolCallArgsFields: TypeMeta["fields"] = {
+  conversationId: scalarField("conversationId"),
+  prompt: scalarField("prompt"),
+  wait: scalarField("wait"),
+};
+
+const AiConversationMessageSubagentToolCallResultFields: TypeMeta["fields"] = {
+  turnId: scalarField("turnId"),
+};
+
+const AiConversationMultipleChoiceElicitationResponseDataFields: TypeMeta["fields"] = {
   kind: scalarField("kind"),
   selectedOptionIndex: scalarField("selectedOptionIndex"),
-});
+};
 
-Object.assign(AiConversationNavigateToPageToolCall.fields, {
+const AiConversationNavigateToPageToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationNavigateToPageToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
   result: objectField("result", AiConversationNavigateToPageToolCallResult),
-});
+};
 
-Object.assign(AiConversationNavigateToPageToolCallArgs.fields, {
+const AiConversationNavigateToPageToolCallArgsFields: TypeMeta["fields"] = {
   entities: listField("entities", AiConversationNavigateToPageToolCallArgsEntities),
-});
+};
 
-Object.assign(AiConversationNavigateToPageToolCallArgsEntities.fields, {
+const AiConversationNavigateToPageToolCallArgsEntitiesFields: TypeMeta["fields"] = {
   entityType: scalarField("entityType"),
   uuid: scalarField("uuid"),
-});
+};
 
-Object.assign(AiConversationNavigateToPageToolCallResult.fields, {
+const AiConversationNavigateToPageToolCallResultFields: TypeMeta["fields"] = {
   urls: scalarField("urls"),
-});
+};
 
-Object.assign(AiConversationNotifyUsersToolCall.fields, {
+const AiConversationNotifyUsersToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationNotifyUsersToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
   result: objectField("result", AiConversationNotifyUsersToolCallResult),
-});
+};
 
-Object.assign(AiConversationNotifyUsersToolCallArgs.fields, {
+const AiConversationNotifyUsersToolCallArgsFields: TypeMeta["fields"] = {
   message: scalarField("message"),
   summary: scalarField("summary"),
   userIds: scalarField("userIds"),
-});
+};
 
-Object.assign(AiConversationNotifyUsersToolCallResult.fields, {
+const AiConversationNotifyUsersToolCallResultFields: TypeMeta["fields"] = {
   notifiedUserIds: scalarField("notifiedUserIds"),
   skippedUserIds: scalarField("skippedUserIds"),
-});
+};
 
-Object.assign(AiConversationPartMetadata.fields, {
+const AiConversationPartMetadataFields: TypeMeta["fields"] = {
   endedAt: scalarField("endedAt"),
   evalLogId: scalarField("evalLogId"),
   feedback: scalarField("feedback"),
   phase: scalarField("phase"),
   startedAt: scalarField("startedAt"),
   turnId: scalarField("turnId"),
-});
+};
 
-Object.assign(AiConversationPatchSettingsToolCall.fields, {
+const AiConversationPatchSettingsToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationPatchSettingsToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationPatchSettingsToolCallArgs.fields, {
+const AiConversationPatchSettingsToolCallArgsFields: TypeMeta["fields"] = {
   ids: scalarField("ids"),
-});
+};
 
-Object.assign(AiConversationPostChatMessageToolCall.fields, {
+const AiConversationPostChatMessageToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationPostChatMessageToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
   result: objectField("result", AiConversationPostChatMessageToolCallResult),
-});
+};
 
-Object.assign(AiConversationPostChatMessageToolCallArgs.fields, {
+const AiConversationPostChatMessageToolCallArgsFields: TypeMeta["fields"] = {
   channel: scalarField("channel"),
   isReply: scalarField("isReply"),
   platform: scalarField("platform"),
   recipient: scalarField("recipient"),
   recipientId: scalarField("recipientId"),
-});
+};
 
-Object.assign(AiConversationPostChatMessageToolCallResult.fields, {
+const AiConversationPostChatMessageToolCallResultFields: TypeMeta["fields"] = {
   conversationUrl: scalarField("conversationUrl"),
   destination: objectField("destination", AiConversationPostChatMessageToolCallResultDestination),
   error: scalarField("error"),
   message: scalarField("message"),
   posted: scalarField("posted"),
-});
+};
 
-Object.assign(AiConversationPostChatMessageToolCallResultDestination.fields, {
+const AiConversationPostChatMessageToolCallResultDestinationFields: TypeMeta["fields"] = {
   channelId: scalarField("channelId"),
   integrationId: scalarField("integrationId"),
   messageId: scalarField("messageId"),
   threadId: scalarField("threadId"),
-});
+};
 
-Object.assign(AiConversationPromptCodingSessionToolCall.fields, {
+const AiConversationPromptCodingSessionToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationPromptCodingSessionToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
   result: objectField("result", AiConversationPromptCodingSessionToolCallResult),
-});
+};
 
-Object.assign(AiConversationPromptCodingSessionToolCallArgs.fields, {
+const AiConversationPromptCodingSessionToolCallArgsFields: TypeMeta["fields"] = {
   prompt: scalarField("prompt"),
   queued: scalarField("queued"),
-});
+};
 
-Object.assign(AiConversationPromptCodingSessionToolCallResult.fields, {
+const AiConversationPromptCodingSessionToolCallResultFields: TypeMeta["fields"] = {
   agentSession: objectField("agentSession", AiConversationSearchEntitiesToolCallResultEntities),
   created: scalarField("created"),
   entities: listField("entities", AiConversationSearchEntitiesToolCallResultEntities),
   pullRequests: listField("pullRequests", AiConversationSearchEntitiesToolCallResultEntities),
   quotaBlocked: scalarField("quotaBlocked"),
-});
+};
 
-Object.assign(AiConversationPromptPart.fields, {
+const AiConversationPromptPartFields: TypeMeta["fields"] = {
   body: scalarField("body"),
   bodyData: scalarField("bodyData"),
   id: scalarField("id"),
   metadata: objectField("metadata", AiConversationPartMetadata),
   type: scalarField("type"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(AiConversationQueryActivityToolCall.fields, {
+const AiConversationQueryActivityToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationQueryActivityToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationQueryActivityToolCallArgs.fields, {
+const AiConversationQueryActivityToolCallArgsFields: TypeMeta["fields"] = {
   entities: listField("entities", AiConversationSearchEntitiesToolCallResultEntities),
-});
+};
 
-Object.assign(AiConversationQueryUpdatesToolCall.fields, {
+const AiConversationQueryUpdatesToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationQueryUpdatesToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationQueryUpdatesToolCallArgs.fields, {
+const AiConversationQueryUpdatesToolCallArgsFields: TypeMeta["fields"] = {
   entity: objectField("entity", AiConversationSearchEntitiesToolCallResultEntities),
   updateType: scalarField("updateType"),
-});
+};
 
-Object.assign(AiConversationQueryViewToolCall.fields, {
+const AiConversationQueryViewToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationQueryViewToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationQueryViewToolCallArgs.fields, {
+const AiConversationQueryViewToolCallArgsFields: TypeMeta["fields"] = {
   filter: scalarField("filter"),
   mode: scalarField("mode"),
   view: objectField("view", AiConversationQueryViewToolCallArgsView),
-});
+};
 
-Object.assign(AiConversationQueryViewToolCallArgsView.fields, {
+const AiConversationQueryViewToolCallArgsViewFields: TypeMeta["fields"] = {
   group: objectField("group", AiConversationSearchEntitiesToolCallResultEntities),
   predefinedView: scalarField("predefinedView"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AiConversationReadFileToolCall.fields, {
+const AiConversationReadFileToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationReadFileToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationReadFileToolCallArgs.fields, {
+const AiConversationReadFileToolCallArgsFields: TypeMeta["fields"] = {
   assetUrl: scalarField("assetUrl"),
   mode: scalarField("mode"),
   name: scalarField("name"),
   query: scalarField("query"),
-});
+};
 
-Object.assign(AiConversationReadSandboxFileToolCall.fields, {
+const AiConversationReadSandboxFileToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationReadSandboxFileToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationReadSandboxFileToolCallArgs.fields, {
+const AiConversationReadSandboxFileToolCallArgsFields: TypeMeta["fields"] = {
   path: scalarField("path"),
-});
+};
 
-Object.assign(AiConversationReadSettingToolCall.fields, {
+const AiConversationReadSettingToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationReadSettingToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationReadSettingToolCallArgs.fields, {
+const AiConversationReadSettingToolCallArgsFields: TypeMeta["fields"] = {
   id: scalarField("id"),
-});
+};
 
-Object.assign(AiConversationReasoningPart.fields, {
+const AiConversationReasoningPartFields: TypeMeta["fields"] = {
   body: scalarField("body"),
   bodyData: scalarField("bodyData"),
   id: scalarField("id"),
   metadata: objectField("metadata", AiConversationPartMetadata),
   title: scalarField("title"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AiConversationRemoveSpendLimitToolCall.fields, {
+const AiConversationRemoveSpendLimitToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationRemoveSpendLimitToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationRemoveSpendLimitToolCallArgs.fields, {
+const AiConversationRemoveSpendLimitToolCallArgsFields: TypeMeta["fields"] = {
   summary: scalarField("summary"),
-});
+};
 
-Object.assign(AiConversationResearchToolCall.fields, {
+const AiConversationRenameAgentChatToolCallFields: TypeMeta["fields"] = {
+  args: objectField("args", AiConversationRenameAgentChatToolCallArgs),
+  displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
+  name: scalarField("name"),
+  rawArgs: scalarField("rawArgs"),
+  rawResult: scalarField("rawResult"),
+};
+
+const AiConversationRenameAgentChatToolCallArgsFields: TypeMeta["fields"] = {
+  name: scalarField("name"),
+};
+
+const AiConversationRerunPullRequestReviewToolCallFields: TypeMeta["fields"] = {
+  args: objectField("args", AiConversationRerunPullRequestReviewToolCallArgs),
+  displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
+  name: scalarField("name"),
+  rawArgs: scalarField("rawArgs"),
+  rawResult: scalarField("rawResult"),
+};
+
+const AiConversationRerunPullRequestReviewToolCallArgsFields: TypeMeta["fields"] = {
+  entity: objectField("entity", AiConversationSearchEntitiesToolCallResultEntities),
+};
+
+const AiConversationResearchToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationResearchToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
   result: objectField("result", AiConversationResearchToolCallResult),
-});
+};
 
-Object.assign(AiConversationResearchToolCallArgs.fields, {
+const AiConversationResearchToolCallArgsFields: TypeMeta["fields"] = {
   context: scalarField("context"),
   query: scalarField("query"),
   subjects: listField("subjects", AiConversationSearchEntitiesToolCallResultEntities),
-});
+};
 
-Object.assign(AiConversationResearchToolCallResult.fields, {
+const AiConversationResearchToolCallResultFields: TypeMeta["fields"] = {
   progressId: scalarField("progressId"),
-});
+};
 
-Object.assign(AiConversationRestoreEntityToolCall.fields, {
+const AiConversationRestoreEntityToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationRestoreEntityToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
   result: objectField("result", AiConversationRestoreEntityToolCallResult),
-});
+};
 
-Object.assign(AiConversationRestoreEntityToolCallArgs.fields, {
+const AiConversationRestoreEntityToolCallArgsFields: TypeMeta["fields"] = {
   entity: objectField("entity", AiConversationSearchEntitiesToolCallResultEntities),
-});
+};
 
-Object.assign(AiConversationRestoreEntityToolCallResult.fields, {
+const AiConversationRestoreEntityToolCallResultFields: TypeMeta["fields"] = {
   restoredEntities: listField(
     "restoredEntities",
     AiConversationCreateEntityToolCallResultCreatedEntities,
   ),
-});
+};
 
-Object.assign(AiConversationRetrieveEntitiesToolCall.fields, {
+const AiConversationRetrieveEntitiesToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationRetrieveEntitiesToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationRetrieveEntitiesToolCallArgs.fields, {
+const AiConversationRetrieveEntitiesToolCallArgsFields: TypeMeta["fields"] = {
   entities: listField("entities", AiConversationSearchEntitiesToolCallResultEntities),
-});
+};
 
-Object.assign(AiConversationRetryPullRequestCheckToolCall.fields, {
+const AiConversationRetryPullRequestCheckToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationRetryPullRequestCheckToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationRetryPullRequestCheckToolCallArgs.fields, {
+const AiConversationRetryPullRequestCheckToolCallArgsFields: TypeMeta["fields"] = {
   checkName: scalarField("checkName"),
   entity: objectField("entity", AiConversationSearchEntitiesToolCallResultEntities),
   workflowName: scalarField("workflowName"),
-});
+};
 
-Object.assign(AiConversationRunLoopToolCall.fields, {
+const AiConversationRunLoopToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationRunLoopToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
   result: objectField("result", AiConversationRunLoopToolCallResult),
-});
+};
 
-Object.assign(AiConversationRunLoopToolCallArgs.fields, {
+const AiConversationRunLoopToolCallArgsFields: TypeMeta["fields"] = {
   workflowDefinitionId: scalarField("workflowDefinitionId"),
-});
+};
 
-Object.assign(AiConversationRunLoopToolCallResult.fields, {
+const AiConversationRunLoopToolCallResultFields: TypeMeta["fields"] = {
   conversationId: scalarField("conversationId"),
   createdEntities: listField(
     "createdEntities",
     AiConversationCreateEntityToolCallResultCreatedEntities,
   ),
   url: scalarField("url"),
-});
+};
 
-Object.assign(AiConversationSandboxGitHistoryToolCall.fields, {
+const AiConversationSandboxGitHistoryToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationSandboxGitHistoryToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationSandboxGitHistoryToolCallArgs.fields, {
+const AiConversationSandboxGitHistoryToolCallArgsFields: TypeMeta["fields"] = {
   operation: scalarField("operation"),
   paths: scalarField("paths"),
-});
+};
 
-Object.assign(AiConversationSearchChatChannelsToolCall.fields, {
+const AiConversationSearchChatChannelsToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationSearchChatChannelsToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
   result: objectField("result", AiConversationSearchChatChannelsToolCallResult),
-});
+};
 
-Object.assign(AiConversationSearchChatChannelsToolCallArgs.fields, {
+const AiConversationSearchChatChannelsToolCallArgsFields: TypeMeta["fields"] = {
   filter: scalarField("filter"),
   platform: scalarField("platform"),
-});
+};
 
-Object.assign(AiConversationSearchChatChannelsToolCallResult.fields, {
+const AiConversationSearchChatChannelsToolCallResultFields: TypeMeta["fields"] = {
   totalCount: scalarField("totalCount"),
-});
+};
 
-Object.assign(AiConversationSearchDocumentationToolCall.fields, {
+const AiConversationSearchDocumentationToolCallFields: TypeMeta["fields"] = {
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationSearchEntitiesToolCall.fields, {
+const AiConversationSearchEntitiesToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationSearchEntitiesToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
   result: objectField("result", AiConversationSearchEntitiesToolCallResult),
-});
+};
 
-Object.assign(AiConversationSearchEntitiesToolCallArgs.fields, {
+const AiConversationSearchEntitiesToolCallArgsFields: TypeMeta["fields"] = {
   queries: scalarField("queries"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AiConversationSearchEntitiesToolCallResult.fields, {
+const AiConversationSearchEntitiesToolCallResultFields: TypeMeta["fields"] = {
   entities: listField("entities", AiConversationSearchEntitiesToolCallResultEntities),
-});
+};
 
-Object.assign(AiConversationSearchEntitiesToolCallResultEntities.fields, {
+const AiConversationSearchEntitiesToolCallResultEntitiesFields: TypeMeta["fields"] = {
   id: scalarField("id"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AiConversationSearchSettingsToolCall.fields, {
+const AiConversationSearchSettingsToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationSearchSettingsToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationSearchSettingsToolCallArgs.fields, {
+const AiConversationSearchSettingsToolCallArgsFields: TypeMeta["fields"] = {
   parentId: scalarField("parentId"),
   query: scalarField("query"),
-});
+};
 
-Object.assign(AiConversationSetSpendLimitToolCall.fields, {
+const AiConversationSetSpendLimitToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationSetSpendLimitToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationSetSpendLimitToolCallArgs.fields, {
+const AiConversationSetSpendLimitToolCallArgsFields: TypeMeta["fields"] = {
   summary: scalarField("summary"),
-});
+};
 
-Object.assign(AiConversationSettingWidget.fields, {
+const AiConversationSettingWidgetFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationSettingWidgetArgs),
   displayInfo: objectField("displayInfo", AiConversationWidgetDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
-});
+};
 
-Object.assign(AiConversationSettingWidgetArgs.fields, {
+const AiConversationSettingWidgetArgsFields: TypeMeta["fields"] = {
   id: scalarField("id"),
   target: objectField("target", AiConversationSettingWidgetArgsTarget),
-});
+};
 
-Object.assign(AiConversationSettingWidgetArgsTarget.fields, {
+const AiConversationSettingWidgetArgsTargetFields: TypeMeta["fields"] = {
   id: scalarField("id"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AiConversationSpawnSubagentToolCall.fields, {
+const AiConversationSpawnSubagentToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationSpawnSubagentToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
   result: objectField("result", AiConversationSpawnSubagentToolCallResult),
-});
+};
 
-Object.assign(AiConversationSpawnSubagentToolCallArgs.fields, {
+const AiConversationSpawnSubagentToolCallArgsFields: TypeMeta["fields"] = {
   description: scalarField("description"),
-});
+};
 
-Object.assign(AiConversationSpawnSubagentToolCallResult.fields, {
+const AiConversationSpawnSubagentToolCallResultFields: TypeMeta["fields"] = {
   conversationId: scalarField("conversationId"),
-});
+};
 
-Object.assign(AiConversationStartCodingSessionToolCall.fields, {
+const AiConversationStartCodingSessionToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationStartCodingSessionToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
   result: objectField("result", AiConversationStartCodingSessionToolCallResult),
-});
+};
 
-Object.assign(AiConversationStartCodingSessionToolCallArgs.fields, {
+const AiConversationStartCodingSessionToolCallArgsFields: TypeMeta["fields"] = {
   prompt: scalarField("prompt"),
-});
+};
 
-Object.assign(AiConversationStartCodingSessionToolCallResult.fields, {
+const AiConversationStartCodingSessionToolCallResultFields: TypeMeta["fields"] = {
   agentSession: objectField("agentSession", AiConversationSearchEntitiesToolCallResultEntities),
   entities: listField("entities", AiConversationSearchEntitiesToolCallResultEntities),
   pullRequests: listField("pullRequests", AiConversationSearchEntitiesToolCallResultEntities),
-});
+};
 
-Object.assign(AiConversationSubscribeToEventToolCall.fields, {
+const AiConversationSubscribeToEventToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationSubscribeToEventToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationSubscribeToEventToolCallArgs.fields, {
+const AiConversationSubscribeToEventToolCallArgsFields: TypeMeta["fields"] = {
   endsAt: scalarField("endsAt"),
   kind: scalarField("kind"),
   message: scalarField("message"),
   subscriptionId: scalarField("subscriptionId"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AiConversationSuggestRepositoryToolCall.fields, {
+const AiConversationSuggestRepositoryToolCallFields: TypeMeta["fields"] = {
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationSuggestValuesToolCall.fields, {
+const AiConversationSuggestValuesToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationSuggestValuesToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationSuggestValuesToolCallArgs.fields, {
+const AiConversationSuggestValuesToolCallArgsFields: TypeMeta["fields"] = {
   field: scalarField("field"),
   query: scalarField("query"),
-});
+};
 
-Object.assign(AiConversationTextPart.fields, {
+const AiConversationTextPartFields: TypeMeta["fields"] = {
   body: scalarField("body"),
   bodyData: scalarField("bodyData"),
   id: scalarField("id"),
   metadata: objectField("metadata", AiConversationPartMetadata),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AiConversationToolCallPart.fields, {
+const AiConversationToolCallPartFields: TypeMeta["fields"] = {
   id: scalarField("id"),
   metadata: objectField("metadata", AiConversationPartMetadata),
   toolCall: objectField("toolCall", AiConversationToolCall),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AiConversationToolDisplayInfo.fields, {
+const AiConversationToolDisplayInfoFields: TypeMeta["fields"] = {
   activeLabel: scalarField("activeLabel"),
   detail: scalarField("detail"),
   icon: scalarField("icon"),
   inactiveLabel: scalarField("inactiveLabel"),
   result: scalarField("result"),
-});
+};
 
-Object.assign(AiConversationTranscribeMediaToolCall.fields, {
+const AiConversationTranscribeMediaToolCallFields: TypeMeta["fields"] = {
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationTranscribeVideoToolCall.fields, {
+const AiConversationTranscribeVideoToolCallFields: TypeMeta["fields"] = {
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationUnsubscribeFromEventToolCall.fields, {
+const AiConversationUnsubscribeFromEventToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationUnsubscribeFromEventToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationUnsubscribeFromEventToolCallArgs.fields, {
+const AiConversationUnsubscribeFromEventToolCallArgsFields: TypeMeta["fields"] = {
   message: scalarField("message"),
   subscriptionId: scalarField("subscriptionId"),
-});
+};
 
-Object.assign(AiConversationUpdateEntityToolCall.fields, {
+const AiConversationUpdateEntityToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationUpdateEntityToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
   result: objectField("result", AiConversationUpdateEntityToolCallResult),
-});
+};
 
-Object.assign(AiConversationUpdateEntityToolCallArgs.fields, {
+const AiConversationUpdateEntityToolCallArgsFields: TypeMeta["fields"] = {
   entities: listField("entities", AiConversationSearchEntitiesToolCallResultEntities),
   entity: objectField("entity", AiConversationSearchEntitiesToolCallResultEntities),
-});
+};
 
-Object.assign(AiConversationUpdateEntityToolCallResult.fields, {
+const AiConversationUpdateEntityToolCallResultFields: TypeMeta["fields"] = {
   startedAgentSessions: listField(
     "startedAgentSessions",
     AiConversationSearchEntitiesToolCallResultEntities,
@@ -19087,40 +22780,54 @@ Object.assign(AiConversationUpdateEntityToolCallResult.fields, {
     "updatedEntities",
     AiConversationCreateEntityToolCallResultCreatedEntities,
   ),
-});
+};
 
-Object.assign(AiConversationUserState.fields, {
+const AiConversationUpdatePullRequestReviewFindingToolCallFields: TypeMeta["fields"] = {
+  args: objectField("args", AiConversationUpdatePullRequestReviewFindingToolCallArgs),
+  displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
+  name: scalarField("name"),
+  rawArgs: scalarField("rawArgs"),
+  rawResult: scalarField("rawResult"),
+};
+
+const AiConversationUpdatePullRequestReviewFindingToolCallArgsFields: TypeMeta["fields"] = {
+  entity: objectField("entity", AiConversationSearchEntitiesToolCallResultEntities),
+  findingId: scalarField("findingId"),
+  rejected: scalarField("rejected"),
+};
+
+const AiConversationUserStateFields: TypeMeta["fields"] = {
   dismissedElicitationId: scalarField("dismissedElicitationId"),
   lastReadAt: scalarField("lastReadAt"),
   userId: scalarField("userId"),
-});
+};
 
-Object.assign(AiConversationWebSearchToolCall.fields, {
+const AiConversationWebSearchToolCallFields: TypeMeta["fields"] = {
   args: objectField("args", AiConversationWebSearchToolCallArgs),
   displayInfo: objectField("displayInfo", AiConversationToolDisplayInfo),
   name: scalarField("name"),
   rawArgs: scalarField("rawArgs"),
   rawResult: scalarField("rawResult"),
-});
+};
 
-Object.assign(AiConversationWebSearchToolCallArgs.fields, {
+const AiConversationWebSearchToolCallArgsFields: TypeMeta["fields"] = {
   query: scalarField("query"),
   url: scalarField("url"),
-});
+};
 
-Object.assign(AiConversationWidgetDisplayInfo.fields, {
+const AiConversationWidgetDisplayInfoFields: TypeMeta["fields"] = {
   body: scalarField("body"),
   bodyData: scalarField("bodyData"),
-});
+};
 
-Object.assign(AiConversationWidgetPart.fields, {
+const AiConversationWidgetPartFields: TypeMeta["fields"] = {
   id: scalarField("id"),
   metadata: objectField("metadata", AiConversationPartMetadata),
   type: scalarField("type"),
   widget: objectField("widget", AiConversationWidget),
-});
+};
 
-Object.assign(AiPromptProgress.fields, {
+const AiPromptProgressFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   id: scalarField("id"),
@@ -19129,28 +22836,28 @@ Object.assign(AiPromptProgress.fields, {
   status: scalarField("status"),
   type: scalarField("type"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(AiPromptProgressConnection.fields, {
+const AiPromptProgressConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", AiPromptProgressEdge),
   nodes: listField("nodes", AiPromptProgress),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(AiPromptProgressEdge.fields, {
+const AiPromptProgressEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", AiPromptProgress),
-});
+};
 
-Object.assign(AiPromptRules.fields, {
+const AiPromptRulesFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   id: scalarField("id"),
   updatedAt: scalarField("updatedAt"),
   updatedBy: objectField("updatedBy", User),
-});
+};
 
-Object.assign(Application.fields, {
+const ApplicationFields: TypeMeta["fields"] = {
   clientId: scalarField("clientId"),
   description: scalarField("description"),
   developer: scalarField("developer"),
@@ -19158,21 +22865,21 @@ Object.assign(Application.fields, {
   id: scalarField("id"),
   imageUrl: scalarField("imageUrl"),
   name: scalarField("name"),
-});
+};
 
-Object.assign(ArchivePayload.fields, {
+const ArchivePayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(ArchiveResponse.fields, {
+const ArchiveResponseFields: TypeMeta["fields"] = {
   archive: scalarField("archive"),
   databaseVersion: scalarField("databaseVersion"),
   includesDependencies: scalarField("includesDependencies"),
   totalCount: scalarField("totalCount"),
-});
+};
 
-Object.assign(ArchivedIntegrationPayload.fields, {
+const ArchivedIntegrationPayloadFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   codeAccess: scalarField("codeAccess"),
   enterpriseUrl: scalarField("enterpriseUrl"),
@@ -19181,18 +22888,18 @@ Object.assign(ArchivedIntegrationPayload.fields, {
   orgAvatarUrl: scalarField("orgAvatarUrl"),
   orgLogin: scalarField("orgLogin"),
   service: scalarField("service"),
-});
+};
 
-Object.assign(AsksChannelConnectPayload.fields, {
+const AsksChannelConnectPayloadFields: TypeMeta["fields"] = {
   addBot: scalarField("addBot"),
   gitHub: objectField("gitHub", GitHubIntegrationConnectDetails),
   integration: objectField("integration", Integration),
   lastSyncId: scalarField("lastSyncId"),
   mapping: objectField("mapping", SlackChannelNameMapping),
   success: scalarField("success"),
-});
+};
 
-Object.assign(Attachment.fields, {
+const AttachmentFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   bodyData: scalarField("bodyData"),
   createdAt: scalarField("createdAt"),
@@ -19209,30 +22916,30 @@ Object.assign(Attachment.fields, {
   title: scalarField("title"),
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
-});
+};
 
-Object.assign(AttachmentConnection.fields, {
+const AttachmentConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", AttachmentEdge),
   nodes: listField("nodes", Attachment),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(AttachmentEdge.fields, {
+const AttachmentEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", Attachment),
-});
+};
 
-Object.assign(AttachmentPayload.fields, {
+const AttachmentPayloadFields: TypeMeta["fields"] = {
   attachment: objectField("attachment", Attachment),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(AttachmentSourcesPayload.fields, {
+const AttachmentSourcesPayloadFields: TypeMeta["fields"] = {
   sources: scalarField("sources"),
-});
+};
 
-Object.assign(AuditEntry.fields, {
+const AuditEntryFields: TypeMeta["fields"] = {
   actor: objectField("actor", User),
   actorId: scalarField("actorId"),
   archivedAt: scalarField("archivedAt"),
@@ -19245,25 +22952,25 @@ Object.assign(AuditEntry.fields, {
   requestInformation: scalarField("requestInformation"),
   type: scalarField("type"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(AuditEntryConnection.fields, {
+const AuditEntryConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", AuditEntryEdge),
   nodes: listField("nodes", AuditEntry),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(AuditEntryEdge.fields, {
+const AuditEntryEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", AuditEntry),
-});
+};
 
-Object.assign(AuditEntryType.fields, {
+const AuditEntryTypeFields: TypeMeta["fields"] = {
   description: scalarField("description"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AuthIdentityProvider.fields, {
+const AuthIdentityProviderFields: TypeMeta["fields"] = {
   createdAt: scalarField("createdAt"),
   defaultMigrated: scalarField("defaultMigrated"),
   id: scalarField("id"),
@@ -19277,9 +22984,9 @@ Object.assign(AuthIdentityProvider.fields, {
   ssoSignAlgo: scalarField("ssoSignAlgo"),
   ssoSigningCert: scalarField("ssoSigningCert"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(AuthOrganization.fields, {
+const AuthOrganizationFields: TypeMeta["fields"] = {
   allowedAuthServices: scalarField("allowedAuthServices"),
   approximateUserCount: scalarField("approximateUserCount"),
   authSettings: scalarField("authSettings"),
@@ -19300,9 +23007,9 @@ Object.assign(AuthOrganization.fields, {
   serviceId: scalarField("serviceId"),
   urlKey: scalarField("urlKey"),
   userCount: scalarField("userCount"),
-});
+};
 
-Object.assign(AuthResolverResponse.fields, {
+const AuthResolverResponseFields: TypeMeta["fields"] = {
   allowDomainAccess: scalarField("allowDomainAccess"),
   availableOrganizations: listField("availableOrganizations", AuthOrganization),
   email: scalarField("email"),
@@ -19313,9 +23020,9 @@ Object.assign(AuthResolverResponse.fields, {
   service: scalarField("service"),
   token: scalarField("token"),
   users: listField("users", AuthUser),
-});
+};
 
-Object.assign(AuthUser.fields, {
+const AuthUserFields: TypeMeta["fields"] = {
   active: scalarField("active"),
   avatarUrl: scalarField("avatarUrl"),
   createdAt: scalarField("createdAt"),
@@ -19328,9 +23035,9 @@ Object.assign(AuthUser.fields, {
   organization: objectField("organization", AuthOrganization),
   role: scalarField("role"),
   userAccountId: scalarField("userAccountId"),
-});
+};
 
-Object.assign(AuthenticationSessionResponse.fields, {
+const AuthenticationSessionResponseFields: TypeMeta["fields"] = {
   browserType: scalarField("browserType"),
   client: scalarField("client"),
   countryCodes: scalarField("countryCodes"),
@@ -19351,9 +23058,9 @@ Object.assign(AuthenticationSessionResponse.fields, {
   type: scalarField("type"),
   updatedAt: scalarField("updatedAt"),
   userAgent: scalarField("userAgent"),
-});
+};
 
-Object.assign(CodingAgentSandboxEntry.fields, {
+const CodingAgentSandboxEntryFields: TypeMeta["fields"] = {
   baseRef: scalarField("baseRef"),
   branchName: scalarField("branchName"),
   createdAt: scalarField("createdAt"),
@@ -19365,16 +23072,29 @@ Object.assign(CodingAgentSandboxEntry.fields, {
   sandboxUrl: scalarField("sandboxUrl"),
   startedAt: scalarField("startedAt"),
   workerConversationId: scalarField("workerConversationId"),
-});
+};
 
-Object.assign(CodingAgentSandboxPayload.fields, {
+const CodingAgentSandboxPayloadFields: TypeMeta["fields"] = {
   agentSessionId: scalarField("agentSessionId"),
   datadogLogsUrl: scalarField("datadogLogsUrl"),
   sandboxes: listField("sandboxes", CodingAgentSandboxEntry),
   temporalWorkflowsUrl: scalarField("temporalWorkflowsUrl"),
-});
+};
 
-Object.assign(Comment.fields, {
+const CodingInferenceKeyFields: TypeMeta["fields"] = {
+  baseUrl: scalarField("baseUrl"),
+  harness: scalarField("harness"),
+  provider: scalarField("provider"),
+  updatedAt: scalarField("updatedAt"),
+};
+
+const CodingInferenceKeyTestPayloadFields: TypeMeta["fields"] = {
+  baseUrl: scalarField("baseUrl"),
+  message: scalarField("message"),
+  success: scalarField("success"),
+};
+
+const CommentFields: TypeMeta["fields"] = {
   agentSession: objectField("agentSession", AgentSession),
   agentSessions: connectionField("agentSessions", AgentSession, {
     before: "String",
@@ -19458,39 +23178,39 @@ Object.assign(Comment.fields, {
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(CommentConnection.fields, {
+const CommentConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", CommentEdge),
   nodes: listField("nodes", Comment),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(CommentEdge.fields, {
+const CommentEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", Comment),
-});
+};
 
-Object.assign(CommentPayload.fields, {
+const CommentPayloadFields: TypeMeta["fields"] = {
   comment: objectField("comment", Comment),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(ContactPayload.fields, {
+const ContactPayloadFields: TypeMeta["fields"] = {
   success: scalarField("success"),
-});
+};
 
-Object.assign(CreateCsvExportReportPayload.fields, {
+const CreateCsvExportReportPayloadFields: TypeMeta["fields"] = {
   success: scalarField("success"),
-});
+};
 
-Object.assign(CreateOrJoinOrganizationResponse.fields, {
+const CreateOrJoinOrganizationResponseFields: TypeMeta["fields"] = {
   organization: objectField("organization", AuthOrganization),
   user: objectField("user", AuthUser),
-});
+};
 
-Object.assign(CustomView.fields, {
+const CustomViewFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   color: scalarField("color"),
   createdAt: scalarField("createdAt"),
@@ -19557,24 +23277,24 @@ Object.assign(CustomView.fields, {
   }),
   userViewPreferences: objectField("userViewPreferences", ViewPreferences),
   viewPreferencesValues: objectField("viewPreferencesValues", ViewPreferencesValues),
-});
+};
 
-Object.assign(CustomViewConnection.fields, {
+const CustomViewConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", CustomViewEdge),
   nodes: listField("nodes", CustomView),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(CustomViewEdge.fields, {
+const CustomViewEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", CustomView),
-});
+};
 
-Object.assign(CustomViewHasSubscribersPayload.fields, {
+const CustomViewHasSubscribersPayloadFields: TypeMeta["fields"] = {
   hasSubscribers: scalarField("hasSubscribers"),
-});
+};
 
-Object.assign(CustomViewNotificationSubscription.fields, {
+const CustomViewNotificationSubscriptionFields: TypeMeta["fields"] = {
   active: scalarField("active"),
   archivedAt: scalarField("archivedAt"),
   contextViewType: scalarField("contextViewType"),
@@ -19593,21 +23313,21 @@ Object.assign(CustomViewNotificationSubscription.fields, {
   updatedAt: scalarField("updatedAt"),
   user: objectField("user", User),
   userContextViewType: scalarField("userContextViewType"),
-});
+};
 
-Object.assign(CustomViewPayload.fields, {
+const CustomViewPayloadFields: TypeMeta["fields"] = {
   customView: objectField("customView", CustomView),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(CustomViewSuggestionPayload.fields, {
+const CustomViewSuggestionPayloadFields: TypeMeta["fields"] = {
   description: scalarField("description"),
   icon: scalarField("icon"),
   name: scalarField("name"),
-});
+};
 
-Object.assign(Customer.fields, {
+const CustomerFields: TypeMeta["fields"] = {
   approximateNeedCount: scalarField("approximateNeedCount"),
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
@@ -19628,20 +23348,20 @@ Object.assign(Customer.fields, {
   tier: objectField("tier", CustomerTier),
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
-});
+};
 
-Object.assign(CustomerConnection.fields, {
+const CustomerConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", CustomerEdge),
   nodes: listField("nodes", Customer),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(CustomerEdge.fields, {
+const CustomerEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", Customer),
-});
+};
 
-Object.assign(CustomerNeed.fields, {
+const CustomerNeedFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   attachment: objectField("attachment", Attachment),
   body: scalarField("body"),
@@ -19659,26 +23379,26 @@ Object.assign(CustomerNeed.fields, {
   projectAttachment: objectField("projectAttachment", ProjectAttachment),
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
-});
+};
 
-Object.assign(CustomerNeedArchivePayload.fields, {
+const CustomerNeedArchivePayloadFields: TypeMeta["fields"] = {
   entity: objectField("entity", CustomerNeed),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(CustomerNeedConnection.fields, {
+const CustomerNeedConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", CustomerNeedEdge),
   nodes: listField("nodes", CustomerNeed),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(CustomerNeedEdge.fields, {
+const CustomerNeedEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", CustomerNeed),
-});
+};
 
-Object.assign(CustomerNeedNotification.fields, {
+const CustomerNeedNotificationFields: TypeMeta["fields"] = {
   actor: objectField("actor", User),
   actorAvatarColor: scalarField("actorAvatarColor"),
   actorAvatarUrl: scalarField("actorAvatarUrl"),
@@ -19711,22 +23431,22 @@ Object.assign(CustomerNeedNotification.fields, {
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(CustomerNeedPayload.fields, {
+const CustomerNeedPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   need: objectField("need", CustomerNeed),
   success: scalarField("success"),
-});
+};
 
-Object.assign(CustomerNeedUpdatePayload.fields, {
+const CustomerNeedUpdatePayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   need: objectField("need", CustomerNeed),
   success: scalarField("success"),
   updatedRelatedNeeds: listField("updatedRelatedNeeds", CustomerNeed),
-});
+};
 
-Object.assign(CustomerNotification.fields, {
+const CustomerNotificationFields: TypeMeta["fields"] = {
   actor: objectField("actor", User),
   actorAvatarColor: scalarField("actorAvatarColor"),
   actorAvatarUrl: scalarField("actorAvatarUrl"),
@@ -19757,9 +23477,9 @@ Object.assign(CustomerNotification.fields, {
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(CustomerNotificationSubscription.fields, {
+const CustomerNotificationSubscriptionFields: TypeMeta["fields"] = {
   active: scalarField("active"),
   archivedAt: scalarField("archivedAt"),
   contextViewType: scalarField("contextViewType"),
@@ -19778,15 +23498,15 @@ Object.assign(CustomerNotificationSubscription.fields, {
   updatedAt: scalarField("updatedAt"),
   user: objectField("user", User),
   userContextViewType: scalarField("userContextViewType"),
-});
+};
 
-Object.assign(CustomerPayload.fields, {
+const CustomerPayloadFields: TypeMeta["fields"] = {
   customer: objectField("customer", Customer),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(CustomerStatus.fields, {
+const CustomerStatusFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   color: scalarField("color"),
   createdAt: scalarField("createdAt"),
@@ -19797,26 +23517,26 @@ Object.assign(CustomerStatus.fields, {
   position: scalarField("position"),
   type: scalarField("type"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(CustomerStatusConnection.fields, {
+const CustomerStatusConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", CustomerStatusEdge),
   nodes: listField("nodes", CustomerStatus),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(CustomerStatusEdge.fields, {
+const CustomerStatusEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", CustomerStatus),
-});
+};
 
-Object.assign(CustomerStatusPayload.fields, {
+const CustomerStatusPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   status: objectField("status", CustomerStatus),
   success: scalarField("success"),
-});
+};
 
-Object.assign(CustomerTier.fields, {
+const CustomerTierFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   color: scalarField("color"),
   createdAt: scalarField("createdAt"),
@@ -19826,26 +23546,26 @@ Object.assign(CustomerTier.fields, {
   name: scalarField("name"),
   position: scalarField("position"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(CustomerTierConnection.fields, {
+const CustomerTierConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", CustomerTierEdge),
   nodes: listField("nodes", CustomerTier),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(CustomerTierEdge.fields, {
+const CustomerTierEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", CustomerTier),
-});
+};
 
-Object.assign(CustomerTierPayload.fields, {
+const CustomerTierPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
   tier: objectField("tier", CustomerTier),
-});
+};
 
-Object.assign(Cycle.fields, {
+const CycleFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   autoArchivedAt: scalarField("autoArchivedAt"),
   completedAt: scalarField("completedAt"),
@@ -19907,26 +23627,26 @@ Object.assign(Cycle.fields, {
     orderBy: "PaginationOrderBy",
   }),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(CycleArchivePayload.fields, {
+const CycleArchivePayloadFields: TypeMeta["fields"] = {
   entity: objectField("entity", Cycle),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(CycleConnection.fields, {
+const CycleConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", CycleEdge),
   nodes: listField("nodes", Cycle),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(CycleEdge.fields, {
+const CycleEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", Cycle),
-});
+};
 
-Object.assign(CycleNotificationSubscription.fields, {
+const CycleNotificationSubscriptionFields: TypeMeta["fields"] = {
   active: scalarField("active"),
   archivedAt: scalarField("archivedAt"),
   contextViewType: scalarField("contextViewType"),
@@ -19945,15 +23665,15 @@ Object.assign(CycleNotificationSubscription.fields, {
   updatedAt: scalarField("updatedAt"),
   user: objectField("user", User),
   userContextViewType: scalarField("userContextViewType"),
-});
+};
 
-Object.assign(CyclePayload.fields, {
+const CyclePayloadFields: TypeMeta["fields"] = {
   cycle: objectField("cycle", Cycle),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(Dashboard.fields, {
+const DashboardFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   color: scalarField("color"),
   createdAt: scalarField("createdAt"),
@@ -19972,23 +23692,41 @@ Object.assign(Dashboard.fields, {
   updatedAt: scalarField("updatedAt"),
   updatedBy: objectField("updatedBy", User),
   widgets: scalarField("widgets"),
-});
+};
 
-Object.assign(DeletePayload.fields, {
+const DeletePayloadFields: TypeMeta["fields"] = {
   entityId: scalarField("entityId"),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(DependencyPackageMetadataResult.fields, {
+const DependencyPackageMetadataResultFields: TypeMeta["fields"] = {
   license: scalarField("license"),
   name: scalarField("name"),
   publishedAt: scalarField("publishedAt"),
   version: scalarField("version"),
   weeklyDownloads: scalarField("weeklyDownloads"),
-});
+};
 
-Object.assign(Diff.fields, {
+const DeploymentFields: TypeMeta["fields"] = {
+  archivedAt: scalarField("archivedAt"),
+  createdAt: scalarField("createdAt"),
+  environment: scalarField("environment"),
+  externalCreatedAt: scalarField("externalCreatedAt"),
+  externalId: scalarField("externalId"),
+  id: scalarField("id"),
+  logUrl: scalarField("logUrl"),
+  provider: scalarField("provider"),
+  pullRequest: objectField("pullRequest", PullRequest),
+  sha: scalarField("sha"),
+  state: scalarField("state"),
+  statusCreatedAt: scalarField("statusCreatedAt"),
+  statusExternalId: scalarField("statusExternalId"),
+  updatedAt: scalarField("updatedAt"),
+  url: scalarField("url"),
+};
+
+const DiffFields: TypeMeta["fields"] = {
   additions: scalarField("additions"),
   agentSession: objectField("agentSession", AgentSession),
   archivedAt: scalarField("archivedAt"),
@@ -20004,18 +23742,18 @@ Object.assign(Diff.fields, {
   slugId: scalarField("slugId"),
   truncated: scalarField("truncated"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(DiffFile.fields, {
+const DiffFileFields: TypeMeta["fields"] = {
   additions: scalarField("additions"),
   deletions: scalarField("deletions"),
   oldPath: scalarField("oldPath"),
   omitted: scalarField("omitted"),
   path: scalarField("path"),
   state: scalarField("state"),
-});
+};
 
-Object.assign(Document.fields, {
+const DocumentFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   color: scalarField("color"),
   comments: connectionField("comments", Comment, {
@@ -20040,10 +23778,12 @@ Object.assign(Document.fields, {
   issue: objectField("issue", Issue),
   lastAppliedTemplate: objectField("lastAppliedTemplate", Template),
   owner: objectField("owner", User),
+  parentDocument: objectField("parentDocument", Document),
   project: objectField("project", Project),
   release: objectField("release", Release),
   slugId: scalarField("slugId"),
   sortOrder: scalarField("sortOrder"),
+  subDocumentSortOrder: scalarField("subDocumentSortOrder"),
   subscribers: connectionField("subscribers", User, {
     filter: "UserFilter",
     includeDisabled: "Boolean",
@@ -20061,21 +23801,21 @@ Object.assign(Document.fields, {
   updatedAt: scalarField("updatedAt"),
   updatedBy: objectField("updatedBy", User),
   url: scalarField("url"),
-});
+};
 
-Object.assign(DocumentArchivePayload.fields, {
+const DocumentArchivePayloadFields: TypeMeta["fields"] = {
   entity: objectField("entity", Document),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(DocumentConnection.fields, {
+const DocumentConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", DocumentEdge),
   nodes: listField("nodes", Document),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(DocumentContent.fields, {
+const DocumentContentFields: TypeMeta["fields"] = {
   aiPromptRules: objectField("aiPromptRules", AiPromptRules),
   archivedAt: scalarField("archivedAt"),
   content: scalarField("content"),
@@ -20092,9 +23832,9 @@ Object.assign(DocumentContent.fields, {
   restoredAt: scalarField("restoredAt"),
   updatedAt: scalarField("updatedAt"),
   welcomeMessage: objectField("welcomeMessage", WelcomeMessage),
-});
+};
 
-Object.assign(DocumentContentDraft.fields, {
+const DocumentContentDraftFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   contentState: scalarField("contentState"),
   createdAt: scalarField("createdAt"),
@@ -20104,9 +23844,9 @@ Object.assign(DocumentContentDraft.fields, {
   updatedAt: scalarField("updatedAt"),
   user: objectField("user", User),
   userId: scalarField("userId"),
-});
+};
 
-Object.assign(DocumentContentHistoryCheckpointType.fields, {
+const DocumentContentHistoryCheckpointTypeFields: TypeMeta["fields"] = {
   aiConversationId: scalarField("aiConversationId"),
   aiConversationTurnId: scalarField("aiConversationTurnId"),
   contentDataSnapshotAt: scalarField("contentDataSnapshotAt"),
@@ -20116,20 +23856,20 @@ Object.assign(DocumentContentHistoryCheckpointType.fields, {
   isActive: scalarField("isActive"),
   mode: scalarField("mode"),
   sourceMetadata: scalarField("sourceMetadata"),
-});
+};
 
-Object.assign(DocumentContentHistoryPayload.fields, {
+const DocumentContentHistoryPayloadFields: TypeMeta["fields"] = {
   history: listField("history", DocumentContentHistoryType),
   success: scalarField("success"),
-});
+};
 
-Object.assign(DocumentContentHistoryTimelinePayload.fields, {
+const DocumentContentHistoryTimelinePayloadFields: TypeMeta["fields"] = {
   checkpoints: listField("checkpoints", DocumentContentHistoryCheckpointType),
   history: listField("history", DocumentContentHistoryType),
   success: scalarField("success"),
-});
+};
 
-Object.assign(DocumentContentHistoryType.fields, {
+const DocumentContentHistoryTypeFields: TypeMeta["fields"] = {
   actorIds: scalarField("actorIds"),
   contentData: scalarField("contentData"),
   contentDataSnapshotAt: scalarField("contentDataSnapshotAt"),
@@ -20137,9 +23877,9 @@ Object.assign(DocumentContentHistoryType.fields, {
   documentContentId: scalarField("documentContentId"),
   id: scalarField("id"),
   metadata: scalarField("metadata"),
-});
+};
 
-Object.assign(DocumentContentRevision.fields, {
+const DocumentContentRevisionFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   baseContentState: scalarField("baseContentState"),
   contentHash: scalarField("contentHash"),
@@ -20152,14 +23892,14 @@ Object.assign(DocumentContentRevision.fields, {
   summary: scalarField("summary"),
   summaryContentHash: scalarField("summaryContentHash"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(DocumentEdge.fields, {
+const DocumentEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", Document),
-});
+};
 
-Object.assign(DocumentNotification.fields, {
+const DocumentNotificationFields: TypeMeta["fields"] = {
   actor: objectField("actor", User),
   actorAvatarColor: scalarField("actorAvatarColor"),
   actorAvatarUrl: scalarField("actorAvatarUrl"),
@@ -20192,23 +23932,23 @@ Object.assign(DocumentNotification.fields, {
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(DocumentPayload.fields, {
+const DocumentPayloadFields: TypeMeta["fields"] = {
   document: objectField("document", Document),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(DocumentSearchPayload.fields, {
+const DocumentSearchPayloadFields: TypeMeta["fields"] = {
   archivePayload: objectField("archivePayload", ArchiveResponse),
   edges: listField("edges", DocumentSearchResultEdge),
   nodes: listField("nodes", DocumentSearchResult),
   pageInfo: objectField("pageInfo", PageInfo),
   totalCount: scalarField("totalCount"),
-});
+};
 
-Object.assign(DocumentSearchResult.fields, {
+const DocumentSearchResultFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   color: scalarField("color"),
   comments: connectionField("comments", Comment, {
@@ -20234,10 +23974,12 @@ Object.assign(DocumentSearchResult.fields, {
   lastAppliedTemplate: objectField("lastAppliedTemplate", Template),
   metadata: scalarField("metadata"),
   owner: objectField("owner", User),
+  parentDocument: objectField("parentDocument", Document),
   project: objectField("project", Project),
   release: objectField("release", Release),
   slugId: scalarField("slugId"),
   sortOrder: scalarField("sortOrder"),
+  subDocumentSortOrder: scalarField("subDocumentSortOrder"),
   subscribers: connectionField("subscribers", User, {
     filter: "UserFilter",
     includeDisabled: "Boolean",
@@ -20255,14 +23997,14 @@ Object.assign(DocumentSearchResult.fields, {
   updatedAt: scalarField("updatedAt"),
   updatedBy: objectField("updatedBy", User),
   url: scalarField("url"),
-});
+};
 
-Object.assign(DocumentSearchResultEdge.fields, {
+const DocumentSearchResultEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", DocumentSearchResult),
-});
+};
 
-Object.assign(Draft.fields, {
+const DraftFields: TypeMeta["fields"] = {
   anchor: scalarField("anchor"),
   archivedAt: scalarField("archivedAt"),
   bodyData: scalarField("bodyData"),
@@ -20285,26 +24027,26 @@ Object.assign(Draft.fields, {
   updateHealth: scalarField("updateHealth"),
   user: objectField("user", User),
   wasLocalDraft: scalarField("wasLocalDraft"),
-});
+};
 
-Object.assign(DraftConnection.fields, {
+const DraftConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", DraftEdge),
   nodes: listField("nodes", Draft),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(DraftEdge.fields, {
+const DraftEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", Draft),
-});
+};
 
-Object.assign(DraftGenerationMetadata.fields, {
+const DraftGenerationMetadataFields: TypeMeta["fields"] = {
   generatedAt: scalarField("generatedAt"),
   generatedContent: scalarField("generatedContent"),
   generationCount: scalarField("generationCount"),
-});
+};
 
-Object.assign(EmailIntakeAddress.fields, {
+const EmailIntakeAddressFields: TypeMeta["fields"] = {
   address: scalarField("address"),
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
@@ -20330,28 +24072,28 @@ Object.assign(EmailIntakeAddress.fields, {
   type: scalarField("type"),
   updatedAt: scalarField("updatedAt"),
   useUserNamesInReplies: scalarField("useUserNamesInReplies"),
-});
+};
 
-Object.assign(EmailIntakeAddressPayload.fields, {
+const EmailIntakeAddressPayloadFields: TypeMeta["fields"] = {
   emailIntakeAddress: objectField("emailIntakeAddress", EmailIntakeAddress),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(EmailIntakeAddressRefreshSesDomainStatusPayload.fields, {
+const EmailIntakeAddressRefreshSesDomainStatusPayloadFields: TypeMeta["fields"] = {
   success: scalarField("success"),
-});
+};
 
-Object.assign(EmailUnsubscribePayload.fields, {
+const EmailUnsubscribePayloadFields: TypeMeta["fields"] = {
   success: scalarField("success"),
-});
+};
 
-Object.assign(EmailUserAccountAuthChallengeResponse.fields, {
+const EmailUserAccountAuthChallengeResponseFields: TypeMeta["fields"] = {
   authType: scalarField("authType"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(Emoji.fields, {
+const EmojiFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   creator: objectField("creator", User),
@@ -20361,33 +24103,33 @@ Object.assign(Emoji.fields, {
   source: scalarField("source"),
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
-});
+};
 
-Object.assign(EmojiConnection.fields, {
+const EmojiConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", EmojiEdge),
   nodes: listField("nodes", Emoji),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(EmojiEdge.fields, {
+const EmojiEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", Emoji),
-});
+};
 
-Object.assign(EmojiPayload.fields, {
+const EmojiPayloadFields: TypeMeta["fields"] = {
   emoji: objectField("emoji", Emoji),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(Entity.fields, {
+const EntityFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   id: scalarField("id"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(EntityExternalLink.fields, {
+const EntityExternalLinkFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   creator: objectField("creator", User),
@@ -20398,55 +24140,55 @@ Object.assign(EntityExternalLink.fields, {
   sortOrder: scalarField("sortOrder"),
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
-});
+};
 
-Object.assign(EntityExternalLinkConnection.fields, {
+const EntityExternalLinkConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", EntityExternalLinkEdge),
   nodes: listField("nodes", EntityExternalLink),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(EntityExternalLinkEdge.fields, {
+const EntityExternalLinkEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", EntityExternalLink),
-});
+};
 
-Object.assign(EntityExternalLinkPayload.fields, {
+const EntityExternalLinkPayloadFields: TypeMeta["fields"] = {
   entityExternalLink: objectField("entityExternalLink", EntityExternalLink),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(EventTrackingPayload.fields, {
+const EventTrackingPayloadFields: TypeMeta["fields"] = {
   success: scalarField("success"),
-});
+};
 
-Object.assign(ExternalEntityInfo.fields, {
+const ExternalEntityInfoFields: TypeMeta["fields"] = {
   id: scalarField("id"),
   metadata: objectField("metadata", ExternalEntityInfoMetadata),
   service: scalarField("service"),
-});
+};
 
-Object.assign(ExternalEntityInfoGithubMetadata.fields, {
+const ExternalEntityInfoGithubMetadataFields: TypeMeta["fields"] = {
   number: scalarField("number"),
   owner: scalarField("owner"),
   repo: scalarField("repo"),
-});
+};
 
-Object.assign(ExternalEntityInfoJiraMetadata.fields, {
+const ExternalEntityInfoJiraMetadataFields: TypeMeta["fields"] = {
   issueKey: scalarField("issueKey"),
   issueTypeId: scalarField("issueTypeId"),
   projectId: scalarField("projectId"),
-});
+};
 
-Object.assign(ExternalEntitySlackMetadata.fields, {
+const ExternalEntitySlackMetadataFields: TypeMeta["fields"] = {
   channelId: scalarField("channelId"),
   channelName: scalarField("channelName"),
   isFromSlack: scalarField("isFromSlack"),
   messageUrl: scalarField("messageUrl"),
-});
+};
 
-Object.assign(ExternalUser.fields, {
+const ExternalUserFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   avatarUrl: scalarField("avatarUrl"),
   createdAt: scalarField("createdAt"),
@@ -20457,20 +24199,20 @@ Object.assign(ExternalUser.fields, {
   name: scalarField("name"),
   organization: objectField("organization", Organization),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(ExternalUserConnection.fields, {
+const ExternalUserConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", ExternalUserEdge),
   nodes: listField("nodes", ExternalUser),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(ExternalUserEdge.fields, {
+const ExternalUserEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", ExternalUser),
-});
+};
 
-Object.assign(Facet.fields, {
+const FacetFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   id: scalarField("id"),
@@ -20483,20 +24225,20 @@ Object.assign(Facet.fields, {
   sourceTeam: objectField("sourceTeam", Team),
   targetCustomView: objectField("targetCustomView", CustomView),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(FacetConnection.fields, {
+const FacetConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", FacetEdge),
   nodes: listField("nodes", Facet),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(FacetEdge.fields, {
+const FacetEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", Facet),
-});
+};
 
-Object.assign(Favorite.fields, {
+const FavoriteFields: TypeMeta["fields"] = {
   aiConversation: objectField("aiConversation", AiConversation),
   archivedAt: scalarField("archivedAt"),
   children: connectionField("children", Favorite, {
@@ -20547,26 +24289,26 @@ Object.assign(Favorite.fields, {
   url: scalarField("url"),
   user: objectField("user", User),
   workflowDefinition: objectField("workflowDefinition", WorkflowDefinition),
-});
+};
 
-Object.assign(FavoriteConnection.fields, {
+const FavoriteConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", FavoriteEdge),
   nodes: listField("nodes", Favorite),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(FavoriteEdge.fields, {
+const FavoriteEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", Favorite),
-});
+};
 
-Object.assign(FavoritePayload.fields, {
+const FavoritePayloadFields: TypeMeta["fields"] = {
   favorite: objectField("favorite", Favorite),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(FeedItem.fields, {
+const FeedItemFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   id: scalarField("id"),
@@ -20577,30 +24319,30 @@ Object.assign(FeedItem.fields, {
   team: objectField("team", Team),
   updatedAt: scalarField("updatedAt"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(FeedItemConnection.fields, {
+const FeedItemConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", FeedItemEdge),
   nodes: listField("nodes", FeedItem),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(FeedItemEdge.fields, {
+const FeedItemEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", FeedItem),
-});
+};
 
-Object.assign(FileUploadDeletePayload.fields, {
+const FileUploadDeletePayloadFields: TypeMeta["fields"] = {
   success: scalarField("success"),
-});
+};
 
-Object.assign(FrontAttachmentPayload.fields, {
+const FrontAttachmentPayloadFields: TypeMeta["fields"] = {
   attachment: objectField("attachment", Attachment),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(GitAutomationState.fields, {
+const GitAutomationStateFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   branchPattern: scalarField("branchPattern"),
   createdAt: scalarField("createdAt"),
@@ -20610,26 +24352,26 @@ Object.assign(GitAutomationState.fields, {
   targetBranch: objectField("targetBranch", GitAutomationTargetBranch),
   team: objectField("team", Team),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(GitAutomationStateConnection.fields, {
+const GitAutomationStateConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", GitAutomationStateEdge),
   nodes: listField("nodes", GitAutomationState),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(GitAutomationStateEdge.fields, {
+const GitAutomationStateEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", GitAutomationState),
-});
+};
 
-Object.assign(GitAutomationStatePayload.fields, {
+const GitAutomationStatePayloadFields: TypeMeta["fields"] = {
   gitAutomationState: objectField("gitAutomationState", GitAutomationState),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(GitAutomationTargetBranch.fields, {
+const GitAutomationTargetBranchFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   automationStates: connectionField("automationStates", GitAutomationState, {
     before: "String",
@@ -20645,27 +24387,27 @@ Object.assign(GitAutomationTargetBranch.fields, {
   isRegex: scalarField("isRegex"),
   team: objectField("team", Team),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(GitAutomationTargetBranchPayload.fields, {
+const GitAutomationTargetBranchPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
   targetBranch: objectField("targetBranch", GitAutomationTargetBranch),
-});
+};
 
-Object.assign(GitHubCommitIntegrationPayload.fields, {
+const GitHubCommitIntegrationPayloadFields: TypeMeta["fields"] = {
   gitHub: objectField("gitHub", GitHubIntegrationConnectDetails),
   integration: objectField("integration", Integration),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
   webhookSecret: scalarField("webhookSecret"),
-});
+};
 
-Object.assign(GitHubEnterpriseServerInstallVerificationPayload.fields, {
+const GitHubEnterpriseServerInstallVerificationPayloadFields: TypeMeta["fields"] = {
   success: scalarField("success"),
-});
+};
 
-Object.assign(GitHubEnterpriseServerPayload.fields, {
+const GitHubEnterpriseServerPayloadFields: TypeMeta["fields"] = {
   gitHub: objectField("gitHub", GitHubIntegrationConnectDetails),
   installUrl: scalarField("installUrl"),
   integration: objectField("integration", Integration),
@@ -20673,13 +24415,13 @@ Object.assign(GitHubEnterpriseServerPayload.fields, {
   setupUrl: scalarField("setupUrl"),
   success: scalarField("success"),
   webhookSecret: scalarField("webhookSecret"),
-});
+};
 
-Object.assign(GitHubIntegrationConnectDetails.fields, {
+const GitHubIntegrationConnectDetailsFields: TypeMeta["fields"] = {
   lostRepositoryNames: scalarField("lostRepositoryNames"),
-});
+};
 
-Object.assign(GitLabIntegrationCreatePayload.fields, {
+const GitLabIntegrationCreatePayloadFields: TypeMeta["fields"] = {
   error: scalarField("error"),
   errorRequest: scalarField("errorRequest"),
   errorResponseBody: scalarField("errorResponseBody"),
@@ -20689,9 +24431,9 @@ Object.assign(GitLabIntegrationCreatePayload.fields, {
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
   webhookSecret: scalarField("webhookSecret"),
-});
+};
 
-Object.assign(GitLabTestConnectionPayload.fields, {
+const GitLabTestConnectionPayloadFields: TypeMeta["fields"] = {
   error: scalarField("error"),
   errorRequest: scalarField("errorRequest"),
   errorResponseBody: scalarField("errorResponseBody"),
@@ -20700,9 +24442,9 @@ Object.assign(GitLabTestConnectionPayload.fields, {
   integration: objectField("integration", Integration),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(IdentityProvider.fields, {
+const IdentityProviderFields: TypeMeta["fields"] = {
   adminsGroupPush: scalarField("adminsGroupPush"),
   allowNameChange: scalarField("allowNameChange"),
   archivedAt: scalarField("archivedAt"),
@@ -20723,22 +24465,22 @@ Object.assign(IdentityProvider.fields, {
   ssoVerifiedAt: scalarField("ssoVerifiedAt"),
   type: scalarField("type"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(ImageUploadFromUrlPayload.fields, {
+const ImageUploadFromUrlPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
   url: scalarField("url"),
-});
+};
 
-Object.assign(InboxNotificationUpdatePayload.fields, {
+const InboxNotificationUpdatePayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   notification: objectField("notification", Notification),
   success: scalarField("success"),
   updatedNotifications: listField("updatedNotifications", Notification),
-});
+};
 
-Object.assign(Initiative.fields, {
+const InitiativeFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   canceledAt: scalarField("canceledAt"),
   color: scalarField("color"),
@@ -20853,51 +24595,51 @@ Object.assign(Initiative.fields, {
   updateRemindersHour: scalarField("updateRemindersHour"),
   url: scalarField("url"),
   visibility: scalarField("visibility"),
-});
+};
 
-Object.assign(InitiativeArchivePayload.fields, {
+const InitiativeArchivePayloadFields: TypeMeta["fields"] = {
   entity: objectField("entity", Initiative),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(InitiativeConnection.fields, {
+const InitiativeConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", InitiativeEdge),
   nodes: listField("nodes", Initiative),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(InitiativeEdge.fields, {
+const InitiativeEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", Initiative),
-});
+};
 
-Object.assign(InitiativeFilterSuggestionPayload.fields, {
+const InitiativeFilterSuggestionPayloadFields: TypeMeta["fields"] = {
   filter: scalarField("filter"),
   logId: scalarField("logId"),
-});
+};
 
-Object.assign(InitiativeHistory.fields, {
+const InitiativeHistoryFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   entries: scalarField("entries"),
   id: scalarField("id"),
   initiative: objectField("initiative", Initiative),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(InitiativeHistoryConnection.fields, {
+const InitiativeHistoryConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", InitiativeHistoryEdge),
   nodes: listField("nodes", InitiativeHistory),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(InitiativeHistoryEdge.fields, {
+const InitiativeHistoryEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", InitiativeHistory),
-});
+};
 
-Object.assign(InitiativeLabel.fields, {
+const InitiativeLabelFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   children: connectionField("children", InitiativeLabel, {
     filter: "InitiativeLabelFilter",
@@ -20912,6 +24654,7 @@ Object.assign(InitiativeLabel.fields, {
   createdAt: scalarField("createdAt"),
   creator: objectField("creator", User),
   description: scalarField("description"),
+  groupType: scalarField("groupType"),
   id: scalarField("id"),
   initiatives: connectionField("initiatives", Initiative, {
     filter: "InitiativeFilter",
@@ -20931,38 +24674,38 @@ Object.assign(InitiativeLabel.fields, {
   retiredAt: scalarField("retiredAt"),
   retiredBy: objectField("retiredBy", User),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(InitiativeLabelConnection.fields, {
+const InitiativeLabelConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", InitiativeLabelEdge),
   nodes: listField("nodes", InitiativeLabel),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(InitiativeLabelEdge.fields, {
+const InitiativeLabelEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", InitiativeLabel),
-});
+};
 
-Object.assign(InitiativeLabelPayload.fields, {
+const InitiativeLabelPayloadFields: TypeMeta["fields"] = {
   initiativeLabel: objectField("initiativeLabel", InitiativeLabel),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(InitiativeLeadTeamChangeImpact.fields, {
+const InitiativeLeadTeamChangeImpactFields: TypeMeta["fields"] = {
   affectedDescendantCount: scalarField("affectedDescendantCount"),
   visibilityMayChange: scalarField("visibilityMayChange"),
-});
+};
 
-Object.assign(InitiativeLeadTeamUpdatePayload.fields, {
+const InitiativeLeadTeamUpdatePayloadFields: TypeMeta["fields"] = {
   affectedDescendants: listField("affectedDescendants", Initiative),
   initiative: objectField("initiative", Initiative),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(InitiativeNotification.fields, {
+const InitiativeNotificationFields: TypeMeta["fields"] = {
   actor: objectField("actor", User),
   actorAvatarColor: scalarField("actorAvatarColor"),
   actorAvatarUrl: scalarField("actorAvatarUrl"),
@@ -21001,9 +24744,9 @@ Object.assign(InitiativeNotification.fields, {
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(InitiativeNotificationSubscription.fields, {
+const InitiativeNotificationSubscriptionFields: TypeMeta["fields"] = {
   active: scalarField("active"),
   archivedAt: scalarField("archivedAt"),
   contextViewType: scalarField("contextViewType"),
@@ -21022,15 +24765,15 @@ Object.assign(InitiativeNotificationSubscription.fields, {
   updatedAt: scalarField("updatedAt"),
   user: objectField("user", User),
   userContextViewType: scalarField("userContextViewType"),
-});
+};
 
-Object.assign(InitiativePayload.fields, {
+const InitiativePayloadFields: TypeMeta["fields"] = {
   initiative: objectField("initiative", Initiative),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(InitiativeRelation.fields, {
+const InitiativeRelationFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   id: scalarField("id"),
@@ -21039,26 +24782,26 @@ Object.assign(InitiativeRelation.fields, {
   sortOrder: scalarField("sortOrder"),
   updatedAt: scalarField("updatedAt"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(InitiativeRelationConnection.fields, {
+const InitiativeRelationConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", InitiativeRelationEdge),
   nodes: listField("nodes", InitiativeRelation),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(InitiativeRelationEdge.fields, {
+const InitiativeRelationEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", InitiativeRelation),
-});
+};
 
-Object.assign(InitiativeRelationPayload.fields, {
+const InitiativeRelationPayloadFields: TypeMeta["fields"] = {
   initiativeRelation: objectField("initiativeRelation", InitiativeRelation),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(InitiativeToProject.fields, {
+const InitiativeToProjectFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   id: scalarField("id"),
@@ -21066,26 +24809,26 @@ Object.assign(InitiativeToProject.fields, {
   project: objectField("project", Project),
   sortOrder: scalarField("sortOrder"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(InitiativeToProjectConnection.fields, {
+const InitiativeToProjectConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", InitiativeToProjectEdge),
   nodes: listField("nodes", InitiativeToProject),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(InitiativeToProjectEdge.fields, {
+const InitiativeToProjectEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", InitiativeToProject),
-});
+};
 
-Object.assign(InitiativeToProjectPayload.fields, {
+const InitiativeToProjectPayloadFields: TypeMeta["fields"] = {
   initiativeToProject: objectField("initiativeToProject", InitiativeToProject),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(InitiativeUpdate.fields, {
+const InitiativeUpdateFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   body: scalarField("body"),
   bodyData: scalarField("bodyData"),
@@ -21115,37 +24858,37 @@ Object.assign(InitiativeUpdate.fields, {
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(InitiativeUpdateArchivePayload.fields, {
+const InitiativeUpdateArchivePayloadFields: TypeMeta["fields"] = {
   entity: objectField("entity", InitiativeUpdate),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(InitiativeUpdateConnection.fields, {
+const InitiativeUpdateConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", InitiativeUpdateEdge),
   nodes: listField("nodes", InitiativeUpdate),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(InitiativeUpdateEdge.fields, {
+const InitiativeUpdateEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", InitiativeUpdate),
-});
+};
 
-Object.assign(InitiativeUpdatePayload.fields, {
+const InitiativeUpdatePayloadFields: TypeMeta["fields"] = {
   initiativeUpdate: objectField("initiativeUpdate", InitiativeUpdate),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(InitiativeUpdateReminderPayload.fields, {
+const InitiativeUpdateReminderPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(Integration.fields, {
+const IntegrationFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   creator: objectField("creator", User),
@@ -21154,55 +24897,55 @@ Object.assign(Integration.fields, {
   service: scalarField("service"),
   team: objectField("team", Team),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(IntegrationConnection.fields, {
+const IntegrationConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", IntegrationEdge),
   nodes: listField("nodes", Integration),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(IntegrationDatadogEnvironment.fields, {
+const IntegrationDatadogEnvironmentFields: TypeMeta["fields"] = {
   id: scalarField("id"),
   name: scalarField("name"),
-});
+};
 
-Object.assign(IntegrationDatadogEnvironmentsPayload.fields, {
+const IntegrationDatadogEnvironmentsPayloadFields: TypeMeta["fields"] = {
   environments: listField("environments", IntegrationDatadogEnvironment),
-});
+};
 
-Object.assign(IntegrationEdge.fields, {
+const IntegrationEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", Integration),
-});
+};
 
-Object.assign(IntegrationGithubRemoveCodeAccessPayload.fields, {
+const IntegrationGithubRemoveCodeAccessPayloadFields: TypeMeta["fields"] = {
   action: scalarField("action"),
   lastSyncId: scalarField("lastSyncId"),
-});
+};
 
-Object.assign(IntegrationHasScopesPayload.fields, {
+const IntegrationHasScopesPayloadFields: TypeMeta["fields"] = {
   hasAllScopes: scalarField("hasAllScopes"),
   missingScopes: scalarField("missingScopes"),
-});
+};
 
-Object.assign(IntegrationPayload.fields, {
+const IntegrationPayloadFields: TypeMeta["fields"] = {
   gitHub: objectField("gitHub", GitHubIntegrationConnectDetails),
   integration: objectField("integration", Integration),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(IntegrationRequestPayload.fields, {
+const IntegrationRequestPayloadFields: TypeMeta["fields"] = {
   success: scalarField("success"),
-});
+};
 
-Object.assign(IntegrationSlackWorkspaceNamePayload.fields, {
+const IntegrationSlackWorkspaceNamePayloadFields: TypeMeta["fields"] = {
   name: scalarField("name"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(IntegrationTemplate.fields, {
+const IntegrationTemplateFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   foreignEntityId: scalarField("foreignEntityId"),
@@ -21210,26 +24953,26 @@ Object.assign(IntegrationTemplate.fields, {
   integration: objectField("integration", Integration),
   template: objectField("template", Template),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(IntegrationTemplateConnection.fields, {
+const IntegrationTemplateConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", IntegrationTemplateEdge),
   nodes: listField("nodes", IntegrationTemplate),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(IntegrationTemplateEdge.fields, {
+const IntegrationTemplateEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", IntegrationTemplate),
-});
+};
 
-Object.assign(IntegrationTemplatePayload.fields, {
+const IntegrationTemplatePayloadFields: TypeMeta["fields"] = {
   integrationTemplate: objectField("integrationTemplate", IntegrationTemplate),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(IntegrationsSettings.fields, {
+const IntegrationsSettingsFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   contextViewType: scalarField("contextViewType"),
   createdAt: scalarField("createdAt"),
@@ -21253,15 +24996,15 @@ Object.assign(IntegrationsSettings.fields, {
   slackProjectUpdateCreatedToWorkspace: scalarField("slackProjectUpdateCreatedToWorkspace"),
   team: objectField("team", Team),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(IntegrationsSettingsPayload.fields, {
+const IntegrationsSettingsPayloadFields: TypeMeta["fields"] = {
   integrationsSettings: objectField("integrationsSettings", IntegrationsSettings),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(Issue.fields, {
+const IssueFields: TypeMeta["fields"] = {
   activitySummary: scalarField("activitySummary"),
   addedToCycleAt: scalarField("addedToCycleAt"),
   addedToProjectAt: scalarField("addedToProjectAt"),
@@ -21274,6 +25017,7 @@ Object.assign(Issue.fields, {
     includeArchived: "Boolean",
     orderBy: "PaginationOrderBy",
   }),
+  aiAnalysis: scalarField("aiAnalysis"),
   aiPromptProgresses: connectionField("aiPromptProgresses", AiPromptProgress, {
     filter: "AiPromptProgressFilter",
     before: "String",
@@ -21485,27 +25229,27 @@ Object.assign(Issue.fields, {
   trusted: scalarField("trusted"),
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
-});
+};
 
-Object.assign(IssueArchivePayload.fields, {
+const IssueArchivePayloadFields: TypeMeta["fields"] = {
   entity: objectField("entity", Issue),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(IssueBatchPayload.fields, {
+const IssueBatchPayloadFields: TypeMeta["fields"] = {
   issues: listField("issues", Issue),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(IssueConnection.fields, {
+const IssueConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", IssueEdge),
   nodes: listField("nodes", Issue),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(IssueDraft.fields, {
+const IssueDraftFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   assigneeId: scalarField("assigneeId"),
   attachments: scalarField("attachments"),
@@ -21537,30 +25281,30 @@ Object.assign(IssueDraft.fields, {
   teamId: scalarField("teamId"),
   title: scalarField("title"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(IssueDraftConnection.fields, {
+const IssueDraftConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", IssueDraftEdge),
   nodes: listField("nodes", IssueDraft),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(IssueDraftEdge.fields, {
+const IssueDraftEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", IssueDraft),
-});
+};
 
-Object.assign(IssueEdge.fields, {
+const IssueEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", Issue),
-});
+};
 
-Object.assign(IssueFilterSuggestionPayload.fields, {
+const IssueFilterSuggestionPayloadFields: TypeMeta["fields"] = {
   filter: scalarField("filter"),
   logId: scalarField("logId"),
-});
+};
 
-Object.assign(IssueHistory.fields, {
+const IssueHistoryFields: TypeMeta["fields"] = {
   actor: objectField("actor", User),
   actorId: scalarField("actorId"),
   actors: listField("actors", User),
@@ -21641,39 +25385,39 @@ Object.assign(IssueHistory.fields, {
   updatedAt: scalarField("updatedAt"),
   updatedDescription: scalarField("updatedDescription"),
   workflowMetadata: objectField("workflowMetadata", IssueHistoryWorkflowMetadata),
-});
+};
 
-Object.assign(IssueHistoryConnection.fields, {
+const IssueHistoryConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", IssueHistoryEdge),
   nodes: listField("nodes", IssueHistory),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(IssueHistoryEdge.fields, {
+const IssueHistoryEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", IssueHistory),
-});
+};
 
-Object.assign(IssueHistoryTriageRuleError.fields, {
+const IssueHistoryTriageRuleErrorFields: TypeMeta["fields"] = {
   conflictForSameChildLabel: scalarField("conflictForSameChildLabel"),
   conflictingLabels: listField("conflictingLabels", IssueLabel),
   fromTeam: objectField("fromTeam", Team),
   property: scalarField("property"),
   toTeam: objectField("toTeam", Team),
   type: scalarField("type"),
-});
+};
 
-Object.assign(IssueHistoryTriageRuleMetadata.fields, {
+const IssueHistoryTriageRuleMetadataFields: TypeMeta["fields"] = {
   triageRuleError: objectField("triageRuleError", IssueHistoryTriageRuleError),
   updatedByTriageRule: objectField("updatedByTriageRule", WorkflowDefinition),
-});
+};
 
-Object.assign(IssueHistoryWorkflowMetadata.fields, {
+const IssueHistoryWorkflowMetadataFields: TypeMeta["fields"] = {
   aiConversation: objectField("aiConversation", AiConversation),
   workflowDefinition: objectField("workflowDefinition", WorkflowDefinition),
-});
+};
 
-Object.assign(IssueImport.fields, {
+const IssueImportFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   creatorId: scalarField("creatorId"),
@@ -21689,36 +25433,36 @@ Object.assign(IssueImport.fields, {
   status: scalarField("status"),
   teamName: scalarField("teamName"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(IssueImportCheckPayload.fields, {
+const IssueImportCheckPayloadFields: TypeMeta["fields"] = {
   success: scalarField("success"),
-});
+};
 
-Object.assign(IssueImportDeletePayload.fields, {
+const IssueImportDeletePayloadFields: TypeMeta["fields"] = {
   issueImport: objectField("issueImport", IssueImport),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(IssueImportJqlCheckPayload.fields, {
+const IssueImportJqlCheckPayloadFields: TypeMeta["fields"] = {
   count: scalarField("count"),
   error: scalarField("error"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(IssueImportPayload.fields, {
+const IssueImportPayloadFields: TypeMeta["fields"] = {
   issueImport: objectField("issueImport", IssueImport),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(IssueImportSyncCheckPayload.fields, {
+const IssueImportSyncCheckPayloadFields: TypeMeta["fields"] = {
   canSync: scalarField("canSync"),
   error: scalarField("error"),
-});
+};
 
-Object.assign(IssueLabel.fields, {
+const IssueLabelFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   children: connectionField("children", IssueLabel, {
     filter: "IssueLabelFilter",
@@ -21754,26 +25498,26 @@ Object.assign(IssueLabel.fields, {
   retiredBy: objectField("retiredBy", User),
   team: objectField("team", Team),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(IssueLabelConnection.fields, {
+const IssueLabelConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", IssueLabelEdge),
   nodes: listField("nodes", IssueLabel),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(IssueLabelEdge.fields, {
+const IssueLabelEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", IssueLabel),
-});
+};
 
-Object.assign(IssueLabelPayload.fields, {
+const IssueLabelPayloadFields: TypeMeta["fields"] = {
   issueLabel: objectField("issueLabel", IssueLabel),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(IssueNotification.fields, {
+const IssueNotificationFields: TypeMeta["fields"] = {
   actor: objectField("actor", User),
   actorAvatarColor: scalarField("actorAvatarColor"),
   actorAvatarUrl: scalarField("actorAvatarUrl"),
@@ -21811,20 +25555,20 @@ Object.assign(IssueNotification.fields, {
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(IssuePayload.fields, {
+const IssuePayloadFields: TypeMeta["fields"] = {
   issue: objectField("issue", Issue),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(IssuePriorityValue.fields, {
+const IssuePriorityValueFields: TypeMeta["fields"] = {
   label: scalarField("label"),
   priority: scalarField("priority"),
-});
+};
 
-Object.assign(IssueRelation.fields, {
+const IssueRelationFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   id: scalarField("id"),
@@ -21832,39 +25576,39 @@ Object.assign(IssueRelation.fields, {
   relatedIssue: objectField("relatedIssue", Issue),
   type: scalarField("type"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(IssueRelationConnection.fields, {
+const IssueRelationConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", IssueRelationEdge),
   nodes: listField("nodes", IssueRelation),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(IssueRelationEdge.fields, {
+const IssueRelationEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", IssueRelation),
-});
+};
 
-Object.assign(IssueRelationHistoryPayload.fields, {
+const IssueRelationHistoryPayloadFields: TypeMeta["fields"] = {
   identifier: scalarField("identifier"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(IssueRelationPayload.fields, {
+const IssueRelationPayloadFields: TypeMeta["fields"] = {
   issueRelation: objectField("issueRelation", IssueRelation),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(IssueSearchPayload.fields, {
+const IssueSearchPayloadFields: TypeMeta["fields"] = {
   archivePayload: objectField("archivePayload", ArchiveResponse),
   edges: listField("edges", IssueSearchResultEdge),
   nodes: listField("nodes", IssueSearchResult),
   pageInfo: objectField("pageInfo", PageInfo),
   totalCount: scalarField("totalCount"),
-});
+};
 
-Object.assign(IssueSearchResult.fields, {
+const IssueSearchResultFields: TypeMeta["fields"] = {
   activitySummary: scalarField("activitySummary"),
   addedToCycleAt: scalarField("addedToCycleAt"),
   addedToProjectAt: scalarField("addedToProjectAt"),
@@ -21877,6 +25621,7 @@ Object.assign(IssueSearchResult.fields, {
     includeArchived: "Boolean",
     orderBy: "PaginationOrderBy",
   }),
+  aiAnalysis: scalarField("aiAnalysis"),
   aiPromptProgresses: connectionField("aiPromptProgresses", AiPromptProgress, {
     filter: "AiPromptProgressFilter",
     before: "String",
@@ -22089,41 +25834,41 @@ Object.assign(IssueSearchResult.fields, {
   trusted: scalarField("trusted"),
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
-});
+};
 
-Object.assign(IssueSearchResultEdge.fields, {
+const IssueSearchResultEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", IssueSearchResult),
-});
+};
 
-Object.assign(IssueSharedAccess.fields, {
+const IssueSharedAccessFields: TypeMeta["fields"] = {
   disallowedIssueFields: scalarField("disallowedIssueFields"),
   isShared: scalarField("isShared"),
   sharedWithCount: scalarField("sharedWithCount"),
   sharedWithUsers: listField("sharedWithUsers", User),
   viewerHasOnlySharedAccess: scalarField("viewerHasOnlySharedAccess"),
-});
+};
 
-Object.assign(IssueStateSpan.fields, {
+const IssueStateSpanFields: TypeMeta["fields"] = {
   endedAt: scalarField("endedAt"),
   id: scalarField("id"),
   startedAt: scalarField("startedAt"),
   state: objectField("state", WorkflowState),
   stateId: scalarField("stateId"),
-});
+};
 
-Object.assign(IssueStateSpanConnection.fields, {
+const IssueStateSpanConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", IssueStateSpanEdge),
   nodes: listField("nodes", IssueStateSpan),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(IssueStateSpanEdge.fields, {
+const IssueStateSpanEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", IssueStateSpan),
-});
+};
 
-Object.assign(IssueSuggestion.fields, {
+const IssueSuggestionFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   dismissalReason: scalarField("dismissalReason"),
@@ -22144,20 +25889,20 @@ Object.assign(IssueSuggestion.fields, {
   suggestedUserId: scalarField("suggestedUserId"),
   type: scalarField("type"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(IssueSuggestionConnection.fields, {
+const IssueSuggestionConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", IssueSuggestionEdge),
   nodes: listField("nodes", IssueSuggestion),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(IssueSuggestionEdge.fields, {
+const IssueSuggestionEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", IssueSuggestion),
-});
+};
 
-Object.assign(IssueSuggestionMetadata.fields, {
+const IssueSuggestionMetadataFields: TypeMeta["fields"] = {
   appliedAutomationRuleId: scalarField("appliedAutomationRuleId"),
   classification: scalarField("classification"),
   evalLogId: scalarField("evalLogId"),
@@ -22167,62 +25912,69 @@ Object.assign(IssueSuggestionMetadata.fields, {
   reasons: scalarField("reasons"),
   score: scalarField("score"),
   variant: scalarField("variant"),
-});
+};
 
-Object.assign(IssueSuggestionReasonReference.fields, {
+const IssueSuggestionReasonReferenceFields: TypeMeta["fields"] = {
   id: scalarField("id"),
   label: scalarField("label"),
   title: scalarField("title"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(IssueTitleSuggestionFromCustomerRequestPayload.fields, {
+const IssueTitleSuggestionFromCustomerRequestPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   logId: scalarField("logId"),
   title: scalarField("title"),
-});
+};
 
-Object.assign(IssueToRelease.fields, {
+const IssueToReleaseFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   id: scalarField("id"),
   issue: objectField("issue", Issue),
   release: objectField("release", Release),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(IssueToReleaseConnection.fields, {
+const IssueToReleaseConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", IssueToReleaseEdge),
   nodes: listField("nodes", IssueToRelease),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(IssueToReleaseEdge.fields, {
+const IssueToReleaseEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", IssueToRelease),
-});
+};
 
-Object.assign(IssueToReleasePayload.fields, {
+const IssueToReleasePayloadFields: TypeMeta["fields"] = {
   issueToRelease: objectField("issueToRelease", IssueToRelease),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(JiraFetchProjectStatusesPayload.fields, {
+const JiraFetchProjectStatusesPayloadFields: TypeMeta["fields"] = {
   gitHub: objectField("gitHub", GitHubIntegrationConnectDetails),
   integration: objectField("integration", Integration),
   issueStatuses: scalarField("issueStatuses"),
   lastSyncId: scalarField("lastSyncId"),
   projectStatuses: scalarField("projectStatuses"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(JiraProjectStatusesPayload.fields, {
+const JiraProjectStatusesPayloadFields: TypeMeta["fields"] = {
+  issueStatusCategories: listField("issueStatusCategories", JiraStatusNameCategoriesPayload),
   issueStatuses: scalarField("issueStatuses"),
+  projectStatusCategories: listField("projectStatusCategories", JiraStatusNameCategoriesPayload),
   projectStatuses: scalarField("projectStatuses"),
-});
+};
 
-Object.assign(LabelNotificationSubscription.fields, {
+const JiraStatusNameCategoriesPayloadFields: TypeMeta["fields"] = {
+  categories: scalarField("categories"),
+  name: scalarField("name"),
+};
+
+const LabelNotificationSubscriptionFields: TypeMeta["fields"] = {
   active: scalarField("active"),
   archivedAt: scalarField("archivedAt"),
   contextViewType: scalarField("contextViewType"),
@@ -22241,13 +25993,13 @@ Object.assign(LabelNotificationSubscription.fields, {
   updatedAt: scalarField("updatedAt"),
   user: objectField("user", User),
   userContextViewType: scalarField("userContextViewType"),
-});
+};
 
-Object.assign(LogoutResponse.fields, {
+const LogoutResponseFields: TypeMeta["fields"] = {
   success: scalarField("success"),
-});
+};
 
-Object.assign(LoopExecution.fields, {
+const LoopExecutionFields: TypeMeta["fields"] = {
   aiConversation: objectField("aiConversation", AiConversation),
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
@@ -22261,9 +26013,9 @@ Object.assign(LoopExecution.fields, {
   team: objectField("team", Team),
   updatedAt: scalarField("updatedAt"),
   workflowDefinition: objectField("workflowDefinition", WorkflowDefinition),
-});
+};
 
-Object.assign(Meeting.fields, {
+const MeetingFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   attendeeIds: scalarField("attendeeIds"),
   createdAt: scalarField("createdAt"),
@@ -22274,30 +26026,30 @@ Object.assign(Meeting.fields, {
   project: objectField("project", Project),
   title: scalarField("title"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(MicrosoftTeamsChannel.fields, {
+const MicrosoftTeamsChannelFields: TypeMeta["fields"] = {
   displayName: scalarField("displayName"),
   id: scalarField("id"),
   membershipType: scalarField("membershipType"),
-});
+};
 
-Object.assign(MicrosoftTeamsChannelsPayload.fields, {
+const MicrosoftTeamsChannelsPayloadFields: TypeMeta["fields"] = {
   success: scalarField("success"),
   teams: listField("teams", MicrosoftTeamsTeam),
-});
+};
 
-Object.assign(MicrosoftTeamsTeam.fields, {
+const MicrosoftTeamsTeamFields: TypeMeta["fields"] = {
   channels: listField("channels", MicrosoftTeamsChannel),
   displayName: scalarField("displayName"),
   id: scalarField("id"),
-});
+};
 
-Object.assign(Node.fields, {
+const NodeFields: TypeMeta["fields"] = {
   id: scalarField("id"),
-});
+};
 
-Object.assign(Notification.fields, {
+const NotificationFields: TypeMeta["fields"] = {
   actor: objectField("actor", User),
   actorAvatarColor: scalarField("actorAvatarColor"),
   actorAvatarUrl: scalarField("actorAvatarUrl"),
@@ -22326,21 +26078,21 @@ Object.assign(Notification.fields, {
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(NotificationArchivePayload.fields, {
+const NotificationArchivePayloadFields: TypeMeta["fields"] = {
   entity: objectField("entity", Notification),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(NotificationBatchActionPayload.fields, {
+const NotificationBatchActionPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   notifications: listField("notifications", Notification),
   success: scalarField("success"),
-});
+};
 
-Object.assign(NotificationCategoryPreferences.fields, {
+const NotificationCategoryPreferencesFields: TypeMeta["fields"] = {
   appsAndIntegrations: objectField("appsAndIntegrations", NotificationChannelPreferences),
   assignments: objectField("assignments", NotificationChannelPreferences),
   billing: objectField("billing", NotificationChannelPreferences),
@@ -22358,36 +26110,36 @@ Object.assign(NotificationCategoryPreferences.fields, {
   subscriptions: objectField("subscriptions", NotificationChannelPreferences),
   system: objectField("system", NotificationChannelPreferences),
   triage: objectField("triage", NotificationChannelPreferences),
-});
+};
 
-Object.assign(NotificationChannelPreferences.fields, {
+const NotificationChannelPreferencesFields: TypeMeta["fields"] = {
   desktop: scalarField("desktop"),
   email: scalarField("email"),
   mobile: scalarField("mobile"),
   slack: scalarField("slack"),
-});
+};
 
-Object.assign(NotificationConnection.fields, {
+const NotificationConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", NotificationEdge),
   nodes: listField("nodes", Notification),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(NotificationDeliveryPreferences.fields, {
+const NotificationDeliveryPreferencesFields: TypeMeta["fields"] = {
   mobile: objectField("mobile", NotificationDeliveryPreferencesChannel),
-});
+};
 
-Object.assign(NotificationDeliveryPreferencesChannel.fields, {
+const NotificationDeliveryPreferencesChannelFields: TypeMeta["fields"] = {
   notificationsDisabled: scalarField("notificationsDisabled"),
   schedule: objectField("schedule", NotificationDeliveryPreferencesSchedule),
-});
+};
 
-Object.assign(NotificationDeliveryPreferencesDay.fields, {
+const NotificationDeliveryPreferencesDayFields: TypeMeta["fields"] = {
   end: scalarField("end"),
   start: scalarField("start"),
-});
+};
 
-Object.assign(NotificationDeliveryPreferencesSchedule.fields, {
+const NotificationDeliveryPreferencesScheduleFields: TypeMeta["fields"] = {
   disabled: scalarField("disabled"),
   friday: objectField("friday", NotificationDeliveryPreferencesDay),
   monday: objectField("monday", NotificationDeliveryPreferencesDay),
@@ -22396,20 +26148,20 @@ Object.assign(NotificationDeliveryPreferencesSchedule.fields, {
   thursday: objectField("thursday", NotificationDeliveryPreferencesDay),
   tuesday: objectField("tuesday", NotificationDeliveryPreferencesDay),
   wednesday: objectField("wednesday", NotificationDeliveryPreferencesDay),
-});
+};
 
-Object.assign(NotificationEdge.fields, {
+const NotificationEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", Notification),
-});
+};
 
-Object.assign(NotificationPayload.fields, {
+const NotificationPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   notification: objectField("notification", Notification),
   success: scalarField("success"),
-});
+};
 
-Object.assign(NotificationSubscription.fields, {
+const NotificationSubscriptionFields: TypeMeta["fields"] = {
   active: scalarField("active"),
   archivedAt: scalarField("archivedAt"),
   contextViewType: scalarField("contextViewType"),
@@ -22427,26 +26179,26 @@ Object.assign(NotificationSubscription.fields, {
   updatedAt: scalarField("updatedAt"),
   user: objectField("user", User),
   userContextViewType: scalarField("userContextViewType"),
-});
+};
 
-Object.assign(NotificationSubscriptionConnection.fields, {
+const NotificationSubscriptionConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", NotificationSubscriptionEdge),
   nodes: listField("nodes", NotificationSubscription),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(NotificationSubscriptionEdge.fields, {
+const NotificationSubscriptionEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", NotificationSubscription),
-});
+};
 
-Object.assign(NotificationSubscriptionPayload.fields, {
+const NotificationSubscriptionPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   notificationSubscription: objectField("notificationSubscription", NotificationSubscription),
   success: scalarField("success"),
-});
+};
 
-Object.assign(OAuthApplication.fields, {
+const OAuthApplicationFields: TypeMeta["fields"] = {
   clientId: scalarField("clientId"),
   createdAt: scalarField("createdAt"),
   description: scalarField("description"),
@@ -22462,35 +26214,40 @@ Object.assign(OAuthApplication.fields, {
   webhookEnabled: scalarField("webhookEnabled"),
   webhookResourceTypes: scalarField("webhookResourceTypes"),
   webhookUrl: scalarField("webhookUrl"),
-});
+};
 
-Object.assign(OAuthApplicationArchivePayload.fields, {
+const OAuthApplicationArchivePayloadFields: TypeMeta["fields"] = {
   success: scalarField("success"),
-});
+};
 
-Object.assign(OAuthApplicationCreatePayload.fields, {
+const OAuthApplicationCodingSessionTrustedSourceFields: TypeMeta["fields"] = {
+  disabledReason: scalarField("disabledReason"),
+  enabled: scalarField("enabled"),
+};
+
+const OAuthApplicationCreatePayloadFields: TypeMeta["fields"] = {
   application: objectField("application", OAuthApplication),
   clientSecret: scalarField("clientSecret"),
   success: scalarField("success"),
   webhookSecret: scalarField("webhookSecret"),
-});
+};
 
-Object.assign(OAuthApplicationPayload.fields, {
+const OAuthApplicationPayloadFields: TypeMeta["fields"] = {
   application: objectField("application", OAuthApplication),
   success: scalarField("success"),
-});
+};
 
-Object.assign(OAuthApplicationRotateSecretPayload.fields, {
+const OAuthApplicationRotateSecretPayloadFields: TypeMeta["fields"] = {
   clientSecret: scalarField("clientSecret"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(OAuthApplicationRotateWebhookSecretPayload.fields, {
+const OAuthApplicationRotateWebhookSecretPayloadFields: TypeMeta["fields"] = {
   success: scalarField("success"),
   webhookSecret: scalarField("webhookSecret"),
-});
+};
 
-Object.assign(OauthClientApproval.fields, {
+const OauthClientApprovalFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   denyReason: scalarField("denyReason"),
@@ -22503,9 +26260,9 @@ Object.assign(OauthClientApproval.fields, {
   scopes: scalarField("scopes"),
   status: scalarField("status"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(OauthClientApprovalNotification.fields, {
+const OauthClientApprovalNotificationFields: TypeMeta["fields"] = {
   actor: objectField("actor", User),
   actorAvatarColor: scalarField("actorAvatarColor"),
   actorAvatarUrl: scalarField("actorAvatarUrl"),
@@ -22536,9 +26293,9 @@ Object.assign(OauthClientApprovalNotification.fields, {
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(Organization.fields, {
+const OrganizationFields: TypeMeta["fields"] = {
   agentAutomationEnabled: scalarField("agentAutomationEnabled"),
   aiAddonEnabled: scalarField("aiAddonEnabled"),
   aiDiscussionSummariesEnabled: scalarField("aiDiscussionSummariesEnabled"),
@@ -22599,6 +26356,15 @@ Object.assign(Organization.fields, {
   linearAgentEnabled: scalarField("linearAgentEnabled"),
   linearAgentSettings: scalarField("linearAgentSettings"),
   logoUrl: scalarField("logoUrl"),
+  loops: connectionField("loops", WorkflowDefinition, {
+    before: "String",
+    after: "String",
+    first: "Int",
+    last: "Int",
+    includeArchived: "Boolean",
+    orderBy: "PaginationOrderBy",
+  }),
+  managedTeamFeatures: scalarField("managedTeamFeatures"),
   name: scalarField("name"),
   periodUploadVolume: scalarField("periodUploadVolume"),
   previousUrlKeys: scalarField("previousUrlKeys"),
@@ -22635,6 +26401,7 @@ Object.assign(Organization.fields, {
   slackProjectChannelsEnabled: scalarField("slackProjectChannelsEnabled"),
   slaDayCount: scalarField("slaDayCount"),
   subscription: objectField("subscription", PaidSubscription),
+  suggestedBranchNameEnabled: scalarField("suggestedBranchNameEnabled"),
   teams: connectionField("teams", Team, {
     filter: "TeamFilter",
     before: "String",
@@ -22644,6 +26411,7 @@ Object.assign(Organization.fields, {
     includeArchived: "Boolean",
     orderBy: "PaginationOrderBy",
   }),
+  teamSecuritySettings: scalarField("teamSecuritySettings"),
   templates: connectionField("templates", Template, {
     filter: "NullableTemplateFilter",
     before: "String",
@@ -22669,21 +26437,21 @@ Object.assign(Organization.fields, {
     orderBy: "PaginationOrderBy",
   }),
   workingDays: scalarField("workingDays"),
-});
+};
 
-Object.assign(OrganizationAcceptedOrExpiredInviteDetailsPayload.fields, {
+const OrganizationAcceptedOrExpiredInviteDetailsPayloadFields: TypeMeta["fields"] = {
   status: scalarField("status"),
-});
+};
 
-Object.assign(OrganizationCancelDeletePayload.fields, {
+const OrganizationCancelDeletePayloadFields: TypeMeta["fields"] = {
   success: scalarField("success"),
-});
+};
 
-Object.assign(OrganizationDeletePayload.fields, {
+const OrganizationDeletePayloadFields: TypeMeta["fields"] = {
   success: scalarField("success"),
-});
+};
 
-Object.assign(OrganizationDomain.fields, {
+const OrganizationDomainFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   authType: scalarField("authType"),
   claimed: scalarField("claimed"),
@@ -22696,28 +26464,28 @@ Object.assign(OrganizationDomain.fields, {
   updatedAt: scalarField("updatedAt"),
   verificationEmail: scalarField("verificationEmail"),
   verified: scalarField("verified"),
-});
+};
 
-Object.assign(OrganizationDomainClaimPayload.fields, {
+const OrganizationDomainClaimPayloadFields: TypeMeta["fields"] = {
   verificationString: scalarField("verificationString"),
-});
+};
 
-Object.assign(OrganizationDomainPayload.fields, {
+const OrganizationDomainPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   organizationDomain: objectField("organizationDomain", OrganizationDomain),
   success: scalarField("success"),
-});
+};
 
-Object.assign(OrganizationDomainSimplePayload.fields, {
+const OrganizationDomainSimplePayloadFields: TypeMeta["fields"] = {
   success: scalarField("success"),
-});
+};
 
-Object.assign(OrganizationExistsPayload.fields, {
+const OrganizationExistsPayloadFields: TypeMeta["fields"] = {
   exists: scalarField("exists"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(OrganizationInvite.fields, {
+const OrganizationInviteFields: TypeMeta["fields"] = {
   acceptedAt: scalarField("acceptedAt"),
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
@@ -22731,20 +26499,20 @@ Object.assign(OrganizationInvite.fields, {
   organization: objectField("organization", Organization),
   role: scalarField("role"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(OrganizationInviteConnection.fields, {
+const OrganizationInviteConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", OrganizationInviteEdge),
   nodes: listField("nodes", OrganizationInvite),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(OrganizationInviteEdge.fields, {
+const OrganizationInviteEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", OrganizationInvite),
-});
+};
 
-Object.assign(OrganizationInviteFullDetailsPayload.fields, {
+const OrganizationInviteFullDetailsPayloadFields: TypeMeta["fields"] = {
   accepted: scalarField("accepted"),
   allowedAuthServices: scalarField("allowedAuthServices"),
   createdAt: scalarField("createdAt"),
@@ -22756,44 +26524,87 @@ Object.assign(OrganizationInviteFullDetailsPayload.fields, {
   organizationName: scalarField("organizationName"),
   role: scalarField("role"),
   status: scalarField("status"),
-});
+};
 
-Object.assign(OrganizationInvitePayload.fields, {
+const OrganizationInvitePayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   organizationInvite: objectField("organizationInvite", OrganizationInvite),
   success: scalarField("success"),
-});
+};
 
-Object.assign(OrganizationIpRestriction.fields, {
+const OrganizationIpRestrictionFields: TypeMeta["fields"] = {
   description: scalarField("description"),
   enabled: scalarField("enabled"),
   range: scalarField("range"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(OrganizationMeta.fields, {
+const OrganizationMetaFields: TypeMeta["fields"] = {
   allowedAuthServices: scalarField("allowedAuthServices"),
   region: scalarField("region"),
-});
+};
 
-Object.assign(OrganizationPayload.fields, {
+const OrganizationPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   organization: objectField("organization", Organization),
   success: scalarField("success"),
-});
+};
 
-Object.assign(OrganizationStartTrialPayload.fields, {
+const OrganizationQuotaFields: TypeMeta["fields"] = {
+  description: scalarField("description"),
+  id: scalarField("id"),
+  key: scalarField("key"),
+  limit: scalarField("limit"),
+  maxUsage: objectField("maxUsage", OrganizationQuotaMaxUsage),
+  name: scalarField("name"),
+  scope: scalarField("scope"),
+  usage: scalarField("usage"),
+};
+
+const OrganizationQuotaConnectionFields: TypeMeta["fields"] = {
+  edges: listField("edges", OrganizationQuotaEdge),
+  nodes: listField("nodes", OrganizationQuota),
+  pageInfo: objectField("pageInfo", PageInfo),
+};
+
+const OrganizationQuotaEdgeFields: TypeMeta["fields"] = {
+  cursor: scalarField("cursor"),
+  node: objectField("node", OrganizationQuota),
+};
+
+const OrganizationQuotaMaxUsageFields: TypeMeta["fields"] = {
+  entityId: scalarField("entityId"),
+  usage: scalarField("usage"),
+};
+
+const OrganizationStartTrialPayloadFields: TypeMeta["fields"] = {
   success: scalarField("success"),
-});
+};
 
-Object.assign(PageInfo.fields, {
+const OriginInstallUrlPayloadFields: TypeMeta["fields"] = {
+  installUrl: scalarField("installUrl"),
+};
+
+const OriginInstallationCancelPayloadFields: TypeMeta["fields"] = {
+  success: scalarField("success"),
+};
+
+const OriginInstallationDetailsFields: TypeMeta["fields"] = {
+  connectedToWorkspace: scalarField("connectedToWorkspace"),
+  installationId: scalarField("installationId"),
+  ownerSlug: scalarField("ownerSlug"),
+  ownerType: scalarField("ownerType"),
+  repositorySelection: scalarField("repositorySelection"),
+};
+
+const PageInfoFields: TypeMeta["fields"] = {
   endCursor: scalarField("endCursor"),
   hasNextPage: scalarField("hasNextPage"),
   hasPreviousPage: scalarField("hasPreviousPage"),
   startCursor: scalarField("startCursor"),
-});
+};
 
-Object.assign(PaidSubscription.fields, {
+const PaidSubscriptionFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   cancelAt: scalarField("cancelAt"),
   canceledAt: scalarField("canceledAt"),
@@ -22809,9 +26620,9 @@ Object.assign(PaidSubscription.fields, {
   seatsMinimum: scalarField("seatsMinimum"),
   type: scalarField("type"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(PartnerOfferDetailsPayload.fields, {
+const PartnerOfferDetailsPayloadFields: TypeMeta["fields"] = {
   discountType: scalarField("discountType"),
   discountValue: scalarField("discountValue"),
   durationMonths: scalarField("durationMonths"),
@@ -22819,34 +26630,34 @@ Object.assign(PartnerOfferDetailsPayload.fields, {
   partnerName: scalarField("partnerName"),
   partnerSlug: scalarField("partnerSlug"),
   token: scalarField("token"),
-});
+};
 
-Object.assign(PartnerOfferRedeemPayload.fields, {
+const PartnerOfferRedeemPayloadFields: TypeMeta["fields"] = {
   success: scalarField("success"),
-});
+};
 
-Object.assign(PartnerOfferWorkspacePayload.fields, {
+const PartnerOfferWorkspacePayloadFields: TypeMeta["fields"] = {
   eligible: scalarField("eligible"),
   ineligibilityReason: scalarField("ineligibilityReason"),
   organizationId: scalarField("organizationId"),
-});
+};
 
-Object.assign(PartnerOfferWorkspacesPayload.fields, {
+const PartnerOfferWorkspacesPayloadFields: TypeMeta["fields"] = {
   offer: objectField("offer", PartnerOfferDetailsPayload),
   workspaces: listField("workspaces", PartnerOfferWorkspacePayload),
-});
+};
 
-Object.assign(PartnerProgramPartnerPayload.fields, {
+const PartnerProgramPartnerPayloadFields: TypeMeta["fields"] = {
   category: scalarField("category"),
   partnerName: scalarField("partnerName"),
-});
+};
 
-Object.assign(PasskeyLoginStartResponse.fields, {
+const PasskeyLoginStartResponseFields: TypeMeta["fields"] = {
   options: scalarField("options"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(Post.fields, {
+const PostFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   audioSummary: scalarField("audioSummary"),
   body: scalarField("body"),
@@ -22866,9 +26677,9 @@ Object.assign(Post.fields, {
   updatedAt: scalarField("updatedAt"),
   user: objectField("user", User),
   writtenSummaryData: scalarField("writtenSummaryData"),
-});
+};
 
-Object.assign(PostNotification.fields, {
+const PostNotificationFields: TypeMeta["fields"] = {
   actor: objectField("actor", User),
   actorAvatarColor: scalarField("actorAvatarColor"),
   actorAvatarUrl: scalarField("actorAvatarUrl"),
@@ -22901,14 +26712,14 @@ Object.assign(PostNotification.fields, {
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(PresentedIssueSuggestionReason.fields, {
+const PresentedIssueSuggestionReasonFields: TypeMeta["fields"] = {
   references: listField("references", IssueSuggestionReasonReference),
   text: scalarField("text"),
-});
+};
 
-Object.assign(ProductAnnouncement.fields, {
+const ProductAnnouncementFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   campaignId: scalarField("campaignId"),
   createdAt: scalarField("createdAt"),
@@ -22918,9 +26729,9 @@ Object.assign(ProductAnnouncement.fields, {
   kind: scalarField("kind"),
   title: scalarField("title"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(ProductAnnouncementNotification.fields, {
+const ProductAnnouncementNotificationFields: TypeMeta["fields"] = {
   actor: objectField("actor", User),
   actorAvatarColor: scalarField("actorAvatarColor"),
   actorAvatarUrl: scalarField("actorAvatarUrl"),
@@ -22951,9 +26762,9 @@ Object.assign(ProductAnnouncementNotification.fields, {
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(Project.fields, {
+const ProjectFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   attachments: connectionField("attachments", ProjectAttachment, {
     before: "String",
@@ -23156,15 +26967,15 @@ Object.assign(Project.fields, {
   updateRemindersDay: scalarField("updateRemindersDay"),
   updateRemindersHour: scalarField("updateRemindersHour"),
   url: scalarField("url"),
-});
+};
 
-Object.assign(ProjectArchivePayload.fields, {
+const ProjectArchivePayloadFields: TypeMeta["fields"] = {
   entity: objectField("entity", Project),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(ProjectAttachment.fields, {
+const ProjectAttachmentFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   creator: objectField("creator", User),
@@ -23176,56 +26987,56 @@ Object.assign(ProjectAttachment.fields, {
   title: scalarField("title"),
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
-});
+};
 
-Object.assign(ProjectAttachmentConnection.fields, {
+const ProjectAttachmentConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", ProjectAttachmentEdge),
   nodes: listField("nodes", ProjectAttachment),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(ProjectAttachmentEdge.fields, {
+const ProjectAttachmentEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", ProjectAttachment),
-});
+};
 
-Object.assign(ProjectConnection.fields, {
+const ProjectConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", ProjectEdge),
   nodes: listField("nodes", Project),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(ProjectEdge.fields, {
+const ProjectEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", Project),
-});
+};
 
-Object.assign(ProjectFilterSuggestionPayload.fields, {
+const ProjectFilterSuggestionPayloadFields: TypeMeta["fields"] = {
   filter: scalarField("filter"),
   logId: scalarField("logId"),
-});
+};
 
-Object.assign(ProjectHistory.fields, {
+const ProjectHistoryFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   entries: scalarField("entries"),
   id: scalarField("id"),
   project: objectField("project", Project),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(ProjectHistoryConnection.fields, {
+const ProjectHistoryConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", ProjectHistoryEdge),
   nodes: listField("nodes", ProjectHistory),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(ProjectHistoryEdge.fields, {
+const ProjectHistoryEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", ProjectHistory),
-});
+};
 
-Object.assign(ProjectLabel.fields, {
+const ProjectLabelFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   children: connectionField("children", ProjectLabel, {
     filter: "ProjectLabelFilter",
@@ -23240,6 +27051,7 @@ Object.assign(ProjectLabel.fields, {
   createdAt: scalarField("createdAt"),
   creator: objectField("creator", User),
   description: scalarField("description"),
+  groupType: scalarField("groupType"),
   id: scalarField("id"),
   inheritedFrom: objectField("inheritedFrom", ProjectLabel),
   isGroup: scalarField("isGroup"),
@@ -23261,26 +27073,26 @@ Object.assign(ProjectLabel.fields, {
   retiredBy: objectField("retiredBy", User),
   team: objectField("team", Team),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(ProjectLabelConnection.fields, {
+const ProjectLabelConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", ProjectLabelEdge),
   nodes: listField("nodes", ProjectLabel),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(ProjectLabelEdge.fields, {
+const ProjectLabelEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", ProjectLabel),
-});
+};
 
-Object.assign(ProjectLabelPayload.fields, {
+const ProjectLabelPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   projectLabel: objectField("projectLabel", ProjectLabel),
   success: scalarField("success"),
-});
+};
 
-Object.assign(ProjectMilestone.fields, {
+const ProjectMilestoneFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   currentProgress: scalarField("currentProgress"),
@@ -23305,44 +27117,44 @@ Object.assign(ProjectMilestone.fields, {
   status: scalarField("status"),
   targetDate: scalarField("targetDate"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(ProjectMilestoneConnection.fields, {
+const ProjectMilestoneConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", ProjectMilestoneEdge),
   nodes: listField("nodes", ProjectMilestone),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(ProjectMilestoneEdge.fields, {
+const ProjectMilestoneEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", ProjectMilestone),
-});
+};
 
-Object.assign(ProjectMilestoneMoveIssueToTeam.fields, {
+const ProjectMilestoneMoveIssueToTeamFields: TypeMeta["fields"] = {
   issueId: scalarField("issueId"),
   teamId: scalarField("teamId"),
-});
+};
 
-Object.assign(ProjectMilestoneMovePayload.fields, {
+const ProjectMilestoneMovePayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   previousIssueTeamIds: listField("previousIssueTeamIds", ProjectMilestoneMoveIssueToTeam),
   previousProjectTeamIds: objectField("previousProjectTeamIds", ProjectMilestoneMoveProjectTeams),
   projectMilestone: objectField("projectMilestone", ProjectMilestone),
   success: scalarField("success"),
-});
+};
 
-Object.assign(ProjectMilestoneMoveProjectTeams.fields, {
+const ProjectMilestoneMoveProjectTeamsFields: TypeMeta["fields"] = {
   projectId: scalarField("projectId"),
   teamIds: scalarField("teamIds"),
-});
+};
 
-Object.assign(ProjectMilestonePayload.fields, {
+const ProjectMilestonePayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   projectMilestone: objectField("projectMilestone", ProjectMilestone),
   success: scalarField("success"),
-});
+};
 
-Object.assign(ProjectNotification.fields, {
+const ProjectNotificationFields: TypeMeta["fields"] = {
   actor: objectField("actor", User),
   actorAvatarColor: scalarField("actorAvatarColor"),
   actorAvatarUrl: scalarField("actorAvatarUrl"),
@@ -23382,9 +27194,9 @@ Object.assign(ProjectNotification.fields, {
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(ProjectNotificationSubscription.fields, {
+const ProjectNotificationSubscriptionFields: TypeMeta["fields"] = {
   active: scalarField("active"),
   archivedAt: scalarField("archivedAt"),
   contextViewType: scalarField("contextViewType"),
@@ -23403,15 +27215,15 @@ Object.assign(ProjectNotificationSubscription.fields, {
   updatedAt: scalarField("updatedAt"),
   user: objectField("user", User),
   userContextViewType: scalarField("userContextViewType"),
-});
+};
 
-Object.assign(ProjectPayload.fields, {
+const ProjectPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   project: objectField("project", Project),
   success: scalarField("success"),
-});
+};
 
-Object.assign(ProjectRelation.fields, {
+const ProjectRelationFields: TypeMeta["fields"] = {
   anchorType: scalarField("anchorType"),
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
@@ -23424,34 +27236,34 @@ Object.assign(ProjectRelation.fields, {
   type: scalarField("type"),
   updatedAt: scalarField("updatedAt"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(ProjectRelationConnection.fields, {
+const ProjectRelationConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", ProjectRelationEdge),
   nodes: listField("nodes", ProjectRelation),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(ProjectRelationEdge.fields, {
+const ProjectRelationEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", ProjectRelation),
-});
+};
 
-Object.assign(ProjectRelationPayload.fields, {
+const ProjectRelationPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   projectRelation: objectField("projectRelation", ProjectRelation),
   success: scalarField("success"),
-});
+};
 
-Object.assign(ProjectSearchPayload.fields, {
+const ProjectSearchPayloadFields: TypeMeta["fields"] = {
   archivePayload: objectField("archivePayload", ArchiveResponse),
   edges: listField("edges", ProjectSearchResultEdge),
   nodes: listField("nodes", ProjectSearchResult),
   pageInfo: objectField("pageInfo", PageInfo),
   totalCount: scalarField("totalCount"),
-});
+};
 
-Object.assign(ProjectSearchResult.fields, {
+const ProjectSearchResultFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   attachments: connectionField("attachments", ProjectAttachment, {
     before: "String",
@@ -23655,14 +27467,14 @@ Object.assign(ProjectSearchResult.fields, {
   updateRemindersDay: scalarField("updateRemindersDay"),
   updateRemindersHour: scalarField("updateRemindersHour"),
   url: scalarField("url"),
-});
+};
 
-Object.assign(ProjectSearchResultEdge.fields, {
+const ProjectSearchResultEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", ProjectSearchResult),
-});
+};
 
-Object.assign(ProjectStatus.fields, {
+const ProjectStatusFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   color: scalarField("color"),
   createdAt: scalarField("createdAt"),
@@ -23676,38 +27488,38 @@ Object.assign(ProjectStatus.fields, {
   teamId: scalarField("teamId"),
   type: scalarField("type"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(ProjectStatusArchivePayload.fields, {
+const ProjectStatusArchivePayloadFields: TypeMeta["fields"] = {
   entity: objectField("entity", ProjectStatus),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(ProjectStatusConnection.fields, {
+const ProjectStatusConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", ProjectStatusEdge),
   nodes: listField("nodes", ProjectStatus),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(ProjectStatusCountPayload.fields, {
+const ProjectStatusCountPayloadFields: TypeMeta["fields"] = {
   archivedTeamCount: scalarField("archivedTeamCount"),
   count: scalarField("count"),
   privateCount: scalarField("privateCount"),
-});
+};
 
-Object.assign(ProjectStatusEdge.fields, {
+const ProjectStatusEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", ProjectStatus),
-});
+};
 
-Object.assign(ProjectStatusPayload.fields, {
+const ProjectStatusPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   status: objectField("status", ProjectStatus),
   success: scalarField("success"),
-});
+};
 
-Object.assign(ProjectUpdate.fields, {
+const ProjectUpdateFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   body: scalarField("body"),
   bodyData: scalarField("bodyData"),
@@ -23738,37 +27550,37 @@ Object.assign(ProjectUpdate.fields, {
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(ProjectUpdateArchivePayload.fields, {
+const ProjectUpdateArchivePayloadFields: TypeMeta["fields"] = {
   entity: objectField("entity", ProjectUpdate),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(ProjectUpdateConnection.fields, {
+const ProjectUpdateConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", ProjectUpdateEdge),
   nodes: listField("nodes", ProjectUpdate),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(ProjectUpdateEdge.fields, {
+const ProjectUpdateEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", ProjectUpdate),
-});
+};
 
-Object.assign(ProjectUpdatePayload.fields, {
+const ProjectUpdatePayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   projectUpdate: objectField("projectUpdate", ProjectUpdate),
   success: scalarField("success"),
-});
+};
 
-Object.assign(ProjectUpdateReminderPayload.fields, {
+const ProjectUpdateReminderPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(PullRequest.fields, {
+const PullRequestFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   autoMergeEnabled: scalarField("autoMergeEnabled"),
   baseSha: scalarField("baseSha"),
@@ -23777,6 +27589,8 @@ Object.assign(PullRequest.fields, {
   commits: listField("commits", PullRequestCommit),
   createdAt: scalarField("createdAt"),
   creator: objectField("creator", User),
+  deployments: listField("deployments", Deployment),
+  externalCreator: objectField("externalCreator", ExternalUser),
   hasConflicts: scalarField("hasConflicts"),
   headSha: scalarField("headSha"),
   id: scalarField("id"),
@@ -23804,9 +27618,9 @@ Object.assign(PullRequest.fields, {
   title: scalarField("title"),
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
-});
+};
 
-Object.assign(PullRequestCheck.fields, {
+const PullRequestCheckFields: TypeMeta["fields"] = {
   completedAt: scalarField("completedAt"),
   isRequired: scalarField("isRequired"),
   name: scalarField("name"),
@@ -23815,9 +27629,9 @@ Object.assign(PullRequestCheck.fields, {
   status: scalarField("status"),
   url: scalarField("url"),
   workflowName: scalarField("workflowName"),
-});
+};
 
-Object.assign(PullRequestCommit.fields, {
+const PullRequestCommitFields: TypeMeta["fields"] = {
   additions: scalarField("additions"),
   authoredAt: scalarField("authoredAt"),
   authorExternalUserIds: scalarField("authorExternalUserIds"),
@@ -23832,18 +27646,18 @@ Object.assign(PullRequestCommit.fields, {
   parentShas: scalarField("parentShas"),
   sha: scalarField("sha"),
   signature: objectField("signature", PullRequestCommitSignature),
-});
+};
 
-Object.assign(PullRequestCommitSignature.fields, {
+const PullRequestCommitSignatureFields: TypeMeta["fields"] = {
   isVerified: scalarField("isVerified"),
   keyFingerprint: scalarField("keyFingerprint"),
   keyId: scalarField("keyId"),
   state: scalarField("state"),
   type: scalarField("type"),
   wasSignedByProvider: scalarField("wasSignedByProvider"),
-});
+};
 
-Object.assign(PullRequestMergeSettings.fields, {
+const PullRequestMergeSettingsFields: TypeMeta["fields"] = {
   autoMergeAllowed: scalarField("autoMergeAllowed"),
   deleteBranchOnMerge: scalarField("deleteBranchOnMerge"),
   isMergeQueueEnabled: scalarField("isMergeQueueEnabled"),
@@ -23851,9 +27665,9 @@ Object.assign(PullRequestMergeSettings.fields, {
   mergeQueueMergeMethod: scalarField("mergeQueueMergeMethod"),
   rebaseMergeAllowed: scalarField("rebaseMergeAllowed"),
   squashMergeAllowed: scalarField("squashMergeAllowed"),
-});
+};
 
-Object.assign(PullRequestNotification.fields, {
+const PullRequestNotificationFields: TypeMeta["fields"] = {
   actor: objectField("actor", User),
   actorAvatarColor: scalarField("actorAvatarColor"),
   actorAvatarUrl: scalarField("actorAvatarUrl"),
@@ -23885,47 +27699,47 @@ Object.assign(PullRequestNotification.fields, {
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(PullRequestPreviewLink.fields, {
+const PullRequestPreviewLinkFields: TypeMeta["fields"] = {
   isBuilding: scalarField("isBuilding"),
   name: scalarField("name"),
   url: scalarField("url"),
-});
+};
 
-Object.assign(PushSubscription.fields, {
+const PushSubscriptionFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   id: scalarField("id"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(PushSubscriptionPayload.fields, {
+const PushSubscriptionPayloadFields: TypeMeta["fields"] = {
   entity: objectField("entity", PushSubscription),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(PushSubscriptionTestPayload.fields, {
+const PushSubscriptionTestPayloadFields: TypeMeta["fields"] = {
   success: scalarField("success"),
-});
+};
 
-Object.assign(RateLimitPayload.fields, {
+const RateLimitPayloadFields: TypeMeta["fields"] = {
   identifier: scalarField("identifier"),
   kind: scalarField("kind"),
   limits: listField("limits", RateLimitResultPayload),
-});
+};
 
-Object.assign(RateLimitResultPayload.fields, {
+const RateLimitResultPayloadFields: TypeMeta["fields"] = {
   allowedAmount: scalarField("allowedAmount"),
   period: scalarField("period"),
   remainingAmount: scalarField("remainingAmount"),
   requestedAmount: scalarField("requestedAmount"),
   reset: scalarField("reset"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(Reaction.fields, {
+const ReactionFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   comment: objectField("comment", Comment),
   createdAt: scalarField("createdAt"),
@@ -23938,15 +27752,15 @@ Object.assign(Reaction.fields, {
   projectUpdate: objectField("projectUpdate", ProjectUpdate),
   updatedAt: scalarField("updatedAt"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(ReactionPayload.fields, {
+const ReactionPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   reaction: objectField("reaction", Reaction),
   success: scalarField("success"),
-});
+};
 
-Object.assign(Release.fields, {
+const ReleaseFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   autoArchivedAt: scalarField("autoArchivedAt"),
   canceledAt: scalarField("canceledAt"),
@@ -24006,46 +27820,46 @@ Object.assign(Release.fields, {
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
   version: scalarField("version"),
-});
+};
 
-Object.assign(ReleaseArchivePayload.fields, {
+const ReleaseArchivePayloadFields: TypeMeta["fields"] = {
   entity: objectField("entity", Release),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(ReleaseConnection.fields, {
+const ReleaseConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", ReleaseEdge),
   nodes: listField("nodes", Release),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(ReleaseEdge.fields, {
+const ReleaseEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", Release),
-});
+};
 
-Object.assign(ReleaseHistory.fields, {
+const ReleaseHistoryFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   entries: scalarField("entries"),
   id: scalarField("id"),
   release: objectField("release", Release),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(ReleaseHistoryConnection.fields, {
+const ReleaseHistoryConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", ReleaseHistoryEdge),
   nodes: listField("nodes", ReleaseHistory),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(ReleaseHistoryEdge.fields, {
+const ReleaseHistoryEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", ReleaseHistory),
-});
+};
 
-Object.assign(ReleaseNote.fields, {
+const ReleaseNoteFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   documentContent: objectField("documentContent", DocumentContent),
@@ -24060,32 +27874,32 @@ Object.assign(ReleaseNote.fields, {
   title: scalarField("title"),
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
-});
+};
 
-Object.assign(ReleaseNoteConnection.fields, {
+const ReleaseNoteConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", ReleaseNoteEdge),
   nodes: listField("nodes", ReleaseNote),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(ReleaseNoteEdge.fields, {
+const ReleaseNoteEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", ReleaseNote),
-});
+};
 
-Object.assign(ReleaseNotePayload.fields, {
+const ReleaseNotePayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   releaseNote: objectField("releaseNote", ReleaseNote),
   success: scalarField("success"),
-});
+};
 
-Object.assign(ReleasePayload.fields, {
+const ReleasePayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   release: objectField("release", Release),
   success: scalarField("success"),
-});
+};
 
-Object.assign(ReleasePipeline.fields, {
+const ReleasePipelineFields: TypeMeta["fields"] = {
   approximateReleaseCount: scalarField("approximateReleaseCount"),
   archivedAt: scalarField("archivedAt"),
   autoGenerateReleaseNotesOnCompletion: scalarField("autoGenerateReleaseNotesOnCompletion"),
@@ -24127,32 +27941,32 @@ Object.assign(ReleasePipeline.fields, {
   type: scalarField("type"),
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
-});
+};
 
-Object.assign(ReleasePipelineArchivePayload.fields, {
+const ReleasePipelineArchivePayloadFields: TypeMeta["fields"] = {
   entity: objectField("entity", ReleasePipeline),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(ReleasePipelineConnection.fields, {
+const ReleasePipelineConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", ReleasePipelineEdge),
   nodes: listField("nodes", ReleasePipeline),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(ReleasePipelineEdge.fields, {
+const ReleasePipelineEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", ReleasePipeline),
-});
+};
 
-Object.assign(ReleasePipelinePayload.fields, {
+const ReleasePipelinePayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   releasePipeline: objectField("releasePipeline", ReleasePipeline),
   success: scalarField("success"),
-});
+};
 
-Object.assign(ReleaseStage.fields, {
+const ReleaseStageFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   color: scalarField("color"),
   createdAt: scalarField("createdAt"),
@@ -24171,42 +27985,42 @@ Object.assign(ReleaseStage.fields, {
   }),
   type: scalarField("type"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(ReleaseStageArchivePayload.fields, {
+const ReleaseStageArchivePayloadFields: TypeMeta["fields"] = {
   entity: objectField("entity", ReleaseStage),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(ReleaseStageConnection.fields, {
+const ReleaseStageConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", ReleaseStageEdge),
   nodes: listField("nodes", ReleaseStage),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(ReleaseStageEdge.fields, {
+const ReleaseStageEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", ReleaseStage),
-});
+};
 
-Object.assign(ReleaseStagePayload.fields, {
+const ReleaseStagePayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   releaseStage: objectField("releaseStage", ReleaseStage),
   success: scalarField("success"),
-});
+};
 
-Object.assign(RepositorySuggestion.fields, {
+const RepositorySuggestionFields: TypeMeta["fields"] = {
   confidence: scalarField("confidence"),
   hostname: scalarField("hostname"),
   repositoryFullName: scalarField("repositoryFullName"),
-});
+};
 
-Object.assign(RepositorySuggestionsPayload.fields, {
+const RepositorySuggestionsPayloadFields: TypeMeta["fields"] = {
   suggestions: listField("suggestions", RepositorySuggestion),
-});
+};
 
-Object.assign(Roadmap.fields, {
+const RoadmapFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   color: scalarField("color"),
   createdAt: scalarField("createdAt"),
@@ -24229,32 +28043,32 @@ Object.assign(Roadmap.fields, {
   sortOrder: scalarField("sortOrder"),
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
-});
+};
 
-Object.assign(RoadmapArchivePayload.fields, {
+const RoadmapArchivePayloadFields: TypeMeta["fields"] = {
   entity: objectField("entity", Roadmap),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(RoadmapConnection.fields, {
+const RoadmapConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", RoadmapEdge),
   nodes: listField("nodes", Roadmap),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(RoadmapEdge.fields, {
+const RoadmapEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", Roadmap),
-});
+};
 
-Object.assign(RoadmapPayload.fields, {
+const RoadmapPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   roadmap: objectField("roadmap", Roadmap),
   success: scalarField("success"),
-});
+};
 
-Object.assign(RoadmapToProject.fields, {
+const RoadmapToProjectFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   id: scalarField("id"),
@@ -24262,40 +28076,40 @@ Object.assign(RoadmapToProject.fields, {
   roadmap: objectField("roadmap", Roadmap),
   sortOrder: scalarField("sortOrder"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(RoadmapToProjectConnection.fields, {
+const RoadmapToProjectConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", RoadmapToProjectEdge),
   nodes: listField("nodes", RoadmapToProject),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(RoadmapToProjectEdge.fields, {
+const RoadmapToProjectEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", RoadmapToProject),
-});
+};
 
-Object.assign(RoadmapToProjectPayload.fields, {
+const RoadmapToProjectPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   roadmapToProject: objectField("roadmapToProject", RoadmapToProject),
   success: scalarField("success"),
-});
+};
 
-Object.assign(SemanticSearchPayload.fields, {
+const SemanticSearchPayloadFields: TypeMeta["fields"] = {
   enabled: scalarField("enabled"),
   results: listField("results", SemanticSearchResult),
-});
+};
 
-Object.assign(SemanticSearchResult.fields, {
+const SemanticSearchResultFields: TypeMeta["fields"] = {
   document: objectField("document", Document),
   id: scalarField("id"),
   initiative: objectField("initiative", Initiative),
   issue: objectField("issue", Issue),
   project: objectField("project", Project),
   type: scalarField("type"),
-});
+};
 
-Object.assign(SesDomainIdentity.fields, {
+const SesDomainIdentityFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   canSendFromCustomDomain: scalarField("canSendFromCustomDomain"),
   createdAt: scalarField("createdAt"),
@@ -24306,16 +28120,16 @@ Object.assign(SesDomainIdentity.fields, {
   organization: objectField("organization", Organization),
   region: scalarField("region"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(SesDomainIdentityDnsRecord.fields, {
+const SesDomainIdentityDnsRecordFields: TypeMeta["fields"] = {
   content: scalarField("content"),
   isVerified: scalarField("isVerified"),
   name: scalarField("name"),
   type: scalarField("type"),
-});
+};
 
-Object.assign(SlaConfiguration.fields, {
+const SlaConfigurationFields: TypeMeta["fields"] = {
   conditions: scalarField("conditions"),
   id: scalarField("id"),
   name: scalarField("name"),
@@ -24323,14 +28137,14 @@ Object.assign(SlaConfiguration.fields, {
   sla: scalarField("sla"),
   slaType: scalarField("slaType"),
   startMode: scalarField("startMode"),
-});
+};
 
-Object.assign(SlackAsksTeamSettings.fields, {
+const SlackAsksTeamSettingsFields: TypeMeta["fields"] = {
   hasDefaultAsk: scalarField("hasDefaultAsk"),
   id: scalarField("id"),
-});
+};
 
-Object.assign(SlackChannelConnectPayload.fields, {
+const SlackChannelConnectPayloadFields: TypeMeta["fields"] = {
   addBot: scalarField("addBot"),
   gitHub: objectField("gitHub", GitHubIntegrationConnectDetails),
   integration: objectField("integration", Integration),
@@ -24338,9 +28152,9 @@ Object.assign(SlackChannelConnectPayload.fields, {
   nudgeToConnectMainSlackIntegration: scalarField("nudgeToConnectMainSlackIntegration"),
   nudgeToUpdateMainSlackIntegration: scalarField("nudgeToUpdateMainSlackIntegration"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(SlackChannelNameMapping.fields, {
+const SlackChannelNameMappingFields: TypeMeta["fields"] = {
   aiTitles: scalarField("aiTitles"),
   autoCreateOnBotMention: scalarField("autoCreateOnBotMention"),
   autoCreateOnEmoji: scalarField("autoCreateOnEmoji"),
@@ -24357,19 +28171,19 @@ Object.assign(SlackChannelNameMapping.fields, {
   postCompletionUpdates: scalarField("postCompletionUpdates"),
   postSlaUpdates: scalarField("postSlaUpdates"),
   teams: listField("teams", SlackAsksTeamSettings),
-});
+};
 
-Object.assign(SsoUrlFromEmailResponse.fields, {
+const SsoUrlFromEmailResponseFields: TypeMeta["fields"] = {
   samlSsoUrl: scalarField("samlSsoUrl"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(SuccessPayload.fields, {
+const SuccessPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(Summary.fields, {
+const SummaryFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   content: scalarField("content"),
   createdAt: scalarField("createdAt"),
@@ -24379,9 +28193,9 @@ Object.assign(Summary.fields, {
   id: scalarField("id"),
   issue: objectField("issue", Issue),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(SyncedExternalThread.fields, {
+const SyncedExternalThreadFields: TypeMeta["fields"] = {
   displayName: scalarField("displayName"),
   id: scalarField("id"),
   isConnected: scalarField("isConnected"),
@@ -24391,10 +28205,11 @@ Object.assign(SyncedExternalThread.fields, {
   subType: scalarField("subType"),
   type: scalarField("type"),
   url: scalarField("url"),
-});
+};
 
-Object.assign(Team.fields, {
+const TeamFields: TypeMeta["fields"] = {
   activeCycle: objectField("activeCycle", Cycle),
+  agentAutomationEnabled: scalarField("agentAutomationEnabled"),
   aiDiscussionSummariesEnabled: scalarField("aiDiscussionSummariesEnabled"),
   aiThreadSummariesEnabled: scalarField("aiThreadSummariesEnabled"),
   allMembersCanJoin: scalarField("allMembersCanJoin"),
@@ -24406,6 +28221,7 @@ Object.assign(Team.fields, {
   autoClosePeriod: scalarField("autoClosePeriod"),
   autoCloseStateId: scalarField("autoCloseStateId"),
   children: listField("children", Team),
+  codingAgentEnabled: scalarField("codingAgentEnabled"),
   color: scalarField("color"),
   createdAt: scalarField("createdAt"),
   currentProgress: scalarField("currentProgress"),
@@ -24446,6 +28262,7 @@ Object.assign(Team.fields, {
     orderBy: "PaginationOrderBy",
   }),
   groupIssueHistory: scalarField("groupIssueHistory"),
+  hierarchySettings: scalarField("hierarchySettings"),
   icon: scalarField("icon"),
   id: scalarField("id"),
   inheritIssueEstimation: scalarField("inheritIssueEstimation"),
@@ -24483,6 +28300,14 @@ Object.assign(Team.fields, {
     orderBy: "PaginationOrderBy",
   }),
   ledInitiativeCount: scalarField("ledInitiativeCount"),
+  loops: connectionField("loops", WorkflowDefinition, {
+    before: "String",
+    after: "String",
+    first: "Int",
+    last: "Int",
+    includeArchived: "Boolean",
+    orderBy: "PaginationOrderBy",
+  }),
   markedAsDuplicateWorkflowState: objectField("markedAsDuplicateWorkflowState", WorkflowState),
   members: connectionField("members", User, {
     filter: "UserFilter",
@@ -24574,6 +28399,9 @@ Object.assign(Team.fields, {
   triageResponsibility: objectField("triageResponsibility", TriageResponsibility),
   upcomingCycleCount: scalarField("upcomingCycleCount"),
   updatedAt: scalarField("updatedAt"),
+  viewerCanJoin: scalarField("viewerCanJoin"),
+  viewerCanLeave: scalarField("viewerCanLeave"),
+  viewerMembership: objectField("viewerMembership", TeamMembership),
   visibility: scalarField("visibility"),
   webhooks: connectionField("webhooks", Webhook, {
     before: "String",
@@ -24583,26 +28411,26 @@ Object.assign(Team.fields, {
     includeArchived: "Boolean",
     orderBy: "PaginationOrderBy",
   }),
-});
+};
 
-Object.assign(TeamArchivePayload.fields, {
+const TeamArchivePayloadFields: TypeMeta["fields"] = {
   entity: objectField("entity", Team),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(TeamConnection.fields, {
+const TeamConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", TeamEdge),
   nodes: listField("nodes", Team),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(TeamEdge.fields, {
+const TeamEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", Team),
-});
+};
 
-Object.assign(TeamMembership.fields, {
+const TeamMembershipFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   id: scalarField("id"),
@@ -24611,26 +28439,26 @@ Object.assign(TeamMembership.fields, {
   team: objectField("team", Team),
   updatedAt: scalarField("updatedAt"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(TeamMembershipConnection.fields, {
+const TeamMembershipConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", TeamMembershipEdge),
   nodes: listField("nodes", TeamMembership),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(TeamMembershipEdge.fields, {
+const TeamMembershipEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", TeamMembership),
-});
+};
 
-Object.assign(TeamMembershipPayload.fields, {
+const TeamMembershipPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
   teamMembership: objectField("teamMembership", TeamMembership),
-});
+};
 
-Object.assign(TeamNotificationSubscription.fields, {
+const TeamNotificationSubscriptionFields: TypeMeta["fields"] = {
   active: scalarField("active"),
   archivedAt: scalarField("archivedAt"),
   contextViewType: scalarField("contextViewType"),
@@ -24649,15 +28477,15 @@ Object.assign(TeamNotificationSubscription.fields, {
   updatedAt: scalarField("updatedAt"),
   user: objectField("user", User),
   userContextViewType: scalarField("userContextViewType"),
-});
+};
 
-Object.assign(TeamPayload.fields, {
+const TeamPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
   team: objectField("team", Team),
-});
+};
 
-Object.assign(TeamPinnedResource.fields, {
+const TeamPinnedResourceFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   creator: objectField("creator", User),
@@ -24669,9 +28497,9 @@ Object.assign(TeamPinnedResource.fields, {
   team: objectField("team", Team),
   updatedAt: scalarField("updatedAt"),
   updatedBy: objectField("updatedBy", User),
-});
+};
 
-Object.assign(TeamResourceSection.fields, {
+const TeamResourceSectionFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   creator: objectField("creator", User),
@@ -24681,9 +28509,9 @@ Object.assign(TeamResourceSection.fields, {
   title: scalarField("title"),
   updatedAt: scalarField("updatedAt"),
   updatedBy: objectField("updatedBy", User),
-});
+};
 
-Object.assign(Template.fields, {
+const TemplateFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   color: scalarField("color"),
   content: scalarField("content"),
@@ -24704,26 +28532,26 @@ Object.assign(Template.fields, {
   templateData: scalarField("templateData"),
   type: scalarField("type"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(TemplateConnection.fields, {
+const TemplateConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", TemplateEdge),
   nodes: listField("nodes", Template),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(TemplateEdge.fields, {
+const TemplateEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", Template),
-});
+};
 
-Object.assign(TemplatePayload.fields, {
+const TemplatePayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
   template: objectField("template", Template),
-});
+};
 
-Object.assign(TimeSchedule.fields, {
+const TimeScheduleFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   config: objectField("config", TimeScheduleConfig),
   createdAt: scalarField("createdAt"),
@@ -24735,43 +28563,43 @@ Object.assign(TimeSchedule.fields, {
   name: scalarField("name"),
   organization: objectField("organization", Organization),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(TimeScheduleConfig.fields, {
+const TimeScheduleConfigFields: TypeMeta["fields"] = {
   nextShiftByUserId: scalarField("nextShiftByUserId"),
-});
+};
 
-Object.assign(TimeScheduleConnection.fields, {
+const TimeScheduleConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", TimeScheduleEdge),
   nodes: listField("nodes", TimeSchedule),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(TimeScheduleEdge.fields, {
+const TimeScheduleEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", TimeSchedule),
-});
+};
 
-Object.assign(TimeScheduleEntry.fields, {
+const TimeScheduleEntryFields: TypeMeta["fields"] = {
   endsAt: scalarField("endsAt"),
   overriddenUser: objectField("overriddenUser", TimeScheduleUser),
   startsAt: scalarField("startsAt"),
   userEmail: scalarField("userEmail"),
   userId: scalarField("userId"),
-});
+};
 
-Object.assign(TimeSchedulePayload.fields, {
+const TimeSchedulePayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
   timeSchedule: objectField("timeSchedule", TimeSchedule),
-});
+};
 
-Object.assign(TimeScheduleUser.fields, {
+const TimeScheduleUserFields: TypeMeta["fields"] = {
   userEmail: scalarField("userEmail"),
   userId: scalarField("userId"),
-});
+};
 
-Object.assign(TriageResponsibility.fields, {
+const TriageResponsibilityFields: TypeMeta["fields"] = {
   action: scalarField("action"),
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
@@ -24781,31 +28609,31 @@ Object.assign(TriageResponsibility.fields, {
   team: objectField("team", Team),
   timeSchedule: objectField("timeSchedule", TimeSchedule),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(TriageResponsibilityConnection.fields, {
+const TriageResponsibilityConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", TriageResponsibilityEdge),
   nodes: listField("nodes", TriageResponsibility),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(TriageResponsibilityEdge.fields, {
+const TriageResponsibilityEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", TriageResponsibility),
-});
+};
 
-Object.assign(TriageResponsibilityManualSelection.fields, {
+const TriageResponsibilityManualSelectionFields: TypeMeta["fields"] = {
   assignmentIndex: scalarField("assignmentIndex"),
   userIds: scalarField("userIds"),
-});
+};
 
-Object.assign(TriageResponsibilityPayload.fields, {
+const TriageResponsibilityPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
   triageResponsibility: objectField("triageResponsibility", TriageResponsibility),
-});
+};
 
-Object.assign(UploadFile.fields, {
+const UploadFileFields: TypeMeta["fields"] = {
   assetUrl: scalarField("assetUrl"),
   contentType: scalarField("contentType"),
   filename: scalarField("filename"),
@@ -24813,20 +28641,20 @@ Object.assign(UploadFile.fields, {
   metaData: scalarField("metaData"),
   size: scalarField("size"),
   uploadUrl: scalarField("uploadUrl"),
-});
+};
 
-Object.assign(UploadFileHeader.fields, {
+const UploadFileHeaderFields: TypeMeta["fields"] = {
   key: scalarField("key"),
   value: scalarField("value"),
-});
+};
 
-Object.assign(UploadPayload.fields, {
+const UploadPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
   uploadFile: objectField("uploadFile", UploadFile),
-});
+};
 
-Object.assign(UsageAlert.fields, {
+const UsageAlertFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   id: scalarField("id"),
@@ -24834,20 +28662,20 @@ Object.assign(UsageAlert.fields, {
   resolvedAt: scalarField("resolvedAt"),
   type: scalarField("type"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(UsageAlertConnection.fields, {
+const UsageAlertConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", UsageAlertEdge),
   nodes: listField("nodes", UsageAlert),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(UsageAlertEdge.fields, {
+const UsageAlertEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", UsageAlert),
-});
+};
 
-Object.assign(UsageAlertNotification.fields, {
+const UsageAlertNotificationFields: TypeMeta["fields"] = {
   actor: objectField("actor", User),
   actorAvatarColor: scalarField("actorAvatarColor"),
   actorAvatarUrl: scalarField("actorAvatarUrl"),
@@ -24878,9 +28706,9 @@ Object.assign(UsageAlertNotification.fields, {
   usageAlert: objectField("usageAlert", UsageAlert),
   usageAlertId: scalarField("usageAlertId"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(User.fields, {
+const UserFields: TypeMeta["fields"] = {
   active: scalarField("active"),
   admin: scalarField("admin"),
   app: scalarField("app"),
@@ -24985,24 +28813,24 @@ Object.assign(User.fields, {
   title: scalarField("title"),
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
-});
+};
 
-Object.assign(UserAdminPayload.fields, {
+const UserAdminPayloadFields: TypeMeta["fields"] = {
   success: scalarField("success"),
-});
+};
 
-Object.assign(UserConnection.fields, {
+const UserConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", UserEdge),
   nodes: listField("nodes", User),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(UserEdge.fields, {
+const UserEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", User),
-});
+};
 
-Object.assign(UserNotificationSubscription.fields, {
+const UserNotificationSubscriptionFields: TypeMeta["fields"] = {
   active: scalarField("active"),
   archivedAt: scalarField("archivedAt"),
   contextViewType: scalarField("contextViewType"),
@@ -25021,15 +28849,15 @@ Object.assign(UserNotificationSubscription.fields, {
   updatedAt: scalarField("updatedAt"),
   user: objectField("user", User),
   userContextViewType: scalarField("userContextViewType"),
-});
+};
 
-Object.assign(UserPayload.fields, {
+const UserPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(UserSettings.fields, {
+const UserSettingsFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   autoAssignToSelf: scalarField("autoAssignToSelf"),
   calendarHash: scalarField("calendarHash"),
@@ -25060,45 +28888,45 @@ Object.assign(UserSettings.fields, {
   unsubscribedFrom: scalarField("unsubscribedFrom"),
   updatedAt: scalarField("updatedAt"),
   user: objectField("user", User),
-});
+};
 
-Object.assign(UserSettingsCustomSidebarTheme.fields, {
+const UserSettingsCustomSidebarThemeFields: TypeMeta["fields"] = {
   accent: scalarField("accent"),
   base: scalarField("base"),
   contrast: scalarField("contrast"),
-});
+};
 
-Object.assign(UserSettingsCustomTheme.fields, {
+const UserSettingsCustomThemeFields: TypeMeta["fields"] = {
   accent: scalarField("accent"),
   base: scalarField("base"),
   contrast: scalarField("contrast"),
   sidebar: objectField("sidebar", UserSettingsCustomSidebarTheme),
-});
+};
 
-Object.assign(UserSettingsFlagPayload.fields, {
+const UserSettingsFlagPayloadFields: TypeMeta["fields"] = {
   flag: scalarField("flag"),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
   value: scalarField("value"),
-});
+};
 
-Object.assign(UserSettingsFlagsResetPayload.fields, {
+const UserSettingsFlagsResetPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(UserSettingsPayload.fields, {
+const UserSettingsPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
   userSettings: objectField("userSettings", UserSettings),
-});
+};
 
-Object.assign(UserSettingsTheme.fields, {
+const UserSettingsThemeFields: TypeMeta["fields"] = {
   custom: objectField("custom", UserSettingsCustomTheme),
   preset: scalarField("preset"),
-});
+};
 
-Object.assign(ViewPreferences.fields, {
+const ViewPreferencesFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   id: scalarField("id"),
@@ -25106,25 +28934,25 @@ Object.assign(ViewPreferences.fields, {
   type: scalarField("type"),
   updatedAt: scalarField("updatedAt"),
   viewType: scalarField("viewType"),
-});
+};
 
-Object.assign(ViewPreferencesInitiativeLabelGroupColumn.fields, {
+const ViewPreferencesInitiativeLabelGroupColumnFields: TypeMeta["fields"] = {
   active: scalarField("active"),
   id: scalarField("id"),
-});
+};
 
-Object.assign(ViewPreferencesPayload.fields, {
+const ViewPreferencesPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
   viewPreferences: objectField("viewPreferences", ViewPreferences),
-});
+};
 
-Object.assign(ViewPreferencesProjectLabelGroupColumn.fields, {
+const ViewPreferencesProjectLabelGroupColumnFields: TypeMeta["fields"] = {
   active: scalarField("active"),
   id: scalarField("id"),
-});
+};
 
-Object.assign(ViewPreferencesValues.fields, {
+const ViewPreferencesValuesFields: TypeMeta["fields"] = {
   automationFieldLastExecuted: scalarField("automationFieldLastExecuted"),
   automationFieldStats: scalarField("automationFieldStats"),
   automationFieldTeam: scalarField("automationFieldTeam"),
@@ -25141,6 +28969,7 @@ Object.assign(ViewPreferencesValues.fields, {
   ),
   automationShowDescendants: scalarField("automationShowDescendants"),
   automationShowDisabled: scalarField("automationShowDisabled"),
+  automationShowTemplates: scalarField("automationShowTemplates"),
   automationStatsPeriod: scalarField("automationStatsPeriod"),
   closedIssuesOrderedByRecency: scalarField("closedIssuesOrderedByRecency"),
   columnOrderBoard: scalarField("columnOrderBoard"),
@@ -25181,11 +29010,22 @@ Object.assign(ViewPreferencesValues.fields, {
   dashboardFieldDateUpdated: scalarField("dashboardFieldDateUpdated"),
   dashboardFieldOwner: scalarField("dashboardFieldOwner"),
   dashboardsOrdering: scalarField("dashboardsOrdering"),
+  documentFieldCollaborators: scalarField("documentFieldCollaborators"),
   documentFieldCreator: scalarField("documentFieldCreator"),
   documentFieldDateCreated: scalarField("documentFieldDateCreated"),
   documentFieldDateUpdated: scalarField("documentFieldDateUpdated"),
   documentFieldOwner: scalarField("documentFieldOwner"),
   documentFieldParent: scalarField("documentFieldParent"),
+  documentFieldProject: scalarField("documentFieldProject"),
+  documentsListCreatedDateDirection: scalarField("documentsListCreatedDateDirection"),
+  documentsListGrouping: scalarField("documentsListGrouping"),
+  documentsListLastEditedDirection: scalarField("documentsListLastEditedDirection"),
+  documentsListNameDirection: scalarField("documentsListNameDirection"),
+  documentsListOrdering: scalarField("documentsListOrdering"),
+  documentsListOwnerDirection: scalarField("documentsListOwnerDirection"),
+  documentsListProjectDirection: scalarField("documentsListProjectDirection"),
+  documentsListShowInactiveProjects: scalarField("documentsListShowInactiveProjects"),
+  documentsListShowOnlyMyProjects: scalarField("documentsListShowOnlyMyProjects"),
   embeddedCustomerNeedsShowImportantFirst: scalarField("embeddedCustomerNeedsShowImportantFirst"),
   embeddedCustomerNeedsViewOrdering: scalarField("embeddedCustomerNeedsViewOrdering"),
   fieldAssignee: scalarField("fieldAssignee"),
@@ -25254,6 +29094,7 @@ Object.assign(ViewPreferencesValues.fields, {
   memberFieldJoined: scalarField("memberFieldJoined"),
   memberFieldStatus: scalarField("memberFieldStatus"),
   memberFieldTeams: scalarField("memberFieldTeams"),
+  pinnedDocumentIds: scalarField("pinnedDocumentIds"),
   projectCustomerNeedsShowCompletedIssuesLast: scalarField(
     "projectCustomerNeedsShowCompletedIssuesLast",
   ),
@@ -25392,12 +29233,13 @@ Object.assign(ViewPreferencesValues.fields, {
   timelineShowProjectsAside: scalarField("timelineShowProjectsAside"),
   timelineZoomScale: scalarField("timelineZoomScale"),
   triageViewOrdering: scalarField("triageViewOrdering"),
+  userDiffsScope: scalarField("userDiffsScope"),
   viewOrdering: scalarField("viewOrdering"),
   viewOrderingDirection: scalarField("viewOrderingDirection"),
   workspaceMembersViewOrdering: scalarField("workspaceMembersViewOrdering"),
-});
+};
 
-Object.assign(Webhook.fields, {
+const WebhookFields: TypeMeta["fields"] = {
   allPublicTeams: scalarField("allPublicTeams"),
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
@@ -25412,20 +29254,20 @@ Object.assign(Webhook.fields, {
   teamIds: scalarField("teamIds"),
   updatedAt: scalarField("updatedAt"),
   url: scalarField("url"),
-});
+};
 
-Object.assign(WebhookConnection.fields, {
+const WebhookConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", WebhookEdge),
   nodes: listField("nodes", Webhook),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(WebhookEdge.fields, {
+const WebhookEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", Webhook),
-});
+};
 
-Object.assign(WebhookFailureEvent.fields, {
+const WebhookFailureEventFields: TypeMeta["fields"] = {
   createdAt: scalarField("createdAt"),
   executionId: scalarField("executionId"),
   httpStatus: scalarField("httpStatus"),
@@ -25433,21 +29275,21 @@ Object.assign(WebhookFailureEvent.fields, {
   responseOrError: scalarField("responseOrError"),
   url: scalarField("url"),
   webhook: objectField("webhook", Webhook),
-});
+};
 
-Object.assign(WebhookPayload.fields, {
+const WebhookPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
   webhook: objectField("webhook", Webhook),
-});
+};
 
-Object.assign(WebhookRotateSecretPayload.fields, {
+const WebhookRotateSecretPayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   secret: scalarField("secret"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(WelcomeMessage.fields, {
+const WelcomeMessageFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
   enabled: scalarField("enabled"),
@@ -25455,9 +29297,9 @@ Object.assign(WelcomeMessage.fields, {
   title: scalarField("title"),
   updatedAt: scalarField("updatedAt"),
   updatedBy: objectField("updatedBy", User),
-});
+};
 
-Object.assign(WelcomeMessageNotification.fields, {
+const WelcomeMessageNotificationFields: TypeMeta["fields"] = {
   actor: objectField("actor", User),
   actorAvatarColor: scalarField("actorAvatarColor"),
   actorAvatarUrl: scalarField("actorAvatarUrl"),
@@ -25487,9 +29329,9 @@ Object.assign(WelcomeMessageNotification.fields, {
   url: scalarField("url"),
   user: objectField("user", User),
   welcomeMessageId: scalarField("welcomeMessageId"),
-});
+};
 
-Object.assign(WorkflowCronJobDefinition.fields, {
+const WorkflowCronJobDefinitionFields: TypeMeta["fields"] = {
   activities: scalarField("activities"),
   archivedAt: scalarField("archivedAt"),
   createdAt: scalarField("createdAt"),
@@ -25502,9 +29344,9 @@ Object.assign(WorkflowCronJobDefinition.fields, {
   sortOrder: scalarField("sortOrder"),
   team: objectField("team", Team),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(WorkflowDefinition.fields, {
+const WorkflowDefinitionFields: TypeMeta["fields"] = {
   activationMode: scalarField("activationMode"),
   activities: scalarField("activities"),
   applyToSubTeams: scalarField("applyToSubTeams"),
@@ -25529,6 +29371,7 @@ Object.assign(WorkflowDefinition.fields, {
   lastUpdatedBy: objectField("lastUpdatedBy", User),
   name: scalarField("name"),
   owner: objectField("owner", User),
+  postResultsToEntity: scalarField("postResultsToEntity"),
   project: objectField("project", Project),
   restrictEditing: scalarField("restrictEditing"),
   runOnce: scalarField("runOnce"),
@@ -25544,9 +29387,20 @@ Object.assign(WorkflowDefinition.fields, {
   updatedAt: scalarField("updatedAt"),
   user: objectField("user", User),
   userContextViewType: scalarField("userContextViewType"),
-});
+};
 
-Object.assign(WorkflowDefinitionNotification.fields, {
+const WorkflowDefinitionConnectionFields: TypeMeta["fields"] = {
+  edges: listField("edges", WorkflowDefinitionEdge),
+  nodes: listField("nodes", WorkflowDefinition),
+  pageInfo: objectField("pageInfo", PageInfo),
+};
+
+const WorkflowDefinitionEdgeFields: TypeMeta["fields"] = {
+  cursor: scalarField("cursor"),
+  node: objectField("node", WorkflowDefinition),
+};
+
+const WorkflowDefinitionNotificationFields: TypeMeta["fields"] = {
   actor: objectField("actor", User),
   actorAvatarColor: scalarField("actorAvatarColor"),
   actorAvatarUrl: scalarField("actorAvatarUrl"),
@@ -25578,9 +29432,9 @@ Object.assign(WorkflowDefinitionNotification.fields, {
   user: objectField("user", User),
   workflowDefinition: objectField("workflowDefinition", WorkflowDefinition),
   workflowDefinitionId: scalarField("workflowDefinitionId"),
-});
+};
 
-Object.assign(WorkflowState.fields, {
+const WorkflowStateFields: TypeMeta["fields"] = {
   archivedAt: scalarField("archivedAt"),
   color: scalarField("color"),
   createdAt: scalarField("createdAt"),
@@ -25601,32 +29455,32 @@ Object.assign(WorkflowState.fields, {
   team: objectField("team", Team),
   type: scalarField("type"),
   updatedAt: scalarField("updatedAt"),
-});
+};
 
-Object.assign(WorkflowStateArchivePayload.fields, {
+const WorkflowStateArchivePayloadFields: TypeMeta["fields"] = {
   entity: objectField("entity", WorkflowState),
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
-});
+};
 
-Object.assign(WorkflowStateConnection.fields, {
+const WorkflowStateConnectionFields: TypeMeta["fields"] = {
   edges: listField("edges", WorkflowStateEdge),
   nodes: listField("nodes", WorkflowState),
   pageInfo: objectField("pageInfo", PageInfo),
-});
+};
 
-Object.assign(WorkflowStateEdge.fields, {
+const WorkflowStateEdgeFields: TypeMeta["fields"] = {
   cursor: scalarField("cursor"),
   node: objectField("node", WorkflowState),
-});
+};
 
-Object.assign(WorkflowStatePayload.fields, {
+const WorkflowStatePayloadFields: TypeMeta["fields"] = {
   lastSyncId: scalarField("lastSyncId"),
   success: scalarField("success"),
   workflowState: objectField("workflowState", WorkflowState),
-});
+};
 
-Object.assign(WorkspaceAnnouncementNotification.fields, {
+const WorkspaceAnnouncementNotificationFields: TypeMeta["fields"] = {
   actor: objectField("actor", User),
   actorAvatarColor: scalarField("actorAvatarColor"),
   actorAvatarUrl: scalarField("actorAvatarUrl"),
@@ -25656,23 +29510,7 @@ Object.assign(WorkspaceAnnouncementNotification.fields, {
   url: scalarField("url"),
   user: objectField("user", User),
   workspaceAnnouncementId: scalarField("workspaceAnnouncementId"),
-});
-
-Object.assign(AgentActivityContent.fields, { __typename: scalarField("__typename") });
-
-Object.assign(AiConversationElicitationResponseData.fields, {
-  __typename: scalarField("__typename"),
-});
-
-Object.assign(AiConversationPart.fields, { __typename: scalarField("__typename") });
-
-Object.assign(AiConversationToolCall.fields, { __typename: scalarField("__typename") });
-
-Object.assign(AiConversationWidget.fields, { __typename: scalarField("__typename") });
-
-Object.assign(ExternalEntityInfoMetadata.fields, { __typename: scalarField("__typename") });
-
-Object.assign(OrganizationInviteDetailsPayload.fields, { __typename: scalarField("__typename") });
+};
 
 export const Linear = {
   administrableTeams: (args?: {
@@ -26570,6 +30408,17 @@ export const Linear = {
       { id: "String!" },
       globalErrors,
     ),
+  integrationSyncResourceIds: (args: {
+    readonly integrationId: string;
+  }): Query<ReadonlyArray<string>, LinearGlobalError> =>
+    rootLeaf(
+      "query",
+      "integrationSyncResourceIds",
+      true,
+      args,
+      { integrationId: "String!" },
+      globalErrors,
+    ),
   integrationTemplate: (args: {
     readonly id: string;
   }): Query<IntegrationTemplate, LinearGlobalError> =>
@@ -26936,10 +30785,34 @@ export const Linear = {
     rootLeaf("query", "notificationsUnreadCount", false, undefined, undefined, globalErrors),
   oauthApplication: (args: { readonly id: string }): Query<OAuthApplication, LinearGlobalError> =>
     root("query", "oauthApplication", OAuthApplication, args, { id: "String!" }, globalErrors),
+  oauthApplicationCodingSessionTrustedSource: (): Query<
+    OAuthApplicationCodingSessionTrustedSource,
+    LinearGlobalError
+  > =>
+    root(
+      "query",
+      "oauthApplicationCodingSessionTrustedSource",
+      OAuthApplicationCodingSessionTrustedSource,
+      undefined,
+      undefined,
+      globalErrors,
+    ),
   oauthApplications: (): Query<ReadonlyArray<OAuthApplication>, LinearGlobalError> =>
     rootList("query", "oauthApplications", OAuthApplication, undefined, undefined, globalErrors),
   organization: (): Query<Organization, LinearGlobalError> =>
     root("query", "organization", Organization, undefined, undefined, globalErrors),
+  organizationCodingInferenceKeys: (): Query<
+    ReadonlyArray<CodingInferenceKey>,
+    LinearGlobalError
+  > =>
+    rootList(
+      "query",
+      "organizationCodingInferenceKeys",
+      CodingInferenceKey,
+      undefined,
+      undefined,
+      globalErrors,
+    ),
   organizationDomainClaimRequest: (args: {
     readonly id: string;
   }): Query<OrganizationDomainClaimPayload, LinearGlobalError> =>
@@ -26999,6 +30872,31 @@ export const Linear = {
     readonly urlKey: string;
   }): Query<OrganizationMeta | null, LinearGlobalError> =>
     root("query", "organizationMeta", OrganizationMeta, args, { urlKey: "String!" }, globalErrors),
+  originInstallation: (args: {
+    readonly installationId: string;
+  }): Query<OriginInstallationDetails, LinearGlobalError> =>
+    root(
+      "query",
+      "originInstallation",
+      OriginInstallationDetails,
+      args,
+      { installationId: "String!" },
+      globalErrors,
+    ),
+  originInstallUrl: (): Query<OriginInstallUrlPayload, LinearGlobalError> =>
+    root("query", "originInstallUrl", OriginInstallUrlPayload, undefined, undefined, globalErrors),
+  originPendingInstallations: (): Query<
+    ReadonlyArray<OriginInstallationDetails>,
+    LinearGlobalError
+  > =>
+    rootList(
+      "query",
+      "originPendingInstallations",
+      OriginInstallationDetails,
+      undefined,
+      undefined,
+      globalErrors,
+    ),
   partnerOfferDetails: (args: {
     readonly slug: string;
   }): Query<PartnerOfferDetailsPayload | null, LinearGlobalError> =>
@@ -27236,6 +31134,27 @@ export const Linear = {
       PushSubscriptionTestPayload,
       args,
       { targetMobile: "Boolean", sendStrategy: "SendStrategy" },
+      globalErrors,
+    ),
+  quotas: (args?: {
+    readonly filter?: OrganizationQuotaFilter | null;
+    readonly before?: string | null;
+    readonly after?: string | null;
+    readonly first?: number | null;
+    readonly last?: number | null;
+  }): Query<ReadonlyArray<OrganizationQuota>, LinearGlobalError> =>
+    rootConnection(
+      "query",
+      "quotas",
+      OrganizationQuota,
+      args,
+      {
+        filter: "OrganizationQuotaFilter",
+        before: "String",
+        after: "String",
+        first: "Int",
+        last: "Int",
+      },
       globalErrors,
     ),
   rateLimitStatus: (): Query<RateLimitPayload, LinearGlobalError> =>
@@ -27791,6 +31710,8 @@ export const Linear = {
       | "myIssuesSharedWithMe"
       | "userProfile"
       | "userProfileCreatedByUser"
+      | "userProfileDiffs"
+      | "userProfileProjects"
       | "board"
       | "completedCycle"
       | "cycle"
@@ -27844,6 +31765,10 @@ export const Linear = {
       | "feedFollowing"
       | "feedPopular"
       | "workspaceMembers"
+      | "myDocuments"
+      | "sharedDocuments"
+      | "allDocuments"
+      | "teamDocuments"
       | "releasePipelines"
       | "automations"
       | "automationRunHistory"
@@ -28753,13 +32678,27 @@ export const Linear = {
     ),
   documentDelete: (args: {
     readonly id: string;
+    readonly ifParentDocumentId?: string | null;
   }): Query<DocumentArchivePayload, LinearGlobalError> =>
     root(
       "mutation",
       "documentDelete",
       DocumentArchivePayload,
       args,
-      { id: "String!" },
+      { ifParentDocumentId: "String", id: "String!" },
+      globalErrors,
+    ),
+  documentShare: (args: {
+    readonly userIds: ReadonlyArray<string>;
+    readonly id: string;
+    readonly role?: "edit" | "comment" | "view" | null;
+  }): Query<DocumentPayload, LinearGlobalError> =>
+    root(
+      "mutation",
+      "documentShare",
+      DocumentPayload,
+      args,
+      { role: "DocumentShareRole", userIds: "[String!]!", id: "String!" },
       globalErrors,
     ),
   documentUnarchive: (args: {
@@ -28773,6 +32712,18 @@ export const Linear = {
       { id: "String!" },
       globalErrors,
     ),
+  documentUnshare: (args: {
+    readonly userIds: ReadonlyArray<string>;
+    readonly id: string;
+  }): Query<DocumentPayload, LinearGlobalError> =>
+    root(
+      "mutation",
+      "documentUnshare",
+      DocumentPayload,
+      args,
+      { userIds: "[String!]!", id: "String!" },
+      globalErrors,
+    ),
   documentUpdate: (args: {
     readonly input: DocumentUpdateInput;
     readonly id: string;
@@ -28783,6 +32734,46 @@ export const Linear = {
       DocumentPayload,
       args,
       { input: "DocumentUpdateInput!", id: "String!" },
+      globalErrors,
+    ),
+  documentUpdateCollaboratorRole: (args: {
+    readonly role: "edit" | "comment" | "view";
+    readonly userIds: ReadonlyArray<string>;
+    readonly id: string;
+    readonly previousRole?: "edit" | "comment" | "view" | null;
+    readonly applyToSubDocuments?: boolean | null;
+  }): Query<DocumentPayload, LinearGlobalError> =>
+    root(
+      "mutation",
+      "documentUpdateCollaboratorRole",
+      DocumentPayload,
+      args,
+      {
+        previousRole: "DocumentShareRole",
+        applyToSubDocuments: "Boolean",
+        role: "DocumentShareRole!",
+        userIds: "[String!]!",
+        id: "String!",
+      },
+      globalErrors,
+    ),
+  documentUpdateGeneralAccess: (args: {
+    readonly generalAccess: string;
+    readonly id: string;
+    readonly previousGeneralAccess?: string | null;
+    readonly applyToSubDocuments?: boolean | null;
+  }): Query<DocumentPayload, LinearGlobalError> =>
+    root(
+      "mutation",
+      "documentUpdateGeneralAccess",
+      DocumentPayload,
+      args,
+      {
+        previousGeneralAccess: "String",
+        applyToSubDocuments: "Boolean",
+        generalAccess: "String!",
+        id: "String!",
+      },
       globalErrors,
     ),
   emailIntakeAddressCreate: (args: {
@@ -29838,6 +33829,28 @@ export const Linear = {
       undefined,
       globalErrors,
     ),
+  integrationOriginConnect: (args: {
+    readonly installationReceipt: string;
+  }): Query<IntegrationPayload, LinearGlobalError> =>
+    root(
+      "mutation",
+      "integrationOriginConnect",
+      IntegrationPayload,
+      args,
+      { installationReceipt: "String!" },
+      globalErrors,
+    ),
+  integrationOriginConnectInstallation: (args: {
+    readonly installationId: string;
+  }): Query<IntegrationPayload, LinearGlobalError> =>
+    root(
+      "mutation",
+      "integrationOriginConnectInstallation",
+      IntegrationPayload,
+      args,
+      { installationId: "String!" },
+      globalErrors,
+    ),
   integrationPagerDutyConnect: (args: {
     readonly code: string;
     readonly redirectUri: string;
@@ -30272,6 +34285,7 @@ export const Linear = {
     readonly asanaTeamName: string;
     readonly teamId?: string | null;
     readonly teamName?: string | null;
+    readonly asanaProjectNames?: ReadonlyArray<string> | null;
     readonly instantProcess?: boolean | null;
     readonly includeClosedIssues?: boolean | null;
     readonly id?: string | null;
@@ -30286,6 +34300,7 @@ export const Linear = {
         teamName: "String",
         asanaToken: "String!",
         asanaTeamName: "String!",
+        asanaProjectNames: "[String!]",
         instantProcess: "Boolean",
         includeClosedIssues: "Boolean",
         id: "String",
@@ -30520,6 +34535,17 @@ export const Linear = {
       IssuePayload,
       args,
       { labelId: "String!", id: "String!" },
+      globalErrors,
+    ),
+  issueRequestSolubilityPrediction: (args: {
+    readonly id: string;
+  }): Query<SuccessPayload, LinearGlobalError> =>
+    root(
+      "mutation",
+      "issueRequestSolubilityPrediction",
+      SuccessPayload,
+      args,
+      { id: "String!" },
       globalErrors,
     ),
   issueShare: (args: {
@@ -30884,6 +34910,39 @@ export const Linear = {
       undefined,
       globalErrors,
     ),
+  organizationCodingInferenceKeyDelete: (args: {
+    readonly harness: string;
+  }): Query<OrganizationPayload, LinearGlobalError> =>
+    root(
+      "mutation",
+      "organizationCodingInferenceKeyDelete",
+      OrganizationPayload,
+      args,
+      { harness: "String!" },
+      globalErrors,
+    ),
+  organizationCodingInferenceKeyTest: (args: {
+    readonly input: OrganizationCodingInferenceKeyInput;
+  }): Query<CodingInferenceKeyTestPayload, LinearGlobalError> =>
+    root(
+      "mutation",
+      "organizationCodingInferenceKeyTest",
+      CodingInferenceKeyTestPayload,
+      args,
+      { input: "OrganizationCodingInferenceKeyInput!" },
+      globalErrors,
+    ),
+  organizationCodingInferenceKeyUpdate: (args: {
+    readonly input: OrganizationCodingInferenceKeyInput;
+  }): Query<OrganizationPayload, LinearGlobalError> =>
+    root(
+      "mutation",
+      "organizationCodingInferenceKeyUpdate",
+      OrganizationPayload,
+      args,
+      { input: "OrganizationCodingInferenceKeyInput!" },
+      globalErrors,
+    ),
   organizationDelete: (args: {
     readonly input: DeleteOrganizationInput;
   }): Query<OrganizationDeletePayload, LinearGlobalError> =>
@@ -31024,6 +35083,17 @@ export const Linear = {
       OrganizationPayload,
       args,
       { input: "OrganizationUpdateInput!" },
+      globalErrors,
+    ),
+  originInstallationCancel: (args: {
+    readonly installationId: string;
+  }): Query<OriginInstallationCancelPayload, LinearGlobalError> =>
+    root(
+      "mutation",
+      "originInstallationCancel",
+      OriginInstallationCancelPayload,
+      args,
+      { installationId: "String!" },
       globalErrors,
     ),
   partnerApplicationCreate: (args: {
