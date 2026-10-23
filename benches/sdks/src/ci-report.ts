@@ -54,6 +54,20 @@ export interface CiRun {
   };
   readonly sizes: Record<string, { tarball: number; unpacked: number; files: number }>;
   readonly programs: Record<string, CiProgram>;
+  /** Every service module of a whole SDK imported in one process. */
+  readonly providers?: Record<
+    string,
+    {
+      services: number;
+      heap: number;
+      objects?: number;
+      importMs: number;
+      /** git trees of the inputs; equal trees mean equal numbers. */
+      inputs: string;
+      /** Copied from the --reuse run because the inputs matched. */
+      reused?: boolean;
+    }
+  >;
   readonly errors: string[];
 }
 
@@ -212,6 +226,7 @@ export const report = (
       "",
       ...summaryMarkdown(head, base),
       "",
+      ...(head.providers && Object.keys(head.providers).length ? [img("sdk-memory"), ""] : []),
       img("bundle-programs"),
       "",
       img("memory-programs"),
