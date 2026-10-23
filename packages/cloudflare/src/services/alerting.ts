@@ -62,6 +62,11 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   tunnelId: "tunnel_id",
   tunnelName: "tunnel_name",
   updatedAt: "updated_at",
+  alertTriggerPreferencesOperator: "alert_trigger_preferences_operator",
+  alertTriggerPreferencesShortWindow: "alert_trigger_preferences_short_window",
+  alertTriggerPreferencesLongWindow: "alert_trigger_preferences_long_window",
+  alertTriggerPreferencesMinimumThreshold: "alert_trigger_preferences_minimum_threshold",
+  executionInterval: "execution_interval",
 };
 
 export class FiltersRequired
@@ -73,6 +78,16 @@ export class FiltersRequired
     [{ code: 17103 }],
   ) {}
 
+/** The SQL API rejected a `custom_analytics` alert query. */
+export class InvalidAlertQuery
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<InvalidAlertQuery>()("InvalidAlertQuery", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 17203 }],
+  ) {}
+
 export class InvalidAlertType
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<InvalidAlertType>()("InvalidAlertType", {
@@ -80,6 +95,16 @@ export class InvalidAlertType
       message: S.String,
     }),
     [{ code: 17004 }],
+  ) {}
+
+/** A filter key is invalid or missing for the alert type (e.g. a `custom_analytics` alert without `alert_trigger_preferences_short_window`). */
+export class InvalidPolicyFilters
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<InvalidPolicyFilters>()("InvalidPolicyFilters", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 17501 }],
   ) {}
 
 export class InvalidRoute
@@ -259,7 +284,11 @@ export type PoliciesCreateRequestAlertType =
   | "tunnel_update_event"
   | "universal_ssl_event_type"
   | "web_analytics_metrics_update"
-  | "zone_aop_custom_certificate_expiration_type";
+  | "zone_aop_custom_certificate_expiration_type"
+  | "workers_observability_alert"
+  | "workers_observability_real_time_issue"
+  | "log_explorer_scheduled_query_results_alert"
+  | "log_explorer_ingest_rate_limit";
 export interface PoliciesCreateRequestMechanismsEmailItem {
   /** The email address */
   id?: string;
@@ -335,6 +364,7 @@ export type PoliciesCreateRequestFiltersTunnelNameList = Array<string>;
 export type PoliciesCreateRequestFiltersTypeList = Array<string>;
 export type PoliciesCreateRequestFiltersWhereList = Array<string>;
 export type PoliciesCreateRequestFiltersZonesList = Array<string>;
+export type PoliciesCreateRequestFiltersCustomAnalyticsList = Array<string>;
 export interface PoliciesCreateRequestFilters {
   /** Usage depends on specific alert type */
   actions?: PoliciesCreateRequestFiltersActionsList;
@@ -424,6 +454,18 @@ export interface PoliciesCreateRequestFilters {
   where?: PoliciesCreateRequestFiltersWhereList;
   /** Usage depends on specific alert type */
   zones?: PoliciesCreateRequestFiltersZonesList;
+  /** Comparison operator for a `threshold` trigger on a `custom_analytics` alert: one of `<`, `>`, `<=`, `>=`, `==`, `!=`. */
+  alertTriggerPreferencesOperator?: PoliciesCreateRequestFiltersCustomAnalyticsList;
+  /** Short evaluation window for a `custom_analytics` alert (e.g. `5m`). */
+  alertTriggerPreferencesShortWindow?: PoliciesCreateRequestFiltersCustomAnalyticsList;
+  /** Long evaluation window for a `custom_analytics` alert (e.g. `1h`). */
+  alertTriggerPreferencesLongWindow?: PoliciesCreateRequestFiltersCustomAnalyticsList;
+  /** Minimum value below which a `custom_analytics` anomaly or SLO trigger does not fire. */
+  alertTriggerPreferencesMinimumThreshold?: PoliciesCreateRequestFiltersCustomAnalyticsList;
+  /** Data source of a `custom_analytics` alert: `sql_api` (the condition in `selectors` is a SQL API query) or `workers_analytics_engine`. */
+  source?: PoliciesCreateRequestFiltersCustomAnalyticsList;
+  /** How often a `custom_analytics` alert evaluates its query (e.g. `5m`). */
+  executionInterval?: PoliciesCreateRequestFiltersCustomAnalyticsList;
 }
 export interface CreatePolicyRequest {
   /** The account id */
@@ -633,7 +675,11 @@ export type PoliciesGetResponseAlertType =
   | "tunnel_update_event"
   | "universal_ssl_event_type"
   | "web_analytics_metrics_update"
-  | "zone_aop_custom_certificate_expiration_type";
+  | "zone_aop_custom_certificate_expiration_type"
+  | "workers_observability_alert"
+  | "workers_observability_real_time_issue"
+  | "log_explorer_scheduled_query_results_alert"
+  | "log_explorer_ingest_rate_limit";
 export type PoliciesGetResponseFiltersActionsList = Array<string>;
 export type PoliciesGetResponseFiltersAffectedAsnsList = Array<string>;
 export type PoliciesGetResponseFiltersAffectedComponentsList = Array<string>;
@@ -686,6 +732,7 @@ export type PoliciesGetResponseFiltersTunnelNameList = Array<string>;
 export type PoliciesGetResponseFiltersTypeList = Array<string>;
 export type PoliciesGetResponseFiltersWhereList = Array<string>;
 export type PoliciesGetResponseFiltersZonesList = Array<string>;
+export type PoliciesGetResponseFiltersCustomAnalyticsList = Array<string>;
 export interface PoliciesGetResponseFilters {
   /** Usage depends on specific alert type */
   actions?: PoliciesGetResponseFiltersActionsList | null;
@@ -775,6 +822,18 @@ export interface PoliciesGetResponseFilters {
   where?: PoliciesGetResponseFiltersWhereList | null;
   /** Usage depends on specific alert type */
   zones?: PoliciesGetResponseFiltersZonesList | null;
+  /** Comparison operator for a `threshold` trigger on a `custom_analytics` alert: one of `<`, `>`, `<=`, `>=`, `==`, `!=`. */
+  alertTriggerPreferencesOperator?: PoliciesGetResponseFiltersCustomAnalyticsList | null;
+  /** Short evaluation window for a `custom_analytics` alert (e.g. `5m`). */
+  alertTriggerPreferencesShortWindow?: PoliciesGetResponseFiltersCustomAnalyticsList | null;
+  /** Long evaluation window for a `custom_analytics` alert (e.g. `1h`). */
+  alertTriggerPreferencesLongWindow?: PoliciesGetResponseFiltersCustomAnalyticsList | null;
+  /** Minimum value below which a `custom_analytics` anomaly or SLO trigger does not fire. */
+  alertTriggerPreferencesMinimumThreshold?: PoliciesGetResponseFiltersCustomAnalyticsList | null;
+  /** Data source of a `custom_analytics` alert: `sql_api` (the condition in `selectors` is a SQL API query) or `workers_analytics_engine`. */
+  source?: PoliciesGetResponseFiltersCustomAnalyticsList | null;
+  /** How often a `custom_analytics` alert evaluates its query (e.g. `5m`). */
+  executionInterval?: PoliciesGetResponseFiltersCustomAnalyticsList | null;
 }
 export interface PoliciesGetResponseMechanismsEmailItem {
   /** The email address */
@@ -1019,7 +1078,11 @@ export type PoliciesListResultItemAlertType =
   | "tunnel_update_event"
   | "universal_ssl_event_type"
   | "web_analytics_metrics_update"
-  | "zone_aop_custom_certificate_expiration_type";
+  | "zone_aop_custom_certificate_expiration_type"
+  | "workers_observability_alert"
+  | "workers_observability_real_time_issue"
+  | "log_explorer_scheduled_query_results_alert"
+  | "log_explorer_ingest_rate_limit";
 export type PoliciesListResultItemFiltersActionsList = Array<string>;
 export type PoliciesListResultItemFiltersAffectedAsnsList = Array<string>;
 export type PoliciesListResultItemFiltersAffectedComponentsList = Array<string>;
@@ -1072,6 +1135,7 @@ export type PoliciesListResultItemFiltersTunnelNameList = Array<string>;
 export type PoliciesListResultItemFiltersTypeList = Array<string>;
 export type PoliciesListResultItemFiltersWhereList = Array<string>;
 export type PoliciesListResultItemFiltersZonesList = Array<string>;
+export type PoliciesListResultItemFiltersCustomAnalyticsList = Array<string>;
 export interface PoliciesListResultItemFilters {
   /** Usage depends on specific alert type */
   actions?: PoliciesListResultItemFiltersActionsList | null;
@@ -1161,6 +1225,18 @@ export interface PoliciesListResultItemFilters {
   where?: PoliciesListResultItemFiltersWhereList | null;
   /** Usage depends on specific alert type */
   zones?: PoliciesListResultItemFiltersZonesList | null;
+  /** Comparison operator for a `threshold` trigger on a `custom_analytics` alert: one of `<`, `>`, `<=`, `>=`, `==`, `!=`. */
+  alertTriggerPreferencesOperator?: PoliciesListResultItemFiltersCustomAnalyticsList | null;
+  /** Short evaluation window for a `custom_analytics` alert (e.g. `5m`). */
+  alertTriggerPreferencesShortWindow?: PoliciesListResultItemFiltersCustomAnalyticsList | null;
+  /** Long evaluation window for a `custom_analytics` alert (e.g. `1h`). */
+  alertTriggerPreferencesLongWindow?: PoliciesListResultItemFiltersCustomAnalyticsList | null;
+  /** Minimum value below which a `custom_analytics` anomaly or SLO trigger does not fire. */
+  alertTriggerPreferencesMinimumThreshold?: PoliciesListResultItemFiltersCustomAnalyticsList | null;
+  /** Data source of a `custom_analytics` alert: `sql_api` (the condition in `selectors` is a SQL API query) or `workers_analytics_engine`. */
+  source?: PoliciesListResultItemFiltersCustomAnalyticsList | null;
+  /** How often a `custom_analytics` alert evaluates its query (e.g. `5m`). */
+  executionInterval?: PoliciesListResultItemFiltersCustomAnalyticsList | null;
 }
 export type PoliciesListResultItemMechanismsEmailItem = PoliciesGetResponseMechanismsEmailItem;
 export type PoliciesListResultItemMechanismsEmailList =
@@ -1316,7 +1392,11 @@ export type PoliciesUpdateRequestAlertType =
   | "tunnel_update_event"
   | "universal_ssl_event_type"
   | "web_analytics_metrics_update"
-  | "zone_aop_custom_certificate_expiration_type";
+  | "zone_aop_custom_certificate_expiration_type"
+  | "workers_observability_alert"
+  | "workers_observability_real_time_issue"
+  | "log_explorer_scheduled_query_results_alert"
+  | "log_explorer_ingest_rate_limit";
 export type PoliciesUpdateRequestFiltersActionsList = Array<string>;
 export type PoliciesUpdateRequestFiltersAffectedAsnsList = Array<string>;
 export type PoliciesUpdateRequestFiltersAffectedComponentsList = Array<string>;
@@ -1371,6 +1451,7 @@ export type PoliciesUpdateRequestFiltersTunnelNameList = Array<string>;
 export type PoliciesUpdateRequestFiltersTypeList = Array<string>;
 export type PoliciesUpdateRequestFiltersWhereList = Array<string>;
 export type PoliciesUpdateRequestFiltersZonesList = Array<string>;
+export type PoliciesUpdateRequestFiltersCustomAnalyticsList = Array<string>;
 export interface PoliciesUpdateRequestFilters {
   /** Usage depends on specific alert type */
   actions?: PoliciesUpdateRequestFiltersActionsList;
@@ -1460,6 +1541,18 @@ export interface PoliciesUpdateRequestFilters {
   where?: PoliciesUpdateRequestFiltersWhereList;
   /** Usage depends on specific alert type */
   zones?: PoliciesUpdateRequestFiltersZonesList;
+  /** Comparison operator for a `threshold` trigger on a `custom_analytics` alert: one of `<`, `>`, `<=`, `>=`, `==`, `!=`. */
+  alertTriggerPreferencesOperator?: PoliciesUpdateRequestFiltersCustomAnalyticsList;
+  /** Short evaluation window for a `custom_analytics` alert (e.g. `5m`). */
+  alertTriggerPreferencesShortWindow?: PoliciesUpdateRequestFiltersCustomAnalyticsList;
+  /** Long evaluation window for a `custom_analytics` alert (e.g. `1h`). */
+  alertTriggerPreferencesLongWindow?: PoliciesUpdateRequestFiltersCustomAnalyticsList;
+  /** Minimum value below which a `custom_analytics` anomaly or SLO trigger does not fire. */
+  alertTriggerPreferencesMinimumThreshold?: PoliciesUpdateRequestFiltersCustomAnalyticsList;
+  /** Data source of a `custom_analytics` alert: `sql_api` (the condition in `selectors` is a SQL API query) or `workers_analytics_engine`. */
+  source?: PoliciesUpdateRequestFiltersCustomAnalyticsList;
+  /** How often a `custom_analytics` alert evaluates its query (e.g. `5m`). */
+  executionInterval?: PoliciesUpdateRequestFiltersCustomAnalyticsList;
 }
 export type PoliciesUpdateRequestMechanismsEmailItem = PoliciesCreateRequestMechanismsEmailItem;
 export type PoliciesUpdateRequestMechanismsEmailList =
@@ -1558,6 +1651,8 @@ export type CreatePolicyError =
   | InvalidRoute
   | FiltersRequired
   | MechanismRequired
+  | InvalidPolicyFilters
+  | InvalidAlertQuery
   | CloudflareOpError;
 /** Creates a new Notification policy. */
 export const createPolicy: API.OperationMethod<
@@ -1572,6 +1667,8 @@ export const createPolicy: API.OperationMethod<
     InvalidRoute,
     FiltersRequired,
     MechanismRequired,
+    InvalidPolicyFilters,
+    InvalidAlertQuery,
     CloudflareRateLimited,
     CloudflareError,
   ],
@@ -1890,6 +1987,8 @@ export type UpdatePolicyError =
   | PolicyNotFound
   | InvalidAlertType
   | MechanismRequired
+  | InvalidPolicyFilters
+  | InvalidAlertQuery
   | CloudflareOpError;
 /** Update a Notification policy. */
 export const updatePolicy: API.OperationMethod<
@@ -1905,6 +2004,8 @@ export const updatePolicy: API.OperationMethod<
     PolicyNotFound,
     InvalidAlertType,
     MechanismRequired,
+    InvalidPolicyFilters,
+    InvalidAlertQuery,
     CloudflareRateLimited,
     CloudflareError,
   ],
@@ -2084,6 +2185,20 @@ function __c5(j: number): any {
           type: S.optional(__S(32, __c4, 0)),
           where: S.optional(__S(32, __c4, 0)),
           zones: S.optional(__S(32, __c4, 0)),
+          alertTriggerPreferencesOperator: S.optional(
+            __S(32, __c4, 0).pipe(T.Body("alert_trigger_preferences_operator")),
+          ),
+          alertTriggerPreferencesShortWindow: S.optional(
+            __S(32, __c4, 0).pipe(T.Body("alert_trigger_preferences_short_window")),
+          ),
+          alertTriggerPreferencesLongWindow: S.optional(
+            __S(32, __c4, 0).pipe(T.Body("alert_trigger_preferences_long_window")),
+          ),
+          alertTriggerPreferencesMinimumThreshold: S.optional(
+            __S(32, __c4, 0).pipe(T.Body("alert_trigger_preferences_minimum_threshold")),
+          ),
+          source: S.optional(__S(32, __c4, 0)),
+          executionInterval: S.optional(__S(32, __c4, 0).pipe(T.Body("execution_interval"))),
         }),
       ).annotate({ identifier: "PoliciesCreateRequestFilters" });
   }
@@ -2399,6 +2514,22 @@ function __c16(j: number): any {
           type: S.optional(S.NullOr(__S(32, __c4, 0))),
           where: S.optional(S.NullOr(__S(32, __c4, 0))),
           zones: S.optional(S.NullOr(__S(32, __c4, 0))),
+          alertTriggerPreferencesOperator: S.optional(
+            S.NullOr(__S(32, __c4, 0)).pipe(T.Body("alert_trigger_preferences_operator")),
+          ),
+          alertTriggerPreferencesShortWindow: S.optional(
+            S.NullOr(__S(32, __c4, 0)).pipe(T.Body("alert_trigger_preferences_short_window")),
+          ),
+          alertTriggerPreferencesLongWindow: S.optional(
+            S.NullOr(__S(32, __c4, 0)).pipe(T.Body("alert_trigger_preferences_long_window")),
+          ),
+          alertTriggerPreferencesMinimumThreshold: S.optional(
+            S.NullOr(__S(32, __c4, 0)).pipe(T.Body("alert_trigger_preferences_minimum_threshold")),
+          ),
+          source: S.optional(S.NullOr(__S(32, __c4, 0))),
+          executionInterval: S.optional(
+            S.NullOr(__S(32, __c4, 0)).pipe(T.Body("execution_interval")),
+          ),
         }),
       ).annotate({ identifier: "PoliciesGetResponseFilters" });
     case 1:

@@ -58,7 +58,12 @@
       "trafficExclusions": "traffic_exclusions",
       "tunnelId": "tunnel_id",
       "tunnelName": "tunnel_name",
-      "updatedAt": "updated_at"
+      "updatedAt": "updated_at",
+      "alertTriggerPreferencesOperator": "alert_trigger_preferences_operator",
+      "alertTriggerPreferencesShortWindow": "alert_trigger_preferences_short_window",
+      "alertTriggerPreferencesLongWindow": "alert_trigger_preferences_long_window",
+      "alertTriggerPreferencesMinimumThreshold": "alert_trigger_preferences_minimum_threshold",
+      "executionInterval": "execution_interval"
     },
     "distilled.finalized": true
   },
@@ -866,6 +871,30 @@
           "traits": {
             "smithy.api#enumValue": "zone_aop_custom_certificate_expiration_type"
           }
+        },
+        "WORKERS_OBSERVABILITY_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_observability_alert"
+          }
+        },
+        "WORKERS_OBSERVABILITY_REAL_TIME_ISSUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_observability_real_time_issue"
+          }
+        },
+        "LOG_EXPLORER_SCHEDULED_QUERY_RESULTS_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log_explorer_scheduled_query_results_alert"
+          }
+        },
+        "LOG_EXPLORER_INGEST_RATE_LIMIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log_explorer_ingest_rate_limit"
+          }
         }
       }
     },
@@ -1504,6 +1533,42 @@
           "traits": {
             "smithy.api#documentation": "Usage depends on specific alert type"
           }
+        },
+        "alert_trigger_preferences_operator": {
+          "target": "com.cloudflare.alerting#PoliciesCreateRequestFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "Comparison operator for a `threshold` trigger on a `custom_analytics` alert: one of `<`, `>`, `<=`, `>=`, `==`, `!=`."
+          }
+        },
+        "alert_trigger_preferences_short_window": {
+          "target": "com.cloudflare.alerting#PoliciesCreateRequestFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "Short evaluation window for a `custom_analytics` alert (e.g. `5m`)."
+          }
+        },
+        "alert_trigger_preferences_long_window": {
+          "target": "com.cloudflare.alerting#PoliciesCreateRequestFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "Long evaluation window for a `custom_analytics` alert (e.g. `1h`)."
+          }
+        },
+        "alert_trigger_preferences_minimum_threshold": {
+          "target": "com.cloudflare.alerting#PoliciesCreateRequestFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "Minimum value below which a `custom_analytics` anomaly or SLO trigger does not fire."
+          }
+        },
+        "source": {
+          "target": "com.cloudflare.alerting#PoliciesCreateRequestFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "Data source of a `custom_analytics` alert: `sql_api` (the condition in `selectors` is a SQL API query) or `workers_analytics_engine`."
+          }
+        },
+        "execution_interval": {
+          "target": "com.cloudflare.alerting#PoliciesCreateRequestFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "How often a `custom_analytics` alert evaluates its query (e.g. `5m`)."
+          }
         }
       }
     },
@@ -1922,6 +1987,30 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "zone_aop_custom_certificate_expiration_type"
+          }
+        },
+        "WORKERS_OBSERVABILITY_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_observability_alert"
+          }
+        },
+        "WORKERS_OBSERVABILITY_REAL_TIME_ISSUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_observability_real_time_issue"
+          }
+        },
+        "LOG_EXPLORER_SCHEDULED_QUERY_RESULTS_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log_explorer_scheduled_query_results_alert"
+          }
+        },
+        "LOG_EXPLORER_INGEST_RATE_LIMIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log_explorer_ingest_rate_limit"
           }
         }
       }
@@ -2496,6 +2585,42 @@
           "traits": {
             "smithy.api#documentation": "Usage depends on specific alert type"
           }
+        },
+        "alert_trigger_preferences_operator": {
+          "target": "com.cloudflare.alerting#PoliciesGetResponseFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "Comparison operator for a `threshold` trigger on a `custom_analytics` alert: one of `<`, `>`, `<=`, `>=`, `==`, `!=`."
+          }
+        },
+        "alert_trigger_preferences_short_window": {
+          "target": "com.cloudflare.alerting#PoliciesGetResponseFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "Short evaluation window for a `custom_analytics` alert (e.g. `5m`)."
+          }
+        },
+        "alert_trigger_preferences_long_window": {
+          "target": "com.cloudflare.alerting#PoliciesGetResponseFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "Long evaluation window for a `custom_analytics` alert (e.g. `1h`)."
+          }
+        },
+        "alert_trigger_preferences_minimum_threshold": {
+          "target": "com.cloudflare.alerting#PoliciesGetResponseFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "Minimum value below which a `custom_analytics` anomaly or SLO trigger does not fire."
+          }
+        },
+        "source": {
+          "target": "com.cloudflare.alerting#PoliciesGetResponseFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "Data source of a `custom_analytics` alert: `sql_api` (the condition in `selectors` is a SQL API query) or `workers_analytics_engine`."
+          }
+        },
+        "execution_interval": {
+          "target": "com.cloudflare.alerting#PoliciesGetResponseFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "How often a `custom_analytics` alert evaluates its query (e.g. `5m`)."
+          }
         }
       }
     },
@@ -2979,6 +3104,30 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "zone_aop_custom_certificate_expiration_type"
+          }
+        },
+        "WORKERS_OBSERVABILITY_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_observability_alert"
+          }
+        },
+        "WORKERS_OBSERVABILITY_REAL_TIME_ISSUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_observability_real_time_issue"
+          }
+        },
+        "LOG_EXPLORER_SCHEDULED_QUERY_RESULTS_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log_explorer_scheduled_query_results_alert"
+          }
+        },
+        "LOG_EXPLORER_INGEST_RATE_LIMIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log_explorer_ingest_rate_limit"
           }
         }
       }
@@ -3553,6 +3702,42 @@
           "traits": {
             "smithy.api#documentation": "Usage depends on specific alert type"
           }
+        },
+        "alert_trigger_preferences_operator": {
+          "target": "com.cloudflare.alerting#PoliciesListResultItemFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "Comparison operator for a `threshold` trigger on a `custom_analytics` alert: one of `<`, `>`, `<=`, `>=`, `==`, `!=`."
+          }
+        },
+        "alert_trigger_preferences_short_window": {
+          "target": "com.cloudflare.alerting#PoliciesListResultItemFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "Short evaluation window for a `custom_analytics` alert (e.g. `5m`)."
+          }
+        },
+        "alert_trigger_preferences_long_window": {
+          "target": "com.cloudflare.alerting#PoliciesListResultItemFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "Long evaluation window for a `custom_analytics` alert (e.g. `1h`)."
+          }
+        },
+        "alert_trigger_preferences_minimum_threshold": {
+          "target": "com.cloudflare.alerting#PoliciesListResultItemFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "Minimum value below which a `custom_analytics` anomaly or SLO trigger does not fire."
+          }
+        },
+        "source": {
+          "target": "com.cloudflare.alerting#PoliciesListResultItemFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "Data source of a `custom_analytics` alert: `sql_api` (the condition in `selectors` is a SQL API query) or `workers_analytics_engine`."
+          }
+        },
+        "execution_interval": {
+          "target": "com.cloudflare.alerting#PoliciesListResultItemFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "How often a `custom_analytics` alert evaluates its query (e.g. `5m`)."
+          }
         }
       }
     },
@@ -4101,6 +4286,30 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "zone_aop_custom_certificate_expiration_type"
+          }
+        },
+        "WORKERS_OBSERVABILITY_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_observability_alert"
+          }
+        },
+        "WORKERS_OBSERVABILITY_REAL_TIME_ISSUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_observability_real_time_issue"
+          }
+        },
+        "LOG_EXPLORER_SCHEDULED_QUERY_RESULTS_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log_explorer_scheduled_query_results_alert"
+          }
+        },
+        "LOG_EXPLORER_INGEST_RATE_LIMIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log_explorer_ingest_rate_limit"
           }
         }
       }
@@ -4674,6 +4883,42 @@
           "target": "com.cloudflare.alerting#PoliciesUpdateRequestFiltersZonesList",
           "traits": {
             "smithy.api#documentation": "Usage depends on specific alert type"
+          }
+        },
+        "alert_trigger_preferences_operator": {
+          "target": "com.cloudflare.alerting#PoliciesUpdateRequestFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "Comparison operator for a `threshold` trigger on a `custom_analytics` alert: one of `<`, `>`, `<=`, `>=`, `==`, `!=`."
+          }
+        },
+        "alert_trigger_preferences_short_window": {
+          "target": "com.cloudflare.alerting#PoliciesUpdateRequestFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "Short evaluation window for a `custom_analytics` alert (e.g. `5m`)."
+          }
+        },
+        "alert_trigger_preferences_long_window": {
+          "target": "com.cloudflare.alerting#PoliciesUpdateRequestFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "Long evaluation window for a `custom_analytics` alert (e.g. `1h`)."
+          }
+        },
+        "alert_trigger_preferences_minimum_threshold": {
+          "target": "com.cloudflare.alerting#PoliciesUpdateRequestFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "Minimum value below which a `custom_analytics` anomaly or SLO trigger does not fire."
+          }
+        },
+        "source": {
+          "target": "com.cloudflare.alerting#PoliciesUpdateRequestFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "Data source of a `custom_analytics` alert: `sql_api` (the condition in `selectors` is a SQL API query) or `workers_analytics_engine`."
+          }
+        },
+        "execution_interval": {
+          "target": "com.cloudflare.alerting#PoliciesUpdateRequestFiltersCustomAnalyticsList",
+          "traits": {
+            "smithy.api#documentation": "How often a `custom_analytics` alert evaluates its query (e.g. `5m`)."
           }
         }
       }
@@ -5359,6 +5604,12 @@
         },
         {
           "target": "com.cloudflare.alerting#MechanismRequired"
+        },
+        {
+          "target": "com.cloudflare.alerting#InvalidPolicyFilters"
+        },
+        {
+          "target": "com.cloudflare.alerting#InvalidAlertQuery"
         }
       ]
     },
@@ -6574,6 +6825,12 @@
         },
         {
           "target": "com.cloudflare.alerting#MechanismRequired"
+        },
+        {
+          "target": "com.cloudflare.alerting#InvalidPolicyFilters"
+        },
+        {
+          "target": "com.cloudflare.alerting#InvalidAlertQuery"
         }
       ]
     },
@@ -6724,6 +6981,70 @@
       },
       "traits": {
         "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.alerting#PoliciesCreateRequestFiltersCustomAnalyticsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.alerting#PoliciesUpdateRequestFiltersCustomAnalyticsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.alerting#PoliciesGetResponseFiltersCustomAnalyticsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.alerting#PoliciesListResultItemFiltersCustomAnalyticsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.alerting#InvalidPolicyFilters": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Integer"
+        },
+        "message": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#documentation": "A filter key is invalid or missing for the alert type (e.g. a `custom_analytics` alert without `alert_trigger_preferences_short_window`).",
+        "com.cloudflare.protocols#errorMatchers": [
+          {
+            "code": 17501
+          }
+        ]
+      }
+    },
+    "com.cloudflare.alerting#InvalidAlertQuery": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Integer"
+        },
+        "message": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#documentation": "The SQL API rejected a `custom_analytics` alert query.",
+        "com.cloudflare.protocols#errorMatchers": [
+          {
+            "code": 17203
+          }
+        ]
       }
     }
   }
