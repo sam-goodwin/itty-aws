@@ -18,8 +18,6 @@
  *   index.js, services/*.js
  *                       real entry chunks; they import the group chunks directly.
  *   _chunks/*.js        lazily imported code (AWS protocols, credential providers).
- *   services.full/*.js  the service entry chunks, for bundlers; services/*.js
- *                       are then Node's lazy stubs (see lazy-services.ts).
  *
  * SDK chunks import core through `@distilled.cloud/core/_bundle/<group>`, never
  * through core's facades. Each source module lands in exactly one chunk, so
@@ -59,10 +57,6 @@ const { parseAst } = (await import(pathToFileURL(require.resolve("rolldown/parse
 const { datafyOperations } = (await import(
   pathToFileURL(join(ROOT, "packages", "core", "src", "codegen", "datafy.ts")).href
 )) as typeof import("../packages/core/src/codegen/datafy.ts");
-
-const { lazyServices, lazyExports } = (await import(
-  pathToFileURL(join(ROOT, "scripts", "lazy-services.ts")).href
-)) as typeof import("./lazy-services.ts");
 
 /** Core modules by group, in load order. Modules not listed are entries of their own. */
 const CORE_GROUPS: Record<string, string[]> = {
@@ -747,22 +741,6 @@ const buildPackage = async (
     written.add(`${m}.js`);
   }
 
-  if (plan.serviceDirs.length) {
-    const r = lazyServices(plan.dir, plan.serviceDirs);
-    for (const w of r.written) written.add(w);
-    writeFileSync(
-      join(lib, ".lazy.json"),
-      JSON.stringify({ serviceDirs: r.dirs, twins: r.twins }) + "\n",
-    );
-    written.add(".lazy.json");
-    const pkg = JSON.parse(readFileSync(join(plan.dir, "package.json"), "utf8"));
-    if (JSON.stringify(lazyExports(pkg.exports, r.dirs, r.twins)) !== JSON.stringify(pkg.exports))
-      staleExports.push(rel(ROOT, plan.dir));
-    console.log(
-      `bundle-lib: ${plan.name}: ${r.stubs} lazy service stubs${r.kept ? `, ${r.kept} kept whole` : ""}${r.twins.length ? `, twins: ${r.twins.join(", ")}` : ""}`,
-    );
-  }
-
   // Drop tsc's per-file output that no entry point reaches any more.
   let removed = 0;
   for (const file of walk(lib)) {
@@ -789,15 +767,9 @@ const dirs = (
     : readdirSync(join(ROOT, "packages")).map((p) => join(ROOT, "packages", p))
 ).filter((d) => !d.endsWith(join("packages", "core")) && existsSync(join(d, "lib")));
 
-/** Packages whose package.json `exports` do not match their lazy service layout. */
-const staleExports: string[] = [];
 const core = corePlan();
 const coreBuilt = await buildPackage(core, core, undefined);
 for (const dir of dirs) {
   const plan = sdkPlan(dir);
   if (plan) await buildPackage(plan, core, coreBuilt);
 }
-if (staleExports.length)
-  throw new Error(
-    `bundle-lib: package.json exports do not route Node to the lazy service stubs; run: node scripts/lazy-services.ts --exports ${staleExports.join(" ")}`,
-  );
