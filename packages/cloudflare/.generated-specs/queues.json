@@ -6734,8 +6734,11 @@
         "smithy.api#documentation": "Returns the queues owned by an account.",
         "smithy.api#readonly": {},
         "smithy.api#paginated": {
-          "mode": "single",
-          "items": "result"
+          "mode": "page",
+          "inputToken": "page",
+          "outputToken": "resultInfo.page",
+          "items": "result",
+          "pageSize": "perPage"
         }
       },
       "errors": [
@@ -6753,6 +6756,20 @@
             "smithy.api#documentation": "A Resource identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Page number.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of queues to return per page.",
+            "smithy.api#httpQuery": "per_page"
           }
         }
       },
