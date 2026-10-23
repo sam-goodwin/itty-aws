@@ -19,7 +19,8 @@
       "types": "./lib/index.d.ts",
       "bun": "./src/index.ts",
       "worker": "./src/index.ts",
-      "default": "./lib/index.js"
+      "distilled-lazy": "./lib/index.js",
+      "default": "./lib/index.full.js"
     },
     "./Credentials": {
       "types": "./lib/credentials.d.ts",
@@ -61,31 +62,36 @@
       "types": "./lib/services/machines.d.ts",
       "bun": "./src/services/machines.ts",
       "worker": "./src/services/machines.ts",
-      "default": "./lib/services/machines.js"
+      "distilled-lazy": "./lib/services/machines.js",
+      "default": "./lib/services.full/machines.js"
     },
     "./sprites": {
       "types": "./lib/services/sprites.d.ts",
       "bun": "./src/services/sprites.ts",
       "worker": "./src/services/sprites.ts",
-      "default": "./lib/services/sprites.js"
+      "distilled-lazy": "./lib/services/sprites.js",
+      "default": "./lib/services.full/sprites.js"
     },
     "./mpg": {
       "types": "./lib/services/mpg.d.ts",
       "bun": "./src/services/mpg.ts",
       "worker": "./src/services/mpg.ts",
-      "default": "./lib/services/mpg.js"
+      "distilled-lazy": "./lib/services/mpg.js",
+      "default": "./lib/services.full/mpg.js"
     },
     "./addons": {
       "types": "./lib/services/addons.d.ts",
       "bun": "./src/services/addons.ts",
       "worker": "./src/services/addons.ts",
-      "default": "./lib/services/addons.js"
+      "distilled-lazy": "./lib/services/addons.js",
+      "default": "./lib/services.full/addons.js"
     },
     "./*": {
       "types": "./lib/services/*.d.ts",
       "bun": "./src/services/*.ts",
       "worker": "./src/services/*.ts",
-      "default": "./lib/services/*.js"
+      "distilled-lazy": "./lib/services/*.js",
+      "default": "./lib/services.full/*.js"
     }
   },
   "scripts": {

@@ -18,7 +18,8 @@
       "types": "./lib/index.d.ts",
       "bun": "./src/index.ts",
       "worker": "./src/index.ts",
-      "default": "./lib/index.js"
+      "distilled-lazy": "./lib/index.js",
+      "default": "./lib/index.full.js"
     },
     "./Credentials": {
       "types": "./lib/credentials.d.ts",
@@ -54,19 +55,22 @@
       "types": "./lib/edge-ingest.d.ts",
       "bun": "./src/edge-ingest.ts",
       "worker": "./src/edge-ingest.ts",
-      "default": "./lib/edge-ingest.js"
+      "distilled-lazy": "./lib/edge-ingest.js",
+      "default": "./lib/edge-ingest.full.js"
     },
     "./edge-query": {
       "types": "./lib/edge-query.d.ts",
       "bun": "./src/edge-query.ts",
       "worker": "./src/edge-query.ts",
-      "default": "./lib/edge-query.js"
+      "distilled-lazy": "./lib/edge-query.js",
+      "default": "./lib/edge-query.full.js"
     },
     "./*": {
       "types": "./lib/services/*.d.ts",
       "bun": "./src/services/*.ts",
       "worker": "./src/services/*.ts",
-      "default": "./lib/services/*.js"
+      "distilled-lazy": "./lib/services/*.js",
+      "default": "./lib/services.full/*.js"
     }
   },
   "scripts": {

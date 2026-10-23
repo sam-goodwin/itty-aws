@@ -26,7 +26,8 @@
       "types": "./lib/services/*.d.ts",
       "bun": "./src/services/*.ts",
       "worker": "./src/services/*.ts",
-      "default": "./lib/services/*.js"
+      "distilled-lazy": "./lib/services/*.js",
+      "default": "./lib/services.full/*.js"
     },
     "./Auth": {
       "types": "./lib/auth.d.ts",

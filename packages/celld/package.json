@@ -19,7 +19,8 @@
       "types": "./lib/index.d.ts",
       "bun": "./src/index.ts",
       "worker": "./src/index.ts",
-      "default": "./lib/index.js"
+      "distilled-lazy": "./lib/index.js",
+      "default": "./lib/index.full.js"
     },
     "./Endpoint": {
       "types": "./lib/endpoint.d.ts",
@@ -43,13 +44,15 @@
       "types": "./lib/services/index.d.ts",
       "bun": "./src/services/index.ts",
       "worker": "./src/services/index.ts",
-      "default": "./lib/services/index.js"
+      "distilled-lazy": "./lib/services/index.js",
+      "default": "./lib/services.full/index.js"
     },
     "./*": {
       "types": "./lib/services/*.d.ts",
       "bun": "./src/services/*.ts",
       "worker": "./src/services/*.ts",
-      "default": "./lib/services/*.js"
+      "distilled-lazy": "./lib/services/*.js",
+      "default": "./lib/services.full/*.js"
     }
   },
   "scripts": {

@@ -36,19 +36,22 @@
       "types": "./lib/services/typesense.d.ts",
       "bun": "./src/services/typesense.ts",
       "worker": "./src/services/typesense.ts",
-      "default": "./lib/services/typesense.js"
+      "distilled-lazy": "./lib/services/typesense.js",
+      "default": "./lib/services.full/typesense.js"
     },
     ".": {
       "types": "./lib/index.d.ts",
       "bun": "./src/index.ts",
       "worker": "./src/index.ts",
-      "default": "./lib/index.js"
+      "distilled-lazy": "./lib/index.js",
+      "default": "./lib/index.full.js"
     },
     "./*": {
       "types": "./lib/services/*.d.ts",
       "bun": "./src/services/*.ts",
       "worker": "./src/services/*.ts",
-      "default": "./lib/services/*.js"
+      "distilled-lazy": "./lib/services/*.js",
+      "default": "./lib/services.full/*.js"
     },
     "./Protocol": {
       "types": "./lib/protocol.d.ts",

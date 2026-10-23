@@ -19,7 +19,8 @@
       "types": "./lib/index.d.ts",
       "bun": "./src/index.ts",
       "worker": "./src/index.ts",
-      "default": "./lib/index.js"
+      "distilled-lazy": "./lib/index.js",
+      "default": "./lib/index.full.js"
     },
     "./Credentials": {
       "types": "./lib/credentials.d.ts",
@@ -55,13 +56,15 @@
       "types": "./lib/services/atlas.d.ts",
       "bun": "./src/services/atlas.ts",
       "worker": "./src/services/atlas.ts",
-      "default": "./lib/services/atlas.js"
+      "distilled-lazy": "./lib/services/atlas.js",
+      "default": "./lib/services.full/atlas.js"
     },
     "./*": {
       "types": "./lib/services/*.d.ts",
       "bun": "./src/services/*.ts",
       "worker": "./src/services/*.ts",
-      "default": "./lib/services/*.js"
+      "distilled-lazy": "./lib/services/*.js",
+      "default": "./lib/services.full/*.js"
     }
   },
   "scripts": {
