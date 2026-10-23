@@ -1,11 +1,11 @@
 /**
- * @distilled.cloud/linear — Linear GraphQL SDK for Effect.
+ * @distilled.cloud/linear -- Linear GraphQL SDK for Effect.
  *
- * Roots (`viewer`, `teams`, `issueLabelCreate`, …) are lazy {@link Query}
+ * Roots (`viewer`, `teams`, `issueLabelCreate`, ...) are lazy {@link Query}
  * lenses. Combinators (`Query.fn`, `Query.map`, `Query.filter`,
  * `Query.flatMap`) live in `@distilled.cloud/core/query`. Each root carries
  * the typed errors it can return (`LinearAuthenticationError`,
- * `LinearRateLimited`, …), so the Effect `Query.fn` produces can be handled
+ * `LinearRateLimited`, ...), so the Effect `Query.fn` produces can be handled
  * with `Effect.catchTag`.
  *
  * @example
