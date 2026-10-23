@@ -51,29 +51,21 @@ import {
   statSync,
   writeFileSync,
 } from "node:fs";
-import { createRequire } from "node:module";
 import { tmpdir } from "node:os";
 import { dirname, isAbsolute, join, relative } from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
+import {
+  type InputOptions,
+  type OutputOptions,
+  type Plugin,
+  rolldown,
+  RUNTIME_MODULE_ID,
+} from "rolldown";
+import { parseAst } from "rolldown/parseAst";
+import { datafyOperations } from "../packages/core/src/codegen/datafy.ts";
+import { lazyExports, lazyServices, stubTargets } from "./lazy-services.ts";
 
 const ROOT = join(import.meta.dirname, "..");
-const require = createRequire(join(ROOT, "packages", "core", "package.json"));
-const { rolldown, RUNTIME_MODULE_ID } = (await import(
-  pathToFileURL(require.resolve("rolldown")).href
-)) as {
-  rolldown: any;
-  RUNTIME_MODULE_ID: string;
-};
-const { parseAst } = (await import(pathToFileURL(require.resolve("rolldown/parseAst")).href)) as {
-  parseAst: (code: string, options: object, filename: string) => any;
-};
-const { datafyOperations } = (await import(
-  pathToFileURL(join(ROOT, "packages", "core", "src", "codegen", "datafy.ts")).href
-)) as typeof import("../packages/core/src/codegen/datafy.ts");
-
-const { lazyServices, lazyExports, stubTargets } = (await import(
-  pathToFileURL(join(ROOT, "scripts", "lazy-services.ts")).href
-)) as typeof import("./lazy-services.ts");
 
 /** Core modules by group, in load order. Modules not listed are entries of their own. */
 const CORE_GROUPS: Record<string, string[]> = {
@@ -268,17 +260,23 @@ const importsOf = (file: string): Imports => {
   };
   if (code.includes("import(")) visit(ast);
   for (const node of ast.body) {
+    if (
+      node.type !== "ImportDeclaration" &&
+      node.type !== "ExportNamedDeclaration" &&
+      node.type !== "ExportAllDeclaration"
+    )
+      continue;
     const src = node.source?.value;
     if (typeof src !== "string" || !src.startsWith(".")) continue;
     if (node.type === "ImportDeclaration") {
       if (node.importKind === "type") continue;
       const specs = node.specifiers ?? [];
       if (specs.length > 0 && specs.every((s: any) => s.importKind === "type")) continue;
-    } else if (node.type === "ExportNamedDeclaration" || node.type === "ExportAllDeclaration") {
+    } else {
       if (node.exportKind === "type") continue;
-      const specs = node.specifiers ?? [];
-      if (specs.length > 0 && specs.every((s: any) => s.exportKind === "type")) continue;
-    } else continue;
+      const specs = node.type === "ExportNamedDeclaration" ? node.specifiers : [];
+      if (specs.length > 0 && specs.every((s) => s.exportKind === "type")) continue;
+    }
     out.push(src);
   }
   return { static: out, dynamic: dynamic.filter((d) => d.startsWith(".")) };
@@ -330,7 +328,11 @@ const barrelOf = (src: string, file: string): { code: string; targets: string[] 
     return s.replace(/\.ts$/, ".js");
   };
   for (const n of ast.body) {
-    if (n.exportKind === "type" || n.importKind === "type") continue;
+    if (
+      ("exportKind" in n && n.exportKind === "type") ||
+      ("importKind" in n && n.importKind === "type")
+    )
+      continue;
     if (n.type === "ExportAllDeclaration") {
       lines.push(
         `export * ${n.exported ? `as ${name(n.exported)} ` : ""}from "${spec(n.source.value)}";`,
@@ -371,7 +373,7 @@ const COMMON_INPUT = {
   treeshake: { moduleSideEffects: true },
   // Same tsconfig semantics as tsc: ESNext target, define class fields.
   transform: { target: "esnext" },
-};
+} satisfies InputOptions;
 
 const external = (id: string) =>
   !id.startsWith(".") &&
@@ -403,7 +405,7 @@ const corePlugin = (core: Plan, built: Built) => ({
 });
 
 /** Export names of every grouped public module (one in-memory build). */
-const exportNames = async (plan: Plan, plugins: object[]): Promise<Map<string, string[]>> => {
+const exportNames = async (plan: Plan, plugins: Plugin[]): Promise<Map<string, string[]>> => {
   const mods = [...plan.groups.values()].flat();
   const out = new Map<string, string[]>();
   if (mods.length === 0) return out;
@@ -568,7 +570,7 @@ const buildPackage = async (
     else plan.direct.push(d);
   }
   const dynamicTargets = new Set([...graph.values()].flatMap((i) => i.dynamic));
-  const plugins: object[] = core ? [corePlugin(corePlan, core)] : [];
+  const plugins: Plugin[] = core ? [corePlugin(corePlan, core)] : [];
   // Core modules that services and the SDK group import. The SDK group
   // imports all of them, so the re-export shims that route them to core's
   // chunks live in that chunk instead of a chunk of their own. Lazily loaded
@@ -695,7 +697,7 @@ const buildPackage = async (
     // Maps point at `src/`, which every package publishes.
     sourcemapExcludeSources: true,
     comments: { legal: true, annotation: true, jsdoc: false },
-  };
+  } satisfies OutputOptions;
   // V8 keeps every module's source text in the heap: whitespace and long
   // local names cost memory in every process (S3 -27%, Resend -22% import
   // heap with the bundling). Function and class names stay (`.name`, stack
@@ -770,12 +772,7 @@ const buildPackage = async (
       ...COMMON_INPUT,
       input: service ? { [service]: join(src, `${service}.ts`) } : shared,
       external,
-      plugins: [
-        service ? builtGroups(service) : servicesByPackage,
-        bundlePlugin,
-        ...plugins,
-        ...(process.env.BUNDLE_LIB_DEBUG ? [debugPlugin(src, groupOf)] : []),
-      ],
+      plugins: [service ? builtGroups(service) : servicesByPackage, bundlePlugin, ...plugins],
       preserveEntrySignatures: "allow-extension",
     });
     const pretty = minify
