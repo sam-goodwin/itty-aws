@@ -18,8 +18,8 @@
       "types": "./lib/index.d.ts",
       "bun": "./src/index.ts",
       "worker": "./src/index.ts",
-      "distilled-lazy": "./lib/index.js",
-      "default": "./lib/index.full.js"
+      "distilled-lazy": "./lib/index.lazy.js",
+      "default": "./lib/index.js"
     },
     "./Credentials": {
       "types": "./lib/credentials.d.ts",
@@ -55,29 +55,29 @@
       "types": "./lib/services/rbac_authorization.d.ts",
       "bun": "./src/services/rbac_authorization.ts",
       "worker": "./src/services/rbac_authorization.ts",
-      "distilled-lazy": "./lib/services/rbac_authorization.js",
-      "default": "./lib/services.full/rbac_authorization.js"
+      "distilled-lazy": "./lib/services.lazy/rbac_authorization.js",
+      "default": "./lib/services/rbac_authorization.js"
     },
     "./flowcontrol-apiserver": {
       "types": "./lib/services/flowcontrol_apiserver.d.ts",
       "bun": "./src/services/flowcontrol_apiserver.ts",
       "worker": "./src/services/flowcontrol_apiserver.ts",
-      "distilled-lazy": "./lib/services/flowcontrol_apiserver.js",
-      "default": "./lib/services.full/flowcontrol_apiserver.js"
+      "distilled-lazy": "./lib/services.lazy/flowcontrol_apiserver.js",
+      "default": "./lib/services/flowcontrol_apiserver.js"
     },
     "./internal-apiserver": {
       "types": "./lib/services/internal_apiserver.d.ts",
       "bun": "./src/services/internal_apiserver.ts",
       "worker": "./src/services/internal_apiserver.ts",
-      "distilled-lazy": "./lib/services/internal_apiserver.js",
-      "default": "./lib/services.full/internal_apiserver.js"
+      "distilled-lazy": "./lib/services.lazy/internal_apiserver.js",
+      "default": "./lib/services/internal_apiserver.js"
     },
     "./*": {
       "types": "./lib/services/*.d.ts",
       "bun": "./src/services/*.ts",
       "worker": "./src/services/*.ts",
-      "distilled-lazy": "./lib/services/*.js",
-      "default": "./lib/services.full/*.js"
+      "distilled-lazy": "./lib/services.lazy/*.js",
+      "default": "./lib/services/*.js"
     }
   },
   "scripts": {

@@ -54,520 +54,520 @@
       "bun": "./src/services/abuse_reports.ts",
       "worker": "./src/services/abuse_reports.ts",
       "workerd": "./src/services/abuse_reports.ts",
-      "distilled-lazy": "./lib/services/abuse_reports.js",
-      "default": "./lib/services.full/abuse_reports.js"
+      "distilled-lazy": "./lib/services.lazy/abuse_reports.js",
+      "default": "./lib/services/abuse_reports.js"
     },
     "./ai-gateway": {
       "types": "./lib/services/ai_gateway.d.ts",
       "bun": "./src/services/ai_gateway.ts",
       "worker": "./src/services/ai_gateway.ts",
       "workerd": "./src/services/ai_gateway.ts",
-      "distilled-lazy": "./lib/services/ai_gateway.js",
-      "default": "./lib/services.full/ai_gateway.js"
+      "distilled-lazy": "./lib/services.lazy/ai_gateway.js",
+      "default": "./lib/services/ai_gateway.js"
     },
     "./ai-security": {
       "types": "./lib/services/ai_security.d.ts",
       "bun": "./src/services/ai_security.ts",
       "worker": "./src/services/ai_security.ts",
       "workerd": "./src/services/ai_security.ts",
-      "distilled-lazy": "./lib/services/ai_security.js",
-      "default": "./lib/services.full/ai_security.js"
+      "distilled-lazy": "./lib/services.lazy/ai_security.js",
+      "default": "./lib/services/ai_security.js"
     },
     "./aisearch": {
       "types": "./lib/services/ai_search.d.ts",
       "bun": "./src/services/ai_search.ts",
       "worker": "./src/services/ai_search.ts",
       "workerd": "./src/services/ai_search.ts",
-      "distilled-lazy": "./lib/services/ai_search.js",
-      "default": "./lib/services.full/ai_search.js"
+      "distilled-lazy": "./lib/services.lazy/ai_search.js",
+      "default": "./lib/services/ai_search.js"
     },
     "./api-gateway": {
       "types": "./lib/services/api_gateway.d.ts",
       "bun": "./src/services/api_gateway.ts",
       "worker": "./src/services/api_gateway.ts",
       "workerd": "./src/services/api_gateway.ts",
-      "distilled-lazy": "./lib/services/api_gateway.js",
-      "default": "./lib/services.full/api_gateway.js"
+      "distilled-lazy": "./lib/services.lazy/api_gateway.js",
+      "default": "./lib/services/api_gateway.js"
     },
     "./audit-logs": {
       "types": "./lib/services/audit_logs.d.ts",
       "bun": "./src/services/audit_logs.ts",
       "worker": "./src/services/audit_logs.ts",
       "workerd": "./src/services/audit_logs.ts",
-      "distilled-lazy": "./lib/services/audit_logs.js",
-      "default": "./lib/services.full/audit_logs.js"
+      "distilled-lazy": "./lib/services.lazy/audit_logs.js",
+      "default": "./lib/services/audit_logs.js"
     },
     "./bot-management": {
       "types": "./lib/services/bot_management.d.ts",
       "bun": "./src/services/bot_management.ts",
       "worker": "./src/services/bot_management.ts",
       "workerd": "./src/services/bot_management.ts",
-      "distilled-lazy": "./lib/services/bot_management.js",
-      "default": "./lib/services.full/bot_management.js"
+      "distilled-lazy": "./lib/services.lazy/bot_management.js",
+      "default": "./lib/services/bot_management.js"
     },
     "./botnet-feed": {
       "types": "./lib/services/botnet_feed.d.ts",
       "bun": "./src/services/botnet_feed.ts",
       "worker": "./src/services/botnet_feed.ts",
       "workerd": "./src/services/botnet_feed.ts",
-      "distilled-lazy": "./lib/services/botnet_feed.js",
-      "default": "./lib/services.full/botnet_feed.js"
+      "distilled-lazy": "./lib/services.lazy/botnet_feed.js",
+      "default": "./lib/services/botnet_feed.js"
     },
     "./brand-protection": {
       "types": "./lib/services/brand_protection.d.ts",
       "bun": "./src/services/brand_protection.ts",
       "worker": "./src/services/brand_protection.ts",
       "workerd": "./src/services/brand_protection.ts",
-      "distilled-lazy": "./lib/services/brand_protection.js",
-      "default": "./lib/services.full/brand_protection.js"
+      "distilled-lazy": "./lib/services.lazy/brand_protection.js",
+      "default": "./lib/services/brand_protection.js"
     },
     "./browser-rendering": {
       "types": "./lib/services/browser_rendering.d.ts",
       "bun": "./src/services/browser_rendering.ts",
       "worker": "./src/services/browser_rendering.ts",
       "workerd": "./src/services/browser_rendering.ts",
-      "distilled-lazy": "./lib/services/browser_rendering.js",
-      "default": "./lib/services.full/browser_rendering.js"
+      "distilled-lazy": "./lib/services.lazy/browser_rendering.js",
+      "default": "./lib/services/browser_rendering.js"
     },
     "./certificate-authorities": {
       "types": "./lib/services/certificate_authorities.d.ts",
       "bun": "./src/services/certificate_authorities.ts",
       "worker": "./src/services/certificate_authorities.ts",
       "workerd": "./src/services/certificate_authorities.ts",
-      "distilled-lazy": "./lib/services/certificate_authorities.js",
-      "default": "./lib/services.full/certificate_authorities.js"
+      "distilled-lazy": "./lib/services.lazy/certificate_authorities.js",
+      "default": "./lib/services/certificate_authorities.js"
     },
     "./client-certificates": {
       "types": "./lib/services/client_certificates.d.ts",
       "bun": "./src/services/client_certificates.ts",
       "worker": "./src/services/client_certificates.ts",
       "workerd": "./src/services/client_certificates.ts",
-      "distilled-lazy": "./lib/services/client_certificates.js",
-      "default": "./lib/services.full/client_certificates.js"
+      "distilled-lazy": "./lib/services.lazy/client_certificates.js",
+      "default": "./lib/services/client_certificates.js"
     },
     "./cloud-connector": {
       "types": "./lib/services/cloud_connector.d.ts",
       "bun": "./src/services/cloud_connector.ts",
       "worker": "./src/services/cloud_connector.ts",
       "workerd": "./src/services/cloud_connector.ts",
-      "distilled-lazy": "./lib/services/cloud_connector.js",
-      "default": "./lib/services.full/cloud_connector.js"
+      "distilled-lazy": "./lib/services.lazy/cloud_connector.js",
+      "default": "./lib/services/cloud_connector.js"
     },
     "./cloudforce-one": {
       "types": "./lib/services/cloudforce_one.d.ts",
       "bun": "./src/services/cloudforce_one.ts",
       "worker": "./src/services/cloudforce_one.ts",
       "workerd": "./src/services/cloudforce_one.ts",
-      "distilled-lazy": "./lib/services/cloudforce_one.js",
-      "default": "./lib/services.full/cloudforce_one.js"
+      "distilled-lazy": "./lib/services.lazy/cloudforce_one.js",
+      "default": "./lib/services/cloudforce_one.js"
     },
     "./content-scanning": {
       "types": "./lib/services/content_scanning.d.ts",
       "bun": "./src/services/content_scanning.ts",
       "worker": "./src/services/content_scanning.ts",
       "workerd": "./src/services/content_scanning.ts",
-      "distilled-lazy": "./lib/services/content_scanning.js",
-      "default": "./lib/services.full/content_scanning.js"
+      "distilled-lazy": "./lib/services.lazy/content_scanning.js",
+      "default": "./lib/services/content_scanning.js"
     },
     "./csam-scanner": {
       "types": "./lib/services/csam_scanner.d.ts",
       "bun": "./src/services/csam_scanner.ts",
       "worker": "./src/services/csam_scanner.ts",
       "workerd": "./src/services/csam_scanner.ts",
-      "distilled-lazy": "./lib/services/csam_scanner.js",
-      "default": "./lib/services.full/csam_scanner.js"
+      "distilled-lazy": "./lib/services.lazy/csam_scanner.js",
+      "default": "./lib/services/csam_scanner.js"
     },
     "./custom-certificates": {
       "types": "./lib/services/custom_certificates.d.ts",
       "bun": "./src/services/custom_certificates.ts",
       "worker": "./src/services/custom_certificates.ts",
       "workerd": "./src/services/custom_certificates.ts",
-      "distilled-lazy": "./lib/services/custom_certificates.js",
-      "default": "./lib/services.full/custom_certificates.js"
+      "distilled-lazy": "./lib/services.lazy/custom_certificates.js",
+      "default": "./lib/services/custom_certificates.js"
     },
     "./custom-csrs": {
       "types": "./lib/services/custom_csrs.d.ts",
       "bun": "./src/services/custom_csrs.ts",
       "worker": "./src/services/custom_csrs.ts",
       "workerd": "./src/services/custom_csrs.ts",
-      "distilled-lazy": "./lib/services/custom_csrs.js",
-      "default": "./lib/services.full/custom_csrs.js"
+      "distilled-lazy": "./lib/services.lazy/custom_csrs.js",
+      "default": "./lib/services/custom_csrs.js"
     },
     "./custom-hostnames": {
       "types": "./lib/services/custom_hostnames.d.ts",
       "bun": "./src/services/custom_hostnames.ts",
       "worker": "./src/services/custom_hostnames.ts",
       "workerd": "./src/services/custom_hostnames.ts",
-      "distilled-lazy": "./lib/services/custom_hostnames.js",
-      "default": "./lib/services.full/custom_hostnames.js"
+      "distilled-lazy": "./lib/services.lazy/custom_hostnames.js",
+      "default": "./lib/services/custom_hostnames.js"
     },
     "./custom-nameservers": {
       "types": "./lib/services/custom_nameservers.d.ts",
       "bun": "./src/services/custom_nameservers.ts",
       "worker": "./src/services/custom_nameservers.ts",
       "workerd": "./src/services/custom_nameservers.ts",
-      "distilled-lazy": "./lib/services/custom_nameservers.js",
-      "default": "./lib/services.full/custom_nameservers.js"
+      "distilled-lazy": "./lib/services.lazy/custom_nameservers.js",
+      "default": "./lib/services/custom_nameservers.js"
     },
     "./custom-pages": {
       "types": "./lib/services/custom_pages.d.ts",
       "bun": "./src/services/custom_pages.ts",
       "worker": "./src/services/custom_pages.ts",
       "workerd": "./src/services/custom_pages.ts",
-      "distilled-lazy": "./lib/services/custom_pages.js",
-      "default": "./lib/services.full/custom_pages.js"
+      "distilled-lazy": "./lib/services.lazy/custom_pages.js",
+      "default": "./lib/services/custom_pages.js"
     },
     "./dcv-delegation": {
       "types": "./lib/services/dcv_delegation.d.ts",
       "bun": "./src/services/dcv_delegation.ts",
       "worker": "./src/services/dcv_delegation.ts",
       "workerd": "./src/services/dcv_delegation.ts",
-      "distilled-lazy": "./lib/services/dcv_delegation.js",
-      "default": "./lib/services.full/dcv_delegation.js"
+      "distilled-lazy": "./lib/services.lazy/dcv_delegation.js",
+      "default": "./lib/services/dcv_delegation.js"
     },
     "./ddos-protection": {
       "types": "./lib/services/ddos_protection.d.ts",
       "bun": "./src/services/ddos_protection.ts",
       "worker": "./src/services/ddos_protection.ts",
       "workerd": "./src/services/ddos_protection.ts",
-      "distilled-lazy": "./lib/services/ddos_protection.js",
-      "default": "./lib/services.full/ddos_protection.js"
+      "distilled-lazy": "./lib/services.lazy/ddos_protection.js",
+      "default": "./lib/services/ddos_protection.js"
     },
     "./dns-firewall": {
       "types": "./lib/services/dns_firewall.d.ts",
       "bun": "./src/services/dns_firewall.ts",
       "worker": "./src/services/dns_firewall.ts",
       "workerd": "./src/services/dns_firewall.ts",
-      "distilled-lazy": "./lib/services/dns_firewall.js",
-      "default": "./lib/services.full/dns_firewall.js"
+      "distilled-lazy": "./lib/services.lazy/dns_firewall.js",
+      "default": "./lib/services/dns_firewall.js"
     },
     "./durable-objects": {
       "types": "./lib/services/durable_objects.d.ts",
       "bun": "./src/services/durable_objects.ts",
       "worker": "./src/services/durable_objects.ts",
       "workerd": "./src/services/durable_objects.ts",
-      "distilled-lazy": "./lib/services/durable_objects.js",
-      "default": "./lib/services.full/durable_objects.js"
+      "distilled-lazy": "./lib/services.lazy/durable_objects.js",
+      "default": "./lib/services/durable_objects.js"
     },
     "./email-auth": {
       "types": "./lib/services/email_auth.d.ts",
       "bun": "./src/services/email_auth.ts",
       "worker": "./src/services/email_auth.ts",
       "workerd": "./src/services/email_auth.ts",
-      "distilled-lazy": "./lib/services/email_auth.js",
-      "default": "./lib/services.full/email_auth.js"
+      "distilled-lazy": "./lib/services.lazy/email_auth.js",
+      "default": "./lib/services/email_auth.js"
     },
     "./email-routing": {
       "types": "./lib/services/email_routing.d.ts",
       "bun": "./src/services/email_routing.ts",
       "worker": "./src/services/email_routing.ts",
       "workerd": "./src/services/email_routing.ts",
-      "distilled-lazy": "./lib/services/email_routing.js",
-      "default": "./lib/services.full/email_routing.js"
+      "distilled-lazy": "./lib/services.lazy/email_routing.js",
+      "default": "./lib/services/email_routing.js"
     },
     "./email-security": {
       "types": "./lib/services/email_security.d.ts",
       "bun": "./src/services/email_security.ts",
       "worker": "./src/services/email_security.ts",
       "workerd": "./src/services/email_security.ts",
-      "distilled-lazy": "./lib/services/email_security.js",
-      "default": "./lib/services.full/email_security.js"
+      "distilled-lazy": "./lib/services.lazy/email_security.js",
+      "default": "./lib/services/email_security.js"
     },
     "./email-sending": {
       "types": "./lib/services/email_sending.d.ts",
       "bun": "./src/services/email_sending.ts",
       "worker": "./src/services/email_sending.ts",
       "workerd": "./src/services/email_sending.ts",
-      "distilled-lazy": "./lib/services/email_sending.js",
-      "default": "./lib/services.full/email_sending.js"
+      "distilled-lazy": "./lib/services.lazy/email_sending.js",
+      "default": "./lib/services/email_sending.js"
     },
     "./google-tag-gateway": {
       "types": "./lib/services/google_tag_gateway.d.ts",
       "bun": "./src/services/google_tag_gateway.ts",
       "worker": "./src/services/google_tag_gateway.ts",
       "workerd": "./src/services/google_tag_gateway.ts",
-      "distilled-lazy": "./lib/services/google_tag_gateway.js",
-      "default": "./lib/services.full/google_tag_gateway.js"
+      "distilled-lazy": "./lib/services.lazy/google_tag_gateway.js",
+      "default": "./lib/services/google_tag_gateway.js"
     },
     "./keyless-certificates": {
       "types": "./lib/services/keyless_certificates.d.ts",
       "bun": "./src/services/keyless_certificates.ts",
       "worker": "./src/services/keyless_certificates.ts",
       "workerd": "./src/services/keyless_certificates.ts",
-      "distilled-lazy": "./lib/services/keyless_certificates.js",
-      "default": "./lib/services.full/keyless_certificates.js"
+      "distilled-lazy": "./lib/services.lazy/keyless_certificates.js",
+      "default": "./lib/services/keyless_certificates.js"
     },
     "./leaked-credential-checks": {
       "types": "./lib/services/leaked_credential_checks.d.ts",
       "bun": "./src/services/leaked_credential_checks.ts",
       "worker": "./src/services/leaked_credential_checks.ts",
       "workerd": "./src/services/leaked_credential_checks.ts",
-      "distilled-lazy": "./lib/services/leaked_credential_checks.js",
-      "default": "./lib/services.full/leaked_credential_checks.js"
+      "distilled-lazy": "./lib/services.lazy/leaked_credential_checks.js",
+      "default": "./lib/services/leaked_credential_checks.js"
     },
     "./load-balancers": {
       "types": "./lib/services/load_balancers.d.ts",
       "bun": "./src/services/load_balancers.ts",
       "worker": "./src/services/load_balancers.ts",
       "workerd": "./src/services/load_balancers.ts",
-      "distilled-lazy": "./lib/services/load_balancers.js",
-      "default": "./lib/services.full/load_balancers.js"
+      "distilled-lazy": "./lib/services.lazy/load_balancers.js",
+      "default": "./lib/services/load_balancers.js"
     },
     "./magic-cloud-networking": {
       "types": "./lib/services/magic_cloud_networking.d.ts",
       "bun": "./src/services/magic_cloud_networking.ts",
       "worker": "./src/services/magic_cloud_networking.ts",
       "workerd": "./src/services/magic_cloud_networking.ts",
-      "distilled-lazy": "./lib/services/magic_cloud_networking.js",
-      "default": "./lib/services.full/magic_cloud_networking.js"
+      "distilled-lazy": "./lib/services.lazy/magic_cloud_networking.js",
+      "default": "./lib/services/magic_cloud_networking.js"
     },
     "./magic-network-monitoring": {
       "types": "./lib/services/magic_network_monitoring.d.ts",
       "bun": "./src/services/magic_network_monitoring.ts",
       "worker": "./src/services/magic_network_monitoring.ts",
       "workerd": "./src/services/magic_network_monitoring.ts",
-      "distilled-lazy": "./lib/services/magic_network_monitoring.js",
-      "default": "./lib/services.full/magic_network_monitoring.js"
+      "distilled-lazy": "./lib/services.lazy/magic_network_monitoring.js",
+      "default": "./lib/services/magic_network_monitoring.js"
     },
     "./magic-transit": {
       "types": "./lib/services/magic_transit.d.ts",
       "bun": "./src/services/magic_transit.ts",
       "worker": "./src/services/magic_transit.ts",
       "workerd": "./src/services/magic_transit.ts",
-      "distilled-lazy": "./lib/services/magic_transit.js",
-      "default": "./lib/services.full/magic_transit.js"
+      "distilled-lazy": "./lib/services.lazy/magic_transit.js",
+      "default": "./lib/services/magic_transit.js"
     },
     "./managed-transforms": {
       "types": "./lib/services/managed_transforms.d.ts",
       "bun": "./src/services/managed_transforms.ts",
       "worker": "./src/services/managed_transforms.ts",
       "workerd": "./src/services/managed_transforms.ts",
-      "distilled-lazy": "./lib/services/managed_transforms.js",
-      "default": "./lib/services.full/managed_transforms.js"
+      "distilled-lazy": "./lib/services.lazy/managed_transforms.js",
+      "default": "./lib/services/managed_transforms.js"
     },
     "./mtls-certificates": {
       "types": "./lib/services/mtls_certificates.d.ts",
       "bun": "./src/services/mtls_certificates.ts",
       "worker": "./src/services/mtls_certificates.ts",
       "workerd": "./src/services/mtls_certificates.ts",
-      "distilled-lazy": "./lib/services/mtls_certificates.js",
-      "default": "./lib/services.full/mtls_certificates.js"
+      "distilled-lazy": "./lib/services.lazy/mtls_certificates.js",
+      "default": "./lib/services/mtls_certificates.js"
     },
     "./network-interconnects": {
       "types": "./lib/services/network_interconnects.d.ts",
       "bun": "./src/services/network_interconnects.ts",
       "worker": "./src/services/network_interconnects.ts",
       "workerd": "./src/services/network_interconnects.ts",
-      "distilled-lazy": "./lib/services/network_interconnects.js",
-      "default": "./lib/services.full/network_interconnects.js"
+      "distilled-lazy": "./lib/services.lazy/network_interconnects.js",
+      "default": "./lib/services/network_interconnects.js"
     },
     "./origin-ca-certificates": {
       "types": "./lib/services/origin_ca_certificates.d.ts",
       "bun": "./src/services/origin_ca_certificates.ts",
       "worker": "./src/services/origin_ca_certificates.ts",
       "workerd": "./src/services/origin_ca_certificates.ts",
-      "distilled-lazy": "./lib/services/origin_ca_certificates.js",
-      "default": "./lib/services.full/origin_ca_certificates.js"
+      "distilled-lazy": "./lib/services.lazy/origin_ca_certificates.js",
+      "default": "./lib/services/origin_ca_certificates.js"
     },
     "./origin-post-quantum-encryption": {
       "types": "./lib/services/origin_post_quantum_encryption.d.ts",
       "bun": "./src/services/origin_post_quantum_encryption.ts",
       "worker": "./src/services/origin_post_quantum_encryption.ts",
       "workerd": "./src/services/origin_post_quantum_encryption.ts",
-      "distilled-lazy": "./lib/services/origin_post_quantum_encryption.js",
-      "default": "./lib/services.full/origin_post_quantum_encryption.js"
+      "distilled-lazy": "./lib/services.lazy/origin_post_quantum_encryption.js",
+      "default": "./lib/services/origin_post_quantum_encryption.js"
     },
     "./origin-tls-client-auth": {
       "types": "./lib/services/origin_tls_client_auth.d.ts",
       "bun": "./src/services/origin_tls_client_auth.ts",
       "worker": "./src/services/origin_tls_client_auth.ts",
       "workerd": "./src/services/origin_tls_client_auth.ts",
-      "distilled-lazy": "./lib/services/origin_tls_client_auth.js",
-      "default": "./lib/services.full/origin_tls_client_auth.js"
+      "distilled-lazy": "./lib/services.lazy/origin_tls_client_auth.js",
+      "default": "./lib/services/origin_tls_client_auth.js"
     },
     "./origin-tls-compliance-modes": {
       "types": "./lib/services/origin_tls_compliance_modes.d.ts",
       "bun": "./src/services/origin_tls_compliance_modes.ts",
       "worker": "./src/services/origin_tls_compliance_modes.ts",
       "workerd": "./src/services/origin_tls_compliance_modes.ts",
-      "distilled-lazy": "./lib/services/origin_tls_compliance_modes.js",
-      "default": "./lib/services.full/origin_tls_compliance_modes.js"
+      "distilled-lazy": "./lib/services.lazy/origin_tls_compliance_modes.js",
+      "default": "./lib/services/origin_tls_compliance_modes.js"
     },
     "./page-rules": {
       "types": "./lib/services/page_rules.d.ts",
       "bun": "./src/services/page_rules.ts",
       "worker": "./src/services/page_rules.ts",
       "workerd": "./src/services/page_rules.ts",
-      "distilled-lazy": "./lib/services/page_rules.js",
-      "default": "./lib/services.full/page_rules.js"
+      "distilled-lazy": "./lib/services.lazy/page_rules.js",
+      "default": "./lib/services/page_rules.js"
     },
     "./page-shield": {
       "types": "./lib/services/page_shield.d.ts",
       "bun": "./src/services/page_shield.ts",
       "worker": "./src/services/page_shield.ts",
       "workerd": "./src/services/page_shield.ts",
-      "distilled-lazy": "./lib/services/page_shield.js",
-      "default": "./lib/services.full/page_shield.js"
+      "distilled-lazy": "./lib/services.lazy/page_shield.js",
+      "default": "./lib/services/page_shield.js"
     },
     "./r2-data-catalog": {
       "types": "./lib/services/r2_data_catalog.d.ts",
       "bun": "./src/services/r2_data_catalog.ts",
       "worker": "./src/services/r2_data_catalog.ts",
       "workerd": "./src/services/r2_data_catalog.ts",
-      "distilled-lazy": "./lib/services/r2_data_catalog.js",
-      "default": "./lib/services.full/r2_data_catalog.js"
+      "distilled-lazy": "./lib/services.lazy/r2_data_catalog.js",
+      "default": "./lib/services/r2_data_catalog.js"
     },
     "./rate-limits": {
       "types": "./lib/services/rate_limits.d.ts",
       "bun": "./src/services/rate_limits.ts",
       "worker": "./src/services/rate_limits.ts",
       "workerd": "./src/services/rate_limits.ts",
-      "distilled-lazy": "./lib/services/rate_limits.js",
-      "default": "./lib/services.full/rate_limits.js"
+      "distilled-lazy": "./lib/services.lazy/rate_limits.js",
+      "default": "./lib/services/rate_limits.js"
     },
     "./realtime-kit": {
       "types": "./lib/services/realtime_kit.d.ts",
       "bun": "./src/services/realtime_kit.ts",
       "worker": "./src/services/realtime_kit.ts",
       "workerd": "./src/services/realtime_kit.ts",
-      "distilled-lazy": "./lib/services/realtime_kit.js",
-      "default": "./lib/services.full/realtime_kit.js"
+      "distilled-lazy": "./lib/services.lazy/realtime_kit.js",
+      "default": "./lib/services/realtime_kit.js"
     },
     "./request-tracers": {
       "types": "./lib/services/request_tracers.d.ts",
       "bun": "./src/services/request_tracers.ts",
       "worker": "./src/services/request_tracers.ts",
       "workerd": "./src/services/request_tracers.ts",
-      "distilled-lazy": "./lib/services/request_tracers.js",
-      "default": "./lib/services.full/request_tracers.js"
+      "distilled-lazy": "./lib/services.lazy/request_tracers.js",
+      "default": "./lib/services/request_tracers.js"
     },
     "./resource-sharing": {
       "types": "./lib/services/resource_sharing.d.ts",
       "bun": "./src/services/resource_sharing.ts",
       "worker": "./src/services/resource_sharing.ts",
       "workerd": "./src/services/resource_sharing.ts",
-      "distilled-lazy": "./lib/services/resource_sharing.js",
-      "default": "./lib/services.full/resource_sharing.js"
+      "distilled-lazy": "./lib/services.lazy/resource_sharing.js",
+      "default": "./lib/services/resource_sharing.js"
     },
     "./resource-tagging": {
       "types": "./lib/services/resource_tagging.d.ts",
       "bun": "./src/services/resource_tagging.ts",
       "worker": "./src/services/resource_tagging.ts",
       "workerd": "./src/services/resource_tagging.ts",
-      "distilled-lazy": "./lib/services/resource_tagging.js",
-      "default": "./lib/services.full/resource_tagging.js"
+      "distilled-lazy": "./lib/services.lazy/resource_tagging.js",
+      "default": "./lib/services/resource_tagging.js"
     },
     "./schema-validation": {
       "types": "./lib/services/schema_validation.d.ts",
       "bun": "./src/services/schema_validation.ts",
       "worker": "./src/services/schema_validation.ts",
       "workerd": "./src/services/schema_validation.ts",
-      "distilled-lazy": "./lib/services/schema_validation.js",
-      "default": "./lib/services.full/schema_validation.js"
+      "distilled-lazy": "./lib/services.lazy/schema_validation.js",
+      "default": "./lib/services/schema_validation.js"
     },
     "./secrets-store": {
       "types": "./lib/services/secrets_store.d.ts",
       "bun": "./src/services/secrets_store.ts",
       "worker": "./src/services/secrets_store.ts",
       "workerd": "./src/services/secrets_store.ts",
-      "distilled-lazy": "./lib/services/secrets_store.js",
-      "default": "./lib/services.full/secrets_store.js"
+      "distilled-lazy": "./lib/services.lazy/secrets_store.js",
+      "default": "./lib/services/secrets_store.js"
     },
     "./security-center": {
       "types": "./lib/services/security_center.d.ts",
       "bun": "./src/services/security_center.ts",
       "worker": "./src/services/security_center.ts",
       "workerd": "./src/services/security_center.ts",
-      "distilled-lazy": "./lib/services/security_center.js",
-      "default": "./lib/services.full/security_center.js"
+      "distilled-lazy": "./lib/services.lazy/security_center.js",
+      "default": "./lib/services/security_center.js"
     },
     "./security-txt": {
       "types": "./lib/services/security_txt.d.ts",
       "bun": "./src/services/security_txt.ts",
       "worker": "./src/services/security_txt.ts",
       "workerd": "./src/services/security_txt.ts",
-      "distilled-lazy": "./lib/services/security_txt.js",
-      "default": "./lib/services.full/security_txt.js"
+      "distilled-lazy": "./lib/services.lazy/security_txt.js",
+      "default": "./lib/services/security_txt.js"
     },
     "./tenant-custom-nameservers": {
       "types": "./lib/services/tenant_custom_nameservers.d.ts",
       "bun": "./src/services/tenant_custom_nameservers.ts",
       "worker": "./src/services/tenant_custom_nameservers.ts",
       "workerd": "./src/services/tenant_custom_nameservers.ts",
-      "distilled-lazy": "./lib/services/tenant_custom_nameservers.js",
-      "default": "./lib/services.full/tenant_custom_nameservers.js"
+      "distilled-lazy": "./lib/services.lazy/tenant_custom_nameservers.js",
+      "default": "./lib/services/tenant_custom_nameservers.js"
     },
     "./token-validation": {
       "types": "./lib/services/token_validation.d.ts",
       "bun": "./src/services/token_validation.ts",
       "worker": "./src/services/token_validation.ts",
       "workerd": "./src/services/token_validation.ts",
-      "distilled-lazy": "./lib/services/token_validation.js",
-      "default": "./lib/services.full/token_validation.js"
+      "distilled-lazy": "./lib/services.lazy/token_validation.js",
+      "default": "./lib/services/token_validation.js"
     },
     "./url-normalization": {
       "types": "./lib/services/url_normalization.d.ts",
       "bun": "./src/services/url_normalization.ts",
       "worker": "./src/services/url_normalization.ts",
       "workerd": "./src/services/url_normalization.ts",
-      "distilled-lazy": "./lib/services/url_normalization.js",
-      "default": "./lib/services.full/url_normalization.js"
+      "distilled-lazy": "./lib/services.lazy/url_normalization.js",
+      "default": "./lib/services/url_normalization.js"
     },
     "./url-scanner": {
       "types": "./lib/services/url_scanner.d.ts",
       "bun": "./src/services/url_scanner.ts",
       "worker": "./src/services/url_scanner.ts",
       "workerd": "./src/services/url_scanner.ts",
-      "distilled-lazy": "./lib/services/url_scanner.js",
-      "default": "./lib/services.full/url_scanner.js"
+      "distilled-lazy": "./lib/services.lazy/url_scanner.js",
+      "default": "./lib/services/url_scanner.js"
     },
     "./vulnerability-scanner": {
       "types": "./lib/services/vulnerability_scanner.d.ts",
       "bun": "./src/services/vulnerability_scanner.ts",
       "worker": "./src/services/vulnerability_scanner.ts",
       "workerd": "./src/services/vulnerability_scanner.ts",
-      "distilled-lazy": "./lib/services/vulnerability_scanner.js",
-      "default": "./lib/services.full/vulnerability_scanner.js"
+      "distilled-lazy": "./lib/services.lazy/vulnerability_scanner.js",
+      "default": "./lib/services/vulnerability_scanner.js"
     },
     "./waiting-rooms": {
       "types": "./lib/services/waiting_rooms.d.ts",
       "bun": "./src/services/waiting_rooms.ts",
       "worker": "./src/services/waiting_rooms.ts",
       "workerd": "./src/services/waiting_rooms.ts",
-      "distilled-lazy": "./lib/services/waiting_rooms.js",
-      "default": "./lib/services.full/waiting_rooms.js"
+      "distilled-lazy": "./lib/services.lazy/waiting_rooms.js",
+      "default": "./lib/services/waiting_rooms.js"
     },
     "./workers-for-platforms": {
       "types": "./lib/services/workers_for_platforms.d.ts",
       "bun": "./src/services/workers_for_platforms.ts",
       "worker": "./src/services/workers_for_platforms.ts",
       "workerd": "./src/services/workers_for_platforms.ts",
-      "distilled-lazy": "./lib/services/workers_for_platforms.js",
-      "default": "./lib/services.full/workers_for_platforms.js"
+      "distilled-lazy": "./lib/services.lazy/workers_for_platforms.js",
+      "default": "./lib/services/workers_for_platforms.js"
     },
     "./zero-trust": {
       "types": "./lib/services/zero_trust.d.ts",
       "bun": "./src/services/zero_trust.ts",
       "worker": "./src/services/zero_trust.ts",
       "workerd": "./src/services/zero_trust.ts",
-      "distilled-lazy": "./lib/services/zero_trust.js",
-      "default": "./lib/services.full/zero_trust.js"
+      "distilled-lazy": "./lib/services.lazy/zero_trust.js",
+      "default": "./lib/services/zero_trust.js"
     },
     ".": {
       "types": "./lib/index.d.ts",
       "bun": "./src/index.ts",
       "worker": "./src/index.ts",
       "workerd": "./src/index.ts",
-      "distilled-lazy": "./lib/index.js",
-      "default": "./lib/index.full.js"
+      "distilled-lazy": "./lib/index.lazy.js",
+      "default": "./lib/index.js"
     },
     "./*": {
       "types": "./lib/services/*.d.ts",
       "bun": "./src/services/*.ts",
       "worker": "./src/services/*.ts",
       "workerd": "./src/services/*.ts",
-      "distilled-lazy": "./lib/services/*.js",
-      "default": "./lib/services.full/*.js"
+      "distilled-lazy": "./lib/services.lazy/*.js",
+      "default": "./lib/services/*.js"
     },
     "./Protocol": {
       "types": "./lib/protocol.d.ts",

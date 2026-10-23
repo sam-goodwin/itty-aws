@@ -2,27 +2,27 @@
  * Lazy service modules for Node, opt in (run by bundle-lib.ts after a
  * package's chunks are written).
  *
- * A bundled service module (`lib/services/<name>.js`) moves to
- * `lib/services.full/<name>.js`, which every export resolves by default. In
- * its place goes a stub: one placeholder per operation and error class from
- * `API.lazyService` (core/src/api.ts), the same named exports, and no
- * operation data. Only a Node process that enables the `distilled-lazy`
- * export condition (`node --conditions=distilled-lazy`, or a
+ * A bundled service module (`lib/services/<name>.js`) stays the full module,
+ * which every export resolves by default. Next to it,
+ * `lib/services.lazy/<name>.js` gets a stub: one placeholder per operation
+ * and error class from `API.lazyService` (core/src/api.ts), the same named
+ * exports, and no operation data. Only a Node process that enables the
+ * `distilled-lazy` export condition (`node --conditions=distilled-lazy`, or a
  * `module.registerHooks` resolve hook that adds it) resolves the stub, so
  * importing a service, or every service of a provider, parses no operation
  * until one is used. Bundlers never enable it: a stub loads its full module
- * with a runtime `require` no bundle can contain. The full module is the
- * bundled module plus a trailing comment, its slice index (see sliceIndex):
- * the first use of an operation reads and evaluates only what it reaches.
- * Without an index the first use loads the whole full module with
- * `require(esm)`, and its definitions become the stub's placeholders.
- * Modules under MIN_BYTES stay whole.
+ * with a runtime `require` no bundle can contain. The full module gets a
+ * trailing comment, its slice index (see sliceIndex): the first use of an
+ * operation reads and evaluates only what it reaches. Without an index the
+ * first use loads the whole full module with `require(esm)`, and its
+ * definitions become the stub's placeholders. Modules under MIN_BYTES stay
+ * whole: their `services.lazy` file re-exports the full module.
  *
  * Every other `lib/` file that names a service module: barrels get a
- * `<file>.full.js` twin naming the full modules (the default; the original
- * keeps the stubs for `distilled-lazy`); other files name the module through
- * the package (`@distilled.cloud/aws/sts`), so it resolves under the same
- * conditions as everything else in the process.
+ * `<file>.lazy.js` twin naming the stubs (for `distilled-lazy`; the original
+ * keeps the full modules); other files name the module through the package
+ * (`@distilled.cloud/aws/sts`), so it resolves under the same conditions as
+ * everything else in the process.
  *
  * `node scripts/lazy-services.ts --exports [packages/<pkg> ...]` rewrites the
  * packages' `exports` to that layout; bundle-lib fails when they differ, or
@@ -47,12 +47,12 @@ const { parseAst } = (await import(pathToFileURL(require.resolve("rolldown/parse
   parseAst: (code: string, options: object, filename: string) => any;
 };
 
-const FULL = ".full";
+const LAZY = ".lazy";
 /** The export condition that opts a Node process in to the stubs. */
 export const LAZY_CONDITION = "distilled-lazy";
-/** The target an export entry gives Node's stubs (the layout before lazyExports included). */
-const lazyTarget = (v: any): unknown =>
-  typeof v === "object" ? (v?.[LAZY_CONDITION] ?? v?.["module-sync"] ?? v?.default) : v;
+/** The target an export entry gives every condition but `distilled-lazy`: the full modules. */
+const fullTarget = (v: any): unknown =>
+  typeof v === "object" ? (v?.default ?? v?.["module-sync"] ?? v?.module) : v;
 /**
  * Service modules below this size stay whole for Node: a stub and its first
  * use cost more than such a module (a stub costs ~0.5 KB of heap per export).
@@ -626,8 +626,12 @@ const lazyBarrel = (code: string): string => {
 
 const SPECIFIER = /(["'`])((?:\.\.?\/)+)([\w./-]+?)\/([\w.-]+\.js)\1/g;
 
-/** Specifiers of `lib/` code that name a module of a service directory, pointed at the full one. */
-const toFull = (
+/**
+ * Specifiers of `lib/` code that name a module of a service directory: with
+ * `selfRef`, named through the package where it can; without, pointed at
+ * the stub.
+ */
+const retarget = (
   code: string,
   map: any,
   dirs: string[],
@@ -641,11 +645,12 @@ const toFull = (
       .split("\\")
       .join("/");
     if (!dirs.includes(target)) continue;
-    const self = selfRef?.(target, m[4]!);
-    if (self) {
-      const at = m.index! + 1;
-      edits.push({ at, del: m[0].length - 2, text: self });
-    } else edits.push({ at: m.index! + 1 + m[2]!.length + m[3]!.length, text: FULL });
+    if (!selfRef) {
+      edits.push({ at: m.index! + 1 + m[2]!.length + m[3]!.length, text: LAZY });
+      continue;
+    }
+    const self = selfRef(target, m[4]!);
+    if (self) edits.push({ at: m.index! + 1, del: m[0].length - 2, text: self });
   }
   return edits.length ? insert(code, map, edits) : code;
 };
@@ -665,7 +670,7 @@ const readMap = (file: string) =>
 /**
  * Makes a package's service modules lazy (see the header). `serviceDirs` are
  * lib-relative; returns the lib-relative files written, and the `default`
- * export targets that got a `.full.js` twin.
+ * export targets that got a `.lazy.js` twin.
  */
 export const lazyServices = (
   pkgDir: string,
@@ -735,39 +740,33 @@ export const lazyServices = (
     written.push(rel(lib, helperFile));
   }
   for (const { d, dir, files, lazy } of plans) {
-    const fullDir = `${dir}${FULL}`;
-    mkdirSync(fullDir, { recursive: true });
+    const lazyDir = `${dir}${LAZY}`;
+    rmSync(lazyDir, { recursive: true, force: true });
+    mkdirSync(lazyDir, { recursive: true });
     const at = new Map((common ?? []).map((t, i) => [t, i]));
     for (const f of files) {
       const file = join(dir, f);
-      const fullFile = join(fullDir, f);
+      const lazyFile = join(lazyDir, f);
       const l = lazy.get(f);
-      const map = readMap(file);
       if (l) {
         const { stub, full } = l.render({
-          spec: relSpec(dir, helperFile),
-          full: relSpec(dirname(helperFile), fullFile),
+          spec: relSpec(lazyDir, helperFile),
+          full: relSpec(dirname(helperFile), file),
           has: (src) => at.get(target(dir, src)),
         });
-        writeFileSync(fullFile, full);
-        if (map) {
-          writeFileSync(`${fullFile}.map`, JSON.stringify(map));
-          written.push(rel(lib, `${fullFile}.map`));
-        }
-        writeFileSync(file, stub);
-        rmSync(`${file}.map`, { force: true });
+        // The slice index goes after the code, so the source map stays valid.
+        writeFileSync(file, full);
+        writeFileSync(lazyFile, stub);
         stubs++;
       } else if (f === "index.js") {
-        // A barrel of sibling modules: the same barrel over the full ones,
-        // and for Node namespaces that load their module on first use.
-        const code = readFileSync(file, "utf8");
-        writeFileSync(fullFile, code);
-        writeFileSync(file, lazyBarrel(code));
+        // A barrel of sibling modules: for Node, namespaces that load their
+        // stub on first use.
+        writeFileSync(lazyFile, lazyBarrel(readFileSync(file, "utf8")));
       } else {
-        writeFileSync(fullFile, `export*from"../${d.split("/").at(-1)}/${f}";\n`);
+        writeFileSync(lazyFile, `export*from"../${d.split("/").at(-1)}/${f}";\n`);
         kept++;
       }
-      written.push(rel(lib, fullFile));
+      written.push(rel(lib, lazyFile));
     }
   }
   serviceDirs = lazyDirs;
@@ -776,27 +775,28 @@ export const lazyServices = (
   const pkgJson = JSON.parse(readFileSync(join(pkgDir, "package.json"), "utf8"));
   const selfRef = (dir: string, f: string): string | undefined => {
     for (const [key, v] of Object.entries<any>(pkgJson.exports ?? {})) {
-      if (key.endsWith("/*") && lazyTarget(v) === `./lib/${dir}/*.js`)
+      if (key.endsWith("/*") && fullTarget(v) === `./lib/${dir}/*.js`)
         return `${pkgJson.name}/${key.slice(2, -1)}${f.replace(/\.js$/, "")}`;
     }
     return undefined;
   };
   const twins: string[] = [];
   const inService = (r: string) =>
-    serviceDirs.some((d) => r.startsWith(`${d}/`) || r.startsWith(`${d}${FULL}/`));
+    serviceDirs.some((d) => r.startsWith(`${d}/`) || r.startsWith(`${d}${LAZY}/`));
   for (const file of walkJs(lib)) {
     const r = rel(lib, file);
-    if (inService(r) || r.endsWith(`${FULL}.js`)) continue;
+    if (inService(r) || r.endsWith(`${LAZY}.js`)) continue;
     const code = readFileSync(file, "utf8");
     const map = readMap(file);
-    // Other files name the module through the package
+    // Barrels an export names keep the full modules and get a twin naming
+    // the stubs. Other files name the module through the package
     // (`@distilled.cloud/aws/sts`): it resolves under the process's
     // conditions, the stub with `distilled-lazy` and the full module
     // otherwise, so a service has one set of objects either way.
-    const out = toFull(code, map, serviceDirs, file, lib, defaults.has(r) ? undefined : selfRef);
+    const out = retarget(code, map, serviceDirs, file, lib, defaults.has(r) ? undefined : selfRef);
     if (out === code) continue;
     if (defaults.has(r)) {
-      const twin = file.replace(/\.js$/, `${FULL}.js`);
+      const twin = file.replace(/\.js$/, `${LAZY}.js`);
       writeFileSync(twin, out);
       if (map) {
         writeFileSync(`${twin}.map`, JSON.stringify(map));
@@ -814,34 +814,40 @@ export const lazyServices = (
 
 const rel = (from: string, to: string) => relative(from, to).split("\\").join("/");
 
-/** lib-relative files a non-wildcard export names directly (its stub-side target). */
+/** lib-relative files a non-wildcard export names directly (its full-module target). */
 const defaultTargets = (pkgDir: string): Set<string> => {
   const pkg = JSON.parse(readFileSync(join(pkgDir, "package.json"), "utf8"));
   const out = new Set<string>();
   for (const [key, v] of Object.entries<any>(pkg.exports ?? {})) {
     if (key.includes("*")) continue;
-    const t = lazyTarget(v);
-    if (typeof t === "string" && t.startsWith("./lib/") && !t.includes(`${FULL}.`))
-      out.add(t.slice("./lib/".length));
+    const t = fullTarget(v);
+    if (typeof t === "string" && t.startsWith("./lib/")) out.add(t.slice("./lib/".length));
   }
   return out;
 };
 
 /**
- * The full-module twin of a lib target Node's stubs use, or undefined when
- * the target is not lazy: a service directory (`./lib/services/*.js`, or one
- * module of it, `./lib/services/sts.js`) or a twinned barrel.
+ * The stub twin of a full-module lib target, or undefined when the target
+ * has none: a service directory (`./lib/services/*.js`, or one module of it,
+ * `./lib/services/sts.js`) or a twinned barrel.
  */
-const fullOf = (target: string, serviceDirs: string[], twins: string[]): string | undefined => {
+const lazyOf = (target: string, serviceDirs: string[], twins: string[]): string | undefined => {
   const m = /^\.\/lib\/(.+)\/([^/]+\.js)$/.exec(target);
-  if (m && serviceDirs.includes(m[1]!)) return `./lib/${m[1]}${FULL}/${m[2]}`;
-  if (twins.includes(target.slice("./lib/".length))) return target.replace(/\.js$/, `${FULL}.js`);
+  if (m && serviceDirs.includes(m[1]!)) return `./lib/${m[1]}${LAZY}/${m[2]}`;
+  if (twins.includes(target.slice("./lib/".length))) return target.replace(/\.js$/, `${LAZY}.js`);
   return undefined;
+};
+
+/** Whether a lib target is a stub or a lazy barrel (the `lazyOf` of some target). */
+const isLazy = (target: string, serviceDirs: string[], twins: string[]): boolean => {
+  const m = /^\.\/lib\/(.+)\/([^/]+\.js)$/.exec(target);
+  if (m && m[1]!.endsWith(LAZY) && serviceDirs.includes(m[1]!.slice(0, -LAZY.length))) return true;
+  return twins.some((t) => target === `./lib/${t.replace(/\.js$/, `${LAZY}.js`)}`);
 };
 
 /**
  * The `exports` a package needs: `distilled-lazy` gets the stubs and the
- * original barrels, every other condition (`default`) the full modules.
+ * lazy barrels, every other condition (`default`) the full modules.
  */
 export const lazyExports = (
   exports: Record<string, any>,
@@ -854,12 +860,12 @@ export const lazyExports = (
       out[key] = v;
       continue;
     }
-    const node = lazyTarget(v);
-    const full = typeof node === "string" ? fullOf(node, serviceDirs, twins) : undefined;
+    const full = fullTarget(v);
+    const lazy = typeof full === "string" ? lazyOf(full, serviceDirs, twins) : undefined;
     const { module: _m, "module-sync": _s, [LAZY_CONDITION]: _l, default: _d, ...rest } = v;
-    out[key] = full
-      ? { ...rest, [LAZY_CONDITION]: node, default: full }
-      : { ...rest, default: node };
+    out[key] = lazy
+      ? { ...rest, [LAZY_CONDITION]: lazy, default: full }
+      : { ...rest, default: full };
   }
   return out;
 };
@@ -877,8 +883,7 @@ export const stubTargets = (
   const bad: string[] = [];
   const visit = (key: string, v: unknown, lazy: boolean): void => {
     if (typeof v === "string") {
-      if (!lazy && v.startsWith("./lib/") && v.endsWith(".js") && fullOf(v, serviceDirs, twins))
-        bad.push(key);
+      if (!lazy && isLazy(v, serviceDirs, twins)) bad.push(key);
     } else if (Array.isArray(v)) for (const x of v) visit(key, x, lazy);
     else if (v && typeof v === "object")
       for (const [c, x] of Object.entries(v)) visit(key, x, lazy || c === LAZY_CONDITION);

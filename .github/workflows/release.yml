@@ -65,8 +65,8 @@ jobs:
         run: pnpm typecheck:ci
 
       # The chunked lib/ that preview packages ship (`pnpm build`), with
-      # lib/services.full and the opt-in `distilled-lazy` stubs the packages'
-      # `exports` name.
+      # the opt-in `distilled-lazy` stubs in lib/services.lazy that the
+      # packages' `exports` name.
       - name: Bundle compiled JavaScript
         run: node scripts/bundle-lib.ts
 

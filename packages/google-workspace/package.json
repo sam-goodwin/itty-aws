@@ -54,15 +54,15 @@
       "types": "./lib/unstable-services/*.d.ts",
       "bun": "./src/unstable-services/*.ts",
       "worker": "./src/unstable-services/*.ts",
-      "distilled-lazy": "./lib/unstable-services/*.js",
-      "default": "./lib/unstable-services.full/*.js"
+      "distilled-lazy": "./lib/unstable-services.lazy/*.js",
+      "default": "./lib/unstable-services/*.js"
     },
     "./*": {
       "types": "./lib/services/*.d.ts",
       "bun": "./src/services/*.ts",
       "worker": "./src/services/*.ts",
-      "distilled-lazy": "./lib/services/*.js",
-      "default": "./lib/services.full/*.js"
+      "distilled-lazy": "./lib/services.lazy/*.js",
+      "default": "./lib/services/*.js"
     }
   },
   "scripts": {

@@ -40,11 +40,15 @@ writeFileSync(
     name: "@fixture/pkg",
     type: "module",
     exports: {
+      ".": { default: "./lib/index.js" },
       "./thing-explicit": { default: "./lib/services/thing.js" },
       "./*": { default: "./lib/services/*.js" },
     },
   }),
 );
+// A barrel an export names: it keeps the full modules and gets a lazy twin.
+const barrel = `export * as Thing from "./services/thing.js";\n`;
+writeFileSync(join(pkg, "lib", "index.js"), barrel);
 writeFileSync(
   join(pkg, "lib", "_bundle", "sdk.js"),
   `import{api$op as a,api$opPaginated as b,api$error as c,api$newError as d,api$D as e,api$call as f}from"${CORE}";export{a as A,b as B,c as C,d as N,e as Dd,f as Cl};`,
@@ -97,14 +101,14 @@ const point = (file: string) =>
   );
 point(join(pkg, "lib", "_bundle", "sdk.js"));
 point(join(pkg, "lib", "_bundle", "lazy.js"));
-const stub = join(pkg, "lib", "services", "thing.js");
-const full = join(pkg, "lib", "services.full", "thing.js");
+const stub = join(pkg, "lib", "services.lazy", "thing.js");
+const full = join(pkg, "lib", "services", "thing.js");
 // The full module, for the whole-module fallback: its core import pointed at api.ts.
-writeFileSync(join(pkg, "lib", "services.full", "whole.js"), readFileSync(full, "utf8"));
+writeFileSync(join(pkg, "lib", "services", "whole.js"), readFileSync(full, "utf8"));
 writeFileSync(
-  join(pkg, "lib", "services", "whole.js"),
+  join(pkg, "lib", "services.lazy", "whole.js"),
   readFileSync(stub, "utf8")
-    .replace("../services.full/thing.js", "../services.full/whole.js")
+    .replace("../services/thing.js", "../services/whole.js")
     .replace(/,\d+,\d+\)/, ")"),
 );
 
@@ -112,7 +116,7 @@ describe("lazy service modules", () => {
   it("bundle-lib output: a stub, the unchanged full module and its slice index", () => {
     expect(result.stubs).toBe(1);
     const s = readFileSync(stub, "utf8");
-    const at = /\$L\("\.\.\/services\.full\/thing\.js","opoo",(\d+),(\d+)\)/.exec(s);
+    const at = /\$L\("\.\.\/services\/thing\.js","opoo",(\d+),(\d+)\)/.exec(s);
     expect(at).not.toBeNull();
     // One helper import; each export name written once.
     expect(s.startsWith(`import{$L}from"../_bundle/lazy.js";`)).toBe(true);
@@ -200,40 +204,34 @@ describe("lazy service modules", () => {
   });
 
   it("exports: the stubs only under distilled-lazy, explicit subpaths included", () => {
-    expect(exportsBefore).toEqual({
-      "./thing-explicit": { default: "./lib/services/thing.js" },
-      "./*": { default: "./lib/services/*.js" },
-    });
+    expect(result.twins).toEqual(["index.js"]);
+    expect(readFileSync(join(pkg, "lib", "index.js"), "utf8")).toBe(barrel);
+    expect(readFileSync(join(pkg, "lib", "index.lazy.js"), "utf8")).toBe(
+      `export * as Thing from "./services.lazy/thing.js";\n`,
+    );
     expect(pkgJson.exports).toEqual({
+      ".": { "distilled-lazy": "./lib/index.lazy.js", default: "./lib/index.js" },
       "./thing-explicit": {
-        "distilled-lazy": "./lib/services/thing.js",
-        default: "./lib/services.full/thing.js",
+        "distilled-lazy": "./lib/services.lazy/thing.js",
+        default: "./lib/services/thing.js",
       },
-      "./*": { "distilled-lazy": "./lib/services/*.js", default: "./lib/services.full/*.js" },
+      "./*": { "distilled-lazy": "./lib/services.lazy/*.js", default: "./lib/services/*.js" },
     });
-    // Idempotent, and it rewrites the layout of #873 (`module-sync` stubs).
+    // Idempotent; `default` keeps the targets it had.
     expect(lazyExports(pkgJson.exports, result.dirs, result.twins)).toEqual(pkgJson.exports);
+    expect(stubTargets(pkgJson.exports, result.dirs, result.twins)).toEqual([]);
+    expect(stubTargets(exportsBefore, result.dirs, result.twins)).toEqual([]);
     expect(
-      lazyExports(
+      stubTargets(
         {
-          "./*": {
-            module: "./lib/services.full/*.js",
-            "module-sync": "./lib/services/*.js",
-            default: "./lib/services.full/*.js",
-          },
+          "./x": "./lib/services.lazy/thing.js",
+          "./y": { default: "./lib/services.lazy/*.js" },
+          "./z": { node: "./lib/index.lazy.js" },
         },
         result.dirs,
         result.twins,
       ),
-    ).toEqual({ "./*": pkgJson.exports["./*"] });
-    expect(stubTargets(pkgJson.exports, result.dirs, result.twins)).toEqual([]);
-    expect(stubTargets(exportsBefore, result.dirs, result.twins)).toEqual([
-      "./thing-explicit",
-      "./*",
-    ]);
-    expect(stubTargets({ "./x": "./lib/services/thing.js" }, result.dirs, result.twins)).toEqual([
-      "./x",
-    ]);
+    ).toEqual(["./x", "./y", "./z"]);
   });
 
   it("Node resolves the full module unless the process opts in", () => {
@@ -248,14 +246,14 @@ describe("lazy service modules", () => {
       }));
     `;
     expect(run(script)).toEqual({
-      import: "services.full/thing.js",
-      explicit: "services.full/thing.js",
-      require: "services.full/thing.js",
-    });
-    expect(run(script, ["--conditions=distilled-lazy"])).toEqual({
       import: "services/thing.js",
       explicit: "services/thing.js",
       require: "services/thing.js",
+    });
+    expect(run(script, ["--conditions=distilled-lazy"])).toEqual({
+      import: "services.lazy/thing.js",
+      explicit: "services.lazy/thing.js",
+      require: "services.lazy/thing.js",
     });
   });
 
@@ -289,7 +287,7 @@ describe("lazy service modules", () => {
       const ids = output.flatMap((c) => (c.type === "chunk" ? (c.moduleIds ?? []) : []));
       expect(ids.filter((id) => id.startsWith(pkg)).map((id) => id.slice(pkg.length))).toEqual([
         "/lib/_bundle/sdk.js",
-        "/lib/services.full/thing.js",
+        "/lib/services/thing.js",
       ]);
       await bundle.close();
     }
@@ -306,9 +304,9 @@ describe("lazy service modules", () => {
 
   it("without a slice index the whole module loads and adopts the placeholders", () => {
     const r = run(`
-      const s = await import(${JSON.stringify(pathToFileURL(join(pkg, "lib", "services", "whole.js")).href)});
+      const s = await import(${JSON.stringify(pathToFileURL(join(pkg, "lib", "services.lazy", "whole.js")).href)});
       const name = s.getThing.operationName;
-      const f = await import(${JSON.stringify(pathToFileURL(join(pkg, "lib", "services.full", "whole.js")).href)});
+      const f = await import(${JSON.stringify(pathToFileURL(join(pkg, "lib", "services", "whole.js")).href)});
       const e = new s.Oops({});
       console.log(JSON.stringify({
         name, never: globalThis.never ?? 0, sameOp: f.getThing === s.getThing,
@@ -327,7 +325,7 @@ describe("lazy service modules", () => {
   it("a lazy namespace loads its module on first access", () => {
     writeFileSync(
       join(dir, "barrel.mjs"),
-      `import { lazyNamespace as $N } from ${JSON.stringify(api)};\nexport const A = $N(import.meta.url, "./pkg/lib/services/thing.js");\n`,
+      `import { lazyNamespace as $N } from ${JSON.stringify(api)};\nexport const A = $N(import.meta.url, "./pkg/lib/services.lazy/thing.js");\n`,
     );
     const r = run(`
       const b = await import("./barrel.mjs");

@@ -895,12 +895,12 @@ export const newError = (props: unknown, newTarget: Function | undefined, data: 
 
 /**
  * A Node process that enables the `distilled-lazy` export condition loads a
- * service module as a stub (`lib/services/<name>.js`): one cheap placeholder
- * per operation and error class, no operation data. Its first use loads the
- * full module (`lib/services.full/<name>.js`, what every other condition
+ * service module as a stub (`lib/services.lazy/<name>.js`): one cheap
+ * placeholder per operation and error class, no operation data. Its first use
+ * loads the full module (`lib/services/<name>.js`, what every other condition
  * resolves) with `require(esm)`.
  *
- *   const { o, e, E } = API.lazyService(import.meta.url, "../services.full/sqs.js", "oop", [$0], at, len);
+ *   const { o, e, E } = API.lazyService(import.meta.url, "../services/sqs.js", "oop", [$0], at, len);
  *   export const { OverLimit, QueueDoesNotExist } = E;  // or OverLimit = e("OverLimit"), ...
  *   export const addPermission = o(), _1 = o(), listQueues = o();
  *
@@ -917,7 +917,7 @@ export const newError = (props: unknown, newTarget: Function | undefined, data: 
  * With a slice index (below), a placeholder's first use evaluates only what
  * its operation reaches instead of the whole full module. A full module that
  * was imported directly (lib code names services through the package, so
- * it resolves the stub too; only explicit `services.full` imports do) keeps
+ * it resolves the stub too; only an import by file path does) keeps
  * its own objects, separate from the stub's.
  */
 interface LazyService {
