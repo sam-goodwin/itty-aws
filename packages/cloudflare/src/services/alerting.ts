@@ -97,14 +97,20 @@ export class InvalidAlertType
     [{ code: 17004 }],
   ) {}
 
-/** A filter key is invalid or missing for the alert type (e.g. a `custom_analytics` alert without `alert_trigger_preferences_short_window`). */
+/** A filter key is invalid, missing or out of range for the alert type (e.g. a `custom_analytics` threshold without `alert_trigger_preferences_short_window`, or a window under 1m, which Cloudflare reports without a code). */
 export class InvalidPolicyFilters
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<InvalidPolicyFilters>()("InvalidPolicyFilters", {
       code: S.Number,
       message: S.String,
     }),
-    [{ code: 17501 }],
+    [
+      { code: 17501 },
+      {
+        status: 400,
+        message: { includes: "unable to parse conditions: alert_trigger_preferences" },
+      },
+    ],
   ) {}
 
 export class InvalidRoute
