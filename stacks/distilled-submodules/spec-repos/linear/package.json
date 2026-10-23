@@ -11,8 +11,7 @@
     "check": "pnpm run tsc && pnpm run lint && pnpm run fmt:check"
   },
   "dependencies": {
-    "@typescript/native-preview": "latest",
-    "graphql": "^16.9.0"
+    "@typescript/native-preview": "latest"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",

@@ -1,6 +1,6 @@
 # spec-mirror-linear
 
-A git mirror of Linear's GraphQL API schema. The endpoint is introspected and the result committed as a JSON file so the repo serves as a versioned snapshot, with an SDL (`.graphql`) sibling file.
+A git mirror of Linear's GraphQL API schema. The endpoint is introspected and the result committed as a JSON file so the repo serves as a versioned snapshot.
 
 The mirror is updated every 24 hours and is designed to be used as a stable git submodule.
 
