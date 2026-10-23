@@ -19,6 +19,7 @@
       "types": "./lib/index.d.ts",
       "bun": "./src/index.ts",
       "worker": "./src/index.ts",
+      "distilled-lazy": "./lib/index.lazy.js",
       "default": "./lib/index.js"
     },
     "./Credentials": {
@@ -55,12 +56,14 @@
       "types": "./lib/services/supabase.d.ts",
       "bun": "./src/services/supabase.ts",
       "worker": "./src/services/supabase.ts",
+      "distilled-lazy": "./lib/services.lazy/supabase.js",
       "default": "./lib/services/supabase.js"
     },
     "./*": {
       "types": "./lib/services/*.d.ts",
       "bun": "./src/services/*.ts",
       "worker": "./src/services/*.ts",
+      "distilled-lazy": "./lib/services.lazy/*.js",
       "default": "./lib/services/*.js"
     }
   },

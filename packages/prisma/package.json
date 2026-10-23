@@ -19,6 +19,7 @@
       "types": "./lib/index.d.ts",
       "bun": "./src/index.ts",
       "worker": "./src/index.ts",
+      "distilled-lazy": "./lib/index.lazy.js",
       "default": "./lib/index.js"
     },
     "./Credentials": {
@@ -55,12 +56,14 @@
       "types": "./lib/services/management.d.ts",
       "bun": "./src/services/management.ts",
       "worker": "./src/services/management.ts",
+      "distilled-lazy": "./lib/services.lazy/management.js",
       "default": "./lib/services/management.js"
     },
     "./*": {
       "types": "./lib/services/*.d.ts",
       "bun": "./src/services/*.ts",
       "worker": "./src/services/*.ts",
+      "distilled-lazy": "./lib/services.lazy/*.js",
       "default": "./lib/services/*.js"
     }
   },
