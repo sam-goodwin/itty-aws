@@ -86,6 +86,13 @@
       "distilled-lazy": "./lib/services.lazy/addons.js",
       "default": "./lib/services/addons.js"
     },
+    "./builders": {
+      "types": "./lib/services/builders.d.ts",
+      "bun": "./src/services/builders.ts",
+      "worker": "./src/services/builders.ts",
+      "distilled-lazy": "./lib/services.lazy/builders.js",
+      "default": "./lib/services/builders.js"
+    },
     "./*": {
       "types": "./lib/services/*.d.ts",
       "bun": "./src/services/*.ts",
@@ -112,7 +119,7 @@
     "effect": "catalog:"
   },
   "distilled": {
-    "generatedAt": "2026-10-21",
+    "generatedAt": "2026-10-23",
     "specUpdatedAt": "2026-10-08"
   }
 }
