@@ -32,11 +32,19 @@
  * outside G also imports G's virtual entry, which reaches all of G. The build
  * fails if a group still splits.
  *
+ * Memory: one rolldown graph holds every module it bundles, so the groups and
+ * the other entries build first, then each service in a build of its own
+ * (several at once, within BATCH_BYTES of source), and every SDK package in a
+ * process of its own. Building every package peaks at about the largest
+ * service plus its package's groups instead of all of them.
+ *
  *   node scripts/bundle-lib.ts [packages/<pkg> ...]   (core is always rebuilt)
  */
+import { spawnSync } from "node:child_process";
 import {
   existsSync,
   mkdirSync,
+  mkdtempSync,
   readdirSync,
   readFileSync,
   rmSync,
@@ -44,8 +52,9 @@ import {
   writeFileSync,
 } from "node:fs";
 import { createRequire } from "node:module";
+import { tmpdir } from "node:os";
 import { dirname, isAbsolute, join, relative } from "node:path";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const ROOT = join(import.meta.dirname, "..");
 const require = createRequire(join(ROOT, "packages", "core", "package.json"));
@@ -98,6 +107,8 @@ const CORE_GROUPS: Record<string, string[]> = {
 const SDK_GROUP = "sdk";
 const VIRTUAL = "distilled-bundle:";
 const CORE_VIRTUAL = "\0distilled-core:";
+/** A grouped module, in a service's build: re-exports of the built group chunk. */
+const GROUP_REF = "\0distilled-group:";
 
 interface Plan {
   readonly name: string;
@@ -348,6 +359,13 @@ const barrelOf = (src: string, file: string): { code: string; targets: string[] 
 
 //#region rolldown
 
+/**
+ * Source bytes of the services that build at once (see buildPackage): what
+ * bounds bundle-lib's memory. Lower trades time for memory; a service larger
+ * than this builds alone.
+ */
+const BATCH_BYTES = Number(process.env.BUNDLE_LIB_BATCH_BYTES ?? 8 * 1024 * 1024);
+
 const COMMON_INPUT = {
   logLevel: "warn",
   treeshake: { moduleSideEffects: true },
@@ -523,9 +541,9 @@ const reannotate = (pretty: string, min: string, map: any): string => {
  * strings, regexes and comments can hold such characters, and `\uXXXX` means
  * the same there.
  */
-const toLatin1 = (lib: string, output: any[]) => {
+const toLatin1 = (lib: string, output: { type: string; fileName: string; latin1?: boolean }[]) => {
   for (const c of output) {
-    if (c.type !== "chunk" || !/[^\x00-\xff]/.test(c.code)) continue;
+    if (c.type !== "chunk" || c.latin1) continue;
     const file = join(lib, c.fileName);
     const code = readFileSync(file, "utf8");
     writeFileSync(
@@ -641,21 +659,33 @@ const buildPackage = async (
     },
   };
 
-  const input: Record<string, string> = {};
-  for (const g of groupNames) input[fileOf(g)] = VIRTUAL + g;
-  for (const m of plan.direct) if (!barrels.has(m)) input[m] = join(src, `${m}.ts`);
+  // One rolldown graph holds every module of its build: a whole provider at
+  // once peaks at 2-4 GB. So the groups and the other entries build first,
+  // then each service on its own. A service imports only grouped modules and
+  // core, so it reaches the groups the way SDKs reach core: through the built
+  // group chunk's exports. A one-entry build writes one chunk, the same
+  // whatever else builds. Services build concurrently while their source
+  // stays under BATCH_BYTES; memory peaks at about the largest service
+  // (~0.8 GB for Cloudflare's 7 MB zero_trust).
+  const shared: Record<string, string> = {};
+  for (const g of groupNames) shared[fileOf(g)] = VIRTUAL + g;
+  const services: { m: string; size: number }[] = [];
+  for (const m of plan.direct) {
+    if (barrels.has(m)) continue;
+    const file = join(src, `${m}.ts`);
+    // A module of a service directory that imports ungrouped code (AWS
+    // middleware) builds with the groups, where that code has one chunk.
+    const ownImports = isService(plan, m)
+      ? [...readFileSync(file, "utf8").matchAll(/(?:from|import)\s*\(?\s*"(\.\.?\/[^"]+)"/g)]
+      : [];
+    if (
+      isService(plan, m) &&
+      ownImports.every((i) => groupOf.has(noExt(rel(src, join(dirname(file), i[1]!)))))
+    )
+      services.push({ m, size: statSync(file).size });
+    else shared[m] = file;
+  }
 
-  const bundle = await rolldown({
-    ...COMMON_INPUT,
-    input,
-    external,
-    plugins: [
-      bundlePlugin,
-      ...plugins,
-      ...(process.env.BUNDLE_LIB_DEBUG ? [debugPlugin(src, groupOf)] : []),
-    ],
-    preserveEntrySignatures: "allow-extension",
-  });
   const outputOptions = {
     dir: lib,
     format: "es",
@@ -675,29 +705,140 @@ const buildPackage = async (
     ? JSON.parse(process.env.BUNDLE_LIB_MINIFY)
     : { compress: false, mangle: { keepNames: true }, codegen: { removeWhitespace: true } };
   const key = (c: any) => `${c.name}|${c.moduleIds.join(",")}`;
-  const pretty = minify
-    ? new Map(
-        (await bundle.generate({ ...outputOptions, sourcemap: false })).output
-          .filter((c: any) => c.type === "chunk")
-          .map((c: any) => [key(c), c.code]),
-      )
-    : undefined;
-  const { output } = await bundle.generate({ ...outputOptions, minify });
-  await bundle.close();
   mkdirSync(lib, { recursive: true });
-  for (const c of output) {
-    const file = join(lib, c.fileName);
-    mkdirSync(dirname(file), { recursive: true });
-    if (c.type !== "chunk") {
-      // Chunk source maps are written below, after reannotate shifts them.
-      if (!c.fileName.endsWith(".js.map")) writeFileSync(file, c.source);
-      continue;
+  // What the checks below read of each chunk; code is not kept between builds.
+  const output: {
+    type: string;
+    fileName: string;
+    isEntry?: boolean;
+    name?: string;
+    moduleIds?: string[];
+    rendered?: Record<string, number>;
+    sourcemapFileName?: string | null;
+    latin1?: boolean;
+  }[] = [];
+  // Other entries name a service through the package (`@distilled.cloud/axiom/edge_ingest`),
+  // the file its own build writes, instead of bundling a second copy of it.
+  const pkgJson = JSON.parse(readFileSync(join(plan.dir, "package.json"), "utf8"));
+  const selfRefs = new Map<string, string>();
+  for (const [k, v] of Object.entries<any>(pkgJson.exports ?? {}))
+    if (k.endsWith("/*"))
+      for (const t of exportTargets(v)) {
+        const d = /^\.\/lib\/(.+)\/\*\.js$/.exec(t)?.[1];
+        if (d && plan.serviceDirs.includes(d) && !selfRefs.has(d))
+          selfRefs.set(d, `${pkgJson.name}/${k.slice(2, -1)}`);
+      }
+  const separate = new Set(services.map((x) => x.m));
+  const servicesByPackage = {
+    name: "distilled-services-by-package",
+    resolveId(source: string, importer: string | undefined) {
+      if (!importer || !source.startsWith(".") || !inside(src, importer)) return;
+      const m = noExt(rel(src, join(dirname(importer), source)));
+      if (!separate.has(m)) return;
+      const d = plan.serviceDirs.find((x) => m.startsWith(`${x}/`))!;
+      if (!selfRefs.has(d)) throw new Error(`${plan.name}: no wildcard export for ${d}/`);
+      return { id: selfRefs.get(d) + m.slice(d.length + 1), external: true };
+    },
+  };
+  /** Grouped modules of a service build: re-exports of the built group chunks. */
+  const builtGroups = (service: string) => ({
+    name: "distilled-built-groups",
+    resolveId(source: string, importer: string | undefined) {
+      if (source.startsWith(VIRTUAL)) {
+        const to = rel(
+          dirname(join(lib, service)),
+          join(lib, fileOf(source.slice(VIRTUAL.length))),
+        );
+        return { id: `${to.startsWith(".") ? to : `./${to}`}.js`, external: true };
+      }
+      if (!importer || !source.startsWith(".") || !inside(src, importer)) return;
+      const m = noExt(rel(src, join(dirname(importer), source)));
+      if (groupOf.has(m)) return GROUP_REF + m;
+    },
+    load(id: string) {
+      if (!id.startsWith(GROUP_REF)) return;
+      const m = id.slice(GROUP_REF.length);
+      const names = exportsOf.get(m)!;
+      const group = `${VIRTUAL}${groupOf.get(m)}`;
+      return names.length
+        ? `export { ${names.map((e) => `${exportName(m, e)} as ${e}`).join(", ")} } from "${group}";`
+        : `import "${group}";`;
+    },
+  });
+  const build = async (service?: string) => {
+    const bundle = await rolldown({
+      ...COMMON_INPUT,
+      input: service ? { [service]: join(src, `${service}.ts`) } : shared,
+      external,
+      plugins: [
+        service ? builtGroups(service) : servicesByPackage,
+        bundlePlugin,
+        ...plugins,
+        ...(process.env.BUNDLE_LIB_DEBUG ? [debugPlugin(src, groupOf)] : []),
+      ],
+      preserveEntrySignatures: "allow-extension",
+    });
+    const pretty = minify
+      ? new Map(
+          (await bundle.generate({ ...outputOptions, sourcemap: false })).output
+            .filter((c: any) => c.type === "chunk")
+            .map((c: any) => [key(c), c.code]),
+        )
+      : undefined;
+    const generated = (await bundle.generate({ ...outputOptions, minify })).output;
+    await bundle.close();
+    const chunks = generated.filter((c: any) => c.type === "chunk");
+    if (service) {
+      const stray = chunks
+        .flatMap((c: any) => c.moduleIds as string[])
+        .find((id: string) => inside(src, id) && noExt(rel(src, id)) !== service);
+      if (chunks.length !== 1 || stray)
+        throw new Error(
+          `${plan.name}: ${service} ${stray ? `bundles ${rel(src, stray)}` : `built ${chunks.length} chunks`}; a service may import only grouped modules and core`,
+        );
     }
-    const map = c.map ? JSON.parse(c.map.toString()) : undefined;
-    // `c.code` already ends with the sourceMappingURL comment.
-    writeFileSync(file, pretty ? reannotate(pretty.get(key(c))!, c.code, map) : c.code);
-    if (map) writeFileSync(`${file}.map`, JSON.stringify(map));
+    for (const c of generated) {
+      const file = join(lib, c.fileName);
+      mkdirSync(dirname(file), { recursive: true });
+      if (c.type !== "chunk") {
+        output.push({ type: c.type, fileName: c.fileName });
+        // Chunk source maps are written below, after reannotate shifts them.
+        if (!c.fileName.endsWith(".js.map")) writeFileSync(file, c.source);
+        continue;
+      }
+      const map = c.map ? JSON.parse(c.map.toString()) : undefined;
+      // `c.code` already ends with the sourceMappingURL comment.
+      writeFileSync(file, pretty ? reannotate(pretty.get(key(c))!, c.code, map) : c.code);
+      if (map) writeFileSync(`${file}.map`, JSON.stringify(map));
+      output.push({
+        type: c.type,
+        fileName: c.fileName,
+        isEntry: c.isEntry,
+        name: c.name,
+        moduleIds: c.moduleIds,
+        rendered: Object.fromEntries(
+          c.moduleIds.map((id: string) => [id, c.modules[id]?.renderedLength ?? 0]),
+        ),
+        sourcemapFileName: c.sourcemapFileName,
+        latin1: !/[^\x00-\xff]/.test(c.code),
+      });
+    }
+  };
+  await build();
+  // Largest first; start the next while the running builds' source fits the budget.
+  const queue = services.sort((x, y) => y.size - x.size);
+  const running = new Set<Promise<void>>();
+  let inFlight = 0;
+  for (const { m, size } of queue) {
+    while (running.size > 0 && inFlight + size > BATCH_BYTES) await Promise.race(running);
+    inFlight += size;
+    const p: Promise<void> = build(m).finally(() => {
+      inFlight -= size;
+      running.delete(p);
+    });
+    running.add(p);
   }
+  await Promise.all(running);
 
   // A group that split into several chunks would duplicate nothing, but costs modules; fail loudly.
   const written = new Set<string>();
@@ -707,13 +848,11 @@ const buildPackage = async (
     if (c.type !== "chunk") continue;
     if (c.sourcemapFileName) written.add(c.sourcemapFileName);
     const own = groupNames.find((g) => c.isEntry && c.name === fileOf(g));
-    for (const id of c.moduleIds as string[]) {
+    for (const id of c.moduleIds!) {
       if (!inside(src, id)) continue;
       const g = groupOf.get(noExt(rel(src, id)));
       if (g && g !== own)
-        problems.push(
-          `${rel(src, id)} (group ${g}) in ${c.fileName}: ${c.modules[id]?.renderedLength} B`,
-        );
+        problems.push(`${rel(src, id)} (group ${g}) in ${c.fileName}: ${c.rendered![id]} B`);
     }
   }
   // Rolldown never duplicates a module, so this is about module count only;
@@ -723,7 +862,7 @@ const buildPackage = async (
     console.warn(
       `bundle-lib: ${plan.name}: group code outside its chunk:\n  ${big.slice(0, 20).join("\n  ")}`,
     );
-  if (output.some((c: any) => c.moduleIds?.length === 1 && c.moduleIds[0] === RUNTIME_MODULE_ID))
+  if (output.some((c) => c.moduleIds?.length === 1 && c.moduleIds[0] === RUNTIME_MODULE_ID))
     throw new Error(`${plan.name}: rolldown runtime got a chunk of its own`);
   toLatin1(lib, output);
 
@@ -798,13 +937,55 @@ const dirs = (
 
 /** Packages whose package.json `exports` do not match their lazy service layout. */
 const staleExports: string[] = [];
-const core = corePlan();
-const coreBuilt = await buildPackage(core, core, undefined);
-for (const dir of dirs) {
-  const plan = sdkPlan(dir);
-  if (plan) await buildPackage(plan, core, coreBuilt);
+/** A child's exit code for "built, but its `exports` need rewriting". */
+const STALE_EXIT = 3;
+/** Set in a child process: the file the parent wrote core's build to. */
+const childOf = process.env.BUNDLE_LIB_CORE;
+if (childOf) {
+  const c = JSON.parse(readFileSync(childOf, "utf8"));
+  const core: Plan = { ...corePlan(), direct: c.direct };
+  const built: Built = { groupOf: new Map(c.groupOf), exportsOf: new Map(c.exportsOf) };
+  for (const dir of dirs) {
+    const plan = sdkPlan(dir);
+    if (plan) await buildPackage(plan, core, built);
+  }
+  if (staleExports.length) process.exitCode = STALE_EXIT;
+} else {
+  const core = corePlan();
+  const coreBuilt = await buildPackage(core, core, undefined);
+  const sdks = dirs.filter((d) => sdkPlan(d));
+  if (sdks.length <= 1) for (const dir of sdks) await buildPackage(sdkPlan(dir)!, core, coreBuilt);
+  else {
+    // A process keeps the memory it peaked at: build each package in a
+    // process of its own, so building every SDK peaks at the largest one
+    // instead of what they add up to.
+    const tmp = mkdtempSync(join(tmpdir(), "bundle-lib-"));
+    const file = join(tmp, "core.json");
+    writeFileSync(
+      file,
+      JSON.stringify({
+        direct: core.direct,
+        groupOf: [...coreBuilt.groupOf],
+        exportsOf: [...coreBuilt.exportsOf],
+      }),
+    );
+    try {
+      for (const dir of sdks) {
+        const r = spawnSync(
+          process.execPath,
+          [...process.execArgv, fileURLToPath(import.meta.url), rel(ROOT, dir)],
+          { stdio: "inherit", env: { ...process.env, BUNDLE_LIB_CORE: file } },
+        );
+        if (r.status === STALE_EXIT) staleExports.push(rel(ROOT, dir));
+        else if (r.status !== 0)
+          throw new Error(`bundle-lib: ${rel(ROOT, dir)} failed (${r.status ?? r.signal})`);
+      }
+    } finally {
+      rmSync(tmp, { recursive: true, force: true });
+    }
+  }
 }
-if (staleExports.length)
+if (staleExports.length && !childOf)
   throw new Error(
     `bundle-lib: package.json exports do not match the lazy service layout; run: node scripts/lazy-services.ts --exports ${staleExports.join(" ")}`,
   );
