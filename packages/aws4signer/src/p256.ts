@@ -4,8 +4,8 @@
  * Curve arithmetic stays in the platform's crypto wherever it can: a private
  * key is imported as PKCS#8 without its public point, which `node:crypto`
  * (OpenSSL), Bun and workerd's WebCrypto (BoringSSL) derive on import.
- * {@link publicPoint} is the fallback for a WebCrypto that insists on the
- * point (it only accepts a JWK carrying `x`/`y`).
+ * {@link publicPoint}, plucked from @noble/curves, is the fallback for a
+ * WebCrypto that insists on the point (it only accepts a JWK carrying `x`/`y`).
  */
 
 const P = 0xffffffff00000001000000000000000000000000ffffffffffffffffffffffffn;
@@ -48,56 +48,237 @@ export const pkcs8 = (d: bigint): Uint8Array<ArrayBuffer> => {
   return out;
 };
 
-//#region fallback point arithmetic
+//#region fallback point arithmetic, plucked from @noble/curves
 
-interface Point {
-  readonly x: bigint;
-  readonly y: bigint;
+/*
+ * The scalar multiplication below is taken from @noble/curves 1.9.7
+ * (https://github.com/paulmillr/noble-curves): `mod` and `invert`
+ * (abstract/modular.ts), the projective point's Renes-Costello-Batina
+ * complete `add` / `double` and `toAffine` (abstract/weierstrass.ts), and the
+ * constant-pattern wNAF `calcWOpts` / `calcOffsets` / `precomputeWindow` /
+ * `wNAF` (abstract/curve.ts), specialised to P-256 with field operations
+ * inlined. Only the code paths `getPublicKey` takes are kept.
+ *
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2022 Paul Miller (https://paulmillr.com)
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+const B = 0x5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604bn;
+const B3 = (B * 3n) % P;
+
+const mod = (a: bigint, b: bigint = P): bigint => {
+  const result = a % b;
+  return result >= 0n ? result : b + result;
+};
+
+const invert = (number: bigint, modulo: bigint = P): bigint => {
+  let a = mod(number, modulo);
+  let b = modulo;
+  let x = 0n, y = 1n, u = 1n, v = 0n; // prettier-ignore
+  while (a !== 0n) {
+    const q = b / a;
+    const r = b % a;
+    const m = x - u * q;
+    const n = y - v * q;
+    b = a, a = r, x = u, y = v, u = m, v = n; // prettier-ignore
+  }
+  return mod(x, modulo);
+};
+
+/** A projective point (X, Y, Z) with x = X/Z, y = Y/Z; the identity is (0, 1, 0). */
+interface Projective {
+  readonly X: bigint;
+  readonly Y: bigint;
+  readonly Z: bigint;
 }
 
-const mod = (a: bigint, m = P): bigint => {
-  const r = a % m;
-  return r >= 0n ? r : r + m;
+const ZERO: Projective = { X: 0n, Y: 1n, Z: 0n };
+const BASE: Projective = { X: G.x, Y: G.y, Z: 1n };
+
+const negate = (p: Projective): Projective => ({ X: p.X, Y: mod(-p.Y), Z: p.Z });
+
+/** Renes-Costello-Batina exception-free doubling, https://eprint.iacr.org/2015/1060 algorithm 3. */
+const double = ({ X: X1, Y: Y1, Z: Z1 }: Projective): Projective => {
+  let X3 = 0n, Y3 = 0n, Z3 = 0n; // prettier-ignore
+  let t0 = mod(X1 * X1);
+  let t1 = mod(Y1 * Y1);
+  let t2 = mod(Z1 * Z1);
+  let t3 = mod(X1 * Y1);
+  t3 = mod(t3 + t3);
+  Z3 = mod(X1 * Z1);
+  Z3 = mod(Z3 + Z3);
+  X3 = mod(A * Z3);
+  Y3 = mod(B3 * t2);
+  Y3 = mod(X3 + Y3);
+  X3 = mod(t1 - Y3);
+  Y3 = mod(t1 + Y3);
+  Y3 = mod(X3 * Y3);
+  X3 = mod(t3 * X3);
+  Z3 = mod(B3 * Z3);
+  t2 = mod(A * t2);
+  t3 = mod(t0 - t2);
+  t3 = mod(A * t3);
+  t3 = mod(t3 + Z3);
+  Z3 = mod(t0 + t0);
+  t0 = mod(Z3 + t0);
+  t0 = mod(t0 + t2);
+  t0 = mod(t0 * t3);
+  Y3 = mod(Y3 + t0);
+  t2 = mod(Y1 * Z1);
+  t2 = mod(t2 + t2);
+  t0 = mod(t2 * t3);
+  X3 = mod(X3 - t0);
+  Z3 = mod(t2 * t1);
+  Z3 = mod(Z3 + Z3);
+  Z3 = mod(Z3 + Z3);
+  return { X: X3, Y: Y3, Z: Z3 };
 };
 
-const inverse = (a: bigint, m = P): bigint => {
-  let [r0, r1] = [mod(a, m), m];
-  let [s0, s1] = [1n, 0n];
-  while (r1 !== 0n) {
-    const q = r0 / r1;
-    [r0, r1] = [r1, r0 - q * r1];
-    [s0, s1] = [s1, s0 - q * s1];
-  }
-  return mod(s0, m);
+/** Renes-Costello-Batina exception-free addition, https://eprint.iacr.org/2015/1060 algorithm 1. */
+const add = (
+  { X: X1, Y: Y1, Z: Z1 }: Projective,
+  { X: X2, Y: Y2, Z: Z2 }: Projective,
+): Projective => {
+  let X3 = 0n, Y3 = 0n, Z3 = 0n; // prettier-ignore
+  let t0 = mod(X1 * X2);
+  let t1 = mod(Y1 * Y2);
+  let t2 = mod(Z1 * Z2);
+  let t3 = mod(X1 + Y1);
+  let t4 = mod(X2 + Y2);
+  t3 = mod(t3 * t4);
+  t4 = mod(t0 + t1);
+  t3 = mod(t3 - t4);
+  t4 = mod(X1 + Z1);
+  let t5 = mod(X2 + Z2);
+  t4 = mod(t4 * t5);
+  t5 = mod(t0 + t2);
+  t4 = mod(t4 - t5);
+  t5 = mod(Y1 + Z1);
+  X3 = mod(Y2 + Z2);
+  t5 = mod(t5 * X3);
+  X3 = mod(t1 + t2);
+  t5 = mod(t5 - X3);
+  Z3 = mod(A * t4);
+  X3 = mod(B3 * t2);
+  Z3 = mod(X3 + Z3);
+  X3 = mod(t1 - Z3);
+  Z3 = mod(t1 + Z3);
+  Y3 = mod(X3 * Z3);
+  t1 = mod(t0 + t0);
+  t1 = mod(t1 + t0);
+  t2 = mod(A * t2);
+  t4 = mod(B3 * t4);
+  t1 = mod(t1 + t2);
+  t2 = mod(t0 - t2);
+  t2 = mod(A * t2);
+  t4 = mod(t4 + t2);
+  t0 = mod(t1 * t4);
+  Y3 = mod(Y3 + t0);
+  t0 = mod(t5 * t4);
+  X3 = mod(t3 * X3);
+  X3 = mod(X3 - t0);
+  t0 = mod(t3 * t1);
+  Z3 = mod(t5 * Z3);
+  Z3 = mod(Z3 + t0);
+  return { X: X3, Y: Y3, Z: Z3 };
 };
 
-const add = (p: Point | undefined, q: Point | undefined): Point | undefined => {
-  if (p === undefined) return q;
-  if (q === undefined) return p;
-  let slope: bigint;
-  if (p.x === q.x) {
-    if (mod(p.y + q.y) === 0n) return undefined;
-    slope = mod((3n * p.x * p.x + A) * inverse(2n * p.y));
-  } else {
-    slope = mod((q.y - p.y) * inverse(q.x - p.x));
+const toAffine = (p: Projective): { x: bigint; y: bigint } => {
+  const is0 = p.Z === 0n;
+  // Execute every operation even for the identity, with 1 standing in for 1/Z.
+  const iz = is0 ? 1n : invert(p.Z);
+  const x = mod(p.X * iz);
+  const y = mod(p.Y * iz);
+  return is0 ? { x: 0n, y: 0n } : { x, y };
+};
+
+/** wNAF window size: 2^(W-1) * (ceil(256 / W) + 1) = 520 precomputed points. */
+const W = 4;
+const WINDOWS = Math.ceil(256 / W) + 1;
+const WINDOW_SIZE = 2 ** (W - 1);
+const MAX_NUMBER = 2 ** W;
+const MASK = BigInt(MAX_NUMBER - 1);
+const SHIFT_BY = BigInt(W);
+
+const calcOffsets = (n: bigint, window: number) => {
+  let wbits = Number(n & MASK);
+  let nextN = n >> SHIFT_BY;
+  if (wbits > WINDOW_SIZE) {
+    wbits -= MAX_NUMBER;
+    nextN += 1n;
   }
-  const x = mod(slope * slope - p.x - q.x);
-  return { x, y: mod(slope * (p.x - x) - p.y) };
+  const offsetStart = window * WINDOW_SIZE;
+  return {
+    nextN,
+    offset: offsetStart + Math.abs(wbits) - 1,
+    isZero: wbits === 0,
+    isNeg: wbits < 0,
+    // fake statement and offset for noise
+    isNegF: window % 2 !== 0,
+    offsetF: offsetStart,
+  };
+};
+
+const precomputeWindow = (point: Projective): Projective[] => {
+  const points: Projective[] = [];
+  let p = point;
+  let base = p;
+  for (let window = 0; window < WINDOWS; window++) {
+    base = p;
+    points.push(base);
+    for (let i = 1; i < WINDOW_SIZE; i++) {
+      base = add(base, p);
+      points.push(base);
+    }
+    p = double(base);
+  }
+  return points;
+};
+
+const negateCt = (condition: boolean, item: Projective): Projective => {
+  const neg = negate(item);
+  return condition ? neg : item;
 };
 
 /**
- * `d * G` in plain affine BigInt arithmetic. Not constant-time: only used
- * when the platform cannot derive the point itself, once per credential
- * (the key is cached).
+ * `d * G` for a private scalar `d` in [1, n-1], as noble's
+ * `p256.getPublicKey`: every window performs one addition, into the real
+ * accumulator or into a fake one, so the sequence of point operations does
+ * not depend on the scalar's bits.
  */
-export const publicPoint = (d: bigint): Point => {
-  let result: Point | undefined;
-  let addend: Point | undefined = G;
-  for (let k = d; k > 0n; k >>= 1n) {
-    if (k & 1n) result = add(result, addend);
-    addend = add(addend, addend);
+export const publicPoint = (d: bigint): { x: bigint; y: bigint } => {
+  const precomputes = precomputeWindow(BASE);
+  let n = d;
+  let p = ZERO;
+  let f = BASE;
+  for (let window = 0; window < WINDOWS; window++) {
+    const { nextN, offset, isZero, isNeg, isNegF, offsetF } = calcOffsets(n, window);
+    n = nextN;
+    if (isZero) f = add(f, negateCt(isNegF, precomputes[offsetF]!));
+    else p = add(p, negateCt(isNeg, precomputes[offset]!));
   }
-  return result!;
+  // Normalize both, as noble does, so the fake accumulator is not dead code.
+  void toAffine(f);
+  return toAffine(p);
 };
 
 //#endregion

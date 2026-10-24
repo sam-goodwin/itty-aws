@@ -1,9 +1,9 @@
-import { createHash, createPublicKey, verify } from "node:crypto";
+import { createHash, createPrivateKey, createPublicKey, randomBytes, verify } from "node:crypto";
 import * as Effect from "effect/Effect";
 import * as Redacted from "effect/Redacted";
 import { describe, expect, test } from "vitest";
 import * as SigV4 from "../src/index.ts";
-import { p1363ToDer } from "../src/p256.ts";
+import { N, p1363ToDer, pkcs8, publicPoint, toBigInt } from "../src/p256.ts";
 
 // The aws-c-auth / aws-sdk SigV4A test-suite credentials ("get-vanilla").
 const accessKeyId = "AKIDEXAMPLE";
@@ -87,6 +87,24 @@ describe("SigV4A", () => {
         signature,
       ),
     ).toBe(true);
+  });
+
+  test("the plucked noble point arithmetic agrees with node:crypto", () => {
+    const random = Array.from({ length: 32 }, () => (toBigInt(randomBytes(32)) % (N - 1n)) + 1n);
+    for (const d of [1n, 2n, 3n, N - 2n, N - 1n, ...random]) {
+      const jwk = createPrivateKey({
+        key: Buffer.from(pkcs8(d)),
+        format: "der",
+        type: "pkcs8",
+      }).export({
+        format: "jwk",
+      });
+      const { x, y } = publicPoint(d);
+      expect([x, y]).toEqual([
+        toBigInt(Buffer.from(jwk.x!, "base64url")),
+        toBigInt(Buffer.from(jwk.y!, "base64url")),
+      ]);
+    }
   });
 
   test("encodes P1363 signatures as DER", () => {
