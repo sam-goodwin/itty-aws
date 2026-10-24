@@ -99,6 +99,8 @@ const CORE_GROUPS: Record<string, string[]> = {
 const SDK_GROUP = "sdk";
 const VIRTUAL = "distilled-bundle:";
 const CORE_VIRTUAL = "\0distilled-core:";
+/** A grouped core module, in a service's build: aliases re-exported by the SDK group chunk. */
+const CORE_REF = "\0distilled-core-ref:";
 /** A grouped module, in a service's build: re-exports of the built group chunk. */
 const GROUP_REF = "\0distilled-group:";
 
@@ -176,6 +178,20 @@ const exportTargets = (value: unknown, out: string[] = []): string[] => {
   else if (value && typeof value === "object")
     for (const [k, v] of Object.entries(value)) if (k !== "types") exportTargets(v, out);
   return out;
+};
+
+/** Short export names in order: a, b, ..., _, aa, ba, ... (no `$`, so no clash with `<module>$<name>`). */
+const SHORT_NAMES: string[] = [];
+const shortName = (i: number): string => {
+  const first = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_";
+  const rest = `${first}0123456789`;
+  for (let n = SHORT_NAMES.length; SHORT_NAMES.length <= i; n++) {
+    let name = first[n % first.length]!;
+    for (let k = Math.floor(n / first.length); k > 0; k = Math.floor((k - 1) / rest.length))
+      name += rest[(k - 1) % rest.length]!;
+    if (!["do", "if", "in"].includes(name)) SHORT_NAMES.push(name);
+  }
+  return SHORT_NAMES[i]!;
 };
 
 const isService = (plan: Plan, m: string) => plan.serviceDirs.some((d) => m.startsWith(`${d}/`));
@@ -588,6 +604,20 @@ const buildPackage = async (
           if (m[1] !== "@distilled.cloud/core" && !corePlan.direct.includes(m[1]!.slice(22)))
             coreRefs.add(m[1]!);
 
+  // Services reach core through the SDK group chunk, as they did when the
+  // whole package was one build: `sdk.js` re-exports every core name a
+  // service uses under a short alias, so each service has one short import.
+  // Aliases are fixed up front (every service build and the group build
+  // agree on them); the group exports only the ones services import.
+  const coreAlias = new Map<string, string>();
+  if (core && plan.groups.get(SDK_GROUP)?.length)
+    for (const r of [...coreRefs].sort()) {
+      const m = r.slice("@distilled.cloud/core/".length);
+      for (const e of core.exportsOf.get(m) ?? [])
+        coreAlias.set(`${m}\0${e}`, shortName(coreAlias.size));
+    }
+  const usedAliases = new Set<string>();
+
   const barrels = new Map<string, string>();
   const targets: string[] = [];
   for (const m of plan.direct) {
@@ -618,6 +648,12 @@ const buildPackage = async (
       if (!id.startsWith("\0" + VIRTUAL)) return;
       const g = id.slice(VIRTUAL.length + 1);
       const lines: string[] = g === SDK_GROUP ? [...coreRefs].map((r) => `import "${r}";`) : [];
+      if (g === SDK_GROUP)
+        for (const [k, alias] of coreAlias) {
+          if (!usedAliases.has(alias)) continue;
+          const [m, e] = k.split("\0") as [string, string];
+          lines.push(`export { ${e} as ${alias} } from "@distilled.cloud/core/${m}";`);
+        }
       // Rolldown's helpers (`__exportAll` for namespace objects) go in the
       // first group's chunk, which every chunk of the package already imports,
       // instead of a chunk of their own.
@@ -662,8 +698,8 @@ const buildPackage = async (
   };
 
   // One rolldown graph holds every module of its build: a whole provider at
-  // once peaks at 2-4 GB. So the groups and the other entries build first,
-  // then each service on its own. A service imports only grouped modules and
+  // once peaks at 2-4 GB. So each service builds on its own, then the groups
+  // and the other entries. A service imports only grouped modules and
   // core, so it reaches the groups the way SDKs reach core: through the built
   // group chunk's exports. A one-entry build writes one chunk, the same
   // whatever else builds. Services build concurrently while their source
@@ -753,11 +789,23 @@ const buildPackage = async (
         );
         return { id: `${to.startsWith(".") ? to : `./${to}`}.js`, external: true };
       }
+      const c = source.startsWith("@distilled.cloud/core/")
+        ? source.slice("@distilled.cloud/core/".length)
+        : undefined;
+      if (c !== undefined && core?.exportsOf.has(c) && coreAlias.size) return CORE_REF + c;
       if (!importer || !source.startsWith(".") || !inside(src, importer)) return;
       const m = noExt(rel(src, join(dirname(importer), source)));
       if (groupOf.has(m)) return GROUP_REF + m;
     },
     load(id: string) {
+      if (id.startsWith(CORE_REF)) {
+        const m = id.slice(CORE_REF.length);
+        const names = core!.exportsOf.get(m)!;
+        const group = `${VIRTUAL}${SDK_GROUP}`;
+        return names.length
+          ? `export { ${names.map((e) => `${coreAlias.get(`${m}\0${e}`)} as ${e}`).join(", ")} } from "${group}";`
+          : `import "${group}";`;
+      }
       if (!id.startsWith(GROUP_REF)) return;
       const m = id.slice(GROUP_REF.length);
       const names = exportsOf.get(m)!;
@@ -793,6 +841,15 @@ const buildPackage = async (
         throw new Error(
           `${plan.name}: ${service} ${stray ? `bundles ${rel(src, stray)}` : `built ${chunks.length} chunks`}; a service may import only grouped modules and core`,
         );
+      // Rolldown 1.2 reports no imported bindings; read them off the import statements.
+      const code = (chunks[0] as any).code as string;
+      for (const im of code.matchAll(/import\s*\{([^}]*)\}\s*from\s*"([^"]+)"/g)) {
+        if (!im[2]!.endsWith(`_bundle/${SDK_GROUP}.js`)) continue;
+        for (const spec of im[1]!.split(",")) {
+          const name = spec.trim().split(/\s+as\s+/)[0]!;
+          if (name) usedAliases.add(name);
+        }
+      }
     }
     for (const c of generated) {
       const file = join(lib, c.fileName);
@@ -821,7 +878,6 @@ const buildPackage = async (
       });
     }
   };
-  await build();
   // Largest first; start the next while the running builds' source fits the budget.
   const queue = services.sort((x, y) => y.size - x.size);
   const running = new Set<Promise<void>>();
@@ -836,6 +892,7 @@ const buildPackage = async (
     running.add(p);
   }
   await Promise.all(running);
+  await build();
 
   // A group that split into several chunks would duplicate nothing, but costs modules; fail loudly.
   const written = new Set<string>();
